@@ -175,3 +175,6 @@ These rules act as a delayed spike to the *y()* molecule. Once the *delay()* mol
 On the right-hand side, click on *Simulation > Run*. After the simulation is complete, a new window will appear showing the plotted graph.
 
 Can you break the oscillator model, or is it too robust? We recommend playing around with the reaction rules for *b()*- which other species could it produce? You could also adjust the starting quantities for *a(Y~U~P)*, or change the rate at which the *delay()* molecule decays!
+
+[Return to main text](conclusion#the-repressilator-is-robust-to-disturbance){: .btn .btn--primary .btn--large}
+{: style="font-size: 100%; text-align: center;"}
