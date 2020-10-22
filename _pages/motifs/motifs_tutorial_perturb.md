@@ -7,27 +7,23 @@ toc: true
 toc_sticky: true
 ---
 
-## Installing NFSim and RuleBender
+In this tutorial, we will see what happens when we make a sudden change to the concentration of one of the repressilator particles in the middle of the simulation. This is difficult to do with CellBlender, and so we will instead use this opportunity to transition to a "particle-free" tool called **NFSim** that does have the desired functionality. We will say much more about particle-free modeling, in which we do not have to track the movements of individual particles to track their concentrations, in a future module.
 
-https://www.csb.pitt.edu/Faculty/Faeder/?page_id=409
-[We will be using RuleBender as a GUI for NFSim]
+First, you will need to install NFSim and a program called **RuleBender**, which we will use as a GUI for NFSim. Those two programs can be installed ![https://www.csb.pitt.edu/Faculty/Faeder/?page_id=409](here).
 
-## Using RuleBender
 
-Open /RuleBender/RuleBender.exe
-
-File > New BioNetGen Project
+We will first build a simulation of the repressilator that we will perturb later. Assuming you have installed RuleBender, open the RuleBender program and select `File > New BioNetGen Project`.
 
 ![image-center](../assets/images/nfsim_new_project.png){: .align-center}
 
-Select blank_file.bngl and name your project “oscillators”
+Select `blank_file.bngl` and name your project `oscillators`.
 
 ![image-center](../assets/images/nfsim_new_file.png){: .align-center}
 
-NOTE: Occasionally an error will pop up to inform the user “There was a failure during the copy of the sample”. The folder will be created, but no files will be loaded. Select File > New > File to create a new blank file.
+**Note:** Occasionally the following error will pop up to inform the user: “There was a failure during the copy of the sample”. The folder will be created, but no files will be loaded. Select `File > New > File` to create a new blank file.
 {: .notice--primary}
 
-Rename your file “oscillator_copy.bngl” and double click the file in the navigator to open the editor window. Once in the editor window, add the following parameters:
+Rename your file `oscillator_copy.bngl` and double-click the file in the navigator to open the editor window. Once in the editor window, add the following parameters:
 
 ~~~ ruby
 begin parameters
@@ -73,7 +69,7 @@ begin species
 end species
 ~~~
 
-In order to view a plot of the molecules after the simulation is complete, add the following code:
+To view a plot of the molecules after the simulation is complete, add the following code:
 
 ~~~ ruby
 begin observables
@@ -83,7 +79,7 @@ begin observables
 end observables
 ~~~
 
-The following are the same reaction rules as used in the CellBlender tutorial. Note that the parameters typed in earlier are also the same as the CellBlender tutorial:
+The following rules and reaction parameters are the same reaction rules as used in the CellBlender tutorial on the repressilator.
 
 ~~~ ruby
 begin reaction rules
@@ -108,20 +104,22 @@ begin reaction rules
 end reaction rules
 ~~~
 
-Specify the type of simulation and number of frames with the following:
+Finally, specify the type of simulation and number of frames to run using the following code.
 
 ~~~ ruby
 # i.e. 12,000 frames at 1e-6 timestep on CellBlender
 simulate_nf({t_end=>.06,n_steps=>60000});
 ~~~
 
-Save the file.
+Then, save your file.
 
-On the right-hand side, click on *Simulation > Run*. After the simulation is complete, a new window will appear showing the plotted graph. As we can see, this appears to be the same behavior as the CellBlender plot but in a much cleaner pattern. Now we will perturb the file and test the robustness of this oscillator model.
+On the right-hand side, click on `Simulation > Run` to run the simulation. After the simulation is complete, a new window will appear showing the plotted graph. As we can see, this appears to be the same behavior as the CellBlender plot but with a much cleaner pattern (this is because we do not have the noise incurred by having individual particles).
 
-In the Navigator window, right click *oscillator_copy.bngl* and copy the file. Paste a copy in the same folder and rename *oscillator_perturb.bngl*.
+We will now perturb the file and test the robustness of this oscillator model.
 
-Add the following to the parameters:
+In the Navigator window, right click `oscillator_copy.bngl` and copy the file. Paste a copy in the same folder and rename your file to `oscillator_perturb.bngl`.
+
+Add the following parameters to the `parameters` section of the file:
 
 ~~~ ruby
  # delay mechanic
@@ -132,7 +130,7 @@ Add the following to the parameters:
  r10 1e3
 ~~~
 
-Add the following to the molecule types:
+Then add the following molecules to the `molecules` section:
 
 ~~~ ruby
  # delay mechanic
@@ -142,7 +140,7 @@ Add the following to the molecule types:
  null()
 ~~~
 
-Add the following to the species:
+Add the following to `species`:
 
 ~~~ ruby
  # Delay mechanic
@@ -152,7 +150,7 @@ Add the following to the species:
  null() 0
 ~~~
 
-Optional: add the following to the observables:
+Optional: add the following to `observables`:
 
 ~~~ ruby
  Molecules D delay()
@@ -160,7 +158,8 @@ Optional: add the following to the observables:
  Molecules B b()
 ~~~
 
-Add the following to the reaction rules:
+Finally, add the following to `reaction rules`.  These rules act as a delayed spike to the `y()` molecule. Once the `delay()` molecule has sufficiently decayed into `null()`,  the `a()` molecule will begin producing the `b()` molecule, which will in turn produce the `y()` molecule, disrupting our initial oscillations with a large influx of `y()`.
+
 ~~~ ruby
  # delay rules
  delay() + a(Y~P) -> delay() + a(Y~U) r6
@@ -170,11 +169,9 @@ Add the following to the reaction rules:
  b() -> y(Y~U) r10
 ~~~
 
-These rules act as a delayed spike to the *y()* molecule. Once the *delay()* molecule has sufficiently decayed into *null()*,  the *a()* molecule will begin producing the *b()* molecule which will in turn produce the *y()* molecule, disrupting our initial oscillations with a large influx of *y()* molecule.
+On the right side of the window, click on `Simulation > Run`. After the simulation is complete, a new window will appear showing the plotted graph.
 
-On the right-hand side, click on *Simulation > Run*. After the simulation is complete, a new window will appear showing the plotted graph.
-
-Can you break the oscillator model, or is it too robust? We recommend playing around with the reaction rules for *b()*- which other species could it produce? You could also adjust the starting quantities for *a(Y~U~P)*, or change the rate at which the *delay()* molecule decays!
+Can you break the oscillator model, or is it too robust? We recommend playing around with the reaction rules for `b()` -- which other species could it produce? You could also adjust the starting quantities for `a(Y~U~P)` or change the rate at which the `delay()` molecule decays.
 
 [Return to main text](conclusion#the-repressilator-is-robust-to-disturbance){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
