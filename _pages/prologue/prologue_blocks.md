@@ -114,7 +114,7 @@ Applying these cell-based reaction-diffusion computations over all cells in para
 
 In contrast to using a particle simulator, our Jupyter Notebook demo probably produced an animation of Turing patterns in under a minute on your computer.
 
-To visualize the changing concentrations in each cell, we use a color map to color each cell based on its concentrations. Specifically, we plot a cell's color based on its value of the concentration of predators divided by the sum of the concentrations of predators and prey. If a cell has a value close to zero for this ratio (meaning very few predators compared to prey), then it will be colored red, while if it has a value close to 1 (meaning many predators), then it will be colored dark blue. The `Spectral` color map that we use for the animations below is shown in the figure below.
+To visualize the changing concentrations in each cell, we use a color map to color each cell based on its concentrations. Specifically, we plot a cell's color based on its value of the concentration of predators divided by the sum of the concentrations of predators and prey. If a cell has a value close to zero for this ratio (meaning very few predators compared to prey), then it will be colored red, while if it has a value close to 1 (meaning many predators), then it will be colored dark blue. The `Spectral` color map that we use is shown in the figure below.
 
 ![image-center](../assets/images/matplotlib_colormap.png){: .align-center}
 
@@ -126,22 +126,22 @@ If we expand the size of the simulation and add new predator locations to the gr
 
 ![image-center](../assets/0_Bgs_movie.gif){: .align-center}
 
-If we keep the feed rate constant and tweak the kill rate ever so slightly to *k* = 0.097, then the patterns change significantly.
+If we keep the feed rate constant and tweak the kill rate ever so slightly to *k* = 0.097, then the patterns change significantly into spots.
 
 ![image-center](../assets/0_f34_k63.gif){: .align-center}
 {: style="font-size: medium;"}
 
-If we instead head in the opposite direction, making the prey a little happier (raising *f* to 0.038 and *k* to 0.099), then we obtain the following patterns.
+If we make the prey a little happier as well, raising  *f* to 0.038 and *k* to 0.099, then we have a different striped pattern.
 
 ![image-center](../assets/0_f38_k61.gif){: .align-center}
 {: style="font-size: medium;"}
 
-The following simulation raises *f* to 0.042 and *k* to 0.101.
+And if we raise *f* to 0.042 and *k* to 0.101, then again we see a spot pattern.
 
 ![image-center](../assets/0_f42_k59.gif){: .align-center}
 {: style="font-size: medium;"}
 
-Connection to conclusion here
+The point that we are making here is that very slight changes in our model's parameters can produce drastically different results in terms of the patterns that we witness. In this prologue's conclusion, we will say more about this and connect this observation back to our original motivation of patterns on animals' skin.
 
 [Next lesson](conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
