@@ -17,13 +17,13 @@ The following contents is a work in progress and will be expanded in the coming 
 
 [Link to module](prologue)
 
-## Module 1: Finding motifs in transcription factor networks##
+## Module 1: Finding motifs in transcription factor networks ##
 
 [Link to module](motifs)
 
 Featured software: CellBlender, MCell
 
-## Module 2: Identifying the biochemical basis for E. coli's genius exploration algorithm##
+## Module 2: Identifying the biochemical basis for E. coli's genius exploration algorithm ##
 
 Coming soon! (release date: October 29, 2020)
 
