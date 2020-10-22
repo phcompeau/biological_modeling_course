@@ -72,9 +72,9 @@ This noise in the repressilator's oscillations is due to variance as the particl
 
 Yet the noise that appears in the repressilator's oscillations is a feature, not a bug. As we have discussed previously, the cell's molecular interactions are inherently random. So if we see oscillations in a simulation that includes noise arising from random chance, we can be confident that this simulation is *robust* to a certain amount of variation.
 
-In the next lesson, we will further explore the concept of robustness as it pertains to the repressilator. What happens if our simulation experiences a much greater disturbance to the concentration of one of the particles?  Will it still be able to recover and return to the same oscillatory pattern?
+In this module's conclusion, we will further explore the concept of robustness as it pertains to the repressilator. What happens if our simulation experiences a much greater disturbance to the concentration of one of the particles?  Will it still be able to recover and return to the same oscillatory pattern?
 
-[Next lesson](robust){: .btn .btn--primary .btn--large}
+[Next lesson](conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 [^bunker]: Aschoff, J. (1965). Circadian rhythms in man. Science 148, 1427–1432.
