@@ -112,7 +112,9 @@ Applying these cell-based reaction-diffusion computations over all cells in para
 
 ## Reflection on the Gray-Scott model
 
-In contrast to using a particle simulation, our Jupyter Notebook demo produces a clear pattern in less than a minute on most modern computers.
+In contrast to using a particle simulator, our Jupyter Notebook demo probably produced an animation of Turing patterns in under a minute on your computer.
+
+As with the particle simulator, we see that the Gray-Scott model is very sensitive to slight changes in parameter values. For example, 
 
 * Need ~3 different choices of parameters showing the appearance of different Turing patterns.
 

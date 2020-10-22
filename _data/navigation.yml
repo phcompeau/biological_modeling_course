@@ -42,7 +42,6 @@ prologue:
       - title: "Implementing the Gray-Scott model for coarse-grained reaction-diffusion with Jupyter notebook<br><br>"
         url: /prologue/gs-jupyter
 
-
 motifs:
   - title: "Finding Motifs in Transcription Factor Networks"
     children:
