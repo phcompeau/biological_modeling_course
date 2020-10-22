@@ -11,12 +11,9 @@ main:
         url: /prologue/
       - title: "Module 1: finding motifs in transcription factor networks"
         url: /motifs/home
-      - title: "Module 2: identifying the biochemical basis for E. coli's genius exploration algorithm"
-        url: /chemotaxis/home
-      - title: "Module 3: studying the structure of the coronavirus spike protein"
-        url: /coronavirus/home
-      - title: "Module 4: training a computer to count white blood cells automatically"
-        url: /wbcells/tutorial
+      - title: "Module 2: coming soon!"
+      - title: "Module 3: coming soon!"
+      - title: "Module 4: coming soon!"
 
 
 prologue:
