@@ -114,11 +114,15 @@ Applying these cell-based reaction-diffusion computations over all cells in para
 
 In contrast to using a particle simulator, our Jupyter Notebook demo probably produced an animation of Turing patterns in under a minute on your computer.
 
-As with the particle simulator, we see that the Gray-Scott model is very sensitive to slight changes in parameter values. For example, the following animation shows the Gray-Scott model using the parameters *f* = 0.034 and *k* = 0.095.
+To visualize the changing concentrations in each cell, we use a color map to color each cell based on its concentrations. Specifically, we plot a cell's color based on its value of the concentration of predators divided by the sum of the concentrations of predators and prey. If a cell has a value close to zero for this ratio (meaning very few predators compared to prey), then it will be colored red, while if it has a value close to 1 (meaning many predators), then it will be colored dark blue. The `Spectral` color map that we use for the animations below is shown in the figure below.
+
+![image-center](../assets/images/matplotlib_colormap.png){: .align-center}
+
+The following animation shows an animation of the Gray-Scott model using the parameters *f* = 0.034 and *k* = 0.095.
 
 ![image-center](../assets/gs_movie.gif){: .align-center}
 
-If we expand the size of the simulation and add new predator locations to the grid, then the patterns become more complex.
+If we expand the size of the simulation and add new predator locations to the grid, then the patterns become more complex as they intersect.
 
 ![image-center](../assets/0_Bgs_movie.gif){: .align-center}
 
