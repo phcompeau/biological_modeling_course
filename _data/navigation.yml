@@ -67,7 +67,7 @@ motifs:
     children:
       - title: "Looking for loops in transcription factor networks<br><br>"
         url: /motifs/tutorial_loops
-      - title: "Analyzing the benefits of negative autoregulation<br><br>"
+      - title: "Comparing simple regulation to negative autoregulation<br><br>"
         url: /motifs/tutorial_nar
       - title: "Implementing the feed-forward loop motif<br><br>"
         url: /motifs/tutorial_feed
