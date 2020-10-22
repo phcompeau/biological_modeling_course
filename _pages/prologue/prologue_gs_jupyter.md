@@ -53,7 +53,7 @@ def Simulate(numIter, A, B, f, k, dt, dA, dB, lapl, plot_iter):
     # Run the simulation
     for iter in range(numIter):
         A_new = A + (dA * signal.convolve2d(A, lapl, mode='same', boundary='fill', fillvalue=0) - (A * B * B) + (f * (1-A))) * dt
-        B_new = B + (dB * signal.convolve2d(B, lapl, mode='same', boundary='fill', fillvalue=0) + (A * B * B) - ((k + f) * B)) * dt
+        B_new = B + (dB * signal.convolve2d(B, lapl, mode='same', boundary='fill', fillvalue=0) + (A * B * B) - (k * B)) * dt
         A = np.copy(A_new)
         B = np.copy(B_new)
         if (iter % plot_iter is 0):
@@ -91,7 +91,7 @@ The remaining parameters establish feed rate, kill rate, time interval, diffusio
 ~~~ python
 # _*_*_*_*_*_*_*_*_* SIMULATION VARIABLES *_*_*_*_*_*_*_*_*_*
 f = 0.055
-k = 0.062
+k = 0.117
 dt = 1.0
 dA = 1.0
 dB = 0.5
