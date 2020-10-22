@@ -61,8 +61,6 @@ motifs:
         url: /motifs/oscillators
       - title: "Conclusion: the importance of robustness in biological oscillations<br><br>"
         url: /motifs/conclusion
-      - title: "Exercises<br><br>"
-        url: /motifs/exercises
   - title: Software Tutorials (featuring MCell and CellBlender)
     children:
       - title: "Looking for loops in transcription factor networks<br><br>"
@@ -75,6 +73,9 @@ motifs:
         url: /motifs/tutorial_oscillators
       - title: "Perturbing the represillator<br><br>"
         url: /motifs/tutorial_perturb
+  - title: "Exercises"
+      - title: "Exercises on network motifs<br><br>"
+        url: /motifs/exercises
 
 
 chemotaxis:
