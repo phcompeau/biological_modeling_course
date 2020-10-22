@@ -7,9 +7,9 @@ main:
     url: /about/
   - title: "Take the Course"
     sublinks:
-      - title: "<b>Prologue:</b> introducing biological modeling with Turing patterns"
+      - title: "<b>Prologue:</b> Introducing biological modeling with Turing patterns"
         url: /prologue/
-      - title: "Module 1: finding motifs in transcription factor networks"
+      - title: "<b>Module 1:</b> Finding motifs in transcription factor networks"
         url: /motifs/home
       - title: "Module 2: coming soon!"
       - title: "Module 3: coming soon!"
