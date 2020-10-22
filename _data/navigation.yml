@@ -11,9 +11,9 @@ main:
         url: /prologue/
       - title: "<b>Module 1:</b> Finding motifs in transcription factor networks"
         url: /motifs/home
-      - title: "Module 2: coming soon!"
-      - title: "Module 3: coming soon!"
-      - title: "Module 4: coming soon!"
+      - title: "<b>Module 2:</b> launching 10/26"
+      - title: "<b>Module 3:</b> launching 11/5"
+      - title: "<b>Module 4:</b> launching 11/12"
 
 
 prologue:
