@@ -99,8 +99,6 @@ chemotaxis:
         url: /chemotaxis/home_gradient
       - title: "Conclusion: the beauty of E. coli's randomized exploration algorithm<br><br>"
         url: /chemotaxis/home_conclusion
-      - title: "Exercises<br><br>"
-        url: /chemotaxis/home_exercise
   - title: Software Tutorials (featuring BioNetGen)
     children:
       - title: "Starting BioNetGen simulation<br><br>"
@@ -117,6 +115,10 @@ chemotaxis:
         url: /chemotaxis/tutorial_purerandom
       - title: "Modeling E. coli's sophisticated modified random walk<br><br>"
         url: /chemotaxis/tutorial_walk
+  - title: Exercises
+    children:
+      - title: "Exercises on Chemotaxis<br><br>"
+        url: /chemotaxis/home_exercise
 
 coronavirus:
   - title: About This Module
