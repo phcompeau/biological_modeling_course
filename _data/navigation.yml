@@ -76,6 +76,7 @@ motifs:
       - title: "Perturbing the represillator<br><br>"
         url: /motifs/tutorial_perturb
   - title: "Exercises"
+    children:
       - title: "Exercises on network motifs<br><br>"
         url: /motifs/exercises
 
