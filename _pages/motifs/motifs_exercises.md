@@ -3,8 +3,6 @@ permalink: /motifs/exercises
 title: "Network Motifs Exercises"
 sidebar:
  nav: "motifs"
-toc: true
-toc_sticky: true
 ---
 
 
