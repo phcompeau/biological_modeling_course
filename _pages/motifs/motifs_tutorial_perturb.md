@@ -171,7 +171,9 @@ Finally, add the following to `reaction rules`.  These rules act as a delayed sp
 
 On the right side of the window, click on `Simulation > Run`. After the simulation is complete, a new window will appear showing the plotted graph.
 
-Can you break the oscillator model, or is it too robust? We recommend playing around with the reaction rules for `b()` -- which other species could it produce? You could also adjust the starting quantities for `a(Y~U~P)` or change the rate at which the `delay()` molecule decays.
+Can you break the oscillator model, or is it just too robust? We recommend playing around with the reaction rules for `b()` -- which other species could it produce? You could also adjust the starting quantities for `a(Y~U~P)` or change the rate at which the `delay()` molecule decays.
+
+In the main text, we will discuss the robustness of the repressilator and make a larger point about robustness in biology before we complete our work in this module.
 
 [Return to main text](conclusion#the-repressilator-is-robust-to-disturbance){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
