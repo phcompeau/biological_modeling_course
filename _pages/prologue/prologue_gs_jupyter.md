@@ -6,7 +6,7 @@ sidebar:
  nav: "prologue"
 ---
 
-The following tutorial will use a Jupyter Notebook to implement the Gray-Scott model. It requires a familiarity with Python, and installation instructions can be found in our coarse-grained [diffusion tutorial](tutorial-diffusion). If you are interested in downloading the completed notebook, please click <a href="../downloads/Gray-Scott_Reaction_Diffusion_Model.ipynb" download="Gray-Scott_Reaction_Diffusion_Model.ipynb">here</a>.
+The following tutorial will use a Jupyter Notebook to implement the Gray-Scott model. It requires a familiarity with Python, and installation instructions can be found in our coarse-grained [diffusion tutorial](tutorial-diffusion).
 
 Assuming you have Jupyter notebook, create a new file called `gray-scott.ipynb` (you may instead want to duplicate and modify your `diffusion_automaton.ipynb` file from the diffusion tutorial). **Note**: You should make sure to save this notebook on the same level as another folder named `/dif_images`. ImageIO will not always create this folder automatically, so you may need to create it manually.
 
