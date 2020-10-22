@@ -2,7 +2,6 @@
 permalink: /contents/
 title: "Contents"
 classes: wide
-toc: true
 ---
 
 This online course is divided into modules. Each module covers a single biological topic (e.g., "Analyzing the structure of the coronavirus spike protein") and introduces all of the modeling topics needed to address that topic from first principles.
