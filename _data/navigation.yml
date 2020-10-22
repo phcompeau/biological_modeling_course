@@ -31,7 +31,7 @@ prologue:
         url: /prologue/blocks
       - title: "Conclusion: Turing patterns are fine-tuned<br><br>"
         url: /prologue/conclusion
-  - title: "Software Tutorials"
+  - title: "Software Tutorials (featuring MCell and CellBlender)"
     children:
       - title: "Simulating particle diffusion with CellBlender<br><br>"
         url: /prologue/tutorial-random-walk

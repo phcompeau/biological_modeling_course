@@ -23,7 +23,7 @@ When studying the more complex interactions and processes taking place within a 
 
 ![image-center](../assets/images/The-metabolic-network-of-tomato-cells-The-system-is-a-cell-with-symbolic-subcellular.png){: .align-center}
 The metabolic network of tomato cells.[^metabolicNetwork]
-{: style="font-size: medium;"}
+{: style="font-size: medium; text-align:center;"}
 
 When studying the nervous system, biologists build **neuronal networks** that link neurons together according to how they are linked in the body (figure below). These networks have been studied since the 1940s but have recently exploded as a model for solving applied problems in machine learning.
 
