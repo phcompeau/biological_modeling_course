@@ -115,5 +115,7 @@ Now go back to `CellBlender > Plot Output Settings` and scroll to the bottom to 
 
 ![image-center](../assets/images/motifs_norm9.png){: .align-center}
 
-[Return to main text](oscillators#the-oscillations-of-the-repressilator){: .btn .btn--primary .btn--large}
+Does the plot that you obtain look like a biological oscillator? As we return to the main text, we will interpret this plot and then see what will happen if we suddenly shift the concentration of one of the particles. Will the system still retain its oscillations?
+
+[Return to main text](oscillators#interpreting-the-repressilators-oscillations){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
