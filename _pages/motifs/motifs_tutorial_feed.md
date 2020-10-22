@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-In this tutorial, we will compare simple regulation against regulation via the type-1 incoherent feed-forward loop that we saw in the main text.
+In this tutorial, we will use CellBlender to run a (mathematically controlled) comparison of simple regulation against regulation via the type-1 incoherent feed-forward loop that we saw in the main text.
 
 Load your `CellBlender_Tutorial_Template.blend` file from the [Random Walk Tutorial](https://purpleavatar.github.io/multiscale_biological_modeling/prologue/tutorial-random-walk). Save your file as `ffl.blend`.
 
@@ -101,11 +101,11 @@ Once the simulation has run, we can visualize our data with `CellBlender > Reloa
 
 If you like, you can watch the animation within the Blender window by clicking the play button at the bottom of the screen.
 
-Now go back to `CellBlender > Plot Output Settings` and scroll to the bottom to click “Plot”
+Now go back to `CellBlender > Plot Output Settings` and scroll to the bottom to click “Plot”. This will produce a plot of the amount of *Z* under simple regulation compared to the amount of *Z* for the feed-forward loop. Is it what you expected?
 
 ![image-center](../assets/images/motifs_norm9.png){: .align-center}
 
-Save your file.
+Save your file, and then use the link below to return to the main text, where we will interpret the outcome of our simulation.
 
 [Return to main text](feed#why-feedforward-loops-speed-up-response-times){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
