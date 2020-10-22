@@ -3,8 +3,8 @@ main:
     url: /meet-the-team/
   - title: "Contact Us"
     url: /contact/
-  - title: "About"
-    url: /about/
+  - title: "Contents"
+    url: /contents/
   - title: "Take the Course"
     sublinks:
       - title: "<b>Prologue:</b> Introducing biological modeling with Turing patterns"
@@ -79,7 +79,6 @@ motifs:
     children:
       - title: "Network motif exercises"
         url: /motifs/exercises
-
 
 chemotaxis:
   - title: About Chemotaxis
