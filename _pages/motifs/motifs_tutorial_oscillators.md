@@ -1,28 +1,24 @@
 ---
 permalink: /motifs/tutorial_oscillators
-title: "Software Tutorial: The Repressilator"
+title: "Software Tutorial: Implementing the Repressilator"
 sidebar:
  nav: "motifs"
-toc: true
-toc_sticky: true
 ---
 
-### The Repressilator
+In this tutorial, we will use CellBlender to build a particle-based simulation implementing a repressilator. First, load the `CellBlender_Tutorial_Template.blend` file from the [Random Walk Tutorial](https://purpleavatar.github.io/multiscale_biological_modeling/prologue/tutorial-random-walk) and save a copy of the file as `repressilator.blend`.
 
-Load up the *CellBlender_Tutorial_Template.blend* file from the [Random Walk Tutorial](https://purpleavatar.github.io/multiscale_biological_modeling/prologue/tutorial-random-walk). Save as *repressilator.blend*
-
-Go to *CellBlender > Molecules* and create the following molecules:
+Then go to `CellBlender > Molecules` and create the following molecules:
 
 ![image-center](../assets/images/motifs_norm1.png){: .align-center}
 
-1. Click on the plus button
-2. Select a color (such as yellow)
-3. Name the molecule “Y1”
-4. Select the molecule type as “Surface Molecule”
-5. Add a diffusion constant of “1e-6”
-6. Up the scale factor to 5 (click and type “5” or use the arrows)
+1. Click on the `+` button.
+2. Select a color (such as yellow).
+3. Name the molecule `Y`.
+4. Select the molecule type as `Surface Molecule`.
+5. Add a diffusion constant of `1e-6`.
+6. Up the scale factor to `5` (click and type “5” or use the arrows).
 
-Repeat the above steps to make sure the following molecules are entered.
+Repeat the above steps to make sure that the following molecules are all entered with the appropriate parameters.
 
 | Molecule Name | Molecule Type|Diffusion Constant| Scale Factor|
 |:--------|:-------:|--------:|--------:|--------:|
@@ -36,17 +32,16 @@ Repeat the above steps to make sure the following molecules are entered.
 | HiddenY_off  | Surface  | 1e-6  | 3|
 | HiddenZ_off  | Surface  | 1e-6  | 3|
 
-
-Now go to *CellBlender > Molecule Placement* to set the following sites:
+Now go to `CellBlender > Molecule Placement` to establish molecule release sites by following these steps:
 
 ![image-center](../assets/images/motifs_norm3.png){: .align-center}
 
-1. Click on the plus button
-2. Select or type in the molecule “X”
-3. Type in the name of the Object/Region “Plane”
-4. Set the Quantity to Release as “150”
+1. Click on the `+` button.
+2. Select or type in the molecule `X`.
+3. Type in the name of the Object/Region `Plane`.
+4. Set the Quantity to Release as `150`.
 
-Repeat the above steps to make sure the following molecules are entered.
+Repeat the above steps to make sure the following molecules are entered with the appropriate parameters as shown below.
 
 | Molecule Name | Object/Region|Quantity to Release|
 |:--------|:-------:|--------:|
@@ -55,16 +50,16 @@ Repeat the above steps to make sure the following molecules are entered.
 | HiddenY  | Plane | 100 |
 | HiddenZ  | Plane | 100 |
 
-Next go to *CellBlender > Reactions* to create the following reactions:
+Next go to `CellBlender > Reactions` to create the following reactions:
 
 ![image-center](../assets/images/motifs_norm4.png){: .align-center}
 
-1. Click on the plus button
-2. Under reactants, type “HiddenX’” (NOTE the apostrophe)
-3. Under products, type “HiddenX’ + X’”
-4. Set the forward rate as “2e3”
+1. Click on the `+` button.
+2. Under reactants, type `HiddenX’` (note the apostrophe).
+3. Under products, type `HiddenX’ + X’`.
+4. Set the forward rate as `2e3`.
 
-Repeat the above steps for the following reactions.
+Repeat the above steps for the following reactions, ensuring that you have the appropriate parameters for each reaction. (**Note:** Some molecules require an apostrophe or a comma. This represents the orientation of the molecule in space and is very important to the reactions!)
 
 | Reactants |Products|Forward Rate|
 |:--------|:-------:|--------:|
@@ -85,18 +80,16 @@ Repeat the above steps for the following reactions.
 | Z, | Z’ | 2e2 |
 {: text-align: center;"}
 
-NOTE: Some molecules require an apostrophe or a comma. This represents the orientation of the molecule in space and is very important to the reactions!
-
-Go to *CellBlender > Plot Output Settings* to set up a plot as follows:
+Go to `CellBlender > Plot Output Settings` to build a plot as follows:
 
 ![image-center](../assets/images/motifs_norm6.png){: .align-center}
 
-1. Click on the plus button
-2. Set the molecule name as X
-3. Ensure “World” is selected
-4. Make sure “Java Plotter” is selected
-5. Ensure “One Page, Multiple Plots” is selected
-6. Ensure “Molecule Colors” is selected
+1. Click on the `+` button.
+2. Set the molecule name as `X`.
+3. Ensure `World` is selected.
+4. Ensure `Java Plotter` is selected.
+5. Ensure `One Page, Multiple Plots` is selected.
+6. Ensure `Molecule Colors` is selected.
 
 Repeat the above steps for the following molecules.
 
@@ -106,25 +99,21 @@ Repeat the above steps for the following molecules.
 | Y | World|
 | Z | World|
 
-Go to *CellBlender > Run Simulation* and select the following options:
+We are now ready to run our simulation. Go to `CellBlender > Run Simulation` and select the following options:
 
 ![image-center](../assets/images/motifs_norm7.png){: .align-center}
 
-1. Set the number of iterations to “120000”
-2. Ensure the time step is set as “1e-6”
-3. Click Export & Run
+1. Set the number of iterations to `120000`.
+2. Ensure the time step is set as `1e-6`.
+3. Click `Export & Run`.
 
-Click on *CellBlender > Reload Visualization Data*
+Once the simulation has run, visualize the results of the simulation with `CellBlender > Reload Visualization Data`.
 
 ![image-center](../assets/images/motifs_norm8.png){: .align-center}
 
-You have the option of watching the animation within the Blender window by clicking the play button at the bottom of the screen.
-
-Now go back to *CellBlender > Plot Output Settings* and scroll to the bottom to click “Plot”
+Now go back to `CellBlender > Plot Output Settings` and scroll to the bottom to click `Plot`.
 
 ![image-center](../assets/images/motifs_norm9.png){: .align-center}
-
-* NOAH: please continue to flesh this out and provide a final probing question asking students to interpret the plot that they produced.
 
 [Return to main text](oscillators#the-oscillations-of-the-repressilator){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

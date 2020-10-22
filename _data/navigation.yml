@@ -71,13 +71,13 @@ motifs:
         url: /motifs/tutorial_nar_mathematically_controlled
       - title: "Implementing the feed-forward loop motif<br><br>"
         url: /motifs/tutorial_feed
-      - title: "The repressilator<br><br>"
+      - title: "Implementing the repressilator<br><br>"
         url: /motifs/tutorial_oscillators
       - title: "Perturbing the represillator<br><br>"
         url: /motifs/tutorial_perturb
   - title: "Exercises"
     children:
-      - title: "Exercises on network motifs<br><br>"
+      - title: "Network motif exercises"
         url: /motifs/exercises
 
 
