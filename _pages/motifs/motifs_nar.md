@@ -37,7 +37,7 @@ To recap, the simulations of both cells will include diffusion of *X* and *Y*, r
 
 ## Ensuring a mathematically controlled comparison
 
-If you followed the tutorial, then you were likely  disappointed in our second cell and its negative autoregulating transcription factor *Y*. The figure below shows a plot of *Y* particles for the two simulations.
+If you followed the above tutorial, then you were likely  disappointed in our second cell and its negative autoregulating transcription factor *Y*. The figure below shows a plot of *Y* particles for the two simulations.
 
 ![image-center](../assets/images/nar_unequal_graph.PNG){: .align-center}
 A comparison of the number of *Y* particles across two simulations. In the first cell (shown in red), we only have upregulation of *Y* by *X*, whereas in the second cell (shown in yellow), we keep all parameters fixed but add a reaction simulating negative autoregulation of *Y*.
@@ -54,7 +54,7 @@ There are a number of parameters that we must keep constant across the two simul
 
 With these parameters fixed, the only way that the steady-state concentration of *Y* can be the same in the two simulations is if we *increase* the rate at which the reaction *X* → *X* + *Y* takes place in the second simulation. If you followed the previous tutorial, then you may like to try your hand at adjusting the rate of the *X* → *X* + *Y* reaction on your own. The following tutorial adjusts this parameter to build a mathematically controlled comparison that we will analyze in the next section.
 
-[Visit tutorial](tutorial_nar#Matching-Steady-States){: .btn .btn--primary .btn--large}
+[Visit tutorial](tutorial_nar_mathematically_controlled){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## An evolutionary basis for negative autoregulation
