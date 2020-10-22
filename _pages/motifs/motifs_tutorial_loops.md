@@ -85,5 +85,5 @@ print("Number of self-loops: ", sum(Graph.is_loop(g)))
 
 As we can see, the number of self-loops is significantly lower in the random graph. We encourage you to check other random graphs (change the random.seed() value) to confirm that the number of self-loops expected in a random graph is much lower than in the real e. coli network.
 
-[Return to main text](finding#negative-vs-positive-autoregulation){: .btn .btn--primary .btn--large}
+[Return to main text](finding##the-negative-autoregulation-motif){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
