@@ -114,29 +114,30 @@ Applying these cell-based reaction-diffusion computations over all cells in para
 
 In contrast to using a particle simulator, our Jupyter Notebook demo probably produced an animation of Turing patterns in under a minute on your computer.
 
-As with the particle simulator, we see that the Gray-Scott model is very sensitive to slight changes in parameter values. For example, 
-
-* Need ~3 different choices of parameters showing the appearance of different Turing patterns.
+As with the particle simulator, we see that the Gray-Scott model is very sensitive to slight changes in parameter values. For example, the following animation shows the Gray-Scott model using the parameters *f* = 0.034 and *k* = 0.095.
 
 ![image-center](../assets/gs_movie.gif){: .align-center}
-Gray-Scott from our tutorial using parameters f = 0.034, k = 0.061
-{: style="font-size: medium;"}
+
+If we expand the size of the simulation and add new predator locations to the grid, then the patterns become more complex.
 
 ![image-center](../assets/0_Bgs_movie.gif){: .align-center}
-Expanding the size of the simulation and adding new predator locations to our Gray-Scott tutorial.
-{: style="font-size: medium;"}
+
+If we keep the feed rate constant and tweak the kill rate ever so slightly to *k* = 0.097, then the patterns change significantly.
 
 ![image-center](../assets/0_f34_k63.gif){: .align-center}
-Gray-Scott from our tutorial using parameters f = 0.034, k = 0.063
 {: style="font-size: medium;"}
+
+If we instead head in the opposite direction, making the prey a little happier (raising *f* to 0.038 and *k* to 0.099), then we obtain the following patterns.
 
 ![image-center](../assets/0_f38_k61.gif){: .align-center}
-Gray-Scott from our tutorial using parameters f = 0.038, k = 0.061
 {: style="font-size: medium;"}
 
+The following simulation raises *f* to 0.042 and *k* to 0.101.
+
 ![image-center](../assets/0_f42_k59.gif){: .align-center}
-Gray-Scott from our tutorial using parameters f = 0.042, k = 0.059
 {: style="font-size: medium;"}
+
+Connection to conclusion here
 
 [Next lesson](conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
