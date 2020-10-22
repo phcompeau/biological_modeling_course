@@ -182,16 +182,11 @@ Now return to `CellBlender > Plot Output Settings` and scroll to the bottom to c
 
 ![image-center](../assets/images/motifs_norm9.png){: .align-center}
 
-The following plot should appear:
-
-![image-center](../assets/images/nar_unequal_graph.PNG){: .align-center}
+A plot should appear in which the plot of *Y* over time assuming simple regulation is shown in red, and the plot of *Y* if negatively autoregulated is shown in yellow.
 
 Save your file.
 
-[Return to main text](nar#Ensuring-the-same-steady-state-concentration){: .btn .btn--primary .btn--large}
-{: style="font-size: 100%; text-align: center;"}
-
-### Matching Steady States
+### Comparing simple regulation and negative autoregulation
 
 **STOP:** Now that you have run the simulation comparing simple regulation and negative autoregulation, are the plots of *Y* for the two simulations what you would expect? Why or why not?
 {: .notice--primary}

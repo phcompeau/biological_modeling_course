@@ -67,6 +67,8 @@ motifs:
         url: /motifs/tutorial_loops
       - title: "Comparing simple regulation to negative autoregulation<br><br>"
         url: /motifs/tutorial_nar
+      - title: "Ensuring a mathematically controlled simulation for comparing simple regulation to negative autoregulation"
+        url: /motifs/tutorial_nar_mathematically_controlled
       - title: "Implementing the feed-forward loop motif<br><br>"
         url: /motifs/tutorial_feed
       - title: "The repressilator<br><br>"

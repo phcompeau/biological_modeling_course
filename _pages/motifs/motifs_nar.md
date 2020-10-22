@@ -30,40 +30,12 @@ Diffusion of the *X* and *Y* particles is not necessary because there is no reac
 
 We now will simulate the second cell, which will inherit the reactions for the first cell while incorporating adding negative autoregulation of *Y*. We will do so using the reaction 2*Y* → *Y*. In other words, when two *Y* particles encounter each other, there is some probability that one of the particles serves to remove the other, which mimics the process of a transcription factor turning off another copy of itself during negative autoregulation.
 
-To recap, the simulations of both cells will include diffusion of *X* and *Y*, removal of *Y*, and the reaction *X* → *X* + *Y*. The second simulation, which includes negative autoregulation of *Y* will add the reaction 2*Y* → *Y*. All of these reactions will take place according to rate parameters. You can explore these simulations in the following tutorial, and we will reflect on these simulations in the next section.
+To recap, the simulations of both cells will include diffusion of *X* and *Y*, removal of *Y*, and the reaction *X* → *X* + *Y*. The second simulation, which includes negative autoregulation of *Y*, will add the reaction 2*Y* → *Y*. All of these reactions will take place according to rate parameters. You can explore these simulations in the following tutorial, and we will reflect on these simulations in the next section.
 
 [Visit tutorial](tutorial_nar){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Ensuring a mathematically controlled comparison
-
-Open the file *NAR_comparison_unequal.blend* and a copy of the file as *NAR_comparison_equal.blend*
-
-Go to *CellBlender > Reactions* to change the following reaction:
-
-For X2’ -> X2’ + Y2’,  set the forward rate from 4e2 to 4e3
-
-Go to *CellBlender > Run Simulation* and ensure the following options are selected:
-
-![image-center](../assets/images/motifs_norm7.png){: .align-center}
-
-1. Set the number of iterations to “20000”
-2. Ensure the time step is set as “1e-6”
-3. Click Export & Run
-
-Click on *CellBlender > Reload Visualization Data*
-
-![image-center](../assets/images/motifs_norm8.png){: .align-center}
-
-You have the option of watching the animation within the Blender window by clicking the play button at the bottom of the screen.
-
-Now go back to *CellBlender > Plot Output Settings* and scroll to the bottom to click “Plot”
-
-![image-center](../assets/images/motifs_norm9.png){: .align-center}
-
-The following plot should appear:
-
-![image-center](../assets/images/nar_equal_graph.PNG){: .align-center}
 
 If you followed the tutorial, then you were likely  disappointed in our second cell and its negative autoregulating transcription factor *Y*. The figure below shows a plot of *Y* particles for the two simulations.
 
