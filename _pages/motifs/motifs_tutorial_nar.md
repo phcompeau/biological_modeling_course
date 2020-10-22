@@ -1,6 +1,6 @@
 ---
 permalink: /motifs/tutorial_nar
-title: "NAR"
+title: "Software Tutorial: Analyzing the Benefits of Negative Autoregulation"
 sidebar:
  nav: "motifs"
 toc: true

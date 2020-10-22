@@ -1,6 +1,6 @@
 ---
 permalink: /motifs/tutorial_oscillators
-title: "Oscillators"
+title: "Software Tutorial: The Repressilator"
 sidebar:
  nav: "motifs"
 toc: true

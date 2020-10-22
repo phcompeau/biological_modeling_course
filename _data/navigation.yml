@@ -67,13 +67,13 @@ motifs:
     children:
       - title: "Looking for loops in transcription factor networks<br><br>"
         url: /motifs/tutorial_loops
-      - title: "Negative autoregulation<br><br>"
+      - title: "Analyzing the benefits of negative autoregulation<br><br>"
         url: /motifs/tutorial_nar
-      - title: "The feed-forward loop<br><br>"
+      - title: "Implementing the feed-forward loop motif<br><br>"
         url: /motifs/tutorial_feed
-      - title: "Oscillators<br><br>"
+      - title: "The repressilator<br><br>"
         url: /motifs/tutorial_oscillators
-      - title: "Perturbing oscillations<br><br>"
+      - title: "Perturbing the represillator<br><br>"
         url: /motifs/tutorial_perturb
 
 

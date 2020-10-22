@@ -1,6 +1,6 @@
 ---
 permalink: /motifs/tutorial_feed
-title: "Feed-Forward Loop"
+title: "Software Tutorial: Implementing the Feed-Forward Loop Motif"
 sidebar:
  nav: "motifs"
 toc: true

@@ -1,6 +1,6 @@
 ---
 permalink: /motifs/tutorial_loops
-title: "Looking for Loops in Transcription Factor Networks"
+title: "Software Tutorial: Looking for Loops in Transcription Factor Networks"
 sidebar:
  nav: "motifs"
 toc: true
