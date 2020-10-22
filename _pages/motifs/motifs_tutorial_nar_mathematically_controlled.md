@@ -7,30 +7,29 @@ toc: true
 toc_sticky: true
 ---
 
-Open the file *NAR_comparison_unequal.blend* and a copy of the file as *NAR_comparison_equal.blend*
+In this tutorial, we will use CellBlender to adapt our simulation from the [tutorial](tutorial_nar) on negative autoregulation into a mathematically controlled simulation.
 
-Go to *CellBlender > Reactions* to change the following reaction:
+First, open the file `NAR_comparison.blend` from the negative autoregulation tutorial and save a copy of the file as `NAR_comparison_equal.blend`.
 
-For X2’ -> X2’ + Y2’,  set the forward rate from 4e2 to 4e3
+Now go to `CellBlender > Reactions` to scale up the simple regulation reaction in the negative autoregulation simulation as follows: for the reaction `X2’ -> X2’ + Y2’`,  change the forward rate from `4e2` to `4e3`.
 
-Go to *CellBlender > Run Simulation* and ensure the following options are selected:
+Next go to `CellBlender > Run Simulation` and ensure that the following options are selected:
 
 ![image-center](../assets/images/motifs_norm7.png){: .align-center}
 
-1. Set the number of iterations to “20000”
-2. Ensure the time step is set as “1e-6”
-3. Click Export & Run
+1. Set the number of iterations to `20000`.
+2. Ensure the time step is set as `1e-6`.
+3. Click `Export & Run`.
 
-Click on *CellBlender > Reload Visualization Data*
+Click on `CellBlender > Reload Visualization Data`. You have the option of watching the animation within the Blender window by clicking the play button at the bottom of the screen.
 
 ![image-center](../assets/images/motifs_norm8.png){: .align-center}
 
-You have the option of watching the animation within the Blender window by clicking the play button at the bottom of the screen.
-
-Now go back to *CellBlender > Plot Output Settings* and scroll to the bottom to click “Plot”
+Now go back to `CellBlender > Plot Output Settings` and scroll to the bottom to click `Plot`; this should produce a plot. How does your plot
 
 ![image-center](../assets/images/motifs_norm9.png){: .align-center}
 
-A plot should appear.
+Save your file before returning to the main text, where we will interpret the plot produced to see if we were able to obtain a mathematically controlled simulation and then interpret the result of this simulation from an evolutionary perspective.
 
-![image-center](../assets/images/nar_equal_graph.PNG){: .align-center}
+[Return to main text](nar#an-evolutionary-basis-for-negative-autoregulation){: .btn .btn--primary .btn--large}
+{: style="font-size: 100%; text-align: center;"}
