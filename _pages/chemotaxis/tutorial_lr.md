@@ -140,7 +140,7 @@ If you save your file, then you should see a "contact map" in the upper right co
 
 We are now ready to run our simulation. At the bottom of the model specification (i.e., after `end model`), we will add a `generate_network` and `simulate` command. The `simulate` command will take three parameters, which we specify below.
 
-**Method**. We will use `method=>"ssa"` throughout these tutorials, which indicate that we are using the "SSA algorithm" to dictate which algorithm to use for particle-free simulation. We will describe the SSA algorithm later in the main text. BioNetGen also includes the parameters `method=>"nf"` (network-free) and `method=>"ode"`(ordinary differential equations) that you can try.
+**Method**. We will use `method=>"ssa"` throughout these tutorials, which indicate that we are using the SSA (Gillespie) algorithm that was described in the main text. BioNetGen also includes the parameters `method=>"nf"` (network-free) and `method=>"ode"`(ordinary differential equations) that you can try.
 
 **Time span**.`t_end`, the simulation duration. BioNetGen simulation time is unitless; for simplicity, we assume our time unit is the second.
 
@@ -211,5 +211,5 @@ Is the result you obtain what you expected? In the main text, we will return to 
 [^Schwartz17]: Schwartz R. Biological Modeling and Simulaton: A Survey of Practical Models, Algorithms, and Numerical Methods. Chapter 17.2.
 
 
-[Back to Main Text](home_signalpart2){: .btn .btn--primary .btn--large}
+[Back to Main Text](home_signalpart2#does-a-simulation-confirm-our-steady-state-calculations){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
