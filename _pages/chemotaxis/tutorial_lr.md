@@ -73,9 +73,11 @@ BioNetGen reaction rules are written similarly to chemical equations. The left s
 
 For example, to code up the bi-directional reaction `A + B <-> C` with forward rate `k1` and reverse rate `k2`, we would write `A + B <-> C k1, k2`.
 
-Our model consists of a single bidirectional reaction and will have only a single rule. On the left side of this rule, by specifying `L(t)`, we select only unbound `L` molecules; by `T(l)`, we select only unbound receptors; if we wanted to select any ligand molecule, simply write `L`.
+Our model consists of a single bidirectional reaction and will have only a single rule. The left side of this rule will be `L(t) + T(l)`; by specifying `L(t)` and `T(l)`, we indicate to BioNetGen that we are only interested in *unbound* ligand and receptor molecules. If we had wanted to select any ligand molecule, then we would have simply written `L + T`.
 
-On the right side of the rule, `L(t!1).T(l!1)` indicates the formation of the intermediate. In BioNetGen, `!` indicates formation of a bond; and a unique character specifies each bond type. We will denote this bond as `!1`. Since the reaction is bidirectional, we will use `k_lr_bind` to denote the rate of forward reaction, and `k_lr_dis` to denote the rate of reverse reaction.
+On the right side of the rule, we will have `L(t!1).T(l!1)`, which indicates the formation of the intermediate. In BioNetGen, `!` indicates formation of a bond; and a unique character specifies the possible location of this bond. In our case, we use the character `1`, so that the bond is represented by `!1`. The symbol `.` is used to indicate that the two molecules are joined into a complex.
+
+Since the reaction is bidirectional, we will use `k_lr_bind` and `k_lr_dis` to denote the rates of the forward and reverse reactions, respectively. (We will specify values for these parameters later.)
 
 ~~~ ruby
 	begin reaction rules
