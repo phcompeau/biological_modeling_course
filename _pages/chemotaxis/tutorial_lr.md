@@ -87,6 +87,16 @@ Finally, we name our rule. In this case, we call our rule specifying the ligand-
 	end reaction rules
 ~~~
 
+Once we have specified reactions, we can define the molecules whose concentrations we are interested in tracking. These molecules are added to an  `observables` section.
+
+~~~ ruby
+  begin observables
+    Molecules free_ligand L(t)
+    Molecules bound_ligand L(t!l).T(l!l)
+    Molecules free_receptor T(l)
+  end observables
+~~~
+
 ## Initializing unbound molecule counts
 
 Next, we need to specify a variable indicating the number of molecules with which we would like to initialize our simulation. We place these molecules within a `seed species` section. We are putting `L0` unbound `L` molecules, and `T0` unbound `T` molecules at the beginning; we will set these parameters later.
@@ -102,7 +112,9 @@ Note that we do not specify an initial number of bound `L.T` complexes, meaning 
 
 ## Specifying parameters
 
-Now we will declare all the parameters we introduced in the above sections.  BioNetGen is unitless, but for simplicity, we will assume that all concentrations are measured in the number of molecules per cell. The reaction rates are conventionally thought of in the units of mole (M) per second, where 1 M denotes Avogrado's number, which is approximately 6.02 · 10<sup>23</sup>.
+Now we will declare all the parameters we introduced in the above sections. We will start with setting `L0`, the initial concentration of ligand, to 10,000, and `T0`, the initial concentration of receptors, to 7000. It remains to set the reaction rates for the forward and reverse reactions.
+
+BioNetGen is unitless, but for simplicity, we will assume that all concentrations are measured in the number of molecules per cell. The reaction rates are conventionally thought of in the units of mole (M) per second, where 1 M denotes Avogrado's number, which is approximately 6.02 · 10<sup>23</sup>.
 
 Because of the differing units of molecules per cell and mole per second, we need to do some unit conversion here. The volume of an *E. coli* cell is approximately 1µm<sup>3</sup>, and so 1 mole per liter will correspond to 1 mole per 10<sup>15</sup> µm<sup>3</sup>, or 6.02 · 10<sup>8</sup> molecules per cell.
 
@@ -120,37 +132,27 @@ Although the specific numbers of cellular components vary among each bacterium, 
 	end parameters
 ~~~
 
-Before simulating our model, we would also like to define the observables under `observables` section within the model specification.
-
-~~~ ruby
-	begin observables
-		Molecules free_ligand L(t)
-		Molecules bound_ligand L(t!l).T(l!l)
-		Molecules free_receptor T(l)
-	end observables
-~~~
-
-If you save the file now, you should be able to see a Contact-Map indicating the potential bonding of L and T at the upper right corner of your graphical user interface. A contact map helps to visualize the interaction of species in the system.
+If you save your file, then you should see a "contact map" in the upper right corner of the window indicating the potential bonding of `L` and `T`. This contact map is currently very simplistic, but for more complicated simulations it can help visualize the interaction of species in the system.
 
 ![image-center](../assets/images/chemotaxis_tutorial3.png){: .align-center}
 
 ## Specifying simulation commands
 
-And now we are ready to simulate. Add the `generate_network` and `simulate` command outside of your model specification. We will specify three arguments:
+We are now ready to run our simulation. At the bottom of the model specification (i.e., after `end model`), we will add a `generate_network` and `simulate` command. The `simulate` command will take three parameters, which we specify below.
 
-**Method**. We will use `method=>"ssa"` (Gillespie algorithm or SSA) in all the tutorials, but there are also `method=>"nf"` (network-free) and `method=>"ode"`(ordinary differential equations) that you can try.
+**Method**. We will use `method=>"ssa"` throughout these tutorials, which indicate that we are using the "SSA algorithm" to dictate which algorithm to use for particle-free simulation. We will describe the SSA algorithm later in the main text. BioNetGen also includes the parameters `method=>"nf"` (network-free) and `method=>"ode"`(ordinary differential equations) that you can try.
 
-**Time span**.`t_end`, the simulation duration. BioNetGen simulation time is unitless; for simplicity we define all time units to be second.
+**Time span**.`t_end`, the simulation duration. BioNetGen simulation time is unitless; for simplicity, we assume our time unit is the second.
 
-**Number of Steps**. `n_steps` tells the program to break the simulation into how many time points to report the concentration.
+**Number of Steps**. `n_steps` tells the program how many time points to break the simulation into when measuring the concentrations of our observables.
 
 ~~~ ruby
 	generate_network({overwrite=>1})
 	simulate({method=>"ssa", t_end=>1, n_steps=>100})
 ~~~
 
-The whole simulation code for ligand-receptor dynamics (you can also download here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/ligand_receptor.BioNetGenl" download="ligand_receptor.BioNetGenl">ligand_receptor.BioNetGenl</a>)
+The following code contains our complete simulation, which you can also download here:
+<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/ligand_receptor.BioNetGenl" download="ligand_receptor.BioNetGenl">ligand_receptor.BioNetGenl</a>.
 
 ~~~ ruby
 	begin model
@@ -189,16 +191,16 @@ The whole simulation code for ligand-receptor dynamics (you can also download he
 	simulate({method=>"ssa", t_end=>1, n_steps=>100})
 ~~~
 
-**STOP:** Based on your results from calculating by hand, predict how would the concentrations change.
+**STOP:** Based on our results from calculating steady-state concentration by hand in the main text, predict how the concentrations will change and what the equilibrium concentrations will be.
 {: .notice--primary}
 
-Go to `Simulation` at the right side of the Contact Map button and click `Run`. You can visualize your `.gdat` data.
+## Running our simulation
 
-What do you predict to be the concentration of `L(t!l).T(l!l)` after 1 hour?
+We are now ready to run our simulation. To do so, visit `Simulation` at the right side of the contact map and click `Run`. You can visualize your `.gdat` data.
 
-If you are interested, a more detailed tutorial on BioNetGen modeling can be found [here](http://comet.lehman.cuny.edu/griffeth/BioNetGenTutorialFromBioNetWiki.pdf).
+Is the result you obtain what you expected? In the main text, we will return to this question and then learn more about the details of bacterial chemotaxis in order to expand our BioNetGen model into one that fully reflects these details.
 
-[^Li2004]: Li M, Hazelbauer GL. 2004. Cellular stoichimetry of the components of the chemotaxis signaling complex. Journal of Bacteriology. [Available online](https://jb.asm.org/content/186/12/3687)
+[^Li2004]: Li M, Hazelbauer GL. 2004. Cellular stoichiometry of the components of the chemotaxis signaling complex. Journal of Bacteriology. [Available online](https://jb.asm.org/content/186/12/3687)
 
 [^Stock1991]: Stock J, Lukat GS. 1991. Intracellular signal transduction networks. Annual Review of Biophysics and Biophysical Chemistry. [Available online](https://www.annualreviews.org/doi/abs/10.1146/annurev.bb.20.060191.000545)
 
