@@ -79,15 +79,19 @@ On the right side of the rule, we will have `L(t!1).T(l!1)`, which indicates the
 
 Since the reaction is bidirectional, we will use `k_lr_bind` and `k_lr_dis` to denote the rates of the forward and reverse reactions, respectively. (We will specify values for these parameters later.)
 
+Finally, we name our rule. In this case, we call our rule specifying the ligand-receptor reaction `LR`. The reaction rules are now presented below.
+
 ~~~ ruby
 	begin reaction rules
 		LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
 	end reaction rules
 ~~~
 
-## Initializing the simulation
+## Initializing unbound molecule counts
 
-We need to specify how many molecules we want to put at the start of the simulation within `seed species` section. We are putting `L0` unbound L molecules, and `T0` unbound T molecules at the beginning.
+Next, we need to specify a variable indicating the number of molecules with which we would like to initialize our simulation. We place these molecules within a `seed species` section. We are putting `L0` unbound `L` molecules, and `T0` unbound `T` molecules at the beginning; we will set these parameters later.
+
+Note that we do not specify an initial number of bound `L.T` complexes, meaning that the initial concentration of these complexes will be equal to zero.
 
 ~~~ ruby
 	begin seed species
