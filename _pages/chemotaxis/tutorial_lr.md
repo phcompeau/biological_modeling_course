@@ -102,11 +102,13 @@ Note that we do not specify an initial number of bound `L.T` complexes, meaning 
 
 ## Specifying parameters
 
-Now let's declare all the parameters we mentioned __before__ any usage of them (here, before the `reaction rules` section). BioNetGen is unitless. For simplicity, we will use the number of molecule per cell for all cellular components. The reaction rates are conventionally in the unit of M/s.
+Now we will declare all the parameters we introduced in the above sections.  BioNetGen is unitless, but for simplicity, we will assume that all concentrations are measured in the number of molecules per cell. The reaction rates are conventionally thought of in the units of mole (M) per second, where 1 M denotes Avogrado's number, which is approximately 6.02 · 10<sup>23</sup>.
 
-Because of the molecules/cell and the M/s units, we need to do some unit conversion here (when calculating the ligand-receptor binding by hand in the main text, we already did unit conversion for you). The volume of *E. coli* is approximately 1µm<sup>3</sup>, so our molecule counts are of unit num_molecule/µm^<sup>3</sup>. One mole of molecule is approximately 6.02 · 10<sup>32</sup> molecules (Avogadro's number), so the unit M is approximately 6.02 · 10<sup>23</sup> molecules/L, or 6.02 · 10<sup>8</sup> molecules/µm<sup>3</sup>. We record this as `NaV`. For bimolecular reactions, the rate constant should have unit M<sup>-1</sup>s<sup>-1</sup>, and we devide with NaV to convert to (molecules/µm<sup>3</sup>)<sup>-1</sup>)s<sup>-1</sup>. For monomolecular reactions, the rate constant have unit s<sup>-1</sup>, so no unit conversion is required.
+Because of the differing units of molecules per cell and mole per second, we need to do some unit conversion here. The volume of an *E. coli* cell is approximately 1µm<sup>3</sup>, and so 1 mole per liter will correspond to 1 mole per 10<sup>15</sup> µm<sup>3</sup>, or 6.02 · 10<sup>8</sup> molecules per cell.
 
-Although the specific numbers of cellular components vary among each bacterium, the components in chemotaxis pathway follows a relatively constant ratio. For all the simulations in this module, we assign the initial number for each molecule and reaction rates by first deciding a reasonable range based on *in vivo* quantities [^Li2004][^Spiro1997][^Stock1991] and then tuning to fit the model.
+For bimolecular reactions, the rate constant should have unit M<sup>-1</sup>s<sup>-1</sup>, and we divide with NaV to convert to (molecules/µm<sup>3</sup>)<sup>-1</sup>)s<sup>-1</sup>. For monomolecular reactions, the rate constant have unit s<sup>-1</sup>, so no unit conversion is required.
+
+Although the specific numbers of cellular components vary among each bacterium, the components in chemotaxis pathway follows a relatively constant ratio. For all the simulations in this tutorial, we assign the initial number for each molecule and reaction rate by first deciding a reasonable range based on *in vivo* quantities [^Li2004][^Spiro1997][^Stock1991] and then tuning to fit the model. Our parameters are summarized below.
 
 ~~~ ruby
 	begin parameters
