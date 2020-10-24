@@ -16,7 +16,7 @@ To get started, create a copy of your file from the ligand-receptor tutorial and
 
 ## Defining molecules
 
-First, we introduce `state` in our particles to mark whether it is phosphorylated or not. Change `T(l)` to `T(l,Phos~U~P)`. The `Phos~U~P` indicates we introduce phosphorylation states to `T`: `U` indicates unphosphorylated, and `P` indicates phosphorylated. You can also use other letters. We also add molecule `CheY(Phos~U~P)` and `CheZ()`. (*Note: be careful with the use of spaces; don't put spaces after the comma.*)
+First, we introduce a state into the receptor and CheY particles to mark whether they are is phosphorylated or not. The notation `Phos~U~P` indicates we introduce phosphorylation states to a molecule (`U` indicates unphosphorylated, and `P` indicates phosphorylated). We also add molecule `CheY(Phos~U~P)` and `CheZ()`. (**Note:** be careful with the use of spaces; don't put spaces after the comma in the specification of the receptor.)
 
 ~~~ ruby
 begin molecule types
@@ -27,7 +27,7 @@ begin molecule types
 end molecule types
 ~~~
 
-We are also interested in the number of T-P and CheY-P during the simulation.
+During this simulation, we are interested in tracking the concentration of phosphorylated CheY and CheA (receptor complex) along with the concentration of the ligand.
 
 ~~~ ruby
 begin observables
@@ -39,7 +39,7 @@ end observables
 
 ## Defining reactions
 
-And we update the reaction rules with the phosphorylation and dephosphorylation reactions above.
+Now we are ready to update our reaction rules to include phosphorylation and dephosphorylation in addition to the ligand-receptor reaction. These rules were discussed in the main text and are reproduced below.
 
 ~~~ ruby
 begin reaction rules
@@ -56,7 +56,7 @@ end reaction rules
 
 ## Initializing molecules and parameters
 
-We need to indicate the number of molecules at **each state** present at the beginning of the simulation. Since we are adding ligands at the beginnin of the simulation, the initial amount of molecules at each same state should be equal to the equilibrium concentrations when no ligand is present.
+To initialize our simulation, we need to indicate the number of molecules in *each state* present at the beginning of the simulation. Since we are adding ligands at the beginning of the simulation, the initial amount of molecules at each same state should be equal to the equilibrium concentrations when no ligand is present.
 
 ~~~ ruby
 begin seed species
@@ -69,7 +69,7 @@ begin seed species
 end seed species
 ~~~
 
-Update all the parameters based on *in vivo* quantities [^Li2004][^Spiro1997][^Stock1991]. Specifically, we include the number of CheY, CheZ, and the rate constants for receptor complex autophosphorylation, CheY phosphorylation, and CheZ dephosphorylation.
+We now set initial quantities of molecules along with reaction rate parameters to be consistent with *in vivo* quantities [^Li2004][^Spiro1997][^Stock1991].
 
 ~~~ ruby
 begin parameters
@@ -87,7 +87,10 @@ begin parameters
 end parameters
 ~~~
 
-## Running the simulation
+
+## Simulating responses to attractants
+
+Before running the simulation, let's think about what will happen. If we don't add any ligand molecule into the system, then T phosphorylation happens at rate [*T*]*k_T_phos*, and T will phosphorylate CheY, which will be dephosphorylated by CheZ. The concentrations of phosphorylated T and CheY will stay at a steady state. That's the initial concentrations of molecules at each state we defined earlier.
 
 Observe the simulation for a bit longer. Change `t_end` at the bottom to 3.
 
@@ -95,10 +98,6 @@ Observe the simulation for a bit longer. Change `t_end` at the bottom to 3.
 	generate_network({overwrite=>1})
 	simulate({method=>"ssa", t_end=>3, n_steps=>100})
 ~~~
-
-## Simulating responses to attractants
-
-Before running the simulation, let's think about what will happen. If we don't add any ligand molecule into the system, then T phosphorylation happens at rate [*T*]*k_T_phos*, and T will phosphorylate CheY, which will be dephosphorylated by CheZ. The concentrations of phosphorylated T and CheY will stay at a steady state. That's the initial concentrations of molecules at each state we defined earlier.
 
 Run simulation with no ligand molecule present by setting `L0` in the `parameters` section to 0, and click `Run` under `Simulate`. What do you observe?
 
@@ -109,20 +108,6 @@ Run simulation with `L0 = 5000` and `L0 = 1e5` to confirm your hypothesis. What 
 For different `L0`'s, how do the steady state for bound ligand, active receptor, and active CheY differ and why?
 
 Exercise: Try several different `L0` values (ex. 1e3, 1e7, 1e9). Are you seeing what you expected? If at some point the result won't change anymore, why? What does it imply about limitation in chemotaxis (but it's already a wide range of concentrations isn't it)?
-
-## blah
-
-Our model will start with the ligand binding and dissociation reaction `L + T <-> LT` with rate `k_lr_bind`, `k_lr_dis`. It will then need to expand to include the following additional reactions.
-
-
-
-**Receptor complex autophosphorylation**. The receptor complex is composed of MCPs, CheW, and CheA. CheA undergoes autophosphorylation, and the rate of autophosphorylation depends on conformation of the receptor complex. Faster autophosphorylation for free MCPs. Note that the phosphoryl group is from an ATP->ADP reaction, but we will just code as phosphorylation states in modeling for simplicity.
- - T -> T-P    rate constant `k_T_phos`
- - LT -> LT-P  rate constant `0.2 · k_T_phos`
-
-**CheY phosphorylation and dephosphorylation**. CheA-P phosphorylates CheY. Phosphorylated CheY will be responsible for the cellular response (CW rotataion), so we will use the level of CheY-P to indicate the level of cellular response.
- - T-P + CheY -> T + CheY-P  `k_Y_phos`
- - Z + Y-P -> Z + Y + P `k_Y_dephos`
 
 
 [^Bertoli2013]: Bertoli C, Skotheim JM, de Bruin RAM. 2013. Control of cell cycle transcription during G1 and S phase. Nature Reviews Molecular Cell Biology 14:518-528. [Available online](https://www.nature.com/articles/nrm3629).
