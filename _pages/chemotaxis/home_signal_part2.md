@@ -65,7 +65,27 @@ The process of selecting a reaction is visualized in the figure below.
 A visualization of a single reaction event used by the Gillespie algorithm for ligand-receptor binding/dissociation. Red circles represent ligands (*L*), and orange wedges represent receptors (*T*). The wait time for the next reaction is drawn from an exponential distribution with mean 1/(*k*<sub>bind</sub> + *k*<sub>dissociate</sub>). The probability of this event corresponding to a binding or dissociation reaction is proportional to the rate of the respective reaction.
 {: style="font-size: medium;"}
 
-The following tutorial employs [BioNetGen](http://bionetgen.org/), which we will rely on throughout this module, to build particle-free simulations of chemotaxis. The tutorial starts by building a model based on the Gillespie algorithm to determine the equilibrium of a reversible ligand-receptor binding reaction.
+## Specifying ligand-receptor binding with a single BioNetGen rule
+
+Throughout this module, we will employ [BioNetGen](http://bionetgen.org/) to build particle-free simulations of chemotaxis applying the Gillespie algorithm.
+
+BioNetGen reaction rules are written similarly to chemical equations. The left side of the rule includes the reactants, which are followed by a unidirectional or bidirectional arrow, indicating the direction of the reaction, and the right side of the rule includes the products. After the reaction we indicate the rate constant of reaction; if the reaction is bi-directional, then we separate the forward and backward reaction rate constants with a comma.
+
+For example, to code up the bi-directional reaction `A + B <-> C` with forward rate `k1` and reverse rate `k2`, we would write `A + B <-> C k1, k2`.
+
+Our model consists of a single bidirectional reaction and will have only a single rule. The left side of this rule will be `L(t) + T(l)`; by specifying `L(t)` and `T(l)`, we indicate to BioNetGen that we are only interested in *unbound* ligand and receptor molecules. If we had wanted to select any ligand molecule, then we would have simply written `L + T`.
+
+On the right side of the rule, we will have `L(t!1).T(l!1)`, which indicates the formation of the intermediate. In BioNetGen, `!` indicates formation of a bond; and a unique character specifies the possible location of this bond. In our case, we use the character `1`, so that the bond is represented by `!1`. The symbol `.` is used to indicate that the two molecules are joined into a complex.
+
+Since the reaction is bidirectional, we will use `k_lr_bind` and `k_lr_dis` to denote the rates of the forward and reverse reactions, respectively. (We will specify values for these parameters later.)
+
+As a result, this reaction is shown below. We name our rule specifying the ligand-receptor reaction `LR`.
+
+~~~ ruby
+	LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
+~~~
+
+The following tutorial shows how to implement this rule in BioNetGen and use the Gillespie algorithm to determine the equilibrium of a reversible ligand-receptor binding reaction.
 
 [Visit tutorial](tutorial_lr){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

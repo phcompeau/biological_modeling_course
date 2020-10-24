@@ -67,19 +67,9 @@ We first add molecules to our model under a `molecule types` section. We will ha
 	end model
 ~~~
 
-## Specifying reaction rules
+## Specifying reaction rules and observables
 
-BioNetGen reaction rules are written similarly to chemical equations. The left side of the rule includes the reactants, which are followed by a unidirectional or bidirectional arrow, indicating the direction of the reaction, and the right side of the rule includes the products. After the reaction we indicate the rate constant of reaction; if the reaction is bi-directional, then we separate the forward and backward reaction rate constants with a comma.
-
-For example, to code up the bi-directional reaction `A + B <-> C` with forward rate `k1` and reverse rate `k2`, we would write `A + B <-> C k1, k2`.
-
-Our model consists of a single bidirectional reaction and will have only a single rule. The left side of this rule will be `L(t) + T(l)`; by specifying `L(t)` and `T(l)`, we indicate to BioNetGen that we are only interested in *unbound* ligand and receptor molecules. If we had wanted to select any ligand molecule, then we would have simply written `L + T`.
-
-On the right side of the rule, we will have `L(t!1).T(l!1)`, which indicates the formation of the intermediate. In BioNetGen, `!` indicates formation of a bond; and a unique character specifies the possible location of this bond. In our case, we use the character `1`, so that the bond is represented by `!1`. The symbol `.` is used to indicate that the two molecules are joined into a complex.
-
-Since the reaction is bidirectional, we will use `k_lr_bind` and `k_lr_dis` to denote the rates of the forward and reverse reactions, respectively. (We will specify values for these parameters later.)
-
-Finally, we name our rule. In this case, we call our rule specifying the ligand-receptor reaction `LR`. The reaction rules are now presented below.
+As discussed in the [main text](home_signalpart2), the ligand-receptor simulation will only need to apply a single bi-directional reaction.
 
 ~~~ ruby
 	begin reaction rules
