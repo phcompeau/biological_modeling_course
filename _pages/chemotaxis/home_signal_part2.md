@@ -69,6 +69,8 @@ A visualization of a single reaction event used by the Gillespie algorithm for l
 
 Throughout this module, we will employ [BioNetGen](http://bionetgen.org/) to build particle-free simulations of chemotaxis applying the Gillespie algorithm.
 
+We will have two molecules corresponding to the ligand and receptor `L` and `T` that we call `L(t)` and `T(l)`, respectively. The `(t)` specifies that molecule `L` contains a binding site with `T`, and the `(l)` specifies a component binding to `L`. We will use these components later when specifying reactions. We do not have to use `t` and `l` for this purpose, but it will make our model easier to understand.
+
 BioNetGen reaction rules are written similarly to chemical equations. The left side of the rule includes the reactants, which are followed by a unidirectional or bidirectional arrow, indicating the direction of the reaction, and the right side of the rule includes the products. After the reaction we indicate the rate constant of reaction; if the reaction is bi-directional, then we separate the forward and backward reaction rate constants with a comma.
 
 For example, to code up the bi-directional reaction `A + B <-> C` with forward rate `k1` and reverse rate `k2`, we would write `A + B <-> C k1, k2`.

@@ -54,7 +54,7 @@ We will specify everything needed for this tutorial, but if you are interested, 
 
 To specify our model, add `begin model` and `end model`. Everything below regarding the specification of the model will go between these two lines.
 
-We first add molecules to our model under a `molecule types` section. We will have molecules corresponding to `L` and `T` that we call `L(t)` and `T(l)`, respecively. The `(t)` specifies that molecule `L` contains a binding site with `T`, and the `(l)` specifies a component binding to `L`. We will use these components later when specifying reactions. You do not have to use `t` and `l` for this purpose, but it will make your model easier to understand.
+We first add ligand and receptor molecules to our model under a `molecule types` section. Recall from the main text that we will call these molecules `L(t)` and `T(l)`.  
 
 ~~~ ruby
 	begin model
