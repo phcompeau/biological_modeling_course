@@ -1,6 +1,6 @@
 ---
 permalink: /chemotaxis/tutorial_phos
-title: "Phosphorylation"
+title: "Adding Phosphorylation to our BioNetGen Model"
 sidebar:
  nav: "chemotaxis"
 ---
@@ -17,7 +17,7 @@ Visualization of pathway for reference.
 
 We have:
 
-**Ligand binding and dissociation**. L + T <-> LT with rate `k_lr_bind`, `k_lr_dis`.
+**Ligand binding and dissociation**. `L + T <-> LT` with rate `k_lr_bind`, `k_lr_dis`.
 
 **Receptor complex autophosphorylation**. The receptor complex is composed of MCPs, CheW, and CheA. CheA undergoes autophosphorylation, and the rate of autophosphorylation depends on conformation of the receptor complex. Faster autophosphorylation for free MCPs. Note that the phosphoryl group is from an ATP->ADP reaction, but we will just code as phosphorylation states in modeling for simplicity.
  - T -> T-P    rate constant `k_T_phos`
@@ -35,12 +35,12 @@ You can download the simulation file here:
 First, we introduce `state` in our particles to mark whether it is phosphorylated or not. Change `T(l)` to `T(l,Phos~U~P)`. The `Phos~U~P` indicates we introduce phosphorylation states to `T`: `U` indicates unphosphorylated, and `P` indicates phosphorylated. You can also use other letters. We also add molecule `CheY(Phos~U~P)` and `CheZ()`. (*Note: be careful with the use of spaces; don't put spaces after the comma.*)
 
 ~~~ ruby
-	begin molecule types
-		L(t)             #ligand molecule
-		T(l,Phos~U~P)    #receptor complex
-		CheY(Phos~U~P)
-		CheZ()
-	end molecule types
+begin molecule types
+	L(t)             #ligand molecule
+	T(l,Phos~U~P)    #receptor complex
+	CheY(Phos~U~P)
+	CheZ()
+end molecule types
 ~~~
 
 And we update the reaction rules with the phosphorylation and dephosphorylation reactions above.
