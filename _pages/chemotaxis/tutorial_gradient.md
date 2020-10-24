@@ -92,5 +92,5 @@ The second code block will load simulation result at each time point from the `.
 Run the code blocks. How does `k_add` impact the CheY-P concentrations? Why? Are the tumbling frequencies restored to the background frequency?
 
 
-[Return to main text](home_gradient){: .btn .btn--primary .btn--large}
+[Return to main text](home_gradient#steady-state-tumbling-frequency-is-robust-when-traveling-up-an-attractant-gradient){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

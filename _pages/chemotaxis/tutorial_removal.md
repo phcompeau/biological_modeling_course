@@ -101,5 +101,5 @@ Run the code blocks. How does `k_gone` impact the CheY-P concentrations? Why? Ar
 
 
 
-[Return to main text](home_gradient){: .btn .btn--primary .btn--x-large}
+[Return to main text](home_gradient#steady-state-tumbling-frequency-remains-robust-when-traveling-down-an-attractant-gradient){: .btn .btn--primary .btn--x-large}
 {: style="font-size: 100%; text-align: center;"}

@@ -203,7 +203,7 @@ Which strategy is more efficient?
 
 Go back to main text for now. We will return to this tutorial later.
 
-[Return to main text](home_conclusion){: .btn .btn--primary .btn--large}
+[Return to main text](home_conclusion#comparing-the-effectiveness-of-our-two-random-walk-strategies){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Qualitative comparison of different background tumbling frequencies
