@@ -3,34 +3,18 @@ permalink: /chemotaxis/tutorial_phos
 title: "Adding Phosphorylation to our BioNetGen Model"
 sidebar:
  nav: "chemotaxis"
+toc: true
+toc_sticky: true
 ---
 
-In this page, we will:
- - Add phosphorylation mechanisms for chemotaxis
- - Observe cellular behavior in response to attractants
-
-## Phosphorylation mechanisms
+In this tutorial, we will extend the BioNetGen model covered in the [tutorial_lr](ligand-receptor tutorial) to add the phosphorylation chemotaxis mechanisms described in the main text, shown in the figure reproduced below.
 
 ![image-center](../assets/images/chemotaxisphosnew.png){: .align-center}
-Visualization of pathway for reference.
-{: style="font-size: medium;"}
 
-We have:
-
-**Ligand binding and dissociation**. `L + T <-> LT` with rate `k_lr_bind`, `k_lr_dis`.
-
-**Receptor complex autophosphorylation**. The receptor complex is composed of MCPs, CheW, and CheA. CheA undergoes autophosphorylation, and the rate of autophosphorylation depends on conformation of the receptor complex. Faster autophosphorylation for free MCPs. Note that the phosphoryl group is from an ATP->ADP reaction, but we will just code as phosphorylation states in modeling for simplicity.
- - T -> T-P    rate constant `k_T_phos`
- - LT -> LT-P  rate constant `0.2 · k_T_phos`
-
-**CheY phosphorylation and dephosphorylation**. CheA-P phosphorylates CheY. Phosphorylated CheY will be responsible for the cellular response (CW rotataion), so we will use the level of CheY-P to indicate the level of cellular response.
- - T-P + CheY -> T + CheY-P  `k_Y_phos`
- - Z + Y-P -> Z + Y + P `k_Y_dephos`
-
-## Include phosphorylation in the model
-
-You can download the simulation file here:
+To get started, create a copy of your file from the ligand-receptor tutorial and save it as `phosphorylation.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here:
 <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/phosphorylation.bngl" download="phosphorylation.bngl">phosphorylation.bngl</a>
+
+## Defining molecules
 
 First, we introduce `state` in our particles to mark whether it is phosphorylated or not. Change `T(l)` to `T(l,Phos~U~P)`. The `Phos~U~P` indicates we introduce phosphorylation states to `T`: `U` indicates unphosphorylated, and `P` indicates phosphorylated. You can also use other letters. We also add molecule `CheY(Phos~U~P)` and `CheZ()`. (*Note: be careful with the use of spaces; don't put spaces after the comma.*)
 
@@ -43,61 +27,67 @@ begin molecule types
 end molecule types
 ~~~
 
+We are also interested in the number of T-P and CheY-P during the simulation.
+
+~~~ ruby
+begin observables
+	Molecules phosphorylated_CheY CheY(Phos~P)
+	Molecules phosphorylated_CheA T(Phos~P)
+	Molecules bound_ligand L(t!1).T(l!1)
+end observables
+~~~
+
+## Defining reactions
+
 And we update the reaction rules with the phosphorylation and dephosphorylation reactions above.
 
 ~~~ ruby
-	begin reaction rules
-		LigandReceptor: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
+begin reaction rules
+	LigandReceptor: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
 
-		#Free vs. ligand-bound complexes autophosphorylates
-		FreeTP: T(l,Phos~U) -> T(l,Phos~P) k_T_phos
-		BoundTP: L(t!1).T(l!1,Phos~U) -> L(t!1).T(l!1,Phos~P) k_T_phos*0.2
+	#Free vs. ligand-bound complexes autophosphorylates
+	FreeTP: T(l,Phos~U) -> T(l,Phos~P) k_T_phos
+	BoundTP: L(t!1).T(l!1,Phos~U) -> L(t!1).T(l!1,Phos~P) k_T_phos*0.2
 
-		YP: T(Phos~P) + CheY(Phos~U) -> T(Phos~U) + CheY(Phos~P) k_Y_phos
-		YDep: CheZ() + CheY(Phos~P) -> CheZ() + CheY(Phos~U) k_Y_dephos
-	end reaction rules
+	YP: T(Phos~P) + CheY(Phos~U) -> T(Phos~U) + CheY(Phos~P) k_Y_phos
+	YDep: CheZ() + CheY(Phos~P) -> CheZ() + CheY(Phos~U) k_Y_dephos
+end reaction rules
 ~~~
+
+## Initializing molecules and parameters
 
 We need to indicate the number of molecules at **each state** present at the beginning of the simulation. Since we are adding ligands at the beginnin of the simulation, the initial amount of molecules at each same state should be equal to the equilibrium concentrations when no ligand is present.
 
 ~~~ ruby
-	begin seed species
-		L(t) L0
-		T(l,Phos~U) T0*0.8
-		T(l,Phos~P) T0*0.2
-		CheY(Phos~U) CheY0*0.5
-		CheY(Phos~P) CheY0*0.5
-		CheZ() CheZ0
-	end seed species
+begin seed species
+	L(t) L0
+	T(l,Phos~U) T0*0.8
+	T(l,Phos~P) T0*0.2
+	CheY(Phos~U) CheY0*0.5
+	CheY(Phos~P) CheY0*0.5
+	CheZ() CheZ0
+end seed species
 ~~~
 
 Update all the parameters based on *in vivo* quantities [^Li2004][^Spiro1997][^Stock1991]. Specifically, we include the number of CheY, CheZ, and the rate constants for receptor complex autophosphorylation, CheY phosphorylation, and CheZ dephosphorylation.
 
 ~~~ ruby
-	begin parameters
-		NaV 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
-		L0 0        #number of ligand molecules
-		T0 7000       #number of receptor complexes
-		CheY0 20000
-		CheZ0 6000
+begin parameters
+	NaV 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
+	L0 0        #number of ligand molecules
+	T0 7000       #number of receptor complexes
+	CheY0 20000
+	CheZ0 6000
 
-		k_lr_bind 8.8e6/NaV   #ligand-receptor binding
-		k_lr_dis 35           #ligand-receptor dissociation
-		k_T_phos 15           #receptor complex autophosphorylation
-		k_Y_phos 3.8e6/NaV    #receptor complex phosphorylates CheY
-		k_Y_dephos 8.6e5/NaV  #Z dephosphoryaltes CheY
-	end parameters
+	k_lr_bind 8.8e6/NaV   #ligand-receptor binding
+	k_lr_dis 35           #ligand-receptor dissociation
+	k_T_phos 15           #receptor complex autophosphorylation
+	k_Y_phos 3.8e6/NaV    #receptor complex phosphorylates CheY
+	k_Y_dephos 8.6e5/NaV  #Z dephosphoryaltes CheY
+end parameters
 ~~~
 
-We are also interested in the number of T-P and CheY-P during the simulation.
-
-~~~ ruby
-	begin observables
-		Molecules phosphorylated_CheY CheY(Phos~P)
-		Molecules phosphorylated_CheA T(Phos~P)
-		Molecules bound_ligand L(t!1).T(l!1)
-	end observables
-~~~
+## Running the simulation
 
 Observe the simulation for a bit longer. Change `t_end` at the bottom to 3.
 
@@ -105,9 +95,6 @@ Observe the simulation for a bit longer. Change `t_end` at the bottom to 3.
 	generate_network({overwrite=>1})
 	simulate({method=>"ssa", t_end=>3, n_steps=>100})
 ~~~
-
-You can also download the simulation file here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/phosphorylation.bngl" download="phosphorylation.bngl">phosphorylation.bngl</a>
 
 ## Simulating responses to attractants
 
@@ -123,6 +110,19 @@ For different `L0`'s, how do the steady state for bound ligand, active receptor,
 
 Exercise: Try several different `L0` values (ex. 1e3, 1e7, 1e9). Are you seeing what you expected? If at some point the result won't change anymore, why? What does it imply about limitation in chemotaxis (but it's already a wide range of concentrations isn't it)?
 
+## blah
+
+Our model will start with the ligand binding and dissociation reaction `L + T <-> LT` with rate `k_lr_bind`, `k_lr_dis`. It will then need to expand to include the following additional reactions.
+
+
+
+**Receptor complex autophosphorylation**. The receptor complex is composed of MCPs, CheW, and CheA. CheA undergoes autophosphorylation, and the rate of autophosphorylation depends on conformation of the receptor complex. Faster autophosphorylation for free MCPs. Note that the phosphoryl group is from an ATP->ADP reaction, but we will just code as phosphorylation states in modeling for simplicity.
+ - T -> T-P    rate constant `k_T_phos`
+ - LT -> LT-P  rate constant `0.2 · k_T_phos`
+
+**CheY phosphorylation and dephosphorylation**. CheA-P phosphorylates CheY. Phosphorylated CheY will be responsible for the cellular response (CW rotataion), so we will use the level of CheY-P to indicate the level of cellular response.
+ - T-P + CheY -> T + CheY-P  `k_Y_phos`
+ - Z + Y-P -> Z + Y + P `k_Y_dephos`
 
 
 [^Bertoli2013]: Bertoli C, Skotheim JM, de Bruin RAM. 2013. Control of cell cycle transcription during G1 and S phase. Nature Reviews Molecular Cell Biology 14:518-528. [Available online](https://www.nature.com/articles/nrm3629).
