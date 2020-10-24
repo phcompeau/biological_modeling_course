@@ -1,18 +1,18 @@
 ---
 permalink: /chemotaxis/tutorial_gradient
 title: "Up gradient/Addition"
-sidebar: 
+sidebar:
  nav: "chemotaxis"
 ---
 
 In this page, we will:
  - Simulate cellular response when traveling up the gradient.
 
-## Files and dependencies 
+## Files and dependencies
 
 The simulation can be downloaded here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
 
-The Jupyter notebook for visualizing results can be downloaded here: 
+The Jupyter notebook for visualizing results can be downloaded here:
 <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_up.ipynb</a>
 
 Please make sure the following dependencies are installed.
@@ -61,11 +61,11 @@ In `parameters` section, we define the rate of ligand increase. We will try a re
 
 Set `simulate({method=>"ssa", t_end=>1000, n_steps=>500})`. Go to `simulation` and click `Run`. What happens to CheY phosphorylation? (Note: you can deselect `AllLigand` to make the plots clearer for phosphorylated CheY)
 
-You will observe that CheY phosphorylation drops gradually first, instead of the instantaneous sharp drop as we add lots of ligand at once. That means, with the ligand concentration increases, the cell is able to continuously lower the tumbling frequency. 
+You will observe that CheY phosphorylation drops gradually first, instead of the instantaneous sharp drop as we add lots of ligand at once. That means, with the ligand concentration increases, the cell is able to continuously lower the tumbling frequency.
 
 Try different values for `k_add`: 0.01, 0.03, 0.05, 0.1, 0.3, 0.5. What do different `k_add` values imply? How does the system respond to the different values - what are some common trends and some differences?
 
-All simulation results are stored in the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/TIME/` directory in your computer. Rename the directory with the `k_add` values instead of the time of running for simplicity. 
+All simulation results are stored in the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/TIME/` directory in your computer. Rename the directory with the `k_add` values instead of the time of running for simplicity.
 
 <!--
 Please make sure have dependencies installed:
@@ -92,9 +92,5 @@ The second code block will load simulation result at each time point from the `.
 Run the code blocks. How does `k_add` impact the CheY-P concentrations? Why? Are the tumbling frequencies restored to the background frequency?
 
 
-[Back to Main Text](home_gradient){: .btn .btn--primary .btn--large}
+[Return to main text](home_gradient){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
-
-
-
-

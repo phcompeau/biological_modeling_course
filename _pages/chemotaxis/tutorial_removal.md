@@ -10,7 +10,7 @@ toc_sticky: true
 In this page, we will:
  - Simulate cellular response when traveling down the gradient.
 
-## Files and dependencies 
+## Files and dependencies
 
 The simulation can be downloaded here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/removal.bngl" download="removal.bngl">removal.bngl</a>
 
@@ -101,5 +101,5 @@ Run the code blocks. How does `k_gone` impact the CheY-P concentrations? Why? Ar
 
 
 
-[Back to Main Text](home_gradient){: .btn .btn--primary .btn--x-large}
+[Return to main text](home_gradient){: .btn .btn--primary .btn--x-large}
 {: style="font-size: 100%; text-align: center;"}

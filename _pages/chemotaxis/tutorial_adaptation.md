@@ -1,7 +1,7 @@
 ---
 permalink: /chemotaxis/tutorial_adap
 title: "Adaptation"
-sidebar: 
+sidebar:
  nav: "chemotaxis"
 ---
 
@@ -12,18 +12,18 @@ In this page, we will:
 
 ## Include methylation in the model
 
-Now let's add methylation states to model how *E. coli* can adapt to a higher attractant concentrations and bring back the tumbling frequency. The methylation states of the receptors store the *past* ligand concentrations. If we have a high level ligand-receptor binding, and that is consistent with the methylation states, then the cell doesn't need to decrease its tumbling frequency because no gradient is present. This is achieved by using higher methylation states to reflect higher past ligand concentration, leading to higher rates of autophosphorylation. This compensates for the low phosphorylation due to high levels of ligand binding. 
+Now let's add methylation states to model how *E. coli* can adapt to a higher attractant concentrations and bring back the tumbling frequency. The methylation states of the receptors store the *past* ligand concentrations. If we have a high level ligand-receptor binding, and that is consistent with the methylation states, then the cell doesn't need to decrease its tumbling frequency because no gradient is present. This is achieved by using higher methylation states to reflect higher past ligand concentration, leading to higher rates of autophosphorylation. This compensates for the low phosphorylation due to high levels of ligand binding.
 
 Our model will be based on the [model](https://www.pnas.org/content/94/14/7263) by Spiro et al.[^Spiro1997]
 
-The complete code can be downloaded here: 
+The complete code can be downloaded here:
 <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/adaptation.bngl" download="adaptation.bngl">adaptation.bngl</a>
 
-For simplicity, we will not code up the actual methylation states, but use low (A), medium (B), high (C) to indicate the methylation states instead. 
+For simplicity, we will not code up the actual methylation states, but use low (A), medium (B), high (C) to indicate the methylation states instead.
 
 First add methylation states, low (A), medium (B), high (C), for the ternary complex. Also add a component `r` for later introduction of CheR. Update `T` to be `T(l,r,Meth~A~B~C,Phos~U~P)`.
 
-Then we change the receptor autophosphorylation rules to reflect what we've just discussed. 
+Then we change the receptor autophosphorylation rules to reflect what we've just discussed.
 
 ~~~ ruby
 	#Receptor complex (specifically CheA) autophosphorylation
@@ -50,11 +50,11 @@ Add `CheB(Phos~U~P)` and `CheR(t)` to the `molecule types` section. And add reac
 	TbRUM: T(r!2,l,Meth~B).CheR(t!2) -> T(r,l,Meth~C) + CheR(t) k_TaR_meth*0.1
 	TaRLM: T(r!2,l!1,Meth~A).L(t!1).CheR(t!2) -> T(r,l!1,Meth~B).L(t!1) + CheR(t) k_TaR_meth*30
 	TbRLM: T(r!2,l!1,Meth~B).L(t!1).CheR(t!2) -> T(r,l!1,Meth~C).L(t!1) + CheR(t) k_TaR_meth*3
-	
+
 	#CheB is phosphorylated by receptor complex, and autodephosphorylates
 	CheBp: T(Phos~P) + CheB(Phos~U) -> T(Phos~U) + CheB(Phos~P) k_B_phos
 	CheBdp: CheB(Phos~P) -> CheB(Phos~U) k_B_dephos
-	
+
 	#CheB demethylates receptor complex
 	#Rate dependent on methyaltion states
 	TbDm: T(Meth~B) + CheB(Phos~P) -> T(Meth~A) + CheB(Phos~P) k_Tb_demeth
@@ -66,7 +66,7 @@ Now we have a complete set of reaction rules. For convenience, give all reaction
 ~~~ ruby
 	begin reaction rules
 		LigandReceptor: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
-		
+
 		#Receptor complex (specifically CheA) autophosphorylation
 		#Rate dependent on methylation and binding states
 		#Also on free vs. bound with ligand
@@ -76,11 +76,11 @@ Now we have a complete set of reaction rules. For convenience, give all reaction
 		TaLP: L(t!1).T(l!1,Meth~A,Phos~U) -> L(t!1).T(l!1,Meth~A,Phos~P) 0
 		TbLP: L(t!1).T(l!1,Meth~B,Phos~U) -> L(t!1).T(l!1,Meth~B,Phos~P) k_TaUnbound_phos*0.8
 		TcLP: L(t!1).T(l!1,Meth~C,Phos~U) -> L(t!1).T(l!1,Meth~C,Phos~P) k_TaUnbound_phos*1.6
-		
+
 		#CheY phosphorylation by T and dephosphorylation by CheZ
 		YPhos: T(Phos~P) + CheY(Phos~U) -> T(Phos~U) + CheY(Phos~P) k_Y_phos
 		YDephos: CheZ() + CheY(Phos~P) -> CheZ() + CheY(Phos~U) k_Y_dephos
-		
+
 		#CheR binds to and methylates receptor complex
 		#Rate dependent on methylation states and ligand binding
 		TRBind: T(r) + CheR(t) <-> T(r!2).CheR(t!2) k_TR_bind, 1
@@ -88,16 +88,16 @@ Now we have a complete set of reaction rules. For convenience, give all reaction
 		TbRUM: T(r!2,l,Meth~B).CheR(t!2) -> T(r,l,Meth~C) + CheR(t) k_TaR_meth*0.1
 		TaRLM: T(r!2,l!1,Meth~A).L(t!1).CheR(t!2) -> T(r,l!1,Meth~B).L(t!1) + CheR(t) k_TaR_meth*30
 		TbRLM: T(r!2,l!1,Meth~B).L(t!1).CheR(t!2) -> T(r,l!1,Meth~C).L(t!1) + CheR(t) k_TaR_meth*3
-		
+
 		#CheB is phosphorylated by receptor complex, and autodephosphorylates
 		CheBp: T(Phos~P) + CheB(Phos~U) -> T(Phos~U) + CheB(Phos~P) k_B_phos
 		CheBdp: CheB(Phos~P) -> CheB(Phos~U) k_B_dephos
-		
+
 		#CheB demethylates receptor complex
 		#Rate dependent on methyaltion states
 		TbDm: T(Meth~B) + CheB(Phos~P) -> T(Meth~A) + CheB(Phos~P) k_Tb_demeth
 		TcDm: T(Meth~C) + CheB(Phos~P) -> T(Meth~B) + CheB(Phos~P) k_Tc_demeth
-		
+
 	end reaction rules
 ~~~
 
@@ -135,9 +135,11 @@ We need to add the compartmentalization information in the `seed species`. Also 
 		@CP:CheB(Phos~P) CheB0*0.38
 		@CP:CheR(t) CheR0
 	end seed species
+~~~
 
 Specify all the molecules types you want to observe for in the `observable` section.
 
+~~~ ruby
 	begin observables
 		Molecules bound_ligand L(t!1).T(l!1)
 		Molecules phosphorylated_CheY CheY(Phos~P)
@@ -146,41 +148,43 @@ Specify all the molecules types you want to observe for in the `observable` sect
 		Molecules high_methyl_receptor T(Meth~C)
 		Molecules phosphorylated_CheB CheB(Phos~P)
 	end observables
+~~~
 
-And the last thing is to assign values to the parameters. Let's start with no ligand is added to the system. We assign the initial number for each molecule and reaction rates based on *in vivo* stoichiometry and parameter tuning [^1][^Li2004][^Stock1991]. Specifically, we will add number of CheR, CheB, the state-dependency of receptor complex autophosphorylation, reaction rates for receptor-CheR binding/dissociation, rates of receptor complex methylation and demethylation.
+And the last thing is to assign values to the parameters. Let us start with no ligand is added to the system. We assign the initial number for each molecule and reaction rates based on *in vivo* stoichiometry and parameter tuning [^1][^Li2004][^Stock1991]. Specifically, we will add number of CheR, CheB, the state-dependency of receptor complex autophosphorylation, reaction rates for receptor-CheR binding/dissociation, rates of receptor complex methylation and demethylation.
 
+~~~ ruby
 	begin parameters
 		NaV 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
 		miu 1e-6
-		
+
 		L0 0             #number of molecules/cell
 		T0 7000          #number of molecules/cell
 		CheY0 20000      #number of molecules/cell
 		CheZ0 6000       #number of molecules/cell
 		CheR0 120        #number of molecules/cell
 		CheB0 250        #number of molecules/cell
-		
+
 		k_lr_bind 8.8e6/NaV    #ligand-receptor binding
 		k_lr_dis 35            #ligand-receptor dissociation
-		
+
 		k_TaUnbound_phos 7.5   #receptor complex autophosphorylation
-		
+
 		k_Y_phos 3.8e6/NaV     #receptor complex phosphorylates Y
 		k_Y_dephos 8.6e5/NaV   #Z dephosphoryaltes Y
-		
+
 		k_TR_bind  2e7/NaV     #Receptor-CheR binding
 		k_TR_dis   1           #Receptor-CheR dissociation
 		k_TaR_meth 0.08        #CheR methylates receptor complex
-		
+
 		k_B_phos 1e5/NaV       #CheB phosphorylation by receptor complex
 		k_B_dephos 0.17        #CheB autodephosphorylation
-		
+
 		k_Tb_demeth 5e4/NaV    #CheB demethylates receptor complex
 		k_Tc_demeth 2e4/NaV    #CheB demethylates receptor complex
 	end parameters
 ~~~
 
-The complete code can be downloaded here: 
+The complete code can be downloaded here:
 <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/adaptation.bngl" download="adaptation.bngl">adaptation.bngl</a>.
 
 ## Adaptation: CheY returns to equilibrium
@@ -215,9 +219,5 @@ That suggests ligand binding can lead to a very quick response (within 1s), and 
 [^Krembel2015]: Krembel A., Colin R., Sourijik V. 2015. Importance of multiple methylation sites in *Escherichia coli* chemotaxis. [Available online](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0145582)
 
 
-[Back to Main Text](home_senseadap){: .btn .btn--primary .btn--large}
+[Return to main text](home_senseadap){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
-
-
-
-

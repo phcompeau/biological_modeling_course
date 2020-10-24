@@ -203,7 +203,7 @@ Which strategy is more efficient?
 
 Go back to main text for now. We will return to this tutorial later.
 
-[Back to Main Text](home_conclusion){: .btn .btn--primary .btn--large}
+[Return to main text](home_conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Qualitative comparison of different background tumbling frequencies
@@ -275,5 +275,3 @@ For all `time_exp`, after some time the average distance flattens. Why for diffe
 
 [Back to Main Text](home_conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
-
-
