@@ -87,28 +87,26 @@ begin parameters
 end parameters
 ~~~
 
+Place everything occurring above between `begin model` and `end model` tags.
 
 ## Simulating responses to attractants
 
-Before running the simulation, let's think about what will happen. If we don't add any ligand molecule into the system, then T phosphorylation happens at rate [*T*]*k_T_phos*, and T will phosphorylate CheY, which will be dephosphorylated by CheZ. The concentrations of phosphorylated T and CheY will stay at a steady state. That's the initial concentrations of molecules at each state we defined earlier.
+Before running the simulation, let's think about what will happen. If we don't add any ligand molecule into the system, then assuming that we have started the simulation at steady-state, then the concentrations of phosphorylated receptors and CheY will remain at equilibrium.
 
-Observe the simulation for a bit longer. Change `t_end` at the bottom to 3.
+We can now run the simulation, setting `t_end` equal to 3 in order to run the simulation for longer than we did in the ligand-receptor tutorial. Place the following after `end model` in your BioNetGen file.
 
 ~~~ ruby
 	generate_network({overwrite=>1})
 	simulate({method=>"ssa", t_end=>3, n_steps=>100})
 ~~~
 
-Run simulation with no ligand molecule present by setting `L0` in the `parameters` section to 0, and click `Run` under `Simulate`. What do you observe?
+Now save your file and run the simulation by clicking `Run` under `Simulate`. What do you observe?
 
-When we add ligand molecules into the system, as we did in the tutorial for [ligand-receptor dynamics](tutorial_lr), concentration of bound T increases. What will happen to the concentration of phosphorylated CheA, and phosphorylated CheY? What will happen to steady state concentrations?
+When we add ligand molecules into the system, as we did in the tutorial for [ligand-receptor dynamics](tutorial_lr), the concentration of bound receptors should increase. What will happen to the concentration of phosphorylated CheA, and phosphorylated CheY? What will happen to steady state concentrations?
 
-Run simulation with `L0 = 5000` and `L0 = 1e5` to confirm your hypothesis. What do you observe?
+Now run your simulation by changing `L0` to be equal to 5000 and then run it again with `L0` to be equal to 1e5. Do the results confirm your hypothesis? What happens as we keep changing `L0`? What happens as `L0` gets really large (e.g., 1e9)? What do you think is going on?
 
-For different `L0`'s, how do the steady state for bound ligand, active receptor, and active CheY differ and why?
-
-Exercise: Try several different `L0` values (ex. 1e3, 1e7, 1e9). Are you seeing what you expected? If at some point the result won't change anymore, why? What does it imply about limitation in chemotaxis (but it's already a wide range of concentrations isn't it)?
-
+In the main text, we will explore the results of the above simulation. We will then interpret how differences in the amounts of initial ligand can propagate to changes in the concentration of phosphorylated CheY (and therefore the bacterium's tumbling frequency).
 
 [^Bertoli2013]: Bertoli C, Skotheim JM, de Bruin RAM. 2013. Control of cell cycle transcription during G1 and S phase. Nature Reviews Molecular Cell Biology 14:518-528. [Available online](https://www.nature.com/articles/nrm3629).
 
