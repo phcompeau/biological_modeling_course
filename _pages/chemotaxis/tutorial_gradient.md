@@ -3,6 +3,8 @@ permalink: /chemotaxis/tutorial_gradient
 title: "Up gradient/Addition"
 sidebar:
  nav: "chemotaxis"
+toc: true
+toc_sticky: true
 ---
 
 In this page, we will:

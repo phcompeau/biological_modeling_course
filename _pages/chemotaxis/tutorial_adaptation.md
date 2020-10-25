@@ -3,6 +3,8 @@ permalink: /chemotaxis/tutorial_adap
 title: "Adaptation"
 sidebar:
  nav: "chemotaxis"
+toc: true
+toc_sticky: true
 ---
 
 In this page, we will:
