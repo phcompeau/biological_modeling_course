@@ -127,14 +127,14 @@ coronavirus:
         url: /coronavirus/home
       - title: Protein Structure
         children:
-          - title: "Introduction to Protein Structure Prediction<br><br>"
-          url: /coronavirus/structure_intro
-          - title: "Ab initio Protein Structure Prediction<br><br>"
-          url: /coronavirus/ab_initio
-          - title: "Homology Modeling for Protein Structure Prediction<br><br>"
-          url: /coronavirus/homology
-          - title: "Assessing Model Accuracy<br><br>"
-          url: /coronavirus/accuracy
+        - title: "Introduction to Protein Structure Prediction<br><br>"
+        url: /coronavirus/structure_intro
+        - title: "Ab initio Protein Structure Prediction<br><br>"
+        url: /coronavirus/ab_initio
+        - title: "Homology Modeling for Protein Structure Prediction<br><br>"
+        url: /coronavirus/homology
+        - title: "Assessing Model Accuracy<br><br>"
+        url: /coronavirus/accuracy
   - title: Comparing SARS-CoV-2 and SARS
     children:
       - title: "Searching for Differences<br><br>"
