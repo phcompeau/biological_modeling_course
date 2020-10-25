@@ -101,7 +101,7 @@ chemotaxis:
         url: /chemotaxis/home_conclusion
   - title: Software Tutorials (featuring BioNetGen)
     children:
-      - title: "Starting BioNetGen simulation<br><br>"
+      - title: "Getting started wtih BioNetGen and modeling ligand-receptor dynamics<br><br>"
         url: /chemotaxis/tutorial_lr
       - title: "Adding phosphorylation to our BioNetGen model<br><br>"
         url: /chemotaxis/tutorial_phos
