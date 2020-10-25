@@ -56,7 +56,7 @@ end reaction rules
 
 ## Initializing molecules and parameters
 
-To initialize our simulation, we need to indicate the number of molecules in *each state* present at the beginning of the simulation. Since we are adding ligands at the beginning of the simulation, the initial amount of molecules at each same state should be equal to the equilibrium concentrations when no ligand is present.
+To initialize our simulation, we need to indicate the number of molecules in *each state* present at the beginning of the simulation. Since we are adding ligands at the beginning of the simulation, the initial amount of molecules at each same state should be equal to the equilibrium concentrations when no ligand is present.  To this end, we set the amount of phosphorylated receptor equal to one-fourth the concentration of unphosphorylated receptor, and the concentration of phosphorylated CheY to be equal to the concentration of phosphorylated CheY. (Note: this was validated through trial and error.)
 
 ~~~ ruby
 begin seed species

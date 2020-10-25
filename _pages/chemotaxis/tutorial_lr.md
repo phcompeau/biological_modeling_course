@@ -110,7 +110,7 @@ Because of the differing units of molecules per cell and mole per second, we nee
 
 For bimolecular reactions, the rate constant should have unit M<sup>-1</sup>s<sup>-1</sup>, and we divide with NaV to convert to (molecules/µm<sup>3</sup>)<sup>-1</sup>)s<sup>-1</sup>. For monomolecular reactions, the rate constant have unit s<sup>-1</sup>, so no unit conversion is required.
 
-Although the specific numbers of cellular components vary among each bacterium, the components in chemotaxis pathway follows a relatively constant ratio. For all the simulations in this tutorial, we assign the initial number for each molecule and reaction rate by first deciding a reasonable range based on *in vivo* quantities [^Li2004][^Spiro1997][^Stock1991] and then tuning to fit the model. Our parameters are summarized below.
+Although the specific numbers of cellular components vary among each bacterium, the components in chemotaxis pathway follows a relatively constant ratio. For all the simulations in this tutorial, we assign the initial number for each molecule and reaction rate by first deciding a reasonable range based on *in vivo* quantities [^Li2004][^Spiro1997][^Stock1991]. Our parameters are summarized below.
 
 ~~~ ruby
 	begin parameters
@@ -130,7 +130,7 @@ If you save your file, then you should see a "contact map" in the upper right co
 
 We are now ready to run our simulation. At the bottom of the model specification (i.e., after `end model`), we will add a `generate_network` and `simulate` command. The `simulate` command will take three parameters, which we specify below.
 
-**Method**. We will use `method=>"ssa"` throughout these tutorials, which indicate that we are using the SSA (Gillespie) algorithm that was described in the main text. BioNetGen also includes the parameters `method=>"nf"` (network-free) and `method=>"ode"`(ordinary differential equations) that you can try.
+**Method**. We will use `method=>"ssa"` throughout these tutorials, which indicate that we are using the SSA (Gillespie) algorithm that was described in the main text. BioNetGen also includes the parameters `method=>"nf"` (network-free) and `method=>"ode"`(ordinary differential equations) that you can try. See the following article for more details if you are interested in these two approaches: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5079481">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5079481</a>.
 
 **Time span**.`t_end`, the simulation duration. BioNetGen simulation time is unitless; for simplicity, we assume our time unit is the second.
 
@@ -186,7 +186,7 @@ The following code contains our complete simulation, which you can also download
 
 ## Running our simulation
 
-We are now ready to run our simulation. To do so, visit `Simulation` at the right side of the contact map and click `Run`. You can visualize your `.gdat` data.
+We are now ready to run our simulation. To do so, visit `Simulation` at the right side of the contact map and click `Run`. You can then visualize the results of the simulation, showing changes in concentration over time. These results are also stored as a .gdat file in the folder `result/your time of simulation`.
 
 Is the result you obtain what you expected? In the main text, we will return to this question and then learn more about the details of bacterial chemotaxis in order to expand our BioNetGen model into one that fully reflects these details.
 
