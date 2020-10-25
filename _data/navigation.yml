@@ -101,7 +101,7 @@ chemotaxis:
         url: /chemotaxis/home_conclusion
   - title: Software Tutorials (featuring BioNetGen)
     children:
-      - title: "Getting started with BioNetGen and modeling ligand-receptor dynamics<br><br>"
+      - title: "Starting BioNetGen simulation<br><br>"
         url: /chemotaxis/tutorial_lr
       - title: "Adding phosphorylation to our BioNetGen model<br><br>"
         url: /chemotaxis/tutorial_phos
@@ -125,15 +125,15 @@ coronavirus:
     children:
       - title: "Introduction<br><br>"
         url: /coronavirus/home
-      - title: Protein Structure
-        children:
-        - title: "Introduction to Protein Structure Prediction<br><br>"
+  - title: Protein Structure
+    children:
+      - title: "Introduction to Protein Structure Prediction<br><br>"
         url: /coronavirus/structure_intro
-        - title: "Ab initio Protein Structure Prediction<br><br>"
+      - title: "Ab initio Protein Structure Prediction<br><br>"
         url: /coronavirus/ab_initio
-        - title: "Homology Modeling for Protein Structure Prediction<br><br>"
+      - title: "Homology Modeling for Protein Structure Prediction<br><br>"
         url: /coronavirus/homology
-        - title: "Assessing Model Accuracy<br><br>"
+      - title: "Assessing Model Accuracy<br><br>"
         url: /coronavirus/accuracy
   - title: Comparing SARS-CoV-2 and SARS
     children:
