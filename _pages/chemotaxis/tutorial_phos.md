@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-In this tutorial, we will extend the BioNetGen model covered in the [tutorial_lr](ligand-receptor tutorial) to add the phosphorylation chemotaxis mechanisms described in the main text, shown in the figure reproduced below.
+In this tutorial, we will extend the BioNetGen model covered in the [ligand-receptor tutorial](tutorial_lr) to add the phosphorylation chemotaxis mechanisms described in the main text, shown in the figure reproduced below.
 
 ![image-center](../assets/images/chemotaxisphosnew.png){: .align-center}
 
@@ -100,6 +100,65 @@ We can now run the simulation, setting `t_end` equal to 3 in order to run the si
 ~~~ ruby
 	generate_network({overwrite=>1})
 	simulate({method=>"ssa", t_end=>3, n_steps=>100})
+~~~
+
+The following code contains our complete simulation, which you can also download here:
+<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/phosphorylation.bngl" download="phosphorylation.bngl">phosphorylation.bngl</a>
+
+~~~ ruby
+begin model
+
+begin molecule types
+	L(t)             #ligand molecule
+	T(l,Phos~U~P)    #receptor complex
+	CheY(Phos~U~P)
+	CheZ()
+end molecule types
+
+begin observables
+	Molecules phosphorylated_CheY CheY(Phos~P)
+	Molecules phosphorylated_CheA T(Phos~P)
+	Molecules bound_ligand L(t!1).T(l!1)
+end observables
+
+begin parameters
+	NaV2 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
+	L0 5e3          #number of ligand molecules
+	T0 7000       #number of receptor complexes
+	CheY0 20000
+	CheZ0 6000
+	
+	k_lr_bind 8.8e6/NaV2   #ligand-receptor binding
+	k_lr_dis 35            #ligand-receptor dissociation
+	k_T_phos 15            #receptor complex autophosphorylation
+	k_Y_phos 3.8e6/NaV2    #receptor complex phosphorylates Y
+	k_Y_dephos 8.6e5/NaV2  #Z dephosphoryaltes Y
+end parameters
+
+begin reaction rules
+	LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
+	
+	#Free vs. ligand-bound receptor complexes autophosphorylates at different rates
+	FreeTP: T(l,Phos~U) -> T(l,Phos~P) k_T_phos
+	BoundTP: L(t!1).T(l!1,Phos~U) -> L(t!1).T(l!1,Phos~P) k_T_phos*0.2
+	
+	YP: T(Phos~P) + CheY(Phos~U) -> T(Phos~U) + CheY(Phos~P) k_Y_phos
+	YDep: CheZ() + CheY(Phos~P) -> CheZ() + CheY(Phos~U) k_Y_dephos
+end reaction rules
+
+begin seed species
+	L(t) 0
+	T(l,Phos~U) T0*0.8
+	T(l,Phos~P) T0*0.2
+	CheY(Phos~U) CheY0*0.5
+	CheY(Phos~P) CheY0*0.5
+	CheZ() CheZ0
+end seed species
+
+end model
+
+generate_network({overwrite=>1})
+simulate({method=>"ssa", t_end=>3, n_steps=>100})
 ~~~
 
 Now save your file and run the simulation by clicking `Run` under `Simulate`. What do you observe?
