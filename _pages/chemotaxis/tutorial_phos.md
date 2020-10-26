@@ -87,6 +87,8 @@ begin parameters
 end parameters
 ~~~
 
+**Important note:** The `parameters` section has to appear before the `reaction rules` section.
+
 Place everything occurring above between `begin model` and `end model` tags.
 
 ## Simulating responses to attractants
