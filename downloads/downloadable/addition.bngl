@@ -9,6 +9,16 @@ begin molecule types
 	CheR(t)
 end molecule types
 
+begin observables
+	Molecules bound_ligand L(t!1).T(l!1)
+	Molecules phosphorylated_CheY CheY(Phos~P)
+	Molecules low_methyl_receptor T(Meth~A)
+	Molecules medium_methyl_receptor T(Meth~B)
+	Molecules high_methyl_receptor T(Meth~C)
+	Molecules phosphorylated_CheB CheB(Phos~P)
+	Molecules AllLigand L
+end observables
+
 begin parameters
 	NaV2 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
 	miu 1e-6
@@ -41,22 +51,6 @@ begin parameters
 	k_add 0.1              #Ligand increase
 	
 end parameters
-
-begin compartments
-  EC  3  100       #um^3
-  PM  2  1   EC    #um^2
-  CP  3  1   PM    #um^3
-end compartments
-
-begin observables
-	Molecules bound_ligand L(t!1).T(l!1)
-	Molecules phosphorylated_CheY CheY(Phos~P)
-	Molecules low_methyl_receptor T(Meth~A)
-	Molecules medium_methyl_receptor T(Meth~B)
-	Molecules high_methyl_receptor T(Meth~C)
-	Molecules phosphorylated_CheB CheB(Phos~P)
-	Molecules AllLigand L
-end observables
 
 begin functions
 	addRate() = if(AllLigand>1e8,0,k_add)
@@ -100,6 +94,12 @@ begin reaction rules
 	LAdd: L(t) -> L(t) + L(t) addRate()
 	
 end reaction rules
+
+begin compartments
+  EC  3  100       #um^3
+  PM  2  1   EC    #um^2
+  CP  3  1   PM    #um^3
+end compartments
 
 begin seed species
 	@EC:L(t) L0

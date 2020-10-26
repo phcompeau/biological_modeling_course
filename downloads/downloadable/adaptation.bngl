@@ -1,11 +1,5 @@
 begin model
 
-begin compartments
-  EC  3  100       #um^3
-  PM  2  1   EC    #um^2
-  CP  3  1   PM    #um^3
-end compartments
-
 begin molecule types
 	L(t)
 	T(l,r,Meth~A~B~C,Phos~U~P)
@@ -14,6 +8,16 @@ begin molecule types
 	CheB(Phos~U~P)
 	CheR(t)
 end molecule types
+
+begin observables
+	Molecules bound_ligand L(t!1).T(l!1)
+	Molecules phosphorylated_CheY CheY(Phos~P)
+	Molecules low_methyl_receptor T(Meth~A)
+	Molecules medium_methyl_receptor T(Meth~B)
+	Molecules high_methyl_receptor T(Meth~C)
+	Molecules phosphorylated_CheB CheB(Phos~P)
+	Molecules CheRbound T(r!2).CheR(t!2)
+end observables
 
 begin parameters
 	NaV2 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
@@ -46,7 +50,7 @@ begin parameters
 end parameters
 
 begin reaction rules
-	LigandReceptor: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
+	LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
 	
 	#Receptor complex (specifically CheA) autophosphorylation
 	#Rate dependent on methylation and binding states
@@ -59,8 +63,8 @@ begin reaction rules
 	TcLigandP: L(t!1).T(l!1,Meth~C,Phos~U) -> L(t!1).T(l!1,Meth~C,Phos~P) k_TaUnbound_phos*1.6
 	
 	#CheY phosphorylation by T and dephosphorylation by CheZ
-	YPhos: T(Phos~P) + CheY(Phos~U) -> T(Phos~U) + CheY(Phos~P) k_Y_phos
-	YDephos: CheZ() + CheY(Phos~P) -> CheZ() + CheY(Phos~U) k_Y_dephos
+	YP: T(Phos~P) + CheY(Phos~U) -> T(Phos~U) + CheY(Phos~P) k_Y_phos
+	YDep: CheZ() + CheY(Phos~P) -> CheZ() + CheY(Phos~U) k_Y_dephos
 	
 	#CheR binds to and methylates receptor complex
 	#Rate dependent on methylation states and ligand binding
@@ -81,6 +85,12 @@ begin reaction rules
 	
 end reaction rules
 
+begin compartments
+  EC  3  100       #um^3
+  PM  2  1   EC    #um^2
+  CP  3  1   PM    #um^3
+end compartments
+
 begin seed species
 	@EC:L(t) L0
 	@PM:T(l,r,Meth~A,Phos~U) T0*0.84*0.9
@@ -96,15 +106,6 @@ begin seed species
 	@CP:CheB(Phos~P) CheB0*0.38
 	@CP:CheR(t) CheR0
 end seed species
-
-begin observables
-	Molecules bound_ligand L(t!1).T(l!1)
-	Molecules phosphorylated_CheY CheY(Phos~P)
-	Molecules low_methyl_receptor T(Meth~A)
-	Molecules medium_methyl_receptor T(Meth~B)
-	Molecules high_methyl_receptor T(Meth~C)
-	Molecules phosphorylated_CheB CheB(Phos~P)
-end observables
 
 end model
 
