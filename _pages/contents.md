@@ -14,11 +14,11 @@ The following contents is a work in progress and will be expanded in the coming 
 
 ## Prologue: An introduction to biological modeling via random walks and Turing patterns##
 
-[Link to module](prologue)
+[Link to module](/prologue)
 
 ## Module 1: Finding motifs in transcription factor networks ##
 
-[Link to module](motifs)
+[Link to module](/motifs/home)
 
 Featured software: CellBlender, MCell
 
