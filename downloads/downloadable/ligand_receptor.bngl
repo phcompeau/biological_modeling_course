@@ -5,6 +5,12 @@ begin molecule types
 	T(l)
 end molecule types
 
+begin observables
+	Molecules free_ligand L(t)
+	Molecules bound_ligand L(t!l).T(l!l)
+	Molecules free_receptor T(l)
+end observables
+
 begin parameters
 	NaV2 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
 	L0 1e4        #number of ligand molecules
@@ -14,19 +20,13 @@ begin parameters
 end parameters
 
 begin reaction rules
-	LigandReceptor: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
+	LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
 end reaction rules
 
 begin seed species
 	L(t) L0
 	T(l) T0
 end seed species
-
-begin observables
-	Molecules free_ligand L(t)
-	Molecules bound_ligand L(t!l).T(l!l)
-	Molecules free_receptor T(l)
-end observables
 
 end model
 

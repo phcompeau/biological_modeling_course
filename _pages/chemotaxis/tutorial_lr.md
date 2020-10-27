@@ -27,7 +27,7 @@ In this tutorial, we will focus only on modeling ligand-receptor dynamics, which
 ## Starting with Ligand-Receptor Dynamics
 
 In this tutorial, we will build our model from scratch. If you like instead, you can download the completed simulation file here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/ligand_receptor.BioNetGenl" download="ligand_receptor.BioNetGenl">ligand_receptor.BioNetGenl</a>
+<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/ligand_receptor.bngl" download="ligand_receptor.bngl">ligand_receptor.bngl</a>
 
 In our system, there are only two types of molecules: the ligand (`L`), and the receptor (`T`). (The receptor is in fact a receptor complex because it is attached to additional molecules, which we will elaborate on later). The ligand can bind to the receptor, forming an intermediate, and the complex can also dissociate. We write this reaction as `L + T <-> L.T`, where the formation of the intermediate is called the **forward reaction**, and the dissociation is called the **reverse reaction**.
 
@@ -122,6 +122,8 @@ Although the specific numbers of cellular components vary among each bacterium, 
 	end parameters
 ~~~
 
+**Important note:** The `parameters` section has to appear before the `reaction rules` section.
+
 If you save your file, then you should see a "contact map" in the upper right corner of the window indicating the potential bonding of `L` and `T`. This contact map is currently very simplistic, but for more complicated simulations it can help visualize the interaction of species in the system.
 
 ![image-center](../assets/images/chemotaxis_tutorial3.png){: .align-center}
@@ -142,43 +144,43 @@ We are now ready to run our simulation. At the bottom of the model specification
 ~~~
 
 The following code contains our complete simulation, which you can also download here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/ligand_receptor.BioNetGenl" download="ligand_receptor.BioNetGenl">ligand_receptor.BioNetGenl</a>.
+<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/ligand_receptor.bngl" download="ligand_receptor.bngl">ligand_receptor.bngl</a>.
 
 ~~~ ruby
-	begin model
+begin model
 
-	begin molecule types
-		L(t)
-		T(l)
-	end molecule types
+begin molecule types
+	L(t)
+	T(l)
+end molecule types
 
-	begin parameters
-		NaV2 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
-		L0 1e4        #number of ligand molecules
-		T0 7000       #number of receptor complexes
-		k_lr_bind 8.8e6/NaV2   #ligand-receptor binding
-		k_lr_dis 35            #ligand-receptor dissociation
-	end parameters
+begin observables
+	Molecules free_ligand L(t)
+	Molecules bound_ligand L(t!l).T(l!l)
+	Molecules free_receptor T(l)
+end observables
 
-	begin reaction rules
-		LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
-	end reaction rules
+begin parameters
+	NaV2 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
+	L0 1e4        #number of ligand molecules
+	T0 7000       #number of receptor complexes
+	k_lr_bind 8.8e6/NaV2   #ligand-receptor binding
+	k_lr_dis 35            #ligand-receptor dissociation
+end parameters
 
-	begin seed species
-		L(t) L0
-		T(l) T0
-	end seed species
+begin reaction rules
+	LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
+end reaction rules
 
-	begin observables
-		Molecules free_ligand L(t)
-		Molecules bound_ligand L(t!l).T(l!l)
-		Molecules free_receptor T(l)
-	end observables
+begin seed species
+	L(t) L0
+	T(l) T0
+end seed species
 
-	end model
+end model
 
-	generate_network({overwrite=>1})
-	simulate({method=>"ssa", t_end=>1, n_steps=>100})
+generate_network({overwrite=>1})
+simulate({method=>"ssa", t_end=>1, n_steps=>100})
 ~~~
 
 **STOP:** Based on our results from calculating steady-state concentration by hand in the main text, predict how the concentrations will change and what the equilibrium concentrations will be.
