@@ -18,7 +18,7 @@ The following contents is a work in progress and will be expanded in the coming 
 
 ## Module 1: Finding motifs in transcription factor networks ##
 
-[Link to module](../motifs/home/)
+[Link to module](../motifs/home)
 
 Featured software: CellBlender, MCell
 
