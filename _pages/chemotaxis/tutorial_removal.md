@@ -23,9 +23,9 @@ Please make sure the following dependencies are installed.
 |:------|:-----:|------:|
 | [Python3](https://www.python.org/downloads/)  |3.6+ |`python --version` |
 | [Jupyter Notebook](https://jupyter.org/index.html) | 4.4.0+ | `jupyter --version` |
-| [Numpy](https://numpy.org/install/) | 1.14.5+ | `pip list | grep numpy` |
-| [Matplotlib](https://matplotlib.org/users/installing.html) | 3.0+ | `pip list | grep matplotlib` |
-| [Colorspace](https://python-colorspace.readthedocs.io/en/latest/installation.html) or with [pip](https://pypi.org/project/colorspace/)| any | `pip list | grep colorspace`|
+| [Numpy](https://numpy.org/install/) | 1.14.5+ | `pip list \| grep numpy` |
+| [Matplotlib](https://matplotlib.org/users/installing.html) | 3.0+ | `pip list \| grep matplotlib` |
+| [Colorspace](https://python-colorspace.readthedocs.io/en/latest/installation.html) or with [pip](https://pypi.org/project/colorspace/)| any | `pip list \| grep colorspace`|
 
 ## Modeling traveling down the gradient with BNG
 
