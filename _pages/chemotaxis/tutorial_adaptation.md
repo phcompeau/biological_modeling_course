@@ -142,7 +142,9 @@ end reaction rules
 
 ## Adding Compartments
 
-In biological systems, the **plasma membrane** separates molecules inside of the cell from the external environment. In our chemotaxis system, ligands are outside of the cell, receptors and flagellar proteins are on the membrane, and CheY, CheR, CheB, CheZ are inside the cell. BioNetGen allows us to **compartmentalize** our model based on the location of different molecules, and we will take the opportunity to add compartmentalization into our model.
+In biological systems, the **plasma membrane** separates molecules inside of the cell from the external environment. In our chemotaxis system, ligands are outside of the cell, receptors and flagellar proteins are on the membrane, and CheY, CheR, CheB, CheZ are inside the cell.
+
+BioNetGen allows us to **compartmentalize** our model based on the location of different molecules. Although our model does not call for compartmentalization, it has value in models where we need different concentrations based on different cellular compartments, influencing the rates of reactions involving molecules within these compartments. For this reason, we will take the opportunity to add compartmentalization into our model.
 
 Below, we define three compartments corresponding to extra-cellular space (outside the cell), the plasma membrane, and the cytoplasm (inside the cell). Each row indicates four parameters:
 
@@ -186,35 +188,35 @@ end seed species
 And the last thing is to assign values to the parameters. Let us start with no ligand is added to the system. We assign the initial number for each molecule and reaction rates based on *in vivo* stoichiometry and parameter tuning [^1][^Li2004][^Stock1991]. Specifically, we will add number of CheR, CheB, the state-dependency of receptor complex autophosphorylation, reaction rates for receptor-CheR binding/dissociation, rates of receptor complex methylation and demethylation.
 
 ~~~ ruby
-	begin parameters
-		NaV 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
-		miu 1e-6
+begin parameters
+	NaV 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
+	miu 1e-6
 
-		L0 0             #number of molecules/cell
-		T0 7000          #number of molecules/cell
-		CheY0 20000      #number of molecules/cell
-		CheZ0 6000       #number of molecules/cell
-		CheR0 120        #number of molecules/cell
-		CheB0 250        #number of molecules/cell
+	L0 0             #number of molecules/cell
+	T0 7000          #number of molecules/cell
+	CheY0 20000      #number of molecules/cell
+	CheZ0 6000       #number of molecules/cell
+	CheR0 120        #number of molecules/cell
+	CheB0 250        #number of molecules/cell
 
-		k_lr_bind 8.8e6/NaV    #ligand-receptor binding
-		k_lr_dis 35            #ligand-receptor dissociation
+	k_lr_bind 8.8e6/NaV    #ligand-receptor binding
+	k_lr_dis 35            #ligand-receptor dissociation
 
-		k_TaUnbound_phos 7.5   #receptor complex autophosphorylation
+	k_TaUnbound_phos 7.5   #receptor complex autophosphorylation
 
-		k_Y_phos 3.8e6/NaV     #receptor complex phosphorylates Y
-		k_Y_dephos 8.6e5/NaV   #Z dephosphoryaltes Y
+	k_Y_phos 3.8e6/NaV     #receptor complex phosphorylates Y
+	k_Y_dephos 8.6e5/NaV   #Z dephosphoryaltes Y
 
-		k_TR_bind  2e7/NaV     #Receptor-CheR binding
-		k_TR_dis   1           #Receptor-CheR dissociation
-		k_TaR_meth 0.08        #CheR methylates receptor complex
+	k_TR_bind  2e7/NaV     #Receptor-CheR binding
+	k_TR_dis   1           #Receptor-CheR dissociation
+	k_TaR_meth 0.08        #CheR methylates receptor complex
 
-		k_B_phos 1e5/NaV       #CheB phosphorylation by receptor complex
-		k_B_dephos 0.17        #CheB autodephosphorylation
+	k_B_phos 1e5/NaV       #CheB phosphorylation by receptor complex
+	k_B_dephos 0.17        #CheB autodephosphorylation
 
-		k_Tb_demeth 5e4/NaV    #CheB demethylates receptor complex
-		k_Tc_demeth 2e4/NaV    #CheB demethylates receptor complex
-	end parameters
+	k_Tb_demeth 5e4/NaV    #CheB demethylates receptor complex
+	k_Tc_demeth 2e4/NaV    #CheB demethylates receptor complex
+end parameters
 ~~~
 
 **Important note:** The `parameters` section has to appear before the `reaction rules` section.
