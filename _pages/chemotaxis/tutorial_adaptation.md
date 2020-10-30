@@ -165,7 +165,7 @@ end compartments
 
 ## Specifying concentrations and reaction rates
 
-We need to add the compartmentalization information in the `seed species`. Also update the initial concentrations of molecules at different states. The distribution of molecules at each state is very difficult to experimentally verify. The distribution provided here approximates equilibrium concentrations in our simulation, and they are within a biologically reasonable range.[^Bray1993]
+To add compartmentalization information in the `seed species` section of our BioNetGen model, we use the notation `@location` before the specification of the  concentrations. In what follows, we specify initial concentrations of ligand, receptor, and chemotaxis enzymes at different states.  The distribution of molecule concentrations at each state is very difficult to verify experimentally; the distribution provided here approximates equilibrium concentrations in our simulation, and they are within a biologically reasonable range.[^Bray1993]
 
 ~~~ ruby
 begin seed species
@@ -185,7 +185,9 @@ begin seed species
 end seed species
 ~~~
 
-And the last thing is to assign values to the parameters. Let us start with no ligand is added to the system. We assign the initial number for each molecule and reaction rates based on *in vivo* stoichiometry and parameter tuning [^1][^Li2004][^Stock1991]. Specifically, we will add number of CheR, CheB, the state-dependency of receptor complex autophosphorylation, reaction rates for receptor-CheR binding/dissociation, rates of receptor complex methylation and demethylation.
+Finally, we need to assign values to the parameters. We will assume that we start with a zero ligand concentration.  We then assign the initial concentration of each molecule and rates of our reactions based on *in vivo* stoichiometry and parameter tuning [^Li2004][^Stock1991].
+
+**An important note:** although we discussed reaction rules first, the `parameters` section below has to appear before the `reaction rules` section.
 
 ~~~ ruby
 begin parameters
@@ -219,21 +221,17 @@ begin parameters
 end parameters
 ~~~
 
-**Important note:** The `parameters` section has to appear before the `reaction rules` section.
+## Completing our adaptation simulation
 
-## Simulating adaptation
-
-Place the following after `end model` and you are ready to simulate. This time we simulate over 800s.
+We will be ready to simulate once we place the following code after `end model`. We will run our simulation for 800 seconds.
 
 ~~~ ruby
 generate_network({overwrite=>1})
 simulate({method=>"ssa", t_end=>800, n_steps=>800})
 ~~~
 
-The following code contains our complete simulation, which you can also download here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/adaptation.bngl" download="adaptation.bngl">adaptation.bngl</a>.
+The following code contains our complete simulation.
 
-The complete code:
 ~~~ ruby
 begin model
 
@@ -350,22 +348,19 @@ generate_network({overwrite=>1})
 simulate({method=>"ssa", t_end=>800, n_steps=>800})
 ~~~
 
-## Adaptation: CheY returns to equilibrium
+## Running our adaptation model
 
-Fantastic, we have the model now.
+Now save your file and run the model. Because the model is at equilibrium, we will see the seemingly boring plot shown below.
 
 ![image-center](../assets/images/chemotaxis_tutorial_oneadd0.png){: .align-center}
 
-Run simulation with `L0 = 1e6`. What happens to CheY activity? What happens to methylation states?
+Things get interesting when we change the initial concentration of ligand to see how the simulated bacterium will adapt. Run your simulation with `L0` = `1e6`. What happens to CheY activity? What happens to the concentration of receptors at different methylation states?
 
-You will observe CheY acitvity drops immediately, and returns to the original state gradually. You will also see when the system reaches steady state, the there are more highly methlyated receptors, and less weakly methylated receptors.
+Try a variety of different initial concentrations of ligand (`L0` = `1e4`, `1e5`, `1e6`, `1e7`, `1e8`), paying attention the concentration of phosphorylated CheY. How does the concentration change depending on initial ligand concentration?
 
-Try higher concentrations (L0 = 1e4, 1e5, 1e6, 1e7, 1e8), highlight the line showing CheY-P. What's the general trend? How does the change depend on ligand concentration?
+Next, try only simulating the first 10 seconds to zoom into what happens to the system at the start. How quickly does CheY concentration reach a minimum?  How long does the cell take to return to the original concentration of phosphorylated CheY (i.e., the background tumbling frequency)?
 
-Also try only simulate the first 10 seconds to zoom into what happens to the system there. When does CheY activities reach minimum?
-
-That suggests ligand binding can lead to a very quick response (within 1s), and the cell slowly adapts to the concentration and returns to the background tumbling frequency in several minutes.
-
+Back in the main text, we will examine how a sudden change in the concentration of unbound ligand can cause a quick change in the tumbling frequency of the bacterium, followed by a slow return to its original frequency. We will also see how the extent to which this tumbling frequency is disturbed is dependent upon differences in the initial concentration of ligand.
 
 [^Spiro1997]: Spiro PA, Parkinson JS, and Othmer H. 1997. A model of excitation and adaptation in bacterial chemotaxis. Biochemistry 94:7263-7268. [Available online](https://www.pnas.org/content/94/14/7263).
 
