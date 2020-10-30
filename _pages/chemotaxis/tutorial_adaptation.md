@@ -9,7 +9,9 @@ toc_sticky: true
 
 In this tutorial, we will extend the BioNetGen model covered in the [phosphorylation tutorial](tutorial_phos) to add the methylation mechanisms described in the main text to our ongoing model of bacterial chemotaxis. Our model will be based on the [model](https://www.pnas.org/content/94/14/7263) by Spiro et al.[^Spiro1997]
 
-We will then see how methylation can be used to help the bacterium adapt to a relative change in attractant concentration. For reference, consult the figure below, reproduced from the main text, for an overview of the chemotaxis pathway.
+We will also add **compartmentalization** to our model, which will allow us to differentiate molecules that occur inside and outside of the cell.
+
+Finally, after running our model, we will see how methylation can be used to help the bacterium adapt to a relative change in attractant concentration. For reference, consult the figure below, reproduced from the main text, for an overview of the chemotaxis pathway.
 
 ![image-center](../assets/images/chemotaxis_wholestory.png){: .align-center}
 The chemotaxis signal-transduction pathway with methylation included. CheA phosphorylates CheB, which methylates MCPs, while CheR demethylates MCPs. Blue lines denote phosphorylation, grey lines denote dephosphorylation, and the green arrow denotes methylation. Image modified from <a href="http://chemotaxis.biology.utah.edu/Parkinson_Lab/projects/ecolichemotaxis/ecolichemotaxis.html">Parkinson Lab</a>'s illustrations.
@@ -140,16 +142,23 @@ end reaction rules
 
 ## Adding Compartments
 
-In biological systems, plasma membrane separates molecules inside of the cell from the environment. In our chemotaxis system, ligand are outside of the cell, receptors and flagellar proteins are on the membrane, and CheY, CheR, CheB, CheZ are inside the cell. We will also add this compartmentalization into our model.
+In biological systems, the **plasma membrane** separates molecules inside of the cell from the external environment. In our chemotaxis system, ligands are outside of the cell, receptors and flagellar proteins are on the membrane, and CheY, CheR, CheB, CheZ are inside the cell. BioNetGen allows us to **compartmentalize** our model based on the location of different molecules, and we will take the opportunity to add compartmentalization into our model.
 
-We define extra-cellular spaces, plasma membrane, and cytoplasm. Here, each row indicates 1) name of the compartment, 2) dimension (2D or 3D), 3) surface area or volumn of the compartment, 4) the name of the parent compartment. More information on compartmentalization can be found page 54-55 [here](http://www.lehman.edu/academics/cmacs/documents/RuleBasedPrimer-2011.pdf).
+Below, we define three compartments corresponding to extra-cellular space (outside the cell), the plasma membrane, and the cytoplasm (inside the cell). Each row indicates four parameters:
+
+1. the name of the compartment;
+2. the dimension (2-D or 3-D);
+3. surface area (2-D) or volume (3-D) of the compartment; and
+4. the name of the parent compartment.
+
+If you are interested, more information on compartmentalization can be found on pages 54-55 of Sekar and Faeder's primer on rule-based modeling: [http://www.lehman.edu/academics/cmacs/documents/RuleBasedPrimer-2011.pdf](http://www.lehman.edu/academics/cmacs/documents/RuleBasedPrimer-2011.pdf).
 
 ~~~ ruby
-	begin compartments
-		EC  3  100       #um^3
-		PM  2  1   EC    #um^2
-		CP  3  1   PM    #um^3
-	end compartments
+begin compartments
+	EC  3  100       #um^3
+	PM  2  1   EC    #um^2
+	CP  3  1   PM    #um^3
+end compartments
 ~~~
 
 ## Specifying concentrations and reaction rates
@@ -157,21 +166,21 @@ We define extra-cellular spaces, plasma membrane, and cytoplasm. Here, each row 
 We need to add the compartmentalization information in the `seed species`. Also update the initial concentrations of molecules at different states. The distribution of molecules at each state is very difficult to experimentally verify. The distribution provided here approximates equilibrium concentrations in our simulation, and they are within a biologically reasonable range.[^Bray1993]
 
 ~~~ ruby
-	begin seed species
-		@EC:L(t) L0
-		@PM:T(l,r,Meth~A,Phos~U) T0*0.84*0.9
-		@PM:T(l,r,Meth~B,Phos~U) T0*0.15*0.9
-		@PM:T(l,r,Meth~C,Phos~U) T0*0.01*0.9
-		@PM:T(l,r,Meth~A,Phos~P) T0*0.84*0.1
-		@PM:T(l,r,Meth~B,Phos~P) T0*0.15*0.1
-		@PM:T(l,r,Meth~C,Phos~P) T0*0.01*0.1
-		@CP:CheY(Phos~U) CheY0*0.71
-		@CP:CheY(Phos~P) CheY0*0.29
-		@CP:CheZ() CheZ0
-		@CP:CheB(Phos~U) CheB0*0.62
-		@CP:CheB(Phos~P) CheB0*0.38
-		@CP:CheR(t) CheR0
-	end seed species
+begin seed species
+	@EC:L(t) L0
+	@PM:T(l,r,Meth~A,Phos~U) T0*0.84*0.9
+	@PM:T(l,r,Meth~B,Phos~U) T0*0.15*0.9
+	@PM:T(l,r,Meth~C,Phos~U) T0*0.01*0.9
+	@PM:T(l,r,Meth~A,Phos~P) T0*0.84*0.1
+	@PM:T(l,r,Meth~B,Phos~P) T0*0.15*0.1
+	@PM:T(l,r,Meth~C,Phos~P) T0*0.01*0.1
+	@CP:CheY(Phos~U) CheY0*0.71
+	@CP:CheY(Phos~P) CheY0*0.29
+	@CP:CheZ() CheZ0
+	@CP:CheB(Phos~U) CheB0*0.62
+	@CP:CheB(Phos~P) CheB0*0.38
+	@CP:CheR(t) CheR0
+end seed species
 ~~~
 
 And the last thing is to assign values to the parameters. Let us start with no ligand is added to the system. We assign the initial number for each molecule and reaction rates based on *in vivo* stoichiometry and parameter tuning [^1][^Li2004][^Stock1991]. Specifically, we will add number of CheR, CheB, the state-dependency of receptor complex autophosphorylation, reaction rates for receptor-CheR binding/dissociation, rates of receptor complex methylation and demethylation.
