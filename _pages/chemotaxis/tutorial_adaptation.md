@@ -71,7 +71,7 @@ Next, we will need reactions for CheR binding to receptor complexes and methylat
 TRBind: T(r) + CheR(t) <-> T(r!2).CheR(t!2) k_TR_bind, 1
 ~~~
 
-the rate of methylation is higher for ligand-bound receptors. CheB is phosphorylated by CheA in the receptor complex, and CheB-P then demethylates receptor complexes. Therefore more ligand binding leads to higher methylation states.
+Second, we will need multiple reaction rules for methylation of receptors by CheR because the rate of the reaction can depend on whether a ligand is already bound to the receptor as well as the current methylation level of the receptor. This gives us four rules, since a receptor at the "high" methylation level (C) cannot have increased methylation. Note also that the rate of the methylation reaction is higher if the methylation level is low (A) and significantly higher if the receptor is already bound.
 
 ~~~ ruby
 #CheR methylating the receptor complex
