@@ -64,12 +64,18 @@ TbLP: L(t!1).T(l!1,Meth~B,Phos~U) -> L(t!1).T(l!1,Meth~B,Phos~P) k_TaUnbound_pho
 TcLP: L(t!1).T(l!1,Meth~C,Phos~U) -> L(t!1).T(l!1,Meth~C,Phos~P) k_TaUnbound_phos*1.6
 ~~~
 
-Next, CheR binds to receptor complexes and methylates them; the rate of methylation is higher for ligand-bound receptors. CheB is phosphorylated by CheA in the receptor complex, and CheB-P then demethylates receptor complexes. Therefore more ligand binding leads to higher methylation states.
+Next, we will need reactions for CheR binding to receptor complexes and methylating them. First, we consider the binding of CheR to the receptor.
 
 ~~~ ruby
-#CheR binds to and methylates receptor complex
-#Rate dependent on methylation states and ligand binding
+#CheR binding to receptor complex
 TRBind: T(r) + CheR(t) <-> T(r!2).CheR(t!2) k_TR_bind, 1
+~~~
+
+the rate of methylation is higher for ligand-bound receptors. CheB is phosphorylated by CheA in the receptor complex, and CheB-P then demethylates receptor complexes. Therefore more ligand binding leads to higher methylation states.
+
+~~~ ruby
+#CheR methylating the receptor complex
+#Rate of methylation is dependent on methylation states and ligand binding
 TaRUM: T(r!2,l,Meth~A).CheR(t!2) -> T(r,l,Meth~B) + CheR(t) k_TaR_meth
 TbRUM: T(r!2,l,Meth~B).CheR(t!2) -> T(r,l,Meth~C) + CheR(t) k_TaR_meth*0.1
 TaRLM: T(r!2,l!1,Meth~A).L(t!1).CheR(t!2) -> T(r,l!1,Meth~B).L(t!1) + CheR(t) k_TaR_meth*30
