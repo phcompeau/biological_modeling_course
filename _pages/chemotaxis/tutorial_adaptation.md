@@ -19,7 +19,7 @@ To get started, create a copy of your file from the phosphorylation tutorial and
 
 ## Specifying molecule types
 
-We first will add all molecules needed for our model. As mentioned in the main text, we will assume that an MCP can have one of three methylation states: low (A), medium (B), high (C). We also need to include a component that will allow for the receptor to bind to CheR. As a result, we update our MCP molecule to `T(l,r,Meth~A~B~C,Phos~U~P)`.
+We first will add all molecules needed for our model. As mentioned in the main text, we will assume that an MCP can have one of three methylation states: low (`A`), medium (`B`), and high (`C`). We also need to include a component that will allow for the receptor to bind to CheR. As a result, we update our MCP molecule to `T(l,r,Meth~A~B~C,Phos~U~P)`.
 
 Furthermore, we need to represent CheR and CheB; recall that CheR binds to and methylates receptor complexes, while CheB demethylates them. CheR can bind to `T`, so that we will need the molecule `CheR(t)`. CheB is phosphorylated by CheY, and so it will be represented as `CheB(Phos~U~P)`. Later we will specify reactions specifying how CheR and CheB change the methylation states of receptor complexes.
 
@@ -55,7 +55,6 @@ We now expand our reaction rules to include methylation. First, we change the au
 #Receptor complex (specifically CheA) autophosphorylation
 #Rate dependent on methylation and binding states
 #Also on free vs. bound with ligand
-
 TaUP: T(l,Meth~A,Phos~U) -> T(l,Meth~A,Phos~P) k_TaUnbound_phos
 TbUP: T(l,Meth~B,Phos~U) -> T(l,Meth~B,Phos~P) k_TaUnbound_phos*1.1
 TcUP: T(l,Meth~C,Phos~U) -> T(l,Meth~C,Phos~P) k_TaUnbound_phos*2.8
@@ -71,7 +70,7 @@ Next, we will need reactions for CheR binding to receptor complexes and methylat
 TRBind: T(r) + CheR(t) <-> T(r!2).CheR(t!2) k_TR_bind, 1
 ~~~
 
-Second, we will need multiple reaction rules for methylation of receptors by CheR because the rate of the reaction can depend on whether a ligand is already bound to the receptor as well as the current methylation level of the receptor. This gives us four rules, since a receptor at the "high" methylation level (C) cannot have increased methylation. Note also that the rate of the methylation reaction is higher if the methylation level is low (A) and significantly higher if the receptor is already bound.
+Second, we will need multiple reaction rules for methylation of receptors by CheR because the rate of the reaction can depend on whether a ligand is already bound to the receptor as well as the current methylation level of the receptor. This gives us four rules, since a receptor at the "high" methylation level (`C`) cannot have increased methylation. Note also that the rate of the methylation reaction is higher if the methylation level is low (`A`) and significantly higher if the receptor is already bound.
 
 ~~~ ruby
 #CheR methylating the receptor complex
@@ -90,57 +89,53 @@ CheBp: T(Phos~P) + CheB(Phos~U) -> T(Phos~U) + CheB(Phos~P) k_B_phos
 CheBdp: CheB(Phos~P) -> CheB(Phos~U) k_B_dephos
 ~~~
 
-Finally, 
+CheB also demethylates the receptor complex, at a rate that depends on the current methylation state. (We do not include state `A` since it cannot be further demthylated.)
 
 ~~~ ruby
-#CheB is phosphorylated by receptor complex, and autodephosphorylates
-CheBp: T(Phos~P) + CheB(Phos~U) -> T(Phos~U) + CheB(Phos~P) k_B_phos
-CheBdp: CheB(Phos~P) -> CheB(Phos~U) k_B_dephos
-
 #CheB demethylates receptor complex
-#Rate dependent on methyaltion states
+#Rate dependent on methylation states
 TbDm: T(Meth~B) + CheB(Phos~P) -> T(Meth~A) + CheB(Phos~P) k_Tb_demeth
 TcDm: T(Meth~C) + CheB(Phos~P) -> T(Meth~B) + CheB(Phos~P) k_Tc_demeth
 ~~~
 
-Now we have a complete set of reaction rules.
-
+We are now ready to combine the above reaction rules with the reaction rules we are inheriting from the original model (ligand-receptor binding and CheY phosphorylation/dephosphorylation) to give us a complete set of reaction rules.
 ~~~ ruby
-	begin reaction rules
-		LigandReceptor: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
+begin reaction rules
+  #Ligand-receptor binding
+	LigandReceptor: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
 
-		#Receptor complex (specifically CheA) autophosphorylation
-		#Rate dependent on methylation and binding states
-		#Also on free vs. bound with ligand
-		TaUP: T(l,Meth~A,Phos~U) -> T(l,Meth~A,Phos~P) k_TaUnbound_phos
-		TbUP: T(l,Meth~B,Phos~U) -> T(l,Meth~B,Phos~P) k_TaUnbound_phos*1.1
-		TcUP: T(l,Meth~C,Phos~U) -> T(l,Meth~C,Phos~P) k_TaUnbound_phos*2.8
-		TaLP: L(t!1).T(l!1,Meth~A,Phos~U) -> L(t!1).T(l!1,Meth~A,Phos~P) 0
-		TbLP: L(t!1).T(l!1,Meth~B,Phos~U) -> L(t!1).T(l!1,Meth~B,Phos~P) k_TaUnbound_phos*0.8
-		TcLP: L(t!1).T(l!1,Meth~C,Phos~U) -> L(t!1).T(l!1,Meth~C,Phos~P) k_TaUnbound_phos*1.6
+  #CheY phosphorylation by T and dephosphorylation by CheZ
+  YPhos: T(Phos~P) + CheY(Phos~U) -> T(Phos~U) + CheY(Phos~P) k_Y_phos
+  YDephos: CheZ() + CheY(Phos~P) -> CheZ() + CheY(Phos~U) k_Y_dephos
 
-		#CheY phosphorylation by T and dephosphorylation by CheZ
-		YPhos: T(Phos~P) + CheY(Phos~U) -> T(Phos~U) + CheY(Phos~P) k_Y_phos
-		YDephos: CheZ() + CheY(Phos~P) -> CheZ() + CheY(Phos~U) k_Y_dephos
+	#Receptor complex (specifically CheA) autophosphorylation
+	#Rate dependent on methylation and binding states
+	#Also on free vs. bound with ligand
+	TaUP: T(l,Meth~A,Phos~U) -> T(l,Meth~A,Phos~P) k_TaUnbound_phos
+	TbUP: T(l,Meth~B,Phos~U) -> T(l,Meth~B,Phos~P) k_TaUnbound_phos*1.1
+	TcUP: T(l,Meth~C,Phos~U) -> T(l,Meth~C,Phos~P) k_TaUnbound_phos*2.8
+	TaLP: L(t!1).T(l!1,Meth~A,Phos~U) -> L(t!1).T(l!1,Meth~A,Phos~P) 0
+	TbLP: L(t!1).T(l!1,Meth~B,Phos~U) -> L(t!1).T(l!1,Meth~B,Phos~P) k_TaUnbound_phos*0.8
+	TcLP: L(t!1).T(l!1,Meth~C,Phos~U) -> L(t!1).T(l!1,Meth~C,Phos~P) k_TaUnbound_phos*1.6
 
-		#CheR binds to and methylates receptor complex
-		#Rate dependent on methylation states and ligand binding
-		TRBind: T(r) + CheR(t) <-> T(r!2).CheR(t!2) k_TR_bind, 1
-		TaRUM: T(r!2,l,Meth~A).CheR(t!2) -> T(r,l,Meth~B) + CheR(t) k_TaR_meth
-		TbRUM: T(r!2,l,Meth~B).CheR(t!2) -> T(r,l,Meth~C) + CheR(t) k_TaR_meth*0.1
-		TaRLM: T(r!2,l!1,Meth~A).L(t!1).CheR(t!2) -> T(r,l!1,Meth~B).L(t!1) + CheR(t) k_TaR_meth*30
-		TbRLM: T(r!2,l!1,Meth~B).L(t!1).CheR(t!2) -> T(r,l!1,Meth~C).L(t!1) + CheR(t) k_TaR_meth*3
+	#CheR binds to and methylates receptor complex
+	#Rate dependent on methylation states and ligand binding
+	TRBind: T(r) + CheR(t) <-> T(r!2).CheR(t!2) k_TR_bind, 1
+	TaRUM: T(r!2,l,Meth~A).CheR(t!2) -> T(r,l,Meth~B) + CheR(t) k_TaR_meth
+	TbRUM: T(r!2,l,Meth~B).CheR(t!2) -> T(r,l,Meth~C) + CheR(t) k_TaR_meth*0.1
+	TaRLM: T(r!2,l!1,Meth~A).L(t!1).CheR(t!2) -> T(r,l!1,Meth~B).L(t!1) + CheR(t) k_TaR_meth*30
+	TbRLM: T(r!2,l!1,Meth~B).L(t!1).CheR(t!2) -> T(r,l!1,Meth~C).L(t!1) + CheR(t) k_TaR_meth*3
 
-		#CheB is phosphorylated by receptor complex, and autodephosphorylates
-		CheBp: T(Phos~P) + CheB(Phos~U) -> T(Phos~U) + CheB(Phos~P) k_B_phos
-		CheBdp: CheB(Phos~P) -> CheB(Phos~U) k_B_dephos
+	#CheB is phosphorylated by receptor complex, and autodephosphorylates
+	CheBp: T(Phos~P) + CheB(Phos~U) -> T(Phos~U) + CheB(Phos~P) k_B_phos
+	CheBdp: CheB(Phos~P) -> CheB(Phos~U) k_B_dephos
 
-		#CheB demethylates receptor complex
-		#Rate dependent on methyaltion states
-		TbDm: T(Meth~B) + CheB(Phos~P) -> T(Meth~A) + CheB(Phos~P) k_Tb_demeth
-		TcDm: T(Meth~C) + CheB(Phos~P) -> T(Meth~B) + CheB(Phos~P) k_Tc_demeth
+	#CheB demethylates receptor complex
+	#Rate dependent on methyaltion states
+	TbDm: T(Meth~B) + CheB(Phos~P) -> T(Meth~A) + CheB(Phos~P) k_Tb_demeth
+	TcDm: T(Meth~C) + CheB(Phos~P) -> T(Meth~B) + CheB(Phos~P) k_Tc_demeth
 
-	end reaction rules
+end reaction rules
 ~~~
 
 ## Adding Compartments
