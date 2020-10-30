@@ -7,27 +7,21 @@ toc: true
 toc_sticky: true
 ---
 
-In this page, we will:
- - Add adaptation mechanisms
- - Learn compartmentalization rules for BNG and add to our model
- - Explore the behavior of CheY
+In this tutorial, we will extend the BioNetGen model covered in the [phosphorylation tutorial](tutorial_phos) to add the methylation mechanisms described in the main text to our ongoing model of bacterial chemotaxis. Our model will be based on the [model](https://www.pnas.org/content/94/14/7263) by Spiro et al.[^Spiro1997]
 
-## Including methylation in the model
+We will then see how methylation can be used to help the bacterium adapt to a relative change in attractant concentration. For reference, consult the figure below, reproduced from the main text, for an overview of the chemotaxis pathway.
 
-Now let's add methylation states to model how *E. coli* can adapt to a higher attractant concentrations and bring back the tumbling frequency. The methylation states of the receptors store the *past* ligand concentrations. If we have a high level ligand-receptor binding, and that is consistent with the methylation states, then the cell doesn't need to decrease its tumbling frequency because no gradient is present. This is achieved by using higher methylation states to reflect higher past ligand concentration, leading to higher rates of autophosphorylation. This compensates for the low phosphorylation due to high levels of ligand binding.
+![image-center](../assets/images/chemotaxis_wholestory.png){: .align-center}
+The chemotaxis signal-transduction pathway with methylation included. CheA phosphorylates CheB, which methylates MCPs, while CheR demethylates MCPs. Blue lines denote phosphorylation, grey lines denote dephosphorylation, and the green arrow denotes methylation. Image modified from <a href="http://chemotaxis.biology.utah.edu/Parkinson_Lab/projects/ecolichemotaxis/ecolichemotaxis.html">Parkinson Lab</a>'s illustrations.
+{: style="font-size: medium;"}
 
-Our model will be based on the [model](https://www.pnas.org/content/94/14/7263) by Spiro et al.[^Spiro1997]
-
-The complete code can be downloaded here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/adaptation.bngl" download="adaptation.bngl">adaptation.bngl</a>
+To get started, create a copy of your file from the phosphorylation tutorial and save it as `adaptation.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/adaptation.bngl" download="adaptation.bngl">adaptation.bngl</a>.
 
 ## Specifying molecule types
 
-For simplicity, we will not code up the actual methylation states, but use low (A), medium (B), high (C) to indicate the methylation states instead.
+We first will add all molecules needed for our model. As mentioned in the main text, we will assume that an MCP can have one of three methylation states: low (A), medium (B), high (C). We also need to include a component that will allow for the receptor to bind to CheR. As a result, we update our MCP molecule to `T(l,r,Meth~A~B~C,Phos~U~P)`.
 
-First add methylation states, low (A), medium (B), high (C), for the ternary complex. Also add a component `r` for later introduction of CheR. Update `T` to be `T(l,r,Meth~A~B~C,Phos~U~P)`.
-
-The methylation states of the receptor complexes are modified by CheR and CheB. CheR phosphorylates receptor complexes and phosphorylated CheB demethylates them. Add `CheB(Phos~U~P)` and `CheR(t)` to the `molecule types` section.
+Furthermore, we need to represent CheR and CheB; recall that CheR binds to and methylates receptor complexes, while CheB demethylates them. CheR can bind to `T`, so that we will need the molecule `CheR(t)`. CheB is phosphorylated by CheY, and so it will be represented as `CheB(Phos~U~P)`. Later we will specify reactions specifying how CheR and CheB change the methylation states of receptor complexes.
 
 ~~~ ruby
 	begin molecule types
@@ -40,34 +34,34 @@ The methylation states of the receptor complexes are modified by CheR and CheB. 
 	end molecule types
 ~~~
 
-Specify all the molecules types you want to observe for in the `observable` section.
+In the `observable` section, we specify that we are interested in tracking the concentrations of the bound ligand, phosphorylated CheY and CheB, and the receptor at each methylation level.
 
 ~~~ ruby
-	begin observables
-		Molecules bound_ligand L(t!1).T(l!1)
-		Molecules phosphorylated_CheY CheY(Phos~P)
-		Molecules low_methyl_receptor T(Meth~A)
-		Molecules medium_methyl_receptor T(Meth~B)
-		Molecules high_methyl_receptor T(Meth~C)
-		Molecules phosphorylated_CheB CheB(Phos~P)
-	end observables
+begin observables
+	Molecules bound_ligand L(t!1).T(l!1)
+	Molecules phosphorylated_CheY CheY(Phos~P)
+	Molecules low_methyl_receptor T(Meth~A)
+	Molecules medium_methyl_receptor T(Meth~B)
+	Molecules high_methyl_receptor T(Meth~C)
+	Molecules phosphorylated_CheB CheB(Phos~P)
+end observables
 ~~~
 
 ## Defining reactions
 
-Change the receptor autophosphorylation rules to reflect what we've just discussed. For convenience, give all reaction rates some meaningful names.
+Next, we expand our reaction rules to include methylation. First, we change the autophosphorylation rules of the receptor to have different rates depending on whether the receptor is bound and its current methylation level, which produces six rules. (Note: we cannot avoid combinatorial explosion in the case of these phosphorylation reactions because they take place at different rates.)
 
 ~~~ ruby
-	#Receptor complex (specifically CheA) autophosphorylation
-	#Rate dependent on methylation and binding states
-	#Also on free vs. bound with ligand
+#Receptor complex (specifically CheA) autophosphorylation
+#Rate dependent on methylation and binding states
+#Also on free vs. bound with ligand
 
-	TaUP: T(l,Meth~A,Phos~U) -> T(l,Meth~A,Phos~P) k_TaUnbound_phos
-	TbUP: T(l,Meth~B,Phos~U) -> T(l,Meth~B,Phos~P) k_TaUnbound_phos*1.1
-	TcUP: T(l,Meth~C,Phos~U) -> T(l,Meth~C,Phos~P) k_TaUnbound_phos*2.8
-	TaLP: L(t!1).T(l!1,Meth~A,Phos~U) -> L(t!1).T(l!1,Meth~A,Phos~P) 0
-	TbLP: L(t!1).T(l!1,Meth~B,Phos~U) -> L(t!1).T(l!1,Meth~B,Phos~P) k_TaUnbound_phos*0.8
-	TcLP: L(t!1).T(l!1,Meth~C,Phos~U) -> L(t!1).T(l!1,Meth~C,Phos~P) k_TaUnbound_phos*1.6
+TaUP: T(l,Meth~A,Phos~U) -> T(l,Meth~A,Phos~P) k_TaUnbound_phos
+TbUP: T(l,Meth~B,Phos~U) -> T(l,Meth~B,Phos~P) k_TaUnbound_phos*1.1
+TcUP: T(l,Meth~C,Phos~U) -> T(l,Meth~C,Phos~P) k_TaUnbound_phos*2.8
+TaLP: L(t!1).T(l!1,Meth~A,Phos~U) -> L(t!1).T(l!1,Meth~A,Phos~P) 0
+TbLP: L(t!1).T(l!1,Meth~B,Phos~U) -> L(t!1).T(l!1,Meth~B,Phos~P) k_TaUnbound_phos*0.8
+TcLP: L(t!1).T(l!1,Meth~C,Phos~U) -> L(t!1).T(l!1,Meth~C,Phos~P) k_TaUnbound_phos*1.6
 ~~~
 
 CheR binds to receptor complexes and methylates them; the rate of methylation is higher for ligand-bound receptors. CheB is phosphorylated by CheA in the receptor complex, and CheB-P then demethylates receptor complexes. Therefore more ligand binding leads to higher methylation states.
@@ -241,36 +235,36 @@ end observables
 begin parameters
 	NaV2 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
 	miu 1e-6
-	
+
 	L0 1e7
 	T0 7000
 	CheY0 20000
 	CheZ0 6000
 	CheR0 120
 	CheB0 250
-	
+
 	k_lr_bind 8.8e6/NaV2   #ligand-receptor binding
 	k_lr_dis 35            #ligand-receptor dissociation
-	
+
 	k_TaUnbound_phos 7.5   #receptor complex autophosphorylation
-	
+
 	k_Y_phos 3.8e6/NaV2    #receptor complex phosphorylates Y
 	k_Y_dephos 8.6e5/NaV2  #Z dephosphoryaltes Y
-	
+
 	k_TR_bind 2e7/NaV2          #Receptor-CheR binding
 	k_TR_dis  1            #Receptor-CheR dissociaton
 	k_TaR_meth 0.08        #CheR methylates receptor complex
-	
+
 	k_B_phos 1e5/NaV2      #CheB phosphorylation by receptor complex
 	k_B_dephos 0.17        #CheB autodephosphorylation
-	
+
 	k_Tb_demeth 5e4/NaV2   #CheB demethylates receptor complex
 	k_Tc_demeth 2e4/NaV2   #CheB demethylates receptor complex
 end parameters
 
 begin reaction rules
-	LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
-	
+	LigandReceptor: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
+
 	#Receptor complex (specifically CheA) autophosphorylation
 	#Rate dependent on methylation and binding states
 	#Also on free vs. bound with ligand
@@ -280,11 +274,11 @@ begin reaction rules
 	TaLigandP: L(t!1).T(l!1,Meth~A,Phos~U) -> L(t!1).T(l!1,Meth~A,Phos~P) 0
 	TbLigandP: L(t!1).T(l!1,Meth~B,Phos~U) -> L(t!1).T(l!1,Meth~B,Phos~P) k_TaUnbound_phos*0.8
 	TcLigandP: L(t!1).T(l!1,Meth~C,Phos~U) -> L(t!1).T(l!1,Meth~C,Phos~P) k_TaUnbound_phos*1.6
-	
+
 	#CheY phosphorylation by T and dephosphorylation by CheZ
 	YP: T(Phos~P) + CheY(Phos~U) -> T(Phos~U) + CheY(Phos~P) k_Y_phos
 	YDep: CheZ() + CheY(Phos~P) -> CheZ() + CheY(Phos~U) k_Y_dephos
-	
+
 	#CheR binds to and methylates receptor complex
 	#Rate dependent on methylation states and ligand binding
 	TRBind: T(r) + CheR(t) <-> T(r!2).CheR(t!2) k_TR_bind, k_TR_dis
@@ -292,16 +286,16 @@ begin reaction rules
 	TbRUnboundMeth: T(r!2,l,Meth~B).CheR(t!2) -> T(r,l,Meth~C) + CheR(t) k_TaR_meth*0.1
 	TaRLigandMeth: T(r!2,l!1,Meth~A).L(t!1).CheR(t!2) -> T(r,l!1,Meth~B).L(t!1) + CheR(t) k_TaR_meth*30
 	TbRLigandMeth: T(r!2,l!1,Meth~B).L(t!1).CheR(t!2) -> T(r,l!1,Meth~C).L(t!1) + CheR(t) k_TaR_meth*3
-	
+
 	#CheB is phosphorylated by receptor complex, and autodephosphorylates
 	CheBphos: T(Phos~P) + CheB(Phos~U) -> T(Phos~U) + CheB(Phos~P) k_B_phos
 	CheBdephos: CheB(Phos~P) -> CheB(Phos~U) k_B_dephos
-	
+
 	#CheB demethylates receptor complex
 	#Rate dependent on methyaltion states
 	TbDemeth: T(Meth~B) + CheB(Phos~P) -> T(Meth~A) + CheB(Phos~P) k_Tb_demeth
 	TcDemeth: T(Meth~C) + CheB(Phos~P) -> T(Meth~B) + CheB(Phos~P) k_Tc_demeth
-	
+
 end reaction rules
 
 begin compartments
