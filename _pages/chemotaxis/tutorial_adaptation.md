@@ -226,8 +226,8 @@ end parameters
 Place the following after `end model` and you are ready to simulate. This time we simulate over 800s.
 
 ~~~ ruby
-	generate_network({overwrite=>1})
-	simulate({method=>"ssa", t_end=>800, n_steps=>800})
+generate_network({overwrite=>1})
+simulate({method=>"ssa", t_end=>800, n_steps=>800})
 ~~~
 
 The following code contains our complete simulation, which you can also download here:
