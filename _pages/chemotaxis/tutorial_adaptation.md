@@ -82,6 +82,16 @@ TaRLM: T(r!2,l!1,Meth~A).L(t!1).CheR(t!2) -> T(r,l!1,Meth~B).L(t!1) + CheR(t) k_
 TbRLM: T(r!2,l!1,Meth~B).L(t!1).CheR(t!2) -> T(r,l!1,Meth~C).L(t!1) + CheR(t) k_TaR_meth*3
 ~~~
 
+Finally, we need reactions for CheB. First, we consider its phosphorylation by the receptor and its autodephosphorylation. Each of these two reactions occurs at a rate that is independent of any other state of the receptor or CheB.
+
+~~~ ruby
+#CheB is phosphorylated by receptor complex, and autodephosphorylates
+CheBp: T(Phos~P) + CheB(Phos~U) -> T(Phos~U) + CheB(Phos~P) k_B_phos
+CheBdp: CheB(Phos~P) -> CheB(Phos~U) k_B_dephos
+~~~
+
+Finally, 
+
 ~~~ ruby
 #CheB is phosphorylated by receptor complex, and autodephosphorylates
 CheBp: T(Phos~P) + CheB(Phos~U) -> T(Phos~U) + CheB(Phos~P) k_B_phos
