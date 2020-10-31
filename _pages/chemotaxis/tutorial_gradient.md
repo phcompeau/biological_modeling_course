@@ -216,6 +216,16 @@ Please make sure have dependencies installed:
 
 ## Visualizing the results
 
+We are now ready to fill in `plotter_up.ipynb`.
+
+~~~ python
+import numpy as np
+import sys
+import os
+import matplotlib.pyplot as plt
+import colorspace
+~~~
+
 We will use the jupyter notebook <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_up.ipynb</a> to visualize results. First specify the directories, model name, species of interest, and rates. Put the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/` folder inside the same directory as the Jupyter notebook or change the `model_path`.
 
 ~~~ python
@@ -228,7 +238,6 @@ vals = [0.01, 0.03, 0.05, 0.1, 0.3, 0.5]  #Gradients of interest
 The second code block will load simulation result at each time point from the `.gdat` file, which stores concentration of all `observables` at all steps, and plot concentration of phosphorylated CheY through time.
 
 Run the code blocks. How does `k_add` impact the CheY-P concentrations? Why? Are the tumbling frequencies restored to the background frequency?
-
 
 [Return to main text](home_gradient#steady-state-tumbling-frequency-is-robust-when-traveling-up-an-attractant-gradient){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
