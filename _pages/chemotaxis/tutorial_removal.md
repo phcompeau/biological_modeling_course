@@ -7,8 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-In this page, we will:
- - Simulate cellular response when traveling down the gradient.
+In the [previous tutorial](tutorial_gradient), we simulated the behavior of bacteria moving up the concentration gradient. In this tutorial, we will simulate the opposite - when the bacterium is not in luck and moves down a concentration gradient.
 
 ## Files and dependencies 
 
