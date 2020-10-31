@@ -151,7 +151,7 @@ Below, we define three compartments corresponding to extra-cellular space (outsi
 1. the name of the compartment;
 2. the dimension (2-D or 3-D);
 3. surface area (2-D) or volume (3-D) of the compartment; and
-4. the name of the parent compartment.
+4. the name of the parent compartment - the compartment that encloses this current compartment.
 
 If you are interested, more information on compartmentalization can be found on pages 54-55 of Sekar and Faeder's primer on rule-based modeling: [http://www.lehman.edu/academics/cmacs/documents/RuleBasedPrimer-2011.pdf](http://www.lehman.edu/academics/cmacs/documents/RuleBasedPrimer-2011.pdf).
 
