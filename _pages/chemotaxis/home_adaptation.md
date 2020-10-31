@@ -82,58 +82,38 @@ In the following tutorial, we will expand our BioNetGen model from the previous 
 
 ## Bacterial tumbling is resilient to large sudden changes in ligand concentration
 
-In the figures below, we show plots of the concentration of each molecule in the system under a few different circumstances. In each case, we suddenly change the concentration of an attractant ligand and examine how this affects the concentration of phosphorylated CheY (the molecule whose phosphorylation is directly correlated with increased tumbling frequency). Will the model reflect our biochemical hypothesis that *E. coli* can return to approximately the same steady-state concentration of phosphorylated CheY regardless of the concentration of the ligand?
+In the figures below, we show plots of the concentration of each molecule of interest in our system for a few different cases. In each case, we suddenly change the concentration of the attractant ligand (*l*<sub>0</sub>) and examine how this affects the concentration of phosphorylated CheY (the molecule whose phosphorylation is directly correlated with increased tumbling frequency). The attractant concentration will then level off; because the relative concentration is not changing, will our model reflect the hypothesis that *E. coli* can return to approximately the same steady-state concentration of phosphorylated CheY regardless of the concentration of the ligand?
 
-Here we show simulation results for some different amounts of ligand molecules suddenly added at the beginning of the simulation. First a relatively small amount, by setting the initial concentration *l*<sub>0</sub> equal to 10,000.
+Below, we show simulation results for some different concentrations of ligand molecules added at the beginning of the simulation. First we add a relatively small amount, setting *l*<sub>0</sub> equal to 10,000. The system returns so quickly to an equilibrium in phosphorylated CheY that it is difficult to think that the attractant has had any effect on tumbling frequency. (Note: time is shown in seconds on the x-axis in the following figures.)
 
 ![image-center](../assets/images/chemotaxis_tutorial_oneadd1e4.png){: .align-center}
 
-We gradually increase the amount of ligand molecules added. With *l*<sub>0</sub> equal to 100,000, we obtain the figure below.
+If instead *l*<sub>0</sub> is equal to 100,000, we obtain the figure below. After a drop in the concentration of phosphorylated CheY, the system returns to equilibrium after a few minutes.
 
 ![image-center](../assets/images/chemotaxis_tutorial_oneadd1e5.png){: .align-center}
 
-With *l*<sub>0</sub> equal to 1 million.
+When we increase *l*<sub>0</sub> by another factor of ten to 1 million, the initial drop is more pronounced, but the system is able to just as quickly return to equilibrium. Note how much higher the concentration of methylated receptors are in this figure compared to the previous figure; however, there are still a significant concentration of receptors with low methylation, indicating that the system may be able to handle a yet bigger jolt.
 
 ![image-center](../assets/images/chemotaxis_tutorial_oneadd1e6.png){: .align-center}
 
-With *l*<sub>0</sub> equal to 10 million.
+When we set *l*<sub>0</sub> equal to 10 million, we give the system this bigger jolt. Once again, the model is resilient to this change in the concentration of the ligand after a few minutes.
 
 ![image-center](../assets/images/chemotaxis_tutorial_oneadd1e7.png){: .align-center}
 
-With *l*<sub>0</sub> equal to 100 million.
+Finally, with *l*<sub>0</sub> equal to 100 million, we see what we might expect: the steepest drop in phosphorylated CheY yet, but a system that is able to return to equilibrium.
 
 ![image-center](../assets/images/chemotaxis_tutorial_oneadd1e8.png){: .align-center}
 
-We can see that the higher the concentration, the deeper the drop of phosphorylated CheY can be observed.
+Our model therefore has provided compelling evidence that the *E. coli* chemotaxis system is very robust to changes in its environment. The simulated bacterium can make a very rapid change in response to a sudden change in its environment, but even if this change is significant, the system will return to its default state. This robustness in our simulation has been observed in real bacteria[^Shimizu2005][^Krembel2015], as well as replicated by other computational simulations[^Bray1993].
 
-But this is limited to a range of concentrations - going over a concentration where all receptors can already saturated instantly can't lead to more response; and a very low concentration won't initiate a response. Our results are also consistent with other simulations[^Bray1993] and experimental observations[^Shimizu2005][^Krembel2015].
+Aren't bacteria magnificent?
 
-In the Gradient section, we will see how the ability to respond to the change and adapt to the liigand concentration enable the cells to actually move up the gradient.
+However, our work is not done. We have simulated how a bacterium can adapt to a single sudden change in its environment, but life is about responding to changes all the time. So in the next lesson, we will further examine how our simulated *E. coli* responds in an environment in which the ligand concentration is changing constantly.
 
-<!--
+[Next lesson](home_gradient){: .btn .btn--primary .btn--large}
+{: style="font-size: 100%; text-align: center;"}
 
-## Methylation states and Combinatorial Explosion
-
-Why the methylation states can change CheA autophosphorylation actvities? Let's look at more MCP biochemistry.
-
- - There are five types of MCPs, Tsr, Tar, Tap, Trg, and Aer, specific for different species of ligand molecules. Most studies focus on the two most abundant types: Tsr (serine receptor) and Tar (aspartate and maltose receptor), and Aer (oxygen receptor) is less well understood.[^Parkinson2015] The MCPs form trimer of dimer structure. A trimer can be a mix of Tsr, Tar, Tap, Trg dimers. Binding with ligands changes the conformation of the receptor dimer. Each receptor dimer within the trimer impacts the activity differently because of asymmetricity in conformation.
- - MCPs, CheA (dimer with 5 subunits), and CheW forms receptor arrays. The receptor arrays generally have 2 states: 1) an ordered, dense state, in which CheA activity is higher; 2) a disordered, relaxed state, in which CheA activity is lower.[^Baker2005] The control of the 4 methylation sites and ligand-receptor binding impact array conformation are important to the precise adaptation mechanism[^Saragosti2001]. A visualization of the arrays from[^Yang2019] is shown below.
-
-![image-center](../assets/images/chemotaxis_intro_tod.png){: .align-center}
-MCP array structures. From Yang et al.A)The trimer of dimer structure and changes of CheA autophosphorylation actvities depends on ligand binding and methylation states; P1...P5 are subunits of CheA. B)How MCPs, CheA, and CheW form receptor arrays.
-{: style="font-size: medium;"}
-
- - Methylation reduces the negative charge on the receptors, making the receptor array packing more stable, thus increasing CheA autophosphorylation activities. When MCP has a higher methylation state, the rate of CheA autophosphorylation becomes higher.
-
-That means our model is a very simplified version of the actual story. But can we actually build a more complete model?
-
-We can add more receptor species and ligand species to account for the different attractants/repellents and their specific receptors easily. For each trimer of dimer, we will have more binding states and more methylation states, and include dependency of CheA autophosphorylation based on the newly added states. We will modify CheB and CheR reactions to account for 4 methylation sites. The rest can stay unchanged. Adding such complexity will require some coding, but is certainly doable.
-
-The ability of including more complexity easily comes from the power of rule-based modeling. Specifying what the simulator should do only depends on the reaction rules, but not the state of the system. If we instead need to specify the states explicitly for the simulator, we will write an astronomical number of lines of code; imagine one typo somewhere.
-
--->
-
-## Additional Resources
+## Additional resources
 
 Some resources/reads if you are interested in the chemotaxis biology:
  - Amazing introduction to chemotaxis: Parkinson Lab [website](http://chemotaxis.biology.utah.edu/Parkinson_Lab/projects/ecolichemotaxis/ecolichemotaxis.html).
@@ -192,6 +172,3 @@ Some resources/reads if you are interested in the chemotaxis biology:
 [^Boyd1980]: Boyd A., and Simon MI. 1980. Multiple electrophoretic forms of methyl-accepting chemotaxis proteins generated by stimulus-elicited methylation in Escherichia coli. Journal of Bacteriology 143(2):809-815. [Available online](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC294367/pdf/jbacter00569-0269.pdf)
 
 [^Lupas1989]: Lupas A., and Stock J. 1989. Phosphorylation of an N-terminal regulatory domain activates the CheB methylesterase in bacterial chemotaxis. J Bio Chem 264(29):17337-42. [Available online](https://pubmed.ncbi.nlm.nih.gov/2677005/)
-
-[Next lesson](home_gradient){: .btn .btn--primary .btn--large}
-{: style="font-size: 100%; text-align: center;"}
