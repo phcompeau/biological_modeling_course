@@ -13,9 +13,7 @@ We will also explore defining and using **functions**, a feature of BioNetGen th
 
 To get started, create a copy of your file from the adaptation tutorial and save it as `addition.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
 
-We also will build a Jupyter notebook in this tutorial. You should create a file called `plotter_up.ipynb` that contains 
-
-The Jupyter notebook for visualizing results can be downloaded here:
+We also will build a Jupyter notebook in this tutorial. You should create a file called `plotter_up.ipynb`; if you would rather not follow along, we provide a completed notebook here: 
 <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_up.ipynb</a>
 
 Please make sure the following dependencies are installed.
