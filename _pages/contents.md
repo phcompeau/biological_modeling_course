@@ -12,7 +12,7 @@ After building a model in a software tutorial, we return to the main text and an
 
 The following contents is a work in progress and will be expanded in the coming weeks. For now, you can find links to the start of each published module below.
 
-## Prologue: An introduction to biological modeling via random walks and Turing patterns##
+## Prologue: An introduction to biological modeling via random walks and Turing patterns ##
 
 [Link to module](../prologue/)
 
@@ -22,20 +22,20 @@ The following contents is a work in progress and will be expanded in the coming 
 
 Featured software: CellBlender, MCell
 
-## Module 2: Identifying the biochemical basis for E. coli's genius exploration algorithm ##
+## Module 2: Unpacking E. coli's genius exploration algorithm ##
 
-Coming soon! (release date: October 29, 2020)
+Coming soon! (release date: November 2, 2020)
 
 Featured software: CellBlender, NFSim, RuleBender
 
 ## Module 3: Analyzing the structure of the coronavirus spike protein ##
 
-Coming soon! (release date: November 5, 2020)
+Coming soon! (release date: November 9, 2020)
 
 Featured software: ProDy
 
 ## Module 4: Training a computer to count white blood cells automatically ##
 
-Coming soon! (release date: November 12, 2020)
+Coming soon! (release date: November 16, 2020)
 
 Featured software: CellOrganizer

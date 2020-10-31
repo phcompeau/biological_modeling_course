@@ -81,7 +81,7 @@ motifs:
         url: /motifs/exercises
 
 chemotaxis:
-  - title: "Understanding E. coli's Genius Exploration Algorithm"
+  - title: "Unpacking E. coli's Genius Exploration Algorithm"
     children:
       - title: "Introduction: Lost Immortals and chemotaxis<br><br>"
         url: /chemotaxis/home
