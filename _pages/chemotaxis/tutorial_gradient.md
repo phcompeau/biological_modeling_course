@@ -13,10 +13,10 @@ We will also explore defining and using **functions**, a feature of BioNetGen th
 
 To get started, create a copy of your file from the adaptation tutorial and save it as `addition.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
 
-We also will build a Jupyter notebook in this tutorial. You should create a file called `plotter_up.ipynb`; if you would rather not follow along, we provide a completed notebook here: 
+We also will build a Jupyter notebook in this tutorial. You should create a file called `plotter_up.ipynb`; if you would rather not follow along, we provide a completed notebook here:
 <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_up.ipynb</a>
 
-Please make sure the following dependencies are installed.
+Before running this notebook, make sure the following dependencies are installed.
 
 | Installation Link | Version | Check install/version |
 |:------|:-----:|------:|
@@ -26,7 +26,7 @@ Please make sure the following dependencies are installed.
 | [Matplotlib](https://matplotlib.org/users/installing.html) | 3.0+ | `pip list \| grep matplotlib` |
 | [Colorspace](https://python-colorspace.readthedocs.io/en/latest/installation.html) or with [pip](https://pypi.org/project/colorspace/)| any | `pip list \| grep colorspace`|
 
-## Modeling traveling up the gradient with BNG
+## Modeling traveling up a gradient with BioNetGen
 
 To mimic the ligand concentration change of bacteria moving up the gradient, we will gradually increase the ligand concentration in the environment, simulating the bacteria moving up the attractant gradient.
 
