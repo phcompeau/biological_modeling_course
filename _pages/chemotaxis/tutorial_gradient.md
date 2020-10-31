@@ -7,8 +7,9 @@ toc: true
 toc_sticky: true
 ---
 
-In this page, we will:
- - Simulate cellular response when traveling up the gradient.
+In the [previous tutorial](tutorial_adap), we modeled how bacteria react and adapt to a one-time addition of attractants. In real life, the bacterium doesn't suddenly drop into an environment with more attractants; instead, it searches the space to find the gradient. In this tutorial, we will adapt the model to simulate the more complicated and realistic behavior of bacteria responding to an exponentially increasing concentration gradient. 
+
+We will also explore defining and using **functions** to help specifying complex reaction rules in which reaction rate constant is dependent on the state of the system.
 
 ## Files and dependencies
 
@@ -29,7 +30,7 @@ Please make sure the following dependencies are installed.
 
 ## Modeling traveling up the gradient with BNG
 
-We've built a model simulating the response of *E. coli* in response to a one-time addition of attractant. However, in real life, the bacterium doesn't suddenly drop into an environment with more attractants; instead, it searches the space to find the gradient. To mimic this phenomenon, we will gradually increase the ligand concentration in the environment, simulating the bacteria moving up the attractant gradient.
+To mimic the ligand concentration change of bacteria moving up the gradient, we will gradually increase the ligand concentration in the environment, simulating the bacteria moving up the attractant gradient.
 
 First create a copy of the adaptation model `adaptation.bngl`, name it `addition.bngl`.
 
