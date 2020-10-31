@@ -26,7 +26,7 @@ Before running this notebook, make sure the following dependencies are installed
 | [Matplotlib](https://matplotlib.org/users/installing.html) | 3.0+ | `pip list \| grep matplotlib` |
 | [Colorspace](https://python-colorspace.readthedocs.io/en/latest/installation.html) or with [pip](https://pypi.org/project/colorspace/)| any | `pip list \| grep colorspace`|
 
-## Modeling traveling up a gradient with BioNetGen
+## Modeling an increasing ligand gradient with a BioNetGen function
 
 To model an increasing concentration of ligand corresponding to a bacterium moving up an attractant gradient, we will increase the background ligand concentration at an exponential rate.
 
@@ -51,7 +51,7 @@ Now we are ready to add our dummy reaction to the `reaction rules` section with 
 LAdd: L(t) -> L(t) + L(t) addRate()
 ~~~
 
-In `parameters` section, we define the rate of ligand increase. We will try a reaction rate 0.1/s first with initial concentration 1e4. So the actual gradient the cell experiences is d[L]/dt = 0.1[L]. By integration then differentiation, we get [L] = 1000e<sup>0.1t</sup> molecules per second. Change initial ligand amount to 1e4 (too many/few ligands makes increase in ligand concentration too fast/slow), but you can try other values too.
+Now that we have defined our dummy reaction, we should specify the default rate of this reaction `k_add` in the `parameters` section. We first will try a value of `k_add` of 0.1/s with an initial ligand concentration `L0` of `1e4`. This means that the model is simulating a gradient of d[*L*]/dt = 0.1[*L*]. If `L0` is `1e4`, then the solution to this differential equation is [L] = 1000e<sup>0.1<em>t</em></sup> molecules per second.
 
 ~~~ ruby
 k_add 0.1
