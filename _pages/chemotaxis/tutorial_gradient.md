@@ -11,7 +11,7 @@ In the [previous tutorial](tutorial_adap), we modeled how bacteria react and ada
 
 We will also explore defining and using **functions**, a feature of BioNetGen that will allow us to specify reaction rules in which the reaction rates are dependent on the current state of the system.
 
-To get started, create a copy of your file from the adaptation tutorial and save it as `addition.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
+To get started, create a copy of your `adaptation.bngl` file from the adaptation tutorial and save it as `addition.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
 
 We also will build a Jupyter notebook in this tutorial. You should create a file called `plotter_up.ipynb`; if you would rather not follow along, we provide a completed notebook here:
 <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_up.ipynb</a>
@@ -28,18 +28,16 @@ Before running this notebook, make sure the following dependencies are installed
 
 ## Modeling traveling up a gradient with BioNetGen
 
-To mimic the ligand concentration change of bacteria moving up the gradient, we will gradually increase the ligand concentration in the environment, simulating the bacteria moving up the attractant gradient.
+To model an increasing concentration of ligand corresponding to a bacterium moving up an attractant gradient, we will increase the background ligand concentration at an exponential rate.
 
-First create a copy of the adaptation model `adaptation.bngl`, name it `addition.bngl`.
-
-We will simulate this increase in attractant concentration simply with a "fake reaction" that one ligand molecule becomes two through time. We will add the following reaction to the `reaction rules` section.
+We will simulate an increase in attractant concentration by using a "dummy reaction" *L* → 2*L* in which one ligand molecule becomes two. To do so, we will add the following reaction to the `reaction rules` section.
 
 ~~~ ruby
-#Simulate exponentially increasing gradient
+#Simulate an exponentially increasing gradient using a dummy reaction
 LAdd: L(t) -> L(t) + L(t) k_add
 ~~~
 
-Like you've observed before, when ligand concentration is very high, the receptors are saturated, so the cell can no longer detect the change in ligand concentration. We can use this fact to cap our ligand concentration at `1e8` (in the [adaptation simulation](tutorial_adap), the cell can't differentiate between `1e8` and a higher concentration). We can do this by defining the rate of this reaction as a function `add_Rate()`. It requires another observable, `AllLigand`. By adding the line `Molecules AllLigand L` in the `observables` sections, `AllLigand` will record the total concentration of ligands in the system at each time step. When `AllLigand` is more than `1e8`, the rate of ligand concentration increase becomes 0. In the `if` statement, the syntax is `if(condition,valueTrue,valueFalse)`. Please add functions **before declaring reaction rules**.
+As we have observed earlier in this module, when the ligand concentration is very high, receptors are saturated, and the cell can no longer detect a change in ligand concentration. We can use this fact to cap our ligand concentration at `1e8` (in the [adaptation simulation](tutorial_adap), the cell can't differentiate between `1e8` and a higher concentration). We can do this by defining the rate of this reaction as a function `add_Rate()`. It requires another observable, `AllLigand`. By adding the line `Molecules AllLigand L` in the `observables` sections, `AllLigand` will record the total concentration of ligands in the system at each time step. When `AllLigand` is more than `1e8`, the rate of ligand concentration increase becomes 0. In the `if` statement, the syntax is `if(condition,valueTrue,valueFalse)`. Please add functions **before declaring reaction rules**.
 
 ~~~ ruby
 begin functions
