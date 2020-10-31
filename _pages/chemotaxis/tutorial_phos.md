@@ -1,6 +1,6 @@
 ---
 permalink: /chemotaxis/tutorial_phos
-title: "Adding Phosphorylation to our BioNetGen Model"
+title: "Software Tutorial: Adding Phosphorylation to our BioNetGen Model"
 sidebar:
  nav: "chemotaxis"
 toc: true
@@ -127,7 +127,7 @@ begin parameters
 	T0 7000       #number of receptor complexes
 	CheY0 20000
 	CheZ0 6000
-	
+
 	k_lr_bind 8.8e6/NaV2   #ligand-receptor binding
 	k_lr_dis 35            #ligand-receptor dissociation
 	k_T_phos 15            #receptor complex autophosphorylation
@@ -137,11 +137,11 @@ end parameters
 
 begin reaction rules
 	LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
-	
+
 	#Free vs. ligand-bound receptor complexes autophosphorylates at different rates
 	FreeTP: T(l,Phos~U) -> T(l,Phos~P) k_T_phos
 	BoundTP: L(t!1).T(l!1,Phos~U) -> L(t!1).T(l!1,Phos~P) k_T_phos*0.2
-	
+
 	YP: T(Phos~P) + CheY(Phos~U) -> T(Phos~U) + CheY(Phos~P) k_Y_phos
 	YDep: CheZ() + CheY(Phos~P) -> CheZ() + CheY(Phos~U) k_Y_dephos
 end reaction rules

@@ -1,6 +1,6 @@
 ---
 permalink: /chemotaxis/tutorial_walk
-title: "Chemotactic random walk"
+title: "Software Tutorial: Modeling E. coli's Sophisticated Random Walk Algorithm"
 sidebar:
  nav: "chemotaxis"
 toc: true

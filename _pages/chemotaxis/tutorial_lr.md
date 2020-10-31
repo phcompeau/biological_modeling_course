@@ -1,6 +1,6 @@
 ---
 permalink: /chemotaxis/tutorial_lr
-title: "Getting Started with BioNetGen and Modeling Ligand-Receptor Dynamics"
+title: "Software Tutorial: Getting Started with BioNetGen and Modeling Ligand-Receptor Dynamics"
 sidebar:
  nav: "chemotaxis"
 toc: true

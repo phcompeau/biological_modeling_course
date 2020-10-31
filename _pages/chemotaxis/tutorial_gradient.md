@@ -1,13 +1,13 @@
 ---
 permalink: /chemotaxis/tutorial_gradient
-title: "Up gradient/Addition"
+title: "Software Tutorial: Traveling Up an Attractant Gradient"
 sidebar:
  nav: "chemotaxis"
 toc: true
 toc_sticky: true
 ---
 
-In the [previous tutorial](tutorial_adap), we modeled how bacteria react and adapt to a one-time addition of attractants. In real life, bacteria don't suddenly drop into an environment with more attractants; instead, they searches the space to find the gradient. In this tutorial, we will adapt the model to simulate the more complicated and realistic behavior of bacteria responding to an exponentially increasing concentration gradient. 
+In the [previous tutorial](tutorial_adap), we modeled how bacteria react and adapt to a one-time addition of attractants. In real life, bacteria don't suddenly drop into an environment with more attractants; instead, they searches the space to find the gradient. In this tutorial, we will adapt the model to simulate the more complicated and realistic behavior of bacteria responding to an exponentially increasing concentration gradient.
 
 We will also explore defining and using **functions** to help specifying reaction rules in which reaction rate constant is dependent on the state of the system.
 
@@ -99,34 +99,34 @@ end observables
 begin parameters
 	NaV2 6.02e8   #Unit conversion to cellular concentration M/L -> #/um^3
 	miu 1e-6
-	
+
 	L0 1e4
 	T0 7000
 	CheY0 20000
 	CheZ0 6000
 	CheR0 120
 	CheB0 250
-	
+
 	k_lr_bind 8.8e6/NaV2   #ligand-receptor binding
 	k_lr_dis 35            #ligand-receptor dissociation
-	
+
 	k_TaUnbound_phos 7.5   #receptor complex autophosphorylation
-	
+
 	k_Y_phos 3.8e6/NaV2    #receptor complex phosphorylates Y
 	k_Y_dephos 8.6e5/NaV2  #Z dephosphoryaltes Y
-	
+
 	k_TR_bind 2e7/NaV2          #Receptor-CheR binding
 	k_TR_dis  1            #Receptor-CheR dissociaton
 	k_TaR_meth 0.08        #CheR methylates receptor complex
-	
+
 	k_B_phos 1e5/NaV2      #CheB phosphorylation by receptor complex
 	k_B_dephos 0.17        #CheB autodephosphorylation
-	
+
 	k_Tb_demeth 5e4/NaV2   #CheB demethylates receptor complex
 	k_Tc_demeth 2e4/NaV2   #CheB demethylates receptor complex
-	
+
 	k_add 0.1              #Ligand increase
-	
+
 end parameters
 
 begin functions
@@ -135,7 +135,7 @@ end functions
 
 begin reaction rules
 	LigandReceptor: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
-	
+
 	#Receptor complex (specifically CheA) autophosphorylation
 	#Rate dependent on methylation and binding states
 	#Also on free vs. bound with ligand
@@ -145,11 +145,11 @@ begin reaction rules
 	TaLigandP: L(t!1).T(l!1,Meth~A,Phos~U) -> L(t!1).T(l!1,Meth~A,Phos~P) 0
 	TbLigandP: L(t!1).T(l!1,Meth~B,Phos~U) -> L(t!1).T(l!1,Meth~B,Phos~P) k_TaUnbound_phos*0.8
 	TcLigandP: L(t!1).T(l!1,Meth~C,Phos~U) -> L(t!1).T(l!1,Meth~C,Phos~P) k_TaUnbound_phos*1.6
-	
+
 	#CheY phosphorylation by T and dephosphorylation by CheZ
 	YPhos: T(Phos~P) + CheY(Phos~U) -> T(Phos~U) + CheY(Phos~P) k_Y_phos
 	YDephos: CheZ() + CheY(Phos~P) -> CheZ() + CheY(Phos~U) k_Y_dephos
-	
+
 	#CheR binds to and methylates receptor complex
 	#Rate dependent on methylation states and ligand binding
 	TRBind: T(r) + CheR(t) <-> T(r!2).CheR(t!2) k_TR_bind, k_TR_dis
@@ -157,19 +157,19 @@ begin reaction rules
 	TbRUnboundMeth: T(r!2,l,Meth~B).CheR(t!2) -> T(r,l,Meth~C) + CheR(t) k_TaR_meth*0.1
 	TaRLigandMeth: T(r!2,l!1,Meth~A).L(t!1).CheR(t!2) -> T(r,l!1,Meth~B).L(t!1) + CheR(t) k_TaR_meth*30
 	TbRLigandMeth: T(r!2,l!1,Meth~B).L(t!1).CheR(t!2) -> T(r,l!1,Meth~C).L(t!1) + CheR(t) k_TaR_meth*3
-	
+
 	#CheB is phosphorylated by receptor complex, and autodephosphorylates
 	CheBphos: T(Phos~P) + CheB(Phos~U) -> T(Phos~U) + CheB(Phos~P) k_B_phos
 	CheBdephos: CheB(Phos~P) -> CheB(Phos~U) k_B_dephos
-	
+
 	#CheB demethylates receptor complex
 	#Rate dependent on methyaltion states
 	TbDemeth: T(Meth~B) + CheB(Phos~P) -> T(Meth~A) + CheB(Phos~P) k_Tb_demeth
 	TcDemeth: T(Meth~C) + CheB(Phos~P) -> T(Meth~B) + CheB(Phos~P) k_Tc_demeth
-	
+
 	#Simulate exponentially increasing gradient
 	LAdd: L(t) -> L(t) + L(t) addRate()
-	
+
 end reaction rules
 
 begin compartments

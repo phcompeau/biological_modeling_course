@@ -1,6 +1,6 @@
 ---
 permalink: /chemotaxis/tutorial_purerandom
-title: "Standard random walk"
+title: "Software Tutorial: Modeling a Pure Random Walk Strategy"
 sidebar:
  nav: "chemotaxis"
 toc: true
