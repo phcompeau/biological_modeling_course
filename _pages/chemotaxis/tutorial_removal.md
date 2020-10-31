@@ -7,8 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-In this page, we will:
- - Simulate cellular response when traveling down the gradient.
+In the [previous tutorial](tutorial_gradient), we simulated the behavior of a bacterium moving up the concentration gradient. In this tutorial, we will simulate the opposite - when the bacterium is not in luck and moves down a concentration gradient.
 
 ## Files and dependencies 
 
@@ -29,22 +28,22 @@ Please make sure the following dependencies are installed.
 
 ## Modeling traveling down the gradient with BNG
 
-We have simulated how CheY-P changes when the cell moves up the attractant gradient. With higher concentrations, methylation states change so that they can compensate for the more ligand-receptor binding to restore the CheY phosphorylation level. What if the ligands are removed? Along with increased CheY-P because the cell need to tumble more to "escape" from the wrong direction, we should see methylation states return to the states before the addition of ligands.
+We have simulated how CheY-P changes when the cell moves up the attractant gradient. With higher concentrations, methylation states change so that they can compensate for the more ligand-receptor binding to restore the CheY phosphorylation level. What if the ligands are removed? Along with increased CheY-P because the cell needs to tumble more to "escape" from the wrong direction, we should see methylation states return to the level before the addition of ligands.
 
 First create a copy of the adaptation model `adaptation.bngl`, name it `removal.bngl`.
 
 To simulate the removal of ligand, or the traveling down the gradient, we will add a "fake reaction" that the ligand disappear with a certain rate. Add this rule within the `reaction rules` section.
 
 ~~~ ruby
-	#Simulate ligand removal
-	LigandGone: L(t) -> 0 k_gone
+#Simulate ligand removal
+LigandGone: L(t) -> 0 k_gone
 ~~~
 
 In `parameters` section, we define the `k_gone` to be 0.3 first and thus d[L]/dt = -0.3[L]. By integration, we can represent the concentration as [L] = 10<sup>7</sup>e<sup>-0.3t</sup>. We will also change the initial ligand concentration to be 1e7. Thus, the concentration of ligand becomes so low that ligand-receptor binding reaches 0 within 50 seconds.
 
 ~~~ ruby
-		k_gone 0.3
-		L0 1e7
+k_gone 0.3
+L0 1e7
 ~~~
 
 We will set the initial concentrations of all `seed species` to be the final concentrations of the simulation result for our `adaptation.bngl` model, and see if our simulation can restore them to the inital concentrations of the `adaptation.bngl` model.
@@ -54,21 +53,21 @@ Go to the `adaptation.bngl` model, and set `L0` as `1e7`. Also include concentra
 Input those concentrations to the `seed species` section of our `removal.bngl` model.
 
 ~~~ ruby
-	begin seed species
-		@EC:L(t) L0
-		@PM:T(l!1,r,Meth~A,Phos~U).L(t!1) 1190
-		@PM:T(l!1,r,Meth~B,Phos~U).L(t!1) 2304
-		@PM:T(l!1,r,Meth~C,Phos~U).L(t!1) 2946
-		@PM:T(l!1,r,Meth~A,Phos~P).L(t!1) 2
-		@PM:T(l!1,r,Meth~B,Phos~P).L(t!1) 156
-		@PM:T(l!1,r,Meth~C,Phos~P).L(t!1) 402
-		@CP:CheY(Phos~U) CheY0*0.71
-		@CP:CheY(Phos~P) CheY0*0.29
-		@CP:CheZ() CheZ0
-		@CP:CheB(Phos~U) CheB0*0.62
-		@CP:CheB(Phos~P) CheB0*0.38
-		@CP:CheR(t) CheR0
-	end seed species
+begin seed species
+	@EC:L(t) L0
+	@PM:T(l!1,r,Meth~A,Phos~U).L(t!1) 1190
+	@PM:T(l!1,r,Meth~B,Phos~U).L(t!1) 2304
+	@PM:T(l!1,r,Meth~C,Phos~U).L(t!1) 2946
+	@PM:T(l!1,r,Meth~A,Phos~P).L(t!1) 2
+	@PM:T(l!1,r,Meth~B,Phos~P).L(t!1) 156
+	@PM:T(l!1,r,Meth~C,Phos~P).L(t!1) 402
+	@CP:CheY(Phos~U) CheY0*0.71
+	@CP:CheY(Phos~P) CheY0*0.29
+	@CP:CheZ() CheZ0
+	@CP:CheB(Phos~U) CheB0*0.62
+	@CP:CheB(Phos~P) CheB0*0.38
+	@CP:CheR(t) CheR0
+end seed species
 ~~~
 
 ## Simulating when traveling down the gradient
@@ -213,10 +212,10 @@ All simulation results are stored in the `RuleBender-workspace/PROJECT_NAME/resu
 We will use the jupyter notebook <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_down.ipynb</a> to visualize results. First specify the directories, model name, species of interest, and rates. Put the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/` folder inside the same directory as the Jupyter notebook or change the `model_path`.
 
 ~~~ python
-	model_path = "removal"  #The folder containing the model
-	model_name = "removal"  #Name of the model
-	target = "phosphorylated_CheY"    #Target molecule
-	vals = [0.01, 0.03, 0.05, 0.1, 0.3, 0.5]  #Gradients of interest
+model_path = "removal"  #The folder containing the model
+model_name = "removal"  #Name of the model
+target = "phosphorylated_CheY"    #Target molecule
+vals = [0.01, 0.03, 0.05, 0.1, 0.3, 0.5]  #Gradients of interest
 ~~~
 
 The second code block will load simulation result at each time point from the `.gdat` file, which stores concentration of all `observables` at all steps, and plot concentration of phosphorylated CheY through time.
