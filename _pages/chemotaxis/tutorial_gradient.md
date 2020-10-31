@@ -28,7 +28,7 @@ Before running this notebook, make sure the following dependencies are installed
 
 ## Modeling an increasing ligand gradient with a BioNetGen function
 
-To model an increasing concentration of ligand corresponding to a bacterium moving up an attractant gradient, we will increase the background ligand concentration at an exponential rate.
+Our BioNetGen model will largely stay the same, except for the fact that we are changing the concentration of ligand over time. To model an increasing concentration of ligand corresponding to a bacterium moving up an attractant gradient, we will increase the background ligand concentration at an exponential rate.
 
 We will simulate an increase in attractant concentration by using a "dummy reaction" *L* → 2*L* in which one ligand molecule becomes two. To do so, we will add the following reaction to the `reaction rules` section.
 
@@ -58,9 +58,9 @@ k_add 0.1
 L0 1e4
 ~~~
 
-## Simulating response when moving up the gradient
+## Running our updated BioNetGen model
 
-Place the following after `end model` and you are ready to simulate. This time we simulate over 1000s.
+Because we have largely kept the same model from the adaptation tutorial, we are ready to simulate. Please make sure that the following lines appear after `end model` so that we can run our simulation for 1000 seconds.
 
 ~~~ ruby
 generate_network({overwrite=>1})
@@ -196,13 +196,14 @@ generate_network({overwrite=>1})
 simulate({method=>"ssa", t_end=>1000, n_steps=>500})
 ~~~
 
-Go to `simulation` and click `Run`. What happens to CheY phosphorylation? (Note: you can deselect `AllLigand` to make the plots clearer for phosphorylated CheY)
+Save your file, then go to `simulation` and click `Run`. What happens to the concentration of phosphorylated CheY? (**Note:** you can deselect `AllLigand` to make the plot of the concentration of phosphorylated CheY easier to see.)
+
+Try the following few different values for `k_add`: 0.01, 0.03, 0.05, 0.1, 0.3, 0.5. What do these changing `k_add` values represent in the simulation? How does the system respond to the different values?
+
+All of your simulation results are stored in the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/TIME/` directory in your computer. Rename the directory with the `k_add` values instead of the time of running for simplicity.
 
 You will observe that CheY phosphorylation drops gradually first, instead of the instantaneous sharp drop as we add lots of ligand at once. That means, with the ligand concentration increases, the cell is able to continuously lower the tumbling frequency.
 
-Try different values for `k_add`: 0.01, 0.03, 0.05, 0.1, 0.3, 0.5. What do different `k_add` values imply? How does the system respond to the different values - what are some common trends and some differences?
-
-All simulation results are stored in the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/TIME/` directory in your computer. Rename the directory with the `k_add` values instead of the time of running for simplicity.
 
 <!--
 Please make sure have dependencies installed:
