@@ -32,12 +32,11 @@ To model an increasing concentration of ligand corresponding to a bacterium movi
 
 We will simulate an increase in attractant concentration by using a "dummy reaction" *L* → 2*L* in which one ligand molecule becomes two. To do so, we will add the following reaction to the `reaction rules` section.
 
-~~~ ruby
-#Simulate an exponentially increasing gradient using a dummy reaction
-LAdd: L(t) -> L(t) + L(t) k_add
-~~~
+As we have observed earlier in this module, when the ligand concentration is very high, receptors are saturated, and the cell can no longer detect a change in ligand concentration. If you explored the [adaptation simulation](tutorial_adap), then you saw that this occurs after *l*<sub>0</sub> passes `1e8`; we will therefore cap the allowable ligand concentration at this value.
 
-As we have observed earlier in this module, when the ligand concentration is very high, receptors are saturated, and the cell can no longer detect a change in ligand concentration. We can use this fact to cap our ligand concentration at `1e8` (in the [adaptation simulation](tutorial_adap), the cell can't differentiate between `1e8` and a higher concentration). We can do this by defining the rate of this reaction as a function `add_Rate()`. It requires another observable, `AllLigand`. By adding the line `Molecules AllLigand L` in the `observables` sections, `AllLigand` will record the total concentration of ligands in the system at each time step. When `AllLigand` is more than `1e8`, the rate of ligand concentration increase becomes 0. In the `if` statement, the syntax is `if(condition,valueTrue,valueFalse)`. Please add functions **before declaring reaction rules**.
+We can cap our ligand concentration by defining the rate of the dummy reaction using a function `add_Rate()`. This function requires another observable, `AllLigand`. By adding the line `Molecules AllLigand L` in the `observables` section, `AllLigand` will record the total concentration of ligand in the system at each time step (both bound and unbound). As for our reaction, if `AllLigand` is less than `1e8`, then the dummy reaction should take place at some given rate `k_add`. Otherwise, `AllLigand` exceeds`1e8`, and we will set the rate of the dummy reaction to zero. This can be achieved with a `functions` section in BioNetGen using the following `if` statement to branch based on the value of `AllLigand`.
+
+**Important note:** Please ensure that the `functions` section occurs before the `reaction rules` section in your BioNetGen file.
 
 ~~~ ruby
 begin functions
@@ -45,9 +44,10 @@ begin functions
 end functions
 ~~~
 
-Substitute `k_add` in `reaction rules` with `addRate()`
+Now we are ready to add our dummy reaction to the `reaction rules` section with a reaction rate of `addRate()`.
 
 ~~~ ruby
+#Simulate an exponentially increasing gradient using a dummy reaction
 LAdd: L(t) -> L(t) + L(t) addRate()
 ~~~
 
