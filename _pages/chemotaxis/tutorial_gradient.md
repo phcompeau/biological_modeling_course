@@ -7,13 +7,13 @@ toc: true
 toc_sticky: true
 ---
 
-In the [previous tutorial](tutorial_adap), we modeled how bacteria react and adapt to a one-time addition of attractants. In real life, bacteria don't suddenly drop into an environment with more attractants; instead, they searches the space to find the gradient. In this tutorial, we will adapt the model to simulate the more complicated and realistic behavior of bacteria responding to an exponentially increasing concentration gradient.
+In the [previous tutorial](tutorial_adap), we modeled how bacteria react and adapt to a one-time addition of attractants. In real life, bacteria don't suddenly drop into an environment with more attractants; instead, they explore a variable environment. In this tutorial, we will adapt our model to simulate a bacterium as it travels up an exponentially increasing concentration gradient.
 
-We will also explore defining and using **functions** to help specifying reaction rules in which reaction rate constant is dependent on the state of the system.
+We will also explore defining and using **functions**, a feature of BioNetGen that will allow us to specify reaction rules in which the reaction rates are dependent on the current state of the system.
 
-## Files and dependencies
+To get started, create a copy of your file from the adaptation tutorial and save it as `addition.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
 
-The simulation can be downloaded here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
+We also will build a Jupyter notebook in this tutorial. You should create a file called `plotter_up.ipynb` that contains 
 
 The Jupyter notebook for visualizing results can be downloaded here:
 <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_up.ipynb</a>
