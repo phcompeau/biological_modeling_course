@@ -363,6 +363,8 @@ Things get interesting when we change the initial concentration of ligand to see
 
 Try a variety of different initial concentrations of ligand (`L0` = `1e4`, `1e5`, `1e6`, `1e7`, `1e8`), paying attention the concentration of phosphorylated CheY. How does the concentration change depending on initial ligand concentration?
 
+Then try to further raise the ligand concentration to `1e9` and `1e10`. How does this affect the outcome of the simulation? Why?
+
 Next, try only simulating the first 10 seconds to zoom into what happens to the system at the start. How quickly does CheY concentration reach a minimum?  How long does the cell take to return to the original concentration of phosphorylated CheY (i.e., the background tumbling frequency)?
 
 Back in the main text, we will examine how a sudden change in the concentration of unbound ligand can cause a quick change in the tumbling frequency of the bacterium, followed by a slow return to its original frequency. We will also see how the extent to which this tumbling frequency is disturbed is dependent upon differences in the initial concentration of ligand.
