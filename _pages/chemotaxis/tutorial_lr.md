@@ -27,7 +27,7 @@ In this tutorial, we will focus only on modeling ligand-receptor dynamics, which
 ## Starting with Ligand-Receptor Dynamics
 
 In this tutorial, we will build our model from scratch. If you like instead, you can download the completed simulation file here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/ligand_receptor.bngl" download="ligand_receptor.bngl">ligand_receptor.bngl</a>
+<a href="../downloads/downloadable/ligand_receptor.bngl" download="ligand_receptor.bngl">ligand_receptor.bngl</a>
 
 In our system, there are only two types of molecules: the ligand (`L`), and the receptor (`T`). (The receptor is in fact a receptor complex because it is attached to additional molecules, which we will elaborate on later). The ligand can bind to the receptor, forming an intermediate, and the complex can also dissociate. We write this reaction as `L + T <-> L.T`, where the formation of the intermediate is called the **forward reaction**, and the dissociation is called the **reverse reaction**.
 
