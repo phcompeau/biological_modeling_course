@@ -214,11 +214,11 @@ Please make sure have dependencies installed:
  - [Colorspace](https://python-colorspace.readthedocs.io/en/latest/installation.html) (simply [install with pip](https://pypi.org/project/colorspace/) works too)
 -->
 
-## Visualizing the results
+## Visualizing the results of our simulation
 
-We are now ready to fill in `plotter_up.ipynb`, a Jupyter notebook that we will use to visualize the outcome of our simulations. 
+We are now ready to fill in `plotter_up.ipynb`, a Jupyter notebook that we will use to visualize the outcome of our simulations.
 
-First specify the directories, model name, species of interest, and rates. Put the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/` folder inside the same directory as the Jupyter notebook or change the `model_path`.
+First specify the directories, model name, species of interest, and rates. Put the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/` folder inside the same directory as `plotter_up.ipynb` or change the `model_path` below to point at this folder.
 
 ~~~ python
 #Specify the data to plot here.
@@ -228,7 +228,7 @@ target = "phosphorylated_CheY"    #Target molecule
 vals = [0.01, 0.03, 0.05, 0.1, 0.3, 0.5]  #Gradients of interest
 ~~~
 
-Next, we provide some import statements for dependencies.
+We next provide some import statements for needed dependencies.
 
 ~~~ python
 import numpy as np
@@ -238,14 +238,14 @@ import matplotlib.pyplot as plt
 import colorspace
 ~~~
 
-To compare the responses for different gradients, we color-code each gradient. [Colorspace](https://python-colorspace.readthedocs.io/en/latest/hclcolorspace.html) is one of the straight-forward ways to set up a color palette. Here we use a qualitative palette with hues (`h`) equally spaced between `[0, 300]`, and constant chroma (`c`) and luminance (`l`) values. Some other color maps include [Matplotlib native colormap](https://matplotlib.org/3.3.2/tutorials/colors/colormaps.html), [Palettable/Colorbrewer](https://jiffyclub.github.io/palettable/), and [color palette for Seaborn](https://seaborn.pydata.org/tutorial/color_palettes.html).
+To compare the responses for different gradients, we color-code each gradient. [Colorspace](https://python-colorspace.readthedocs.io/en/latest/hclcolorspace.html) is one of the straight-forward ways to set up a color palette. Here we use a qualitative palette with hues (`h`) equally spaced between `[0, 300]`, and constant chroma (`c`) and luminance (`l`) values.
 
 ~~~ python
 #Define the colors to use
 colors = colorspace.qualitative_hcl(h=[0, 300.], c = 60, l = 70, pallete = "dynamic")(len(vals))
 ~~~
 
-The following function loads and parses the data. Once the file containing your data is loaded, we use the first row to investigate which column stores the concentration of which observalbe species. We obtain the column index storing concentrations of species of our interest - `target = "phosphorylated_CheY"`. We would like to plot with time points on the x-axis, and concentrations on the y-axis, so we take the firth column for the time points and the column with concentratons of our target species.
+The following function loads and parses the data. Once the file containing your data is loaded, we use the first row to investigate which column stores the concentration of the "target" observable species of interest. When we find that target, we will then access the time points and concentrations of this target particle.
 
 ~~~ python
 def load_data(val):
@@ -265,7 +265,7 @@ def load_data(val):
     return time, concentration
 ~~~
 
-We use [Matplotlib plot](https://matplotlib.org/3.3.2/api/_as_gen/matplotlib.axes.Axes.plot.html) function to plot concentrations through time for each gradient value. Each point is defined by the `time` on the x-axis and `concentration` on the y-axis, and the time-series data is labeled by the concentration gradient value and colored by the color palette we defined early.
+Now we will write a function to plot the time coordinates on the *x*-axis and the concentrations of the particle at these time points on the *y*-axis. To do so, we will use the [Matplotlib plot](https://matplotlib.org/3.3.2/api/_as_gen/matplotlib.axes.Axes.plot.html) function to plot concentrations through time for each gradient value. Time-series data will be colored by the color palette we mentioned earlier.
 
 ~~~ python
 def plot(val, time, concentration, ax, i):
@@ -276,7 +276,7 @@ def plot(val, time, concentration, ax, i):
     return
 ~~~
 
-The plotting we just discussed needs to be initialized with a figure defined by the [subplot](https://matplotlib.org/3.3.2/api/_as_gen/matplotlib.pyplot.subplots.html) function. We loop through every gradient concentration to perform the plotting. After this, we set up labels for x-axis and y-axis, figure title, and tick lines. The `plt.show()` displays the plot.
+The plotting function above needs to be initialized with a figure defined by the [subplot](https://matplotlib.org/3.3.2/api/_as_gen/matplotlib.pyplot.subplots.html) function. We loop through every gradient concentration to perform the plotting. Afterward, we define labels for the *x*-axis and *y*-axis, figure title, and tick lines. The call to `plt.show()` displays the plot.
 
 ~~~ python
 fig, ax = plt.subplots(1, 1, figsize = (10, 8))
@@ -295,7 +295,9 @@ ax.grid(b = True, which = 'major', axis = 'both', color = 'grey', linewidth = 0.
 plt.show()
 ~~~
 
-Run the code blocks. How does `k_add` impact the CheY-P concentrations? Why? Are the tumbling frequencies restored to the background frequency?
+Now run the notebook. How do changing values of `k_add` impact the CheY-P concentrations? Why do you think this is?
+
+In the main text, we will examine the results of our plots and discuss how they can be used to infer the cell's behavior in the presence of increasing attractant.
 
 [Return to main text](home_gradient#steady-state-tumbling-frequency-is-robust-when-traveling-up-an-attractant-gradient){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
