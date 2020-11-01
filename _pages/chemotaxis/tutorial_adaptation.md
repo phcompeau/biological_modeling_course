@@ -17,7 +17,7 @@ Finally, after running our model, we will see how methylation can be used to hel
 The chemotaxis signal-transduction pathway with methylation included. CheA phosphorylates CheB, which methylates MCPs, while CheR demethylates MCPs. Blue lines denote phosphorylation, grey lines denote dephosphorylation, and the green arrow denotes methylation. Image modified from <a href="http://chemotaxis.biology.utah.edu/Parkinson_Lab/projects/ecolichemotaxis/ecolichemotaxis.html">Parkinson Lab</a>'s illustrations.
 {: style="font-size: medium;"}
 
-To get started, create a copy of your file from the phosphorylation tutorial and save it as `adaptation.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/adaptation.bngl" download="adaptation.bngl">adaptation.bngl</a>.
+To get started, create a copy of your file from the phosphorylation tutorial and save it as `adaptation.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="../downloads/downloadable/adaptation.bngl" download="adaptation.bngl">adaptation.bngl</a>.
 
 ## Specifying molecule types
 

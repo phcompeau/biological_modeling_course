@@ -12,7 +12,7 @@ In this tutorial, we will extend the BioNetGen model covered in the [ligand-rece
 ![image-center](../assets/images/chemotaxisphosnew.png){: .align-center}
 
 To get started, create a copy of your file from the ligand-receptor tutorial and save it as `phosphorylation.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/phosphorylation.bngl" download="phosphorylation.bngl">phosphorylation.bngl</a>
+<a href="../downloads/downloadable/phosphorylation.bngl" download="phosphorylation.bngl">phosphorylation.bngl</a>
 
 ## Defining molecules
 
@@ -103,7 +103,7 @@ We can now run the simulation, setting `t_end` equal to 3 in order to run the si
 ~~~
 
 The following code contains our complete simulation, which you can also download here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/phosphorylation.bngl" download="phosphorylation.bngl">phosphorylation.bngl</a>
+<a href="../downloads/downloadable/phosphorylation.bngl" download="phosphorylation.bngl">phosphorylation.bngl</a>
 
 ~~~ ruby
 begin model

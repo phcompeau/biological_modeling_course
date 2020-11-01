@@ -12,7 +12,7 @@ In this page, we will:
 
 ## Simulation files and dependencies
 
-Please download the simulation and visualization here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/chemotaxis_std_random.ipynb" download="chemotaxis_std_random.ipynb">chemotaxis_std_random.ipynb</a>. Detailed explanation of the model and each functions can be found in the file too.
+Please download the simulation and visualization here: <a href="../downloads/downloadable/chemotaxis_std_random.ipynb" download="chemotaxis_std_random.ipynb">chemotaxis_std_random.ipynb</a>. Detailed explanation of the model and each functions can be found in the file too.
 
 Please make sure the following dependencies are installed:
 

@@ -11,10 +11,10 @@ In the [previous tutorial](tutorial_adap), we modeled how bacteria react and ada
 
 We will also explore defining and using **functions**, a feature of BioNetGen that will allow us to specify reaction rules in which the reaction rates are dependent on the current state of the system.
 
-To get started, create a copy of your `adaptation.bngl` file from the adaptation tutorial and save it as `addition.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
+To get started, create a copy of your `adaptation.bngl` file from the adaptation tutorial and save it as `addition.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="../downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
 
 We also will build a Jupyter notebook in this tutorial. You should create a file called `plotter_up.ipynb`; if you would rather not follow along, we provide a completed notebook here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_up.ipynb</a>
+<a href="../downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_up.ipynb</a>
 
 Before running this notebook, make sure the following dependencies are installed.
 
@@ -68,7 +68,7 @@ simulate({method=>"ssa", t_end=>1000, n_steps=>500})
 ~~~
 
 The following code contains our complete simulation, which you can also download here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
+<a href="../downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
 
 ~~~ ruby
 begin model

@@ -11,10 +11,10 @@ In the [previous tutorial](tutorial_gradient), we simulated the behavior of a ba
 
 ## Files and dependencies
 
-The simulation can be downloaded here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/removal.bngl" download="removal.bngl">removal.bngl</a>
+The simulation can be downloaded here: <a href="../downloads/downloadable/removal.bngl" download="removal.bngl">removal.bngl</a>
 
 The Jupyter notebook for visualizing results can be downloaded here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/plotter_down.ipynb" download="plotter_down.ipynb">plotter_down.ipynb</a>
+<a href="../downloads/downloadable/plotter_down.ipynb" download="plotter_down.ipynb">plotter_down.ipynb</a>
 
 Please make sure the following dependencies are installed.
 
@@ -79,7 +79,7 @@ generate_network({overwrite=>1})
 simulate({method=>"ssa", t_end=>1800, n_steps=>1800})
 ~~~
 
-The following code contains our complete simulation, which can also be downloaded here: <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/removal.bngl" download="removal.bngl">removal.bngl</a>
+The following code contains our complete simulation, which can also be downloaded here: <a href="../downloads/downloadable/removal.bngl" download="removal.bngl">removal.bngl</a>
 
 ~~~ ruby
 begin model
@@ -209,7 +209,7 @@ All simulation results are stored in the `RuleBender-workspace/PROJECT_NAME/resu
 
 ## Visualizing the results
 
-We will use the jupyter notebook <a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_down.ipynb</a> to visualize results. First specify the directories, model name, species of interest, and rates. Put the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/` folder inside the same directory as the Jupyter notebook or change the `model_path`.
+We will use the jupyter notebook <a href="../downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_down.ipynb</a> to visualize results. First specify the directories, model name, species of interest, and rates. Put the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/` folder inside the same directory as the Jupyter notebook or change the `model_path`.
 
 ~~~ python
 model_path = "removal"  #The folder containing the model

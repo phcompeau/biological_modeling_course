@@ -144,7 +144,7 @@ We are now ready to run our simulation. At the bottom of the model specification
 ~~~
 
 The following code contains our complete simulation, which you can also download here:
-<a href="https://purpleavatar.github.io/multiscale_biological_modeling/downloads/downloadable/ligand_receptor.bngl" download="ligand_receptor.bngl">ligand_receptor.bngl</a>.
+<a href="../downloads/downloadable/ligand_receptor.bngl" download="ligand_receptor.bngl">ligand_receptor.bngl</a>.
 
 ~~~ ruby
 begin model
