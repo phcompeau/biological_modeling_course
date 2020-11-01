@@ -9,14 +9,11 @@ toc_sticky: true
 
 In the [previous tutorial](tutorial_gradient), we simulated the behavior of a bacterium moving up the concentration gradient. In this tutorial, we will simulate the opposite - when the bacterium is not in luck and moves down a concentration gradient.
 
-## Files and dependencies
+To get started, create a copy of your `adaptation.bngl` file from the [adaptation tutorial](tutorial_adap) and save it as `removal.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="../downloads/downloadable/removal.bngl" download="removal.bngl">removal.bngl</a>.
 
-The simulation can be downloaded here: <a href="../downloads/downloadable/removal.bngl" download="removal.bngl">removal.bngl</a>
+We also will build a Jupyter notebook in this tutorial for plotting the concentrations of different particles over time. To do so, you should save a copy of your `plotter_up.ipynb` file called `plotter_down.ipynb`; if you would rather not follow along, we provide a completed notebook here: <a href="../downloads/downloadable/plotter_down.ipynb" download="plotter_down.ipynb">plotter_down.ipynb</a>
 
-The Jupyter notebook for visualizing results can be downloaded here:
-<a href="../downloads/downloadable/plotter_down.ipynb" download="plotter_down.ipynb">plotter_down.ipynb</a>
-
-Please make sure the following dependencies are installed.
+Before running this notebook, make sure the following dependencies are installed.
 
 | Installation Link | Version | Check install/version |
 |:------|:-----:|------:|
@@ -26,31 +23,31 @@ Please make sure the following dependencies are installed.
 | [Matplotlib](https://matplotlib.org/users/installing.html) | 3.0+ | `pip list \| grep matplotlib` |
 | [Colorspace](https://python-colorspace.readthedocs.io/en/latest/installation.html) or with [pip](https://pypi.org/project/colorspace/)| any | `pip list \| grep colorspace`|
 
-## Modeling traveling down the gradient with BNG
+## Modeling a decreasing ligand gradient with a BioNetGen function
 
-We have simulated how CheY-P changes when the cell moves up the attractant gradient. With higher concentrations, methylation states change so that they can compensate for the more ligand-receptor binding to restore the CheY phosphorylation level. What if the ligands are removed? Along with increased CheY-P because the cell needs to tumble more to "escape" from the wrong direction, we should see methylation states return to the level before the addition of ligands.
+We have simulated how the concentration of phosphorylated CheY changes when the cell moves up the attractant gradient. The concentration dips, but over time, methylation states change so that they can compensate for the increased ligand-receptor binding and restore the equilibrium of phosphorylated CheY. What if instead ligands are removed, as we would see if the bacterium is traveling *down* an attractant gradient? We might imagine that we would see an increase in phosphorylated CheY to increase tumbling and change course, followed by a return to steady-state. But is this what we will see?
 
-First create a copy of the adaptation model `adaptation.bngl`, name it `removal.bngl`.
-
-To simulate the removal of ligand, or the traveling down the gradient, we will add a "fake reaction" that the ligand disappear with a certain rate. Add this rule within the `reaction rules` section.
+To simulate the cell traveling down an attractant gradient, we will add a kill reaction removing unbound ligand at a constant rate. To do so, we will add the following rule within the `reaction rules` section.
 
 ~~~ ruby
 #Simulate ligand removal
 LigandGone: L(t) -> 0 k_gone
 ~~~
 
-In `parameters` section, we define the `k_gone` to be 0.3 first and thus d[L]/dt = -0.3[L]. By integration, we can represent the concentration as [L] = 10<sup>7</sup>e<sup>-0.3t</sup>. We will also change the initial ligand concentration to be 1e7. Thus, the concentration of ligand becomes so low that ligand-receptor binding reaches 0 within 50 seconds.
+In the `parameters` section, we start by defining `k_gone` to be 0.3, so that d[*L*]/dt = -0.3[*L*]. The solution of this differential equation is [*L*] = 10<sup>7</sup>e<sup>-0.3<em>t</em></sup>. We will also change the initial ligand concentration (`L0`) to be `1e7`. Thus, the concentration of ligand becomes so low that ligand-receptor binding reaches 0 within 50 seconds.
 
 ~~~ ruby
 k_gone 0.3
 L0 1e7
 ~~~
 
-We will set the initial concentrations of all `seed species` to be the final concentrations of the simulation result for our `adaptation.bngl` model, and see if our simulation can restore them to the inital concentrations of the `adaptation.bngl` model.
+We will set the initial concentrations of all `seed species` to be the final steady-state concentrations from the result for our `adaptation.bngl` model, and see if after reducing the concentration of unbound ligand gradually, the simulation can restore these concentrations to steady-state.
 
-Go to the `adaptation.bngl` model, and set `L0` as `1e7`. Also include concentration of each combination of methylation state and ligand binding state of the receptor complex as `observables`. (Concentration of other sepcies are already restored to original state when adapting, like CheY-P). Run the simulation. Go to `RuleBender-workspace/PROJECT_NAME/results/adaptation/` and find the simulation result at the final time point.
+First, visit the `adaptation.bngl` model and add the concentration for each combination of methylation state and ligand binding state of the receptor complex to the `observables` section. Then run this simulation with `L0` equal to `1e7`.
 
-Input those concentrations to the `seed species` section of our `removal.bngl` model.
+When the simulation is finished, visit `RuleBender-workspace/PROJECT_NAME/results/adaptation/` and find the simulation result at the final time point.
+
+When the model finishes running, input the final concentrations of molecules to the `seed species` section of our `removal.bngl` model. Here is what we have.
 
 ~~~ ruby
 begin seed species
@@ -70,16 +67,16 @@ begin seed species
 end seed species
 ~~~
 
-## Simulating when traveling down the gradient
+## Running the BioNetGen model
 
-Add the following after `end model` to simulate over 1800 seconds.
+We are now ready to run our BioNetGen model. To do so, first add the following after `end model` to run our simulation over 1800 seconds.
 
 ~~~ ruby
 generate_network({overwrite=>1})
 simulate({method=>"ssa", t_end=>1800, n_steps=>1800})
 ~~~
 
-The following code contains our complete simulation, which can also be downloaded here: <a href="../downloads/downloadable/removal.bngl" download="removal.bngl">removal.bngl</a>
+The following code contains our complete simulation, which can also be downloaded here: <a href="../downloads/downloadable/removal.bngl" download="removal.bngl">removal.bngl</a>.
 
 ~~~ ruby
 begin model
@@ -201,15 +198,15 @@ generate_network({overwrite=>1})
 simulate({method=>"ssa", t_end=>1800, n_steps=>1800})
 ~~~
 
-Go to `simulation` and click `Run`. What happens to CheY phosphorylation? Compare the steady state concentration of each methylation states, are they restored to the level before adding ligands to the `adaptation.bngl` model?
+Save your file, and then visit `simulation` and click `Run`. What happens to the concentration of phosphorylated CheY? Are the concentrations of complexes at different methylation states restored to their levels before adding ligands to the `adaptation.bngl` model?
 
-Similar to what we did for up gradient, we can try different values for `k_gone`. Change `t_end` in the `simulate` method to 1800 seconds, and simulate with `k_gone` = 0.01, 0.03, 0.05, 0.1, 0.5.
+As we did in the tutorial simulating increasing ligand, we can try different values for `k_gone`. Change `t_end` in the `simulate` method to 1800 seconds, and run the simulation with `k_gone` equal to 0.01, 0.03, 0.05, 0.1, and 0.5.
 
-All simulation results are stored in the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/TIME/` directory in your computer. Rename the directory with the `k_gone` values instead of the time of running for simplicity.
+All simulation results are stored in the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/TIME/` directory in your computer. Rename the directory with the `k_gone` values instead of the timestamp for simplicity.
 
-## Visualizing the results
+## Visualizing the results of our simulation
 
-We will use the jupyter notebook <a href="../downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_down.ipynb</a> to visualize results. First specify the directories, model name, species of interest, and rates. Put the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/` folder inside the same directory as the Jupyter notebook or change the `model_path`.
+We will use the jupyter notebook <a href="../downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_up.ipynb</a> as a template for the `plotter_down.ipynb` file that we will use to visualize our results. First, we will specify the directories, model name, species of interest, and reaction rates. Put the `RuleBender-workspace/PROJECT_NAME/results/MODEL_NAME/` folder inside the same directory as the Jupyter notebook or change the `model_path` accordingly.
 
 ~~~ python
 model_path = "removal"  #The folder containing the model
@@ -218,7 +215,7 @@ target = "phosphorylated_CheY"    #Target molecule
 vals = [0.01, 0.03, 0.05, 0.1, 0.3, 0.5]  #Gradients of interest
 ~~~
 
-The second code block will load simulation result at each time point from the `.gdat` file, which stores concentration of all `observables` at all steps, and plot concentration of phosphorylated CheY through time. The steps are exactly the same as we did in the [previous tutoiral](tutorial_gradient).
+The second code block is the same as that provided in the [previous tutorial](tutorial_gradient). This code loads the simulation result at each time point from the `.gdat` file, which stores the concentration of all `observables` at all steps. It then plots the concentration of phosphorylated CheY over time.
 
 ~~~ python
 import numpy as np
@@ -273,9 +270,7 @@ ax.grid(b = True, which = 'major', axis = 'both', color = 'grey', linewidth = 0.
 plt.show()
 ~~~
 
-Run the code blocks. How does `k_gone` impact the CheY-P concentrations? Why? Are the tumbling frequencies restored to the background frequency?
-
-
+Run the notebook. How does the value of `k_gone` impact the concentration of phosphorylated CheY? Why? Are the tumbling frequencies restored to the background frequency? As we return to the main text, we will show the resulting plots and discuss these questions.
 
 [^Krembel2015]: Krembel A., Colin R., Sourijik V. 2015. Importance of multiple methylation sites in *Escherichia coli* chemotaxis. [Available online](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0145582)
 

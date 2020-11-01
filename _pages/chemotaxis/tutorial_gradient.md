@@ -13,7 +13,7 @@ We will also explore defining and using **functions**, a feature of BioNetGen th
 
 To get started, create a copy of your `adaptation.bngl` file from the adaptation tutorial and save it as `addition.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="../downloads/downloadable/addition.bngl" download="addition.bngl">addition.bngl</a>
 
-We also will build a Jupyter notebook in this tutorial. You should create a file called `plotter_up.ipynb`; if you would rather not follow along, we provide a completed notebook here:
+We also will build a Jupyter notebook in this tutorial for plotting the concentrations of molecules over time. You should create a file called `plotter_up.ipynb`; if you would rather not follow along, we provide a completed notebook here:
 <a href="../downloads/downloadable/plotter_up.ipynb" download="plotter_up.ipynb">plotter_up.ipynb</a>
 
 Before running this notebook, make sure the following dependencies are installed.
@@ -245,7 +245,7 @@ To compare the responses for different gradients, we color-code each gradient. [
 colors = colorspace.qualitative_hcl(h=[0, 300.], c = 60, l = 70, pallete = "dynamic")(len(vals))
 ~~~
 
-The following function loads and parses the data. Once the file containing your data is loaded, we use the first row to investigate which column stores the concentration of the "target" observable species of interest. When we find that target, we will then access the time points and concentrations of this target particle.
+The following function loads and parses the data. Once the file containing your data is loaded, we use the first row to investigate which column stores the concentration of the "target" observable species of interest. When we find that target, we will then access the time points and concentrations of this target molecule.
 
 ~~~ python
 def load_data(val):
@@ -265,7 +265,7 @@ def load_data(val):
     return time, concentration
 ~~~
 
-Now we will write a function to plot the time coordinates on the *x*-axis and the concentrations of the particle at these time points on the *y*-axis. To do so, we will use the [Matplotlib plot](https://matplotlib.org/3.3.2/api/_as_gen/matplotlib.axes.Axes.plot.html) function to plot concentrations through time for each gradient value. Time-series data will be colored by the color palette we mentioned earlier.
+Now we will write a function to plot the time coordinates on the *x*-axis and the concentrations of the molecule at these time points on the *y*-axis. To do so, we will use the [Matplotlib plot](https://matplotlib.org/3.3.2/api/_as_gen/matplotlib.axes.Axes.plot.html) function to plot concentrations through time for each gradient value. Time-series data will be colored by the color palette we mentioned earlier.
 
 ~~~ python
 def plot(val, time, concentration, ax, i):
