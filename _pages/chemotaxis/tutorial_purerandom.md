@@ -141,7 +141,7 @@ def simulate_std_random(num_cells, duration, time_exp):
 
 ## Visualizing trajectories
 
-Run simulation for 3 cells for 500 seconds to get a rough idea of what their trajectories look like.
+Run simulation for 3 cells for 500 seconds to get a rough idea of what their trajectories look like. The end points of the simulation are stored in `terminals` and the trajectories are stored in `path`.
 
 ~~~ python
 duration = 800   #seconds, duration of the simulation
@@ -153,6 +153,57 @@ terminals, path = simulat_std_random(num_cells, duration, time_exp)
 print(terminals)
 ~~~
 
+The next step is doing some plotting with Matplotlib. We initialize our figure with `subplot`. We will color-code trajectories as well as the concentration. To provide a color gradient corresponding to ligand concentration, we define a list of colors and linearly segment them, and plot the ligand concentration in a heatmap fashion. The ligand concentrations for each position can be represented as a matrix, and we log scale each value to better color our exponential gradient.
+
+~~~ python
+fig, ax = plt.subplots(1, 1, figsize = (8, 8))
+
+#First set color map
+mycolor = [[256, 256, 256], [256, 255, 254], [256, 253, 250], [256, 250, 240], [255, 236, 209], [255, 218, 185], [251, 196, 171], [248, 173, 157], [244, 151, 142], [240, 128, 128]] #from coolors：）
+for i in mycolor:
+    for j in range(len(i)):
+        i[j] *= (1/256)
+cmap_color = colors.LinearSegmentedColormap.from_list('my_list', mycolor)
+
+
+conc_matrix = np.zeros((4000, 4000))
+for i in range(4000):
+    for j in range(4000):
+        conc_matrix[i][j] = math.log(calc_concentration([i - 1000, j - 1000]))
+
+#Simulate the gradient distribution, plot as a heatmap
+ax.imshow(conc_matrix.T, cmap=cmap_color, interpolation='nearest', extent = [-1000, 3000, -1000, 3000], origin = 'lower')
+~~~
+
+We add the trajectories point by point. To visualize older vs. newer time points, we set the color as a function of `t` so that newer points have ligher colors.
+
+~~~ python
+#Plot simulation results
+time_frac = 1.0 / duration
+#Time progress: dark -> colorful
+for t in range(duration):
+    ax.plot(path[0,t,0], path[0,t,1], 'o', markersize = 1, color = (0.2 * time_frac * t, 0.85 * time_frac * t, 0.8 * time_frac * t))
+    ax.plot(path[1,t,0], path[1,t,1], 'o', markersize = 1, color = (0.85 * time_frac * t, 0.2 * time_frac * t, 0.9 * time_frac * t))
+    ax.plot(path[2,t,0], path[2,t,1], 'o', markersize = 1, color = (0.4 * time_frac * t, 0.85 * time_frac * t, 0.1 * time_frac * t))
+ax.plot(start[0], start[1], 'ko', markersize = 8)
+~~~
+
+We mark the terminal points with red dots, then the starting point with a black dot. And finally, we set up the axis limits, labels, and show the plot.
+
+~~~ python
+for i in range(num_cells):
+    ax.plot(terminals[i][0], terminals[i][1], 'ro', markersize = 8)
+
+ax.plot(1500, 1500, 'bX', markersize = 8)
+ax.set_title("Pure random walk \n Background: avg tumble every {} s".format(time_exp), x = 0.5, y = 0.87)
+ax.set_xlim(-1000, 3000)
+ax.set_ylim(-1000, 3000)
+ax.set_xlabel("poisiton in um")
+ax.set_ylabel("poisiton in um")
+
+plt.show()
+~~~
+
 Run the two code blocks for Part2: Visualizing trajectories (1st block simulates, 2nd block is plotter). The background color indicates concentration: white -> red = low -> high; black dot are starting points; red dots are the points they reached at the end of the simulation; colorful small dots represents trajectories (one color one cell): dark -> bright color = older -> newer time points; blue cross indicates the highest concentration [1500, 1500].
 
 **STOP:** What do you observe? Are the cells moving up the gradient? Is this a good strategy to search for food?
@@ -162,7 +213,7 @@ Run the two code blocks for Part2: Visualizing trajectories (1st block simulates
 
 Although the cells are under the same mechanisms for random walk, randomness introduced large variations among the trajectories. Therefore, simulation with 3 cells is not convincing. To assess the performances, let's simulate with 500 cells for 1500 seconds.
 
-For 500 cells, visualizing the trajectories will be messy. We will quantitatively measure the performances by the ability to reach the target at the end of the simulation. We will calculate the average distance to the center at each time step.
+For 500 cells, visualizing the trajectories will be messy. We instead quantitatively measure the performances by the ability to reach the target at the end of the simulation. We calculate the Euclidean distance to the center at each time step, and to evaluate the collective behavior, we measure the average and standard deviation for all cells.
 
 ~~~ python
 #Run simulation for 500 cells, plot average distance to highest concentration point.
@@ -184,6 +235,30 @@ for c in range(num_cells):
 
 all_dist_avg = np.mean(all_distance, axis = 0)
 all_dist_std = np.std(all_distance, axis = 0)
+~~~
+
+Then we plot average distance vs. time for our simulation with the `plot` function. The standard deviation is illustrated as mean ± std with the `fill_between` function.
+
+~~~ python
+#Below are all for plotting purposes
+#Define the colors to use
+colors1 = colorspace.qualitative_hcl(h=[0, 300.], c = 60, l = 70, pallete = "dynamic")(1)
+
+xs = np.arange(0, duration)
+
+fig, ax = plt.subplots(1, figsize = (10, 8))
+
+mu, sig = all_dist_avg, all_dist_std
+ax.plot(xs, mu, lw=2, label="pure random walk, back ground tumble every {} second".format(time_exp), color=colors1[0])
+ax.fill_between(xs, mu + sig, mu - sig, color = colors1, alpha=0.15)
+
+ax.set_title("Average distance to highest concentration")
+ax.set_xlabel('time (s)')
+ax.set_ylabel('distance to center (µm)')
+ax.hlines(radius_saturation, 0, duration, colors='gray', linestyles='dashed', label='concentration 10^8')
+ax.legend(loc='upper right')
+
+ax.grid()
 ~~~
 
 **STOP:** Before visualizing the average distances at each time step, what do you expect the result to be (based on the trajectories)?

@@ -1,6 +1,6 @@
 ---
 permalink: /chemotaxis/tutorial_walk
-title: "Software Tutorial: Modeling E. coli's Sophisticated Random Walk Algorithm"
+title: "Chemotactic random walk"
 sidebar:
  nav: "chemotaxis"
 toc: true
@@ -193,17 +193,128 @@ Part 1 in the notebook defines the simulation using the two strategies (same as 
 
 **Qualitative comparison**. Run the two code blocks for Part2: Visualizing trajectories (1st block simulates, 2nd block is plotter).  The background color indicates concentration: white -> red = low -> high; black dot are starting points; red dots are the points they reached at the end of the simulation; colorful small dots represents trajectories (one color one cell): dark -> bright color = older -> newer time points; blue cross indicates the goal.
 
+We will simulate 3 cells for 800 seconds for each of the strategies.
+
+~~~ python
+#Run simulation for 3 cells for each strategy, plot path
+duration = 800   #seconds, duration of the simulation
+num_cells = 3
+origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
+time_exp = 1.0
+
+terminals_rand, path_rand = simulate_pure_random(num_cells, duration, time_exp)
+terminals_che, path_che = simulate_che(num_cells, duration, time_exp)
+terminals, path = np.array([terminals_rand, terminals_che]), np.array([path_rand, path_che])
+~~~
+
+The plotting is similar as before, except that this time, we will have two subplots, one for pure random walk and another for chemotactic random walk, initialized with `plt.subplots(1, 2)`. We will plot the simulation results for each strategy.
+~~~ python
+#Below are all for plotting purposes
+methods = ["Pure random walk", "Chemotactic random walk"]
+fig, ax = plt.subplots(1, 2, figsize = (16, 8))
+
+#First set color map
+mycolor = [[256, 256, 256], [256, 255, 254], [256, 253, 250], [256, 250, 240], [255, 236, 209], [255, 218, 185], [251, 196, 171], [248, 173, 157], [244, 151, 142], [240, 128, 128]] #from coolors：）
+for i in mycolor:
+    for j in range(len(i)):
+        i[j] *= (1/256)
+cmap_color = colors.LinearSegmentedColormap.from_list('my_list', mycolor)
+
+conc_matrix = np.zeros((4000, 4000))
+for i in range(4000):
+    for j in range(4000):
+        conc_matrix[i][j] = math.log(calc_concentration([i - 1000, j - 1000]))
+
+for m in range(2):
+    ax[m].imshow(conc_matrix.T, cmap=cmap_color, interpolation='nearest', extent = [-1000, 3000, -1000, 3000], origin = 'lower')
+
+    #Plot simulation results
+    time_frac = 1.0 / duration
+    #Time progress: dark -> colorful
+    for t in range(duration):
+        ax[m].plot(path[m,0,t,0], path[m,0,t,1], 'o', markersize = 1, color = (0.2 * time_frac * t, 0.85 * time_frac * t, 0.8 * time_frac * t))
+        ax[m].plot(path[m,1,t,0], path[m,1,t,1], 'o', markersize = 1, color = (0.85 * time_frac * t, 0.2 * time_frac * t, 0.9 * time_frac * t))
+        ax[m].plot(path[m,2,t,0], path[m,2,t,1], 'o', markersize = 1, color = (0.4 * time_frac * t, 0.85 * time_frac * t, 0.1 * time_frac * t))
+    ax[m].plot(start[0], start[1], 'ko', markersize = 8)
+    for i in range(num_cells):
+        ax[m].plot(terminals[m][i][0], terminals[m][i][1], 'ro', markersize = 8)
+    ax[m].plot(1500, 1500, 'bX', markersize = 8)
+    #ax.plot(path[:,0], path[:,1], '-', color = 'grey')
+
+    #Indicate the saturation areas
+    ax[m].set_title("{}\n Average tumble every 1 s".format(methods[m]), x = 0.5, y = 0.87)
+    ax[m].set_xlim(-1000, 3000)
+    ax[m].set_ylim(-1000, 3000)
+    ax[m].set_xlabel("poisiton in μm")
+    ax[m].set_ylabel("poisiton in μm")
+
+fig.tight_layout()
+
+plt.show()
+~~~
+
 Which strategy allows the cell travel towards the higher concentration?
 
 Can we make a conclusion on which default tumbling frequencies are good yet? If not, why?
 
 **Quantitative comparsion**. Because of the high variations due to randomness, trajectories for 3 cells is not convincing enough. To verify your hypothesis on which strategy is better, let's simulate 500 cells for 1500 seconds for each strategy. Run the two code blocks for Part3: Comparing performances (1st block simulates, 2nd block is plotter). Each colored line indicates a strategy, plotting average distances for the 500 cells; the shaded area is standard deviation; grey dashed line is where concentration reaches 1e8.
 
+Like we did above, we run simulations for each strategies. 
+
+~~~ python
+#Run simulation for 3 cells with different background tumbling frequencies, Plot path
+
+duration = 1500   #seconds, duration of the simulation
+num_cells = 500
+origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
+time_exp = 1.0
+
+terminals_rand, path_rand = simulate_pure_random(num_cells, duration, time_exp)
+terminals_che, path_che = simulate_che(num_cells, duration, time_exp)
+terminals, path = np.array([terminals_rand, terminals_che]), np.array([path_rand, path_che])
+
+all_distance = np.zeros((2, num_cells, duration)) #Initialize to store results
+
+for m in range(2):
+    for c in range(num_cells):
+        for t in range(duration):
+            pos = path[m, c, t]
+            dist = euclidean_distance(ligand_center, pos)
+            all_distance[m, c, t] = dist
+
+all_dist_avg = np.mean(all_distance, axis = 1)
+all_dist_std = np.std(all_distance, axis = 1)
+~~~
+
+And then plotting the average distance to center vs. time like in the [previous tutorial](tutorial_purerandom).
+~~~ python
+#Below are all for plotting purposes
+#Define the colors to use
+colors1 = colorspace.qualitative_hcl(h=[0, 200.], c = 60, l = 70, pallete = "dynamic")(2)
+
+xs = np.arange(0, duration)
+
+fig, ax = plt.subplots(1, figsize = (10, 8))
+
+for m in range(2):
+    mu, sig = all_dist_avg[m], all_dist_std[m]
+    ax.plot(xs, mu, lw=2, label="{}".format(methods[m]), color=colors1[m])
+    ax.fill_between(xs, mu + sig, mu - sig, color = colors1[m], alpha=0.15)
+
+ax.set_title("Average distance to highest concentration")
+ax.set_xlabel('time (s)')
+ax.set_ylabel('distance to center (µm)')
+#ax.hlines(0, 0, duration, colors='gray', linestyles='dashed', label='concentration 10^8')
+ax.legend(loc='upper right', ncol = 2, fontsize = 15)
+
+ax.grid()
+~~~
+
 Which strategy is more efficient?
 
 Go back to main text for now. We will return to this tutorial later.
 
-[Return to main text](home_conclusion#comparing-the-effectiveness-of-our-two-random-walk-strategies){: .btn .btn--primary .btn--large}
+[Back to Main Text](home_conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Qualitative comparison of different background tumbling frequencies
@@ -220,6 +331,57 @@ origin_to_center = euclidean_distance(start, ligand_center) #Update the global c
 time_exp = [0.2, 1.0, 5.0]
 
 terminals, path = simulate(num_cells, duration, time_exp)
+~~~
+
+Then we will plot the trajectories like we previously did. 
+
+~~~ python
+#Run simulation for 3 cells with different background tumbling frequencies, Plot path
+
+duration = 800   #seconds, duration of the simulation
+num_cells = 3
+origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
+time_exp = [0.2, 1.0, 5.0]
+
+
+terminals, path = simulate(num_cells, duration, time_exp)
+
+conc_matrix = np.zeros((3500, 3500))
+for i in range(3500):
+    for j in range(3500):
+        conc_matrix[i][j] = math.log(calc_concentration([i - 500, j - 500]))
+
+mycolor = [[256, 256, 256], [256, 255, 254], [256, 253, 250], [256, 250, 240], [255, 236, 209], [255, 218, 185], [251, 196, 171], [248, 173, 157], [244, 151, 142], [240, 128, 128]] #from coolors：）
+for i in mycolor:
+    for j in range(len(i)):
+        i[j] *= (1/256)
+cmap_color = colors.LinearSegmentedColormap.from_list('my_list', mycolor)
+
+
+for freq_i in range(len(time_exp)):
+    fig, ax = plt.subplots(1, figsize = (8, 8))
+    ax.imshow(conc_matrix.T, cmap=cmap_color, interpolation='nearest', extent = [-500, 3000, -500, 3000], origin = 'lower')
+
+    #Plot simulation results
+    time_frac = 1.0 / duration
+    #Time progress: dark -> colorful
+    for t in range(duration):
+        ax.plot(path[freq_i,0,t,0], path[freq_i,0,t,1], 'o', markersize = 1, color = (0.2 * time_frac * t, 0.85 * time_frac * t, 0.8 * time_frac * t))
+        ax.plot(path[freq_i,1,t,0], path[freq_i,1,t,1], 'o', markersize = 1, color = (0.85 * time_frac * t, 0.2 * time_frac * t, 0.9 * time_frac * t))
+        ax.plot(path[freq_i,2,t,0], path[freq_i,2,t,1], 'o', markersize = 1, color = (0.4 * time_frac * t, 0.85 * time_frac * t, 0.1 * time_frac * t))
+    ax.plot(start[0], start[1], 'ko', markersize = 8)
+    ax.plot(1500, 1500, 'bX', markersize = 8)
+    for i in range(num_cells):
+        ax.plot(terminals[freq_i][i][0], terminals[freq_i][i][1], 'ro', markersize = 8)
+    #ax.plot(path[:,0], path[:,1], '-', color = 'grey')
+
+    ax.set_title("Background tumbling freq:\n tumble every {} s".format(time_exp[freq_i]), x = 0.5, y = 0.9, fontsize = 12)
+    ax.set_xlim(-500, 3000)
+    ax.set_ylim(-500, 3000)
+    ax.set_xlabel("poisiton in μm")
+    ax.set_ylabel("poisiton in μm")
+    
+plt.show()
 ~~~
 
 Run the two code blocks for Part2: Visualizing trajectories (1st block simulates, 2nd block is plotter). The background color indicates concentration: white -> red = low -> high; black dot are starting points; red dots are the points they reached at the end of the simulation; colorful small dots represents trajectories (one color one cell): dark -> bright color = older -> newer time points; if highest possible concentration > 1e8, dark dashed circle is where concentration reaches 1e8.
@@ -254,6 +416,30 @@ all_dist_avg = np.mean(all_distance, axis = 1)
 all_dist_std = np.std(all_distance, axis = 1)
 ~~~
 
+And plot the average distance to center vs. time.
+
+~~~ python
+#Below are all for plotting purposes
+#Define the colors to use
+colors1 = colorspace.qualitative_hcl(h=[0, 300.], c = 60, l = 70, pallete = "dynamic")(len(time_exp))
+
+xs = np.arange(0, duration)
+
+fig, ax = plt.subplots(1, figsize = (10, 8))
+
+for freq_i in range(len(time_exp)):
+    mu, sig = all_dist_avg[freq_i], all_dist_std[freq_i]
+    ax.plot(xs, mu, lw=2, label="tumble every {} second".format(time_exp[freq_i]), color=colors1[freq_i])
+    ax.fill_between(xs, mu + sig, mu - sig, color = colors1[freq_i], alpha=0.1)
+
+ax.set_title("Average distance to highest concentration")
+ax.set_xlabel('time (s)')
+ax.set_ylabel('distance to center (µm)')
+ax.legend(loc='lower left', ncol = 1)
+
+ax.grid()
+~~~
+
 **STOP:** Before visualizing the average distances at each time step, what do you expect the result to be (based on the trajectories)?
 {: .notice--primary}
 
@@ -275,3 +461,5 @@ For all `time_exp`, after some time the average distance flattens. Why for diffe
 
 [Back to Main Text](home_conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
+
+
