@@ -259,7 +259,7 @@ Can we make a conclusion on which default tumbling frequencies are good yet? If 
 
 **Quantitative comparsion**. Because of the high variations due to randomness, trajectories for 3 cells is not convincing enough. To verify your hypothesis on which strategy is better, let's simulate 500 cells for 1500 seconds for each strategy. Run the two code blocks for Part3: Comparing performances (1st block simulates, 2nd block is plotter). Each colored line indicates a strategy, plotting average distances for the 500 cells; the shaded area is standard deviation; grey dashed line is where concentration reaches 1e8.
 
-Like we did above, we run simulations for each strategies. 
+Like we did above, we run simulations for each strategies.
 
 ~~~ python
 #Run simulation for 3 cells with different background tumbling frequencies, Plot path
@@ -314,7 +314,7 @@ Which strategy is more efficient?
 
 Go back to main text for now. We will return to this tutorial later.
 
-[Back to Main Text](home_conclusion){: .btn .btn--primary .btn--large}
+[Return to main text](home_conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Qualitative comparison of different background tumbling frequencies
@@ -333,7 +333,7 @@ time_exp = [0.2, 1.0, 5.0]
 terminals, path = simulate(num_cells, duration, time_exp)
 ~~~
 
-Then we will plot the trajectories like we previously did. 
+Then we will plot the trajectories like we previously did.
 
 ~~~ python
 #Run simulation for 3 cells with different background tumbling frequencies, Plot path
@@ -380,7 +380,7 @@ for freq_i in range(len(time_exp)):
     ax.set_ylim(-500, 3000)
     ax.set_xlabel("poisiton in μm")
     ax.set_ylabel("poisiton in μm")
-    
+
 plt.show()
 ~~~
 
@@ -461,5 +461,3 @@ For all `time_exp`, after some time the average distance flattens. Why for diffe
 
 [Back to Main Text](home_conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
-
-
