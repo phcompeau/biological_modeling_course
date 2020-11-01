@@ -7,8 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-In this page, we will:
- - Simulate *E. coli* chemotaxis at a cellular level by standard random walk
+In this page, we will simulate a random walk and take a look at how well this allows a bacterium to reach a goal. We might not anticipate that the random walk will do a very good job of this -- which is correct -- but it will give us a baseline simple strategy to compare a more advanced random walk strategy against.
 
 ## Simulation files and dependencies
 
