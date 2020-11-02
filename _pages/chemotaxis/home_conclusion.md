@@ -32,7 +32,7 @@ We then select a random duration to run and let the bacterium run in that direct
 
 We then iterate these two steps of tumbling and running until the total time used is equal to the time devoted to the simulation.
 
-In the following tutorial, we simulate this strategy using a Jupyter notebook that will help us visualize the results of the simulation.
+In the following tutorial, we simulate this naive strategy using a Jupyter notebook that will also help us visualize the results of the simulation. We will later use this notebook as a starting point when examining our second strategy, which attempts to mimic the response of *E. coli* to its environment based on what we have learned about chemotaxis and is described below.
 
 [Visit standard random walk tutorial](tutorial_purerandom){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
