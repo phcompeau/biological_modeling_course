@@ -115,6 +115,8 @@ chemotaxis:
         url: /chemotaxis/tutorial_purerandom
       - title: "Modeling E. coli's sophisticated random walk algorithm<br><br>"
         url: /chemotaxis/tutorial_walk
+      - title: "Comparing the outcomes of chemotaxis with different background tumbling frequencies"
+        url: /chemotaxis/tutorial_tumbling_frequencies
   - title: Exercises
     children:
       - title: "Exercises on Chemotaxis<br><br>"

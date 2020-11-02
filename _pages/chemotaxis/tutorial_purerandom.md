@@ -110,7 +110,7 @@ In a given run of the simulation, we keep track of the total time `t`, and we on
  - determine the new direction of the simulated bacterium by calling the `tumble_move` function discussed above;
  - increment t by `curr_run_time` and `tumble_time`.
 
-These steps are achieved by the `simulate_std_random` function below, which takes the number of cells `num_cells` to simulate, the time to run each simulation for `duration`, and the mean time of a single run `time_exp`. This function returns a
+These steps are achieved by the `simulate_std_random` function below, which takes the number of cells `num_cells` to simulate, the time to run each simulation for `duration`, and the mean time of a single run `time_exp`. This function stores the end points of the simulation for each cell in a variable named `terminals` and the trajectories of these cells in a variable named `path`.
 
 ~~~ python
 def simulate_std_random(num_cells, duration, time_exp):
@@ -144,9 +144,7 @@ def simulate_std_random(num_cells, duration, time_exp):
     return terminals, path
 ~~~
 
-## Visualizing trajectories
-
-Now that we have established parameters and written the functions that we will need, we will run our simulation with `num_cells` equal to 3 and `duration` equal to 500 in order to get a rough idea of what the trajectories of our simulated cells will look like. The end points of the simulation are stored in `terminals` and the trajectories are stored in `path`.
+Now that we have established parameters and written the functions that we will need, we will run our simulation with `num_cells` equal to 3 and `duration` equal to 500 in order to get a rough idea of what the trajectories of our simulated cells will look like.
 
 ~~~ python
 duration = 800   #seconds, duration of the simulation
@@ -158,7 +156,9 @@ terminals, path = simulat_std_random(num_cells, duration, time_exp)
 print(terminals)
 ~~~
 
-The next step is doing some plotting with Matplotlib. We initialize our figure with `subplot`. We will color-code trajectories as well as the concentration. To provide a color gradient corresponding to ligand concentration, we define a list of colors and linearly segment them, and plot the ligand concentration in a heatmap fashion. The ligand concentrations for each position can be represented as a matrix, and we log scale each value to better color our exponential gradient.
+## Visualizing simulated cell trajectories
+
+Now that we have generated the data of our randomly walking cells, our next step is to plot these trajectories using Matplotlib. We will color-code the background ligand concentration. The ligand concentrations at each position can be represented using a matrix, and we take the logarithm of each value of this matrix to better color our exponential gradient. That is, a value of 10<sup>8</sup> will be converted to 8, and a value of 10<sup>4</sup> will be converted to 4. A white background color will indicate a low ligand concentration, while red indicates high concentration.
 
 ~~~ python
 fig, ax = plt.subplots(1, 1, figsize = (8, 8))
@@ -180,7 +180,7 @@ for i in range(4000):
 ax.imshow(conc_matrix.T, cmap=cmap_color, interpolation='nearest', extent = [-1000, 3000, -1000, 3000], origin = 'lower')
 ~~~
 
-We add the trajectories point by point. To visualize older vs. newer time points, we set the color as a function of `t` so that newer points have ligher colors.
+Next, we plot each cell's trajectory over each of its tumbling points. To visualize older vs. newer time points, we set the color as a function of `t` so that newer points have lighter colors.
 
 ~~~ python
 #Plot simulation results
@@ -193,7 +193,7 @@ for t in range(duration):
 ax.plot(start[0], start[1], 'ko', markersize = 8)
 ~~~
 
-We mark the terminal points with red dots, then the starting point with a black dot. And finally, we set up the axis limits, labels, and show the plot.
+We mark the starting point of each cell's trajectory with a black dot and the ending point of the trajectory with a red dot. We place a blue cross over the goal. Finally, we set axis limits, assign axis labels, and generate the plot.
 
 ~~~ python
 for i in range(num_cells):
@@ -209,12 +209,10 @@ ax.set_ylabel("poisiton in um")
 plt.show()
 ~~~
 
-Run the two code blocks for Part2: Visualizing trajectories (1st block simulates, 2nd block is plotter). The background color indicates concentration: white -> red = low -> high; black dot are starting points; red dots are the points they reached at the end of the simulation; colorful small dots represents trajectories (one color one cell): dark -> bright color = older -> newer time points; blue cross indicates the highest concentration [1500, 1500].
-
-**STOP:** What do you observe? Are the cells moving up the gradient? Is this a good strategy to search for food?
+**STOP:** Run the notebook. What do you observe? Are the cells moving up the gradient? Is this a good strategy for a bacterium to use to search for food?
 {: .notice--primary}
 
-## Measure performance quantitatively
+## Quantifying the performance of our search algorithm
 
 Although the cells are under the same mechanisms for random walk, randomness introduced large variations among the trajectories. Therefore, simulation with 3 cells is not convincing. To assess the performances, let's simulate with 500 cells for 1500 seconds.
 
