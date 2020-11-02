@@ -7,11 +7,9 @@ toc: true
 toc_sticky: true
 ---
 
-In this page, we will simulate a random walk and take a look at how well this allows a bacterium to reach a goal. We might not anticipate that the random walk will do a very good job of this -- which is correct -- but it will give us a baseline simple strategy to compare a more advanced random walk strategy against.
+In this tutorial, we will simulate a random walk and take a look at how well this allows a bacterium to reach a goal. We might not anticipate that the random walk will do a very good job of this -- which is correct -- but it will give us a baseline simple strategy to compare a more advanced random walk strategy against.
 
-## Simulation files and dependencies
-
-Please download the simulation and visualization here: <a href="../downloads/downloadable/chemotaxis_std_random.ipynb" download="chemotaxis_std_random.ipynb">chemotaxis_std_random.ipynb</a>. Detailed explanation of the model and each functions can be found in the file too.
+Specifically, we will build a Jupyter notebook to do so. You can create a blank file called `chemotaxis_std_random.ipynb` and type along, but the notebook will be quite lengthy, so feel free to download the final notebook here if you like: <a href="../downloads/downloadable/chemotaxis_std_random.ipynb" download="chemotaxis_std_random.ipynb">chemotaxis_std_random.ipynb</a>. A detailed explanation of the model and each function can be found in this completed file as well as the tutorial below.
 
 Please make sure the following dependencies are installed:
 
@@ -23,17 +21,15 @@ Please make sure the following dependencies are installed:
 | [Matplotlib](https://matplotlib.org/users/installing.html) | 3.0+ | `pip list | grep matplotlib` |
 | [Colorspace](https://python-colorspace.readthedocs.io/en/latest/installation.html) or with [pip](https://pypi.org/project/colorspace/)| any | `pip list | grep colorspace`|
 
-## Modeling standard random walk at a cellular level
+## Converting a run-and-tumble model to a random walk simulation
 
-Our model will be based on observations from BNG simulation and *E. coli* biology.
+Our model will be based on observations from our BioNetGen simulation and known biology of *E. coli*. We summarize this simulation, discussed in the main text, as follows.
 
-Ingredients and simplifying assumptions of the model:
-1. Run. The duration of run follows an exponential distrubtion with mean equals to the background run duration `time_exp`.
-2. Tumble. The duration of cell tumble follows an exponential distribution with mean 0.1s. When it tumbles, we assume it only changes the orientation for the next run but doesn't move in space. The degree of reorientation follows uniform distribution from 0° to 360°.
-3. Gradient. We model an exponential gradient centered at [1500, 1500] with a concentration of 10<sup>8</sup>. All cells start at [0, 0], which has a concentration of 10<sup>2</sup>. The receptors saturate at a concentration of 10<sup>8</sup>.
-4. Performance. The closer to the center of the gradient the better.
+1. **Run.** The duration of run follows an exponential distribution with mean equal to the background run duration `time_exp`.
+2. **Tumble.** The duration of cell tumble follows an exponential distribution with mean 0.1s. When it tumbles, we assume it only changes the orientation for the next run but doesn't move in space. The degree of reorientation is a random number sampled uniformly between 0° and 360°.
+3. **Gradient.** We model an exponential gradient with a goal (1500, 1500) having a concentration of 10<sup>8</sup>. All cells start at the origin (0, 0), which has a concentration of 10<sup>2</sup>. The ligand concentration at a point (*x*, *y*) is given by *L*(*x*, *y*) = 100 · 10<sup>8 · (1-*d*/*D*)</sup>, where *d* is the distance from (*x*, *y*) to the goal, and *D* is the distance from the origin to the goal; in this case, *D* is approximately equal to 2121.32.
 
-First import all dependencies.
+First, we will import all packages needed.
 
 ~~~ python
 import numpy as np
@@ -44,7 +40,13 @@ from matplotlib import patches
 import colorspace
 ~~~
 
-Then we will specify all the model parameters, including mean tumble time 0.1s[^Saragosti2012], mean 68° and std 36° for reorientation[^Berg1972], cell speed of 20µm/s[^Baker2005], and parameters for our ligand concentration gradient. Set a seed for random numbers for reproducibility.
+Next, we specify all the model parameters:
+
+* mean tumble time: 0.1s[^Saragosti2012];
+* mean reorientation angle of 68° with a standard deviation of 36°[^Berg1972];
+* cell speed of 20µm/s[^Baker2005].
+
+We also set a "seed" of our pseudorandom number generator. This ensures that the sequence of "random" numbers will be the same every time we run the simulation. We can change the seed to obtain a different outcome. For more on seeding, please consult the discussion of pseudorandom number generation at [Programming for Lovers](http://compeau.cbd.cmu.edu/programming-for-lovers/chapter-2-forecasting-a-presidential-election-with-monte-carlo-simulation/#pitfalls).
 
 ~~~ python
 SEED = 128  #Any random seed
@@ -64,7 +66,7 @@ origin_to_center = 0 #Distance from start to center, intialized here, will be ac
 saturation_conc = 10 ** 8 #From BNG model
 ~~~
 
-For each point on our 2D plane, the concentration can be calculated with an exponential distribution centered at `ligand_center = [1500, 1500]` with concentration = 1e8; origin `start = [0, 0]` has concentration 1e2. The concentration of ligands [*L*] grows exponentially from (0, 0) to (1500, 1500), such that [*L*] = 100 · 10<sup>(1-*d*/*D*) · 8</sup>, where *d* is the Euclidean distance from the current point to (1500, 1500), and *D* is the Euclidean distance from (0, 0) to (1500, 1500).
+We now will have two functions that will establish the ligand concentration at a given point (*x*, *y*) as equal to *L*(*x*, *y*) = 100 · 10<sup>8 · (1-*d*/*D*)</sup>.
 
 ~~~ python
 # Calculates Euclidean distance between point a and b
@@ -78,7 +80,9 @@ def calc_concentration(pos):
     return 10 ** exponent
 ~~~
 
-The duration of cell tumble follows an exponential distribution with mean 0.1s[^Saragosti2012]. When it tumbles, we assume it only changes the orientation for the next run but doesn't move in space. The degree of reorientation follows a uniform distribution with mean 68 and std 36[^Berg1972]. Also return the horizontal and vertical movement of the cell for the following run.
+The duration of a cell tumble follows an exponential distribution with mean equal to 0.1s[^Saragosti2012]. When it tumbles, we assume that it only changes the orientation for the next run but does not move in space. The degree of reorientation follows a uniform distribution with mean 68 and std 36[^Berg1972].
+
+The following `tumble_move` function takes the current direction of movement, represented as an angle in radians between 0 and 2π, and uses this direction to determine a new direction of movement according to the rule above.
 
 ~~~ python
 # Horizontal and Vertical movement of tumbling
@@ -98,13 +102,15 @@ def tumble_move(curr_dir):
     return new_dir, move_h, move_v, tumble_time
 ~~~
 
-For each cell, simulate through time as the following procedure:
+In a given run of the simulation, we keep track of the total time `t`, and we only continue our simulation if `t` < `duration`, where `duration` is a parameter indicating how long to run the simulation. If `t` < `duration`, then we apply the following steps to a given cell.
 
-while `t` < duration:
- - Sample the current run duration `curr_run_time` from an exponential distribution with mean `time_exp`
- - Run for `curr_run_time` second along current direction
- - Sample the duration of tumble `tumble_time` and the resulted direction
- - increment t by `curr_run_time` and `tumble_time`
+ - Sample the run duration `curr_run_time` from an exponential distribution with mean `time_exp`;
+ - run for `curr_run_time` seconds in the current direction;
+ - sample the duration of tumble `tumble_time`;
+ - determine the new direction of the simulated bacterium by calling the `tumble_move` function discussed above;
+ - increment t by `curr_run_time` and `tumble_time`.
+
+These steps are achieved by the `simulate_std_random` function below, which takes the number of cells `num_cells` to simulate, the time to run each simulation for `duration`, and the mean time of a single run `time_exp`. This function returns a
 
 ~~~ python
 def simulate_std_random(num_cells, duration, time_exp):
@@ -140,7 +146,7 @@ def simulate_std_random(num_cells, duration, time_exp):
 
 ## Visualizing trajectories
 
-Run simulation for 3 cells for 500 seconds to get a rough idea of what their trajectories look like. The end points of the simulation are stored in `terminals` and the trajectories are stored in `path`.
+Now that we have established parameters and written the functions that we will need, we will run our simulation with `num_cells` equal to 3 and `duration` equal to 500 in order to get a rough idea of what the trajectories of our simulated cells will look like. The end points of the simulation are stored in `terminals` and the trajectories are stored in `path`.
 
 ~~~ python
 duration = 800   #seconds, duration of the simulation
