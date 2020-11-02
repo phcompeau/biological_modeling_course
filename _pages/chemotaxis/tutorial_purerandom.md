@@ -214,9 +214,9 @@ plt.show()
 
 ## Quantifying the performance of our search algorithm
 
-Although the cells are under the same mechanisms for random walk, randomness introduced large variations among the trajectories. Therefore, simulation with 3 cells is not convincing. To assess the performances, let's simulate with 500 cells for 1500 seconds.
+We already know from our work in previous modules that a random walk simulation can produce very different outcomes. In order to assess the performance of the random walk algorithm, we will simulate `num_cells` = 500 cells and `duration` = 1500 seconds.
 
-For 500 cells, visualizing the trajectories will be messy. We instead quantitatively measure the performances by the ability to reach the target at the end of the simulation. We calculate the Euclidean distance to the center at each time step, and to evaluate the collective behavior, we measure the average and standard deviation for all cells.
+Visualizing the trajectories for this many cells will be messy. Instead, we will measure the distance between each cell and the target at the end of the simulation, and then take the average and standard deviation of this value over all cells.
 
 ~~~ python
 #Run simulation for 500 cells, plot average distance to highest concentration point.
@@ -240,7 +240,7 @@ all_dist_avg = np.mean(all_distance, axis = 0)
 all_dist_std = np.std(all_distance, axis = 0)
 ~~~
 
-Then we plot average distance vs. time for our simulation with the `plot` function. The standard deviation is illustrated as mean ± std with the `fill_between` function.
+We will then plot the average and standard deviation of the distance to goal using the `plot` and `fill_between` functions.
 
 ~~~ python
 #Below are all for plotting purposes
@@ -264,13 +264,12 @@ ax.legend(loc='upper right')
 ax.grid()
 ~~~
 
-**STOP:** Before visualizing the average distances at each time step, what do you expect the result to be (based on the trajectories)?
+**STOP:** Before visualizing the average distances at each time step, what do you expect the average distance to the goal to be?
 {: .notice--primary}
 
-Run the two code blocks for Part3: Measuring collective performances (1st block simulates, 2nd block is plotter). The colored line indicates average distance of the 500 cells; the shaded area is standard deviation; grey dashed line is where concentration reaches 1e8; blue cross indicates the goal [1500, 1500].
+Now, run the notebook. The colored line indicates average distance of the 500 cells; the shaded area is standard deviation; and the grey dashed line corresponds to a maximum ligand concentration of 1e8.
 
-What do you conclude about their performances?
-
+If you run the notebook, you may not be surprised that this simple random walk strategy is not very effective at finding the goal. Not to worry: in the main text, we will discuss how to adapt this strategy into one that reflects how *E. coli* explores its environment based on what we have learned in this module about chemotaxis.
 
 [^Saragosti2012]: Saragosti J., Siberzan P., Buguin A. 2012. Modeling *E. coli* tumbles by rotational diffusion. Implications for chemotaxis. PLoS One 7(4):e35412. [available online](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3329434/).
 
