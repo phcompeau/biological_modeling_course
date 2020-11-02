@@ -11,9 +11,9 @@ In this tutorial, we will run a comparison of the chemotactic random walk over a
 
 ## Qualitative comparison of different background tumbling frequencies
 
-We will use <a href="../downloads/downloadable/chemotaxis_walk.ipynb" download="chemotaxis_walk.ipynb">chemotaxis_walk.ipynb</a> to compare trajectories for different tumbling frequencies.
+First, we will use <a href="../downloads/downloadable/chemotaxis_walk.ipynb" download="chemotaxis_walk.ipynb">chemotaxis_walk.ipynb</a> from our [modified random walk tutorial](tutorial_walk) to compare the trajectories of a few cells for different tumbling frequencies.
 
-Before assessing the performances of different default tumbling frequencies, let's run simulation for 3 cells for 800 seconds for the different tumbling frequencies to get a rough idea of what their trajectories look like. We will use a range of 10x shorter expected run time (0.1s) to 10x longer expected run time (10s).
+Specifically, we will run our simulation for three cells over 800 seconds for a range of different tumbling frequencies between once every 0.1s and once every 10s (specifically, we use frequencies of 0.1, 0.2, 0.5, 1.0, 2.0, 5.0, and 10.0). This will give us a rough idea of what the trajectories look like.
 
 ~~~ python
 duration = 800   #seconds, duration of the simulation
@@ -25,7 +25,7 @@ time_exp = [0.2, 1.0, 5.0]
 terminals, path = simulate(num_cells, duration, time_exp)
 ~~~
 
-Then we will plot the trajectories like we previously did.
+As we did previously, we then plot the trajectories.
 
 ~~~ python
 #Run simulation for 3 cells with different background tumbling frequencies, Plot path
@@ -76,13 +76,12 @@ for freq_i in range(len(time_exp)):
 plt.show()
 ~~~
 
-Run the two code blocks for Part2: Visualizing trajectories (1st block simulates, 2nd block is plotter). The background color indicates concentration: white -> red = low -> high; black dot are starting points; red dots are the points they reached at the end of the simulation; colorful small dots represents trajectories (one color one cell): dark -> bright color = older -> newer time points; if highest possible concentration > 1e8, dark dashed circle is where concentration reaches 1e8.
+**STOP:** Run the code blocks for simulating the random walks and plotting the outcome. Are the cells moving up the gradient? How do the shapes of the trajectories differ for different tumbling frequencies? What value of the average tumbling frequency do you think is best?
+{: .notice--primary}
 
-What do you observe? Pay attention to: 1) are the cells moving up the gradient?; 2) what's the differences between the shape of the trajectories?; 3) within the 1500 seconds, which expected run time allow the cells reach the black dashed circle (target)?; 4) after reaching the target, which expected run time allow the cells to stay in/near the circle?
+## Comparing tumbling frequencies over many cells
 
-## Quantitative comparison of different background tumbling frequencies
-
-We will quantitatively measure the performances by the ability to reach the target at the end of the simulation. We will also calculate the average distance to the center at each time step for each of the `time_exp` values.
+We will now scale up our simulation to `num_cells` = 500 cells. To rigorously compare the results of the simulation for different default tumbling frequencies,  we will calculate the average distance to the center at each time step for each tumbling frequency that we use.
 
 ~~~ python
 #Run simulation for 500 cells with different background tumbling frequencies, Plot average distance to highest concentration point
@@ -108,7 +107,7 @@ all_dist_avg = np.mean(all_distance, axis = 1)
 all_dist_std = np.std(all_distance, axis = 1)
 ~~~
 
-And plot the average distance to center vs. time.
+We then plot the average distance to the goal over time for each frequency, where each tumbling frequency is assigned a different color.
 
 ~~~ python
 #Below are all for plotting purposes
@@ -132,77 +131,10 @@ ax.legend(loc='lower left', ncol = 1)
 ax.grid()
 ~~~
 
-**STOP:** Before visualizing the average distances at each time step, what do you expect the result to be (based on the trajectories)?
+**STOP:** Run the code blocks we have provided, simulating the random walks and plotting the average distance to the goal over time for each tumbling frequency. Is there any difference in the performance of the search algorithm for different tumbling frequencies? For each frequency, how long does it take the cell to "reach" the goal? And can we conclude that one tumbling frequency is better than the others?
 {: .notice--primary}
 
-Run the two code blocks for Part3: Comparing performances (1st block simulates, 2nd block is plotter). Each colored line indicates a `time_exp`, plotting average distances for the 500 cells; the shaded area is standard deviation; grey dashed line is where concentration reaches 1e8.
-
-What do you conclude about their performances?
-
-Change the value for `duration` and run simulations for `time_exp = [0.25]` only. How long will the cells take to reach near the grey dashed line?
-
-For all `time_exp`, after some time the average distance flattens. Why for different `time_exp` values, the lines flatten at different distances?
-
-Our measure of how well a bacterium has done at reaching the goal will be the distance from the simulated cell to the goal at the end of the simulation. We will also calculate the average distance to the center at each time step for each of the `time_exp` values.
-
-~~~ python
-#Run simulation for 500 cells with different background tumbling frequencies, Plot average distance to highest concentration point
-duration = 1500   #seconds, duration of the simulation
-num_steps = duration * step_per_sec
-num_cells = 500
-time_exp = [0.1, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0]
-origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
-radius_saturation = (1 - ((math.log10(saturation_conc) - start_exponent) / (center_exponent - start_exponent))) * origin_to_center
-
-all_distance = np.zeros((len(time_exp), num_cells, duration)) #Initialize to store results
-
-terminals, paths = simulate(num_cells, duration, time_exp) #run simulation
-
-for freq_i in range(len(time_exp)):
-    for c in range(num_cells):
-        for t in range(duration):
-            pos = paths[freq_i, c, t]
-            dist = euclidean_distance(ligand_center, pos)
-            all_distance[freq_i, c, t] = dist
-
-all_dist_avg = np.mean(all_distance, axis = 1)
-all_dist_std = np.std(all_distance, axis = 1)
-~~~
-
-And plot the average distance to center vs. time.
-
-~~~ python
-#Below are all for plotting purposes
-#Define the colors to use
-colors1 = colorspace.qualitative_hcl(h=[0, 300.], c = 60, l = 70, pallete = "dynamic")(len(time_exp))
-
-xs = np.arange(0, duration)
-
-fig, ax = plt.subplots(1, figsize = (10, 8))
-
-for freq_i in range(len(time_exp)):
-    mu, sig = all_dist_avg[freq_i], all_dist_std[freq_i]
-    ax.plot(xs, mu, lw=2, label="tumble every {} second".format(time_exp[freq_i]), color=colors1[freq_i])
-    ax.fill_between(xs, mu + sig, mu - sig, color = colors1[freq_i], alpha=0.1)
-
-ax.set_title("Average distance to highest concentration")
-ax.set_xlabel('time (s)')
-ax.set_ylabel('distance to center (µm)')
-ax.legend(loc='lower left', ncol = 1)
-
-ax.grid()
-~~~
-
-**STOP:** Before visualizing the average distances at each time step, what do you expect the result to be (based on the trajectories)?
-{: .notice--primary}
-
-Run the entire notebook for the chemotactic walk, including both simulation and plotting. Each colored line indicates a `time_exp`, plotting average distances for the 500 cells; the shaded area is standard deviation; grey dashed line is where concentration reaches 1e8.
-
-What do you conclude about their performances?
-
-Change the value for `duration` and run simulations for `time_exp = [0.25]` only. How long will the cells take to reach near the grey dashed line?
-
-For all `time_exp`, after some time the average distance flattens. Why for different `time_exp` values, the lines flatten at different distances?
+As we return to the main text, we interpret the results of this final tutorial. It turns out that there are significant differences in our chemotaxis algorithm's ability to find (and remain at) the goal for differing default tumbling frequencies. It hopefully will not surprise you to learn that the frequency that evolution has bestowed upon *E. coli* turns out to be optimal.
 
 [Return to main text](home_conclusion#why-is-bacterial-background-tumbling-frequency-constant-across-species){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
