@@ -1,6 +1,6 @@
 ---
 permalink: /chemotaxis/tutorial_tumbling_frequencies
-title: "Comparing the outcomes of chemotaxis with different background tumbling frequencies"
+title: "Software Tutorial: Comparing the outcomes of chemotaxis with different background tumbling frequencies"
 sidebar:
  nav: "chemotaxis"
 toc: true
