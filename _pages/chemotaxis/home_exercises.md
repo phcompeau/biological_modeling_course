@@ -50,7 +50,9 @@ Open a new `.bngl` file and save it as `polymers.bngl`. We will have only one mo
 3. adding an existing polymer to the "tail" of an unbound `A`; and
 4. adding an existing polymer to the "tail" of another polymer.
 
-To select any species that is bound at a component, use the notation `!+`; for example, `A(h!+,t)` will select any `A` bound at "head", whether it is bound in a chain of one or one million monomers. Set all forward and reverse reaction rates to be equal to 0.01.
+To select any species that is bound at a component, use the notation `!+`; for example, `A(h!+,t)` will select any `A` bound at "head", whether it is bound in a chain of one or one million monomers.
+
+We will assume that all forward and reverse rates for each reaction occur at the same rate. For simplicity, we will set all forward and reverse reaction rates to be equal to 0.01.
 
 What will our distribution of polymer lengths be? We will initialize our simulation with 1000 unbound *A* monomers and observe the formation of polymer chains of a few different lengths (1, 2, 3, 5, 10, and 20).  To do so, we select the pattern of containing *n* copies of *A* with the notation `A == x`. `Species` instead of `Molecules` is required for selecting polymer patterns.
 
@@ -73,9 +75,13 @@ end observables
 
 For this model, we will try an alternative to the Gillespie (SSA) algorithm called **network-free simulation**. This approach is similar to the Gillespie algorithm, but instead of simulating transitions between states of the whole *system*, it tracks individual *particles*. In this polymerization model, the possible number of reactions is much higher than we had in chemotaxis models - we can have two polymers of any length reacting at any step, which slows down the Gillespie algorithm. In this case, we actually do not have very many particles compared to the (infinite) number of possible reactions, and so tracking each particle will be much faster for this model.
 
-Please simulate with the command `simulate({method=>"nf", t_end=>100, n_steps=>1000})`. Note that we do not need the `generate_network()` command. What happens to the concentration of short A polymers? What about the long A polymers?
+After building the model, run your simulation with the following command (note that we do not need the `generate_network()` command):
 
-We care about polymerization reactions because they are involved in many essential biological processes. For example, although more enzymes and reaction intermediates are involved, starches are polymers of glucose molecules. Another example is the elongation step in RNA translation, in which tRNAs transfer amino acids to a growing amino acid chain. (Can you modify our model to only allow `A` monomers to be added to the "tail" of growing `A` n-mers?) The products of RNA translation are proteins, and we will explore protein folding in the next module.
+~~~ ruby
+simulate({method=>"nf", t_end=>100, n_steps=>1000})
+~~~
+
+What happens to the concentration of shorter polymers? What about the longer polymers? Try adjusting the lengths of the polymers that we are interested in. What happens if we also tweak the reaction rates so that bonding is a little more likely than dissociation? What if dissociation is more likely? Does this reflect what you would guess?
 
 
 
