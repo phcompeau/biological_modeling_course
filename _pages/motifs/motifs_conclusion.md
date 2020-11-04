@@ -56,7 +56,7 @@ We have seen that even very simple network motifs can have a powerful effect on 
 
 In the meantime, check out the exercises below to continue developing your understanding of how transcription factor network motifs have evolved.
 
-[Visit Exercises](exercises){: .btn .btn--primary .btn--large}
+[Visit exercises](exercises){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 [^ffl]: Image adapted from Mangan, S., & Alon, U. (2003). Structure and function of the feed-forward loop network motif. Proceedings of the National Academy of Sciences of the United States of America, 100(21), 11980–11985. https://doi.org/10.1073/pnas.2133841100

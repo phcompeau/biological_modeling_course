@@ -132,5 +132,5 @@ Bacterial chemotaxis is probably the best understood biological system from the 
 [^Baker2005]: Baker MD, Wolanin PM, Stock JB. 2005. Signal transduction in bacterial chemotaxis. BioEssays 28:9-22. [Available online](https://pubmed.ncbi.nlm.nih.gov/16369945/)
 
 
-[Exercises](home_exercise){: .btn .btn--primary .btn--large}
+[Visit exercises](home_exercise){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
