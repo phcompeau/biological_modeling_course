@@ -33,35 +33,45 @@ Earlier in this module, we said that when *E. coli* tumbles, the degree of reori
 
 Please quantitatively compare the performance for the chemotactic walk strategy, and this smarter strategy by calculating the mean and standard deviation of each cell's distance to the goal for 500 cells with `time_exp = [0.2, 0.5, 1.0, 2.0, 5.0]`. How much faster can the cells find the goal? Why faster?
 
-## Want another BNG model?
+## Can't get enough BioNetGen?
 
-Like what we've seen in this module, BNGL is very good at simulating systems that involve a large number of species and particles yet can be summarized with a small set of rules. Polymerization reactions is another good example of such systems. **Polymerization** is the process of monomer molecules react to form polymer chains, for example, polyvinyl chloride (PVC) is formed from many vinyl monomers. We can build a BNGL model to simulate a version of polymerization of monomer *A* to form polymer *AAAAAA*... The reaction can be written as *A*<sub>m</sub> + *A*<sub>n</sub> -> *A*<sub>m+n</sub>. There are two sites on `A` that are involved in the reaction: one "head" to join a free "tail", and one "tail" to allow a "head" to bind. We will model a polymerization reaction with BNG (this model is inspired by the [BLBR model in official BNG tutorials](https://github.com/RuleWorld/BNGTutorial/blob/master/CBNGL/BLBR.bngl)).
+As we have seen in this module, BioNetGen is very good at simulating systems that involve a large number of species and particles but can be summarized with a small set of rules. Polymerization reactions offer another good example of such a system.
 
-Please open a new `.bngl` file. We will have only one moleclue type: `A(h,t)`; the `s` and `t` indicates the "head" and "tail". Please implement the four reaction rules:
-- initializing the series of reactions: two unbound `A` forms the intial dimer;
-- adding an unbound `A` to the "tail" of an existing `A` n-mer to form an `A` (n+1)-mer;
-- adding an existing `A` n-mer to the "tail" of an unbound `A` to form an (n+1)-mer;
-- adding an existing `A` m-mer to the "tail" of an existing `A` n-mer to form an (n+m)-mer.
+**Polymerization** is the process by which **monomer** molecules combine into chains called **polymers**. Biological polymers are everywhere, from DNA (formed of monomer nucleotides) to proteins (formed of monomer amino acids) to lipids (formed of monomer fatty acids). For another example, polyvinyl chloride (PVC) is formed from many vinyl monomers.
 
-To select any species that is bound at a component, please use `!+`. For example, `A(h!+,t)` will select any `A` bound at "head". The use of `+` is similar as in regular expression. Set all forward and reverse reaction rates to be 0.01.
+We would like to simulate the polymerization of copies of a monomer *A* to form polymer *AAAAAA*..., where the length of the polymer is allowed to vary. To do so, we will write our reaction as *A*<sub><em>m</em></sub> + *A*<sub><em>n</em></sub> -> *A*<sub><em>m</em>+<em>n</em></sub>, where here *A*<sub>m</sub> denotes a polymer consisting of *m* copies of *A*. Using classical reaction rules, this would require an infinite number of reactions; will BioNetGen come to our rescue?
 
-We will simulate with 1000 `A` monomers at the beginning of the simulation, and observe for the formation of polymers composed of different number of `A`s. To do so, we select the pattern of containing *x* `A`'s with `A == x`. `Species` instead of `Molecules` is required for selecting polymer patterns.
+There are two sites on the monomer *A* that are involved in a polymerization reaction: the "head" and the "tail". We need the head on one monomer and the tail on another to be free for these two monomers to bind. The following BioNetGen model is inspired by the [BLBR model in official BioNetGen tutorials](https://github.com/RuleWorld/BNGTutorial/blob/master/CBNGL/BLBR.bngl).
 
-	begin seed species
-		A(h,t) 1000
-	end seed species
+Open a new `.bngl` file and save it as `polymers.bngl`. We will have only one molecule type: `A(h,t)`; the `h` and `t` indicating the "head" and "tail" binding sites, respectively. We will need to represent four reaction rules:
 
-	begin observables
-		Species A1 A==1
-		Species A2 A==2
-		Species A3 A==3
-		Species A5 A==5
-		Species A10 A==10
-		Species A20 A==20
-		Species ALong A>=30
-	end observables
+1. initializing the series of polymerization reactions: two unbound `A` forms an initial **dimer**, or two monomers joined together;
+2. adding an unbound `A` to the "tail" of an existing polymer;
+3. adding an existing polymer to the "tail" of an unbound `A`; and
+4. adding an existing polymer to the "tail" of another polymer.
 
-For this model, let's try another simulation method - **Network-free** simulation. It is similar to the SSA simulation [we used before](home_signalpart2), but instead of simulating transitions between states of the whole *system*, it tracks individual *particles*. In this polymerization model, the possible number of reactions is much higher than we had in chemotaxis models - we can have any m-mer reacting with any n-mer at any step. Considering all these possible reactions makes SSA slow. Luckily, we don't have that many particles, so trucking each particle will be much faster (in our chemotaxis model, tracking over 10<sup>8</sup> molecules individually is difficult).
+To select any species that is bound at a component, use the notation `!+`; for example, `A(h!+,t)` will select any `A` bound at "head", whether it is bound in a chain of one or one million monomers. Set all forward and reverse reaction rates to be equal to 0.01.
+
+What will our distribution of polymer lengths be? We will initialize our simulation with 1000 unbound *A* monomers and observe the formation of polymer chains of a few different lengths (1, 2, 3, 5, 10, and 20).  To do so, we select the pattern of containing *n* copies of *A* with the notation `A == x`. `Species` instead of `Molecules` is required for selecting polymer patterns.
+
+~~~ ruby
+
+begin seed species
+	A(h,t) 1000
+end seed species
+
+begin observables
+	Species A1 A==1
+	Species A2 A==2
+	Species A3 A==3
+	Species A5 A==5
+	Species A10 A==10
+	Species A20 A==20
+	Species ALong A>=30
+end observables
+~~~
+
+For this model, we will try an alternative to the Gillespie (SSA) algorithm called **network-free simulation**. This approach is similar to the Gillespie algorithm, but instead of simulating transitions between states of the whole *system*, it tracks individual *particles*. In this polymerization model, the possible number of reactions is much higher than we had in chemotaxis models - we can have two polymers of any length reacting at any step, which slows down the Gillespie algorithm. In this case, we actually do not have very many particles compared to the (infinite) number of possible reactions, and so tracking each particle will be much faster for this model.
 
 Please simulate with the command `simulate({method=>"nf", t_end=>100, n_steps=>1000})`. Note that we do not need the `generate_network()` command. What happens to the concentration of short A polymers? What about the long A polymers?
 
