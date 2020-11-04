@@ -40,7 +40,7 @@ from matplotlib import patches
 import colorspace
 ~~~
 
-Next, we specify model parameters:
+Next, we specify all the model parameters:
 
 * mean tumble time: 0.1s[^Saragosti2012];
 * cell speed of 20µm/s[^Baker2005].
@@ -49,10 +49,10 @@ We also set a "seed" of our pseudorandom number generator. This ensures that the
 
 ~~~ python
 SEED = 128  #Any random seed
-np.random.seed(SEED)
+np.random.seed(SEED) #set seed for Numpy random number generator
 
 #Constants for E.coli tumbling
-tumble_time_mu = 0.1
+tumble_time_mu = 0.1 #second
 
 #E.coli movement constants
 speed = 20         #um/s, speed of E.coli movement
@@ -60,7 +60,7 @@ speed = 20         #um/s, speed of E.coli movement
 #Model constants
 start = [0, 0]  #All cells start at [0, 0]
 ligand_center = [1500, 1500] #Position of highest concentration
-center_exponent, start_exponent = 8, 2
+center_exponent, start_exponent = 8, 2 #exponent for concentration at [1500, 1500] and [0, 0]
 origin_to_center = 0 #Distance from start to center, intialized here, will be actually calculated later
 saturation_conc = 10 ** 8 #From BNG model
 ~~~
@@ -69,36 +69,42 @@ We now will have two functions that will establish the ligand concentration at a
 
 ~~~ python
 # Calculates Euclidean distance between point a and b
+# Input: positions a, b. Each in the form array [x, y]
+# Returns the distance, a float.
 def euclidean_distance(a, b):
     return math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2)
+
+# Calculates the concentration of a given position
 # Exponential gradient, the exponent follows a linear relationship with distance to center
+# Input: position pos, [x, y]
+# Returns the concentration, a float.
 def calc_concentration(pos):
     dist = euclidean_distance(pos, ligand_center)
     exponent = (1 - dist / origin_to_center) * (center_exponent - start_exponent) + start_exponent
-
+    
     return 10 ** exponent
 ~~~
 
-The duration of a cell tumble follows an exponential distribution with mean equal to 0.1s[^Saragosti2012]. When it tumbles, we assume that it only changes the orientation for the next run but does not move in space. The degree of reorientation is chosen uniformly between 0 and 2π radians (i.e., 0 and 360 degrees).
+The duration of a cell tumble follows an exponential distribution with mean equal to 0.1s[^Saragosti2012]. When it tumbles, we assume that it only changes the orientation for the next run but does not move in space. We further assume that the new direction is chosen uniformly random from 0 and 2π radius (i.e., 0 and 3560 degrees).
 
 The following `tumble_move` function takes the current direction of movement, represented as an angle in radians between 0 and 2π, and uses this direction to determine a new direction of movement according to the rule above.
 
 ~~~ python
-# Horizontal and Vertical movement of tumbling
-def tumble_move(curr_dir):
-    #Sample the new direction
+# Samples the new direction and time of a tumble
+# Calculates projection on the Horizontal and Vertical direction for the next move
+# No input
+# Return the horizontal movement projection (float), the vertical one (float), tumble time (float)
+def tumble_move():
+    #Sample the new direction unformly from 0 to 2pi, record as a float
     new_dir = np.random.uniform(low = 0.0, high = 2 * math.pi)
-    new_dir += curr_dir
-
-    if new_dir > 2 * math.pi:
-        new_dir -= 2 * math.pi #Keep within [0, 2pi] for cleaner numbers
-
-    move_h = math.cos(new_dir) #Horizontal displacement for next run
-    move_v = math.sin(new_dir) #Vertical displacement for next run
-
-    tumble_time = np.random.exponential(tumble_time_mu) #Length of the tumbling
-
-    return new_dir, move_h, move_v, tumble_time
+        
+    projection_h = math.cos(new_dir) #displacement projected on Horizontal direction for next run, float
+    projection_v = math.sin(new_dir) #displacement projected on Vertical direction for next run, float
+    
+    #Length of the tumbling sampled from exponential distribution with mean=0.1, float
+    tumble_time = np.random.exponential(tumble_time_mu)
+    
+    return projection_h, projection_v, tumble_time
 ~~~
 
 In a given run of the simulation, we keep track of the total time `t`, and we only continue our simulation if `t` < `duration`, where `duration` is a parameter indicating how long to run the simulation. If `t` < `duration`, then we apply the following steps to a given cell.
@@ -112,47 +118,59 @@ In a given run of the simulation, we keep track of the total time `t`, and we on
 These steps are achieved by the `simulate_std_random` function below, which takes the number of cells `num_cells` to simulate, the time to run each simulation for `duration`, and the mean time of a single run `time_exp`. This function stores the trajectories of these cells in a variable named `path`.
 
 ~~~ python
-def simulate_std_random(num_cells, duration, time_exp):
-
+# This function performs simulation
+# Input: number of cells to simulate (int), how many seconds (int), the expected run time before tumble (float)
+# Return: the simulated trajectories path: array of shape (num_cells, duration+1, 2)
+def simulate_std_random(num_cells, duration, run_time_expected):
+    
+    #Takes the shape (num_cells, duration+1, 2)
+    #any point [x,y] on the simulated trajectories can be accessed via path[cell, time]
     path = np.zeros((num_cells, duration + 1, 2))
-    terminals = []
 
     for rep in range(num_cells):
         # Initialize simulation
-        t = 0
-        curr_position = np.array(start)
-        curr_direction, move_h, move_v, tumble_time = tumble_move(0) #Initialize direction randomly
+        t = 0 #record the time elapse
+        curr_position = np.array(start) #start at [0, 0]
+        curr_direction, projection_h, projection_v, tumble_time = tumble_move() #Initialize direction randomly
         past_sec = 0
 
         while t < duration:
-
-            curr_run_time = np.random.exponential(time_exp) #get wait time before tumble
-
-            curr_position = curr_position + np.array([move_h, move_v]) * speed * curr_run_time
-            curr_direction, move_h, move_v, tumble_time = tumble_move(curr_direction)
+            
+            #run
+            curr_run_time = np.random.exponential(run_time_expected) #get wait time before tumble, float
+            #displacement on either direction is calculated as the projection * speed * time
+            #update current position by summing old position and displacement
+            curr_position = curr_position + np.array([projection_h, projection_v]) * speed * curr_run_time
+            
+            #tumble
+            curr_direction, projection_h, projection_v, tumble_time = tumble_move()
+            
+            #increment time
             t += (curr_run_time + tumble_time)
 
             #record position approximate for integer number of second
             curr_sec = int(t)
             for sec in range(past_sec, min(curr_sec, duration) + 1):
+                #fill values from last time point to current time point
                 path[rep, sec] = curr_position.copy()
                 past_sec= curr_sec
-
-        terminals.append((path[rep, -1]))
-
-    return terminals, path
+    
+    return path
 ~~~
 
 Now that we have established parameters and written the functions that we will need, we will run our simulation with `num_cells` equal to 3 and `duration` equal to 500 in order to get a rough idea of what the trajectories of our simulated cells will look like.
 
 ~~~ python
-duration = 800   #seconds, duration of the simulation
-num_cells = 3
-origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
-time_exp = 1.0
+#Run simulation for 3 cells with different background tumbling frequencies, Plot path
 
-terminals, path = simulat_std_random(num_cells, duration, time_exp)
-print(terminals)
+duration = 800  #seconds, duration of the simulation, int
+num_cells = 3   #number of cells, int
+origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
+run_time_expected = 1.0 #expected run time before tumble, float
+
+#Calls the simulate function
+path = simulate_std_random(num_cells, duration, run_time_expected) #get the simulated trajectories
+print(path[:,-1,:]) #print the terminal poistion of each simulation
 ~~~
 
 ## Visualizing simulated cell trajectories
@@ -160,46 +178,50 @@ print(terminals)
 Now that we have generated the data of our randomly walking cells, our next step is to plot these trajectories using Matplotlib. We will color-code the background ligand concentration. The ligand concentrations at each position (*a*, *b*) where *a* and *b* are both integers can be represented using a matrix, and we take the logarithm of each value of this matrix to better color our exponential gradient. That is, a value of 10<sup>8</sup> will be converted to 8, and a value of 10<sup>4</sup> will be converted to 4. A white background color will indicate a low ligand concentration, while red indicates high concentration.
 
 ~~~ python
+#Below are all for plotting purposes
+#Initialize the plot with 1*1 subplot of size 8*8
 fig, ax = plt.subplots(1, 1, figsize = (8, 8))
 
-#First set color map
-mycolor = [[256, 256, 256], [256, 255, 254], [256, 253, 250], [256, 250, 240], [255, 236, 209], [255, 218, 185], [251, 196, 171], [248, 173, 157], [244, 151, 142], [240, 128, 128]] #from coolors：）
+#First set color map to color-code the concentration
+mycolor = [[256, 256, 256], [256, 255, 254], [256, 253, 250], [256, 250, 240], [255, 236, 209], [255, 218, 185], [251, 196, 171], [248, 173, 157], [244, 151, 142], [240, 128, 128]] #RGB values, from coolors：）
 for i in mycolor:
     for j in range(len(i)):
-        i[j] *= (1/256)
-cmap_color = colors.LinearSegmentedColormap.from_list('my_list', mycolor)
+        i[j] *= (1/256) #normalize to 0~1 range
+cmap_color = colors.LinearSegmentedColormap.from_list('my_list', mycolor) #Linearly segment these colors to create a continuous color map
 
-
-conc_matrix = np.zeros((4000, 4000))
+#Store the concentrations for each integer position in a matrix
+conc_matrix = np.zeros((4000, 4000)) #we will display from [-1000, -1000] to [3000, 3000]
 for i in range(4000):
     for j in range(4000):
-        conc_matrix[i][j] = math.log(calc_concentration([i - 1000, j - 1000]))
+        conc_matrix[i][j] = math.log(calc_concentration([i - 1000, j - 1000])) #calculate the exponents of concentrations at each location
 
 #Simulate the gradient distribution, plot as a heatmap
 ax.imshow(conc_matrix.T, cmap=cmap_color, interpolation='nearest', extent = [-1000, 3000, -1000, 3000], origin = 'lower')
+
 ~~~
 
 Next, we plot each cell's trajectory over each of its tumbling points. To visualize older vs. newer time points, we set the color as a function of `t` so that newer points have lighter colors.
 
 ~~~ python
+
 #Plot simulation results
 time_frac = 1.0 / duration
-#Time progress: dark -> colorful
+#Plot the trajectories. Time progress: dark -> colorful
 for t in range(duration):
     ax.plot(path[0,t,0], path[0,t,1], 'o', markersize = 1, color = (0.2 * time_frac * t, 0.85 * time_frac * t, 0.8 * time_frac * t))
     ax.plot(path[1,t,0], path[1,t,1], 'o', markersize = 1, color = (0.85 * time_frac * t, 0.2 * time_frac * t, 0.9 * time_frac * t))
     ax.plot(path[2,t,0], path[2,t,1], 'o', markersize = 1, color = (0.4 * time_frac * t, 0.85 * time_frac * t, 0.1 * time_frac * t))
-ax.plot(start[0], start[1], 'ko', markersize = 8)
+ax.plot(start[0], start[1], 'ko', markersize = 8) #Mark the starting point [0, 0]
+for i in range(num_cells):
+    ax.plot(path[i,-1,0], path[i,-1,1], 'ro', markersize = 8) #Mark the terminal points for each cell
+
 ~~~
 
 We mark the starting point of each cell's trajectory with a black dot and the ending point of the trajectory with a red dot. We place a blue cross over the goal. Finally, we set axis limits, assign axis labels, and generate the plot.
 
 ~~~ python
-for i in range(num_cells):
-    ax.plot(terminals[i][0], terminals[i][1], 'ro', markersize = 8)
-
-ax.plot(1500, 1500, 'bX', markersize = 8)
-ax.set_title("Pure random walk \n Background: avg tumble every {} s".format(time_exp), x = 0.5, y = 0.87)
+ax.plot(1500, 1500, 'bX', markersize = 8) #Mark the highest concentration point [1500, 1500]
+ax.set_title("Pure random walk \n Background: avg tumble every {} s".format(run_time_exped), x = 0.5, y = 0.87)
 ax.set_xlim(-1000, 3000)
 ax.set_ylim(-1000, 3000)
 ax.set_xlabel("poisiton in um")
@@ -218,25 +240,25 @@ We already know from our work in previous modules that a random walk simulation 
 Visualizing the trajectories for this many cells will be messy. Instead, we will measure the distance between each cell and the target at the end of the simulation, and then take the average and standard deviation of this value over all cells.
 
 ~~~ python
-#Run simulation for 500 cells, plot average distance to highest concentration point.
+#Run simulation for 500 cells, plot average distance to highest concentration point
 duration = 1500   #seconds, duration of the simulation
-num_cells = 500
-time_exp = 1.0
+num_cells = 500 #number of cells, intorigin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
 origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
-radius_saturation = (1 - ((math.log10(saturation_conc) - start_exponent) / (center_exponent - start_exponent))) * origin_to_center
+run_time_expected = 1.0 #expected run time before tumble, float
 
-all_distance = np.zeros((num_cells, duration)) #Initialize to store results
+all_distance = np.zeros((num_cells, duration)) #Initialize to store results, array with shape (num_cells, duration)
 
-terminals, paths = simulate_std_random(num_cells, duration, time_exp) #run simulation
+paths = simulate_std_random(num_cells, duration, run_time_expected) #run simulation
 
-for c in range(num_cells):
-    for t in range(duration):
-        pos = paths[c, t]
-        dist = euclidean_distance(ligand_center, pos)
-        all_distance[c, t] = dist
+for cell in range(num_cells):
+    for time in range(duration):
+        pos = paths[cell, time] #get the position [x,y] for the cell at a given time
+        dist = euclidean_distance(ligand_center, pos) #calculate the Euclidean distance between that position to [1500, 1500]
+        all_distance[cell, time] = dist #record this distance
 
-all_dist_avg = np.mean(all_distance, axis = 0)
-all_dist_std = np.std(all_distance, axis = 0)
+# For all time, take average and standard deviation over all cells.
+all_dist_avg = np.mean(all_distance, axis = 0) #Calculate average over cells, array of shape (duration,)
+all_dist_std = np.std(all_distance, axis = 0) #Calculate the standard deviation, array of shape (duration,)
 ~~~
 
 We will then plot the average and standard deviation of the distance to goal using the `plot` and `fill_between` functions.
@@ -246,18 +268,20 @@ We will then plot the average and standard deviation of the distance to goal usi
 #Define the colors to use
 colors1 = colorspace.qualitative_hcl(h=[0, 300.], c = 60, l = 70, pallete = "dynamic")(1)
 
-xs = np.arange(0, duration)
+xs = np.arange(0, duration) #Set the x-axis for plot: time points. Array of integers of shape (duration,)
 
-fig, ax = plt.subplots(1, figsize = (10, 8))
+fig, ax = plt.subplots(1, 1, figsize = (10, 8)) #Initialize the plot with 1*1 subplot of size 10*8
 
 mu, sig = all_dist_avg, all_dist_std
-ax.plot(xs, mu, lw=2, label="pure random walk, back ground tumble every {} second".format(time_exp), color=colors1[0])
+#Plot average distance vs. time
+ax.plot(xs, mu, lw=2, label="pure random walk, back ground tumble every {} second".format(run_time_expected), color=colors1[0])
+#Fill in average +/- one standard deviation vs. time
 ax.fill_between(xs, mu + sig, mu - sig, color = colors1, alpha=0.15)
 
 ax.set_title("Average distance to highest concentration")
 ax.set_xlabel('time (s)')
 ax.set_ylabel('distance to center (µm)')
-ax.hlines(radius_saturation, 0, duration, colors='gray', linestyles='dashed', label='concentration 10^8')
+ax.hlines(0, 0, duration, colors='gray', linestyles='dashed', label='concentration 10^8')
 ax.legend(loc='upper right')
 
 ax.grid()
