@@ -40,10 +40,9 @@ from matplotlib import patches
 import colorspace
 ~~~
 
-Next, we specify all the model parameters:
+Next, we specify model parameters:
 
 * mean tumble time: 0.1s[^Saragosti2012];
-* mean reorientation angle of 68° with a standard deviation of 36°[^Berg1972];
 * cell speed of 20µm/s[^Baker2005].
 
 We also set a "seed" of our pseudorandom number generator. This ensures that the sequence of "random" numbers will be the same every time we run the simulation. We can change the seed to obtain a different outcome. For more on seeding, please consult the discussion of pseudorandom number generation at [Programming for Lovers](http://compeau.cbd.cmu.edu/programming-for-lovers/chapter-2-forecasting-a-presidential-election-with-monte-carlo-simulation/#pitfalls).
@@ -80,7 +79,7 @@ def calc_concentration(pos):
     return 10 ** exponent
 ~~~
 
-The duration of a cell tumble follows an exponential distribution with mean equal to 0.1s[^Saragosti2012]. When it tumbles, we assume that it only changes the orientation for the next run but does not move in space. The degree of reorientation follows a uniform distribution with mean 68 and std 36[^Berg1972].
+The duration of a cell tumble follows an exponential distribution with mean equal to 0.1s[^Saragosti2012]. When it tumbles, we assume that it only changes the orientation for the next run but does not move in space. The degree of reorientation is chosen uniformly between 0 and 2π radians (i.e., 0 and 360 degrees).
 
 The following `tumble_move` function takes the current direction of movement, represented as an angle in radians between 0 and 2π, and uses this direction to determine a new direction of movement according to the rule above.
 
