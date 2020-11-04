@@ -11,7 +11,8 @@ main:
         url: /prologue/
       - title: "<b>Module 1:</b> Finding motifs in transcription factor networks"
         url: /motifs/home
-      - title: "<b>Module 2:</b> launching 11/2"
+      - title: "<b>Module 2:</b> Unpacking E. coli's genius exploration algorithm"
+        url: /chemotaxis/home
       - title: "<b>Module 3:</b> launching 11/9"
       - title: "<b>Module 4:</b> launching 11/16"
 
