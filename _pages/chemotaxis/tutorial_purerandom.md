@@ -109,7 +109,7 @@ In a given run of the simulation, we keep track of the total time `t`, and we on
  - determine the new direction of the simulated bacterium by calling the `tumble_move` function discussed above;
  - increment t by `curr_run_time` and `tumble_time`.
 
-These steps are achieved by the `simulate_std_random` function below, which takes the number of cells `num_cells` to simulate, the time to run each simulation for `duration`, and the mean time of a single run `time_exp`. This function stores the end points of the simulation for each cell in a variable named `terminals` and the trajectories of these cells in a variable named `path`.
+These steps are achieved by the `simulate_std_random` function below, which takes the number of cells `num_cells` to simulate, the time to run each simulation for `duration`, and the mean time of a single run `time_exp`. This function stores the trajectories of these cells in a variable named `path`.
 
 ~~~ python
 def simulate_std_random(num_cells, duration, time_exp):
@@ -157,7 +157,7 @@ print(terminals)
 
 ## Visualizing simulated cell trajectories
 
-Now that we have generated the data of our randomly walking cells, our next step is to plot these trajectories using Matplotlib. We will color-code the background ligand concentration. The ligand concentrations at each position can be represented using a matrix, and we take the logarithm of each value of this matrix to better color our exponential gradient. That is, a value of 10<sup>8</sup> will be converted to 8, and a value of 10<sup>4</sup> will be converted to 4. A white background color will indicate a low ligand concentration, while red indicates high concentration.
+Now that we have generated the data of our randomly walking cells, our next step is to plot these trajectories using Matplotlib. We will color-code the background ligand concentration. The ligand concentrations at each position (*a*, *b*) where *a* and *b* are both integers can be represented using a matrix, and we take the logarithm of each value of this matrix to better color our exponential gradient. That is, a value of 10<sup>8</sup> will be converted to 8, and a value of 10<sup>4</sup> will be converted to 4. A white background color will indicate a low ligand concentration, while red indicates high concentration.
 
 ~~~ python
 fig, ax = plt.subplots(1, 1, figsize = (8, 8))
