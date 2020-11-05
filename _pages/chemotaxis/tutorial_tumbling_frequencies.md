@@ -20,11 +20,11 @@ duration = 800   #seconds, duration of the simulation
 num_cells = 3
 origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
 run_time_expected_all = [0.5, 1.0, 5.0]
-path = np.zeros((len(run_time_expected_all), num_cells, duration + 1, 2))
+paths = np.zeros((len(run_time_expected_all), num_cells, duration + 1, 2))
                 
 for i in range(len(run_time_expected_all)):
     run_time_expected = run_time_expected_all[i]
-    path[i] = simulate_chemotaxis(num_cells, duration, run_time_expected)
+    paths[i] = simulate_chemotaxis(num_cells, duration, run_time_expected)
 ~~~
 
 As we did previously, we then plot the trajectories.
@@ -51,13 +51,13 @@ for freq_i in range(len(run_time_expected_all)):
     time_frac = 1.0 / duration
     #Time progress: dark -> colorful
     for t in range(duration):
-        ax.plot(path[freq_i,0,t,0], path[freq_i,0,t,1], 'o', markersize = 1, color = (0.2 * time_frac * t, 0.85 * time_frac * t, 0.8 * time_frac * t))
-        ax.plot(path[freq_i,1,t,0], path[freq_i,1,t,1], 'o', markersize = 1, color = (0.85 * time_frac * t, 0.2 * time_frac * t, 0.9 * time_frac * t))
-        ax.plot(path[freq_i,2,t,0], path[freq_i,2,t,1], 'o', markersize = 1, color = (0.4 * time_frac * t, 0.85 * time_frac * t, 0.1 * time_frac * t))
+        ax.plot(paths[freq_i,0,t,0], paths[freq_i,0,t,1], 'o', markersize = 1, color = (0.2 * time_frac * t, 0.85 * time_frac * t, 0.8 * time_frac * t))
+        ax.plot(paths[freq_i,1,t,0], paths[freq_i,1,t,1], 'o', markersize = 1, color = (0.85 * time_frac * t, 0.2 * time_frac * t, 0.9 * time_frac * t))
+        ax.plot(paths[freq_i,2,t,0], paths[freq_i,2,t,1], 'o', markersize = 1, color = (0.4 * time_frac * t, 0.85 * time_frac * t, 0.1 * time_frac * t))
     ax.plot(start[0], start[1], 'ko', markersize = 8)
     ax.plot(1500, 1500, 'bX', markersize = 8)
     for i in range(num_cells):
-        ax.plot(path[freq_i,i,-1,0], path[freq_i,i,-1,1], 'ro', markersize = 8)
+        ax.plot(paths[freq_i,i,-1,0], paths[freq_i,i,-1,1], 'ro', markersize = 8)
 
     ax.set_title("Background tumbling freq:\n tumble every {} s".format(run_time_expected_all[freq_i]), x = 0.5, y = 0.9, fontsize = 12)
     ax.set_xlim(-500, 3000)
@@ -85,16 +85,16 @@ origin_to_center = euclidean_distance(start, ligand_center) #Update the global c
 
 all_distance = np.zeros((len(time_exp), num_cells, duration)) #Initialize to store results
 
-path = np.zeros((len(run_time_expected_all), num_cells, duration + 1, 2))
+paths = np.zeros((len(run_time_expected_all), num_cells, duration + 1, 2))
                 
 for i in range(len(run_time_expected_all)):
     run_time_expected = run_time_expected_all[i]
-    path[i] = simulate_chemotaxis(num_cells, duration, run_time_expected)
+    paths[i] = simulate_chemotaxis(num_cells, duration, run_time_expected)
 
 for freq_i in range(len(run_time_expected_all)):
     for c in range(num_cells):
         for t in range(duration):
-            pos = path[freq_i, c, t]
+            pos = paths[freq_i, c, t]
             dist = euclidean_distance(ligand_center, pos)
             all_distance[freq_i, c, t] = dist
 
