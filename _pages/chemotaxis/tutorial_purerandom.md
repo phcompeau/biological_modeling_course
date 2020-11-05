@@ -137,7 +137,7 @@ def simulate_std_random(num_cells, duration, run_time_expected):
         while t < duration:
             
             #run
-            curr_run_time = np.random.exponential(run_time_expected) #get wait time before tumble, float
+            curr_run_time = np.random.exponential(run_time_expected) #get run duration, float
             #displacement on either direction is calculated as the projection * speed * time
             #update current position by summing old position and displacement
             curr_position = curr_position + np.array([projection_h, projection_v]) * speed * curr_run_time

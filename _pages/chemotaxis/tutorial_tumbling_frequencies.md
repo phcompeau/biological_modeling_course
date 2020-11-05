@@ -17,26 +17,19 @@ Specifically, we will run our simulation for three cells over 800 seconds for a 
 
 ~~~ python
 duration = 800   #seconds, duration of the simulation
-num_steps = duration * step_per_sec
 num_cells = 3
 origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
-time_exp = [0.2, 1.0, 5.0]
-
-terminals, path = simulate(num_cells, duration, time_exp)
+run_time_expected_all = [0.5, 1.0, 5.0]
+path = np.zeros((len(run_time_expected_all), num_cells, duration + 1, 2))
+                
+for i in range(len(run_time_expected_all)):
+    run_time_expected = run_time_expected_all[i]
+    path[i] = simulate_chemotaxis(num_cells, duration, run_time_expected)
 ~~~
 
 As we did previously, we then plot the trajectories.
 
 ~~~ python
-#Run simulation for 3 cells with different background tumbling frequencies, Plot path
-
-duration = 800   #seconds, duration of the simulation
-num_cells = 3
-origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
-time_exp = [0.2, 1.0, 5.0]
-
-
-terminals, path = simulate(num_cells, duration, time_exp)
 
 conc_matrix = np.zeros((3500, 3500))
 for i in range(3500):
@@ -50,7 +43,7 @@ for i in mycolor:
 cmap_color = colors.LinearSegmentedColormap.from_list('my_list', mycolor)
 
 
-for freq_i in range(len(time_exp)):
+for freq_i in range(len(run_time_expected_all)):
     fig, ax = plt.subplots(1, figsize = (8, 8))
     ax.imshow(conc_matrix.T, cmap=cmap_color, interpolation='nearest', extent = [-500, 3000, -500, 3000], origin = 'lower')
 
@@ -64,15 +57,14 @@ for freq_i in range(len(time_exp)):
     ax.plot(start[0], start[1], 'ko', markersize = 8)
     ax.plot(1500, 1500, 'bX', markersize = 8)
     for i in range(num_cells):
-        ax.plot(terminals[freq_i][i][0], terminals[freq_i][i][1], 'ro', markersize = 8)
-    #ax.plot(path[:,0], path[:,1], '-', color = 'grey')
+        ax.plot(path[freq_i,i,-1,0], path[freq_i,i,-1,1], 'ro', markersize = 8)
 
-    ax.set_title("Background tumbling freq:\n tumble every {} s".format(time_exp[freq_i]), x = 0.5, y = 0.9, fontsize = 12)
+    ax.set_title("Background tumbling freq:\n tumble every {} s".format(run_time_expected_all[freq_i]), x = 0.5, y = 0.9, fontsize = 12)
     ax.set_xlim(-500, 3000)
     ax.set_ylim(-500, 3000)
     ax.set_xlabel("poisiton in μm")
     ax.set_ylabel("poisiton in μm")
-
+    
 plt.show()
 ~~~
 
@@ -86,25 +78,29 @@ We will now scale up our simulation to `num_cells` = 500 cells. To rigorously co
 ~~~ python
 #Run simulation for 500 cells with different background tumbling frequencies, Plot average distance to highest concentration point
 duration = 1500   #seconds, duration of the simulation
-num_steps = duration * step_per_sec
-num_cells = 500
-time_exp = [0.1, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0]
+#num_cells = 500
+num_cells = 300
+run_time_expected_all = [0.1, 0.2, 0.5, 1.0, 2.0, 5.0, 10.0]
 origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
-radius_saturation = (1 - ((math.log10(saturation_conc) - start_exponent) / (center_exponent - start_exponent))) * origin_to_center
 
 all_distance = np.zeros((len(time_exp), num_cells, duration)) #Initialize to store results
 
-terminals, paths = simulate(num_cells, duration, time_exp) #run simulation
+path = np.zeros((len(run_time_expected_all), num_cells, duration + 1, 2))
+                
+for i in range(len(run_time_expected_all)):
+    run_time_expected = run_time_expected_all[i]
+    path[i] = simulate_chemotaxis(num_cells, duration, run_time_expected)
 
-for freq_i in range(len(time_exp)):
+for freq_i in range(len(run_time_expected_all)):
     for c in range(num_cells):
         for t in range(duration):
-            pos = paths[freq_i, c, t]
+            pos = path[freq_i, c, t]
             dist = euclidean_distance(ligand_center, pos)
             all_distance[freq_i, c, t] = dist
 
 all_dist_avg = np.mean(all_distance, axis = 1)
 all_dist_std = np.std(all_distance, axis = 1)
+print(all_dist_avg[0][-10:])
 ~~~
 
 We then plot the average distance to the goal over time for each frequency, where each tumbling frequency is assigned a different color.
@@ -120,7 +116,7 @@ fig, ax = plt.subplots(1, figsize = (10, 8))
 
 for freq_i in range(len(time_exp)):
     mu, sig = all_dist_avg[freq_i], all_dist_std[freq_i]
-    ax.plot(xs, mu, lw=2, label="tumble every {} second".format(time_exp[freq_i]), color=colors1[freq_i])
+    ax.plot(xs, mu, lw=2, label="tumble every {} second".format(run_time_expected_all[freq_i]), color=colors1[freq_i])
     ax.fill_between(xs, mu + sig, mu - sig, color = colors1[freq_i], alpha=0.1)
 
 ax.set_title("Average distance to highest concentration")
