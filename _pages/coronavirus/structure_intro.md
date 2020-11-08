@@ -31,22 +31,28 @@ These amino acids are linked together to form a protein as a amino acid chain, o
 
 We stated that the overall 3D structure (tertiary structure) of the protein is dictated by the interactions of the side chains. Even when we unfold, or denature, a protein, it will eventually fold back into essentially the same shape because of these interactions.
 
-<img src="../_pages/coronavirus/files/AminoAcid.png">
+![image-center](../assets/images/AminoAcid.png){: .align-center}
+{: style="font-size: medium;"}
 
-<img src="../_pages/coronavirus/files/Backbone.png">
+![image-center](../assets/images/Backbone.png){: .align-center}
+{: style="font-size: medium;"}
+
 -->
 
 Protein structure are separated into four different levels of description. The most basic description, the **primary structure**, refers the specific amino acid sequence of the polypeptide chain. Below is an example of the human hemoglobin subunit alpha and its primary structure.
 
-<img src="../_pages/coronavirus/files/PrimaryStructureExample.png">
+![image-center](../assets/images/PrimaryStructureExample.png){: .align-center}
+{: style="font-size: medium;"}
 
 The **secondary structure** describes the highly regular substructures in the protein. Essentially, they are the 3D structures of local amino acids groups within the protein and spontaneously form during the folding process. In a sense, they are the intermediate structures that form before the overall protein structure. The two main substructures, shown in the figure below, are alpha-helices (left) and beta-sheets (right). Alpha-helices are formed when local amino acids fold into a tube-like structure. Beta-sheets are when the local amino acids interact by lining up side-by-side, forming a sheet-like structure. The formation of these secondary structures help with the overall process of folding.
 
-<img src="../_pages/coronavirus/files/SecondaryStructure.png">
+![image-center](../assets/images/SecondaryStructure.png){: .align-center}
+{: style="font-size: medium;"}
 
 The **tertiary structure** describes the overall 3D shape of the protein that results from the fully-folded polypeptide chain. This is what we think of as the "shape" of the protein. In a sense, it is the combination of all the secondary structures and linkages that creates the tertiary structure. Below is the tertiary structure of human hemoglobin subunit alpha.
 
-<img src="../_pages/coronavirus/files/TertiaryStructureExample.png">
+![image-center](../assets/images/TertiaryStructureExample.png){: .align-center}
+{: style="font-size: medium;"}
 
 Finally, some proteins have a **quaternary structure**, which describes the protein’s interaction with other copies of itself to form a single functional unit, or a multimer. Many proteins do not have a quaternary structure and functions as an independent monomer.
 
@@ -100,7 +106,8 @@ Electron microscopy (3DEM) directly images the molecule by using a system of ele
 
 Protein structures that have been determined are typically stored in the Protein Data Bank (PDB) and is constantly growing larger and larger. As of 1 April 2020, there are a total of 162,269 entries on the PDB, but is this really a large number?
 
-<img src="../_pages/coronavirus/files/PDBGraph.png">
+![image-center](../assets/images/PDBGraph.png){: .align-center}
+{: style="font-size: medium;"}
 
 Let’s take a look at the human proteome. In a human proteome study published in 2016, it was estimated that between 0.62 to 6.13 million protein species can exist in humans. Now consider that the natural world is estimated to have 8.7 million species. 162,269 number of protein structures now looks like an incredibly small number, even when protein conservation between species is taken into account. Given the current speed of new entries, we would never be able to record this many protein structures. Another problem is these methods of structure determination they need the actual physical proteins themselves. In microbiology, it is estimated that of all bacterial life, less than 2% of bacteria can be cultured in the lab [^1]. Rather than culturing and isolating bacteria, we can directly study DNA (metagenomics), RNA (metatranscriptomics), and proteins (metaproteomics) found directly in the environment or surrounding biomasses. However, we cannot just hope to find all the different proteins by chance. So, what can we do? One potential strategy is to create algorithms for predicting protein structure directly from the protein sequence.
 
@@ -108,8 +115,8 @@ Let’s take a look at the human proteome. In a human proteome study published i
 
 The first whole genome sequence of SARS-CoV-2 isolate *Wuhan-Hu-1* was released on 10 January 2020 by Wu, F. et. al., and is available in GenBank along with the genome annotations [^2][^3]. Perhaps due to the SARS 2003 outbreak, many different types of coronaviruses have been sequenced and studied. Upon sequence comparison, SARS-CoV-2 was found to be related to several coronaviruses isolated from bats and distantly related to SARS-CoV-1. In fact, SARS-CoV-2 has a sequence identity of around 96% with bat coronavirus RaTG13, leading to the hypothesis that the virus originated from bats, which is further supported by the fact that bats are natural reservoir hosts of SARS-related coronaviruses.
 
-
-<img src="../_pages/coronavirus/files/SARSCoV2Annotation.png">
+![image-center](../assets/images/SARSCoV2Annotation.png){: .align-center}
+{: style="font-size: medium;"}
 
 The question is whether we can predict the structure of the Spike protein directly form the sequence of its gene in DNA?
 
@@ -119,15 +126,18 @@ Unfortunately, protein structure prediction from sequence is a *extremely diffic
 
 Structures that have been determined are typically uploaded into the PDB as a .pdb file. Many entries are on the quaternary structure of the protein or depict a protein system of multiple proteins or ligands. Each macromolecule is stored as a **chain** in the PDB structure. For example, the SARS-CoV-2 S protein is a trimer made up of three identical chains. The .pdb file is extremely dense as it holds all the details about the protein and chains, from the very basic primary structure of the protein all the way to the position of every single atom. The simplest way to think about how the entire protein is stored is to first represent atoms as points on a 3D plane with each atom having its 3D orthogonal coordinates (X,Y,Z) in the unit of angstroms ($$ 10^{-10} $$ meter). This is the atomic coordinates of the protein. A simplified view of the atomic coordinates section is shown in the figure below.
 
-<img src="../_pages/coronavirus/files/simplifiedPDB.png">
+![image-center](../assets/images/simplifiedPDB.png){: .align-center}
+{: style="font-size: medium;"}
 
 Because the structure of the 20 amino acids are well studied, we know which atoms are connected within each residue. The atomic bonds that link amino acids in sequence are easy to deduce from the primary structure of the protein. However, the angles of these connections also need to be explicit to describe the 3D structures. A very good analogy would be to think of the polypeptide chain as a *<a href="https://ruwix.com/twisty-puzzles/rubiks-snake-twist/" target="_blank">Rubik's Twist</a>*, shown below. Each block is able to twist, changing the angle and shape of the toy. In order to make a specific shape, every block must be twisted to a specific angle.
 
-<img src="../_pages/coronavirus/files/RubiksTwist.png">
+![image-center](../assets/images/RubiksTwist.png){: .align-center}
+{: style="font-size: medium;"}
 
 These angles are referred to as peptide torsion angles, shown in the figure below. The two bonds connecting the alpha carbon of an amino acid are able rotate, allowing a peptide chain to be able to fold into many different possible conformations. Phi (φ) refers to the bond angle connecting to the amino group and psi (ψ) refers to the bond angle connecting to the carboxyl group. The specific set of phi and psi angles of the protein helps describe the structure of the protein. Omega (ω) describes the bond angle of the peptide bond between two amino acids, but is almost always locked at 180°.
 
-<img src="../_pages/coronavirus/files/psiphi.png">
+![image-center](../assets/images/psiphi.png){: .align-center}
+{: style="font-size: medium;"}
 
 There exists connections between residues that cannot be infered from the primary structure (e.g. disulfide bonds) which are also described within the file. This is just scratching the tip of the iceberg of the information required to represent a protein structure. For more information, check out the <a href="http://www.wwpdb.org/documentation/file-format" target="_blank">official PDB documentation</a>.
 
