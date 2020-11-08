@@ -24,7 +24,7 @@ Featured software: CellBlender, MCell
 
 ## Module 2: Unpacking E. coli's genius exploration algorithm ##
 
-Coming soon! (release date: November 2, 2020)
+[Link to module](../chemotaxis/home)
 
 Featured software: CellBlender, NFSim, RuleBender
 

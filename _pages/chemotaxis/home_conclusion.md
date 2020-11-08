@@ -32,7 +32,7 @@ We then select a random duration to run and let the bacterium run in that direct
 
 We then iterate these two steps of tumbling and running until the total time used is equal to the time devoted to the simulation.
 
-In the following tutorial, we simulate this strategy using a Jupyter notebook that will help us visualize the results of the simulation.
+In the following tutorial, we simulate this naive strategy using a Jupyter notebook that will also help us visualize the results of the simulation. We will later use this notebook as a starting point when examining our second strategy, which attempts to mimic the response of *E. coli* to its environment based on what we have learned about chemotaxis and is described below.
 
 [Visit standard random walk tutorial](tutorial_purerandom){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
@@ -73,11 +73,14 @@ Strategy 2 corresponds to a very slight change in strategy 1 in which we allow t
 
 The attractant detection serves as a sort of "rubber band". If the bacterium is traveling down an attractant gradient (i.e., away from an attractant), then it is not allowed to travel very far in a single step. If an increase of attractant is detected, then the cell can travel farther before tumbling. On average, then, this effect helps to pull the bacterium in the direction of increasing attractant, even though each of its steps is taken in a random direction.
 
-## Why is bacterial background tumbling frequency constant across species?
-
 We have shown that a very slight change to a simple randomized algorithm can produce an elegant approach for exploring an unknown environment. But we left one more question unanswered. Why is it that a default tumbling frequency of one tumble per second appears to be evolutionarily stable across a wide range of bacteria?
 
 To address this question, we will make changes to *t*<sub>0</sub>, the default time for a run step, and see how this affects the ability of a simulated bacterium following the chemotactic strategy to locate the goal. You may like to adjust the value of *t*<sub>0</sub> in the [chemotactic walk tutorial](tutorial_walk) before continuing on.
+
+[Visit tutorial](tutorial_tumbling_frequencies){: .btn .btn--primary .btn--large}
+{: style="font-size: 100%; text-align: center;"}
+
+## Why is bacterial background tumbling frequency constant across species?
 
 The following figures show three trajectories for a few different values of *t*<sub>0</sub> and a simulation that lasts for 800 seconds. First, we set *t*<sub>0</sub> equal to 0.2 seconds and see that the bacteria are not able to walk far enough in a single step. That is, the "rubber band" effect is too rigid.
 
@@ -129,5 +132,5 @@ Bacterial chemotaxis is probably the best understood biological system from the 
 [^Baker2005]: Baker MD, Wolanin PM, Stock JB. 2005. Signal transduction in bacterial chemotaxis. BioEssays 28:9-22. [Available online](https://pubmed.ncbi.nlm.nih.gov/16369945/)
 
 
-[Exercises](home_exercise){: .btn .btn--primary .btn--large}
+[Visit exercises](home_exercise){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
