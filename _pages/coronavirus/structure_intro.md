@@ -29,6 +29,8 @@ Before discussing the
 
 These amino acids are linked together to form a protein as a amino acid chain, or polypeptide chain, that will typically undergo folding to obtain a 3D structure. In the first figure below, the general shape of the amino acid is shown: a central alpha-Carbon, a carboxyl group, an amino group, and finally one of 20 side-groups that differentiate the amino acids. Each amino acid is linked to the next by a peptide bond, and it is this connection and alpha-Carbon that make up the protein backbone, as shown in the second figure. The side groups of each amino acid are responsible for amino acid's chemical properties. These chemical properties allow the amino acids to interact with each other and fold into the 3D structure.
 
+We stated that the overall 3D structure (tertiary structure) of the protein is dictated by the interactions of the side chains. Even when we unfold, or denature, a protein, it will eventually fold back into essentially the same shape because of these interactions.
+
 <img src="../_pages/coronavirus/files/AminoAcid.png">
 
 <img src="../_pages/coronavirus/files/Backbone.png">
@@ -50,9 +52,11 @@ Finally, some proteins have a **quaternary structure**, which describes the prot
 
 Proteins are can often be divided into protein domains. Domains are distinct functional/structural units within the protein and are typically responsible for a specific interaction or function. For example, The Sars-CoV-2 S protein has a Receptor Binding Domain (RBD) that is responsible for interacting with ACE2. The rest of the protein does not come into contact with ACE2.
 
+**Note to self:** also need hemoglobin ongoing example
+
 Now that we have a pretty good understanding of protein structure, we need to explain why the 3D structure is so important.
 
-## Shape determines binding affinity
+## Protein shape determines binding affinity
 
 A protein's tertiary structure is essential when it comes to the protein's function and interactions with other proteins or ligands.
 
@@ -66,11 +70,13 @@ As we have seen throughout this course, the world of protein interactions is dic
 
 ## Very different proteins can have similar shape
 
-We stated that the overall 3D structure (tertiary structure) of the protein is dictated by the interactions of the side chains. Even when we unfold, or denature, a protein, it will eventually fold back into essentially the same shape because of these interactions. Small perturbations in the sequence may have dramatic effects on the overall structure and even render the protein useless. You may think that every structure has its own specific sequence of amino acids (primary structure), but this is far from the truth. Although there are twenty amino acids, they are often grouped together by having similar chemical properties (i.e. polarity and charge). As a result, two very different sequences can have the exact same function and extremely similar structures.
+Small perturbations in the primary structure of a protein can drastically change its shape and can even render the protein useless. For this reason, we might form the hypothesis that if we know the shape of a protein, then we will be able to infer its primary structure. But this is far from the truth. Because different amino acids can have similar chemical properties, some mutations will hardly change the shape of the protein at all; furthermore, two very different amino acid sequences can fold into proteins with similar shapes and identical function.
 
-As an example, let’s compare the sequences and structures of hemoglobin subunit alpha from Humans (*Homo sapiens*; PDB: <a href="https://www.rcsb.org/structure/1SI4" target="_blank">1si4</a>) Shortfin Mako Sharks (*Isurus oxyrinchus* ; PDB: <a href="https://www.rcsb.org/structure/3mkb" target="_blank">3mkb</a>) and emus (*Dromaius novaehollandia*; PDB: <a href="https://www.rcsb.org/structure/3wtg" target="_blank">3wtg</a>). From the figures below, we can see that the proteins are markedly different in terms of primary structure. Nonetheless, the 3D structures are essentially the same. (Sequence identity is the measurement of how similar two different sequences are by calculating the number of positions that share the same character.)
+For example, the following figure compares both the sequences and structures of hemoglobin subunit alpha from humans (*Homo sapiens*; PDB: <a href="https://www.rcsb.org/structure/1SI4" target="_blank">1si4</a>) shortfin mako sharks (*Isurus oxyrinchus* ; PDB: <a href="https://www.rcsb.org/structure/3mkb" target="_blank">3mkb</a>) and emus (*Dromaius novaehollandia*; PDB: <a href="https://www.rcsb.org/structure/3wtg" target="_blank">3wtg</a>). These three protein subunits are markedly different in terms of primary structure, and yet their 3-D structures are essentially identical.
 
-<img src="../_pages/coronavirus/files/SequenceStructureExample.png">
+![image-center](../assets/images/SequenceStructureExample.png){: .align-center}
+(Top) An amino acid sequence comparison of the first 40 (out of 140) amino acids of hemoglobin subunit alpha for three species: human, mako shark, and emu. A column is colored blue if all three species have the same amino acid, white if two species have the same amino acid, and red if all amino acids are different. Sequence identity calculates the number of positions in two amino acid sequences that share the same character. (Bottom) Side by side comparisons of the 3-D structures of the three proteins. The final figure on the right superimposes the first three structures to highlight their similarities.
+{: style="font-size: medium;"}
 
 ## Methods of Finding Protein Structure
 
