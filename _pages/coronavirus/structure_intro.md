@@ -70,7 +70,7 @@ The simplest model of protein interactions is Emil Fischer’s **lock and key** 
 
 However, proteins are rather flexible molecules, a fact that we will return to soon when we discuss the binding of the coronavirus spike protein to a human enzyme. As a result of this flexibility, Daniel Koshland introduced a modified model called the **induced fit** model in 1958. In this model, the enzyme and substrate may not fit perfectly, nor are they rigid like a lock and key. Rather, the two molecules may fit imperfectly and change shape as they bind in order to mold together more tightly. That having been said, if an enzyme and substrate have a shape that does not match well with each other, then they will not bind. For an overview of the induced fit model, please check out this excellent video from Khan Academy.
 
-<iframe width="640" height="360" src="https://www.youtube.com/watch?v=8lUB2sAQkzw" frameborder="0" allowfullscreen></iframe>
+<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/8lUB2sAQkzw" frameborder="0" allowfullscreen></iframe>
 
 As we have seen throughout this course, the world of protein interactions is dictated by probability. Any two molecules may *interact*, but their rate of *dissociation* will be much higher if they do not fit together well. Furthermore, even if two molecules do fit together, they need to not only collide with each other but also have the correct orientation.
 
@@ -94,9 +94,9 @@ X-ray crystallography (sometimes referred to as macromolecular crystallography, 
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/WJKvDUo3KRk" frameborder="0" allowfullscreen></iframe>
 
-For NMR spectroscopy, proteins are placed in a magnetic field and probed with radio waves. The set of resonance can then be analyzed to produce a list of atomic nuclei that are in close proximity and to characterize the local conformation of the atoms. One of the benefits of this method is that the protein can be studied in solution, offering information of the protein in a more realistic environment. NMR spectroscopy can cost up to $500 dollars and are limited to small or medium proteins. Back to the YouTube channel "*Professor Dave Explains"*, there is a good video on NMR spectroscopy for molecules.
+For NMR spectroscopy, proteins are placed in a magnetic field and probed with radio waves. The set of resonance can then be analyzed to produce a list of atomic nuclei that are in close proximity and to characterize the local conformation of the atoms. One of the benefits of this method is that the protein can be studied in solution, offering information of the protein in a more realistic environment. NMR spectroscopy can cost up to $500 dollars and are limited to small or medium proteins.
 
-<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/SBir5wUS3Bo?start=10" frameborder="0" allowfullscreen></iframe>
+
 
 Electron microscopy (3DEM) directly images the molecule by using a system of electron lenses. Producing 3D images requires imaging thousands of different particles that are preserved in non-crystalline ice (cryo-EM). Improvements in 3DEM have allowed resolution of the images to improve drastically and in some cases, reaching the resolution levels of NMR spectroscopy. However, because electron microscopes are extremely complicated machinery, purchasing one may cost anywhere between $100,000 to the most expensive $27 million (located in Lawrence Berkeley National Lab). *UC San Francisco* has published an informative YouTube video that introduces cryo-electron microscopy.
 
