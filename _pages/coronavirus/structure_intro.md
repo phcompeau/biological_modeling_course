@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/structure_intro
-title: An Inntroduction to Protein Structure Prediction
+title: An Introduction to Protein Structure Prediction
 sidebar:
  nav: "coronavirus"
 toc: true
