@@ -13,10 +13,6 @@ toc_sticky: true
 
 * Unfortunately, there are occasions where no identified proteins have notable sequence similarities. The alternative is to use threading, or fold recognition. In this case, rather than comparing the target sequence to sequences in the database, this method compares the target sequence to structures themselves. The biological basis of this method is that in nature, protein structures tend to be highly conservative and unique structural folds are therefore limited. (If it ain’t broke… Of course, mutations and structure deviations occur over evolutionary timeline.) A simple explanation of the general threading algorithm is that structure predictions are created by placing or “threading” each amino acid in the target sequence to template structures from a non-redundant template database, and then assessing how well it fits with some scoring function[^score]. Then, the best-fit templates are used to build the predicted model. The scoring function varies per algorithm, but it typically takes secondary structure compatibilities, gap penalties during alignment, and other terms that depend on amino acids that are bought into contact by the alignment.
 
-Here is a flowchart of Yang Zhang Lab's threading method, I-TASSER [^tasser]. There is no need to understand each step, but recognize that even with templates, structure prediction is a complicated and computationally intensive process.
-
-<img src="../_pages/coronavirus/files/ITASSER.png">
-
 For those that want to know more about I-TASSER, the full description of the  can be found <a href="http://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC2849174&blobtype=pdf" target="_blank">here</a>.
 
 <hr>
