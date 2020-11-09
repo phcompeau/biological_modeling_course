@@ -78,20 +78,17 @@ However, proteins are rather flexible molecules, a fact that we will return to w
 
 As we have seen throughout this course, molecular interactions are ruled by probability. Any two molecules may *interact*, but their rate of *dissociation* will be much higher if they do not fit together well. Furthermore, even if two molecules do fit together, they need to not only collide with each other but also have the correct orientation with respect to each other.
 
-So we can think about identifying the structure of a collection of proteins as cataloging the enormously varied shapes that different proteins can have. For example, the figure below shows each "protein of the month" in 2019 named by the **Protein Data Bank** (**PDB**).
+So we can think about identifying the structure of a collection of proteins as cataloging the enormously varied shapes that different proteins can have. For example, the figure below shows each "protein of the month" in 2019 named by the **Protein Data Bank** (**PDB**). But the fact remains that proteins are submicroscopic; so how is it that researchers are able to determine these shapes?
 
 ![image-center](../assets/images/different_protein_shapes.jpg){: .align-center}
+Each "protein" of the month in 2019 named by the PDB. Note how different the shapes are of all these proteins, which accomplish a wide variety of cellular tasks.
 {: style="font-size: medium;"}
 
 ## Laboratory methods for determining protein structure
 
-The next question that we might ask is what makes structure determination of a protein a difficult problem.
+There are several existing methods for accurately determining protein structure, and we will discuss three of them in this section.
 
-**START HERE**
-
-Even when studying an unknown protein, we can predict its function just by knowing what it looks like. There are several methods used to accurately determine the protein structure, such as X-ray crystallography, NMR spectroscopy, and electron microscopy.
-
-X-ray crystallography (sometimes referred to as macromolecular crystallography, or MX) works by first crystallizing the protein and then subjecting it to an intense x-ray beam. The protein will diffract the beam and create patters that describe the electron distribution in the protein. By creating a map of the electron density, it can be analyzed to determine the position of each atom. Thus, x-ray crystallography can determine the protein structure with extreme precision. Unfortunately, there are many drawbacks. First, the process of crystallization is complex, limiting the types of protein that can be analyzed this way. Second, flexible proteins are difficult to study since x-ray crystallography relies on having large amounts of molecules that need to be aligned in the exact same orientation. Third, x-ray crystallography is very expensive, with services charging around $2000 dollars for a single sample. The following two-part YouTube video series from *"The Royal Institution"* gives a very good explanation on how x-ray cyrstallography works.
+First, **X-ray crystallography** (sometimes called **macromolecular crystallography**) works by first crystallizing the protein and then subjecting it to an intense x-ray beam. The protein will diffract the beam and create patters that describe the electron distribution in the protein. By creating a map of the electron density, it can be analyzed to determine the position of each atom. Thus, x-ray crystallography can determine the protein structure with extreme precision. Unfortunately, there are many drawbacks. First, the process of crystallization is complex, limiting the types of protein that can be analyzed this way. Second, flexible proteins are difficult to study since x-ray crystallography relies on having large amounts of molecules that need to be aligned in the exact same orientation. Third, x-ray crystallography is very expensive, with services charging around $2000 dollars for a single sample. The following two-part YouTube video series from *"The Royal Institution"* gives a very good explanation on how x-ray cyrstallography works.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/gLsC4wlrR2A" frameborder="0" allowfullscreen></iframe>
 
