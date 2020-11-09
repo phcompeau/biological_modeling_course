@@ -21,7 +21,9 @@ Before continuing, we should be a bit more precise about what we mean by "protei
 
 This brings us to our first biological problem of interest: what is the shape of a given protein? This **structure prediction problem**, which our work in the first part of this module will focus on, is simple to state but deceptively difficult. In fact, it has been an active area of biological research for several decades.
 
-You may be wondering why we care about the shape of a given protein. Knowing a protein's shape is essential to determining the function of that protein as well as how it interacts with other proteins or ligands. And understanding protein interactions underlies much pharmaceutical research. For example, a human disease may be caused by a diseased protein, in which case we are looking for a drug (i.e., some other substance) that binds to the protein and causes some change of interest in that protein.
+You may be wondering why we care about the shape of a given protein. Knowing a protein's shape is essential to determining the function of that protein as well as how it interacts with other proteins or ligands. And understanding protein interactions underlies a huge amount of biological research. To take one example, a human disease may be caused by a diseased protein, in which case we are looking for a drug (i.e., some other substance) that binds to the protein and causes some change of interest in that protein. For another example, consider the following video of a ribosome translating a messenger RNA into protein. For translation to succeed, the ribosome needs to have a very precise shape including a "slot" that the messenger RNA strand can fit into and be read.
+
+<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/TfYf_rPWUdY" frameborder="0" allowfullscreen></iframe>
 
 In the next section, we will discuss how interactions involving proteins are typically modeled.
 
