@@ -21,6 +21,10 @@ Before continuing, we should be a bit more precise about what we mean by "protei
 
 This brings us to our first biological problem of interest: what is the shape of a given protein? This **structure prediction problem**, which our work in the first part of this module will focus on, is simple to state but deceptively difficult. In fact, it has been an active area of biological research for several decades.
 
+You may be wondering why we care about the shape of a given protein. Knowing a protein's shape is essential to determining the function of that protein as well as how it interacts with other proteins or ligands. And understanding protein interactions underlies much pharmaceutical research. For example, a human disease may be caused by a diseased protein, in which case we are looking for a drug (i.e., some other substance) that binds to the protein and causes some change of interest.
+
+In the next section, we will discuss how protein interactions are typically modeled.
+
 <!--
 
 ## Four levels of protein structure
@@ -66,15 +70,15 @@ Now that we have a pretty good understanding of protein structure, we need to ex
 
 ## Protein shape determines binding affinity
 
-The first question that we might ask about protein structure prediction is why we care about the shape of a given protein. Understanding the shape of a protein is essential to determining the function of a given protein as well as understanding how that protein interacts with other proteins or ligands.
+The simplest model of protein interactions is Emil Fischer’s **lock and key** model, which dates all the way back to 1894. This model considers a protein that is an **enzyme**, which serves as a catalyst for a reaction involving another molecule called a **substrate**, and we think of the substrate as a key fitting into the enzyme lock. If the substrate does not fit into the active site of an enzyme, then the reaction will not occur.
 
-The simplest model of protein interactions is Emil Fischer’s **lock and key** model, which dates all the way back to 1894. This model considers a protein that is an **enzyme** serving as a catalyst for a reaction involving another molecule called a **substrate**, and we think of the substrate as a key fitting into the enzyme lock. If the substrate does not fit into the active site of an enzyme, then no reaction will happen.
-
-However, proteins are rather flexible molecules, a fact that we will return to soon when we discuss the binding of the coronavirus spike protein to a human enzyme. As a result of this flexibility, Daniel Koshland introduced a modified model called the **induced fit** model in 1958. In this model, the enzyme and substrate may not fit perfectly, nor are they rigid like a lock and key. Rather, the two molecules may fit imperfectly and change shape as they bind in order to mold together more tightly. That having been said, if an enzyme and substrate have a shape that does not match well with each other, then they will not bind. For an overview of the induced fit model, please check out this excellent video from Khan Academy.
+However, proteins are rather flexible molecules, a fact that we will return to when we discuss the binding of the coronavirus spike protein to a human enzyme in a later lesson. As a result of this flexibility, Daniel Koshland introduced a modified model called the **induced fit** model in 1958. In this model, the enzyme and substrate may not fit perfectly, nor are they rigid like a lock and key. Rather, the two molecules may fit inexactly, changing shape as they bind to mold together more tightly. That having been said, if an enzyme and substrate's shape do not match well with each other, then they will not bind. For an overview of the induced fit model, please check out this excellent video from Khan Academy.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/8lUB2sAQkzw" frameborder="0" allowfullscreen></iframe>
 
-As we have seen throughout this course, the world of protein interactions is dictated by probability. Any two molecules may *interact*, but their rate of *dissociation* will be much higher if they do not fit together well. Furthermore, even if two molecules do fit together, they need to not only collide with each other but also have the correct orientation.
+As we have seen throughout this course, the world of molecular interactions is dictated by probability. Any two molecules may *interact*, but their rate of *dissociation* will be much higher if they do not fit together well. Furthermore, even if two molecules do fit together, they need to not only collide with each other but also have the correct orientation with respect to each other.
+
+
 
 ## Laboratory methods for determining protein structure
 
