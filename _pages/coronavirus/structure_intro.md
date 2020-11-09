@@ -21,11 +21,11 @@ Before continuing, we should be a bit more precise about what we mean by "protei
 
 This brings us to our first biological problem of interest: what is the shape of a given protein? This **structure prediction problem**, which our work in the first part of this module will focus on, is simple to state but deceptively difficult. In fact, it has been an active area of biological research for several decades.
 
+<!--
+
 ## Four levels of protein structure
 
-Before discussing the  
 
-<!--
 
 These amino acids are linked together to form a protein as a amino acid chain, or polypeptide chain, that will typically undergo folding to obtain a 3D structure. In the first figure below, the general shape of the amino acid is shown: a central alpha-Carbon, a carboxyl group, an amino group, and finally one of 20 side-groups that differentiate the amino acids. Each amino acid is linked to the next by a peptide bond, and it is this connection and alpha-Carbon that make up the protein backbone, as shown in the second figure. The side groups of each amino acid are responsible for amino acid's chemical properties. These chemical properties allow the amino acids to interact with each other and fold into the 3D structure.
 
@@ -37,7 +37,7 @@ We stated that the overall 3D structure (tertiary structure) of the protein is d
 ![image-center](../assets/images/Backbone.png){: .align-center}
 {: style="font-size: medium;"}
 
--->
+
 
 Protein structure are separated into four different levels of description. The most basic description, the **primary structure**, refers the specific amino acid sequence of the polypeptide chain. Below is an example of the human hemoglobin subunit alpha and its primary structure.
 
@@ -61,6 +61,8 @@ Proteins are can often be divided into protein domains. Domains are distinct fun
 **Note to self:** also need hemoglobin ongoing example
 
 Now that we have a pretty good understanding of protein structure, we need to explain why the 3D structure is so important.
+
+-->
 
 ## Protein shape determines binding affinity
 
