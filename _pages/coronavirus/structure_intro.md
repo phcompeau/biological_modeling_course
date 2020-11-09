@@ -21,9 +21,9 @@ Before continuing, we should be a bit more precise about what we mean by "protei
 
 This brings us to our first biological problem of interest: what is the shape of a given protein? This **structure prediction problem**, which our work in the first part of this module will focus on, is simple to state but deceptively difficult. In fact, it has been an active area of biological research for several decades.
 
-You may be wondering why we care about the shape of a given protein. Knowing a protein's shape is essential to determining the function of that protein as well as how it interacts with other proteins or ligands. And understanding protein interactions underlies much pharmaceutical research. For example, a human disease may be caused by a diseased protein, in which case we are looking for a drug (i.e., some other substance) that binds to the protein and causes some change of interest.
+You may be wondering why we care about the shape of a given protein. Knowing a protein's shape is essential to determining the function of that protein as well as how it interacts with other proteins or ligands. And understanding protein interactions underlies much pharmaceutical research. For example, a human disease may be caused by a diseased protein, in which case we are looking for a drug (i.e., some other substance) that binds to the protein and causes some change of interest in that protein.
 
-In the next section, we will discuss how protein interactions are typically modeled.
+In the next section, we will discuss how interactions involving proteins are typically modeled.
 
 <!--
 
@@ -76,9 +76,12 @@ However, proteins are rather flexible molecules, a fact that we will return to w
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/8lUB2sAQkzw" frameborder="0" allowfullscreen></iframe>
 
-As we have seen throughout this course, the world of molecular interactions is dictated by probability. Any two molecules may *interact*, but their rate of *dissociation* will be much higher if they do not fit together well. Furthermore, even if two molecules do fit together, they need to not only collide with each other but also have the correct orientation with respect to each other.
+As we have seen throughout this course, molecular interactions are ruled by probability. Any two molecules may *interact*, but their rate of *dissociation* will be much higher if they do not fit together well. Furthermore, even if two molecules do fit together, they need to not only collide with each other but also have the correct orientation with respect to each other.
 
+So we can think about identifying the structure of a collection of proteins as cataloging the enormously varied shapes that different proteins can have. For example, the figure below shows each "protein of the month" in 2019 named by the **Protein Data Bank** (**PDB**).
 
+![image-center](../assets/images/different_protein_shapes.jpg){: .align-center}
+{: style="font-size: medium;"}
 
 ## Laboratory methods for determining protein structure
 
