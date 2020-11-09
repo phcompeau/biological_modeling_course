@@ -1,15 +1,13 @@
 ---
 permalink: /coronavirus/homology
 title: Homology Modeling for Protein Structure Prediction
-sidebar: 
+sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
 ---
 
-* In the previous section, we stated that *ab initio* structure prediction may lead to more inaccurate results as the size of the protein increases with our current algorithms. So, we cannot confidently predict the large SARS-CoV-2 S protein using *ab initio* structure prediction. As mentioned in the *<a href="structure_intro">Introduction to Protein Structure Prediction</a>*, we have over 160,000 protein structure entries available in the PDB. With every new structure we identify, we learn a little more about the rules that nature uses to fold proteins into shapes. Within these entries are published structures of the SARS S protein, which we know is similar to the SARS-CoV-2 S protein based on the genomic sequence. So, why not leverage this database in predicting the SARS-CoV-2 S protein and other structures? This is exactly how homology modeling and other template-based methods approach structure prediction. By using protein structures in the PDB as templates to guide us in structure prediction, we are able to improve prediction accuracy and allow us to more confidently predict the structure of large proteins.
-
-* Going back to the analogy of our droid trying to find the lowest lying area of a newly discovered planet. Imagine that the planet is covered with craters, and we believe that the lowest lying area is within one of these crators. One method is to explore each crater on the planet, which will take an extremely long time. Now, let's say that we have explored many crater-filled planets and know what the deepest craters will look like. We can now narrow our search and save much more time. Using our knowledge, we can also more confidently explore larger crater-filled planets. 
+* In the previous section, we stated that *ab initio* structure prediction may lead to more inaccurate results as the size of the protein increases with our current algorithms. So, we cannot confidently predict the large SARS-CoV-2 S protein using *ab initio* structure prediction. As mentioned in the *<a href="structure_intro">Introduction to Protein Structure Prediction</a>*, we have over 160,000 protein structure entries available in the PDB. With every new structure we identify, we learn a little more about the rules that nature uses to fold proteins into shapes. Within these entries are published structures of the SARS S protein, which we know is similar to the SARS-CoV-2 S protein based on the genomic sequence. So, why not leverage this database in predicting the SARS-CoV-2 S protein and other structures? This is exactly how homology modeling and other template-based methods approach structure prediction. By using protein structures in the PDB as templates to guide us in structure prediction, we are able to improve prediction accuracy and allow us to more confidently predict the structure of large proteins. 
 
 * Homology modeling is based on the observation that proteins from the same evolutionary family with similar sequences typically adopt similar structures. Using sequence comparisons, we can scour the database for proteins with notable sequence identity to be used as a template. Now that we have a starting point, the chances of predicting the correct structure is greatly improved, as well as potentially speeding up the process.
 
@@ -24,7 +22,7 @@ Here is a flowchart of Yang Zhang Lab's threading method, I-TASSER [^tasser]. Th
 <img src="../_pages/coronavirus/files/ITASSER.png">
 
 For those that want to know more about I-TASSER, the full description of the  can be found <a href="http://europepmc.org/backend/ptpmcrender.fcgi?accid=PMC2849174&blobtype=pdf" target="_blank">here</a>.
-  
+
 <hr>
 
 In this tutorial, we will use model the SARS-CoV-2 S protein using publically available homology modeling servers.
@@ -49,5 +47,3 @@ If you like, you can dowload the results of our predicted models here:
 [^score]: Movaghar, A. F., Launay, G., Schbath, S., Gibrat, J. F., & Rodolphe, F. 2012. Statistical significance of threading scores. Journal of computational biology : a journal of computational molecular cell biology, 19(1), 13–29. https://doi.org/10.1089/cmb.2011.0236
 
 [^tasser]: Roy, A., Kucukural, A., Zhang, Y. 2010. I-TASSER: a unified platform for automated protein structure and function prediction. Nat Protoc, 5(4), 725-738. https://doi.org/10.1038/nprot.2010.5.
-
-
