@@ -30,12 +30,12 @@ Featured software: CellBlender, NFSim, RuleBender
 
 ## Module 3: Analyzing the structure of the coronavirus spike protein ##
 
-Coming soon! (release date: November 9, 2020)
+Coming soon!
 
 Featured software: ProDy
 
 ## Module 4: Training a computer to count white blood cells automatically ##
 
-Coming soon! (release date: November 16, 2020)
+Coming soon!
 
 Featured software: CellOrganizer
