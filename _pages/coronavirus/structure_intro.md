@@ -88,17 +88,21 @@ Each "protein" of the month in 2019 named by the PDB. Note how different the sha
 
 ## Laboratory methods for determining protein structure
 
-There are several existing methods for accurately determining protein structure, and we will discuss three of them in this section.
+There are a few existing methods for accurately determining protein structure. In this section, we will pause to discuss two of them.
 
-First, **X-ray crystallography** (sometimes called **macromolecular crystallography**) works by first crystallizing the protein and then subjecting it to an intense x-ray beam. The protein will diffract the beam and create patters that describe the electron distribution in the protein. By creating a map of the electron density, it can be analyzed to determine the position of each atom. Thus, x-ray crystallography can determine the protein structure with extreme precision. Unfortunately, there are many drawbacks. First, the process of crystallization is complex, limiting the types of protein that can be analyzed this way. Second, flexible proteins are difficult to study since x-ray crystallography relies on having large amounts of molecules that need to be aligned in the exact same orientation. Third, x-ray crystallography is very expensive, with services charging around $2000 dollars for a single sample. The following two-part YouTube video series from *"The Royal Institution"* gives a very good explanation on how x-ray cyrstallography works.
+First, **X-ray crystallography** (sometimes called **macromolecular crystallography**) works by first crystallizing many copies of a protein and then shining an intense x-ray beam at the crystal. When light hits each protein, it is diffracted, creating patterns from which the position of each atom in the protein can be inferred. X-ray crystallography identifies a protein's structure with extreme precision, but it has its drawbacks. Crystallizing a protein is a challenging task, and each copy of the protein must line up in the same way, which does not work for very flexible proteins. Moreover, the approach is very expensive, costing around $2,000 per protein sample.
+
+If you are interested in learning more about X-ray crystallography, check out the following excellent two-part video series from The Royal Institution.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/gLsC4wlrR2A" frameborder="0" allowfullscreen></iframe>
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/WJKvDUo3KRk" frameborder="0" allowfullscreen></iframe>
 
-For NMR spectroscopy, proteins are placed in a magnetic field and probed with radio waves. The set of resonance can then be analyzed to produce a list of atomic nuclei that are in close proximity and to characterize the local conformation of the atoms. One of the benefits of this method is that the protein can be studied in solution, offering information of the protein in a more realistic environment. NMR spectroscopy can cost up to $500 dollars and are limited to small or medium proteins.
+Second, we could use **cryo-electron microscopy** (**cryo-EM**). In this approach,
 
-Electron microscopy (3DEM) directly images the molecule by using a system of electron lenses. Producing 3D images requires imaging thousands of different particles that are preserved in non-crystalline ice (cryo-EM). Improvements in 3DEM have allowed resolution of the images to improve drastically and in some cases, reaching the resolution levels of NMR spectroscopy. However, because electron microscopes are extremely complicated machinery, purchasing one may cost anywhere between $100,000 to the most expensive $27 million (located in Lawrence Berkeley National Lab). *UC San Francisco* has published an informative YouTube video that introduces cryo-electron microscopy.
+START HERE
+
+**electron microscopy** (**3DEM**) directly images a protein using a system of electron lenses. Producing 3D images requires imaging thousands of different particles that are preserved in non-crystalline ice (cryo-EM). Improvements in 3DEM have allowed resolution of the images to improve drastically and in some cases, reaching the resolution levels of NMR spectroscopy. However, because electron microscopes are extremely complicated machinery, purchasing one may cost anywhere between $100,000 to the most expensive $27 million (located in Lawrence Berkeley National Lab). UC San Francisco has published an informative YouTube video that introduces cryo-electron microscopy.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/Qq8DO-4BnIY" frameborder="0" allowfullscreen></iframe>
 
