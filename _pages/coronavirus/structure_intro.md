@@ -73,9 +73,14 @@ What, then, can we do? Fortunately, although identifying protein structure is di
 
 This leads us to an idea: given a sequence of amino acids, can we predict the final 3-D structure of this polypeptide? In other words, can we reverse engineer the magic algorithm that nature uses for protein folding?
 
-Unfortunately, predicting protein structure from an amino acid sequence is a fundamentally difficult problem. Even the reverse problem is difficult (i.e., inferring the sequence of amino acids that produced a given protein's shape), as we will see in the next lesson.
+Unfortunately, predicting protein structure from an amino acid sequence is a fundamentally difficult problem.
 
-## Very different proteins can have similar shape
+## What makes protein structure prediction so difficult?
+
+The first whole genome sequence of SARS-CoV-2, isolate *Wuhan-Hu-1*, was released on 10 January 2020 by Wu, F. et. al., and is available in GenBank along with an annotation of the genome[^2][^3]. Upon sequence comparison, SARS-CoV-2 was found to be related to several coronaviruses isolated from bats and distantly related to SARS-CoV-1, the viral strain that caused the 2003 SARS outbreak. In fact, SARS-CoV-2 has a sequence identity of around 96% with bat coronavirus RaTG13, leading us to the hypothesis that the virus originated from bats, which is further supported by the fact that bats are a natural reservoir of SARS-related coronaviruses.
+
+![image-center](../assets/images/SARSCoV2Annotation.png){: .align-center}
+{: style="font-size: medium;"}
 
 Small perturbations in the primary structure of a protein can drastically change the protein's shape and even render it useless. For this reason, we might be led to think that we could infer the amino acid sequence of a protein from its structure. But this is far from the truth. Because different amino acids can have similar chemical properties, some mutations will hardly change the shape of the protein at all; furthermore, two very different amino acid sequences can fold into proteins with similar shapes and identical function.
 
@@ -85,18 +90,11 @@ For example, the following figure compares both the sequences and structures of 
 (Top) An amino acid sequence comparison of the first 40 (out of 140) amino acids of hemoglobin subunit alpha for three species: human, mako shark, and emu. A column is colored blue if all three species have the same amino acid, white if two species have the same amino acid, and red if all amino acids are different. Sequence identity calculates the number of positions in two amino acid sequences that share the same character. (Bottom) Side by side comparisons of the 3-D structures of the three proteins. The final figure on the right superimposes the first three structures to highlight their similarities.
 {: style="font-size: medium;"}
 
-## What makes protein structure prediction so difficult?
 
-The first whole genome sequence of SARS-CoV-2 isolate *Wuhan-Hu-1* was released on 10 January 2020 by Wu, F. et. al., and is available in GenBank along with the genome annotations [^2][^3]. Perhaps due to the SARS 2003 outbreak, many different types of coronaviruses have been sequenced and studied. Upon sequence comparison, SARS-CoV-2 was found to be related to several coronaviruses isolated from bats and distantly related to SARS-CoV-1. In fact, SARS-CoV-2 has a sequence identity of around 96% with bat coronavirus RaTG13, leading to the hypothesis that the virus originated from bats, which is further supported by the fact that bats are natural reservoir hosts of SARS-related coronaviruses.
 
-![image-center](../assets/images/SARSCoV2Annotation.png){: .align-center}
-{: style="font-size: medium;"}
+We can compare our algorithm for structure prediction against known 3-D structures (SARS1 before the SARS2 3-D structure was known experimentally, and both viruses afterward). Researchers would do this to see how good our algorithm is at reproducing a known structure as a proof of concept for the approach when we don’t have funds for X-ray crystallography but want a reliable representation of a newly sequenced protein’s structure.
 
-The question is whether we can predict the structure of the Spike protein directly form the sequence of its gene in DNA?
-
-The point of this question is that we can compare our algorithm for structure prediction against known 3-D structures (SARS1 before the SARS2 3-D structure was known experimentally, and both viruses afterward). Researchers would do this to see how good our algorithm is at reproducing a known structure as a proof of concept for the approach when we don’t have funds for X-ray crystallography but want a reliable representation of a newly sequenced protein’s structure.
-
-Unfortunately, protein structure prediction from sequence is a *extremely difficult* problem. One reason why is the sheer amount of details that are required for describing and computationally storing a protein structure.
+One reason why structure prediction is difficult is the sheer amount of details that are required for describing and computationally storing a protein structure.
 
 Structures that have been determined are typically uploaded into the PDB as a .pdb file. Many entries are on the quaternary structure of the protein or depict a protein system of multiple proteins or ligands. Each macromolecule is stored as a **chain** in the PDB structure. For example, the SARS-CoV-2 S protein is a trimer made up of three identical chains. The .pdb file is extremely dense as it holds all the details about the protein and chains, from the very basic primary structure of the protein all the way to the position of every single atom. The simplest way to think about how the entire protein is stored is to first represent atoms as points on a 3D plane with each atom having its 3D orthogonal coordinates (X,Y,Z) in the unit of angstroms ($$ 10^{-10} $$ meter). This is the atomic coordinates of the protein. A simplified view of the atomic coordinates section is shown in the figure below.
 
