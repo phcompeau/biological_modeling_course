@@ -69,18 +69,21 @@ Before we set aside structure prediction, let’s consider the human proteome (i
 
 Another issue with laboratory methods of structure determination is that they require our ability to sample the actual physical proteins. For example, to produce bacterial proteins, we need to culture bacteria, and yet microbiologists have estimated that less than 2% of bacteria can be cultured in the lab [^1].
 
-What, then, can we do? Fortunately, although identifying protein structure is difficult, researchers have spent decades cataloging the genomes (i.e., the sum total of DNA in an organism's nucleus) of thousands of species. Because of the central dogma of molecular biology, we know that much of this DNA winds up being translated into protein. As a result, biologists know the *sequence* of amino acids making up many proteins. Also, recall from the start of this lesson that even if a protein is unfolded into a polypetide, then it always folds back into essentially the same three-dimensional shape.
+What, then, can we do? Fortunately, although identifying protein structure is difficult, researchers have spent decades cataloging the genomes (i.e., the sum total of DNA in an organism's nucleus) of thousands of species. Because of the central dogma of molecular biology, we know that much of this DNA winds up being translated into protein. As a result, biologists know the *sequence* of amino acids making up many proteins.
 
-This leads us to an idea: given a sequence of amino acids, can we predict the final 3-D structure of this polypeptide? In other words, can we reverse engineer the magic algorithm that nature uses for protein folding?
+The first whole genome sequence of SARS-CoV-2, isolate *Wuhan-Hu-1*, was released on 10 January 2020 by Wu, F. et. al., and is available in GenBank along with an annotation of the genome[^2][^3], shown in the figure below. Upon sequence comparison, SARS-CoV-2 was found to be related to several coronaviruses isolated from bats and distantly related to SARS-CoV-1, the viral strain that caused the 2003 SARS outbreak. In fact, SARS-CoV-2 has a sequence identity of around 96% with bat coronavirus RaTG13, leading us to the hypothesis that the virus originated from bats, which is further supported by the fact that bats are a natural reservoir of SARS-related coronaviruses.
 
-Unfortunately, predicting protein structure from an amino acid sequence is a fundamentally difficult problem.
+![image-center](../assets/images/SARSCoV2Annotation.png){: .align-center}
+An annotated genome of SARS-CoV-2. Accessed from GenBank: [https://go.usa.gov/xfzMM](https://go.usa.gov/xfzMM).
+{: style="font-size: medium;"}
+
+Recall from the start of this lesson that even if a protein is unfolded into a polypetide, then it always folds back into essentially the same three-dimensional shape. This leads us to an idea: given the sequence of amino acids corresponding to the SARS-CoV-2 spike protein, can we predict the final 3-D structure of this protein? In other words, can we reverse engineer the magic algorithm that nature uses for protein folding?
+
+Unfortunately, as will see in the next section, predicting protein structure from an amino acid sequence is a problem of fundamental difficulty.
 
 ## What makes protein structure prediction so difficult?
 
-The first whole genome sequence of SARS-CoV-2, isolate *Wuhan-Hu-1*, was released on 10 January 2020 by Wu, F. et. al., and is available in GenBank along with an annotation of the genome[^2][^3]. Upon sequence comparison, SARS-CoV-2 was found to be related to several coronaviruses isolated from bats and distantly related to SARS-CoV-1, the viral strain that caused the 2003 SARS outbreak. In fact, SARS-CoV-2 has a sequence identity of around 96% with bat coronavirus RaTG13, leading us to the hypothesis that the virus originated from bats, which is further supported by the fact that bats are a natural reservoir of SARS-related coronaviruses.
-
-![image-center](../assets/images/SARSCoV2Annotation.png){: .align-center}
-{: style="font-size: medium;"}
+**START HERE -- RE-ORGANIZE as "Why is this hard?" and motivate hemoglobin**
 
 Small perturbations in the primary structure of a protein can drastically change the protein's shape and even render it useless. For this reason, we might be led to think that we could infer the amino acid sequence of a protein from its structure. But this is far from the truth. Because different amino acids can have similar chemical properties, some mutations will hardly change the shape of the protein at all; furthermore, two very different amino acid sequences can fold into proteins with similar shapes and identical function.
 
@@ -89,8 +92,6 @@ For example, the following figure compares both the sequences and structures of 
 ![image-center](../assets/images/SequenceStructureExample.png){: .align-center}
 (Top) An amino acid sequence comparison of the first 40 (out of 140) amino acids of hemoglobin subunit alpha for three species: human, mako shark, and emu. A column is colored blue if all three species have the same amino acid, white if two species have the same amino acid, and red if all amino acids are different. Sequence identity calculates the number of positions in two amino acid sequences that share the same character. (Bottom) Side by side comparisons of the 3-D structures of the three proteins. The final figure on the right superimposes the first three structures to highlight their similarities.
 {: style="font-size: medium;"}
-
-
 
 We can compare our algorithm for structure prediction against known 3-D structures (SARS1 before the SARS2 3-D structure was known experimentally, and both viruses afterward). Researchers would do this to see how good our algorithm is at reproducing a known structure as a proof of concept for the approach when we don’t have funds for X-ray crystallography but want a reliable representation of a newly sequenced protein’s structure.
 
