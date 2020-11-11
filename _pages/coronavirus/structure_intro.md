@@ -117,6 +117,8 @@ There exists connections between residues that cannot be infered from the primar
 Another reason why protein structure prediction is so difficult is due to the huge number of conformations that a single polypeptide can take. Finding the correct shape is very much like finding a needle in a haystack.
 
 * Levinthal’s Paradox. Large number of degrees of freedom in a polypeptide chain. Given a chain with 100 residues, there will be 99 peptide bonds, resulting in 198 phi and psi bond angles. If each bond has three stable conformations, then there are a maximum of $$ 3^{198} $$ different possible conformations. Will take longer than the age of the universe to sample all conformation to find the correct native form. Paradox is that most natural protein folding occurs spontaneously, typically within the timescale of milliseconds. The fastest within a couple of microseconds [^1].
+
+TIE THIS BACK TO COMBINATORIAL EXPLOSION
   * Local residues form stable interactions an act as nucleation points (protein folding intermediates and partial-folded transition states), facilitation folding speed.
   * Proposed funnel-like energy landscapes (not really the case, the energy landscape is more like a caldera).
   * Main point: need A LOT of computing
