@@ -101,12 +101,14 @@ A peptide is able to bend so much because the bonds between some of the atoms in
 These angles are referred to as peptide torsion angles, shown in the figure below. The two bonds connecting the alpha carbon of an amino acid are able to rotate, allowing a peptide chain to be able to fold into many different possible conformations. Phi (φ) refers to the bond angle connecting to the amino group and psi (ψ) refers to the bond angle connecting to the carboxyl group. The specific set of phi and psi angles of the protein helps describe the structure of the protein. Omega (ω) describes the bond angle of the peptide bond between two amino acids, but is almost always locked at 180°.
 
 ![image-center](../assets/images/torsion_angles.png){: .align-center}
-Image courtesy: Adam Rędzikowski
+Image courtesy: Adam Rędzikowski.
 {: style="font-size: medium;"}
 
 Below is an excellent video from Jacob Elmer illustrating the dihedral angles for a given amino acid.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/1usemtIYe_s" frameborder="0" allowfullscreen></iframe>
+
+A polypeptide with *n* amino acids will have *n* - 1 peptide bonds, meaning that there will be 99 φ angles and 99 ψ angles. Say that each bond has three stable conformations. Then this means that there are 3<sup><em>n</em></sup> total possible protein conformations. As a result, if *n* is just 200 (a reasonably short polypeptide), the number of possible protein strucures we need to consider is more than the number of atoms in the universe! The ability for the protein to reliably find a single conformation using the magic algorithm despite such an enormous number of potential shapes is called **Levinthal's paradox** and is in a sense another example of the principle of "combinatorial explosion" that we saw in the module on bacterial chemotaxis.
 
 * Levinthal’s Paradox. Large number of degrees of freedom in a polypeptide chain. Given a chain with 100 residues, there will be 99 peptide bonds, resulting in 198 phi and psi bond angles. If each bond has three stable conformations, then there are a maximum of $$ 3^{198} $$ different possible conformations. Will take longer than the age of the universe to sample all conformation to find the correct native form. Paradox is that most natural protein folding occurs spontaneously, typically within the timescale of milliseconds. The fastest within a couple of microseconds [^1].
 
