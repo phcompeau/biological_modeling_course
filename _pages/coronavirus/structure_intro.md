@@ -97,11 +97,11 @@ Another reason why protein structure prediction is so difficult is due to the hu
 An illustration of Rubik's twist forming into a ball. Source: [https://grabcad.com/library/rubik-s-snake-1](https://grabcad.com/library/rubik-s-snake-1).
 {: style="font-size: medium;"}
 
-We should make our discussion of protein flexibility a little more precise.
-
+A peptide is able to bend so much because the bonds between some of the atoms in an amino acid, called **peptide torsion angles**, are able to rotate. There are three angles of interest, as shown in the figure below. Two of the angles connected to the amino acid's "alpha carbon"
 These angles are referred to as peptide torsion angles, shown in the figure below. The two bonds connecting the alpha carbon of an amino acid are able to rotate, allowing a peptide chain to be able to fold into many different possible conformations. Phi (φ) refers to the bond angle connecting to the amino group and psi (ψ) refers to the bond angle connecting to the carboxyl group. The specific set of phi and psi angles of the protein helps describe the structure of the protein. Omega (ω) describes the bond angle of the peptide bond between two amino acids, but is almost always locked at 180°.
 
-![image-center](../assets/images/psiphi.png){: .align-center}
+![image-center](../assets/images/torsion_angles.png){: .align-center}
+Image courtesy: Adam Rędzikowski
 {: style="font-size: medium;"}
 
 Below is an excellent video from Jacob Elmer illustrating the dihedral angles for a given amino acid.
