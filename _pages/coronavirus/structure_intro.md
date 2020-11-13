@@ -128,6 +128,7 @@ To find this magic algorithm, we need a very good understanding of all the small
 Structures that have been determined are typically uploaded into the PDB as a .pdb file. Many entries are on the quaternary structure of the protein or depict a protein system of multiple proteins or ligands. Each macromolecule is stored as a **chain** in the PDB structure. For example, the SARS-CoV-2 S protein is a trimer made up of three identical chains. The .pdb file is extremely dense as it holds all the details about the protein and chains, from the very basic primary structure of the protein all the way to the position of every single atom. The simplest way to think about how the entire protein is stored is to first represent atoms as points on a 3D plane with each atom having its 3D orthogonal coordinates (X,Y,Z) in the unit of angstroms ($$ 10^{-10} $$ meter). This is the atomic coordinates of the protein. A simplified view of the atomic coordinates section is shown in the figure below.
 
 ![image-center](../assets/images/simplifiedPDB.png){: .align-center}
+Simplified diagram of atomic coordinates in PDB format. Source: https://proteopedia.org/wiki/index.php/Atomic_coordinate_file
 {: style="font-size: medium;"}
 
 Because the structure of the 20 amino acids are well studied, we know which atoms are connected within each residue. The atomic bonds that link amino acids in sequence are easy to deduce from the primary structure of the protein.
@@ -154,16 +155,19 @@ We stated that the overall 3D structure (tertiary structure) of the protein is d
 Protein structure are separated into four different levels of description. The most basic description, the **primary structure**, refers the specific amino acid sequence of the polypeptide chain. Below is an example of the human hemoglobin subunit alpha and its primary structure.
 
 ![image-center](../assets/images/PrimaryStructureExample.png){: .align-center}
+The primary structure, or specific amino acid sequence, of human hemoglobin subunit alpha. Each letter corresponds to one of the twenty amino acids. Protein structure from: https://www.rcsb.org/structure/1SI4.
 {: style="font-size: medium;"}
 
 The **secondary structure** describes the highly regular substructures in the protein. Essentially, they are the 3D structures of local amino acids groups within the protein and spontaneously form during the folding process. In a sense, they are the intermediate structures that form before the overall protein structure. The two main substructures, shown in the figure below, are alpha-helices (left) and beta-sheets (right). Alpha-helices are formed when local amino acids fold into a tube-like structure. Beta-sheets are when the local amino acids interact by lining up side-by-side, forming a sheet-like structure. The formation of these secondary structures help with the overall process of folding.
 
 ![image-center](../assets/images/SecondaryStructure.png){: .align-center}
+General shape of secondary structure alpha-helices (left) and beta-sheets (right). Source: Cornell, B. (n.d.). https://ib.bioninja.com.au/higher-level/topic-7-nucleic-acids/73-translation/protein-structure.html
 {: style="font-size: medium;"}
 
 The **tertiary structure** describes the overall 3D shape of the protein that results from the fully-folded polypeptide chain. This is what we think of as the "shape" of the protein. In a sense, it is the combination of all the secondary structures and linkages that creates the tertiary structure. Below is the tertiary structure of human hemoglobin subunit alpha.
 
 ![image-center](../assets/images/TertiaryStructureExample.png){: .align-center}
+Tertiary structure of human hemoglobin subunit alpha. Within the structure are multiple alpha-helices secondary structures. Protein structure from: https://www.rcsb.org/structure/1SI4
 {: style="font-size: medium;"}
 
 Finally, some proteins have a **quaternary structure**, which describes the protein’s interaction with other copies of itself to form a single functional unit, or a multimer. Many proteins do not have a quaternary structure and functions as an independent monomer.
