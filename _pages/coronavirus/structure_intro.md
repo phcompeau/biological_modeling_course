@@ -133,9 +133,7 @@ Because the structure of the 20 amino acids are well studied, we know which atom
 This is just the beginning of the information needed to fully represent a protein structure. For example, there are connections between amino acids called **disulfide bonds** that are also described within the file. For more information, check out the [official PDB documentation](http://www.wwpdb.org/documentation/file-format).
 
 
-<!--
-
-## Four levels of protein structure
+## Extra: Four levels of protein structure
 
 
 
@@ -169,18 +167,6 @@ The **tertiary structure** describes the overall 3D shape of the protein that re
 Finally, some proteins have a **quaternary structure**, which describes the protein’s interaction with other copies of itself to form a single functional unit, or a multimer. Many proteins do not have a quaternary structure and functions as an independent monomer.
 
 Proteins are can often be divided into protein domains. Domains are distinct functional/structural units within the protein and are typically responsible for a specific interaction or function. For example, The Sars-CoV-2 S protein has a Receptor Binding Domain (RBD) that is responsible for interacting with ACE2. The rest of the protein does not come into contact with ACE2.
-
-**Note to self:** also need hemoglobin ongoing example
-
-Now that we have a pretty good understanding of protein structure, we need to explain why the 3D structure is so important.
-
--->
-
-
-
-
-
-
 
 
 [^1]: Wade W. 2002. Unculturable bacteria--the uncharacterized organisms that cause oral infections. Journal of the Royal Society of Medicine, 95(2), 81–83. https://doi.org/10.1258/jrsm.95.2.81
