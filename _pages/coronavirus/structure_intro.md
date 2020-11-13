@@ -79,21 +79,19 @@ An annotated genome of SARS-CoV-2. Accessed from GenBank: [https://go.usa.gov/xf
 
 Recall from the start of this lesson that even if a protein is unfolded into a polypetide, then it always folds back into essentially the same three-dimensional shape. This leads us to an idea: given the sequence of amino acids corresponding to the SARS-CoV-2 spike protein, can we predict the final 3-D structure of this protein? In other words, can we reverse engineer the magic algorithm that nature uses for protein folding?
 
-Unfortunately, as will see in the next section, predicting protein structure from an amino acid sequence is a problem of fundamental difficulty.
+Unfortunately, as will see in the next section, predicting protein structure from an amino acid sequence is a very challenging problem.
 
 ## What makes protein structure prediction so difficult?
 
 **START HERE -- RE-ORGANIZE as "Why is this hard?" and motivate hemoglobin**
 
-Small perturbations in the primary structure of a protein can drastically change the protein's shape and even render it useless. For this reason, we might be led to think that we could infer the amino acid sequence of a protein from its structure. But this is far from the truth. Because different amino acids can have similar chemical properties, some mutations will hardly change the shape of the protein at all; furthermore, two very different amino acid sequences can fold into proteins with similar shapes and identical function.
+One reason why inferring protein structure from sequence is so difficult is that the number of potential protein shapes is enormous, and small  perturbations in the primary structure of a protein can drastically change the protein's shape and even render it useless. This fact might give us hope, however, that if we look at experimentally verified structures of proteins with known amino acid sequences, then we could reverse engineer the sequence from the structure. But this problem is very difficult as well because different amino acids can have similar chemical properties, and so some mutations will hardly change the shape of the protein at all. Furthermore, two very different amino acid sequences can fold into proteins with similar shapes and identical function.
 
-For example, the following figure compares both the sequences and structures of hemoglobin subunit alpha from humans (*Homo sapiens*; PDB: [1si4](https://www.rcsb.org/structure/1SI4) shortfin mako sharks (*Isurus oxyrinchus* ; PDB: [3mkb](https://www.rcsb.org/structure/3mkb) and emus (*Dromaius novaehollandia*; PDB: [3wtg](https://www.rcsb.org/structure/3wtg). These three protein subunits are markedly different in terms of primary structure, and yet their 3-D structures are essentially identical.
+For example, the following figure compares both the sequences and structures of hemoglobin subunit alpha from humans (*Homo sapiens*; PDB: [1si4](https://www.rcsb.org/structure/1SI4) shortfin mako sharks (*Isurus oxyrinchus* ; PDB: [3mkb](https://www.rcsb.org/structure/3mkb) and emus (*Dromaius novaehollandia*; PDB: [3wtg](https://www.rcsb.org/structure/3wtg). Hemoglobin is the oxygen-transport protein in the blood, consisting of two alpha "subunit" proteins and two beta subunit proteins that combine into a protein complex; because hemoglobin is well-studied, we will use it as an example throughout this module. The subunit alpha proteins across the three species are markedly different in terms of primary structure, and yet their 3-D structures are essentially identical.
 
 ![image-center](../assets/images/SequenceStructureExample.png){: .align-center}
 (Top) An amino acid sequence comparison of the first 40 (out of 140) amino acids of hemoglobin subunit alpha for three species: human, mako shark, and emu. A column is colored blue if all three species have the same amino acid, white if two species have the same amino acid, and red if all amino acids are different. Sequence identity calculates the number of positions in two amino acid sequences that share the same character. (Bottom) Side by side comparisons of the 3-D structures of the three proteins. The final figure on the right superimposes the first three structures to highlight their similarities.
 {: style="font-size: medium;"}
-
-We can compare our algorithm for structure prediction against known 3-D structures (SARS1 before the SARS2 3-D structure was known experimentally, and both viruses afterward). Researchers would do this to see how good our algorithm is at reproducing a known structure as a proof of concept for the approach when we don’t have funds for X-ray crystallography but want a reliable representation of a newly sequenced protein’s structure.
 
 One reason why structure prediction is difficult is the sheer amount of details that are required for describing and computationally storing a protein structure.
 
@@ -169,6 +167,12 @@ Proteins are can often be divided into protein domains. Domains are distinct fun
 Now that we have a pretty good understanding of protein structure, we need to explain why the 3D structure is so important.
 
 -->
+
+## Good section on similar proteins from different sequences
+
+
+
+We can compare our algorithm for structure prediction against known 3-D structures (SARS1 before the SARS2 3-D structure was known experimentally, and both viruses afterward). Researchers would do this to see how good our algorithm is at reproducing a known structure as a proof of concept for the approach when we don’t have funds for X-ray crystallography but want a reliable representation of a newly sequenced protein’s structure.
 
 
 [Next lesson](ab_initio){: .btn .btn--primary .btn--large}
