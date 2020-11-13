@@ -97,22 +97,17 @@ Another reason why protein structure prediction is so difficult is due to the hu
 An illustration of Rubik's twist forming into a ball. Source: [https://grabcad.com/library/rubik-s-snake-1](https://grabcad.com/library/rubik-s-snake-1).
 {: style="font-size: medium;"}
 
-A peptide is able to bend so much because the bonds between some of the atoms in an amino acid, called **peptide torsion angles**, are able to rotate. There are three angles of interest, as shown in the figure below. Two of the angles connected to the amino acid's "alpha carbon"
-These angles are referred to as peptide torsion angles, shown in the figure below. The two bonds connecting the alpha carbon of an amino acid are able to rotate, allowing a peptide chain to be able to fold into many different possible conformations. Phi (φ) refers to the bond angle connecting to the amino group and psi (ψ) refers to the bond angle connecting to the carboxyl group. The specific set of phi and psi angles of the protein helps describe the structure of the protein. Omega (ω) describes the bond angle of the peptide bond between two amino acids, but is almost always locked at 180°.
+A polypeptide is flexible because the bonds holding amino acids together, called **peptide bonds**, are able to rotate, and this rotation produces **peptide torsion angles** that change the shape of the protein. As shown in the following figure, we are interested in two angles, called the **phi angle (φ)** and **psi angle (ψ)**, which connect the amino acid's "alpha carbon" to its amino group and carboxyl group, respectively. (There is a third omega angle (ω) describing the bond angle of the peptide bond between two amino acids, but is almost always locked at 180°).
 
 ![image-center](../assets/images/torsion_angles.png){: .align-center}
 Image courtesy: Adam Rędzikowski.
 {: style="font-size: medium;"}
 
-Below is an excellent video from Jacob Elmer illustrating the dihedral angles for a given amino acid.
+Below is an excellent video from Jacob Elmer illustrating how changing φ and ψ at a single amino acid can alter the conformation of a protein.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/1usemtIYe_s" frameborder="0" allowfullscreen></iframe>
 
 A polypeptide with *n* amino acids will have *n* - 1 peptide bonds, meaning that there will be 99 φ angles and 99 ψ angles. Say that each bond has three stable conformations. Then this means that there are 3<sup><em>n</em></sup> total possible protein conformations. As a result, if *n* is just 200 (a reasonably short polypeptide), the number of possible protein strucures we need to consider is more than the number of atoms in the universe! The ability for the protein to reliably find a single conformation using the magic algorithm despite such an enormous number of potential shapes is called **Levinthal's paradox** and is in a sense another example of the principle of "combinatorial explosion" that we saw in the module on bacterial chemotaxis.
-
-* Levinthal’s Paradox. Large number of degrees of freedom in a polypeptide chain. Given a chain with 100 residues, there will be 99 peptide bonds, resulting in 198 phi and psi bond angles. If each bond has three stable conformations, then there are a maximum of $$ 3^{198} $$ different possible conformations. Will take longer than the age of the universe to sample all conformation to find the correct native form. Paradox is that most natural protein folding occurs spontaneously, typically within the timescale of milliseconds. The fastest within a couple of microseconds [^1].
-
-TIE THIS BACK TO COMBINATORIAL EXPLOSION
 
 In order find this magic algorithm, we need a very good understanding of all the small interactions that occur between atoms during protein folding, including bonding energy, attraction/repulsion forces from electrical charges between molecules (electrostatic interactions and van der Waals interactions), thermodynamics; all which are subject to alterations depending on the environment. Regardless of its difficulty, protein structure prediction is a very important problem to solve given its potential for many, many applications.
 
