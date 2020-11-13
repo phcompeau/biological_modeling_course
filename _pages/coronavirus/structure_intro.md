@@ -117,19 +117,17 @@ Because the structure of the 20 amino acids are well studied, we know which atom
 
 
 
-There exists connections between residues that cannot be infered from the primary structure (e.g. disulfide bonds) which are also described within the file. This is just scratching the tip of the iceberg of the information required to represent a protein structure. For more information, check out the <a href="http://www.wwpdb.org/documentation/file-format" target="_blank">official PDB documentation</a>.
+This is just the beginning of the information needed to fully represent a protein structure. For example, there are connections between amino acids called **disulfide bonds** that are also described within the file. For more information, check out the [official PDB documentation](http://www.wwpdb.org/documentation/file-format).
 
 
 
 * Levinthal’s Paradox. Large number of degrees of freedom in a polypeptide chain. Given a chain with 100 residues, there will be 99 peptide bonds, resulting in 198 phi and psi bond angles. If each bond has three stable conformations, then there are a maximum of $$ 3^{198} $$ different possible conformations. Will take longer than the age of the universe to sample all conformation to find the correct native form. Paradox is that most natural protein folding occurs spontaneously, typically within the timescale of milliseconds. The fastest within a couple of microseconds [^1].
 
 TIE THIS BACK TO COMBINATORIAL EXPLOSION
-  * Local residues form stable interactions an act as nucleation points (protein folding intermediates and partial-folded transition states), facilitation folding speed.
-  * Proposed funnel-like energy landscapes (not really the case, the energy landscape is more like a caldera).
-  * Main point: need A LOT of computing
-  * Nature has a magic algorithm for protein folding. Can we find it?
 
 In order find this magic algorithm, we need a very good understanding of all the small interactions that occur between atoms during protein folding, including bonding energy, attraction/repulsion forces from electrical charges between molecules (electrostatic interactions and van der Waals interactions), thermodynamics; all which are subject to alterations depending on the environment. Regardless of its difficulty, protein structure prediction is a very important problem to solve given its potential for many, many applications.
+
+We can compare our algorithm for structure prediction against known 3-D structures (SARS1 before the SARS2 3-D structure was known experimentally, and both viruses afterward). Researchers would do this to see how good our algorithm is at reproducing a known structure as a proof of concept for the approach when we don’t have funds for X-ray crystallography but want a reliable representation of a newly sequenced protein’s structure.
 
 
 <!--
@@ -175,11 +173,8 @@ Now that we have a pretty good understanding of protein structure, we need to ex
 
 -->
 
-## Good section on similar proteins from different sequences
 
 
-
-We can compare our algorithm for structure prediction against known 3-D structures (SARS1 before the SARS2 3-D structure was known experimentally, and both viruses afterward). Researchers would do this to see how good our algorithm is at reproducing a known structure as a proof of concept for the approach when we don’t have funds for X-ray crystallography but want a reliable representation of a newly sequenced protein’s structure.
 
 
 [Next lesson](ab_initio){: .btn .btn--primary .btn--large}
