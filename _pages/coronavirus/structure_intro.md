@@ -97,24 +97,31 @@ Another reason why protein structure prediction is so difficult is due to the hu
 An illustration of Rubik's twist forming into a ball. Source: [https://grabcad.com/library/rubik-s-snake-1](https://grabcad.com/library/rubik-s-snake-1).
 {: style="font-size: medium;"}
 
-A polypeptide is flexible because the bonds holding amino acids together, called **peptide bonds**, are able to rotate, and this rotation produces **peptide torsion angles** that change the shape of the protein. As shown in the following figure, we are interested in two angles, called the **phi angle (φ)** and **psi angle (ψ)**, which connect the amino acid's "alpha carbon" to its amino group and carboxyl group, respectively. (There is a third omega angle (ω) describing the bond angle of the peptide bond between two amino acids, but is almost always locked at 180°).
+A polypeptide is flexible because the bonds holding amino acids together, called **peptide bonds**, are able to rotate, and this rotation produces **peptide torsion angles** that change the shape of the protein. As shown in the following figure, we are interested in two angles, called the **phi angle (φ)** and **psi angle (ψ)**, which connect the amino acid's "alpha carbon" to its amino group and carboxyl group, respectively. (There is a third omega angle (ω) describing the bond angle of the peptide bond between two amino acids, but is almost always locked at 180°.)
 
 ![image-center](../assets/images/torsion_angles.png){: .align-center}
-Image courtesy: Adam Rędzikowski.
+A polypeptide chain of multiple amino acids with the three torsion angles φ, ψ, and ω indicated. Image courtesy: Adam Rędzikowski.
 {: style="font-size: medium;"}
 
-Below is an excellent video from Jacob Elmer illustrating how changing φ and ψ at a single amino acid can alter the conformation of a protein.
+Below is an excellent video from Jacob Elmer illustrating how changing φ and ψ at a single amino acid can reorient the conformation of a protein.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/1usemtIYe_s" frameborder="0" allowfullscreen></iframe>
 
-A polypeptide with *n* amino acids will have *n* - 1 peptide bonds, meaning that there will be 99 φ angles and 99 ψ angles. Say that each bond has three stable conformations. Then this means that there are 3<sup><em>n</em></sup> total possible protein conformations. As a result, if *n* is just 200 (a reasonably short polypeptide), the number of possible protein strucures we need to consider is more than the number of atoms in the universe! The ability for the protein to reliably find a single conformation using the magic algorithm despite such an enormous number of potential shapes is called **Levinthal's paradox** and is in a sense another example of the principle of "combinatorial explosion" that we saw in the module on bacterial chemotaxis.
+A polypeptide with *n* amino acids will have *n* - 1 peptide bonds, meaning that its shape will be influenced by 99 phi angles and 99 psi angles. Say that each bond has three stable conformations. Then this means that there are 3<sup><em>n</em></sup> total possible protein conformations. As a result, if *n* is just 200 (a reasonably short polypeptide), the number of possible protein strucures we need to consider is more than the number of atoms in the universe! The ability for the protein to reliably find a single conformation using the magic algorithm despite such an enormous number of potential shapes is called **Levinthal's paradox** and is in a sense another example of the principle of "combinatorial explosion" that we saw in the module on bacterial chemotaxis.
 
-In order find this magic algorithm, we need a very good understanding of all the small interactions that occur between atoms during protein folding, including bonding energy, attraction/repulsion forces from electrical charges between molecules (electrostatic interactions and van der Waals interactions), thermodynamics; all which are subject to alterations depending on the environment. Regardless of its difficulty, protein structure prediction is a very important problem to solve given its potential for many, many applications.
+Although protein structure prediction is a difficult problem, this is not to say that it is impossible.  In the next lesson, we will examine how existing software attempts to replicate nature's magic algorithm for folding a polypeptide chain into a 3-D protein structure. We will then place ourselves in the shoes of early SARS-CoV-2 researchers working before the structure of the virus's spike protein had been experimentally validated to see if we can predict this structure and give biologists a head start on fighting the pandemic.
 
-We can compare our algorithm for structure prediction against known 3-D structures (SARS1 before the SARS2 3-D structure was known experimentally, and both viruses afterward). Researchers would do this to see how good our algorithm is at reproducing a known structure as a proof of concept for the approach when we don’t have funds for X-ray crystallography but want a reliable representation of a newly sequenced protein’s structure.
+[Next lesson](ab_initio){: .btn .btn--primary .btn--large}
+{: style="font-size: 100%; text-align: center;"}
+
+## Extra: Stuff to consider in folding
+
+To find this magic algorithm, we need a very good understanding of all the small interactions that occur between atoms during protein folding, including bonding energy, attraction/repulsion forces from electrical charges between molecules (electrostatic interactions and van der Waals interactions), thermodynamics; all which are subject to alterations depending on the environment. Regardless of its difficulty, protein structure prediction is a very important problem to solve given its potential for many, many applications.
 
 
-## PDB Database description
+
+
+## Extra: PDB Database description
 
 Structures that have been determined are typically uploaded into the PDB as a .pdb file. Many entries are on the quaternary structure of the protein or depict a protein system of multiple proteins or ligands. Each macromolecule is stored as a **chain** in the PDB structure. For example, the SARS-CoV-2 S protein is a trimer made up of three identical chains. The .pdb file is extremely dense as it holds all the details about the protein and chains, from the very basic primary structure of the protein all the way to the position of every single atom. The simplest way to think about how the entire protein is stored is to first represent atoms as points on a 3D plane with each atom having its 3D orthogonal coordinates (X,Y,Z) in the unit of angstroms ($$ 10^{-10} $$ meter). This is the atomic coordinates of the protein. A simplified view of the atomic coordinates section is shown in the figure below.
 
@@ -173,10 +180,8 @@ Now that we have a pretty good understanding of protein structure, we need to ex
 
 
 
-[Next lesson](ab_initio){: .btn .btn--primary .btn--large}
-{: style="font-size: 100%; text-align: center;"}
 
-## Citations
+
 
 [^1]: Wade W. 2002. Unculturable bacteria--the uncharacterized organisms that cause oral infections. Journal of the Royal Society of Medicine, 95(2), 81–83. https://doi.org/10.1258/jrsm.95.2.81
 
