@@ -111,6 +111,10 @@ These angles are referred to as peptide torsion angles, shown in the figure belo
 ![image-center](../assets/images/psiphi.png){: .align-center}
 {: style="font-size: medium;"}
 
+Below is an excellent video from Jacob Elmer illustrating the dihedral angles for a given amino acid.
+
+<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/1usemtIYe_s" frameborder="0" allowfullscreen></iframe>
+
 There exists connections between residues that cannot be infered from the primary structure (e.g. disulfide bonds) which are also described within the file. This is just scratching the tip of the iceberg of the information required to represent a protein structure. For more information, check out the <a href="http://www.wwpdb.org/documentation/file-format" target="_blank">official PDB documentation</a>.
 
 Another reason why protein structure prediction is so difficult is due to the huge number of conformations that a single polypeptide can take. Finding the correct shape is very much like finding a needle in a haystack.
