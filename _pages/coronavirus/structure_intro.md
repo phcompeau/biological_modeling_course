@@ -77,6 +77,8 @@ The first whole genome sequence of SARS-CoV-2, isolate *Wuhan-Hu-1*, was release
 An annotated genome of SARS-CoV-2. Accessed from GenBank: [https://go.usa.gov/xfzMM](https://go.usa.gov/xfzMM).
 {: style="font-size: medium;"}
 
+Annotating these viral genes is important, but we ultimately need to know the shape of the protein that these genes encode in order to decipher how the virus interacts with the host cell. This is extremely valuable in designing treatments or vaccines that target specific viral proteins.
+
 Recall from the start of this lesson that even if a protein is unfolded into a polypetide, then it always folds back into essentially the same three-dimensional shape. This leads us to an idea: given the sequence of amino acids corresponding to the SARS-CoV-2 spike protein, can we predict the final 3-D structure of this protein? In other words, can we reverse engineer the magic algorithm that nature uses for protein folding?
 
 Unfortunately, as will see in the next section, predicting protein structure from an amino acid sequence is a very challenging problem.
