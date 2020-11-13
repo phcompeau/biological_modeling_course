@@ -83,9 +83,7 @@ Unfortunately, as will see in the next section, predicting protein structure fro
 
 ## What makes protein structure prediction so difficult?
 
-**START HERE -- RE-ORGANIZE as "Why is this hard?" and motivate hemoglobin**
-
-One reason why inferring protein structure from sequence is so difficult is that the number of potential protein shapes is enormous, and small  perturbations in the primary structure of a protein can drastically change the protein's shape and even render it useless. This fact might give us hope, however, that if we look at experimentally verified structures of proteins with known amino acid sequences, then we could reverse engineer the sequence from the structure. But this problem is very difficult as well because different amino acids can have similar chemical properties, and so some mutations will hardly change the shape of the protein at all. Furthermore, two very different amino acid sequences can fold into proteins with similar shapes and identical function.
+One reason why inferring protein structure from sequence is so difficult is that the number of potential protein shapes is enormous, and small perturbations in the primary structure of a protein can drastically change the protein's shape and even render it useless. This fact might give us hope, that if we look at experimentally verified structures of proteins with known amino acid sequences, then we could reverse engineer the sequence from the structure and start determining how the magic folding algorithm works. But the inverse problem of inferring sequence from structure is very difficult as well because different amino acids can have similar chemical properties, and so some mutations will hardly change the shape of the protein at all. Furthermore, two very different amino acid sequences can fold into proteins with similar shapes and identical function.
 
 For example, the following figure compares both the sequences and structures of hemoglobin subunit alpha from humans (*Homo sapiens*; PDB: [1si4](https://www.rcsb.org/structure/1SI4) shortfin mako sharks (*Isurus oxyrinchus* ; PDB: [3mkb](https://www.rcsb.org/structure/3mkb) and emus (*Dromaius novaehollandia*; PDB: [3wtg](https://www.rcsb.org/structure/3wtg). Hemoglobin is the oxygen-transport protein in the blood, consisting of two alpha "subunit" proteins and two beta subunit proteins that combine into a protein complex; because hemoglobin is well-studied, we will use it as an example throughout this module. The subunit alpha proteins across the three species are markedly different in terms of primary structure, and yet their 3-D structures are essentially identical.
 
@@ -93,7 +91,7 @@ For example, the following figure compares both the sequences and structures of 
 (Top) An amino acid sequence comparison of the first 40 (out of 140) amino acids of hemoglobin subunit alpha for three species: human, mako shark, and emu. A column is colored blue if all three species have the same amino acid, white if two species have the same amino acid, and red if all amino acids are different. Sequence identity calculates the number of positions in two amino acid sequences that share the same character. (Bottom) Side by side comparisons of the 3-D structures of the three proteins. The final figure on the right superimposes the first three structures to highlight their similarities.
 {: style="font-size: medium;"}
 
-One reason why structure prediction is difficult is the sheer amount of details that are required for describing and computationally storing a protein structure.
+Another reason why structure prediction is difficult is the sheer amount of details that are required for describing and computationally storing a protein structure.
 
 Structures that have been determined are typically uploaded into the PDB as a .pdb file. Many entries are on the quaternary structure of the protein or depict a protein system of multiple proteins or ligands. Each macromolecule is stored as a **chain** in the PDB structure. For example, the SARS-CoV-2 S protein is a trimer made up of three identical chains. The .pdb file is extremely dense as it holds all the details about the protein and chains, from the very basic primary structure of the protein all the way to the position of every single atom. The simplest way to think about how the entire protein is stored is to first represent atoms as points on a 3D plane with each atom having its 3D orthogonal coordinates (X,Y,Z) in the unit of angstroms ($$ 10^{-10} $$ meter). This is the atomic coordinates of the protein. A simplified view of the atomic coordinates section is shown in the figure below.
 
@@ -101,6 +99,9 @@ Structures that have been determined are typically uploaded into the PDB as a .p
 {: style="font-size: medium;"}
 
 Because the structure of the 20 amino acids are well studied, we know which atoms are connected within each residue. The atomic bonds that link amino acids in sequence are easy to deduce from the primary structure of the protein. However, the angles of these connections also need to be explicit to describe the 3D structures. A very good analogy would be to think of the polypeptide chain as a *<a href="https://ruwix.com/twisty-puzzles/rubiks-snake-twist/" target="_blank">Rubik's Twist</a>*, shown below. Each block is able to twist, changing the angle and shape of the toy. In order to make a specific shape, every block must be twisted to a specific angle.
+
+![image-center](../assets/images/rubiks_twist.gif){: .align-center}
+{: style="font-size: medium;"}
 
 ![image-center](../assets/images/RubiksTwist.png){: .align-center}
 {: style="font-size: medium;"}
