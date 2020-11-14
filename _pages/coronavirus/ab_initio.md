@@ -7,22 +7,46 @@ toc: true
 toc_sticky: true
 ---
 
+## Distributing the work of protein structure prediction around the world
+
 In this lesson, we will discuss how to determine the structure of a protein from its amino acid sequence. This problem was of utmost importance in early 2020 as biologists raced to find any information that they could about the novel coronavirus and its spike protein.
 
 What makes this story remarkable is that in many senses it was a community effort, not just because it enlisted so many researchers around the world, but because the computational heavy lifting was divided over thousands of volunteers from around the world. Two leading software projects, [Rosetta@home](https://boinc.bakerlab.org) and [Folding@home](https://foldingathome.org), encourage volunteers to download this software and contribute to a gigantic *distributed* effort to predict protein shape. That is, even with a modest laptop, a user can donate some of their computer's idle resources to working on the problem of protein structure prediction. But how does this software work?
 
-Predicting structure from sequence using only the physicochemical knowledge of what drives protein folding on a molecular level is called **ab initio structure prediction**, where *ab initio* is from the Latin for "from the beginning". To perform this type of structure prediction, we need to incorporate many different aspects of molecular interactions, including bonding energy, attraction/repulsion forces from electrical charges between molecules (electrostatic interactions and van der Waals interactions), and thermodynamics. Furthermore, all of these variables are subject to change depending on the environment.
+Predicting structure from sequence using only the physicochemical properties of proteins is called <b><em>ab initio</em> structure prediction</b>, where *ab initio* is from the Latin for "from the beginning". To perform this type of structure prediction, we need to incorporate many different aspects of molecular interactions, including bonding energy, attraction/repulsion forces from electrical charges between molecules (electrostatic interactions and van der Waals interactions), and thermodynamics. Furthermore, all of these variables are subject to change depending on the environment.
+
+## Modeling *ab initio* structure prediction as an exploration problem
+
+Although a host of different algorithms have been developed for *ab initio* protein structure through the years, these algorithms all find themselves solving a similar problem. A central theme of the previous module on bacterial chemotaxis was that regardless of how complicated a system of chemical reactions might be, the system moves toward equilibrium. The same principle is true of the magic algorithm underlying protein folding in the cell; when a protein folds into its final structure, it is obtaining a conformation of minimum "free energy", meaning that the structure is as chemically stable as possible.
+
+For example, nine of the twenty commonly occurring amino acids in proteins are hydrophobic, meaning that their side chains tend to be repelled by water. A protein having many hydrophobic amino acids on its exterior would therefore be less stable, and as a result we tend to find these amino acids sheltered from the external environment on the interior of the protein.
+
+Much biochemical research has contributed to the development of scoring functions that compute the free energy of a candidate protein shape. As a result, for a given scoring function, we can think of *ab initio* structure prediction as solving an optimization problem: given a sequence of amino acids, find the 3-D structure for this polypeptide having minimum energy.
+
+This formulation of protein structure may not strike you as similar to anything that we have done before in this course. However, consider a bacterium exploring an environment for food, as we did in the previous module on chemotaxis. Every point in the bacterium's "search space" is characterized by a concentration of attractant at that point, and the bacterium's goal was to reach the point of greatest attractant concentration.
+
+In this case, our search space is the collection of all possible conformations of a given protein. Where in the chemotaxis example we think of the concentration of attractant at a point, here we think of the energy of a given conformation. And we can imagine our optimization problem as "exploring" this space of all conformations in order to find the conformation of lowest energy, as illustrated in the figure below.
+
+![image-center](../assets/images/energy_landscape.png){: .align-center}
+Courtesy: David Beamish
+{: style="font-size: medium;"}
+
+
+
+We would like to
+
+When we assign the
+
+**STOP:** Do you see any ways in which we could improve this local search heuristic?
+{: .notice--primary}
 
 
 
 
 
+Place a bunch of small food sources and a single large big food source, odds are that the bacterium will simply move to its nearest food source and remain there. Local minimum.
 
-## How *Ab initio* Structure Prediction Works
 
-* Regardless of the different *ab initio* modeling approaches, it ultimately boils down to solving the problem of finding the 3-D shape of a protein sequence that maximizes some scoring function, where the scoring function indicates how good the 3-D shape is at explaining the sequence. However, one of the important guidelines in protein folding, both in modeling and in biology, is obtaining a low-energy conformation. A general theme in chemistry is that systems move spontaneously towards equilibrium, or stable state, be it a chemical reaction or a molecule itself. Think of a high energy system as a ball on top of a round mountain. The ball will always roll down the hill and stop at the bottom of the valley, where it is the most stable. When a system is at the bottom, it stops moving and is now at equilibrium. The equilibrium of a system is typically at the lowest possible energy state, or minimum free energy.
-
-<img src="../_pages/coronavirus/files/EnergyCartoon.png">
 
 * In protein structure prediction, the path to the best model is not a straight line. Common approaches often have steps for model refinement. When models are first generated, they are assessed and used to create better models. Although time consuming and computationally heavy, the more times we can repeat this cycle, the better the final product. Approaches for ab initio modeling used are not dissimilar from the biased random walk approach that E. coli uses to explore its space for food. In this case, the “search space” is not a physical space but rather the set of all legal structures of the protein for this structure. The “food” is not the current concentration of an attractant but the current score of a candidate structure. And “nearby” objects are not points in space but rather 3-d protein structures that correspond to making slight changes to the current structure.
 
@@ -35,7 +59,7 @@ Predicting structure from sequence using only the physicochemical knowledge of w
 **STOP:** Are there any drawbacks you see with this approach for predicting a protein’s structure?
 {: .notice--primary}
 
-* Let's say we are exploring a newly discovered planet with a droid that can roll over the surface of the planet. If the droid is looking for the lowest-lying area on the planet by moving in the direction of greatest descent, and it lands at the top of a volcano, it will roll down into the volcano’s cauldron, which is still very high compared to the rest of the planet.
+
 
 * The most glaring weakness is that the initial structure chosen can have a huge influence on the final structure that we produce.  As a result, we can get stuck in a “local optimum”, in this case a protein structure that is higher scoring than its neighbors but that doesn’t score very well compared to all possible structures. One resolution to this issue is to run the algorithm multiple times with different starting positions, choosing the solution that has the best score over all these runs. Another solution is to not necessarily always take the best-scoring neighbor as the next current protein structure, but rather to choose a neighbor randomly, where higher-scoring neighbors have a higher probability of selection.
 
@@ -68,6 +92,10 @@ From this section, we learned that current *ab initio* algorithms are limited. I
 ## Extra
 
 * Models published before crystallography can be found here: https://www.ssgcid.org/cttdb/molecularmodel_list/?target__icontains=BewuA
+
+* Need to define side chain
+
+* For a simple analogy of an energy landscape, imagine a ball on the top of a hill: <img src="../_pages/coronavirus/files/EnergyCartoon.png">
 
 ## Citations
 

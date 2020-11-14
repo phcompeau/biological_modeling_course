@@ -17,11 +17,7 @@ The central dogma of molecular biology states that molecular information flows f
 
 In this earlier module, we focused on how master regulators called transcription factors could affect the rates at which a given gene could be transcribed into RNA and translated into protein. In this module, we investigate what happens after translation.
 
-Before continuing, we should be a bit more precise about what we mean by "protein". The ribosome converts triplets of RNA nucleotides into a chain of amino acids called a **polypeptide**. This chain of amino acids will then "fold" into a three-dimensional shape; this folding happens without any outside influence as the polypeptide settles into the most stable three-dimensional structure. Regardless of the organism or cell type, and even if a polypeptide chain is unfolded, it will always fold back into essentially the same 3-D structure. This means that nature is employing a "magic algorithm" that produces the structure of a protein from its sequence of amino acids.
-
-The problem is that deciphering the magic algorithm for protein folding has mystified biologists for decades.
-
-This problem
+Before continuing, we should be a bit more precise about what we mean by "protein". The ribosome converts triplets of RNA nucleotides into a chain of amino acids called a **polypeptide**. This chain of amino acids will then "fold" into a three-dimensional shape; this folding happens without any outside influence as the polypeptide settles into the most stable three-dimensional structure. Regardless of the organism or cell type, and even if a polypeptide chain is unfolded, it will almost always fold back into essentially the same 3-D structure in a manner of microseconds. This means that nature is employing a "magic algorithm" that produces the structure of a protein from its sequence of amino acids. The problem is that deciphering the magic algorithm for protein folding has mystified biologists for decades.
 
 This brings us to our first biological problem of interest: what is the shape of a given protein? This **structure prediction problem**, which our work in the first part of this module will focus on, is simple to state but deceptively difficult. In fact, it has been an active area of biological research for several decades.
 
@@ -190,4 +186,3 @@ Proteins are can often be divided into protein domains. Domains are distinct fun
 [^Munnink]: Oude Munnink, B.B., Nieuwenhuijse, D.F., Stein, M. et al. 2020. Rapid SARS-CoV-2 whole-genome sequencing and analysis for informed public health decision-making in the Netherlands. Nat Med 26, 1405–1410. https://doi.org/10.1038/s41591-020-0997-y
 
 [^Islam]: Islam, M.R., Hoque, M.N., Rahman, M.S. et al. 2020. Genome-wide analysis of SARS-CoV-2 virus strains circulating worldwide implicates heterogeneity. Sci Rep 10, 14004. https://doi.org/10.1038/s41598-020-70812-6
-
