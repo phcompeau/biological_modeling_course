@@ -51,22 +51,28 @@ The results of the three predicted models for the SARS-CoV-2 spike protein are f
 |Robetta (Single-Chain S protein)|[Robetta Results](../_pages/coronavirus/files/Robetta_Model.zip)|
 |GalaxyWEB|[GalaxyWEB Results](../_pages/coronavirus/files/GalaxyWEB_Models.zip)|
 
-To rigorously compare two protein structures, we need to have a way of representing a given protein's structure. To do so, we store the 3-D spatial coordinates of every atom in the protein. The above three models are stored in `.pdb` format, which stores these coordinates in a form that is illustrated in the figure below.
+To rigorously compare two protein structures, we need to have a way of representing a given protein's structure. To do so, we store the 3-D spatial coordinates of every atom in the protein. (Note that because we know the sequence of amino acids making up the protein, we will also know the identity of every atom in the protein.) The above three models are stored in `.pdb` format, which stores these coordinates in a form that is illustrated in the figure below.
 
-Each macromolecule is stored as a **chain** in the PDB structure. For example, the SARS-CoV-2 S protein is a trimer made up of three identical chains. The .pdb file is extremely dense as it holds all the details about the protein and chains, from the very basic primary structure of the protein all the way to the position of every single atom. The simplest way to think about how the entire protein is stored is to first represent atoms as points on a 3D plane with each atom having its 3D orthogonal coordinates (X,Y,Z) in the unit of angstroms (10<sup>-10</sup> meters). This is the atomic coordinates of the protein. A simplified view of the atomic coordinates section is shown in the figure below.
+To specify the `.pdb` format further, first recall that the coronavirus spike protein is a trimer. Accordingly, the file will separate the atoms into three **chains** making up this trimer. Each atom is labeled according to several different pieces of information, including:
+
+1. the element from which the atom derives;
+2. the amino acid in which the atom is contained;
+3. the name of the chain in which this amino acid is found;
+4. the position of the amino acid within this chain; and
+5. the 3-D coordinates (*x*, *y*, *z*) of the atom in angstroms (10<sup>-10</sup> meters).
 
 ![image-center](../assets/images/simplifiedPDB.png){: .align-center}
 A simplified diagram showing how the `.pdb` format encodes the 3-D coordinates of every atom while labeling the identity of this atom and the chain on which it is found. Source: https://proteopedia.org/wiki/index.php/Atomic_coordinate_file
 {: style="font-size: medium;"}
 
-Because the structure of the 20 amino acids are well studied, we know which atoms are connected within each residue. The atomic bonds that link amino acids in sequence are easy to deduce from the primary structure of the protein.
-
-This is just the beginning of the information needed to fully represent a protein structure. For example, there are connections between amino acids called **disulfide bonds** that are also described within the file. For more information, check out the [official PDB documentation](http://www.wwpdb.org/documentation/file-format).
+The above information is critical for understanding protein structure but is just part of the information needed to fully represent a protein structure. For example, there are connections between amino acids called **disulfide bonds** that are also described within a `.pdb` file. For more information, check out the [official PDB documentation](http://www.wwpdb.org/documentation/file-format).
 
 [Next lesson](accuracy){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Extra
+
+* Need to have already specified that spike is a trimer
 
 * We need to make sure that the specification of the .pdb file type comes back somewhere before we give the results. It may be a perfect place to do so in this lesson.
 
