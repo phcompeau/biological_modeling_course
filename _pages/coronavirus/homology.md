@@ -45,11 +45,13 @@ In the following tutorial, we will use model the SARS-CoV-2 spike protein using 
 The results of the three predicted models for the SARS-CoV-2 spike protein are found below. If you did not follow the tutorial, feel free to download these, because we will discuss them in the next lesson. In particular, how similar are these predictions to each other, and how similar are they to the SARS-CoV spike protein?
 
 <center>
+
 |Structure Prediction Server|Results|
 |:--------------------------|:------|
 |SWISS-MODEL (S protein)|[SWISS-MODEL Results](../_pages/coronavirus/files/SWISS_Model.zip)|
 |Robetta (Single-Chain S protein)|[Robetta Results](../_pages/coronavirus/files/Robetta_Model.zip)|
 |GalaxyWEB|[GalaxyWEB Results](../_pages/coronavirus/files/GalaxyWEB_Models.zip)|
+
 </center>
 
 To rigorously compare two protein structures, we need to have a way of representing a given protein's structure. To do so, we store the 3-D spatial coordinates of every atom in the protein. (Note that because we know the sequence of amino acids making up the protein, we will also know the identity of every atom in the protein.) The above three models are stored in `.pdb` format, which stores these coordinates in a form that is illustrated in the figure below.
