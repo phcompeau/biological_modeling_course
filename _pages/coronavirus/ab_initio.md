@@ -75,6 +75,8 @@ Yet at the same time, we wonder how we can speed up our structure prediction alg
 
 ## Extra
 
+* Somewhere need trimer of dimers for spike protein
+
 * Models published before crystallography can be found here: [SSGCID Models](https://www.ssgcid.org/cttdb/molecularmodel_list/?target__icontains=BewuA)
 
 * Need to define side chain: The side chain, commonly referred to as the R group or side group, is the part of an amino acid that distinguishes the twenty amino acids that are have identical structures everywhere else. Directly connected to the central, alpha-Carbon, the side chain is fully responsible for the chemical properties of each amino acid.
