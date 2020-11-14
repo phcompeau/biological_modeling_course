@@ -27,7 +27,7 @@ Even though the SARS-CoV and SARS-CoV-2 genomes are 96% similar, be careful in a
 
 The phenomenon of conserved and variable regions even occurs within individual genes. For example, as the following figure indicates, the coronavirus spike protein is made up of two domains (called **S1** and **S2**), and whereas the S2 domain is 90% similar between the two viruses, the S1 domain is only 64% similar. There are even regions of greater or less variability within each of these domains!
 
-![image-center](../assets/images/spike_protein_similarity.jpg){: .align-center}
+![image-center](../assets/images/spike_protein_similarity.png){: .align-center}
 Regions of differing similarity over the SARS-CoV and SARS-CoV-2 spike proteins. The S1 domain tends to be more variable, while the S2 domain is more conserved (and even has a small region of 100% similarity). In this figure, "NTD" stands for "N-terminal domain" and "RBD" stands for "receptor binding domain", two subunits of the S1 domain. Source: [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7166309/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7166309/).
 {: style="font-size: medium;"}
 
