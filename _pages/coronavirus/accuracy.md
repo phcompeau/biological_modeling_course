@@ -1,7 +1,7 @@
 ---
 permalink: /coronavirus/accuracy
-title: "Assessing Accuracy of Models"
-sidebar: 
+title: "Comparing Protein Structures to Assess Model Accuracy"
+sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
@@ -20,12 +20,12 @@ where *n* is the number of pairs, *d* is the difference in value or distance bet
 <img src="../_pages/coronavirus/files/SampleRMSD.png">
 
 ## RMSD with Protein Structures
- 
+
 Because protein structures are stored with atomic coordinates, we can calculate the RMSD between two structures like the example above, given that they have the same number of atoms. In this case, RMSD will be in the units of angstroms ($$10^{-10}$$ meters). However, due to the molecules being dynamic structures and constantly fluctuating, experimentally determined protein structures are not exact. In fact, most structures determined by x-ray crystallography, the most accurate method of structure determination, has a resolution between one to five angstroms. If we were to compare every single atom between two structures, the RMSD score can be greatly inflated Therefore, we typically only use the minimum requirement and compare the positions of the alpha-Carbons of the protein backbone. Just from the positions of the alpha-Carbons, we can get a pretty good idea of the tertiary structure of the protein (refer back to <a href="structure_intro">Introduction to Protein Structure Prediction</a>).
 
 However, there is an additional step for calculating RMSD when we are comparing two 3D structures. Because protein structures can be stored in a different orientations or starting points in the 3D-coordinate plane, we need to first superpose the structures on top of each other and make sure they are in the same orientation (minimizing RMSD). That way, we can make sure that the RMSD score actually represents structural deviation.
 
-First, we translate the structures to the same coordinate point, such as the origin. This is easily done by subtracting the coordinates of the centroid, or average coordinates, from all corresponding point coordinates for both structures. Now, both structures will be superposed on top of each other. The next, most tricky part, is finding the right orientation for the structures. This can be done using the Kabsch Algorithm. The output of the algorithm is a rotation matrix that describes how to rotate one of the structures to match the orientation of the other. 
+First, we translate the structures to the same coordinate point, such as the origin. This is easily done by subtracting the coordinates of the centroid, or average coordinates, from all corresponding point coordinates for both structures. Now, both structures will be superposed on top of each other. The next, most tricky part, is finding the right orientation for the structures. This can be done using the Kabsch Algorithm. The output of the algorithm is a rotation matrix that describes how to rotate one of the structures to match the orientation of the other.
 
 If you are interested in how the Kabsch algorithm works, click <a href="https://en.wikipedia.org/wiki/Kabsch_algorithm" target="_blank">here</a> (Wikipedia).
 
@@ -66,7 +66,7 @@ In the *<a href="tutorial_ab_initio">ab initio tutorial</a>*, we used *<a href="
 | QUARK4      | 1.9343|
 | QUARK5      | 2.6495|
 
-From these scores, we can see that model QUARK1 was the most accurate due to having the smallest RMSD score. However, because human hemoglobin subunit alpha is a small protein (141 amino acids), the score is considered high. Before we make any conclusions, let's see how our homology-based models of larger proteins performed. 
+From these scores, we can see that model QUARK1 was the most accurate due to having the smallest RMSD score. However, because human hemoglobin subunit alpha is a small protein (141 amino acids), the score is considered high. Before we make any conclusions, let's see how our homology-based models of larger proteins performed.
 
 ### Homology models of SARS-CoV-2 S protein
 
@@ -85,7 +85,7 @@ In the *<a href="tutorial_homology">homology tutorial</a>*, we used two differen
 From the scores, we see that model SWISS1 performed the best, but is greatly exceeds the generally accepted threshold score of 2.0. However, we have to consider that the full S protein is very large. Recall that the S protein is made up of three identical chains, each around 1281 amino acids long. Because RMSD is very senstive, larger proteins are more prone to higher RMSD values. Nonetheless, these models can be considered as inaccurate.
 
 #### Robetta
- 
+
 <a href="https://robetta.bakerlab.org/" target="_blank">Robetta</a> produced five models of a single chain of the S protein. Just like the models from the SWISS-MODEL, we compared the them to the actual structure from the PDB, <a href="https://www.rcsb.org/structure/6vxx">6vxx</a>.
 
 | Robetta | RMSD |
@@ -134,7 +134,7 @@ We can also compare the RMSD scores between *QUARK* and GalaxyWEB. Both servers 
 
 Although we have yet to find nature's magic algorithm for protein folding, it is amazing how far protein structure prediction has improved over the years from the establishment of the Soviet research institution in the 1960s. The models we assessed here may not be 100% accurate, but they all do a good job on generating an approximate answer to the protein structure. As these algorithms continue to improve, the day when we solve the protein folding problem slowly approaches.
 
-This concludes the part one of this module on how scientists can analyze new proteins before their structures are experimentally determined. In part two of the module, we will explore the differences between SARS and-SARS CoV2 S protein by using the x-ray crystallography structures of the proteins that have been publshed on the PDB during the first wave of outbreak. With this comparison, our goal is to find molecular explanations of why SARS-CoV-2 is much more infectious. 
+This concludes the part one of this module on how scientists can analyze new proteins before their structures are experimentally determined. In part two of the module, we will explore the differences between SARS and-SARS CoV2 S protein by using the x-ray crystallography structures of the proteins that have been publshed on the PDB during the first wave of outbreak. With this comparison, our goal is to find molecular explanations of why SARS-CoV-2 is much more infectious.
 
 [Next lesson](multiseq){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
