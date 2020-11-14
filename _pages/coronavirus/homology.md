@@ -25,6 +25,10 @@ This idea serves as the foundation of **homology modeling** for protein structur
 
 * (Show sequence alignment.)
 
+![image-center](../assets/images/spike_protein_similarity.jpg){: .align-center}
+Protein structures of the PDB entry (isi4) for human hemoglobin subunit alpha along with five *ab initio* models of this protein. We can see how close all five models are to the experimentally verified structure, as shown in the superimposition of all six structures at right.
+{: style="font-size: medium;"}
+
 * One way to do this is to identify the conserved regions of the alignment first and assuming that these sequences correspond to an essentially identical structure in the template. Then we rely on "fragment libraries", or known substructures from a variety of proteins, to fill in the non-conserved regions and produce a final 3-D structure. Or the entire protein can be constructed with the help of these fragment libraries.
 
 * Another way to do this is to essentially refine our energy function so that we combine both physicochemical properties of the protein and the template structure; that is, in addition to determining the free energy of a structure, we also penalize it with an increase in the energy function if it is significantly different from the template. (Oversimplification.)
