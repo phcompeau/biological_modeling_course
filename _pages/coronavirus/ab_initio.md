@@ -44,30 +44,26 @@ Yet, returning to the bacterial analogy, imagine what happens if we were to plac
 
 Since our algorithm may get stuck in a local minimum, we are looking for an algorithm that is in a sense more intelligent than the one devised by bacteria for exploring their environment. Fortunately, we can modify our local search algorithm in a variety of ways. First, because the initial conformation chosen has a huge influence on the final conformation that we return, we could run the algorithm multiple times with different starting conformations. This is analogous to allowing multiple bacteria to explore their environment at different starting points. Second, by allowing ourselves to move to a conformation with *greater* free energy (i.e., a worse conformation) with some probability, we would give our local search algorithm a chance to "bounce" out of a local minimum. In an approach called **simulated annealing**, which is borrowed from metallurgy, we reduce the probability of increasing the free energy over time, so that the likelihood of bouncing out of a local minimum decreases over time, and eventually we will settle into a final conformation. Once again, we see the benefit of randomness for solving practical problems!
 
-## New section
+## Applying an *ab initio* algorithm to a protein sequence
 
+In the tutorial linked below, we will use software named [Quark](https://zhanglab.ccmb.med.umich.edu/QUARK/), which has a web interface, to run an *ab initio* structure prediction algorithm. Quark is even more sophisticated than the algorithm discussed in the previous section. For one, it compiles a database of fragments of known protein structures to compare our candidate protein structure against. Furthermore, it applies a combination of multiple scoring functions to determine the lowest energy conformation available.
 
-
-
-## CAPS, Rosetta, and QUARK
-
-* QUARK is one of the leading *ab initio* protein structure prediction available. As mentioned before, currently employed *ab initio* modeling is not truly *ab initio*. We still utilize data from previously determined structures in some form. However, the database that is used is not required to contain structures that are similar in global structure. Very short fragments of the known structures are used to construct the model rather than using entire proteins as templates. In addition, extensive physiochemical knowledge is needed. Here is a flow chart of QUARK:
-
-* As mentioned in the figure, many potential models, or decoys, are created. To select the best performing model, a scoring function is used. Many different scoring functions are used, some combining multiple types of scoring, and generally fall into one of two categories: consensus or clustering. Simply put, consensus follows the idea that the more common the predicted conformations are, the more likely it is to be correct as opposed to structural patterns that are rarely found. On the other hand, clustering methods are much more complicated. Commonly used clustering basis includes stereochemical plausibility of the models, environmental compatibility of the residues, and energy-based calculations such as physics-based functions and knowledge-based statistical potentials [^2].
-
-Current *ab initio* algorithms are constantly being improved. Due to the complexity of protein structure prediction, we are not at the level where we can perfectly predict a protein's tertiary structure from just the primary structure. As a result, *ab initio* structure predictions can end up being inaccurate. The larger the protein, the more inaccurate the model may become. As such, many of the algorithms limit the sequence length in order to preserve accuracy.
-
-To see an example of *ab initio* structure prediction using *QUARK*, go to the following tutorial.
+Despite the sophistication of software like Quark, *ab initio* algorithms are still an active area of research, and we still lack an approach that is both fast and reliable. The larger the protein we use, the longer our query will take, and the more inaccurate the resulting structure may be. Accordingly, many *ab initio* algorithms limit the allowable length of a protein sequence. This is the case for Quark, which limits us to 200 amino acids. Since the SARS-CoV-2 spike protein contains 1281 amino acids, we will instead demonstrate how to use this software on the shorter human hemoglobin subunit alpha.
 
 [Visit tutorial](tutorial_ab_initio){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-<hr>
+
+## New section
 
 From this section, we learned that current *ab initio* algorithms are limited. In the tutorial, we wanted to use *QUARK*, one of the leading *ab initio* methods, to model the SARS-CoV-2 S protein. However, in order to preserve accuracy, the *QUARK* restricted the length of the input sequence to only 200 amino acids. This meant that we could not model the S protein nor the RBD of the S protein. Instead, we had to use a smaller protein, the human hemoglobin subunit alpha, as the example. In the next lesson, we will learn about another type of protein structure prediction that allows researchers to create more accurate results and model large proteins. Using this type of structure prediction, we will be able to predict the structure of the S protein and create models.
 
 [Next lesson](homology){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
+
+[^1]: Kubelka, J., et. al. 2004. The protein folding ‘speed limit’. Current Opinion in Structural Biology. 14, 76-88. https://doi.org/10.1016/j.sbi.2004.01.013
+
+[^2]: Benkert, P., Schwede, T. & Tosatto, S.C. 2009. QMEANclust: estimation of protein model quality by combining a composite scoring function with structural density information. BMC Struct Biol 9, 35. https://doi.org/10.1186/1472-6807-9-35
 
 ## Extra
 
@@ -76,9 +72,3 @@ From this section, we learned that current *ab initio* algorithms are limited. I
 * Need to define side chain
 
 * For a simple analogy of an energy landscape, imagine a ball on the top of a hill: <img src="../_pages/coronavirus/files/EnergyCartoon.png">
-
-## Citations
-
-[^1]: Kubelka, J., et. al. 2004. The protein folding ‘speed limit’. Current Opinion in Structural Biology. 14, 76-88. https://doi.org/10.1016/j.sbi.2004.01.013
-
-[^2]: Benkert, P., Schwede, T. & Tosatto, S.C. 2009. QMEANclust: estimation of protein model quality by combining a composite scoring function with structural density information. BMC Struct Biol 9, 35. https://doi.org/10.1186/1472-6807-9-35

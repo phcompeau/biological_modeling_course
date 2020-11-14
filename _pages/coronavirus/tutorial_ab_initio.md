@@ -1,13 +1,13 @@
 ---
 permalink: /coronavirus/tutorial_ab_initio
 title: "Ab initio Structure Prediction Tutorial"
-sidebar: 
+sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
 ---
 
-* Because this type of structure prediction is incredibly difficult and computationally intensive, there are still many problems with current *ab initio* algorithms. Perhaps one of the largest setbacks is that current algorithms severely limit the length of the input sequence in order to preserve accuracy and reduce runtime. 
+* Because this type of structure prediction is incredibly difficult and computationally intensive, there are still many problems with current *ab initio* algorithms. Perhaps one of the largest setbacks is that current algorithms severely limit the length of the input sequence in order to preserve accuracy and reduce runtime.
 
 The leading *ab initio* modeling algorithm *QUARK* limits the input to only 200 amino acids. As a result, we cannot use *ab initio* structure prediction on the RBD of SARS-CoV-2 (about 229 amino acids long according to PDB entry <a href="https://www.rcsb.org/structure/6M0J" target="_blank">6m0j</a>), let alone one of the chains of the S protein (about 1281 amino acids long).
 
@@ -24,7 +24,7 @@ Once your job is finished, you will receive an email notification and the abilit
 
 <img src="../_pages/coronavirus/files/ab_initio_results.png">
 
-<a href="/multiscale_biological_modeling/_pages/coronavirus/files/QUARK_Hemoglobin.tar.bz2" download>QUARK Results</a>
+<a href="../_pages/coronavirus/files/QUARK_Hemoglobin.tar.bz2" download>QUARK Results</a>
 
 Later in the module, we will learn how to assess the accuracy of our predicted structure models.
 
