@@ -33,9 +33,9 @@ In the next section, we will discuss how interactions involving proteins are typ
 
 ## Protein shape determines binding affinity
 
-The simplest model of protein interactions is Emil Fischer’s **lock and key** model, which dates all the way back to 1894. This model considers a protein that is an **enzyme**, which serves as a catalyst for a reaction involving another molecule called a **substrate**, and we think of the substrate as a key fitting into the enzyme lock. If the substrate does not fit into the active site of an enzyme, then the reaction will not occur.
+The simplest model of protein interactions is Emil Fischer’s **lock and key** model, which dates all the way back to 1894 [^Fischer]. This model considers a protein that is an **enzyme**, which serves as a catalyst for a reaction involving another molecule called a **substrate**, and we think of the substrate as a key fitting into the enzyme lock. If the substrate does not fit into the active site of an enzyme, then the reaction will not occur.
 
-However, proteins are rather flexible molecules, a fact that we will return to when we discuss the binding of the coronavirus spike protein to a human enzyme in a later lesson. As a result of this flexibility, Daniel Koshland introduced a modified model called the **induced fit** model in 1958. In this model, the enzyme and substrate may not fit perfectly, nor are they rigid like a lock and key. Rather, the two molecules may fit inexactly, changing shape as they bind to mold together more tightly. That having been said, if an enzyme and substrate's shape do not match well with each other, then they will not bind. For an overview of the induced fit model, please check out this excellent video from Khan Academy.
+However, proteins are rather flexible molecules, a fact that we will return to when we discuss the binding of the coronavirus spike protein to a human enzyme in a later lesson. As a result of this flexibility, Daniel Koshland introduced a modified model called the **induced fit** model in 1958 [^Koshland]. In this model, the enzyme and substrate may not fit perfectly, nor are they rigid like a lock and key. Rather, the two molecules may fit inexactly, changing shape as they bind to mold together more tightly. That having been said, if an enzyme and substrate's shape do not match well with each other, then they will not bind. For an overview of the induced fit model, please check out this excellent video from Khan Academy.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/8lUB2sAQkzw" frameborder="0" allowfullscreen></iframe>
 
@@ -67,11 +67,11 @@ Protein structures that have been determined experimentally are typically stored
 
 Before we set aside structure prediction, let’s consider the human proteome (i.e., collection of all proteins). A human proteome study published in 2016 estimated that humans have between 620,000 and 6.13 million protein isoforms (i.e., proteins with different shapes). A database of 160,000 proteins would be insufficient for covering humans, let alone the entire collection of proteins across all organisms on the planet.
 
-Another issue with laboratory methods of structure determination is that they require our ability to sample the actual physical proteins. For example, to produce bacterial proteins, we need to culture bacteria, and yet microbiologists have estimated that less than 2% of bacteria can be cultured in the lab [^1].
+Another issue with laboratory methods of structure determination is that they require our ability to sample the actual physical proteins. For example, to produce bacterial proteins, we need to culture bacteria, and yet microbiologists have estimated that less than 2% of bacteria can be cultured in the lab [^Wade].
 
 What, then, can we do? Fortunately, although identifying protein structure is difficult, researchers have spent decades cataloging the genomes (i.e., the sum total of DNA in an organism's nucleus) of thousands of species. Because of the central dogma of molecular biology, we know that much of this DNA winds up being translated into protein. As a result, biologists know the *sequence* of amino acids making up many proteins.
 
-The first whole genome sequence of SARS-CoV-2, isolate *Wuhan-Hu-1*, was released on 10 January 2020 by Wu, F. et. al., and is available in GenBank along with an annotation of the genome[^2][^3], shown in the figure below. Upon sequence comparison, SARS-CoV-2 was found to be related to several coronaviruses isolated from bats and distantly related to SARS-CoV-1, the viral strain that caused the 2003 SARS outbreak. In fact, SARS-CoV-2 has a sequence identity of around 96% with bat coronavirus RaTG13, leading us to the hypothesis that the virus originated from bats, which is further supported by the fact that bats are a natural reservoir of SARS-related coronaviruses.
+The first whole genome sequence of SARS-CoV-2, isolate *Wuhan-Hu-1*, was released on 10 January 2020 by Wu, F. et. al., and is available in GenBank along with an annotation of the genome[^Genome][^Annotation], shown in the figure below. Upon sequence comparison, SARS-CoV-2 was found to be related to several coronaviruses isolated from bats and distantly related to SARS-CoV-1, the viral strain that caused the 2003 SARS outbreak. In fact, SARS-CoV-2 has a sequence identity of around 96% with bat coronavirus RaTG13, leading us to the hypothesis that the virus originated from bats, which is further supported by the fact that bats are a natural reservoir of SARS-related coronaviruses.
 
 ![image-center](../assets/images/SARSCoV2Annotation.png){: .align-center}
 An annotated genome of SARS-CoV-2. Accessed from GenBank: [https://go.usa.gov/xfzMM](https://go.usa.gov/xfzMM).
@@ -109,7 +109,7 @@ Below is an excellent video from Jacob Elmer illustrating how changing φ and ψ
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/1usemtIYe_s" frameborder="0" allowfullscreen></iframe>
 
-A polypeptide with *n* amino acids will have *n* - 1 peptide bonds, meaning that its shape will be influenced by 99 phi angles and 99 psi angles. Say that each bond has three stable conformations. Then this means that there are 3<sup><em>n</em></sup> total possible protein conformations. As a result, if *n* is just 200 (a reasonably short polypeptide), the number of possible protein strucures we need to consider is more than the number of atoms in the universe! The ability for the protein to reliably find a single conformation using the magic algorithm despite such an enormous number of potential shapes is called **Levinthal's paradox** and is in a sense another example of the principle of "combinatorial explosion" that we saw in the module on bacterial chemotaxis.
+A polypeptide with *n* amino acids will have *n* - 1 peptide bonds, meaning that its shape will be influenced by 99 phi angles and 99 psi angles. Say that each bond has three stable conformations. Then this means that there are 3<sup><em>n</em></sup> total possible protein conformations. As a result, if *n* is just 200 (a reasonably short polypeptide), the number of possible protein strucures we need to consider is more than the number of atoms in the universe! The ability for the protein to reliably find a single conformation using the magic algorithm despite such an enormous number of potential shapes is called **Levinthal's paradox** and is in a sense another example of the principle of "combinatorial explosion" that we saw in the module on bacterial chemotaxis [^Levinthal].
 
 Although protein structure prediction is a difficult problem, this is not to say that it is impossible.  In the next lesson, we will examine how existing software attempts to replicate nature's magic algorithm for folding a polypeptide chain into a 3-D protein structure. We will then place ourselves in the shoes of early SARS-CoV-2 researchers working before the structure of the virus's spike protein had been experimentally validated to see if we can predict this structure and give biologists a head start on fighting the pandemic.
 
@@ -124,6 +124,7 @@ Although protein structure prediction is a difficult problem, this is not to say
 Structures that have been determined are typically uploaded into the PDB as a .pdb file. Many entries are on the quaternary structure of the protein or depict a protein system of multiple proteins or ligands. Each macromolecule is stored as a **chain** in the PDB structure. For example, the SARS-CoV-2 S protein is a trimer made up of three identical chains. The .pdb file is extremely dense as it holds all the details about the protein and chains, from the very basic primary structure of the protein all the way to the position of every single atom. The simplest way to think about how the entire protein is stored is to first represent atoms as points on a 3D plane with each atom having its 3D orthogonal coordinates (X,Y,Z) in the unit of angstroms ($$ 10^{-10} $$ meter). This is the atomic coordinates of the protein. A simplified view of the atomic coordinates section is shown in the figure below.
 
 ![image-center](../assets/images/simplifiedPDB.png){: .align-center}
+Simplified diagram of atomic coordinates in PDB format. Source: https://proteopedia.org/wiki/index.php/Atomic_coordinate_file
 {: style="font-size: medium;"}
 
 Because the structure of the 20 amino acids are well studied, we know which atoms are connected within each residue. The atomic bonds that link amino acids in sequence are easy to deduce from the primary structure of the protein.
@@ -150,16 +151,19 @@ We stated that the overall 3D structure (tertiary structure) of the protein is d
 Protein structure are separated into four different levels of description. The most basic description, the **primary structure**, refers the specific amino acid sequence of the polypeptide chain. Below is an example of the human hemoglobin subunit alpha and its primary structure.
 
 ![image-center](../assets/images/PrimaryStructureExample.png){: .align-center}
+The primary structure, or specific amino acid sequence, of human hemoglobin subunit alpha. Each letter corresponds to one of the twenty amino acids. Protein structure from: https://www.rcsb.org/structure/1SI4.
 {: style="font-size: medium;"}
 
 The **secondary structure** describes the highly regular substructures in the protein. Essentially, they are the 3D structures of local amino acids groups within the protein and spontaneously form during the folding process. In a sense, they are the intermediate structures that form before the overall protein structure. The two main substructures, shown in the figure below, are alpha-helices (left) and beta-sheets (right). Alpha-helices are formed when local amino acids fold into a tube-like structure. Beta-sheets are when the local amino acids interact by lining up side-by-side, forming a sheet-like structure. The formation of these secondary structures help with the overall process of folding.
 
 ![image-center](../assets/images/SecondaryStructure.png){: .align-center}
+General shape of secondary structure alpha-helices (left) and beta-sheets (right). Source: Cornell, B. (n.d.). https://ib.bioninja.com.au/higher-level/topic-7-nucleic-acids/73-translation/protein-structure.html
 {: style="font-size: medium;"}
 
 The **tertiary structure** describes the overall 3D shape of the protein that results from the fully-folded polypeptide chain. This is what we think of as the "shape" of the protein. In a sense, it is the combination of all the secondary structures and linkages that creates the tertiary structure. Below is the tertiary structure of human hemoglobin subunit alpha.
 
 ![image-center](../assets/images/TertiaryStructureExample.png){: .align-center}
+Tertiary structure of human hemoglobin subunit alpha. Within the structure are multiple alpha-helices secondary structures. Protein structure from: https://www.rcsb.org/structure/1SI4
 {: style="font-size: medium;"}
 
 Finally, some proteins have a **quaternary structure**, which describes the protein’s interaction with other copies of itself to form a single functional unit, or a multimer. Many proteins do not have a quaternary structure and functions as an independent monomer.
@@ -167,8 +171,23 @@ Finally, some proteins have a **quaternary structure**, which describes the prot
 Proteins are can often be divided into protein domains. Domains are distinct functional/structural units within the protein and are typically responsible for a specific interaction or function. For example, The Sars-CoV-2 S protein has a Receptor Binding Domain (RBD) that is responsible for interacting with ACE2. The rest of the protein does not come into contact with ACE2.
 
 
-[^1]: Wade W. 2002. Unculturable bacteria--the uncharacterized organisms that cause oral infections. Journal of the Royal Society of Medicine, 95(2), 81–83. https://doi.org/10.1258/jrsm.95.2.81
+[^Wade]: Wade W. 2002. Unculturable bacteria--the uncharacterized organisms that cause oral infections. Journal of the Royal Society of Medicine, 95(2), 81–83. https://doi.org/10.1258/jrsm.95.2.81
 
-[^2]: Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome. https://www.ncbi.nlm.nih.gov/nuccore/MN908947
+[^Genome]: Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome. https://www.ncbi.nlm.nih.gov/nuccore/MN908947
 
-[^3]: Annotated Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome. https://go.usa.gov/xfzMM
+[^Annotation]: Annotated Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome. https://go.usa.gov/xfzMM
+
+[^Fischer]: Fischer, E. 1894. Einfluss der Configuration auf die Wirkung der Enzyme. Ber. Dtsch. Chem. Ges., 27: 2985-2993. https://doi.org/10.1002/cber.18940270364
+
+[^Koshland]: Koshland D.E. 1958. Application of a Theory of Enzyme Specificity to Protein Synthesis. Proc Natl Acad Sci U S A. 44(2):98-104. doi:10.1073/pnas.44.2.98
+
+[^Levinthal]: Levinthal, C. 1969. How to Fold Graciously. Mossbaur Spectroscopy in Biological Systems, Proceedings of a meeting held at Allerton House, Monticello, Illinois. eds. Debrunner, P., Tsibris, J.C.M., Munck, E. University of Illinois Press Pages 22-24.
+
+[^HPP]: https://hupo.org/human-proteome-project
+
+[^HPP2016]: Omenn, G. S., Lane, L., Lundberg, E. K., Beavis, R. C., Overall, C. M., & Deutsch, E. W. 2016. Metrics for the Human Proteome Project 2016: Progress on Identifying and Characterizing the Human Proteome, Including Post-Translational Modifications. Journal of proteome research, 15(11), 3951–3960. https://doi.org/10.1021/acs.jproteome.6b00511
+
+[^Munnink]: Oude Munnink, B.B., Nieuwenhuijse, D.F., Stein, M. et al. 2020. Rapid SARS-CoV-2 whole-genome sequencing and analysis for informed public health decision-making in the Netherlands. Nat Med 26, 1405–1410. https://doi.org/10.1038/s41591-020-0997-y
+
+[^Islam]: Islam, M.R., Hoque, M.N., Rahman, M.S. et al. 2020. Genome-wide analysis of SARS-CoV-2 virus strains circulating worldwide implicates heterogeneity. Sci Rep 10, 14004. https://doi.org/10.1038/s41598-020-70812-6
+
