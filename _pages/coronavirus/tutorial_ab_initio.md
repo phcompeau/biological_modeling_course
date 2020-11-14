@@ -7,6 +7,8 @@ toc: true
 toc_sticky: true
 ---
 
+* Note to self: make sure we mention multiple models
+
 * Because this type of structure prediction is incredibly difficult and computationally intensive, there are still many problems with current *ab initio* algorithms. Perhaps one of the largest setbacks is that current algorithms severely limit the length of the input sequence in order to preserve accuracy and reduce runtime.
 
 The leading *ab initio* modeling algorithm *QUARK* limits the input to only 200 amino acids. As a result, we cannot use *ab initio* structure prediction on the RBD of SARS-CoV-2 (about 229 amino acids long according to PDB entry <a href="https://www.rcsb.org/structure/6M0J" target="_blank">6m0j</a>), let alone one of the chains of the S protein (about 1281 amino acids long).
@@ -20,9 +22,7 @@ Next, go to *<a href="https://zhanglab.ccmb.med.umich.edu/QUARK2/" target="_blan
 
 <img src="../_pages/coronavirus/files/QuarkTutorial.png">
 
-Once your job is finished, you will receive an email notification and the ability to download the results. Below is a figure of our models as well as the real tertiary structure of human hemoglobin subunit alpha from the PDB entry <a href="https://www.rcsb.org/structure/1sI4" target="_blank">1si4</a>. You can also download our models if you wish.
-
-<img src="../_pages/coronavirus/files/ab_initio_results.png">
+Once your job is finished, you will receive an email notification and the ability to download the results. In the main text, we will show a figure of our models as well as the real tertiary structure of human hemoglobin subunit alpha from the PDB entry <a href="https://www.rcsb.org/structure/1sI4" target="_blank">1si4</a>. You can also download our models if you wish.
 
 <a href="../_pages/coronavirus/files/QUARK_Hemoglobin.tar.bz2" download>QUARK Results</a>
 

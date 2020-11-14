@@ -53,10 +53,18 @@ Despite the sophistication of software like Quark, *ab initio* algorithms are st
 [Visit tutorial](tutorial_ab_initio){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
+## Toward a faster approach for protein structure prediction
 
-## New section
+The figure below shows the top five structures produced by Quark for human hemoglobin subunit alpha, along with the protein's experimentally verified structure. Although *ab initio* prediction is not perfect, it is still able to accurately reconstruct a model of this protein from its amino acid sequence.
 
-From this section, we learned that current *ab initio* algorithms are limited. In the tutorial, we wanted to use *QUARK*, one of the leading *ab initio* methods, to model the SARS-CoV-2 S protein. However, in order to preserve accuracy, the *QUARK* restricted the length of the input sequence to only 200 amino acids. This meant that we could not model the S protein nor the RBD of the S protein. Instead, we had to use a smaller protein, the human hemoglobin subunit alpha, as the example. In the next lesson, we will learn about another type of protein structure prediction that allows researchers to create more accurate results and model large proteins. Using this type of structure prediction, we will be able to predict the structure of the S protein and create models.
+![image-center](../_pages/coronavirus/files/ab_initio_results.png){: .align-center}
+Protein structures of the PDB entry (isi4) for human hemoglobin subunit alpha along with five *ab initio* models of this protein. We can see how close all five models are to the experimentally verified structure, as shown in the superimposition of all six structures at right.
+{: style="font-size: medium;"}
+
+Yet at the same time, we wonder how we can speed up our structure prediction algorithms so that they will scale to a larger protein like the SARS-CoV-2 spike protein. To this end, we recall the point earlier in this lesson about Quark using a database of known short structures to compare our reconstruction against. In the next lesson, we will learn about another type of protein structure prediction that allows researchers to model large proteins by comparing a protein of unknown structure against a protein with similar sequence having known structure.
+
+**STOP:** What protein should we use to compare the SARS-CoV-2 spike protein against?
+{: .notice--primary}
 
 [Next lesson](homology){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
