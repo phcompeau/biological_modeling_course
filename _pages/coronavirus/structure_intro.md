@@ -81,7 +81,7 @@ Annotating these viral genes is important, but we ultimately need to know the sh
 
 Recall from the start of this lesson that even if a protein is unfolded into a polypetide, then it always folds back into essentially the same three-dimensional shape. This leads us to an idea: given the sequence of amino acids corresponding to the SARS-CoV-2 spike protein, can we predict the final 3-D structure of this protein? In other words, can we reverse engineer the magic algorithm that nature uses for protein folding?
 
-Unfortunately, as will see in the next section, predicting protein structure from an amino acid sequence is a very challenging problem.
+Unfortunately, as we will see in the next section, predicting protein structure from an amino acid sequence is a very challenging problem.
 
 ## What makes protein structure prediction so difficult?
 
@@ -115,10 +115,6 @@ Although protein structure prediction is a difficult problem, this is not to say
 
 [Next lesson](ab_initio){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
-
-## Extra: Stuff to consider in folding
-
-To find this magic algorithm, we need a very good understanding of all the small interactions that occur between atoms during protein folding, including bonding energy, attraction/repulsion forces from electrical charges between molecules (electrostatic interactions and van der Waals interactions), thermodynamics; all which are subject to alterations depending on the environment. Regardless of its difficulty, protein structure prediction is a very important problem to solve given its potential for many, many applications.
 
 
 

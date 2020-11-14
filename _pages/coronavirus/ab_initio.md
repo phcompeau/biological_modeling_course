@@ -6,17 +6,21 @@ sidebar:
 toc: true
 toc_sticky: true
 ---
-* Imagine that we are a group of researchers that wants to study the SARS-CoV-2 S protein starting on January 11, 2020. We have access to the published sequence of the genome and have obtained the primary sequence of the protein. In order to study the protein, we need to obtain the tertiary structure, but no one has determined the structure yet. Can we reproduce the shape of the protein just from the primary sequence? 
 
-* This type of structure prediction is called *ab initio* structure prediction. *Ab initio* is Latin for “from the beginning”.
+In this lesson, we will discuss how to determine the structure of a protein from its amino acid sequence. This problem was of utmost importance in early 2020 as biologists raced to find any information that they could about the novel coronavirus and its spike protein.
 
-* *Ab initio* structure prediction's goal is to be able to use only the information of the primary sequence and rely on our physicochemical knowledge to accurately predict how the amino acids will interact and form the structure of the protein. Extremely difficult to do, essentially all *ab initio* algorithms still utilize information from structural and sequence databases in some form to fill holes in our knowlodge.
+What makes this story remarkable is that in many senses it was a community effort, not just because it enlisted so many researchers around the world, but because the computational heavy lifting was divided over thousands of volunteers from around the world. Two leading software projects, [Rosetta@home](https://boinc.bakerlab.org) and [Folding@home](https://foldingathome.org), encourage volunteers to download this software and contribute to a gigantic *distributed* effort to predict protein shape. That is, even with a modest laptop, a user can donate some of their computer's idle resources to working on the problem of protein structure prediction. But how does this software work?
 
-* Mainly used to predict the structure of unique novel protein.
+Predicting structure from sequence using only the physicochemical knowledge of what drives protein folding on a molecular level is called **ab initio structure prediction**, where *ab initio* is from the Latin for "from the beginning". To perform this type of structure prediction, we need to incorporate many different aspects of molecular interactions, including bonding energy, attraction/repulsion forces from electrical charges between molecules (electrostatic interactions and van der Waals interactions), and thermodynamics. Furthermore, all of these variables are subject to change depending on the environment.
+
+
+
+
+
 
 ## How *Ab initio* Structure Prediction Works
 
-* Regardless of the different *ab initio* modeling approaches, it ultimately boils down to solving the problem of finding the 3-D shape of a protein sequence that maximizes some scoring function, where the scoring function indicates how good the 3-D shape is at explaining the sequence. However, one of the important guidelines in protein folding, both in modeling and in biology, is obtaining a low-energy conformation. A general theme in chemistry is that systems move spontaneously towards equilibrium, or stable state, be it a chemical reaction or a molecule itself. Think of a high energy system as a ball on top of a round mountain. The ball will always roll down the hill and stop at the bottom of the valley, where it is the most stable. When a system is at the bottom, it stops moving and is now at equilibrium. The equilibrium of a system is typically at the lowest possible energy state, or minimum free energy. 
+* Regardless of the different *ab initio* modeling approaches, it ultimately boils down to solving the problem of finding the 3-D shape of a protein sequence that maximizes some scoring function, where the scoring function indicates how good the 3-D shape is at explaining the sequence. However, one of the important guidelines in protein folding, both in modeling and in biology, is obtaining a low-energy conformation. A general theme in chemistry is that systems move spontaneously towards equilibrium, or stable state, be it a chemical reaction or a molecule itself. Think of a high energy system as a ball on top of a round mountain. The ball will always roll down the hill and stop at the bottom of the valley, where it is the most stable. When a system is at the bottom, it stops moving and is now at equilibrium. The equilibrium of a system is typically at the lowest possible energy state, or minimum free energy.
 
 <img src="../_pages/coronavirus/files/EnergyCartoon.png">
 
@@ -31,19 +35,15 @@ toc_sticky: true
 **STOP:** Are there any drawbacks you see with this approach for predicting a protein’s structure?
 {: .notice--primary}
 
-* Let's say we are exploring a newly discovered planet with a droid that can roll over the surface of the planet. If the droid is looking for the lowest-lying area on the planet by moving in the direction of greatest descent, and it lands at the top of a volcano, it will roll down into the volcano’s cauldron, which is still very high compared to the rest of the planet. 
+* Let's say we are exploring a newly discovered planet with a droid that can roll over the surface of the planet. If the droid is looking for the lowest-lying area on the planet by moving in the direction of greatest descent, and it lands at the top of a volcano, it will roll down into the volcano’s cauldron, which is still very high compared to the rest of the planet.
 
-* The most glaring weakness is that the initial structure chosen can have a huge influence on the final structure that we produce.  As a result, we can get stuck in a “local optimum”, in this case a protein structure that is higher scoring than its neighbors but that doesn’t score very well compared to all possible structures. One resolution to this issue is to run the algorithm multiple times with different starting positions, choosing the solution that has the best score over all these runs. Another solution is to not necessarily always take the best-scoring neighbor as the next current protein structure, but rather to choose a neighbor randomly, where higher-scoring neighbors have a higher probability of selection. 
+* The most glaring weakness is that the initial structure chosen can have a huge influence on the final structure that we produce.  As a result, we can get stuck in a “local optimum”, in this case a protein structure that is higher scoring than its neighbors but that doesn’t score very well compared to all possible structures. One resolution to this issue is to run the algorithm multiple times with different starting positions, choosing the solution that has the best score over all these runs. Another solution is to not necessarily always take the best-scoring neighbor as the next current protein structure, but rather to choose a neighbor randomly, where higher-scoring neighbors have a higher probability of selection.
 
 Randomness appears once again!
 
 ## CAPS, Rosetta, and QUARK
 
-* Critical Assessment of Structure Prediction (CASP) experiments are held every two years. It is a community-wide/world-wide double-blind protein structure prediction experiment that helps research groups across the world to objectively test their prediction software and algorithm for all types of predictions.
 
-* For CASP6 in 2004, Rosetta, the program used by <a href="https://boinc.bakerlab.org/rosetta/" target="_blank">Rosetta@home</a> was the first produce a near atomic-level resolution *ab initio* prediction for its model of the CASP target T0281. Ever since, Rosetta has been one of the leading predictors, placing among the top in every category of structure prediction in CASP7. One aspect that contributes greatly to Rosetta’s success is the amount of computer power made available by Rosetta@home volunteers. (Run Rosetta@home when the user is not using the computer, donating idle computer power). Amid the COVID-19 pandemic, the Rosetta@home recruited thousands of volunteers around the world to help model important SARS-CoV-2 proteins, including the S protein, before the proteins could be measured in the lab.
-  * An article about Rosetta’s role: https://www.ipd.uw.edu/2020/02/rosettas-role-in-fighting-coronavirus/). 
-  * Models published before crystallography can be found here: https://www.ssgcid.org/cttdb/molecularmodel_list/?target__icontains=BewuA
 
 * QUARK is one of the leading *ab initio* protein structure prediction available. As mentioned before, currently employed *ab initio* modeling is not truly *ab initio*. We still utilize data from previously determined structures in some form. However, the database that is used is not required to contain structures that are similar in global structure. Very short fragments of the known structures are used to construct the model rather than using entire proteins as templates. In addition, extensive physiochemical knowledge is needed. Here is a flow chart of QUARK:
 
@@ -64,6 +64,10 @@ From this section, we learned that current *ab initio* algorithms are limited. I
 
 [Next lesson](homology){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
+
+## Extra
+
+* Models published before crystallography can be found here: https://www.ssgcid.org/cttdb/molecularmodel_list/?target__icontains=BewuA
 
 ## Citations
 
