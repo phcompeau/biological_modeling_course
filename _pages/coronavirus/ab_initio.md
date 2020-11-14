@@ -57,7 +57,7 @@ Despite the sophistication of software like Quark, *ab initio* algorithms are st
 
 The figure below shows the top five structures produced by Quark for human hemoglobin subunit alpha, along with the protein's experimentally verified structure. Although *ab initio* prediction is not perfect, it is still able to accurately reconstruct a model of this protein from its amino acid sequence.
 
-![image-center](../_pages/coronavirus/files/ab_initio_results.png){: .align-center}
+![image-center](../assets/images/ab_initio_results.png){: .align-center}
 Protein structures of the PDB entry (isi4) for human hemoglobin subunit alpha along with five *ab initio* models of this protein. We can see how close all five models are to the experimentally verified structure, as shown in the superimposition of all six structures at right.
 {: style="font-size: medium;"}
 
