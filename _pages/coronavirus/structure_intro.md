@@ -114,20 +114,6 @@ Although protein structure prediction is a difficult problem, this is not to say
 
 
 
-
-## Extra: PDB Database description
-
-Structures that have been determined are typically uploaded into the PDB as a .pdb file. Many entries are on the quaternary structure of the protein or depict a protein system of multiple proteins or ligands. Each macromolecule is stored as a **chain** in the PDB structure. For example, the SARS-CoV-2 S protein is a trimer made up of three identical chains. The .pdb file is extremely dense as it holds all the details about the protein and chains, from the very basic primary structure of the protein all the way to the position of every single atom. The simplest way to think about how the entire protein is stored is to first represent atoms as points on a 3D plane with each atom having its 3D orthogonal coordinates (X,Y,Z) in the unit of angstroms ($$ 10^{-10} $$ meter). This is the atomic coordinates of the protein. A simplified view of the atomic coordinates section is shown in the figure below.
-
-![image-center](../assets/images/simplifiedPDB.png){: .align-center}
-Simplified diagram of atomic coordinates in PDB format. Source: https://proteopedia.org/wiki/index.php/Atomic_coordinate_file
-{: style="font-size: medium;"}
-
-Because the structure of the 20 amino acids are well studied, we know which atoms are connected within each residue. The atomic bonds that link amino acids in sequence are easy to deduce from the primary structure of the protein.
-
-This is just the beginning of the information needed to fully represent a protein structure. For example, there are connections between amino acids called **disulfide bonds** that are also described within the file. For more information, check out the [official PDB documentation](http://www.wwpdb.org/documentation/file-format).
-
-
 ## Extra: Four levels of protein structure
 
 
