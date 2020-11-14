@@ -33,7 +33,8 @@ After this is done, we can then proceed to calculating the RMSD score between th
 
 <img src="../_pages/coronavirus/files/RMSDExample.png">
 
-STOP: Can you think of example where a small difference between protein structures can cause a large inflation in RMSD score? {: .notice--primary}
+**STOP:** Can you think of example where a small difference between protein structures can cause a large inflation in RMSD score?
+{: .notice--primary}
 
 *	Unfortunately, there is no established threshold RMSD as scores vary based on protein size (larger proteins mean more fluctuating parts) and the resolution of the structure determination method. In addition, RMSD has its own flaws where a single misplaced loop or an off-angle bond can have profound effects on the score, as shown in the figure below. This is why other methods of structure comparisons are used in conjunction to RMSD for a more thorough comparison analysis. Nonetheless, a score under 2.0 angstroms is typically acceptable when comparing large molecules such as proteins.
 
