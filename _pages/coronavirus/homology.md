@@ -55,6 +55,8 @@ The results of the three predicted models for the SARS-CoV-2 spike protein are f
 
 ## Extra
 
+* We need to make sure that the specification of the .pdb file type comes back somewhere before we give the results. It may be a perfect place to do so in this lesson.
+
 * Missing definition of domain -- need to do this concisely earlier. Perhaps explain that spike has S1 and S2.
 
 * We may need a discussion of what NTD and RBD do at some point.
