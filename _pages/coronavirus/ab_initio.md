@@ -25,53 +25,33 @@ Much biochemical research has contributed to the development of scoring function
 
 This formulation of protein structure may not strike you as similar to anything that we have done before in this course. However, consider a bacterium exploring an environment for food, as we did in the previous module on chemotaxis. Every point in the bacterium's "search space" is characterized by a concentration of attractant at that point, and the bacterium's goal was to reach the point of greatest attractant concentration.
 
-In this case, our search space is the collection of all possible conformations of a given protein. Where in the chemotaxis example we think of the concentration of attractant at a point, here we think of the energy of a given conformation. And we can imagine our optimization problem as "exploring" this space of all conformations in order to find the conformation of lowest energy, as illustrated in the figure below.
+In this case, our search space is the collection of all possible conformations of a given protein. Where in the chemotaxis example we think of the concentration of attractant at a point, here we think of the energy of a given conformation. And we can imagine our optimization problem as "exploring" this space of all conformations in order to find the conformation of lowest energy. This analogy is illustrated in the figure below, which imagines the energy function as corresponding to an elevation at each of the search space; our goal, then, is to find the lowest point in this space.
 
 ![image-center](../assets/images/energy_landscape.png){: .align-center}
-Courtesy: David Beamish
+We can imagine each conformation of a given protein as occupying a point in a landscape, in which the elevation of a point corresponds to the energy of the conformation at that point. Courtesy: David Beamish.
 {: style="font-size: medium;"}
 
+## A local search algorithm for *ab initio* structure prediction
 
+Now that we have thought about finding the most stable protein structure as exploring a search space, our next question is how to develop an algorithm to explore this space. Continuing the analogy to chemotaxis, our idea is to adapt *E. coli*'s clever exploration [exploration algorithm](chemotaxis/home_conclusion) from a previous lesson to our purposes. That is, at every step, sense the "direction" in which the energy function decreases by the most, and then move in this direction.
 
-We would like to
+Adapting this exploration algorithm to protein structure prediction requires us to develop a notion of what it means to consider the points "near" a given conformation in a protein search space. To this end, many *ab initio* algorithms will start at an arbitrary initial conformation and then make a variety of minor modifications to that structure (i.e., nearby points in the space), updating the current conformation to the modification that produces the greatest decrease in free energy. These algorithms then iterate the process of moving in the greatest of greatest energy decrease until we reach a conformation for which no nearby points reduce the free energy. Such an approach for structure prediction falls into a broad category of optimization algorithms called **local search algorithms**.
 
-When we assign the
+Yet, returning to the bacterial analogy, imagine what happens if we were to place many small sugar cubes and one large sugar cube into a bacterial environment. A bacterium will sense the gradient not of the large sugar cube but of its *nearest* attractant. As a result, because the smaller food sources outnumber the larger food source, the bacterium will likely not move to the point of greatest attractant concentration. In terms of bacterial exploration, this is a feature, not a bug; if the bacterium exhausts one food source, then it will just move to another. But in terms of protein structure prediction, we should be worried of winding up in such a **local minimum**, or a point of our search space for which no "neighboring" points have better score.
 
-**STOP:** Do you see any ways in which we could improve this local search heuristic?
+**STOP:** Do you see any ways in which we could improve our local search approach for structure prediction?
 {: .notice--primary}
 
+Since our algorithm may get stuck in a local minimum, we are looking for an algorithm that is in a sense more intelligent than the one devised by bacteria for exploring their environment. Fortunately, we can modify our local search algorithm in a variety of ways. First, because the initial conformation chosen has a huge influence on the final conformation that we return, we could run the algorithm multiple times with different starting conformations. This is analogous to allowing multiple bacteria to explore their environment at different starting points. Second, by allowing ourselves to move to a conformation with *greater* free energy (i.e., a worse conformation) with some probability, we would give our local search algorithm a chance to "bounce" out of a local minimum. In an approach called **simulated annealing**, which is borrowed from metallurgy, we reduce the probability of increasing the free energy over time, so that the likelihood of bouncing out of a local minimum decreases over time, and eventually we will settle into a final conformation. Once again, we see the benefit of randomness for solving practical problems!
+
+## New section
 
 
 
-
-Place a bunch of small food sources and a single large big food source, odds are that the bacterium will simply move to its nearest food source and remain there. Local minimum.
-
-
-
-* In protein structure prediction, the path to the best model is not a straight line. Common approaches often have steps for model refinement. When models are first generated, they are assessed and used to create better models. Although time consuming and computationally heavy, the more times we can repeat this cycle, the better the final product. Approaches for ab initio modeling used are not dissimilar from the biased random walk approach that E. coli uses to explore its space for food. In this case, the “search space” is not a physical space but rather the set of all legal structures of the protein for this structure. The “food” is not the current concentration of an attractant but the current score of a candidate structure. And “nearby” objects are not points in space but rather 3-d protein structures that correspond to making slight changes to the current structure.
-
-* High-level description of the general algorithm:
-  * Start with an arbitrary protein structure.
-  * Consider all its possible neighbors. Neighbors are conformations that differ by a single change, such as rotation of a single bond. Is there one with a score better than the current structure?
-  * If yes, update the current structure to the highest scoring neighbor and repeat the previous step.
-  * If not, return the current structure as the best one found
-
-**STOP:** Are there any drawbacks you see with this approach for predicting a protein’s structure?
-{: .notice--primary}
-
-
-
-* The most glaring weakness is that the initial structure chosen can have a huge influence on the final structure that we produce.  As a result, we can get stuck in a “local optimum”, in this case a protein structure that is higher scoring than its neighbors but that doesn’t score very well compared to all possible structures. One resolution to this issue is to run the algorithm multiple times with different starting positions, choosing the solution that has the best score over all these runs. Another solution is to not necessarily always take the best-scoring neighbor as the next current protein structure, but rather to choose a neighbor randomly, where higher-scoring neighbors have a higher probability of selection.
-
-Randomness appears once again!
 
 ## CAPS, Rosetta, and QUARK
 
-
-
 * QUARK is one of the leading *ab initio* protein structure prediction available. As mentioned before, currently employed *ab initio* modeling is not truly *ab initio*. We still utilize data from previously determined structures in some form. However, the database that is used is not required to contain structures that are similar in global structure. Very short fragments of the known structures are used to construct the model rather than using entire proteins as templates. In addition, extensive physiochemical knowledge is needed. Here is a flow chart of QUARK:
-
-<img src="../_pages/coronavirus/files/QuarkFlowChart.png">
 
 * As mentioned in the figure, many potential models, or decoys, are created. To select the best performing model, a scoring function is used. Many different scoring functions are used, some combining multiple types of scoring, and generally fall into one of two categories: consensus or clustering. Simply put, consensus follows the idea that the more common the predicted conformations are, the more likely it is to be correct as opposed to structural patterns that are rarely found. On the other hand, clustering methods are much more complicated. Commonly used clustering basis includes stereochemical plausibility of the models, environmental compatibility of the residues, and energy-based calculations such as physics-based functions and knowledge-based statistical potentials [^2].
 
