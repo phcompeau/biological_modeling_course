@@ -32,28 +32,36 @@ In the tutorial, we generated four visualizations of how the SARS-CoV-2 S protei
 
 A protein contact map is a 2D matrix that represents the distance between all amino acid residues in the protein. In other words, it is essentially a reduced, 2D representation of a protein's tertiary structure. Contact map is another popular method of protein structure comparison. Proteins with very similar structures will have very similar contact map patterns, and deviations within the structure can be easily inferred by seeing unique patterns in only one of the proteins. Between all pairs of amino acids, the pair is assigned the value of 1 if the two residues are closer together than a predetermined threshold distance, and 0 otherwise. The threshold for the maps below is 20 Å, meaning that amino acid pairs within 20 Å of each other are assigned the value of 1. From these maps, we see very little differences between SARS-CoV-2 and SARS S proteins, meaning that they are structurally similar.
 
-<img src="../_pages/coronavirus/files/GNM/Contact.png">
+![image-center](../assets/images/Contact.png){: .align-center}
+This figure shows the contact maps of the SARS-CoV-2 S protein (top-left), SARS S protein (top-right), single-chain of the SARS-CoV-2 S protein (bottom-left), and single-chain of the SARS S protein (bottom-right). The map shows every amino acid residue pair in the structure. If the distance between the residue pair is 20.0 Å or less, then a value of 1.0 is assigned and shown in the color black. We see that SARS-CoV-2 and SARS S proteins have similar maps, indicating similar structures.
+{: style="font-size: medium;"}
 
 ### Cross-Correlation
 {: .no_toc}
 
 Protein residue cross-correlation shows the correlation between the fluctuations/displacement of residues. This graphical representation shows how the residues will move relative to each other. The pair is assigned the value of 1 if the fluctuations are completely correlated (move in the same direction), the value of -1 if the fluctuations are completely anticorrelated (move in opposite directions), and a value of 0 if uncorrelated (movements do not affect each other). It is typical to see a diagonal of strong cross-correlation because movements in the residue will almost always affect its direct neighbors. Positive correlations coming off the diagonal represents correlations between contiguous residues and are characteristics of secondary structures because residues in secondary structures tend to move together. Common patterns for secondary structures are triangular structures for helices and plume structures for strands. Off-diagonal correlation and anticorrellations may potential represent interesting interactions between non-contiguous residues and domains. From our results, we see that the SARS-CoV-2 and SARS S protein fluctuate similarly, supporting that they are similar structures.
 
-<img src="../_pages/coronavirus/files/GNM/CrossCorr.png">
+![image-center](../assets/images/CrossCorr.png){: .align-center}
+This figure shows the cross-correlation heat maps of the SARS-CoV-2 S protein (top-left), SARS S protein (top-right), single-chain of the SARS-CoV-2 S protein (bottom-left), and single-chain of the SARS S protein (bottom-right). The x-axis and y-axis represent the amino acid residues. The map shows every residue pair in the structure and the colors represent the correlation in the fluctuations of residues. A value of 1.0 (red) means that the residues will fluctuate together in the same direction. A value of -1.0 (dark blue) means that the residues will fluctuate together in opposite directions. A value of 0.0 means no relations between the fluctuations of the residues. We see that SARS-CoV-2 and SARS S proteins have very similar maps.
+{: style="font-size: medium;"}
 
 ### Slow Mode Shape
 {: .no_toc}
 
 NMA is based on the idea that the lowest frequency modes describe the largest movement in the structure. Below is the plot of the lowest frequency (slowest) mode calculated by ProDy. Here, the fluctuations are in arbitrary or relative units, but can interpreted as greater amplitudes represent regions of greater fluctuations. The sign of the value represents relative direction of the fluctuation, meaning that the plots can be flipped when comparing between different proteins. In the SARS-CoV-2 Chain A figure, we can see that the protein region between residues 200 and 500 is the most mobile. This region overlaps with where the RBD is located on the chain, between residues 331 to 524. This is important because it indicates the RBD being a mobile part of the S protein. Based on our results, we see that both S proteins have the same regions of great fluctuations, supporting that they have similar structures.
 
-<img src="../_pages/coronavirus/files/GNM/SlowMode.png">
+![image-center](../assets/images/SlowMode.png){: .align-center}
+This figure shows the slow mode plots of the SARS-CoV-2 S protein (top-left), SARS S protein (top-right), single-chain of the SARS-CoV-2 S protein (bottom-left), and single-chain of the SARS S protein (bottom-right). The x-axis represent the amino acid residues and the y-axis represents the fluctuations in relative units.  From the single-chain plots for both SARS-CoV-2 and SARS, we see that the residues between 200 – 500 fluctuate the most. The plots between SARS-CoV-2 and SARS are very similar, indicating similar protein fluctuations.
+{: style="font-size: medium;"}
 
 ### Square Fluctuation
 {: .no_toc}
 
 The slow mode square-fluctuation is calculated by multiplying the square of the slow mode with the variance along the mode. In this case, all the values will be positive, but the interpretation remains the same as the slow mode plot, where greater amplitudes represent regions of greater fluctuations and motions.
 
-<img src="../_pages/coronavirus/files/GNM/SqFlucts.png">
+![image-center](../assets/images/SqFlucts.png){: .align-center}
+This figure shows the plots of the slow mode square fluctuation of the SARS-CoV-2 S protein (top-left), SARS S protein (top-right), single-chain of the SARS-CoV-2 S protein (bottom-left), and single-chain of the SARS S protein (bottom-right). The x-axis represent the amino acid residues and the y-axis represents the fluctuations in relative units. The interpretation is the same as the slow mode plot, but with only positive values. The plots between SARS-CoV-2 and SARS are very similar, indicating similar protein fluctuations.
+{: style="font-size: medium;"}
 
 ### Comparing Results
 
@@ -73,7 +81,9 @@ In this tutorial, we will use NMWiz, a GUI for ProDy and is available as a plugi
 
 From the tutorial, we were able to generate the cross-correlation map and square fluctuation of the SARS-CoV-2 RBD. The interpretation of these results are identical to the GNM analysis above. Following the same steps, we performed ANM analysis on the SARS RBD using the PDB entry SARS RBD (<a href="http://www.rcsb.org/structure/2ajf" target="_blank">2ajf</a> for comparison.
 
-<img src="../_pages/coronavirus/files/ANMImages/ANMResults.png">
+![image-center](../assets/images/ANMResults.png){: .align-center}
+This figure shows the cross-correlation map (top) and the square fluctuation plot (bottom) of SARS-CoV-2 and SARS RBD using ANM. The y-axis of the square fluctuation plot represents how much the residues fluctuate in relative units. Like the results from the GNM analysis, the map and plot are very similar between the two RBDs, indicating that they are structurally similar.
+{: style="font-size: medium;"}
 
 Perhaps unsurprisingly, the maps and plots show very small differences between SARS-CoV-2 and SARS RBD, just like in the GNM calculations for the S proteins. This indicates that the two RBDs are structurally similar.
 
@@ -96,7 +106,10 @@ Using NMWiz and VMD, we also created animations of the protein fluctuation calcu
 |Resid 31, 35 (Hotspot 31)|Orange|
 |Resid 38, 353 (Hotspot 353)|Red|
 
-<video width="640" height="480" controls><source type="video/mp4" src="../_pages/coronavirus/files/ANMImages/6vw1_B&F.mp4"></video>
+
+<center>
+<iframe width="640" height="360" src="../assets/6vw1_B&F.mp4" frameborder="0" allowfullscreen></iframe>
+</center>
 
 ### SARS Spike RBD (2ajf):
 {: .no_toc}
@@ -112,9 +125,9 @@ Using NMWiz and VMD, we also created animations of the protein fluctuation calcu
 |Resid 31, 35 (Hotspot 31)|Orange|
 |Resid 38, 353 (Hotspot 353)|Red|
 
-<video width="640" height="480" controls>
-<source type="video/mp4" src="../_pages/coronavirus/files/ANMImages/2ajf_B&F.mp4">
-</video>
+<center>
+<iframe width="640" height="360" src="../assets/2ajf_B&F.mp4" frameborder="0" allowfullscreen></iframe>
+</center>
 
 Using both the GNM and ANM approaches for normal mode analysis of SARS-CoV-2 S protein, we saw that it is structurally very similar to the SARS S protein. As we have stated in the <a href="structural_diff">Structural and ACE2 Interaction Differences</a> and <a href="NAMD">Interaction Energy with ACE2</a> lessons, the structural differences can be very subtle yet still contribute greatly with ACE2 binding affinity.
 

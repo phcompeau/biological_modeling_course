@@ -11,47 +11,57 @@ In this tutorial, we will use Normal Mode Wizard (NMWiz), a plugin in VMD that i
 
 First, load <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> into VMD by following the steps in the previous section *Loading Molecules*. Then, start up NMWiz by going to *Extensions>Analysis>Normal Mode Wizard*.
 
-<img src="../_pages/coronavirus/files/ANMTutorial/Image1.png">
+![image-center](../assets/images/ANM1.png){: .align-center}
+{: style="font-size: medium;"}
 
 A small window will open. Select *ProDy Interface*
 
-<img src="../_pages/coronavirus/files/ANMTutorial/Image2.png">
+![image-center](../assets/images/ANM2.png){: .align-center}
+{: style="font-size: medium;"}
 
 We want to focus only on the RBD of SARS-CoV-2, so we need to choose a new selection. In the *ProDy Interface*, change *Selection* to "protein and chain F" and click *Select*. Next, make sure that *ANM calculation* is selected for *ProDy job:*. Check the box for *write and load cross-correlations heatmap*. Finally click *Submit Job*.
 
-<img src="../_pages/coronavirus/files/ANMTutorial/Image3.png">
+![image-center](../assets/images/ANM3.png){: .align-center}
+{: style="font-size: medium;"}
 
 *IMPORTANT*: Let the program run and do not click on any of the VMD windows as clicking on windows may cause the program to crash or become unresponsive. The job can take from a few seconds to a couple minutes. When the job is completed, you will see a new window *NMWiz - 6vw1_anm ...* and the cross=correlation heatmap appear.
 
-<img src="../_pages/coronavirus/files/ANMTutorial/Image4.png">
+![image-center](../assets/images/ANM4.png){: .align-center}
+{: style="font-size: medium;"}
 
-<img src="../_pages/coronavirus/files/ANMTutorial/Image5.png">
+![image-center](../assets/images/ANM5.png){: .align-center}
+{: style="font-size: medium;"}
 
 Now that the ANM calculations are completed, you will see the visualization displayed in *VMD Main*. Disable the visualization of the original visualization of *6vw1* by double-clicking on the letter 'D'. The color red will represent that it is disabled.
 
-<img src="../_pages/coronavirus/files/ANMTutorial/Image6.png">
+![image-center](../assets/images/ANM6.png){: .align-center}
+{: style="font-size: medium;"}
 
 In *OpenGL Display*, you will be able to see the protein with numerous arrows that represents the calculated fluctuations.
 
-<img src="../_pages/coronavirus/files/ANMTutorial/Image7.png">
+![image-center](../assets/images/ANM7.png){: .align-center}
+{: style="font-size: medium;"}
 
 To actually see the protein move as described by the arrows, we have to create the animation. Go back to the *NMWiz - 6vw1_anm...* window and click *Make* next to *Animations*.
 
-<img src="../_pages/coronavirus/files/ANMTutorial/Image8.png">
+![image-center](../assets/images/ANM8.png){: .align-center}
+{: style="font-size: medium;"}
 
 *VMD Main* should now display a new row for the animation.
 
-<img src="../_pages/coronavirus/files/ANMTutorial/Image9.png">
+![image-center](../assets/images/ANM9.png){: .align-center}
+{: style="font-size: medium;"}
 
 The animation should also be visible in *OpenGL Display*. However, the previous visualizations are somewhat in the way. We can disable them in the same way as before by double-clicking on the letter 'D'.
 
-<img src="../_pages/coronavirus/files/ANMTutorial/Image10.png">
+![image-center](../assets/images/ANM10.png){: .align-center}
+{: style="font-size: medium;"}
 
 Now, you should be able to clearly see the animation of the ANM fluctuations of 6vw1.
 
-<video width="640" height="480" controls>
-<source type="video/mp4" src="../_pages/coronavirus/files/ANMTutorial/6vw1_chainF.mp4">
-</video>
+<center>
+<iframe width="640" height="360" src="../assets/6vw1_chainF.mp4" frameborder="0" allowfullscreen></iframe>
+</center>
 
 Now let's go back to the main text to interpret the results.
 

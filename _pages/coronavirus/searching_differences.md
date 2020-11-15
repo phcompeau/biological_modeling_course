@@ -53,15 +53,22 @@ In this tutorial, we will use Multiseq to align the SARS-CoV-2 (chimeric) RBD an
 
 In the tutorial, we calculated Qres between SARS-CoV-2 RBD and SARS RBD and identified four regions of structural differences. Because *Multseq* is a VMD plugin, we can create 3D visualizations of the structure and color them based on Qres. Below is the visualization of the imposed structures of SARS (*2ajf*) and SARS-CoV-2 (*6vw1*) RBD with ACE2 (in green). Blue represents regions of high *Qres* while red represents regions of low *Qres*. Because we want to find structural differences that cause SARS-CoV-2 RBD to bind to ACE2 with greater affinity, it is a good idea to focus on regions in or next to the binding site such as the highlighted region.
 
-<img src="../_pages/coronavirus/files/QresVMD2.png">
 
-This region corresponds to the SARS-CoV-2 residues 476 to 485.
- 
-<img src="../_pages/coronavirus/files/QresResult.png">
+![image-center](../assets/images/QresVMD.png){: .align-center}
+This is a visualization showing the superposed structures of SARS-CoV-2 chimeric RBD and SARS RBD in blue and red based on Qres. Blue indicates high Qres and red indicates low Qres. ACE2 is shown in green. The highlighted region is one of the four regions of potential structural differences. Because it is adjacent to ACE2, it is likely that the structural difference here will affect ACE2 interactions.
+{: style="font-size: medium;"}
+
+![image-center](../assets/images/QresResult.png){: .align-center}
+This is a small snapshot of the sequence alignment between SARS RBD (above) and SARS-CoV-2 chimeric RBD (below) with the color blue representing high Qres and red representing low Qres. The region of low Qres corresponds to the highlighted region in the previous figure. More specifically, this region corresponds to SARS-CoV-2 residues 476 to 485.
+{: style="font-size: medium;"}
 
 From this analysis, we now identified a region that is structurally different between SARS-CoV-2 RBD and SARS RBD and is near the binding site of ACE2. In the next lesson, we will see what the specific differences are and how they affect the binding affinity.
 
 [Next lesson](structural_diff){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
+
+[^Hamming]: Hamming, I., Timens, W., Bulthuis, M. L., Lely, A. T., Navis, G., & van Goor, H. 2004. Tissue distribution of ACE2 protein, the functional receptor for SARS coronavirus. A first step in understanding SARS pathogenesis. The Journal of pathology, 203(2), 631–637. https://doi.org/10.1002/path.1570
+
+[^Samavati]: Samavati, L., & Uhal, B. D. 2020. ACE2, Much More Than Just a Receptor for SARS-COV-2. Frontiers in cellular and infection microbiology, 10, 317. https://doi.org/10.3389/fcimb.2020.00317
 
 [^Eastwood]: Eastwood, M. P., Hardin, C., Luthey-Schulten, Z., Wolynes, P. G. 2001. Evaluating protein structure-prediction schemes using energy landscape theory. IBM Journal of Research and Development 45(3.4), 475-497. https://doi.org/10.1147/rd.453.0475

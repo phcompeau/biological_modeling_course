@@ -46,7 +46,7 @@ Since our algorithm may get stuck in a local minimum, we are looking for an algo
 
 ## Applying an *ab initio* algorithm to a protein sequence
 
-In the tutorial linked below, we will use software named [Quark](https://zhanglab.ccmb.med.umich.edu/QUARK/), which has a web interface, to run an *ab initio* structure prediction algorithm. Quark is even more sophisticated than the algorithm discussed in the previous section. For one, it compiles a database of fragments of known protein structures to compare our candidate protein structure against. Furthermore, it applies a combination of multiple scoring functions to determine the lowest energy conformation available.
+In the tutorial linked below, we will use software named [Quark](https://zhanglab.ccmb.med.umich.edu/QUARK/), which has a web interface, to run an *ab initio* structure prediction algorithm. Quark is even more sophisticated than the algorithm discussed in the previous section. For example, this algorithm applies a combination of multiple scoring functions to determine the lowest energy conformation available.
 
 Despite the sophistication of software like Quark, *ab initio* algorithms are still an active area of research, and we still lack an approach that is both fast and reliable. The larger the protein we use, the longer our query will take, and the more inaccurate the resulting structure may be. Accordingly, many *ab initio* algorithms limit the allowable length of a protein sequence. This is the case for Quark, which limits us to 200 amino acids. Since the SARS-CoV-2 spike protein contains 1281 amino acids, we will instead demonstrate how to use this software on the shorter human hemoglobin subunit alpha.
 
@@ -75,8 +75,18 @@ Yet at the same time, we wonder how we can speed up our structure prediction alg
 
 ## Extra
 
-* Models published before crystallography can be found here: https://www.ssgcid.org/cttdb/molecularmodel_list/?target__icontains=BewuA
+* Somewhere need trimer of dimers for spike protein
 
-* Need to define side chain
+* Models published before crystallography can be found here: [SSGCID Models](https://www.ssgcid.org/cttdb/molecularmodel_list/?target__icontains=BewuA)
 
-* For a simple analogy of an energy landscape, imagine a ball on the top of a hill: <img src="../_pages/coronavirus/files/EnergyCartoon.png">
+* Need to define side chain: The side chain, commonly referred to as the R group or side group, is the part of an amino acid that distinguishes the twenty amino acids that are have identical structures everywhere else. Directly connected to the central, alpha-Carbon, the side chain is fully responsible for the chemical properties of each amino acid.
+
+![image-center](../assets/images/AminoAcidChart.png){: .align-center}
+A chart of the twenty amino acid grouped by chemical properties. The side chain of each amino acid is highlighted in blue. Source: OpenStax, Biology. OpenStax CNX. Sep 15, 2020 http://cnx.org/contents/185cbf87-c72e-48f5-b51e-f14f21b5eabd@14.1
+{: style="font-size: medium;"}
+
+* For a simple analogy of an energy landscape, imagine a ball on the top of a hill:
+
+![image-center](../assets/images/EnergyCartoon.png){: .align-center}
+A ball on top of a hill represents a high energy system. The ball is unstable and will spontaneously roll down the hill before coming to a stop at the bottom of a valley, representing a low energy system. The ball is now stable and will not move on its own.
+{: style="font-size: medium;"}
