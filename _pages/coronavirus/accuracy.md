@@ -33,7 +33,21 @@ In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the 
 
 **START HERE -- TAKE A CIRCLE AND A SQUARE**
 
+* Any pitfalls that you see?
+
+* One is that the figures could be identical but rotated. Another is that we need to make sure that *n* is big enough. The latter is easy to fix but the former is not.
+
 **ANOTHER PITFALL IS WE NEED TO MAKE SURE THAT N IS BIG ENOUGH; CAN BE ILLUSTRATED WITH SQUARE EXAMPLE. Pointer that this is not so much of an issue with protein structures since we have the position of every atom in a .pdb file.**
+
+* Then transition to Kabsch algorithm and finding the rotation of the figure that minimizes the RMSD. The RMSD of this minimization is the distance function *d* that we were looking for given two shapes.
+
+* Discussion of vectorizing protein structures based on their chain of alpha carbons.
+
+* Even with this specification, our algorithm can have pitfalls -- transition to Chris's figures in their own section.
+
+* Then show RMSD for our given .pdb files.
+
+* Finally, the conclusion should say something about the huge benefits of this approach for proteins where we don'th ave funds for study and for giving a quick early answer. Point to part 2, which we continue next, and where we get into the comparisons of the two viruses.
 
 For example, consider the two shapes in the figure below. We vectorize these shapes as
 
