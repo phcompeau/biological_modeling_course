@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-In this software tutorial, we will apply three popular software resources (SWISS-MODEL, GalaxyWEB, and Robetta) for homology modeling of the SARS-CoV-2 S protein. Recall that the S protein is a homotrimer, meaning that it consists of three identical protein structures, or chains. Therefore, we will predict the sequence of a single chain in what follows.
+In this software tutorial, we will apply three popular software resources (SWISS-MODEL, Robetta, and GalaxyWEB) for homology modeling of the SARS-CoV-2 S protein. Recall that the S protein is a homotrimer, meaning that it consists of three identical protein structures, or chains. Therefore, we will predict the sequence of a single chain in what follows.
 
 ## SWISS-MODEL
 The SWISS-MODEL pipeline comprises four steps.
@@ -38,27 +38,27 @@ Structures of the SARS-CoV spike protein (PDB entry 6vxx) and the three models o
 {: style="font-size: medium;"}
 
 ## Robetta
-<a href="https://robetta.bakerlab.org/" target="_blank">Robetta</a> is a web-server that provides comparative and *ab initio* modeling of protein domains by utilizing the Rosetta fragment insertion method and de novo protocols. It allows for custom sequence alignments and can model multi-chain complexes. Robetta was chosen to model a single chain of the SARS-CoV-2 Spike protein. We will also be modeling a single chain of the SARS-CoV-2 S protein here.
+Robetta is a publicly available software resource that uses the same software as the distributed Rosetta@home project that we mentioned earlier in this module. As with SWISS-MODEL, we will provide Robetta a single chain of the SARS-CoV-2 spike protein.
 
-First, if you had not already done so, download the sequence of the chain: <a href="/multiscale_biological_modeling/_pages/coronavirus/files/CoV2SpikeProteinSeq.txt" download>SARS-CoV-2 S Chain Sequence</a>
+First, if you had not already done so, download the sequence of the chain: <a href="/multiscale_biological_modeling/_pages/coronavirus/files/CoV2SpikeProteinSeq.txt" download>SARS-CoV-2 spike chain sequence</a>.
 
-Go to <a href="https://robetta.bakerlab.org/" target="_blank">Robetta</a> and register for an account.
+Next, visit <a href="https://robetta.bakerlab.org/" target="_blank">Robetta</a> and register for an account.
 
 ![image-center](../assets/images/Robetta1.png){: .align-center}
 {: style="font-size: medium;"}
 
-After you are done, go to *Structure Prediction>Submit*.
+Then, click on `Structure Prediction > Submit`.
 
 ![image-center](../assets/images/Robetta2.png){: .align-center}
 {: style="font-size: medium;"}
 
-Create a name for the job, i.e. "SARS-CoV-2 Spike Chain". Copy and paste the sequence into the *Protein sequence* box. Check *CM only* (for comparative/homology modeling), complete the simple arithmetic problem and finally click *Submit* to submit the job. Your results may take between an hour to a day. You will get an email notification after the job is complete, and you will be able to download the results. The tertiary structure of our results and the real structure of one chain of the S protein from the PDB entry <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a> can be seen below. You can also download our results if you wish.
+Create a name for the job, i.e. "SARS-CoV-2 Spike Chain". Copy and paste the downloaded sequence into the `Protein sequence` box. Check `CM only` (for homology modeling), complete the arithmetic problem provided to prove you are human, and then click `Submit`.
+
+You should receive an email notification with a link to results after between an hour and a day. Unlike SWISS-MODEL, Robetta did not deduce that the input protein was a trimer and only predicted a single chain. The structure of the results returned in our own run of Robetta and the real structure of one chain of the SARS spike protein from the PDB entry <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a> are visualized in the figure below. You can also <a href="../_pages/coronavirus/files/Robetta_Model.zip" download>download</a> our results if you like.
 
 ![image-center](../assets/images/RobettaResults.png){: .align-center}
-Tertiary structures of the PDB entry (6vxx) and homology models from Robetta of one of the chains of the SARS-CoV-2 S protein. The superposed structures of all structures is shown on the right.
+The structure of the SARS-CoV spike protein (PDB entry 6vxx) as well as homology models produced by Robetta of one of the chains of the SARS-CoV-2 S protein. The superimposition of all structures is shown on the right.
 {: style="font-size: medium;"}
-
-<a href="../_pages/coronavirus/files/Robetta_Model.zip" download>Robetta Results</a>
 
 ## GalaxyWEB
 <a href="http://galaxy.seoklab.org/" target="_blank">GalaxyWEB</a> is a web-server with many available services including protein structure prediction, structure refinement, protein interaction prediction, and GPCR applications. GalaxyTBM (the template-based modeling service) uses *<a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-3019-7" target="_blank">HHsearch</a>* to identify up to 20 templates, then matches the core sequence with the templates using *<a href="http://prodata.swmed.edu/promals3d/info/promals3d_help.html" target="_blank">PROMALS3D</a>*. Next, models are generated using *<a href="https://pubmed.ncbi.nlm.nih.gov/19089941/" target="_blank">MODELLERCSA</a>*.
@@ -79,12 +79,12 @@ Enter a job name, i.e. SARS-CoV-2 RBD. Enter an email address and then copy and 
 ![image-center](../assets/images/Galaxy2.png){: .align-center}
 {: style="font-size: medium;"}
 
-Your results will be done within a day and you will recieve an email notification. Then, you will be able to download your results. The tertiary structure of our results and the real structure of the S protein RBD from the PDB entry <a href="http://www.rcsb.org/structure/6LZG" target="_blank">6lzg</a> can be seen below. You can also download our results if you wish.
+Your results will be done within a day and you will recieve an email notification. Then, you will be able to download your results. The tertiary structure of our results and the real structure of the S protein RBD from the PDB entry <a href="http://www.rcsb.org/structure/6LZG" target="_blank">6lzg</a> can be seen below. You can also <a href="../_pages/coronavirus/files/GalaxyWEB_Models.zip" download>download</a> our results if you like.
 ![image-center](../assets/images/GalaxyResults.png){: .align-center}
 Tertiary structures of the PDB entry (6lzg) and homology models from GalaxyWEB of SARS-CoV-2 S protein RBD. The superposed structures of all structures is shown on the right.
 {: style="font-size: medium;"}
 
-<a href="../_pages/coronavirus/files/GalaxyWEB_Models.zip" download> GalaxyWEB Results</a>
+
 
 <hr>
 
