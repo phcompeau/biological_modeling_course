@@ -35,7 +35,7 @@ Our homology modeling approach for protein structure prediction should be able t
 
 Another way that homology modeling can be performed is to  refine our energy function so that we combine similarity to the template structure and physicochemical properties of our proposed structure into a single function. This is an involved process, but we provide a simplified way of thinking of this form of homology modeling. A structure that reduces free energy would decrease this function, but if a structure that is too dissimilar from the template would be penalized by increasing this function.
 
-In the following tutorial, we will use model the SARS-CoV-2 spike protein using different homology modeling software from three publicly available servers (SWISS-MODEL, Robetta, and GalaxyWEB). By using three different homology approaches, we will be able to have confidence that if the results are similar, then our structure prediction is reasonably *robust*. Furthermore, comparing the results of multiple different approaches may give us more insights into structure prediction.
+In the following tutorial, we will use model the SARS-CoV-2 spike protein using different homology modeling software from three publicly available servers (SWISS-MODEL, Robetta, and GalaxyWEB), all of which apply a variant of the fragment assembly approach. By using three different homology approaches, we will be able to have confidence that if the results are similar, then our structure prediction is reasonably *robust*. Furthermore, comparing the results of multiple different approaches may give us more insights into structure prediction.
 
 [Visit tutorial](tutorial_homology){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
