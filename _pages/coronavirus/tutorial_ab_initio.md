@@ -30,5 +30,5 @@ Once your job is finished, you will receive an email notification and the abilit
 
 Later in the module, we will learn how to assess the accuracy of our predicted structure models.
 
-[Return to main text](ab_initio){: .btn .btn--primary .btn--large}
+[Return to main text](ab_initio#toward-a-faster-approach-for-protein-structure-prediction){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
