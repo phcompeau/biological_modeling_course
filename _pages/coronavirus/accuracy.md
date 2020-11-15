@@ -17,7 +17,9 @@ toc_sticky: true
 
 where *n* is the number of pairs, *d* is the difference in value or distance between the pair. A lower RMSD value indicates a higher similarity between the two sets and a RMSD value of 0 indicates a perfect fit. Below is a simple example of how RMSD is calculated.
 
-<img src="../_pages/coronavirus/files/SampleRMSD.png">
+![image-center](../assets/images/SampleRMSD.png){: .align-center}
+Simple example of calculating RMSD between two paired sets of 3D-coordinates. The pairs are circles in the plot.
+{: style="font-size: medium;"}
 
 ## RMSD with Protein Structures
 
@@ -31,18 +33,25 @@ If you are interested in how the Kabsch algorithm works, click <a href="https://
 
 After this is done, we can then proceed to calculating the RMSD score between the two structures. The score would represent how much the positions of atoms deviate between the two structures, which is indicative of how different the overall structures are. By calculating RMSD between the protein model and the actual protein entry on PDB, we can assess how well the software and algorithm performed.
 
-<img src="../_pages/coronavirus/files/RMSDExample.png">
+![image-center](../assets/images/RMSDExample.png){: .align-center}
+This figure was taken from a study (Gurung et al.)[^Gurung] on novel anticancer Himalayan plant derived active compounds with macromolecular targets. Each molecule has its original co-crystal position overlayed with its docked pose, which slightly deviates in position. The RMSD between the original and docked pose was then calculated. Source: https://doi.org/10.1016/j.imu.2016.09.004
+{: style="font-size: medium;"}
 
 **STOP:** Can you think of example where a small difference between protein structures can cause a large inflation in RMSD score?
 {: .notice--primary}
 
 *	Unfortunately, there is no established threshold RMSD as scores vary based on protein size (larger proteins mean more fluctuating parts) and the resolution of the structure determination method. In addition, RMSD has its own flaws where a single misplaced loop or an off-angle bond can have profound effects on the score, as shown in the figure below. This is why other methods of structure comparisons are used in conjunction to RMSD for a more thorough comparison analysis. Nonetheless, a score under 2.0 angstroms is typically acceptable when comparing large molecules such as proteins.
 
-<img src="../_pages/coronavirus/files/RMSDCartoon.png">
+
+![image-center](../assets/images/RMSDCartoon.png){: .align-center}
+In this simple cartoon, a very minor difference in a loop can cause divations in every point within that loop. THis can cause an increase in RMSD between two otherwise identical structures.
+{: style="font-size: medium;"}
 
 (This is another cartoon to show the sensitivity of RMSD. We could use either figure)
 
-<img src="../_pages/coronavirus/files/RMSDCartoon2.png">
+![image-center](../assets/images/RMSDCartoon2.png){: .align-center}
+In this simple cartoon, the c-terminus (end of the protein) of a hypothetical protein is depicted with its connection to the rest of the protein. The blue and orange protein fragments only differ by a single amino acid (circled in red), causing a slight change in the position of every amino acid after it. This will cause a marked increase in RMSD between the two otherwise identical proteins.
+{: style="font-size: medium;"}
 
 In this tutorial, we will walk through how to calculate RMSD using two experimentally determined protein structures from the PDB: the SARS-CoV-2 S protein, <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a>, and SARS S protein, <a href="https://www.rcsb.org/structure/6CRX" target="_blank">6vrx</a>.
 
@@ -139,3 +148,5 @@ This concludes the part one of this module on how scientists can analyze new pro
 
 [Next lesson](multiseq){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
+
+[^Gurung]: Gurung A.B., Bhattacharjee, A., Ali, M.A. 2016. Exploring the physicochemical profile and the binding patterns of selected novel anticancer Himalayan plant derived active compounds with macromolecular targets. Informatics in Medicine Unlocked, 5, 1-14. https://doi.org/10.1016/j.imu.2016.09.004
