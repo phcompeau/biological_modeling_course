@@ -1,7 +1,7 @@
 ---
 permalink: /coronavirus/tutorial_homology
 title: "Protein Structure Prediction"
-sidebar: 
+sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
@@ -60,7 +60,7 @@ Tertiary structures of the PDB entry (6vxx) and homology models from Robetta of 
 
 Because GalaxyWEB as a sequence limit of 1000 amino acids, we cannot use the S protein chain. Instead, we can model the Receptor Binding Domain (RBD) of the S protein instead.
 
-First, download sequence: 
+First, download sequence:
 <a href="/multiscale_biological_modeling/_pages/coronavirus/files/CoV2SpikeRBDSeq.txt" download>CoV-2 RBD Sequence</a>
 
 Go to <a href="http://galaxy.seoklab.org/" target="_blank">GalaxyWEB</a>. At the top, go to *Services>TBM*.
@@ -86,7 +86,5 @@ Tertiary structures of the PDB entry (6lzg) and homology models from GalaxyWEB o
 In the next lesson, we will learn how to assess the accuracy of our predicted models and compare it to our previous *ab initio* results of human hemoglobin subunit a.
 
 
-[Return to main text](homology){: .btn .btn--primary .btn--x-large}
+[Return to main text](homology#applying-homology-modeling-to-sars-cov-2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
-
-
