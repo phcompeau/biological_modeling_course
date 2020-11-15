@@ -31,7 +31,9 @@ $$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{n} \cdot (d(s_1, t_1)^2 + d(s_2, t_2)^2 + 
 
 In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the distance between the points *s*<sub><em>i</em></sub> and *t*<sub><em>i</em></sub> in 2-D or 3-D space as the case may be. (Note: root mean square deviation is a commonly used approach when measuring pairwise differences between two vectors.)
 
-**START HERE**
+**START HERE -- TAKE A CIRCLE AND A SQUARE**
+
+**ANOTHER PITFALL IS WE NEED TO MAKE SURE THAT N IS BIG ENOUGH; CAN BE ILLUSTRATED WITH SQUARE EXAMPLE. Pointer that this is not so much of an issue with protein structures since we have the position of every atom in a .pdb file.**
 
 For example, consider the two shapes in the figure below. We vectorize these shapes as
 
