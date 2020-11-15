@@ -11,11 +11,17 @@ In the previous lesson, we saw how to predict the structure of a protein from it
 
 In this lesson, we will discuss how to compare these predicted structures against each other as well as against the verified structure of the SARS-CoV spike protein. Ultimately, this problem is no different than the comparison of two shapes.
 
-Consider the two shapes in the figure below. You will immediately see that these two shapes are the same, but training a computer to recognize that one shape has been flipped and rotated to yield the other is a nontrivial task. We are able to perform this task well because we have very highly evolved eyes that help us quickly cluster and classify the objects that we see in the world.
+Consider the two shapes in the figure below. You may  see that these two shapes are the same, but training a computer to recognize that one shape has been flipped and rotated to yield the other is a nontrivial task. We are able to perform this task well because we have very highly evolved eyes that help us quickly cluster and classify the objects that we see in the world.
 
 ![image-center](../assets/images/two_shapes.png){: .align-center}
-FILL IN
+The red shape can be flipped and then rotated to yield the blue shape. Although you may be able to see this correspondence, it will be difficult to identify whether two shapes are the same if they become much more complicated.
 {: style="font-size: medium;"}
+
+## An algorithm for comparison of two structures
+
+The best way to 
+
+## Pitfalls of structure comparison
 
 
 ## RMSD
