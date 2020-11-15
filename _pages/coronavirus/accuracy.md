@@ -7,6 +7,15 @@ toc: true
 toc_sticky: true
 ---
 
+In the previous lesson, we saw how to predict the structure of a protein from its sequence (as well as a library of known structures). We then used homology modeling to predict a structure for the SARS-CoV-2 spike protein using three different algorithms.
+
+In this lesson, we will discuss how to compare these predicted structures against each other as well as against the verified structure of the SARS-CoV spike protein. Ultimately, this problem is no different than the comparison of two shapes.
+
+Consider the two shapes in the figure below. You will immediately see that these two shapes are the same, but training a computer to recognize that one shape has been flipped and rotated to yield the other is a nontrivial task. We are able to perform this task well because we have very highly evolved eyes that help us quickly cluster and classify the objects that we see in the world.
+
+SHAPES FIGURE
+
+
 ## RMSD
 
 * We went through two methods of protein structure prediction, *ab initio* and template-based (homology and threading), and how there are many competing groups with different approaches. Regardless of how the predicted models are created, we need a way to assess the accuracy of the software and algorithm. We can do this by predicting the structure of a protein already in the Protein Data Bank (PDB) and then comparing the predicted model with the experimentally determined structure.
