@@ -13,11 +13,13 @@ We will use the PDB entry of the SARS-CoV-2 Spike protein, <a href="https://www.
 
 First, download and load 6vyb into VMD and go to *Graphics>Representations*. For VMD, there is no specific keyword to select glycans. A workaround is to use the keywords: "not protein and not water". To recreate the basic VMD visualizations of the glycans in the module, use the following representations. (For the protein chains, use *Glass3* for *Material*).
 
-<img src="../_pages/coronavirus/files/GlycanImage1.png">
+![image-center](../assets/images/GlycanImage1.png){: .align-center}
+{: style="font-size: medium;"}
 
 The end result should look like this:
 
-<img src="../_pages/coronavirus/files/GlycanImage2.png">
+![image-center](../assets/images/GlycanImage2.png){: .align-center}
+{: style="font-size: medium;"}
 
 In the visualization you just created, the three chains in the S protein are in dark green, dark orange, and dark yellow. The presumed glycans are shown in red. Notice how they are all over the S protein! You may have noticed that one of the chains appear to be different in that part of it is sticking out from the rest of the protein. This is because this the PDB entry 6vyb contains the structure of the SARS-CoV-2 S protein in its open conformation. Let's return to the main text to see what that means.
 
