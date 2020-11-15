@@ -128,7 +128,7 @@ coronavirus:
     children:
       - title: "Introduction<br><br>"
         url: /coronavirus/home
-  - title: Protein Structure
+  - title: Part 1: Protein Structure Prediction
     children:
       - title: "Introduction to Protein Structure Prediction<br><br>"
         url: /coronavirus/structure_intro
@@ -138,7 +138,7 @@ coronavirus:
         url: /coronavirus/homology
       - title: "Assessing Model Accuracy<br><br>"
         url: /coronavirus/accuracy
-  - title: Comparing SARS-CoV-2 and SARS
+  - title: Part 2: Comparing SARS-CoV-2 and SARS
     children:
       - title: "Searching for Differences<br><br>"
         url: /coronavirus/multiseq
