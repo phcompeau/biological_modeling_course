@@ -25,19 +25,17 @@ We will be using two PDB entries for comparison: <a href="https://www.rcsb.org/s
 ## VMD, Multiseq, and Qres
 There are tools that can help us identify where the two structures deviate from each other. The brute force method is to visualize the two RBDs and to rotate them around to see if you can spot any differences. We can do this by using <a href="https://www.ks.uiuc.edu/Research/vmd/" target="_blank">Visual Molecular Dynamics (VMD)</a>, a molecular visualization program that allows users to produce interactiable 3D visualizations of molecules. However, blindly looking for structural differences can waste a lot of time and effort.
 
-A good starting point would be to use the VMD plugin*<a href="https://www.ks.uiuc.edu/Research/vmd/plugins/multiseq/" target="_blank">Multiseq</a>*, a bioinformatics analysis environment that provides tools such as sequence and structural alignment. *Multiseq* is able to calculate structural conservation within aligned molecules by computing Q per residue. **Q** is a parameter that is used to indicate structural identity (how similar the structures are), and is similar to RMSD in that it depends on the distance between alpha carbons. Below is the equation for Q [^Eastwood].
+A good starting point would be to use the VMD plugin*<a href="https://www.ks.uiuc.edu/Research/vmd/plugins/multiseq/" target="_blank">Multiseq</a>*, a bioinformatics analysis environment that provides tools such as sequence and structural alignment. *Multiseq* is able to calculate structural conservation within aligned molecules by computing Q per residue. **Q-score**, or **Q**, qualitative measure of structure similarity by considering both the alignment length and RMSD. Q = 1 represents that the structures are identical, while a low Q-score (e.g. 0.1) represents low structure similarity. Q decreases with increasing RMSD or decreasing alignment length. Recognize that we can always lower RMSD by decreasing alignment length or increase alignment length with the expense of increasing RMSD. This contradictory requirement of low RMSD and high alignment length is eliminated by using the ratio of alignment length and RMSD. Below is the equation for Q [^Krissinel].
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=Q&space;=&space;\frac{2}{(N-1)(N-2)}\sum_{i<j-1}exp[-\frac{(r_{ij}-r_{i,j}^N)^2}{2\sigma_{ij}^2}]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Q&space;=&space;\frac{2}{(N-1)(N-2)}\sum_{i<j-1}exp[-\frac{(r_{ij}-r_{i,j}^N)^2}{2\sigma_{ij}^2}]" title="Q = \frac{2}{(N-1)(N-2)}\sum_{i<j-1}exp[-\frac{(r_{ij}-r_{i,j}^N)^2}{2\sigma_{ij}^2}]" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\large&space;Q&space;=&space;\frac{N_{align}^2}{(1&plus;(RMSD/R_0)^2)*N_{res1}*N_{res2}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\large&space;Q&space;=&space;\frac{N_{align}^2}{(1&plus;(RMSD/R_0)^2)*N_{res1}*N_{res2}}" title="\large Q = \frac{N_{align}^2}{(1+(RMSD/R_0)^2)*N_{res1}*N_{res2}}" /></a>
 
 where:  
 $$0<Q\leq1$$
-* N = number of residues
-* $$r_{ij}$$ = distance between alpha carbon pair
-* $$r_{ij}^N$$ = alpha carbon distance between residue i and residue j in the protein native state
-* $$\sigma_{ij}^2$$ = standard deviation
+* $$N_{align}$$ = number of aligned residues
+* $$R_0$$ = the emprical parameter, set to 3Å
+* $$N_{res1}$$ = number of residues in protien 1
+* $$N_{res2}$$ = number of residues in protien 2
 
-
-Q = 1 indicates that the aligned structures are identical. A low Q score implies that the structures do not align well and are different.
  
 **Q per residue (Qres)** is the measure of contribution of each residue to the overall Q value of the aligned structures. This is very useful for finding specific regions where the aligned proteins differ structurally from each other. To find these regions, we just need to locate regions where many residues have low Qres.
 
@@ -71,4 +69,4 @@ From this analysis, we now identified a region that is structurally different be
 
 [^Samavati]: Samavati, L., & Uhal, B. D. 2020. ACE2, Much More Than Just a Receptor for SARS-COV-2. Frontiers in cellular and infection microbiology, 10, 317. https://doi.org/10.3389/fcimb.2020.00317
 
-[^Eastwood]: Eastwood, M. P., Hardin, C., Luthey-Schulten, Z., Wolynes, P. G. 2001. Evaluating protein structure-prediction schemes using energy landscape theory. IBM Journal of Research and Development 45(3.4), 475-497. https://doi.org/10.1147/rd.453.0475
+[^Krissinel]: Krissinel E, Henrick K. 2004. Secondary-structure matching (SSM), a new tool for fast protein structure alignment in three dimensions. Acta Crystallogr D Biol Crystallogr, 60(Pt 12 Pt1), 2256-68. doi: 10.1107/S0907444904026460.
