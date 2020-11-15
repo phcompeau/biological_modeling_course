@@ -20,7 +20,9 @@ First, download the sequence of the protein:
 
 Next, go to *<a href="https://zhanglab.ccmb.med.umich.edu/QUARK2/" target="_blank">QUARK</a>* for the job submittion page. Here, we will copy and paste the sequence into the first box. Fill out the desired email adress to recieve the results. If you have never used *QUARK* before, you will need to register for a *QUARK* password. Follow the registration form and you will receive an email containing a six-digit password. Back in the job submittion page, enter your password and then click *Run QUARK*. The results should be finished within a few hours depending on the server load.
 
-<img src="../_pages/coronavirus/files/QuarkTutorial.png">
+![image-center](../assets/images/QuarkTutorial.png){: .align-center}
+{: style="font-size: medium;"}
+
 
 Once your job is finished, you will receive an email notification and the ability to download the results. In the main text, we will show a figure of our models as well as the real tertiary structure of human hemoglobin subunit alpha from the PDB entry <a href="https://www.rcsb.org/structure/1sI4" target="_blank">1si4</a>. You can also download our models if you wish.
 
