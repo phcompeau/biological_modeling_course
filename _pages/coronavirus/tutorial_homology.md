@@ -31,7 +31,7 @@ On the next page, copy and paste the sequence into the `Target Sequence(s):` box
 
 Your results may between an hour and a day to finish depending on how busy the server is. (In the meantime, you should run the remaining software.) When you receive an email notification, follow the link provided and you can download the final models.
 
-When we ran our job, SWISS-MODEL did indeed use the one of the PDB entries of SARS-CoV spike protein as the template (<a href="https://www.rcsb.org/structure/6CRX" target="_blank">6crx</a>) and correctly recognized that the template was a homotrimer. As a result, the software predicted a complete spike protein with all three chains included. An image of our results along with the known structure of the spike protein from the PDB entry <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a> can be seen below. You can also <a href="../_pages/coronavirus/files/SWISS_Model.zip" download>download</a> our results.
+When we ran our job, SWISS-MODEL did indeed use the one of the PDB entries of SARS-CoV spike protein as the template (<a href="https://www.rcsb.org/structure/6CRX" target="_blank">6crx</a>) and correctly recognized that the template was a homotrimer. As a result, the software predicted a complete spike protein with all three chains included. An image of our results along with the known structure of the spike protein from the PDB entry <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a> can be seen below. You can also <a href="../_pages/coronavirus/files/SWISS_Model.zip" download>download</a> our results. We will discuss how to interpret these results and in particular the `.pdb` file format when we return to the main text.
 
 ![image-center](../assets/images/SWISSResults.png){: .align-center}
 Structures of the SARS-CoV spike protein (PDB entry 6vxx) and the three models of the SARS-CoV-2 S protein reported by SWISS-MODEL. The superposed structures of all structures is shown on the right.
@@ -57,39 +57,35 @@ Create a name for the job, i.e. "SARS-CoV-2 Spike Chain". Copy and paste the dow
 You should receive an email notification with a link to results after between an hour and a day. Unlike SWISS-MODEL, Robetta did not deduce that the input protein was a trimer and only predicted a single chain. The structure of the results returned in our own run of Robetta and the real structure of one chain of the SARS spike protein from the PDB entry <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a> are visualized in the figure below. You can also <a href="../_pages/coronavirus/files/Robetta_Model.zip" download>download</a> our results if you like.
 
 ![image-center](../assets/images/RobettaResults.png){: .align-center}
-The structure of the SARS-CoV spike protein (PDB entry 6vxx) as well as homology models produced by Robetta of one of the chains of the SARS-CoV-2 S protein. The superimposition of all structures is shown on the right.
+The structure of one chain of the SARS-CoV spike protein (PDB entry 6vxx) as well as homology models produced by Robetta of one of the chains of the SARS-CoV-2 S protein. The superimposition of all structures is shown on the right.
 {: style="font-size: medium;"}
 
 ## GalaxyWEB
-<a href="http://galaxy.seoklab.org/" target="_blank">GalaxyWEB</a> is a web-server with many available services including protein structure prediction, structure refinement, protein interaction prediction, and GPCR applications. GalaxyTBM (the template-based modeling service) uses *<a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-3019-7" target="_blank">HHsearch</a>* to identify up to 20 templates, then matches the core sequence with the templates using *<a href="http://prodata.swmed.edu/promals3d/info/promals3d_help.html" target="_blank">PROMALS3D</a>*. Next, models are generated using *<a href="https://pubmed.ncbi.nlm.nih.gov/19089941/" target="_blank">MODELLERCSA</a>*.
+GalaxyWEB is a web-server with many available services including protein structure prediction, structure refinement, protein interaction prediction, and GPCR applications. GalaxyTBM (the template-based modeling service) uses *<a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-019-3019-7" target="_blank">HHsearch</a>* to identify up to 20 templates, and then matches the core sequence with the templates using *<a href="http://prodata.swmed.edu/promals3d/info/promals3d_help.html" target="_blank">PROMALS3D</a>*. Next, models are generated using *<a href="https://pubmed.ncbi.nlm.nih.gov/19089941/" target="_blank">MODELLERCSA</a>*.
 
-Because GalaxyWEB as a sequence limit of 1000 amino acids, we cannot use the S protein chain. Instead, we can model the Receptor Binding Domain (RBD) of the S protein instead.
+Because GalaxyWEB has a sequence limit of 1000 amino acids, we cannot use the entire spike protein chain. Instead, we will model the Receptor Binding Domain (RBD) of the spike protein, which we mentioned in the main text as being a variable region between the two viruses.
 
-First, download sequence:
-<a href="/multiscale_biological_modeling/_pages/coronavirus/files/CoV2SpikeRBDSeq.txt" download>CoV-2 RBD Sequence</a>
+First, <a href="/multiscale_biological_modeling/_pages/coronavirus/files/CoV2SpikeRBDSeq.txt" download>download</a> the sequence of the RBD.
 
-Go to <a href="http://galaxy.seoklab.org/" target="_blank">GalaxyWEB</a>. At the top, go to *Services>TBM*.
+Then, visit the <a href="http://galaxy.seoklab.org/" target="_blank">GalaxyWEB</a> homepage. At the top, click on `Services > TBM`.
 
 ![image-center](../assets/images/Galaxy1.png){: .align-center}
 {: style="font-size: medium;"}
 
-Enter a job name, i.e. SARS-CoV-2 RBD. Enter an email address and then copy and paste the sequence into the *SEQUENCE* box. Finally, click *Submit* to submit the job request.
-
+Enter a job name, i.e. `SARS-CoV-2 RBD`. Enter an email address and then copy and paste the RBD sequence into the `SEQUENCE` box. Finally, click `Submit`.
 
 ![image-center](../assets/images/Galaxy2.png){: .align-center}
 {: style="font-size: medium;"}
 
-Your results will be done within a day and you will recieve an email notification. Then, you will be able to download your results. The tertiary structure of our results and the real structure of the S protein RBD from the PDB entry <a href="http://www.rcsb.org/structure/6LZG" target="_blank">6lzg</a> can be seen below. You can also <a href="../_pages/coronavirus/files/GalaxyWEB_Models.zip" download>download</a> our results if you like.
+You should receive an email notification within a day with a link to your results. The results of our run of GalaxyWEB along with the validated structure of the SARS-CoV RBD (PDB entry: <a href="http://www.rcsb.org/structure/6LZG" target="_blank">6lzg</a>) are visualized in the figure below. You can also <a href="../_pages/coronavirus/files/GalaxyWEB_Models.zip" download>download</a> our results if you like.
+
 ![image-center](../assets/images/GalaxyResults.png){: .align-center}
 Tertiary structures of the PDB entry (6lzg) and homology models from GalaxyWEB of SARS-CoV-2 S protein RBD. The superposed structures of all structures is shown on the right.
 {: style="font-size: medium;"}
 
+## Interpreting the results of our software runs
 
-
-<hr>
-
-In the next lesson, we will learn how to assess the accuracy of our predicted models and compare it to our previous *ab initio* results of human hemoglobin subunit a.
-
+The results produced by each of the three runs of this software are stored in a `.pdb` file format. As we return to the main text, our question is how to interpret these results, so that we can then go about the work of comparing the models to each other and to the structure of the SARS-CoV spike protein.  
 
 [Return to main text](homology#applying-homology-modeling-to-sars-cov-2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
