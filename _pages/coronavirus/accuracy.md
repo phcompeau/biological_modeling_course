@@ -104,7 +104,7 @@ In this simple cartoon, the c-terminus (end of the protein) of a hypothetical pr
 
 In this tutorial, we will walk through how to calculate RMSD using two experimentally determined protein structures from the PDB: the SARS-CoV-2 S protein, <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a>, and SARS S protein, <a href="https://www.rcsb.org/structure/6CRX" target="_blank">6vrx</a>.
 
-[Visit tutorial](rmsd2){: .btn .btn--primary .btn--x-large}
+[Visit tutorial](rmsd2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 <hr>
