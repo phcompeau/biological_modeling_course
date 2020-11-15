@@ -19,16 +19,22 @@ The red shape can be flipped and then rotated to yield the blue shape. Although 
 
 ## An algorithm for comparison of two structures
 
-The best way to 
+Our goal is to produce a distance function *d*(*S*, *T*) that takes two shapes *S* and *T* as input and that quantifies how different these shapes are. If the two shapes are the same, then the distance between them should be zero, and the more different the shapes become, the larger *d* should become.
 
-## Pitfalls of structure comparison
+If we wanted to prove that the two shapes in the preceding figure were the same, then we might move the red shape to superimpose it over the blue shape, and then we would flip/rotate the red shape to show that its boundary coincides with the blue shape. We will use this idea as a way of producing our desired distance function between shapes *S* and *T*.
 
+First, we estimate the **center of mass** of each shape by sampling points from the boundary of the shape and taking the point whose coordinates are the average of the *x* and *y* coordinates of points on the boundary. We then superimpose *S* and *T* by translating one shape so that the two points have the same centroid.
 
-## RMSD
+Assuming that the two shapes have the same center of mass, we can then determine a distance between the two shapes in the following way. Just as we did when we estimated the center of mass, we sample *n* equally spaced points along the boundary of each shape. This means that *S* and *T* are converted into **vectors** *s* = (*s*<sub>1</sub>, ..., *s*<sub><em>n</em></sub>) and *t* = (*t*<sub>1</sub>, ..., *t*<sub><em>n</em></sub>), where *s*<sub><em>i</em></sub> is the *i*-th point on the boundary of *S*. We then compute the **root mean square deviation** between the two shapes as the square root of the average squared distance between corresponding points in their corresponding vectors.
 
-* We went through two methods of protein structure prediction, *ab initio* and template-based (homology and threading), and how there are many competing groups with different approaches. Regardless of how the predicted models are created, we need a way to assess the accuracy of the software and algorithm. We can do this by predicting the structure of a protein already in the Protein Data Bank (PDB) and then comparing the predicted model with the experimentally determined structure.
+$$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{n} \cdot (d(s_1, t_1)^2 + d(s_2, t_2)^2 + \cdots + d(s_n, t_n)^2)} $$
 
-* One popular method of comparing a predicted model and the actual structure is by calculating the Root Mean Square Deviation (RMSD). RMSD is commonly used in mathematics to quantitatively measure the difference between two paired sets of values.
+In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the distance between the points *s*<sub><em>i</em></sub> and *t*<sub><em>i</em></sub> in 2-D or 3-D space as the case may be. (Note: root mean square deviation is a commonly used approach when measuring pairwise differences between two vectors.)
+
+**START HERE**
+
+For example, consider the two shapes in the figure below. We vectorize these shapes as
+
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=RMSD&space;=&space;\sqrt{\frac{1}{n}\sum_{i-1}^nd^2_i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?RMSD&space;=&space;\sqrt{\frac{1}{n}\sum_{i-1}^nd^2_i}" title="RMSD = \sqrt{\frac{1}{n}\sum_{i-1}^nd^2_i}" /></a>
 
@@ -38,11 +44,21 @@ where *n* is the number of pairs, *d* is the difference in value or distance bet
 Simple example of calculating RMSD between two paired sets of 3D-coordinates. The pairs are circles in the plot.
 {: style="font-size: medium;"}
 
+**STOP:** Can you find a flaw with this method?
+{: .notice--primary}
+
+What is wrong with this method?
+
+
+
+Next, we
+
+## Pitfalls of structure comparison
+
+
 ## RMSD with Protein Structures
 
 Because protein structures are stored with atomic coordinates, we can calculate the RMSD between two structures like the example above, given that they have the same number of atoms. In this case, RMSD will be in the units of angstroms ($$10^{-10}$$ meters). However, due to the molecules being dynamic structures and constantly fluctuating, experimentally determined protein structures are not exact. In fact, most structures determined by x-ray crystallography, the most accurate method of structure determination, has a resolution between one to five angstroms. If we were to compare every single atom between two structures, the RMSD score can be greatly inflated Therefore, we typically only use the minimum requirement and compare the positions of the alpha-Carbons of the protein backbone. Just from the positions of the alpha-Carbons, we can get a pretty good idea of the tertiary structure of the protein (refer back to <a href="structure_intro">Introduction to Protein Structure Prediction</a>).
-
-However, there is an additional step for calculating RMSD when we are comparing two 3D structures. Because protein structures can be stored in a different orientations or starting points in the 3D-coordinate plane, we need to first superpose the structures on top of each other and make sure they are in the same orientation (minimizing RMSD). That way, we can make sure that the RMSD score actually represents structural deviation.
 
 First, we translate the structures to the same coordinate point, such as the origin. This is easily done by subtracting the coordinates of the centroid, or average coordinates, from all corresponding point coordinates for both structures. Now, both structures will be superposed on top of each other. The next, most tricky part, is finding the right orientation for the structures. This can be done using the Kabsch Algorithm. The output of the algorithm is a rotation matrix that describes how to rotate one of the structures to match the orientation of the other.
 
