@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/tutorial_homology
-title: "Protein Structure Prediction"
+title: "Using Homology Modeling to Predict the Structure of the SARS-CoV-2 Spike Protein"
 sidebar:
  nav: "coronavirus"
 toc: true
