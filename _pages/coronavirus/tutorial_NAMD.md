@@ -11,38 +11,46 @@ In this tutorial, will use NAMD Energy to calculate the interaction energy betwe
 
 First, load <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> into VMD. Afterwards, we will need to create a protein structure file (<a href="https://www.ks.uiuc.edu/Training/Tutorials/namd/namd-tutorial-unix-html/node23.html" target="_blank">PSF</a>) of 6vw1 in order to simulate the molecule. We will be using the VMD plugin *Atomatic PSF Builder* to create the file. From *VMD Main*, go to *Extensions>Modeling>Automatic PSF Builder*.
 
-<img src="../_pages/coronavirus/files/NAMDTutorial/Image1.png">
+![image-center](../assets/images/NAMD1.png){: .align-center}
+{: style="font-size: medium;"}
 
 In the *AutoPSF* window, make sure that the selected molecule is *6vw1.pdb* and the output to be *6vw1_autopsf*. Next click *Load input files*. In step 2, click *Protein* and then *Guess and split chains using current selections*. Afterwards, click *Create chains* and then *Apply patches and finish PSF/PDB*. 
 
-<img src="../_pages/coronavirus/files/NAMDTutorial/Image2.png">
+![image-center](../assets/images/NAMD2.png){: .align-center}
+{: style="font-size: medium;"}
 
 During this process, it is possible to see an error message stating "MOLECULE DESTROYED". If you see this message, click "Reset Autopsf" and repeat the steps again. The selected molecule will change, so make sure that the molecule is *6vw1.pdb* when you start over. Failed molecules remain in VMD, so deleting the failed molecule from *VMD Main* is recommended before each attempt.
 
-<img src="../_pages/coronavirus/files/NAMDTutorial/Image3.png">
+![image-center](../assets/images/NAMD3.png){: .align-center}
+{: style="font-size: medium;"}
 
 If the PSF file is successfully created, you will see a message stating "Structure complete." *VMD Main* also have an additional line.
 
-<img src="../_pages/coronavirus/files/NAMDTutorial/Image4.png">
+![image-center](../assets/images/NAMD4.png){: .align-center}
+{: style="font-size: medium;"}
 
-<img src="../_pages/coronavirus/files/NAMDTutorial/Image5.png">
+![image-center](../assets/images/NAMD5.png){: .align-center}
+{: style="font-size: medium;"}
 
 Now that we have the PSF file, we can proceed to NAMD Energy. In *VMD Main*, go to *Extensions>Analysis>NAMD Energy*.
 
-<img src="../_pages/coronavirus/files/NAMDTutorial/Image6.png">
+![image-center](../assets/images/NAMD6.png){: .align-center}
+{: style="font-size: medium;"}
 
 The *NAMDEnergy* window will show up. First, change the molecule to be the PSF file. We want to calculate the interaction energy between the RBD and ACE2. Recall that the corresponding chain pairs are chain A (ACE2)/chain E (RBD) and chain B (ACE2)/chain F (RBD). Here we will use the chain B/F pair. Put "protein and chain B" and "protein and chain F" for *Selection 1* and *Selection 2*, respectively. Next, we want to calculate the main protein-protein interaction energies, electrostatic and van der Waals. Under *Output File*, enter in the desired name for the results. Next, we need to give NAMDEnergy the parameter file *par_all36_prot.prm*. This should be located at *VMD>plugins>noarch>tcl>readcharmmpar1.3>par_all36_prot.prm*. Finally, click *Run NAMDEnergy*.
 
-<img src="../_pages/coronavirus/files/NAMDTutorial/Image7.png">
+![image-center](../assets/images/NAMD7.png){: .align-center}
+{: style="font-size: medium;"}
 
 The output file will be created in your current working directory, and can be opened with a simple text-editor. The values of the results may vary slightly upon repetitive calculations.
 
-<img src="../_pages/coronavirus/files/NAMDTutorial/Image8.png">
+![image-center](../assets/images/NAMD8.png){: .align-center}
+{: style="font-size: medium;"}
 
 Now, let's calculate the interaction energy between only the SARS-CoV-2 RBD loop site (residues 482 to 486) and ACE2. In the *NAMDEnergy* window, put "protein and chain B" for *Selection 1* and "protein and chain F and (resid 482 to 486)" for *Selection 2*. Keep everything else the same. You should get results similar to this.
 
-
-<img src="../_pages/coronavirus/files/NAMDTutorial/LoopEnergyOutput.png">
+![image-center](../assets/images/NAMD9.png){: .align-center}
+{: style="font-size: medium;"}
  
 You may be curious about why the interaction energy comes out to be a negative number. Just like in physics, the negative value describes the direction of the force. A negative value indicate an attractive force between the two molecules while a positive value indicate a repulsion force. Our results describe the interaction between SARS-CoV-2 RBD and ACE2 as a favorable interaction. The more negative the value, the greater the binding affinity between the two proteins.
 
