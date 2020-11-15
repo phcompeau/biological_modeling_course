@@ -3,8 +3,6 @@ permalink: /coronavirus/tutorial_ab_initio
 title: "Using ab initio Modeling to Predict the Structure of Hemoglobin Subunit Alpha"
 sidebar:
  nav: "coronavirus"
-toc: true
-toc_sticky: true
 ---
 
 In this software tutorial, we will use the popular *ab initio* modeling software called QUARK. Because of the difficulty of quickly and accurately reconstructing the structure of a long protein, QUARK limits us to only polypeptides with at most 200 amino acids.
