@@ -1,34 +1,30 @@
 ---
 permalink: /coronavirus/tutorial_ab_initio
-title: "Ab initio Structure Prediction Tutorial"
+title: "Using ab initio Modeling to Predict the Structure of Hemoglobin Subunit Alpha"
 sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
 ---
 
-* Note to self: make sure we mention multiple models
+In this software tutorial, we will use the popular *ab initio* modeling software called QUARK. Because of the difficulty of quickly and accurately reconstructing the structure of a long protein, QUARK limits us to only polypeptides with at most 200 amino acids.
 
-* Because this type of structure prediction is incredibly difficult and computationally intensive, there are still many problems with current *ab initio* algorithms. Perhaps one of the largest setbacks is that current algorithms severely limit the length of the input sequence in order to preserve accuracy and reduce runtime.
+Because the SARS-CoV-2 spike protein is 1281 amino acids, we will demonstrate how to use *QUARK* to predict the structure of a smaller protein. In what follows, we will use human hemoglobin subunit alpha (PDB entry [1si4](https://www.rcsb.org/structure/1sI4)), which is 141 amino acids long.
 
-The leading *ab initio* modeling algorithm *QUARK* limits the input to only 200 amino acids. As a result, we cannot use *ab initio* structure prediction on the RBD of SARS-CoV-2 (about 229 amino acids long according to PDB entry <a href="https://www.rcsb.org/structure/6M0J" target="_blank">6m0j</a>), let alone one of the chains of the S protein (about 1281 amino acids long).
+Before beginning, if you have not used QUARK before, then you will need to *<a href="https://zhanglab.ccmb.med.umich.edu/QUARK2/registration/" target="_blank">register for a QUARK account</a>* to use this software. After registering, you will receive an email containing a temporary password.
 
-* Nevertheless, we can use *QUARK* to try to model a smaller protein. Here we will use the human hemoglobin subunit alpha (from PDB entry <a href="https://www.rcsb.org/structure/1sI4" target="_blank">1si4</a>) , which is 141 amino acids long.
+Then, [download the sequence](../_pages/coronavirus/files/Human_Hemoglobin_subunit_alpha_Seq.txt) of the protein. Go to *<a href="https://zhanglab.ccmb.med.umich.edu/QUARK2/" target="_blank">QUARK</a>* to find the submission page for QUARK, where you should take the following steps as shown in the figure below.
 
-First, download the sequence of the protein:
-<a href="/multiscale_biological_modeling/_pages/coronavirus/files/Human_Hemoglobin_subunit_alpha_Seq.txt" download>Hemoglobin Sequence</a>.
-
-Next, go to *<a href="https://zhanglab.ccmb.med.umich.edu/QUARK2/" target="_blank">QUARK</a>* for the job submittion page. Here, we will copy and paste the sequence into the first box. Fill out the desired email adress to recieve the results. If you have never used *QUARK* before, you will need to register for a *QUARK* password. Follow the registration form and you will receive an email containing a six-digit password. Back in the job submittion page, enter your password and then click *Run QUARK*. The results should be finished within a few hours depending on the server load.
+1. Copy and paste the sequence into the first box.
+2. Add your email address and password.
+3. Click `Run QUARK`.
 
 ![image-center](../assets/images/QuarkTutorial.png){: .align-center}
 {: style="font-size: medium;"}
 
+Even though this is a short protein, it will take at least a few hours to run your submission, depending on server load. When your job has finished, you will receive an email notification and the ability to download the results.
 
-Once your job is finished, you will receive an email notification and the ability to download the results. In the main text, we will show a figure of our models as well as the real tertiary structure of human hemoglobin subunit alpha from the PDB entry <a href="https://www.rcsb.org/structure/1sI4" target="_blank">1si4</a>. You can also download our models if you wish.
-
-<a href="../_pages/coronavirus/files/QUARK_Hemoglobin.tar.bz2" download>QUARK Results</a>
-
-Later in the module, we will learn how to assess the accuracy of our predicted structure models.
+In the meantime, you may like to join us back in the main text. QUARK will not return a single best answer but rather the top five best-scoring structures that it finds. We will show a figure of our models and compare them to the known structure of human hemoglobin subunit alpha from the PDB entry <a href="https://www.rcsb.org/structure/1sI4" target="_blank">1si4</a>. You can also <a href="../_pages/coronavirus/files/QUARK_Hemoglobin.tar.bz2" download>download</a> our completed models if you like.
 
 [Return to main text](ab_initio#toward-a-faster-approach-for-protein-structure-prediction){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
