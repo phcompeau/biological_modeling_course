@@ -13,7 +13,9 @@ In this lesson, we will discuss how to compare these predicted structures agains
 
 Consider the two shapes in the figure below. You will immediately see that these two shapes are the same, but training a computer to recognize that one shape has been flipped and rotated to yield the other is a nontrivial task. We are able to perform this task well because we have very highly evolved eyes that help us quickly cluster and classify the objects that we see in the world.
 
-SHAPES FIGURE
+![image-center](../assets/images/two_shapes.png){: .align-center}
+FILL IN
+{: style="font-size: medium;"}
 
 
 ## RMSD
