@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-Three protein prediction software, SWISS-MODEL, GalaxyWEB, and Robetta were chosen for template-based modeling of the SARS-CoV-2 S protein. Recall that the S protein is a homotrimer, meaning that it consists of three identical protein sturctures, or chains. Therefore, we will use the sequence of a single chain for modeling.
+In this software tutorial, we will apply three popular software resources (SWISS-MODEL, GalaxyWEB, and Robetta) for homology modeling of the SARS-CoV-2 S protein. Recall that the S protein is a homotrimer, meaning that it consists of three identical protein structures, or chains. Therefore, we will predict the sequence of a single chain in what follows.
 
 ## SWISS-MODEL
 <a href="https://swissmodel.expasy.org/" target="_blank">SWISS-MODEL</a> is a well-known structural bioinformatics web-server that specializes in homology modeling. The pipeline is comprised for four steps. 1) Using BLAST and HHblits, templates are identified and stored in the SWISS-MODEL Template Library. 2) The target sequence and template structure(s) are aligned. 3) Building the predicted models through a rigid fragment assembly approach. 4) Qualitiative Model Energy Analysis (QMEAN), a composite scoring function for model quality assessment.

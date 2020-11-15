@@ -71,7 +71,7 @@ The above information is critical for understanding protein structure but is jus
 
 ## Extra
 
-* Need to have already specified that spike is a trimer
+* Need to have already specified that spike is a homotrimer before we appeal to the tutorial.
 
 * We need to make sure that the specification of the .pdb file type comes back somewhere before we give the results. It may be a perfect place to do so in this lesson.
 
