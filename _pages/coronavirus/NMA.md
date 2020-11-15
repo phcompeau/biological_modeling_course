@@ -106,7 +106,10 @@ Using NMWiz and VMD, we also created animations of the protein fluctuation calcu
 |Resid 31, 35 (Hotspot 31)|Orange|
 |Resid 38, 353 (Hotspot 353)|Red|
 
-<video width="640" height="480" controls><source type="video/mp4" src="../_pages/coronavirus/files/ANMImages/6vw1_B&F.mp4"></video>
+
+<center>
+<iframe width="640" height="360" src="../assets/6vw1_B&F.mp4" frameborder="0" allowfullscreen></iframe>
+</center>
 
 ### SARS Spike RBD (2ajf):
 {: .no_toc}
@@ -122,9 +125,9 @@ Using NMWiz and VMD, we also created animations of the protein fluctuation calcu
 |Resid 31, 35 (Hotspot 31)|Orange|
 |Resid 38, 353 (Hotspot 353)|Red|
 
-<video width="640" height="480" controls>
-<source type="video/mp4" src="../_pages/coronavirus/files/ANMImages/2ajf_B&F.mp4">
-</video>
+<center>
+<iframe width="640" height="360" src="../assets/2ajf_B&F.mp4" frameborder="0" allowfullscreen></iframe>
+</center>
 
 Using both the GNM and ANM approaches for normal mode analysis of SARS-CoV-2 S protein, we saw that it is structurally very similar to the SARS S protein. As we have stated in the <a href="structural_diff">Structural and ACE2 Interaction Differences</a> and <a href="NAMD">Interaction Energy with ACE2</a> lessons, the structural differences can be very subtle yet still contribute greatly with ACE2 binding affinity.
 

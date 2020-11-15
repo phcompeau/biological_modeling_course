@@ -53,26 +53,34 @@ Contact Map:
 ~~~ python
 In[#]: showContactMap(gnm);
 ~~~~
-<img src="../_pages/coronavirus/files/GNMTutorial/SARS-CoV-2_ChainA_Contact_20A.png">
+
+![image-center](../assets/images/SARS-CoV-2_ChainA_Contact_20A.png){: .align-center}
+{: style="font-size: medium;"}
 
 Cross-correlations:
 ~~~ python
 In[#]: showCrossCorr(gnm);
 ~~~~
-<img src="../_pages/coronavirus/files/GNMTutorial/SARS-CoV-2_ChainA_CrossCorr_20A.png">
+
+![image-center](../assets/images/SARS-CoV-2_ChainA_CrossCorr_20A.png){: .align-center}
+{: style="font-size: medium;"}
 
 Slow Mode Shape:
 ~~~ python
 In[#]: showMode(gnm[0], hinges=True)
 In[#]: grid();
 ~~~~~
-<img src="../_pages/coronavirus/files/GNMTutorial/SARS-CoV-2_ChainA_SlowMode_20A.png">
+
+![image-center](../assets/images/SARS-CoV-2_SlowMode_20A.png){: .align-center}
+{: style="font-size: medium;"}
 
 Square Fluctuations
 ~~~ python
 In[#]: showSqFlucts(gnm[0], hinges=True);
 ~~~~
-<img src="../_pages/coronavirus/files/GNMTutorial/SARS-CoV-2_ChainA_SqFlucts_20A.png">
+
+![image-center](../assets/images/SARS-CoV-2_ChainA_SqFlucts_20A.png){: .align-center}
+{: style="font-size: medium;"}
 
 Now, let's head back to the main text on how to read our visualizations and analyze our results.
 
