@@ -61,7 +61,7 @@ To specify the `.pdb` format further, first recall that the coronavirus spike pr
 5. the 3-D coordinates (*x*, *y*, *z*) of the atom in angstroms (10<sup>-10</sup> meters).
 
 ![image-center](../assets/images/simplifiedPDB.png){: .align-center}
-A simplified diagram showing how the `.pdb` format encodes the 3-D coordinates of every atom while labeling the identity of this atom and the chain on which it is found. Source: https://proteopedia.org/wiki/index.php/Atomic_coordinate_file
+A simplified diagram showing how the `.pdb` format encodes the 3-D coordinates of every atom while labeling the identity of this atom and the chain on which it is found. Source: [https://proteopedia.org/wiki/index.php/Atomic_coordinate_file](https://proteopedia.org/wiki/index.php/Atomic_coordinate_file).
 {: style="font-size: medium;"}
 
 The above information is critical for understanding protein structure but is just part of the information needed to fully represent a protein structure. For example, there are connections between amino acids called **disulfide bonds** that are also described within a `.pdb` file. For more information, check out the [official PDB documentation](http://www.wwpdb.org/documentation/file-format).
