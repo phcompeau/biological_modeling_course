@@ -80,7 +80,7 @@ Enter a job name, i.e. `SARS-CoV-2 RBD`. Enter an email address and then copy an
 You should receive an email notification within a day with a link to your results. The results of our run of GalaxyWEB along with the validated structure of the SARS-CoV RBD (PDB entry: <a href="http://www.rcsb.org/structure/6LZG" target="_blank">6lzg</a>) are visualized in the figure below. You can also <a href="../_pages/coronavirus/files/GalaxyWEB_Models.zip" download>download</a> our results if you like.
 
 ![image-center](../assets/images/GalaxyResults.png){: .align-center}
-Tertiary structures of the PDB entry (6lzg) and homology models from GalaxyWEB of SARS-CoV-2 S protein RBD. The superposed structures of all structures is shown on the right.
+Structures of the SARS-CoV RBD (PDB entry: 6lzg) as well as homology models predicted by GalaxyWEB for the SARS-CoV-2 spike protein RBD. The superimposition of all these structures is shown on the right.
 {: style="font-size: medium;"}
 
 ## Interpreting the results of our software runs
