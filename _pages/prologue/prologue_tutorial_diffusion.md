@@ -117,5 +117,7 @@ Above, we used a parameter when plotting called `Spectral` that uses a **color m
 
 As we return to the main text, we will discuss this animation and extend our model to be able to handle reactions as well as diffusion.
 
+You may also download the complete file here:<a href="https://github.com/phcompeau/biological_modeling_course/blob/master/tutorials/Diffusion%20Only%20Model.ipynb" download="diffusion_only_model.ipynb">Jupyter Notebook</a>.
+
 [Return to main text](blocks#adding-reactions-and-completing-the-gray-scott-model){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
