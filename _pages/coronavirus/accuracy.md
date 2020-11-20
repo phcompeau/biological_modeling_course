@@ -15,86 +15,58 @@ Ultimately, the problem of comparing protein structures is intrinsically similar
 The red shape can be flipped and then rotated to yield the blue shape. Although you may be able to see this correspondence, it will be difficult to identify whether two shapes are the same if they become much more complicated.
 {: style="font-size: medium;"}
 
-## An algorithm for comparison of two structures
+## The Kabsch algorithm for comparison of two shapes
 
 Our goal is to produce a distance function *d*(*S*, *T*) that takes two shapes *S* and *T* as input and that quantifies how different these shapes are. If the two shapes are the same, then the distance between them should be equal to zero; the more different the shapes become, the larger *d* should become.
 
 To demonstrate that the two shapes in the preceding figure were the same, we would need to first move the red shape to superimpose it over the blue shape, then flip the red shape, and finally rotate it so that its boundary coincides with the blue shape.
 
-
 ![image-center](../assets/images/shape_transformations.gif){: .align-center}
 We can transform the red shape into the blue shape by translating it, flipping it, and then rotating it.
 {: style="font-size: medium;"}
 
-We will use this idea as a way of producing our desired distance function between shapes *S* and *T*.
+More generally, *S* is the same shape as *T*, meaning that *d*(*S*, *T*) is equal to zero, if *S* can be translated, flipped, and/or rotated to produce *T*. The question is what to do if *S* and *T* are not the same to produce our desired distance function *d*(*S*, *T*).
 
-First, we estimate the **center of mass** of each shape by sampling points from the boundary of the shape and taking the point whose coordinates are the average of the *x* and *y* coordinates of points on the boundary. We then superimpose *S* and *T* by translating one shape so that the two points have the same centroid.
+Our idea is to translate, flip, and rotate *S* so that the resulting transformed shape resembles *T* as much as possible. We then define *d*(*S*, *T*) by how much this transformed shape differs from *T*.
 
-Assuming that the two shapes have the same center of mass, we can then determine a distance between the two shapes in the following way. Just as we did when we estimated the center of mass, we sample *n* equally spaced points along the boundary of each shape. This means that *S* and *T* are converted into **vectors** *s* = (*s*<sub>1</sub>, ..., *s*<sub><em>n</em></sub>) and *t* = (*t*<sub>1</sub>, ..., *t*<sub><em>n</em></sub>), where *s*<sub><em>i</em></sub> is the *i*-th point on the boundary of *S*. We then compute the **root mean square deviation** between the two shapes as the square root of the average squared distance between corresponding points in their corresponding vectors.
+To this end, we first translate *S* to have the same **center of mass** as *T*. This is not a particularly difficult problem because the center of mass of *S* is found at the point (*x*<sub><em>S</em></sub>, *y*<sub><em>S</em></sub>) such that *x*<sub><em>S</em></sub> is the average of *x*-coordinates on the boundary of *S* and *y*<sub><em>S</em></sub> is the average of *y*-coordinates on the boundary.
+
+We can estimate the center of mass of *S* by sampling *n* points from the boundary of the shape and taking the point whose coordinates are the average of the *x* and *y* coordinates of points on the boundary. We then superimpose *S* and *T* by translating *S* so that its center of mass coincides with that of *T*.
+
+Next, we want to find the rotation of *S*, possibly along with a flip as well, that makes the shape resemble *T* as much as possible. Imagine first that we have found this rotation; we can then define *d*(*S*, *T*) in the following way. We sample *n* equally spaced points along the boundary of each shape, meaning that *S* and *T* are converted into **vectors** *s* = (*s*<sub>1</sub>, ..., *s*<sub><em>n</em></sub>) and *t* = (*t*<sub>1</sub>, ..., *t*<sub><em>n</em></sub>), where *s*<sub><em>i</em></sub> is the *i*-th point on the boundary of *S*. We then compute the **root mean square deviation (RMSD)** between the two shapes, which is the square root of the average squared distance between corresponding points in the vectors.
 
 $$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{n} \cdot (d(s_1, t_1)^2 + d(s_2, t_2)^2 + \cdots + d(s_n, t_n)^2)} $$
 
 In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the distance between the points *s*<sub><em>i</em></sub> and *t*<sub><em>i</em></sub> in 2-D or 3-D space as the case may be. (Note: root mean square deviation is a commonly used approach when measuring pairwise differences between two vectors.)
 
-**START HERE -- TAKE A CIRCLE AND A SQUARE**
+**NEED EXAMPLE OF RMSD -- CHRIS BELOW**
 
-* Any pitfalls that you see?
-
-* One is that the figures could be identical but rotated. Another is that we need to make sure that *n* is big enough. The latter is easy to fix but the former is not.
-
-**ANOTHER PITFALL IS WE NEED TO MAKE SURE THAT N IS BIG ENOUGH; CAN BE ILLUSTRATED WITH SQUARE EXAMPLE. Pointer that this is not so much of an issue with protein structures since we have the position of every atom in a .pdb file.**
-
-* Then transition to Kabsch algorithm and finding the rotation of the figure that minimizes the RMSD. The RMSD of this minimization is the distance function *d* that we were looking for given two shapes.
-
-* Discussion of vectorizing protein structures based on their chain of alpha carbons.
-
-* Even with this specification, our algorithm can have pitfalls -- transition to Chris's figures in their own section.
-
-* Then show RMSD for our given .pdb files.
-
-* Finally, the conclusion should say something about the huge benefits of this approach for proteins where we don'th ave funds for study and for giving a quick early answer. Point to part 2, which we continue next, and where we get into the comparisons of the two viruses.
-
-For example, consider the two shapes in the figure below. We vectorize these shapes as
-
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=RMSD&space;=&space;\sqrt{\frac{1}{n}\sum_{i-1}^nd^2_i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?RMSD&space;=&space;\sqrt{\frac{1}{n}\sum_{i-1}^nd^2_i}" title="RMSD = \sqrt{\frac{1}{n}\sum_{i-1}^nd^2_i}" /></a>
-
-where *n* is the number of pairs, *d* is the difference in value or distance between the pair. A lower RMSD value indicates a higher similarity between the two sets and a RMSD value of 0 indicates a perfect fit. Below is a simple example of how RMSD is calculated.
+Below is a simple example of how RMSD is calculated.
 
 ![image-center](../assets/images/SampleRMSD.png){: .align-center}
 Simple example of calculating RMSD between two paired sets of 3D-coordinates. The pairs are circles in the plot.
 {: style="font-size: medium;"}
 
-**STOP:** Can you find a flaw with this method?
+**RESUME**
+
+However, all this has left open the fact that we assumed that we had rotated *S* to be as "similar" to *T* as possible. In practice, we will need to find the rotation of *S* that *minimizes* the RMSD between our vectorizations of *S* and *T*, and this resulting minimum will be what we consider *d*(*S*, *T*). It turns out that there is an approach to find this rotation called the **Kabsch algoithm**, which requires some advanced linear algebra and is beyond the scope of our work but can be read about <a href="https://en.wikipedia.org/wiki/Kabsch_algorithm" target="_blank">here</a>.
+
+**STOP:** Do you see any potential pitfalls with our use of RMSD to determine how much two shapes differ?
 {: .notice--primary}
 
-What is wrong with this method?
+NEED A QUESTION ABOUT N BEING TOO LOW. SQUARE vs. SQUARE and SQUARE Vs CIRCLE
 
+## Applying the Kabsch algorithm for protein structure comparison
 
+* Discussion of vectorizing protein structures based on their chain of alpha carbons.
 
-Next, we
+* Even with this specification, our algorithm can have pitfalls -- transition to Chris's figures
 
-## Pitfalls of structure comparison
+* Then show RMSD for our given .pdb files.
 
+* Finally, the conclusion should say something about the huge benefits of this approach for proteins where we don'th ave funds for study and for giving a quick early answer. Point to part 2, which we continue next, and where we get into the comparisons of the two viruses.
 
-## RMSD with Protein Structures
-
-Because protein structures are stored with atomic coordinates, we can calculate the RMSD between two structures like the example above, given that they have the same number of atoms. In this case, RMSD will be in the units of angstroms ($$10^{-10}$$ meters). However, due to the molecules being dynamic structures and constantly fluctuating, experimentally determined protein structures are not exact. In fact, most structures determined by x-ray crystallography, the most accurate method of structure determination, has a resolution between one to five angstroms. If we were to compare every single atom between two structures, the RMSD score can be greatly inflated Therefore, we typically only use the minimum requirement and compare the positions of the alpha-Carbons of the protein backbone. Just from the positions of the alpha-Carbons, we can get a pretty good idea of the tertiary structure of the protein (refer back to <a href="structure_intro">Introduction to Protein Structure Prediction</a>).
-
-First, we translate the structures to the same coordinate point, such as the origin. This is easily done by subtracting the coordinates of the centroid, or average coordinates, from all corresponding point coordinates for both structures. Now, both structures will be superposed on top of each other. The next, most tricky part, is finding the right orientation for the structures. This can be done using the Kabsch Algorithm. The output of the algorithm is a rotation matrix that describes how to rotate one of the structures to match the orientation of the other.
-
-If you are interested in how the Kabsch algorithm works, click <a href="https://en.wikipedia.org/wiki/Kabsch_algorithm" target="_blank">here</a> (Wikipedia).
-
-After this is done, we can then proceed to calculating the RMSD score between the two structures. The score would represent how much the positions of atoms deviate between the two structures, which is indicative of how different the overall structures are. By calculating RMSD between the protein model and the actual protein entry on PDB, we can assess how well the software and algorithm performed.
-
-![image-center](../assets/images/RMSDExample.png){: .align-center}
-This figure was taken from a study (Gurung et al.)[^Gurung] on novel anticancer Himalayan plant derived active compounds with macromolecular targets. Each molecule has its original co-crystal position overlayed with its docked pose, which slightly deviates in position. The RMSD between the original and docked pose was then calculated. Source: https://doi.org/10.1016/j.imu.2016.09.004
-{: style="font-size: medium;"}
-
-**STOP:** Can you think of example where a small difference between protein structures can cause a large inflation in RMSD score?
-{: .notice--primary}
-
-*	Unfortunately, there is no established threshold RMSD as scores vary based on protein size (larger proteins mean more fluctuating parts) and the resolution of the structure determination method. In addition, RMSD has its own flaws where a single misplaced loop or an off-angle bond can have profound effects on the score, as shown in the figure below. This is why other methods of structure comparisons are used in conjunction to RMSD for a more thorough comparison analysis. Nonetheless, a score under 2.0 angstroms is typically acceptable when comparing large molecules such as proteins.
+* RMSD has its own flaws where a single misplaced loop or an off-angle bond can have profound effects on the score, as shown in the figure below. This is why other methods of structure comparisons are used in conjunction to RMSD for a more thorough comparison analysis. Nonetheless, a score under 2.0 angstroms is typically acceptable when comparing large molecules such as proteins.
 
 
 ![image-center](../assets/images/RMSDCartoon.png){: .align-center}
@@ -112,9 +84,18 @@ In this tutorial, we will walk through how to calculate RMSD using two experimen
 [Visit tutorial](rmsd2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-<hr>
 
-## Accuracy of Our Structure Prediction Models
+## RMSD with Protein Structures
+
+![image-center](../assets/images/RMSDExample.png){: .align-center}
+This figure was taken from a study (Gurung et al.)[^Gurung] on novel anticancer Himalayan plant derived active compounds with macromolecular targets. Each molecule has its original co-crystal position overlayed with its docked pose, which slightly deviates in position. The RMSD between the original and docked pose was then calculated. Source: https://doi.org/10.1016/j.imu.2016.09.004
+{: style="font-size: medium;"}
+
+**STOP:** Can you think of example where a small difference between protein structures can cause a large inflation in RMSD score?
+{: .notice--primary}
+
+
+## Determining the accuracy of our structure prediction models
 
 In the previous tutorials, we used various publically available protein structure servers to predict the structure of the human hemoglobin subunit alpha (*ab initio*) and SARS-CoV-2 S protein (homology). Using the same method of calculating RMSD from the tutorial, let's see how well our models performed.
 
