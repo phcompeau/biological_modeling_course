@@ -163,22 +163,26 @@ As explained above, the SSGCID models of the S protein released by <a href="http
 |SSGCID5|4.9636|4.6443|
 
 **STOP:** Consider the following three questions.
-1. Note that SSGCID3 modeled a single chain more accurately, but SSGCID4 modeled a more accurate full protein. What do you think might have caused this?
-2. Why do you think that the full protein RMSD values are so close to the single chain values?
-3. Which do you think performed more accurately on our predictions: SWISS-MODEL or Robetta?
+First, note that SSGCID3 modeled a single chain more accurately, but SSGCID4 modeled a more accurate full protein. What do you think might have caused this?
+
+Second, why do you think that the full protein RMSD values are so close to the single chain values?
+
+Finally, which do you think performed more accurately on our predictions: SWISS-MODEL or Robetta?
 {: .notice--primary}
 
 As we might expect due to their access to the resources of thousands of users' computers, the SSGCID models outperform our SWISS-MODEL models. But it is also worth noting that even with such a significant amount of computation, their RMSD values are not as close to zero as we might expect. Protein structure prediction remains a difficult problem.
 
-## Main Takeaway
+## Part 1 conclusion: SARS-CoV-2 protein structure prediction and open science
 
-RMSD is a useful method of calculating a quantitatively assessing the accuracy of predicted models. From our results, we saw that SSGCID models performed much better than the models produced by SWISS-MODEL and Robetta. In addition, GalaxyWEB produced highly accurate models with a much smaller sequence length. Although each web-server have different algorithms for homology modeling, the difference in performance support a positive correlation between computational power and accuracy, as well as a negative correlation between sequence length and accuracy.
+The models we assessed here may not be 100% accurate, but they all do a good job of approximating protein structure when this structure is not yet known experimentally. We have yet to decipher nature's magic algorithm for protein folding, and yet we can retain hope that continued improvements to our algorithms and ever-increasing computational resources will allow us to one day say, "good enough!".
 
-We can also compare the RMSD scores between *QUARK* and GalaxyWEB. Both servers were given a small amino acid sequence to create their models: 141 amino acids for *QUARK*, and 229 amino acids for *GalaxyWEB*. However, all the *QUARK* models exceeded the RMSD threshold, while GalaxyWEB models were highly accurate. From this we can see the difference in accuracy between *ab initio* modeling and homology modeling.
+We also hope that this discussion has provided perspective on how a problem in biological modeling can be easy to state and very difficult to solve. This is in sharp contrast to our work in previous modules, where we saw biological models that more or less quickly solved the problems presented to them. After all, the Soviets founded an entire [research insitute](https://www.protres.ru) dedicated to protein research in 1967. Most of the scientists who were there for its grand opening are dead now, and yet the institute carries on.
 
-Although we have yet to find nature's magic algorithm for protein folding, it is amazing how far protein structure prediction has improved over the years from the establishment of the Soviet research institution in the 1960s. The models we assessed here may not be 100% accurate, but they all do a good job on generating an approximate answer to the protein structure. As these algorithms continue to improve, the day when we solve the protein folding problem slowly approaches.
+Finally, we would point out that although scientific research five decades ago was, like the Soviet protein institute, siloed away from the public, the COVID-19 pandemic offers an excellent example of how citizens around the world can follow and even get involved in real research.
 
-This concludes the first part of this module on how scientists can analyze new proteins before their structures are experimentally determined. In part two of the module, we will explore the differences between SARS and-SARS CoV2 S protein by using the x-ray crystallography structures of the proteins that have been published on the PDB during the first wave of outbreak. With this comparison, our goal is to find molecular explanations of why SARS-CoV-2 is much more infectious.
+For example, the [GISAID](https://www.gisaid.org) organization published their first publicly available SARS-CoV-2 genome on December 24, 2019. Within six months, this database had grown to contain over 50,000 entries. At any point in early 2020, anyone could have grabbed their favorite SARS-CoV-2 genome, excised the sequence of the spike protein, and used one of a variety of different software resources to predict its structure. Alternatively, a more communally minded person could have enlisted their home machine as part of a global race to provide vaccine developers with accurate estimations of the protein's structure. Despite 2020 being a time of international crisis, the progress we have made in opening scientific research to the public is cause for optimism.
+
+Thus ends part 1 of this module. But there is still much for us to discuss. We hope that you will join us for part 2, in which we will delve into the differences between the spike proteins of SARS-CoV-1 and SARS-CoV-2 using the validated protein structures published to PDB early in the pandemic. Can we use modeling and computation to determine why SARS-CoV-2 has been so much more infectious? We hope that you will join us to find out.
 
 [Next lesson](multiseq){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
@@ -186,7 +190,3 @@ This concludes the first part of this module on how scientists can analyze new p
 ## Extra
 
 * Badly need to mention the published version of the spike protein
-
-* Finally, the conclusion should say something about the huge benefits of this approach for proteins where we don't have funds for study and for giving a quick early answer. Point to part 2, which we continue next, and where we get into the comparisons of the two viruses.
-
-* Citizen science and the ability for a normal person to get connected to research, whether by signing up their own machine or running a web server on a published dataset.
