@@ -83,10 +83,6 @@ In this tutorial, we will walk through how to calculate RMSD using two experimen
 
 ## RMSD with Protein Structures
 
-![image-center](../assets/images/RMSDExample.png){: .align-center}
-This figure was taken from a study (Gurung et al.)[^Gurung] on novel anticancer Himalayan plant derived active compounds with macromolecular targets. Each molecule has its original co-crystal position overlayed with its docked pose, which slightly deviates in position. The RMSD between the original and docked pose was then calculated. Source: https://doi.org/10.1016/j.imu.2016.09.004
-{: style="font-size: medium;"}
-
 **STOP:** Can you think of example where a small difference between protein structures can cause a large inflation in RMSD score?
 {: .notice--primary}
 
@@ -185,5 +181,3 @@ This concludes the part one of this module on how scientists can analyze new pro
 
 [Next lesson](multiseq){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
-
-[^Gurung]: Gurung A.B., Bhattacharjee, A., Ali, M.A. 2016. Exploring the physicochemical profile and the binding patterns of selected novel anticancer Himalayan plant derived active compounds with macromolecular targets. Informatics in Medicine Unlocked, 5, 1-14. https://doi.org/10.1016/j.imu.2016.09.004
