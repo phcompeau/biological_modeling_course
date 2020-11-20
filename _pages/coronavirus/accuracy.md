@@ -15,7 +15,7 @@ Ultimately, the problem of comparing protein structures is intrinsically similar
 The red shape can be flipped and then rotated to yield the blue shape. Although you may be able to see this correspondence, it will be difficult to identify whether two shapes are the same if they become much more complicated.
 {: style="font-size: medium;"}
 
-## The Kabsch algorithm for comparison of two shapes
+## Comparing two shapes with the Kabsch algorithm
 
 Our goal is to produce a distance function *d*(*S*, *T*) that takes two shapes *S* and *T* as input and that quantifies how different these shapes are. If the two shapes are the same, then the distance between them should be equal to zero; the more different the shapes become, the larger *d* should become.
 
@@ -56,15 +56,11 @@ However, all this has left open the fact that we assumed that we had rotated *S*
 
 NEED A QUESTION ABOUT N BEING TOO LOW. SQUARE vs. SQUARE and SQUARE Vs CIRCLE
 
-## Applying the Kabsch algorithm for protein structure comparison
+## Applying the Kabsch algorithm to protein structure comparison
 
-* Discussion of vectorizing protein structures based on their chain of alpha carbons.
+The Kabsch algorithm offers a compelling way to determine the similarity of two protein structures. We can convert a protein containing *n* amino acids into a vector of length *n* by selecting a single representative point from each amino acid. To do so, scientists typically choose the "alpha carbon", the amino acid's centrally located carbon atom that lies on the peptide's backbone; note that the position of this atom will already be present in the `.pdb` file for a given structure.
 
-* Even with this specification, our algorithm can have pitfalls -- transition to Chris's figures
-
-* Then show RMSD for our given .pdb files.
-
-* Finally, the conclusion should say something about the huge benefits of this approach for proteins where we don'th ave funds for study and for giving a quick early answer. Point to part 2, which we continue next, and where we get into the comparisons of the two viruses.
+* Even with this specification, our algorithm can have pitfalls -- transition to Chris's figures (see below).
 
 * RMSD has its own flaws where a single misplaced loop or an off-angle bond can have profound effects on the score, as shown in the figure below. This is why other methods of structure comparisons are used in conjunction to RMSD for a more thorough comparison analysis. Nonetheless, a score under 2.0 angstroms is typically acceptable when comparing large molecules such as proteins.
 
@@ -98,6 +94,12 @@ This figure was taken from a study (Gurung et al.)[^Gurung] on novel anticancer 
 ## Determining the accuracy of our structure prediction models
 
 In the previous tutorials, we used various publically available protein structure servers to predict the structure of the human hemoglobin subunit alpha (*ab initio*) and SARS-CoV-2 S protein (homology). Using the same method of calculating RMSD from the tutorial, let's see how well our models performed.
+
+* Then show RMSD for our given .pdb files.
+
+* Finally, the conclusion should say something about the huge benefits of this approach for proteins where we don't have funds for study and for giving a quick early answer. Point to part 2, which we continue next, and where we get into the comparisons of the two viruses.
+
+
 
 ### *Ab initio* (QUARK) models of Human Hemoglobin Subunit Alpha
 
