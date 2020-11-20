@@ -1,7 +1,7 @@
 ---
-permalink: /coronavirus/rmsd2
+permalink: /coronavirus/tutorial_rmsd
 title: "Calculating RMSD"
-sidebar: 
+sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
@@ -96,7 +96,7 @@ In[#]: calcRMSD(first_ca, second_ca)
 ~~~~~~
 The result should be an RMSD score of around 11.
 
-Now, let's head back to the main text to see how we use RMSD to assess the accuracy of the models we created of the SARS-COV-2 S protein. 
+Now, let's head back to the main text to see how we use RMSD to assess the accuracy of the models we created of the SARS-COV-2 S protein.
 
 [Return to main text](accuracy){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

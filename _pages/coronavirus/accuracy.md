@@ -83,7 +83,7 @@ These potential drawbacks of RMSD mean that we need to combine it with additiona
 
 In the following tutorial, we will walk through how to apply the Kabsch algorithm to two experimentally determined protein structures from the PDB: the SARS-CoV-2 S protein, <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a>, and SARS S protein, <a href="https://www.rcsb.org/structure/6CRX" target="_blank">6vrx</a>.
 
-[Visit tutorial](rmsd2){: .btn .btn--primary .btn--large}
+[Visit tutorial](tutorial_rmsd){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Determining the accuracy of our structure prediction models
