@@ -187,3 +187,5 @@ Thus ends part 1 of this module. But there is still much for us to discuss. We h
 ## Extra
 
 * Badly need to mention the published version of the spike protein
+
+* Fix discussion of vectorization and RMSD
