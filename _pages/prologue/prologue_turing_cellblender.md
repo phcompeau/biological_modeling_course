@@ -6,7 +6,7 @@ sidebar:
  nav: "prologue"
 ---
 
-Load the `CellBlender_Tutorial_Template.blend` file that you generated in the [Random Walk Tutorial](tutorial-random-walk). You may also download the complete file here:<a href="https://github.com/phcompeau/biological_modeling_course/blob/master/tutorials/CellBlender_Tutorial_Template.blend" download="CellBlender_Tutorial_Template.blend">Blend File</a>. Save this file as a new file named `turing_pattern.blend`.
+Load the `CellBlender_Tutorial_Template.blend` file that you generated in the [Random Walk Tutorial](tutorial-random-walk). You may also download the complete file here: <a href="https://github.com/phcompeau/biological_modeling_course/blob/master/tutorials/CellBlender_Tutorial_Template.blend" download="CellBlender_Tutorial_Template.blend">Blend File</a>. Save this file as a new file named `turing_pattern.blend`. The completed tutorial is also available here: <a href="https://github.com/phcompeau/biological_modeling_course/blob/master/tutorials/turing_pattern.blend" download="turing_pattern.blend">Blend File</a>.
 
 We will first visit `CellBlender > Molecules` and create the *B* molecules, as shown in the screenshot below.
 
@@ -142,8 +142,6 @@ The movie will begin playing, and when the animation is complete, the movie file
 You may be wondering how the parameters in the above simulations were chosen. The fact of the matter is that for many choices of these parameters, we will obtain behavior that does not produce an animation as interesting as what we found in this tutorial. Furthermore, try making slight changes to the feed and kill rates in the CellBlender reactions (e.g., multiplying one of them by 1.25) and watching the animation. How does a small change in parameters cause the animation to change?
 
 As we return to the main text, we will discuss how the patterns that we observe change as we make slight changes to these parameters. What biological conclusion can we draw from this phenomenon?
-
-You may also download the complete file here:<a href="https://github.com/phcompeau/biological_modeling_course/blob/master/tutorials/turing_pattern.blend" download="turing_pattern.blend">Blend File</a>.
 
 [Return to main text](animals#tuning-reaction-diffusion-parameters-produces-different-turing-patterns){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
