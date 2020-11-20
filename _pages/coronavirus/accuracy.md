@@ -73,7 +73,7 @@ To take one example of how the Kabsch algorithm may be flawed, consider the foll
 
 * RMSD has its own flaws where a single misplaced loop or an off-angle bond can have profound effects on the score, as shown in the figure below. This is why other methods of structure comparisons are used in conjunction to RMSD for a more thorough comparison analysis. Nonetheless, a score under 2.0 angstroms is typically acceptable when comparing large molecules such as proteins.
 
-![image-center](../assets/images/RMSD_weaknesses_mutation.png){: .align-center}
+![image-center](../assets/images/RMSD_weakness_mutation.png){: .align-center}
 Fill caption.
 {: style="font-size: medium;"}
 
