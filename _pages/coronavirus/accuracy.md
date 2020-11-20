@@ -7,6 +7,8 @@ toc: true
 toc_sticky: true
 ---
 
+## Protein structure comparison is related to shape comparison
+
 In the previous lesson, we saw how to predict the structure of a protein from its sequence (as well as a library of known structures). We then used homology modeling to predict a structure for the SARS-CoV-2 spike protein using three different algorithms. In this lesson, we will discuss how to compare these predicted structures against each other as well as against the verified structure of the SARS-CoV spike protein.
 
 Ultimately, the problem of comparing protein structures is intrinsically similar to the comparison of two shapes, a problem that we will discuss first. Consider the two shapes in the figure below. You may be able to see that these two shapes are the same, but training a computer to recognize that one shape has been flipped and rotated to yield the other is a nontrivial task. We are able to perform this task well because we have very highly evolved eyes that help us quickly cluster and classify the objects that we see in the world.
