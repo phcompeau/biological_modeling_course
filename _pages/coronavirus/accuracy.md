@@ -81,14 +81,16 @@ A simplification of two protein structures, one of which includes a loop of thre
 
 These potential drawbacks of RMSD mean that we need to combine it with additional methods of structure comparison in many practical applications. Nonetheless, if we apply the Kabsch algorithm and get a *small* value of RMSD (e.g., just a few angstroms), then we can have some confidence that the proteins are indeed similar.
 
-In the following tutorial, we will walk through how to apply the Kabsch algorithm to two protein structures in `.pdb` format. When we return from this tutorial, we will discuss how RMSD compares when comparing the validated structure of the SARS-CoV spike protein and the structures that we predicted for the SARS-CoV-2 spike protein in the previous lesson.
+In the following tutorial, we will walk through how to apply the Kabsch algorithm to two protein structures in `.pdb` format.
 
 [Visit tutorial](tutorial_rmsd){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Assessing the accuracy of our structure prediction models
 
-In the previous tutorials, we used various publicly available protein structure servers to predict the structure of the human hemoglobin subunit alpha (*ab initio*) and SARS-CoV-2 S protein (homology). Using the same method of calculating RMSD from the tutorial, let's see how well our models performed.
+In the tutorials occurring earlier in this module, we used publicly available protein structure prediction servers to predict the structure of human hemoglobin subunit alpha (using *ab initio* modeling) and the SARS-CoV-2 spike protein (using homology modeling).
+
+Let's see how well the models performed by showing the values of RMSD produced by the Kabsch algorithm when comparing  the same method of calculating RMSD from the tutorial, let's see how well our models performed.
 
 * Then show RMSD for our given .pdb files.
 
