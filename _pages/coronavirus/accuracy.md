@@ -11,17 +11,16 @@ toc_sticky: true
 
 In the previous lesson, we saw how to predict the structure of a protein from its sequence (as well as a library of known structures). We then used homology modeling to predict a structure for the SARS-CoV-2 spike protein using three different algorithms. In this lesson, we will discuss how to compare these predicted structures against each other as well as against the now verified structure of the SARS-CoV-2 spike protein.
 
-Ultimately, the problem of comparing protein structures is intrinsically similar to the comparison of two shapes, a problem that we will discuss first. Consider the two shapes in the figure below. You may be able to see that these two shapes are the same, but training a computer to recognize that one shape has been flipped and rotated to yield the other is a nontrivial task. We are able to perform this task well because we have very highly evolved eyes that help us quickly cluster and classify the objects that we see in the world.
+Ultimately, the problem of comparing protein structures is intrinsically similar to the comparison of two shapes, a problem that we will discuss first. Consider the two shapes in the figure below. Are these shapes the same? Even if you can answer this question, it is because we have very highly evolved eyes that help us quickly cluster and classify the objects that we see in the world. Training a computer to see objects as well as we can is more difficult than you think!
 
 ![image-center](../assets/images/two_shapes.png){: .align-center}
-The red shape can be flipped and then rotated to yield the blue shape. Although you may be able to see this correspondence, it will be difficult to identify whether two shapes are the same if they become much more complicated.
 {: style="font-size: medium;"}
 
 ## Comparing two shapes with the Kabsch algorithm
 
 Our goal is to produce a distance function *d*(*S*, *T*) that takes two shapes *S* and *T* as input and that quantifies how different these shapes are. If the two shapes are the same, then the distance between them should be equal to zero; the more different the shapes become, the larger *d* should become.
 
-To demonstrate that the two shapes in the preceding figure were the same, we would need to first move the red shape to superimpose it over the blue shape, then flip the red shape, and finally rotate it so that its boundary coincides with the blue shape.
+You may have noticed that the two shapes in the figure at the end of the previous section are the same. To demonstrate that this is true, we would need to first move the red shape to superimpose it over the blue shape, then flip the red shape, and finally rotate it so that its boundary coincides with the blue shape.
 
 ![image-center](../assets/images/shape_transformations.gif){: .align-center}
 We can transform the red shape into the blue shape by translating it, flipping it, and then rotating it.
@@ -39,9 +38,9 @@ Next, we want to find the rotation of *S*, possibly along with a flip as well, t
 
 $$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{n} \cdot (d(s_1, t_1)^2 + d(s_2, t_2)^2 + \cdots + d(s_n, t_n)^2)} $$
 
-In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the distance between the points *s*<sub><em>i</em></sub> and *t*<sub><em>i</em></sub> in 2-D or 3-D space as the case may be. (Note: root mean square deviation is a commonly used approach when measuring pairwise differences between two vectors.)
+In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the distance between the points *s*<sub><em>i</em></sub> and *t*<sub><em>i</em></sub> in 2-D or 3-D space as the case may be. (Note: RMSD is a very commonly used approach across many fields when measuring the differences between two vectors. If *n* is equal to 2 or 3, it is closely related to the Euclidean distance between the vectors.)
 
-**NEED EXAMPLE OF RMSD -- CHRIS BELOW, WILL NEED TO CLEAN UP**
+**NEED EXAMPLE OF RMSD -- WILL NEED TO CLEAN UP**
 
 Below is a simple example of how RMSD is calculated.
 
