@@ -88,6 +88,7 @@ Finally, we can calculate the RMSD score.
 ~~~~~~
 The result should be an RMSD score of around 3.
 It is also possible to merge matches to calculate the RMSD of the overall structure. In this example, both 6crx and 6vxx are each made up of three chains. Here we merge the three matches corresponding to A to A, B to B, and C to C.
+
 ~~~ python
 In[#]: first_ca = matches[0][0] + matches[4][0] + matches[8][0]
 In[#]: second_ca = matches [0][1] + matches[4][1] + matches[8][1]
@@ -96,7 +97,7 @@ In[#]: calcRMSD(first_ca, second_ca)
 ~~~~~~
 The result should be an RMSD score of around 11.
 
-Now, let's head back to the main text to see how we use RMSD to assess the accuracy of the models we created of the SARS-COV-2 S protein.
+Now, we will head back to the main text to see how we use RMSD to assess the accuracy of the models we created of the SARS-COV-2 S protein.
 
-[Return to main text](accuracy){: .btn .btn--primary .btn--large}
+[Return to main text](accuracy#assessing-the-accuracy-of-our-structure-prediction-models){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

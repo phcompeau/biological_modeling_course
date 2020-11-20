@@ -86,7 +86,7 @@ In the following tutorial, we will walk through how to apply the Kabsch algorith
 [Visit tutorial](tutorial_rmsd){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-## Determining the accuracy of our structure prediction models
+## Assessing the accuracy of our structure prediction models
 
 In the previous tutorials, we used various publicly available protein structure servers to predict the structure of the human hemoglobin subunit alpha (*ab initio*) and SARS-CoV-2 S protein (homology). Using the same method of calculating RMSD from the tutorial, let's see how well our models performed.
 
