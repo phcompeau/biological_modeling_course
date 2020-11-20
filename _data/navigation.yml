@@ -159,7 +159,7 @@ coronavirus:
       - title: "Homology Structure Prediction<br><br>"
         url: /coronavirus/tutorial_homology
       - title: "RMSD<br><br>"
-        url: /coronavirus/rmsd2
+        url: /coronavirus/tutorial_rmsd
       - title: "VMD and Multiseq<br><br>"
         url: /coronavirus/tutorial_multiseq
       - title: "Visualizing Regions and Residues<br><br>"
