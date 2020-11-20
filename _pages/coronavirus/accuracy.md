@@ -73,28 +73,22 @@ To take one example of how the Kabsch algorithm may be flawed, consider the figu
 (Top) Two hypothetical protein structures that differ in only a single bond angle between the third and fourth amino acids, shown in red. Each circle represents an alpha carbon. (Bottom left) Overlaying the first three amino acids shows how much the change in the bond angle throws off the computation of RMSD by increasing the distances between corresponding alpha carbons. (Bottom right) The Kabsch algorithm would align the centers of gravity of the two structures in order to minimize RMSD between corresponding alpha carbons. This makes it difficult for the untrained observer to notice that the two proteins only really differ in a single bond angle.
 {: style="font-size: medium;"}
 
-Another way in which the Kabsch algorithm could be fooled is if
+Another way in which the Kabsch algorithm could be fooled is in the case of a substructure that is appended to the side of a structure and that throws off the ordering of the amino acids. For example, consider the following toy example of a structure into which we incorporate a loop.
 
 ![image-center](../assets/images/RMSD_weakness_loop.png){: .align-center}
-Figure caption.
+A simplification of two protein structures, one of which includes a loop of three amino acids. After the loop, each amino acid in the orange structure will be compared against an amino acid that occurs farther long in the blue structure, thus increasing *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>)<sup>2</sup> for each such amino acid.
 {: style="font-size: medium;"}
 
-* RMSD has its own flaws where a single misplaced loop or an off-angle bond can have profound effects on the score, as shown in the figure below. This is why other methods of structure comparisons are used in conjunction to RMSD for a more thorough comparison analysis. Nonetheless, a score under 2.0 angstroms is typically acceptable when comparing large molecules such as proteins.
+These potential drawbacks of RMSD mean that we need to combine it with additional methods of structure comparison in many practical applications. Nonetheless, if we apply the Kabsch algorithm and get a *small* value of RMSD (e.g., just a few angstroms), then we can have some confidence that the proteins are indeed similar.
 
-![image-center](../assets/images/RMSDCartoon2.png){: .align-center}
-In this simple cartoon, the c-terminus (end of the protein) of a hypothetical protein is depicted with its connection to the rest of the protein. The blue and orange protein fragments only differ by a single amino acid (circled in red), causing a slight change in the position of every amino acid after it. This will cause a marked increase in RMSD between the two otherwise identical proteins.
-{: style="font-size: medium;"}
-
-In this tutorial, we will walk through how to calculate RMSD using two experimentally determined protein structures from the PDB: the SARS-CoV-2 S protein, <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a>, and SARS S protein, <a href="https://www.rcsb.org/structure/6CRX" target="_blank">6vrx</a>.
+In the following tutorial, we will walk through how to apply the Kabsch algorithm to two experimentally determined protein structures from the PDB: the SARS-CoV-2 S protein, <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a>, and SARS S protein, <a href="https://www.rcsb.org/structure/6CRX" target="_blank">6vrx</a>.
 
 [Visit tutorial](rmsd2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-
-
 ## Determining the accuracy of our structure prediction models
 
-In the previous tutorials, we used various publically available protein structure servers to predict the structure of the human hemoglobin subunit alpha (*ab initio*) and SARS-CoV-2 S protein (homology). Using the same method of calculating RMSD from the tutorial, let's see how well our models performed.
+In the previous tutorials, we used various publicly available protein structure servers to predict the structure of the human hemoglobin subunit alpha (*ab initio*) and SARS-CoV-2 S protein (homology). Using the same method of calculating RMSD from the tutorial, let's see how well our models performed.
 
 * Then show RMSD for our given .pdb files.
 
