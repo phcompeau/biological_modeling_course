@@ -70,19 +70,16 @@ Applying the Kabsch algorithm to find the translation and rotation of a given pr
 To take one example of how the Kabsch algorithm may be flawed, consider the figure below showing two toy protein structures. The orange structure (*S*) is identical to the blue structure (*T*) except for the change in a single bond angle between the third and fourth amino acids. And yet this tiny change in the protein's structure means that the computation of *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>)<sup>2</sup> for every *i* greater than 3 winds up being significant, increasing the RMSD significantly.
 
 ![image-center](../assets/images/RMSD_weakness_mutation.png){: .align-center}
-(Top) Two hypothetical protein structures that differ in only a single bond angle between the third and fourth amino acids, shown in red. Each circle represents an alpha carbon. (Bottom left) Overlaying the first three amino acids shows how much the change in the bond angle throws off the computation of RMSD by increasing the distances between corresponding alpha carbons. (Bottom right) The Kabsch algorithm would align the centers of gravity of the two structures in order to minimize RMSD between corresponding alpha carbons. This makes it difficult for the untrained observer to notice that the two proteins only really differ in a single bond angle. 
+(Top) Two hypothetical protein structures that differ in only a single bond angle between the third and fourth amino acids, shown in red. Each circle represents an alpha carbon. (Bottom left) Overlaying the first three amino acids shows how much the change in the bond angle throws off the computation of RMSD by increasing the distances between corresponding alpha carbons. (Bottom right) The Kabsch algorithm would align the centers of gravity of the two structures in order to minimize RMSD between corresponding alpha carbons. This makes it difficult for the untrained observer to notice that the two proteins only really differ in a single bond angle.
+{: style="font-size: medium;"}
+
+Another way in which the Kabsch algorithm could be fooled is if
+
+![image-center](../assets/images/RMSD_weakness_loop.png){: .align-center}
+Figure caption.
 {: style="font-size: medium;"}
 
 * RMSD has its own flaws where a single misplaced loop or an off-angle bond can have profound effects on the score, as shown in the figure below. This is why other methods of structure comparisons are used in conjunction to RMSD for a more thorough comparison analysis. Nonetheless, a score under 2.0 angstroms is typically acceptable when comparing large molecules such as proteins.
-
-
-
-
-![image-center](../assets/images/RMSDCartoon.png){: .align-center}
-In this simple cartoon, a very minor difference in a loop can cause divations in every point within that loop. THis can cause an increase in RMSD between two otherwise identical structures.
-{: style="font-size: medium;"}
-
-(This is another cartoon to show the sensitivity of RMSD. We could use either figure)
 
 ![image-center](../assets/images/RMSDCartoon2.png){: .align-center}
 In this simple cartoon, the c-terminus (end of the protein) of a hypothetical protein is depicted with its connection to the rest of the protein. The blue and orange protein fragments only differ by a single amino acid (circled in red), causing a slight change in the position of every amino acid after it. This will cause a marked increase in RMSD between the two otherwise identical proteins.
