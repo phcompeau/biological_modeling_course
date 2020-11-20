@@ -39,7 +39,7 @@ $$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{n} \cdot (d(s_1, t_1)^2 + d(s_2, t_2)^2 + 
 
 In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the distance between the points *s*<sub><em>i</em></sub> and *t*<sub><em>i</em></sub> in 2-D or 3-D space as the case may be. (Note: root mean square deviation is a commonly used approach when measuring pairwise differences between two vectors.)
 
-**NEED EXAMPLE OF RMSD -- CHRIS BELOW**
+**NEED EXAMPLE OF RMSD -- CHRIS BELOW, WILL NEED TO CLEAN UP**
 
 Below is a simple example of how RMSD is calculated.
 
