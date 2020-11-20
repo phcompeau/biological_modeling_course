@@ -162,11 +162,9 @@ As explained above, the SSGCID models of the S protein released by <a href="http
 |SSGCID4|2.0854|2.047|
 |SSGCID5|4.9636|4.6443|
 
-**STOP:** Consider the following three questions.
-First, note that SSGCID3 modeled a single chain more accurately, but SSGCID4 modeled a more accurate full protein. What do you think might have caused this?
-
-Second, why do you think that the full protein RMSD values are so close to the single chain values?
-
+**STOP:** Consider the following three questions.<br><br>
+First, note that SSGCID3 modeled a single chain more accurately, but SSGCID4 modeled a more accurate full protein. What do you think might have caused this?<br><br>
+Second, why do you think that the full protein RMSD values are so close to the single chain values?<br><br>
 Finally, which do you think performed more accurately on our predictions: SWISS-MODEL or Robetta?
 {: .notice--primary}
 
