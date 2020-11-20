@@ -65,11 +65,15 @@ The Kabsch algorithm offers a compelling way to determine the similarity of two 
 **STOP:** Can you think of example where a small difference between protein structures can cause a large inflation in RMSD score?
 {: .notice--primary}
 
+Applying the Kabsch algorithm to find the translation and rotation of a given protein structure that minimizes RMSD compared to another structure is a reasonable idea that may work well in practice. Yet there is no perfect metric for shape comparison, and the Kabsch algorithm is no different.
+
+To take one example of how the Kabsch algorithm may be flawed, consider the following
+
 * Even with this specification, our algorithm can have pitfalls -- transition to Chris's figures (see below).
 
 * RMSD has its own flaws where a single misplaced loop or an off-angle bond can have profound effects on the score, as shown in the figure below. This is why other methods of structure comparisons are used in conjunction to RMSD for a more thorough comparison analysis. Nonetheless, a score under 2.0 angstroms is typically acceptable when comparing large molecules such as proteins.
 
-![image-center](../assets/images/RMSD_weaknesses.png){: .align-center}
+![image-center](../assets/images/RMSD_weaknesses_mutation.png){: .align-center}
 Fill caption.
 {: style="font-size: medium;"}
 
