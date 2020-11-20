@@ -23,6 +23,7 @@ To demonstrate that the two shapes in the preceding figure were the same, we wou
 
 
 ![image-center](../assets/images/shape_transformations){: .align-center}
+We can transform the red shape into the blue shape by translating it, flipping it, and then rotating it.
 {: style="font-size: medium;"}
 
 We will use this idea as a way of producing our desired distance function between shapes *S* and *T*.
