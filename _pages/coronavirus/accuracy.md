@@ -62,6 +62,9 @@ NEED A QUESTION ABOUT N BEING TOO LOW. SQUARE vs. SQUARE and SQUARE Vs CIRCLE
 
 The Kabsch algorithm offers a compelling way to determine the similarity of two protein structures. We can convert a protein containing *n* amino acids into a vector of length *n* by selecting a single representative point from each amino acid. To do so, scientists typically choose the "alpha carbon", the amino acid's centrally located carbon atom that lies on the peptide's backbone; note that the position of this atom will already be present in the `.pdb` file for a given structure.
 
+**STOP:** Can you think of example where a small difference between protein structures can cause a large inflation in RMSD score?
+{: .notice--primary}
+
 * Even with this specification, our algorithm can have pitfalls -- transition to Chris's figures (see below).
 
 * RMSD has its own flaws where a single misplaced loop or an off-angle bond can have profound effects on the score, as shown in the figure below. This is why other methods of structure comparisons are used in conjunction to RMSD for a more thorough comparison analysis. Nonetheless, a score under 2.0 angstroms is typically acceptable when comparing large molecules such as proteins.
@@ -82,11 +85,6 @@ In this tutorial, we will walk through how to calculate RMSD using two experimen
 [Visit tutorial](rmsd2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-
-## RMSD with Protein Structures
-
-**STOP:** Can you think of example where a small difference between protein structures can cause a large inflation in RMSD score?
-{: .notice--primary}
 
 
 ## Determining the accuracy of our structure prediction models
