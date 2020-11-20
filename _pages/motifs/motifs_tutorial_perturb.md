@@ -9,7 +9,7 @@ toc_sticky: true
 
 In this tutorial, we will see what happens when we make a sudden change to the concentration of one of the repressilator particles in the middle of the simulation. This is difficult to do with CellBlender, and so we will instead use this opportunity to transition to a "particle-free" tool called **NFSim** that does have the desired functionality. We will say much more about particle-free modeling, in which we do not have to track the movements of individual particles to track their concentrations, in a future module.
 
-First, you will need to install NFSim and a program called **RuleBender**, which we will use as a GUI for NFSim. Those two programs can be installed ![https://www.csb.pitt.edu/Faculty/Faeder/?page_id=409](here).
+First, you will need to install NFSim and a program called **RuleBender**, which we will use as a GUI for NFSim. Those two programs can be installed ![https://www.csb.pitt.edu/Faculty/Faeder/?page_id=409](here). You may also download the completed tutorial file here: <a href="https://github.com/phcompeau/biological_modeling_course/blob/master/tutorials/RuleBender_Files.zip" download="RuleBender_Files.zip">RuleBender_Files.zip</a>.
 
 
 We will first build a simulation of the repressilator that we will perturb later. Assuming you have installed RuleBender, open the RuleBender program and select `File > New BioNetGen Project`.
