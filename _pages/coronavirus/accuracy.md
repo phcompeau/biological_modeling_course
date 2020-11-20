@@ -7,11 +7,9 @@ toc: true
 toc_sticky: true
 ---
 
-In the previous lesson, we saw how to predict the structure of a protein from its sequence (as well as a library of known structures). We then used homology modeling to predict a structure for the SARS-CoV-2 spike protein using three different algorithms.
+In the previous lesson, we saw how to predict the structure of a protein from its sequence (as well as a library of known structures). We then used homology modeling to predict a structure for the SARS-CoV-2 spike protein using three different algorithms. In this lesson, we will discuss how to compare these predicted structures against each other as well as against the verified structure of the SARS-CoV spike protein.
 
-In this lesson, we will discuss how to compare these predicted structures against each other as well as against the verified structure of the SARS-CoV spike protein. Ultimately, this problem is no different than the comparison of two shapes.
-
-Consider the two shapes in the figure below. You may  see that these two shapes are the same, but training a computer to recognize that one shape has been flipped and rotated to yield the other is a nontrivial task. We are able to perform this task well because we have very highly evolved eyes that help us quickly cluster and classify the objects that we see in the world.
+Ultimately, the problem of comparing protein structures is intrinsically similar to the comparison of two shapes, a problem that we will discuss first. Consider the two shapes in the figure below. You may be able to see that these two shapes are the same, but training a computer to recognize that one shape has been flipped and rotated to yield the other is a nontrivial task. We are able to perform this task well because we have very highly evolved eyes that help us quickly cluster and classify the objects that we see in the world.
 
 ![image-center](../assets/images/two_shapes.png){: .align-center}
 The red shape can be flipped and then rotated to yield the blue shape. Although you may be able to see this correspondence, it will be difficult to identify whether two shapes are the same if they become much more complicated.
@@ -19,9 +17,15 @@ The red shape can be flipped and then rotated to yield the blue shape. Although 
 
 ## An algorithm for comparison of two structures
 
-Our goal is to produce a distance function *d*(*S*, *T*) that takes two shapes *S* and *T* as input and that quantifies how different these shapes are. If the two shapes are the same, then the distance between them should be zero, and the more different the shapes become, the larger *d* should become.
+Our goal is to produce a distance function *d*(*S*, *T*) that takes two shapes *S* and *T* as input and that quantifies how different these shapes are. If the two shapes are the same, then the distance between them should be equal to zero; the more different the shapes become, the larger *d* should become.
 
-If we wanted to prove that the two shapes in the preceding figure were the same, then we might move the red shape to superimpose it over the blue shape, and then we would flip/rotate the red shape to show that its boundary coincides with the blue shape. We will use this idea as a way of producing our desired distance function between shapes *S* and *T*.
+To demonstrate that the two shapes in the preceding figure were the same, we would need to first move the red shape to superimpose it over the blue shape, then flip the red shape, and finally rotate it so that its boundary coincides with the blue shape.
+
+
+![image-center](../assets/images/shape_transformations){: .align-center}
+{: style="font-size: medium;"}
+
+We will use this idea as a way of producing our desired distance function between shapes *S* and *T*.
 
 First, we estimate the **center of mass** of each shape by sampling points from the boundary of the shape and taking the point whose coordinates are the average of the *x* and *y* coordinates of points on the boundary. We then superimpose *S* and *T* by translating one shape so that the two points have the same centroid.
 
