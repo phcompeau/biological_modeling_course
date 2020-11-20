@@ -92,10 +92,6 @@ In the tutorials occurring earlier in this module, we used publicly available pr
 
 Let's see how well the models performed by showing the values of RMSD produced by the Kabsch algorithm when comparing  the same method of calculating RMSD from the tutorial, let's see how well our models performed.
 
-* Then show RMSD for our given .pdb files.
-
-* Finally, the conclusion should say something about the huge benefits of this approach for proteins where we don't have funds for study and for giving a quick early answer. Point to part 2, which we continue next, and where we get into the comparisons of the two viruses.
-
 
 
 ### *Ab initio* (QUARK) models of Human Hemoglobin Subunit Alpha
@@ -182,3 +178,5 @@ This concludes the part one of this module on how scientists can analyze new pro
 
 [Next lesson](multiseq){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
+
+* Finally, the conclusion should say something about the huge benefits of this approach for proteins where we don't have funds for study and for giving a quick early answer. Point to part 2, which we continue next, and where we get into the comparisons of the two viruses.
