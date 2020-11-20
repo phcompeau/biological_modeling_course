@@ -22,7 +22,7 @@ Our goal is to produce a distance function *d*(*S*, *T*) that takes two shapes *
 To demonstrate that the two shapes in the preceding figure were the same, we would need to first move the red shape to superimpose it over the blue shape, then flip the red shape, and finally rotate it so that its boundary coincides with the blue shape.
 
 
-![image-center](../assets/images/shape_transformations){: .align-center}
+![image-center](../assets/images/shape_transformations.gif){: .align-center}
 We can transform the red shape into the blue shape by translating it, flipping it, and then rotating it.
 {: style="font-size: medium;"}
 
