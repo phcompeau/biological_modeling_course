@@ -81,7 +81,7 @@ A simplification of two protein structures, one of which includes a loop of thre
 
 These potential drawbacks of RMSD mean that we need to combine it with additional methods of structure comparison in many practical applications. Nonetheless, if we apply the Kabsch algorithm and get a *small* value of RMSD (e.g., just a few angstroms), then we can have some confidence that the proteins are indeed similar.
 
-In the following tutorial, we will walk through how to apply the Kabsch algorithm to two experimentally determined protein structures from the PDB: the SARS-CoV-2 S protein, <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a>, and SARS S protein, <a href="https://www.rcsb.org/structure/6CRX" target="_blank">6vrx</a>.
+In the following tutorial, we will walk through how to apply the Kabsch algorithm to two protein structures in `.pdb` format. When we return from this tutorial, we will discuss how RMSD compares when comparing the validated structure of the SARS-CoV spike protein and the structures that we predicted for the SARS-CoV-2 spike protein in the previous lesson.
 
 [Visit tutorial](tutorial_rmsd){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
