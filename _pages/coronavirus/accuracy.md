@@ -69,6 +69,10 @@ The Kabsch algorithm offers a compelling way to determine the similarity of two 
 
 * RMSD has its own flaws where a single misplaced loop or an off-angle bond can have profound effects on the score, as shown in the figure below. This is why other methods of structure comparisons are used in conjunction to RMSD for a more thorough comparison analysis. Nonetheless, a score under 2.0 angstroms is typically acceptable when comparing large molecules such as proteins.
 
+![image-center](../assets/images/RMSD_weaknesses.png){: .align-center}
+Fill caption.
+{: style="font-size: medium;"}
+
 
 ![image-center](../assets/images/RMSDCartoon.png){: .align-center}
 In this simple cartoon, a very minor difference in a loop can cause divations in every point within that loop. THis can cause an increase in RMSD between two otherwise identical structures.
