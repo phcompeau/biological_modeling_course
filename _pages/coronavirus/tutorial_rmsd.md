@@ -122,10 +122,13 @@ In[#]: calcTransformation(first_ca, second_ca).apply(first_ca);
 In[#]: calcRMSD(first_ca, second_ca)
 ~~~
 
-Your results should look like this:
+Your results should look like the following:
 ![image-center](../assets/images/RMSDResult4.png){: .align-center}
 
-Now, we will head back to the main text to see the RMSD calculations for the rest of the models we created of the SARS-COV-2 S protein.
+**STOP:** If you are interested, apply what you have learned in this tutorial to compute the RMSD between the SARS-CoV-2 spike protein and every one of the predicted models of this protein that we generated from homology modeling.
+{: .notice--primary}
+
+We are now ready to head back to the main text, where we will discuss the RMSD calculations for all models. Were they successful in predicting the structure of the SARS-CoV-2 spike protein?
 
 [Return to main text](accuracy#assessing-the-accuracy-of-our-structure-prediction-models){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
