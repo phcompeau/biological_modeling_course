@@ -9,7 +9,11 @@ toc_sticky: true
 
 ## Protein structure comparison is related to shape comparison
 
-In the previous lesson, we saw how to predict the structure of a protein from its sequence (as well as a library of known structures). We then used homology modeling to predict a structure for the SARS-CoV-2 spike protein using three different algorithms. In this lesson, we will discuss how to compare these predicted structures against each other as well as against the now verified structure of the SARS-CoV-2 spike protein.
+In the previous lesson, we saw how to predict the structure of a protein from its sequence (as well as a library of known structures). We then used homology modeling to predict a structure for the SARS-CoV-2 spike protein using three different algorithms.
+
+While some researchers had produced predictions of the structure of this protein, others were working on verifying this structure experimentally. On February 25, 2020, researchers deposited the result of a cryo-EM experiment determining the structure of the spike protein to the PDB as entry [6vxx](http://www.rcsb.org/structure/6VXX). If you would like to explore its shape a bit, check out the 3-D viewer for this protein at [http://www.rcsb.org/3d-view/6VXX/1](http://www.rcsb.org/3d-view/6VXX/1).
+
+In this lesson, we ask how good our predictions of this protein structure were. We will discuss how to compare our predicted structures from the previous lesson against this verified structure of the SARS-CoV-2 spike protein.
 
 Ultimately, the problem of comparing protein structures is intrinsically similar to the comparison of two shapes, a problem that we will discuss first. Consider the two shapes in the figure below. Are these shapes the same? Even if you can answer this question, it is because we have very highly evolved eyes that help us quickly cluster and classify the objects that we see in the world. Training a computer to see objects as well as we can is more difficult than you think!
 
@@ -194,7 +198,3 @@ Thus ends part 1 of this module. But there is still much for us to discuss. We h
 ## Extra
 
 * Badly need to mention the published version of the spike protein
-
-* Fix discussion of vectorization and RMSD
-
-* Make the shape orange instead of red in the GIF

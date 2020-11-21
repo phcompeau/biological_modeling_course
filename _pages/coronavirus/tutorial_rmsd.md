@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-In this tutorial, we will demonstrate how to apply the Kabsch algorithm to compute the RMSD between two protein structures. In particular, we will show how to compare the experimentally validated structure of the SARS-CoV-2 spike protein against the structures that we predicted in our previous homology modeling.
+In this tutorial, we will demonstrate how to apply the Kabsch algorithm to compute the RMSD between two protein structures. In particular, we will show how to compare the experimentally validated structure of the SARS-CoV-2 spike protein (PDB entry: [6vxx](http://www.rcsb.org/structure/6VXX)) against the structures that we predicted in our previous homology modeling.
 
 ## Getting started
 
