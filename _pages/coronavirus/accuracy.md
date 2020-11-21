@@ -38,17 +38,14 @@ Next, we want to find the rotation of *S*, possibly along with a flip as well, t
 
 $$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{n} \cdot (d(s_1, t_1)^2 + d(s_2, t_2)^2 + \cdots + d(s_n, t_n)^2)} $$
 
-In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the distance between the points *s*<sub><em>i</em></sub> and *t*<sub><em>i</em></sub> in 2-D or 3-D space as the case may be. (Note: RMSD is a very commonly used approach across many fields when measuring the differences between two vectors. If *n* is equal to 2 or 3, it is closely related to the Euclidean distance between the vectors.)
+In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the distance between the points *s*<sub><em>i</em></sub> and *t*<sub><em>i</em></sub> in 2-D or 3-D space as the case may be. (Note: RMSD is a very commonly used approach across many fields when measuring the differences between two vectors.)
 
-**NEED EXAMPLE OF RMSD -- WILL NEED TO CLEAN UP**
+For a toy example of computing RMSD, consider the figure below, which shows two shapes with four points sampled from each. The distances between corresponding points are equal to $$\sqrt{2}$$, 1, 4, and $$\sqrt{2}$$. As a result, we compute the RMSD as
 
-Below is a simple example of how RMSD is calculated.
-
-![image-center](../assets/images/SampleRMSD.png){: .align-center}
-Simple example of calculating RMSD between two paired sets of 3D-coordinates. The pairs are circles in the plot.
-{: style="font-size: medium;"}
+$$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{4} \cdot (\sqrt{2}^2 + 1^2 + 2^2 + \sqrt{2}^2)} = \sqrt{\dfrac{1}{4} \cdot 9} = \sqrt{\dfrac{9}{4}} = \dfrac{3}{2}$$.
 
 ![image-center](../assets/images/rmsd_simple_shapes.png){: .align-center}
+Two shapes with four points sampled from each to produce an RMSD estimate equal to 3/2.
 {: style="font-size: medium;"}
 
 **STOP:** Do you see any issues with the use of RMSD to compare two shapes?
@@ -60,15 +57,7 @@ Even if we assume that the shapes have already been overlapped and rotated appro
 A circle inscribed within a square. Sampling of the four points where the shapes intersect will give a flawed estimate of zero for RMSD.
 {: style="font-size: medium;"}
 
-
-
-**RESUME**
-
 However, all this has left open the fact that we assumed that we had rotated *S* to be as "similar" to *T* as possible. In practice, we will need to find the rotation of *S* that *minimizes* the RMSD between our vectorizations of *S* and *T*, and this resulting minimum will be what we consider *d*(*S*, *T*). It turns out that there is an approach to find this rotation called the **Kabsch algorithm**, which requires some advanced linear algebra and is beyond the scope of our work but can be read about <a href="https://en.wikipedia.org/wiki/Kabsch_algorithm" target="_blank">here</a>.
-
-
-
-
 
 ## Applying the Kabsch algorithm to protein structure comparison
 
