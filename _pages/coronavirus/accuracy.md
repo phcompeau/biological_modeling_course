@@ -42,7 +42,12 @@ In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the 
 
 For a toy example of computing RMSD, consider the figure below, which shows two shapes with four points sampled from each. The distances between corresponding points are equal to $$\sqrt{2}$$, 1, 4, and $$\sqrt{2}$$. As a result, we compute the RMSD as
 
-$$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{4} \cdot (\sqrt{2}^2 + 1^2 + 2^2 + \sqrt{2}^2)} = \sqrt{\dfrac{1}{4} \cdot 9} = \sqrt{\dfrac{9}{4}} = \dfrac{3}{2}$$.
+$$\begin{align*}
+\text{RMSD}(s, t) & = \sqrt{\dfrac{1}{4} \cdot (\sqrt{2}^2 + 1^2 + 2^2 + \sqrt{2}^2)} \\
+& = \sqrt{\dfrac{1}{4} \cdot 9}\\
+& = \sqrt{\dfrac{9}{4}}\\
+& = \dfrac{3}{2}
+\end{align*}$$
 
 ![image-center](../assets/images/rmsd_simple_shapes.png){: .align-center}
 Two shapes with four points sampled from each to produce an RMSD estimate equal to 3/2.
