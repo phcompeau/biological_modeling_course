@@ -61,6 +61,7 @@ However, all this has left open the fact that we assumed that we had rotated *S*
 Even if we assume that the shapes have already been overlapped and rotated appropriately, we still need to make sure that we sample enough points to give a good approximation of how different the shapes are.  For an extreme example, consider a circle inscribed within a square, as shown in the figure below. If we happened to sample only the four points at 0, 90, 180, and 270 degrees, we would sample the same points in each shape, and conclude that the RMSD between these two shapes is zero.  This of course is easily resolvable just by making sure to choose *n* large enough to ensure no approximation errors. (If you are familiar with calculus, compare this idea to sampling many points on a curve when approximating an integral.)
 
 ![image-center](../assets/images/circle_square_undersampling.png){: .align-center}
+A circle inscribed within a square. Sampling of the four points where the shapes intersect will give a flawed estimate of zero for RMSD.
 {: style="font-size: medium;"}
 
 ## Applying the Kabsch algorithm to protein structure comparison
