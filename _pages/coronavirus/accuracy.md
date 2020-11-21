@@ -51,9 +51,6 @@ Simple example of calculating RMSD between two paired sets of 3D-coordinates. Th
 ![image-center](../assets/images/rmsd_simple_shapes.png){: .align-center}
 {: style="font-size: medium;"}
 
-![image-center](../assets/images/circle_square_undersampling.png){: .align-center}
-{: style="font-size: medium;"}
-
 **RESUME**
 
 However, all this has left open the fact that we assumed that we had rotated *S* to be as "similar" to *T* as possible. In practice, we will need to find the rotation of *S* that *minimizes* the RMSD between our vectorizations of *S* and *T*, and this resulting minimum will be what we consider *d*(*S*, *T*). It turns out that there is an approach to find this rotation called the **Kabsch algoithm**, which requires some advanced linear algebra and is beyond the scope of our work but can be read about <a href="https://en.wikipedia.org/wiki/Kabsch_algorithm" target="_blank">here</a>.
@@ -61,7 +58,10 @@ However, all this has left open the fact that we assumed that we had rotated *S*
 **STOP:** Do you see any potential pitfalls with our use of RMSD to determine how much two shapes differ?
 {: .notice--primary}
 
-NEED A QUESTION ABOUT N BEING TOO LOW. SQUARE vs. SQUARE and SQUARE Vs CIRCLE
+Even if we assume that the shapes have already been overlapped and rotated appropriately, we still need to make sure that we sample enough points to give a good approximation of how different the shapes are.  For an extreme example, consider a circle inscribed within a square, as shown in the figure below. If we happened to sample only the four points at 0, 90, 180, and 270 degrees, we would sample the same points in each shape, and conclude that the RMSD between these two shapes is zero.  This of course is easily resolvable just by making sure to choose *n* large enough to ensure no approximation errors. (If you are familiar with calculus, compare this idea to sampling many points on a curve when approximating an integral.)
+
+![image-center](../assets/images/circle_square_undersampling.png){: .align-center}
+{: style="font-size: medium;"}
 
 ## Applying the Kabsch algorithm to protein structure comparison
 
