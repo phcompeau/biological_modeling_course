@@ -7,7 +7,9 @@ toc: true
 toc_sticky: true
 ---
 
-In this tutorial, we will demonstrate how to apply the Kabsch algorithm to compute the RMSD between two protein structures. In particular, we will show how to compare the experimentally validated structure of the SARS-CoV spike protein against the structures that we predicted in our previous homology modeling.
+In this tutorial, we will demonstrate how to apply the Kabsch algorithm to compute the RMSD between two protein structures. In particular, we will show how to compare the experimentally validated structure of the SARS-CoV-2 spike protein against the structures that we predicted in our previous homology modeling.
+
+## Getting started
 
 In this tutorial, we will first use ProDy, our featured software resource for this module. ProDy is an open-source Python package that allows users to perform protein structural dynamics analysis. Its flexibility allows users to select specific parts or atoms of the structure for conducting normal mode analysis and structure comparison.
 
@@ -25,15 +27,13 @@ To get started, make sure that you have the following software resources install
 
 <a href="https://matplotlib.org/" target="_blank">Matplotlib</a>
 
-## Getting Started
-
-It is recommended that you create a workspace for storing created files when using ProDy or storing protein .pdb files. Make sure you are in your workspace before starting up IPython.
+It is recommended that you create a workspace for storing created files when using ProDy or storing protein `.pdb` files. Make sure you are in this workspace before starting up IPython.
 
 ~~~ python
 ipython --pylab
 ~~~
 
-Import functions and turn interactive mode on (only need to do this once per session).
+First, import needed packages and turn interactive mode on (you only need to do this once per session).
 
 ~~~
 In[#]: from pylab import *
@@ -42,9 +42,29 @@ In[#]: ion()
 ~~~
 
 
-## How to Calculate RMSD
+## Calculating RMSD of two chains
 
-We will be matching chains between the two structures based on sequence identity and sequence overlap. The goal is to calculate the Root Mean Square Deviation scores between the alpha-Carbons of the matched chains. This will give us a basic quantitative measure of the structural differences between the two proteins. First, we will define a function that will list out matched chains for later use.
+Rather than computing RMSD of an entire spike protein trimer, we will first compute RMSD for a single chain. This means that if we are dealing with entire proteins, we should "match" chains that have the most similarity between the two input proteins.
+
+First, we parse the protein structures (in `.pdb` format) that we want to compare. To use our own protein structure, make sure that the `.pdb` file is in the current directory. Let's parse in one of our models we obtained from homology modeling of the SARS-CoV-2 Spike protein, SWISS1. You can use your own SARS-CoV-2 Spike protein model that you generated, or download our [SWISS-MODEL Results](../_pages/coronavirus/files/SWISS_Model.zip). In this tutorial, our model will be called `swiss1.pdb`.
+
+~~~ python
+In[#]: struct1 = parsePDB(‘swiss1.pdb’)
+~~~
+
+Because we want to find out how well `swiss1.pdb` performed, we will compare it to the determined protein structure of SARS-CoV-2 Spike protein in the Protein Data Bank. Enter the code shown below. Because the `.pdb` extension is missing, this command will prompt the console to search for `6vxx`, the SARS-CoV-2 Spike protein, from the Protein Data Bank and download the `.pdb` file into the current directory. It will then save the structure as the variable `struct2`.
+
+~~~ python
+In[#]: struct2 = parsePDB(‘6vxx’)
+~~~
+
+With the protein structures parsed, we can now match chains. To do so, we use a built-in function `matchChains` with a sequence identity threshold of 75% and an overlap threshold of 80% is specified (the default is 90% for both parameters). The following function call stores the result in a 2D array called `matches`, where `matches[i][j]` represents the *i*th match and *j*th chain.
+
+~~~ python
+In[#]: matches = matchChains(struct1, struct2, seqid = 75, overlap = 80)
+~~~
+
+We will now define our own function that will print matched chains.
 
 ~~~ python
 In[#]: def printMatch(match):
@@ -57,27 +77,7 @@ In[#]: def printMatch(match):
 ...:
 ~~~
 
-Next, we will parse the protein structures (in `.pdb` format) that we want to compare. To use our own protein structure, make sure that the .pdb file is in the current directory. Let's parse in one of our models we obtained from homology modeling of the SARS-CoV-2 Spike protein, SWISS1. You can use your own SARS-CoV-2 Spike protein model that you generated, or download our [SWISS-MODEL Results](../_pages/coronavirus/files/SWISS_Model.zip). In this tutorial, our model will be called `swiss1.pdb`.
-
-~~~ python
-In[#]: struct1 = parsePDB(‘swiss1’)
-~~~
-
-Because we want to find out how well `swiss1.pdb` performed, we will compare it to the determined protein structure of SARS-CoV-2 Spike protein in the Protein Data Bank. Enter the code shown below. This will prompt the console to search for `6vxx`, the SARS-CoV-2 Spike protein, from the Protein Data Bank and download the .pdb file into the current directory. Then, it will save the structure to the variable `struct2`.
-
-~~~ python
-In[#]: struct2 = parsePDB(‘6vxx’)
-~~~
-
-Including the `.pdb` tag will prompt the console to search for the file '6vxx.pdb' in the current directory and parse it. You can download .pdb files directly from PDB. If you do not have 6vxx.pdb, follow the format of the previous command.
-
-With the protein structures parsed, we can now match chains. The default threshold for sequence identity and sequence overlap are 90%. This can be changed by specifying the desired thresholds. Here, a sequence identity threshold of 75% and an overlap threshold of 80% is specified.
-
-~~~ python
-In[#]: matches = matchChains(struct1, struct2, seqid = 75, overlap = 80)
-~~~
-
-Now, we will use our previously defined function to list out matched chains.
+Let's call our new function `printmatch` on our previous variable `matches`.
 
 ~~~ python
 In[#]: for match in matches:
@@ -85,15 +85,15 @@ In[#]: for match in matches:
 …:
 ~~~
 
-You should see the results listed like this:
+You should see the results printed out as follows.
 
 ![image-center](../assets/images/RMSDResult1.png){: .align-center}
 
 ![image-center](../assets/images/RMSDResult2.png){: .align-center}
 
-The results are stored as a 2D array called `matches`, where `matches[i][j]` represents the *i*th match and *j*th chain (zero-based). Given the previous example, `matches[0][0]` corresponds to `Chain 1 : AtomMap Chain A from 6crx -> Chain A from 6vxx` and `matches[5][1]` corresponds to `Chain 2: AtomMap Chain C from 6vxx -> Chain B from 6crx`.
+For example, `matches[0][0]` corresponds to `Chain 1 : AtomMap Chain A from swiss1 -> Chain A from 6vxx` and `matches[5][1]` corresponds to `Chain 2: AtomMap Chain C from 6vxx -> Chain B from swiss1`.
 
-Let us say we want to calculate the RMSD score between the matched `Chain B` from `swiss1` and `Chain B` from `6vxx`. This will correspond to `matches[4][0]` and `matches[4][1]`. Afterwards, We need to first transform and align the chains such that it minimizes the RMSD between the C⍺.
+Let us say we want to calculate the RMSD score between the matched `Chain B` from `swiss1` and `Chain B` from `6vxx`. This will correspond to `matches[4][0]` and `matches[4][1]`. After accessing these two structures, we need to to apply the Kabsch algorithm to find the best rotation of the two structures, which we do with the built-in function `calcTransformation`.
 
 ~~~ python
 In[#]: first_ca = matches[4][0]
@@ -101,17 +101,19 @@ In[#]: second_ca = matches[4][1]
 In[#]: calcTransformation(first_ca, second_ca).apply(first_ca);
 ~~~
 
-Finally, we can calculate the RMSD score.
+Now that the best rotation has been found, we can determine the RMSD between the structures using the built-in function `calcRMSD`.
 
 ~~~ python
 In[#]: calcRMSD(first_ca, second_ca)
 ~~~
 
-You should see something like this:
+You should see something like the following:
 
 ![image-center](../assets/images/RMSDResult3.png){: .align-center}
 
-Finally, it is also possible to merge all the chains together to calculate the RMSD of the overall structure. Here we merge the three matches corresponding to A to A, B to B, and C to C.
+## Merging multiple chains to compute RMSD of an overall structure
+
+Now that we can compare the structures of two chains, it is also possible to merge all the chains together to calculate the RMSD of the overall structure. Below, we merge the three matches corresponding to matching the A chains, B chains, and C chains of the two proteins.
 
 ~~~ python
 In[#]: first_ca = matches[0][0] + matches[4][0] + matches[8][0]
