@@ -48,6 +48,12 @@ Below is a simple example of how RMSD is calculated.
 Simple example of calculating RMSD between two paired sets of 3D-coordinates. The pairs are circles in the plot.
 {: style="font-size: medium;"}
 
+![image-center](../assets/images/rmsd_simple_shapes.png){: .align-center}
+{: style="font-size: medium;"}
+
+![image-center](../assets/images/circle_square_undersampling.png){: .align-center}
+{: style="font-size: medium;"}
+
 **RESUME**
 
 However, all this has left open the fact that we assumed that we had rotated *S* to be as "similar" to *T* as possible. In practice, we will need to find the rotation of *S* that *minimizes* the RMSD between our vectorizations of *S* and *T*, and this resulting minimum will be what we consider *d*(*S*, *T*). It turns out that there is an approach to find this rotation called the **Kabsch algoithm**, which requires some advanced linear algebra and is beyond the scope of our work but can be read about <a href="https://en.wikipedia.org/wiki/Kabsch_algorithm" target="_blank">here</a>.
@@ -189,3 +195,5 @@ Thus ends part 1 of this module. But there is still much for us to discuss. We h
 * Badly need to mention the published version of the spike protein
 
 * Fix discussion of vectorization and RMSD
+
+* Make the shape orange instead of red in the GIF
