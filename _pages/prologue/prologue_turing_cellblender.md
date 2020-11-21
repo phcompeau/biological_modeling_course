@@ -16,7 +16,7 @@ We will first visit `CellBlender > Molecules` and create the *B* molecules, as s
 2. Select a color (such as red).
 3. Name the molecule `B`.
 4. Under `molecule type`, select `surface molecule`.
-5. Add a diffusion constant of `3e-6`.
+5. Add a diffusion constant of `3e-6`. The diffusion constant indicates how many units to move the particle every time unit. (We will specify the time unit below at runtime.)
 6. Up the scale factor to `2` (click and type `2` or use the arrows).
 
 Then, repeat the above steps to make sure that all of the following molecules are entered. We use a molecule named `Hidden` to represent a "hidden" molecule that will be used to generate `A` molecules.
