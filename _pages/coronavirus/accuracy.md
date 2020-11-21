@@ -194,7 +194,3 @@ Thus ends part 1 of this module. But there is still much for us to discuss. We h
 
 [Next lesson](multiseq){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
-
-## Extra
-
-* Badly need to mention the published version of the spike protein
