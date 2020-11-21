@@ -57,16 +57,16 @@ In[#]: def printMatch(match):
 ...:
 ~~~
 
-Next, we will parse the protein structures from PDB or from the current directory. *Note:* The protein structures need to be in `.pdb` format.
+Next, we will parse the protein structures (in `.pdb` format) that we want to compare. To use our own protein structure, make sure that the .pdb file is in the current directory. Let's parse in one of our models we obtained from homology modeling of the SARS-CoV-2 Spike protein, SWISS1. You can use your own SARS-CoV-2 Spike protein model that you generated, or download our [SWISS-MODEL Results](../_pages/coronavirus/files/SWISS_Model.zip). In this tutorial, our model will be called `swiss1.pdb`.
 
 ~~~ python
-In[#]: struct1 = parsePDB(‘6crx’)
+In[#]: struct1 = parsePDB(‘swiss1’)
 ~~~
 
-This will prompt the console to search for `6crx`, SARS Spike protein, from the Protein Data Bank, download the .pdb file into the current directory, and save it to the variable `struct1`.
+Because we want to find out how well `swiss1.pdb` performed, we will compare it to the determined protein structure of SARS-CoV-2 Spike protein in the Protein Data Bank. Enter the code shown below. This will prompt the console to search for `6vxx`, the SARS-CoV-2 Spike protein, from the Protein Data Bank and download the .pdb file into the current directory. Then, it will save the structure to the variable `struct2`.
 
 ~~~ python
-In[#]: struct2 = parsePDB(‘6vxx.pdb’)
+In[#]: struct2 = parsePDB(‘6vxx’)
 ~~~
 
 Including the `.pdb` tag will prompt the console to search for the file '6vxx.pdb' in the current directory and parse it. You can download .pdb files directly from PDB. If you do not have 6vxx.pdb, follow the format of the previous command.
@@ -87,17 +87,17 @@ In[#]: for match in matches:
 
 You should see the results listed like this:
 
-![image-center](../assets/images/chris_RMSDResult1.png){: .align-center}
+![image-center](../assets/images/RMSDResult1.png){: .align-center}
 
-![image-center](../assets/images/chris_RMSDResult2.png){: .align-center}
+![image-center](../assets/images/RMSDResult2.png){: .align-center}
 
 The results are stored as a 2D array called `matches`, where `matches[i][j]` represents the *i*th match and *j*th chain (zero-based). Given the previous example, `matches[0][0]` corresponds to `Chain 1 : AtomMap Chain A from 6crx -> Chain A from 6vxx` and `matches[5][1]` corresponds to `Chain 2: AtomMap Chain C from 6vxx -> Chain B from 6crx`.
 
-Let us say we want to calculate the RMSD score between the matched `Chain C` from `6crx` and `Chain A` from `6vxx`. We need to first transform and align the chains such that it minimizes the RMSD between the C⍺.
+Let us say we want to calculate the RMSD score between the matched `Chain B` from `swiss1` and `Chain B` from `6vxx`. This will correspond to `matches[4][0]` and `matches[4][1]`. Afterwards, We need to first transform and align the chains such that it minimizes the RMSD between the C⍺.
 
 ~~~ python
-In[#]: first_ca = matches[6][0]
-In[#]: second_ca = matches[6][1]
+In[#]: first_ca = matches[4][0]
+In[#]: second_ca = matches[4][1]
 In[#]: calcTransformation(first_ca, second_ca).apply(first_ca);
 ~~~
 
@@ -107,8 +107,11 @@ Finally, we can calculate the RMSD score.
 In[#]: calcRMSD(first_ca, second_ca)
 ~~~
 
-The result should be an RMSD score of around 3.
-It is also possible to merge matches to calculate the RMSD of the overall structure. In this example, both 6crx and 6vxx are each made up of three chains. Here we merge the three matches corresponding to A to A, B to B, and C to C.
+You should see something like this:
+
+![image-center](../assets/images/RMSDResult3.png){: .align-center}
+
+Finally, it is also possible to merge all the chains together to calculate the RMSD of the overall structure. Here we merge the three matches corresponding to A to A, B to B, and C to C.
 
 ~~~ python
 In[#]: first_ca = matches[0][0] + matches[4][0] + matches[8][0]
@@ -117,9 +120,10 @@ In[#]: calcTransformation(first_ca, second_ca).apply(first_ca);
 In[#]: calcRMSD(first_ca, second_ca)
 ~~~
 
-The result should be an RMSD score of around 11.
+Your results should look like this:
+![image-center](../assets/images/RMSDResult4.png){: .align-center}
 
-Now, we will head back to the main text to see how we use RMSD to assess the accuracy of the models we created of the SARS-COV-2 S protein.
+Now, we will head back to the main text to see the RMSD calculations for the rest of the models we created of the SARS-COV-2 S protein.
 
 [Return to main text](accuracy#assessing-the-accuracy-of-our-structure-prediction-models){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
