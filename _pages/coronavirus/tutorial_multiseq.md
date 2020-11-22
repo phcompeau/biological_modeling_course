@@ -3,8 +3,6 @@ permalink: /coronavirus/tutorial_multiseq
 title: "VMD and Multiseq"
 sidebar:
  nav: "coronavirus"
-toc: true
-toc_sticky: true
 ---
 
 In this tutorial, we will show how to get started with VMD and then calculate Qres of the alignment of SARS-CoV-2 RBD and SARS RBD using the VMD plugin Multiseq and PDB entries of the RBDs: <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> and <a href="https://www.rcsb.org/structure/2ajf" target="_blank">2ajf</a>, respectively. Afterwards, by locating regions of low Qres, we can identify regions of structural differences between the two.
