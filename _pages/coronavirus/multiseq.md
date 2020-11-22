@@ -74,6 +74,7 @@ In this tutorial, we will use Multiseq to align the SARS-CoV-2 (chimeric) RBD an
 In the tutorial, we identified a 13-column region of the sequence alignment of the SARS-CoV and SARS-CoV-2 RBMs for which the Qres values are significantly lower than they are elsewhere in the RBD. This region corresponds to positions 476 to 485 in the SARS-CoV-2 spike protein and is shown in the figure below.
 
 ![image-center](../assets/images/QresResult.png){: .align-center}
+
 ![image-center](../assets/images/QresResult_cropped.png){: .align-center}
 (Top) A snapshot of the sequence alignment between the SARS-CoV RBD (above) and the SARS-CoV-2 chimeric RBD (below). Columns are colored along a spectrum from blue (high Qres) to red (low Qres), with positions that correspond to an inserted or deleted amino acid colored red. (Bottom) Zooming in on a region of the alignment with low Qres, which corresponds to amino acids at positions 476 to 485 in SARS-CoV-2.
 {: style="font-size: medium;"}
