@@ -46,7 +46,7 @@ In[#]: ion()
 
 Rather than computing RMSD of an entire spike protein trimer, we will first compute RMSD for a single chain. This means that if we are dealing with entire proteins, we should "match" chains that have the most similarity between the two input proteins.
 
-First, we parse the protein structures (in `.pdb` format) that we want to compare. To use our own protein structure, make sure that the `.pdb` file is in the current directory. Let's parse in one of our models we obtained from homology modeling of the SARS-CoV-2 Spike protein, SWISS1. You can use your own SARS-CoV-2 Spike protein model that you generated, or download our [SWISS-MODEL Results](../_pages/coronavirus/files/SWISS_Model.zip). In this tutorial, our model will be called `swiss1.pdb`.
+The first built-in ProDy function that we will use, called `parsePDB`, parses a protein structure in `.pdb` format. To use our own protein structure, make sure that the `.pdb` file is in the current directory. Let's parse in one of our models we obtained from homology modeling of the SARS-CoV-2 Spike protein, SWISS1. You can use your own SARS-CoV-2 Spike protein model that you generated, or download our [SWISS-MODEL Results](../_pages/coronavirus/files/SWISS_Model.zip). In this tutorial, our model will be called `swiss1.pdb`.
 
 ~~~ python
 In[#]: struct1 = parsePDB(‘swiss1.pdb’)
@@ -58,7 +58,7 @@ Because we want to find out how well `swiss1.pdb` performed, we will compare it 
 In[#]: struct2 = parsePDB(‘6vxx’)
 ~~~
 
-With the protein structures parsed, we can now match chains. To do so, we use a built-in function `matchChains` with a sequence identity threshold of 75% and an overlap threshold of 80% is specified (the default is 90% for both parameters). The following function call stores the result in a 2D array called `matches`, where `matches[i][j]` represents the *i*th match and *j*th chain.
+With the protein structures parsed, we can now match chains. To do so, we use a built-in function `matchChains` with a sequence identity threshold of 75% and an overlap threshold of 80% is specified (the default is 90% for both parameters). The following function call stores the result in a 2D array called `matches`. `matches[i]` denotes the *i*-th match found, and the two chains themselves will be stored as `matches[i][0]` and `matches[i][1]`.
 
 ~~~ python
 In[#]: matches = matchChains(struct1, struct2, seqid = 75, overlap = 80)
