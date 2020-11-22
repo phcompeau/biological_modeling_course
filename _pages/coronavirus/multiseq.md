@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/multiseq
-title: "Searching for Differences"
+title: "Searching for Local Differences in Two Similar Protein Structures"
 sidebar:
  nav: "coronavirus"
 toc: true
