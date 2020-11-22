@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/tutorial_multiseq
-title: "VMD and Multiseq"
+title: "Software Tutorial: VMD and Multiseq"
 sidebar:
  nav: "coronavirus"
 ---

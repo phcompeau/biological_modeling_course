@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/tutorial_ab_initio
-title: "Using ab initio Modeling to Predict the Structure of Hemoglobin Subunit Alpha"
+title: "Software Tutorial: Using ab initio Modeling to Predict the Structure of Hemoglobin Subunit Alpha"
 sidebar:
  nav: "coronavirus"
 ---

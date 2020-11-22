@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/tutorial_rmsd
-title: "Calculating RMSD"
+title: "Software Tutorial: Using RMSD to Compare Two Protein Structures"
 sidebar:
  nav: "coronavirus"
 toc: true
