@@ -45,6 +45,8 @@ In the previous lesson on assessing the accuracy of a predicted structure, we in
 
 **Transition to Q Score**
 
+ * We could do this just with d(s_i, s_j)^2
+
 A good starting point would be to use the VMD plugin*<a href="https://www.ks.uiuc.edu/Research/vmd/plugins/multiseq/" target="_blank">Multiseq</a>*, a bioinformatics analysis environment that provides tools such as sequence and structural alignment. *Multiseq* is able to calculate structural conservation within aligned molecules by computing Q per residue. **Q-score**, or **Q**, qualitative measure of structure similarity by considering both the alignment length and RMSD. Q = 1 represents that the structures are identical, while a low Q-score (e.g. 0.1) represents low structure similarity. Q decreases with increasing RMSD or decreasing alignment length. Recognize that we can always lower RMSD by decreasing alignment length or increase alignment length with the expense of increasing RMSD. This contradictory requirement of low RMSD and high alignment length is eliminated by using the ratio of alignment length and RMSD. Below is the equation for Q [^Krissinel].
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\large&space;Q&space;=&space;\frac{N_{align}^2}{(1&plus;(RMSD/R_0)^2)*N_{res1}*N_{res2}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\large&space;Q&space;=&space;\frac{N_{align}^2}{(1&plus;(RMSD/R_0)^2)*N_{res1}*N_{res2}}" title="\large Q = \frac{N_{align}^2}{(1+(RMSD/R_0)^2)*N_{res1}*N_{res2}}" /></a>
@@ -98,3 +100,5 @@ From this analysis, we now identified a region that is structurally different be
 * Cite the RBM alignment as taken from this article: https://jvi.asm.org/content/jvi/94/7/e00127-20.full.pdf
 
 * Is there anything that we can say about the five blue residues in the multiple alignment figure? Perhaps we can just make our own alignment here since it's public data.
+
+* Good exercise later: compute Q scores for the protein structure comparison that we performed at the end of part 1.
