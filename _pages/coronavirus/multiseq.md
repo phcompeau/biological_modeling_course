@@ -7,15 +7,30 @@ toc: true
 toc_sticky: true
 ---
 
-In part 1 of this module, we used a variety of existing software resources to predicted the structure of the SARS-CoV-2 spike protein from its amino acid sequence. We then discussed how to compare our predicted structures against the experimentally confirmed structure of the protein.
+In part 1 of this module, we used a variety of existing software resources to predict the structure of the SARS-CoV-2 spike protein from its amino acid sequence. We then discussed how to compare our predicted structures against the experimentally confirmed structure of the protein.
 
 Now begins part 2 of the module, in which we assume that we have this validated structure of the spike protein and ask a very simple question: how does it compare against the SARS-CoV spike protein from the 2003 outbreak? Can we find any clues lurking in the structures of the spike protein that would indicate why the two viruses behave differently in humans? In particular, why did SARS-CoV fizzle out while SARS-CoV-2 was infectious enough to cause a pandemic?
 
 ## ACE2
 
-In the [introduction](coronavirus_home), we discussed that SARS-CoV-2 and SARS both target the human angiotensin-converting enzyme 2 (ACE2) with their S protein. ACE2 is an enzyme that is present in most human organs and can be found on the surface of cells from various human tissues, including lung alveolar epithelial (outer layer) cells, small intestines eterocytes, arteries, and kidneys [^Hamming]. ACE2 is part of the renin-angiotensin system (RAS), which is critical in the regulation of the cardiovascular system and protective role of the lung alveolar epithelial cells [^Samavati].
 
-This interaction of the S protein and ACE2 is an important step for the viral entry of both SARS-CoV-2 and SARS into the human cell. However, SARS-CoV-2 is much more infectious, and its S protein has been found to bind to ACE2 with greater affinity than that of SARS. The receptor binding domain (RBD) is the part of the S protein that interacts with ACE2, and the receptor binding motif (RBM) is the part of the RBD that mediates contact with ACE2. Therefore, we will narrow our focus to the differences in RBM to find out why SARS-CoV-2 binds better with ACE2.
+**This is a review -- should appear in the intro**
+
+In the [introduction](home), we mentioned that the spike protein for both SARS-CoV-2 and SARS bonds to the human angiotensin-converting enzyme 2 (ACE2). Part of why COVID-19 is not just a respiratory disease is that ACE2 is present in most human organs and can be found on the surface of cells from various human tissues, including lung alveolar epithelial cells, small intestine eterocytes, arteries, and kidneys[^Hamming].
+
+We already know from our work in part 1 of this module that when we compare the SARS-CoV and SARS-CoV-2 genomes, the Spike protein is much more variable than other regions. We even see variable and conserved regions within the spike protein, as the following figure (reproduced from the section on [homology modeling](homology)) indicates.
+
+![image-center](../assets/images/spike_protein_similarity.png){: .align-center}
+Regions of differing similarity over the SARS-CoV and SARS-CoV-2 spike proteins. The S1 domain tends to be more variable, while the S2 domain is more conserved (and even has a small region of 100% similarity). Source: [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7166309/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7166309/)[^Jaimes].
+{: style="font-size: medium;"}
+
+When we zoom in on
+
+![image-center](../assets/images/RBM_alignment.png){: .align-center}
+Fill in caption.
+{: style="font-size: medium;"}
+
+However, SARS-CoV-2 is much more infectious, and its S protein has been found to bind to ACE2 with greater affinity than that of SARS. The receptor binding domain (RBD) is the part of the S protein that interacts with ACE2, and the receptor binding motif (RBM) is the part of the RBD that mediates contact with ACE2. Therefore, we will narrow our focus to the differences in RBM to find out why SARS-CoV-2 binds better with ACE2.
 
 * Add later: "All the analysis will be done using two software: ProDy and VMD. By the end of this module, you will be able to understand more about protein structure prediction and differences in the S proteins that attribute to the higher infectivity of COVID-19."
 
@@ -70,3 +85,7 @@ From this analysis, we now identified a region that is structurally different be
 [^Samavati]: Samavati, L., & Uhal, B. D. 2020. ACE2, Much More Than Just a Receptor for SARS-COV-2. Frontiers in cellular and infection microbiology, 10, 317. https://doi.org/10.3389/fcimb.2020.00317
 
 [^Krissinel]: Krissinel E, Henrick K. 2004. Secondary-structure matching (SSM), a new tool for fast protein structure alignment in three dimensions. Acta Crystallogr D Biol Crystallogr, 60(Pt 12 Pt1), 2256-68. doi: 10.1107/S0907444904026460.
+
+## Extra
+
+* Cite the RBM alignment as taken from this article: https://jvi.asm.org/content/jvi/94/7/e00127-20.full.pdf
