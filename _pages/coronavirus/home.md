@@ -65,6 +65,12 @@ There are two main objectives for this module. First, we will put ourselves in t
 [Jump to part 2: Spike protein comparisons](structural_diff){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
+## Extra
+
+* Text below should be integrated
+
+the spike protein for both SARS-CoV-2 and SARS bonds to the human angiotensin-converting enzyme 2 (ACE2). Part of why COVID-19 is not just a respiratory disease is that ACE2 is present in most human organs and can be found on the surface of cells from various human tissues, including lung alveolar epithelial cells, small intestine eterocytes, arteries, and kidneys[^Hamming].
+
 ## Citations
 
 [^cdc-factsheet]: CDC SARS Response Timeline. (2013, April 26). Retrieved August 17, 2020, from https://www.cdc.gov/about/history/sars/timeline.htm
