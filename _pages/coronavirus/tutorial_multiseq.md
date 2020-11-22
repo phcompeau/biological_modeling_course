@@ -1,7 +1,7 @@
 ---
 permalink: /coronavirus/tutorial_multiseq
 title: "VMD and Multiseq"
-sidebar: 
+sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
@@ -57,7 +57,7 @@ The structures are now aligned. To see coloring based on *Qres*, go to *View>Col
 ![image-center](../assets/images/Qres6.png){: .align-center}
 {: style="font-size: medium;"}
 
-Blue indicates high *Qres* while blue indicates low *Qres*. *OpenGL Display* will now also reflect the color of *Qres* on the aligned structures. 
+Blue indicates high *Qres* while blue indicates low *Qres*. *OpenGL Display* will now also reflect the color of *Qres* on the aligned structures.
 
 ![image-center](../assets/images/Qres7.png){: .align-center}
 {: style="font-size: medium;"}
@@ -69,5 +69,5 @@ The color blue indicates residues with high Qres, indicated good structural alig
 
 By finding regions of low Qres, we have identified where the RBDs differ structurally. Now, let's go back to the main text to see which regions are important before we begin to analyze the them.
 
-[Return to main text](multiseq){: .btn .btn--primary .btn--large}
+[Return to main text](multiseq#local-comparison-of-spike-proteins-leads-us-to-a-region-of-interest){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
