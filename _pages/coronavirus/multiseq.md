@@ -7,7 +7,9 @@ toc: true
 toc_sticky: true
 ---
 
-In part 1 of this module, we predicted the structure of the SARS-CoV-2 spike protein from its amino acid sequence, and we then discussed how to compare our predicted structures against the experimentally confirmed structure of the protein. Now begins part 2, in which we assume that we have this validated structure of the spike protein and ask a very simple question: how does it compare against the SARS-CoV spike protein from the 2003 outbreak? Can we find any clues lurking in the structures of the spike protein that would indicate why the two viruses behave differently in humans? In particular, why did SARS-CoV fizzle out while SARS-CoV-2 was infectious enough to cause a pandemic?
+In part 1 of this module, we used a variety of existing software resources to predicted the structure of the SARS-CoV-2 spike protein from its amino acid sequence. We then discussed how to compare our predicted structures against the experimentally confirmed structure of the protein.
+
+Now begins part 2 of the module, in which we assume that we have this validated structure of the spike protein and ask a very simple question: how does it compare against the SARS-CoV spike protein from the 2003 outbreak? Can we find any clues lurking in the structures of the spike protein that would indicate why the two viruses behave differently in humans? In particular, why did SARS-CoV fizzle out while SARS-CoV-2 was infectious enough to cause a pandemic?
 
 ## ACE2
 
