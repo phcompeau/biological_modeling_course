@@ -69,18 +69,26 @@ In this tutorial, we will use Multiseq to align the SARS-CoV-2 (chimeric) RBD an
 [Visit tutorial](tutorial_multiseq){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-<hr>
+## Local comparison of spike proteins leads us to a region of interest
 
-In the tutorial, we calculated Qres between SARS-CoV-2 RBD and SARS RBD and identified four regions of structural differences. Because *Multseq* is a VMD plugin, we can create 3D visualizations of the structure and color them based on Qres. Below is the visualization of the imposed structures of SARS (*2ajf*) and SARS-CoV-2 (*6vw1*) RBD with ACE2 (in green). Blue represents regions of high *Qres* while red represents regions of low *Qres*. Because we want to find structural differences that cause SARS-CoV-2 RBD to bind to ACE2 with greater affinity, it is a good idea to focus on regions in or next to the binding site such as the highlighted region.
+In the tutorial, we identified a 13-column region of the sequence alignment of the SARS-CoV and SARS-CoV-2 RBMs for which the Qres values are significantly lower than they are elsewhere in the RBD. This region corresponds to positions 476 to 485 in the SARS-CoV-2 spike protein and is shown in the figure below.
 
+![image-center](../assets/images/QresResult.png){: .align-center}
+![image-center](../assets/images/QresResult_cropped.png){: .align-center}
+(Top) A snapshot of the sequence alignment between the SARS-CoV RBD (above) and the SARS-CoV-2 chimeric RBD (below). Columns are colored along a spectrum from blue (high Qres) to red (low Qres), with positions that correspond to an inserted or deleted amino acid colored red. (Bottom) Zooming in on a region of the alignment with low Qres, which corresponds to amino acids at positions 476 to 485 in SARS-CoV-2.
+{: style="font-size: medium;"}
+
+Because *Multseq* is a VMD plugin, we can create 3D visualizations of the structure and color them based on Qres. Below is the visualization of the imposed structures of SARS (*2ajf*) and SARS-CoV-2 (*6vw1*) RBD with ACE2 (in green). Blue represents regions of high *Qres* while red represents regions of low *Qres*. Because we want to find structural differences that cause SARS-CoV-2 RBD to bind to ACE2 with greater affinity, it is a good idea to focus on regions in or next to the binding site such as the highlighted region.
+
+
+
+Visualization here:
 
 ![image-center](../assets/images/QresVMD.png){: .align-center}
 This is a visualization showing the superposed structures of SARS-CoV-2 chimeric RBD and SARS RBD in blue and red based on Qres. Blue indicates high Qres and red indicates low Qres. ACE2 is shown in green. The highlighted region is one of the four regions of potential structural differences. Because it is adjacent to ACE2, it is likely that the structural difference here will affect ACE2 interactions.
 {: style="font-size: medium;"}
 
-![image-center](../assets/images/QresResult.png){: .align-center}
-This is a small snapshot of the sequence alignment between SARS RBD (above) and SARS-CoV-2 chimeric RBD (below) with the color blue representing high Qres and red representing low Qres. The region of low Qres corresponds to the highlighted region in the previous figure. More specifically, this region corresponds to SARS-CoV-2 residues 476 to 485.
-{: style="font-size: medium;"}
+
 
 From this analysis, we now identified a region that is structurally different between SARS-CoV-2 RBD and SARS RBD and is near the binding site of ACE2. In the next lesson, we will see what the specific differences are and how they affect the binding affinity.
 
