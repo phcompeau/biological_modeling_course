@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/tutorial_multiseq
-title: "Software Tutorial: VMD and Multiseq"
+title: "Software Tutorial: Finding and Visualizing Local Differences in Two Protein Structures"
 sidebar:
  nav: "coronavirus"
 ---
