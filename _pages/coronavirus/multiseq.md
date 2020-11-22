@@ -1,19 +1,17 @@
 ---
 permalink: /coronavirus/multiseq
 title: "Searching for Differences"
-sidebar: 
+sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
 ---
 
-In part 1 of the module, we explored the different methods of predicting the 3D structure of a protein from its amino acid sequence, and how to assess the accuracy of our predicted structures. Because the protein's structure is critical to its function, we use protein structure prediction to analyze proteins where we have yet to determine its real structure using experimental techniques such as x-ray crystallography. Early SARS-CoV-2 researchers that wanted to study the S protein in January 2020 relied on structure prediction.
-
-Now that research groups had enough time, the actual structure of the S protein have been determined and is available in the Protein Data Bank (PDB). With the structures, we can now producing the 3D visualizations the SARS-CoV-2 S protein and compare it with the SARS S protein to see if we can find some molecular explanation of why this virus is much more infectious than SARS.
+In part 1 of this module, we predicted the structure of the SARS-CoV-2 spike protein from its amino acid sequence, and we then discussed how to compare our predicted structures against the experimentally confirmed structure of the protein. Now begins part 2, in which we assume that we have this validated structure of the spike protein and ask a very simple question: how does it compare against the SARS-CoV spike protein from the 2003 outbreak? Can we find any clues lurking in the structures of the spike protein that would indicate why the two viruses behave differently in humans? In particular, why did SARS-CoV fizzle out while SARS-CoV-2 was infectious enough to cause a pandemic?
 
 ## ACE2
 
-In the [introduction](coronavirus_home), we discussed that SARS-CoV-2 and SARS both target the human angiotensin-converting enzyme 2 (ACE2) with their S protein. ACE2 is an enzyme that is present in most human organs and can be found on the surface of cells from various human tissues, including lung alveolar epithelial (outer layer) cells, small intestines eterocytes, arteries, and kidneys [^Hamming]. ACE2 is part of the renin-angiotensin system (RAS), which is critical in the regulation of the cardiovascular system and protective role of the lung alveolar epithelial cells [^Samavati]. 
+In the [introduction](coronavirus_home), we discussed that SARS-CoV-2 and SARS both target the human angiotensin-converting enzyme 2 (ACE2) with their S protein. ACE2 is an enzyme that is present in most human organs and can be found on the surface of cells from various human tissues, including lung alveolar epithelial (outer layer) cells, small intestines eterocytes, arteries, and kidneys [^Hamming]. ACE2 is part of the renin-angiotensin system (RAS), which is critical in the regulation of the cardiovascular system and protective role of the lung alveolar epithelial cells [^Samavati].
 
 This interaction of the S protein and ACE2 is an important step for the viral entry of both SARS-CoV-2 and SARS into the human cell. However, SARS-CoV-2 is much more infectious, and its S protein has been found to bind to ACE2 with greater affinity than that of SARS. The receptor binding domain (RBD) is the part of the S protein that interacts with ACE2, and the receptor binding motif (RBM) is the part of the RBD that mediates contact with ACE2. Therefore, we will narrow our focus to the differences in RBM to find out why SARS-CoV-2 binds better with ACE2.
 
@@ -36,7 +34,7 @@ $$0<Q\leq1$$
 * $$N_{res1}$$ = number of residues in protien 1
 * $$N_{res2}$$ = number of residues in protien 2
 
- 
+
 **Q per residue (Qres)** is the measure of contribution of each residue to the overall Q value of the aligned structures. This is very useful for finding specific regions where the aligned proteins differ structurally from each other. To find these regions, we just need to locate regions where many residues have low Qres.
 
 Multiseq aligns the structures by using the Structural Alignment of Multiple Proteins (STAMP) tool. The algorithm minimizes the distance between alpha carbons of the aligned residues for each protein or molecule by applying rigid-body rotations and translations. If the structures do not have common structures, then STAMP will fail. For more details on the STAMP algorithm, click <a href="http://www.compbio.dundee.ac.uk/manuals/stamp.4.4/stamp.pdf" target="_blank">here</a>.
