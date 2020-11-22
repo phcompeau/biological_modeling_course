@@ -35,7 +35,7 @@ A multiple alignment of the RBM (colored amino acids) across the human SARS-CoV 
 
 All this having been said, we know from part 1 of this module that just because the sequence of a protein has been greatly mutated does not mean that the structure of that protein has changed much. Therefore, in this lesson, we will start a comparative analysis of the SARS-CoV and SARS-CoV-2 spike proteins at the structural level. All of the analysis will be performed using the software resources ProDy and VMD, which we briefly introduced in part 1. By the end of this module, our goal is to understand whether these mutations in the RBM really have contributed to higher infectiousness.
 
-## Protein Structure Files
+## Identifying local dissimilarities between protein structures
 
 Not only did researchers experimentally verify the structure of the spike protein of the two viruses, they were able to determine the structure of the RBD complexed with ACE2 in both SARS-CoV (PDB entry: <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>) and SARS-CoV-2 (PDB entry: <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>). To be more precise, the SARS-CoV-2 structure is actually a *chimeric* protein formed of the SARS-CoV RBD in which the RBM has the sequence from SARS-CoV-2. A chimeric RBD was used for complex technical reasons to ensure that the crystallization process during X-ray crystallography could be borrowed from that used for SARS-CoV.
 
