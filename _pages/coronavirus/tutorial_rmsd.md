@@ -9,6 +9,10 @@ toc_sticky: true
 
 In this tutorial, we will demonstrate how to apply the Kabsch algorithm to compute the RMSD between two protein structures. In particular, we will show how to compare the experimentally validated structure of the SARS-CoV-2 spike protein (PDB entry: [6vxx](http://www.rcsb.org/structure/6VXX)) against the structures that we predicted in our previous homology modeling.
 
+Here is a folder containing all the models we produced so far and the determined structure entries from the Protein Data Bank to compare with the models and calculate RMSD. In addition to the models produced from homology modeling, we also included the QUARK models from *ab initio* modeling. Please read the included `README.txt` to see which Protein Data Bank structure to use for comparison for each set of models.
+
+[Models](../_pages/coronavirus/files/RMSD_Tutorial.zip) 
+
 ## Getting started
 
 In this tutorial, we will first use ProDy, our featured software resource for this module. ProDy is an open-source Python package that allows users to perform protein structural dynamics analysis. Its flexibility allows users to select specific parts or atoms of the structure for conducting normal mode analysis and structure comparison.
@@ -46,7 +50,7 @@ In[#]: ion()
 
 Rather than computing RMSD of an entire spike protein trimer, we will first compute RMSD for a single chain. This means that if we are dealing with entire proteins, we should "match" chains that have the most similarity between the two input proteins.
 
-The first built-in ProDy function that we will use, called `parsePDB`, parses a protein structure in `.pdb` format. To use our own protein structure, make sure that the `.pdb` file is in the current directory. Let's parse in one of our models we obtained from homology modeling of the SARS-CoV-2 Spike protein, SWISS1. You can use your own SARS-CoV-2 Spike protein model that you generated, or download our [SWISS-MODEL Results](../_pages/coronavirus/files/SWISS_Model.zip). In this tutorial, our model will be called `swiss1.pdb`.
+The first built-in ProDy function that we will use, called `parsePDB`, parses a protein structure in `.pdb` format. To use our own protein structure, make sure that the `.pdb` file is in the current directory. Let's parse in one of our models we obtained from homology modeling of the SARS-CoV-2 Spike protein, SWISS1. You can use your own SARS-CoV-2 Spike protein model that you generated. In this tutorial, our model will be called `swiss1.pdb`.
 
 ~~~ python
 In[#]: struct1 = parsePDB(‘swiss1.pdb’)
