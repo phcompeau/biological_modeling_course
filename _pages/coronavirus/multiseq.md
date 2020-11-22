@@ -11,7 +11,7 @@ In part 1 of this module, we used a variety of existing software resources to pr
 
 Now begins part 2 of the module, in which we assume that we have this validated structure of the spike protein and ask a very simple question: how does it compare against the SARS-CoV spike protein from the 2003 outbreak? Can we find any clues lurking in the structures of the spike protein that would indicate why the two viruses behave differently in humans? In particular, why did SARS-CoV fizzle out while SARS-CoV-2 was infectious enough to cause a pandemic?
 
-## Focusing in on a variable region of interest in the spike protein
+## Focusing on a variable region of interest in the spike protein
 
 We already know from our work in part 1 of this module that when we compare the SARS-CoV and SARS-CoV-2 genomes, the Spike protein is much more variable than other regions. We even see variable and conserved regions within the spike protein, as the following figure (reproduced from the section on [homology modeling](homology)) indicates.
 
@@ -33,10 +33,13 @@ As we hone in on the RBM, we provide an alignment of the 70 amino acid long RBM 
 A multiple alignment of the RBM (colored amino acids) across the human SARS-CoV virus (first row), a version of the virus isolated in a palm civet (second row), a virus isolated in a bat in 2013 (third row), and the SARS-CoV-2 virus (fourth row). Beneath each column, an asterisk denotes full conservation, a period denotes a slight mutation, and a colon indicates high variability.
 {: style="font-size: medium;"}
 
-In this lesson, we will start our comparative analysis of the SARS-CoV and SARS-CoV-2 spike proteins with a focus on the RBM. All of the analysis will be performed using the software resources ProDy and VMD, which we briefly introduced in part 1. By the end of this module, our goal is to understand how differences in the spike protein may have contributed to higher infectiousness.
+All this having been said, we know from part 1 of this module that just because the sequence of a protein has been greatly mutated does not mean that the structure of that protein has changed much. Therefore, in this lesson, we will start a comparative analysis of the SARS-CoV and SARS-CoV-2 spike proteins at the structural level. All of the analysis will be performed using the software resources ProDy and VMD, which we briefly introduced in part 1. By the end of this module, our goal is to understand whether these mutations in the RBM really have contributed to higher infectiousness.
 
 ## Protein Structure Files
-We will be using two PDB entries for comparison: <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a> and <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>. 2ajf contains the structure of SARS RBD complexed with ACE2 and 6vw1 contains the structure of SARS-CoV-2 chimeric RBD complexed with ACE2. SARS-CoV-2 chimeric RBD consist of the SARS RBD core and SARS-CoV-2 RBM. The reason that the chimeric RBD was used is because the SARS RBD core helps facilitate crystallization by acting as the crystallization scaffold for X-ray diffraction (x-ray crystallography). Since the functional unit is still SARS-CoV-2 RBM, data from the comparisons should be similar or equivalent to using native SARS-CoV-2 RBD. Using these structures, we can produce 3D visualizations of SARS-CoV-2 RBD and SARS RBD interacting with ACE2 and see if we can determine structural differences between the interactions.
+
+Not only did researchers experimentally verify the structure of the spike protein of the two viruses, they were able to determine the structure of the RBD complexed with ACE2 in both SARS-CoV (PDB entry: <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>) and SARS-CoV-2 (PDB entry: <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>). To be more precise, the SARS-CoV-2 structure is actually a *chimeric* protein formed of the SARS-CoV RBD in which the RBM has the sequence from SARS-CoV-2. A chimeric RBD was used for complex technical reasons to ensure that the crystallization process during X-ray crystallography could be borrowed from that used for SARS-CoV.
+
+Because we have these known structures of the bound complexes, we can produce 3-D visualizations of the two different complexes and see if we can find structural differences involving the RBM.
 
 ## VMD, Multiseq, and Qres
 There are tools that can help us identify where the two structures deviate from each other. The brute force method is to visualize the two RBDs and to rotate them around to see if you can spot any differences. We can do this by using <a href="https://www.ks.uiuc.edu/Research/vmd/" target="_blank">Visual Molecular Dynamics (VMD)</a>, a molecular visualization program that allows users to produce interactiable 3D visualizations of molecules. However, blindly looking for structural differences can waste a lot of time and effort.
