@@ -41,7 +41,9 @@ Not only did researchers experimentally verify the structure of the spike protei
 
 Because we have these known structures of the bound complexes, we can produce 3-D visualizations of the two different complexes and see if we can find structural differences involving the RBM. In the tutorial linked from this lesson, we will use VMD to produce this visualization, rotating the structures around to examine potential differences. However, we should be wary of simply trusting our eyes to guide us; can we use a computational approach to tell us where to look?
 
-**Transition to RMSD and Q Score**
+In the previous lesson on assessing the accuracy of a predicted structure, we introduced a metric called root mean square deviation (RMSD) for quantifying the difference between two protein structures. RMSD offered an excellent method for a *global* comparison (i.e., a comparison across all structures), but we are interested in the *local* regions where the SARS-CoV and SARS-CoV-2 complexes differ. To this end, we will need an approach that examines individual amino acids in similar protein structures to find where they differ.
+
+**Transition to Q Score**
 
 A good starting point would be to use the VMD plugin*<a href="https://www.ks.uiuc.edu/Research/vmd/plugins/multiseq/" target="_blank">Multiseq</a>*, a bioinformatics analysis environment that provides tools such as sequence and structural alignment. *Multiseq* is able to calculate structural conservation within aligned molecules by computing Q per residue. **Q-score**, or **Q**, qualitative measure of structure similarity by considering both the alignment length and RMSD. Q = 1 represents that the structures are identical, while a low Q-score (e.g. 0.1) represents low structure similarity. Q decreases with increasing RMSD or decreasing alignment length. Recognize that we can always lower RMSD by decreasing alignment length or increase alignment length with the expense of increasing RMSD. This contradictory requirement of low RMSD and high alignment length is eliminated by using the ratio of alignment length and RMSD. Below is the equation for Q [^Krissinel].
 
