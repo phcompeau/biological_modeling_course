@@ -11,7 +11,7 @@ In part 1 of this module, we used a variety of existing software resources to pr
 
 Now begins part 2 of the module, in which we assume that we have this validated structure of the spike protein and ask a very simple question: how does it compare against the SARS-CoV spike protein from the 2003 outbreak? Can we find any clues lurking in the structures of the spike protein that would indicate why the two viruses behave differently in humans? In particular, why did SARS-CoV fizzle out while SARS-CoV-2 was infectious enough to cause a pandemic?
 
-## ACE2
+## Focusing in on a variable region of interest in the spike protein
 
 We already know from our work in part 1 of this module that when we compare the SARS-CoV and SARS-CoV-2 genomes, the Spike protein is much more variable than other regions. We even see variable and conserved regions within the spike protein, as the following figure (reproduced from the section on [homology modeling](homology)) indicates.
 
@@ -19,21 +19,21 @@ We already know from our work in part 1 of this module that when we compare the 
 Variable and conserved regions in the SARS-CoV and SARS-CoV-2 spike proteins. The S1 domain tends to be more variable, while the S2 domain is more conserved (and even has a small region of 100% similarity). Source: Jaimes et al. 2020[^Jaimes].
 {: style="font-size: medium;"}
 
-When we zoom in on
-
-![image-center](../assets/images/RBM_alignment.png){: .align-center}
-Fill in caption.
-{: style="font-size: medium;"}
-
-YouTube video
+The most variable region between the two viruses in the spike protein is the **receptor binding motif (RBM)**, part of the receptor binding domain (RBD) whose structure we predicted using GalaxyWEB in the [homology modeling] tutorial(tutorial_homology). The RBM is the component of the RBD that mediates contact with ACE2, as the following simplified video illustrates.
 
 <center>
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/e2Qi-hAXdJo" frameborder="0" allowfullscreen></iframe>
 </center>
 
-However, SARS-CoV-2 is much more infectious, and its S protein has been found to bind to ACE2 with greater affinity than that of SARS. The receptor binding domain (RBD) is the part of the S protein that interacts with ACE2, and the receptor binding motif (RBM) is the part of the RBD that mediates contact with ACE2. Therefore, we will narrow our focus to the differences in RBM to find out why SARS-CoV-2 binds better with ACE2.
+Given that the RBM is so critical to the virus's ability to bond to the target human enzyme, the fact that it has mutated so much from SARS-CoV to SARS-CoV-2 makes it a fascinating area of focus for our study. Do the mutations that SARS-CoV-2 has accumulated make it easier for the virus to bond to human cells? Could this be why SARS-CoV-2 is more infectious than SARS-CoV?
 
-* Add later: "All the analysis will be done using two software: ProDy and VMD. By the end of this module, you will be able to understand more about protein structure prediction and differences in the S proteins that attribute to the higher infectivity of COVID-19."
+As we hone in on the RBM, we provide an alignment of the 70 amino acid long RBM region from SARS-CoV and SARS-CoV-2 (as well as two animal viruses) in the figure below.
+
+![image-center](../assets/images/RBM_alignment.png){: .align-center}
+A multiple alignment of the RBM (colored amino acids) across the human SARS-CoV virus (first row), a version of the virus isolated in a palm civet (second row), a virus isolated in a bat in 2013 (third row), and the SARS-CoV-2 virus (fourth row). Beneath each column, an asterisk denotes full conservation, a period denotes a slight mutation, and a colon indicates high variability.
+{: style="font-size: medium;"}
+
+In this lesson, we will start our comparative analysis of the SARS-CoV and SARS-CoV-2 spike proteins with a focus on the RBM. All of the analysis will be performed using the software resources ProDy and VMD, which we briefly introduced in part 1. By the end of this module, our goal is to understand how differences in the spike protein may have contributed to higher infectiousness.
 
 ## Protein Structure Files
 We will be using two PDB entries for comparison: <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a> and <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>. 2ajf contains the structure of SARS RBD complexed with ACE2 and 6vw1 contains the structure of SARS-CoV-2 chimeric RBD complexed with ACE2. SARS-CoV-2 chimeric RBD consist of the SARS RBD core and SARS-CoV-2 RBM. The reason that the chimeric RBD was used is because the SARS RBD core helps facilitate crystallization by acting as the crystallization scaffold for X-ray diffraction (x-ray crystallography). Since the functional unit is still SARS-CoV-2 RBM, data from the comparisons should be similar or equivalent to using native SARS-CoV-2 RBD. Using these structures, we can produce 3D visualizations of SARS-CoV-2 RBD and SARS RBD interacting with ACE2 and see if we can determine structural differences between the interactions.
@@ -92,3 +92,5 @@ From this analysis, we now identified a region that is structurally different be
 ## Extra
 
 * Cite the RBM alignment as taken from this article: https://jvi.asm.org/content/jvi/94/7/e00127-20.full.pdf
+
+* Is there anything that we can say about the five blue residues in the multiple alignment figure? Perhaps we can just make our own alignment here since it's public data.
