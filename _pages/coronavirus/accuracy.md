@@ -44,7 +44,13 @@ $$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{n} \cdot (d(s_1, t_1)^2 + d(s_2, t_2)^2 + 
 
 In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the distance between the points *s*<sub><em>i</em></sub> and *t*<sub><em>i</em></sub> in 2-D or 3-D space as the case may be. (Note: RMSD is a very commonly used approach across many fields when measuring the differences between two vectors.)
 
-For a toy example of computing RMSD, consider the figure below, which shows two shapes with four points sampled from each. The distances between corresponding points are equal to $$\sqrt{2}$$, 1, 4, and $$\sqrt{2}$$. As a result, we compute the RMSD as
+For a toy example of computing RMSD, consider the figure below, which shows two shapes with four points sampled from each.
+
+![image-center](../assets/images/rmsd_simple_shapes.png){: .align-center}
+Two shapes with four points sampled from each to produce an RMSD estimate equal to 3/2.
+{: style="font-size: medium;"}
+
+The distances between corresponding points in this figure are equal to $$\sqrt{2}$$, 1, 4, and $$\sqrt{2}$$. As a result, we compute the RMSD as
 
 $$\begin{align*}
 \text{RMSD}(s, t) & = \sqrt{\dfrac{1}{4} \cdot (\sqrt{2}^2 + 1^2 + 2^2 + \sqrt{2}^2)} \\
@@ -53,11 +59,7 @@ $$\begin{align*}
 & = \dfrac{3}{2}
 \end{align*}$$
 
-![image-center](../assets/images/rmsd_simple_shapes.png){: .align-center}
-Two shapes with four points sampled from each to produce an RMSD estimate equal to 3/2.
-{: style="font-size: medium;"}
-
-**STOP:** Do you see any issues with the use of RMSD to compare two shapes?
+**STOP:** Do you see any issues with using RMSD to compare two shapes?
 {: .notice--primary}
 
 Even if we assume that the shapes have already been overlapped and rotated appropriately, we still need to make sure that we sample enough points to give a good approximation of how different the shapes are.  For an extreme example, consider a circle inscribed within a square, as shown in the figure below. If we happened to sample only the four points at 0, 90, 180, and 270 degrees, we would sample the same points in each shape, and conclude that the RMSD between these two shapes is zero.  This of course is easily resolvable just by making sure to choose *n* large enough to ensure no approximation errors. (If you are familiar with calculus, compare this idea to sampling many points on a curve when approximating an integral.)

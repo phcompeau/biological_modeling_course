@@ -9,13 +9,13 @@ toc_sticky: true
 
 In this tutorial, we will demonstrate how to apply the Kabsch algorithm to compute the RMSD between two protein structures. In particular, we will show how to compare the experimentally validated structure of the SARS-CoV-2 spike protein (PDB entry: [6vxx](http://www.rcsb.org/structure/6VXX)) against the structures that we predicted in our previous homology modeling.
 
-Here is a folder containing all the models we produced so far and the determined structure entries from the Protein Data Bank to compare with the models and calculate RMSD. In addition to the models produced from homology modeling, we also included the QUARK models from *ab initio* modeling. Please read the included `README.txt` to see which Protein Data Bank structure to use for comparison for each set of models.
+Below is a folder containing all the models that we produced so far along with the experimentally validated structure entries from the PDB.  Please read the included `README.txt` to see which PDB structure to use for comparison against each model.
 
-[Models](../_pages/coronavirus/files/RMSD_Tutorial.zip) 
+[Download models](../_pages/coronavirus/files/RMSD_Tutorial.zip)
 
 ## Getting started
 
-In this tutorial, we will first use ProDy, our featured software resource for this module. ProDy is an open-source Python package that allows users to perform protein structural dynamics analysis. Its flexibility allows users to select specific parts or atoms of the structure for conducting normal mode analysis and structure comparison.
+This tutorial will be our first encounter with ProDy, our featured software resource for this module. ProDy is an open-source Python package that allows users to perform protein structural dynamics analysis. Its flexibility allows users to select specific parts or atoms of the structure for conducting normal mode analysis and structure comparison.
 
 To get started, make sure that you have the following software resources installed.
 
@@ -129,7 +129,7 @@ In[#]: calcRMSD(first_ca, second_ca)
 Your results should look like the following:
 ![image-center](../assets/images/RMSDResult4.png){: .align-center}
 
-**STOP:** If you are interested, apply what you have learned in this tutorial to compute the RMSD between the SARS-CoV-2 spike protein and every one of the predicted models of this protein that we generated from homology modeling.
+**STOP:** If you are interested, apply what you have learned in this tutorial to compute the RMSD between the SARS-CoV-2 spike protein and every one of the [predicted models](../_pages/coronavirus/files/RMSD_Tutorial.zip) of this protein that we generated from homology modeling. Consult the included readme for reference.
 {: .notice--primary}
 
 We are now ready to head back to the main text, where we will discuss the RMSD calculations for all models. Were they successful in predicting the structure of the SARS-CoV-2 spike protein?
