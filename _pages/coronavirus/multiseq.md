@@ -54,7 +54,7 @@ A good starting point would be to use the VMD plugin*<a href="https://www.ks.uiu
 where: 
 * $$Q_{res}^{(i,n)}$$ is the structural similarity of the $$i^{th}$$ residue in the $$n^{th}$$ protein
 * $$r_{ij}^{(n)}$$ is the distance between the alpha carbons of residues $$i$$ and $$j$$ in protein $$n$$
-* $$r_{i'j'}^{(m)} is the distance between alpha carbons of the residues in protein $$m$$ that correspond to residues $$i$$ and $$j$$ in protein $$n$$
+* $$r_{i'j'}^{(m)}$$ is the distance between alpha carbons of the residues in protein $$m$$ that correspond to residues $$i$$ and $$j$$ in protein $$n$$
 * Variance $$sigma_{ij}^2 = |i-j|^{0.15}$$, which corresponds to the sequence separation between residues $$i$$ and $$j$$
 * Normalization $$N = \frac{1}{(N_{seq}-1)(N_{res}-k}$$, where $$N_{seq}$$ is the number of proteins, $$N_{res}$$ is the number of residues in protein $$n$$, and $$k=2$$ when residue $$i$$ is the N- or C-terminus and $$k=3$$ otherwise.
 
