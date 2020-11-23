@@ -56,7 +56,7 @@ This section will provide images and descriptions for the different components o
 
 ## Implementing particle diffusion
 
-In CellBlender, load the `CellBlender_Tutorial_Template.blend` file from the previous section and save your file as `random_walk.blend`. You may also download the completed tutorial file here: <a href="https://github.com/phcompeau/biological_modeling_course/blob/master/tutorials/random_walk_200.blend" download="random_walk_200.blend">Blend Filek</a>.
+In CellBlender, load the `CellBlender_Tutorial_Template.blend` file from the previous section and save your file as `random_walk.blend`. You may also download the completed tutorial file <a href=".../tutorials/random_walk_200.blend" download="random_walk_200.blend">here</a>.
 
 ![image-center](../assets/images/cellblender_location.png){: .align-center}
 
