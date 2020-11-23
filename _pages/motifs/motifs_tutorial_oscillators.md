@@ -5,8 +5,7 @@ sidebar:
  nav: "motifs"
 ---
 
-In this tutorial, we will use CellBlender to build a particle-based simulation implementing a repressilator. First, load the `CellBlender_Tutorial_Template.blend` file from the [Random Walk Tutorial](https://purpleavatar.github.io/multiscale_biological_modeling/prologue/tutorial-random-walk) and save a copy of the file as `repressilator.blend`. 
-You may also download the completed tutorial file here: <a href="https://github.com/phcompeau/biological_modeling_course/blob/master/tutorials/repressilator.blend" download="repressilator.blend">repressilator.blend</a>.
+In this tutorial, we will use CellBlender to build a particle-based simulation implementing a repressilator. First, load the `CellBlender_Tutorial_Template.blend` file from the [Random Walk Tutorial](../prologue/tutorial-random-walk) and save a copy of the file as `repressilator.blend`. You may also download the completed tutorial file <a href="../tutorials/repressilator.blend" download="repressilator.blend">here</a>.
 
 Then go to `CellBlender > Molecules` and create the following molecules:
 
