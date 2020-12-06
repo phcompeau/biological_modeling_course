@@ -146,8 +146,6 @@ coronavirus:
         url: /coronavirus/structural_diff
       - title: "Interaction Energy with ACE2<br><br>"
         url: /coronavirus/NAMD
-      - title: "Normal Mode Analysis<br><br>"
-        url: /coronavirus/NMA
       - title: "Conclusion<br><br>"
         url: /coronavirus/conclusion
       - title: "Exercises<br><br>"
