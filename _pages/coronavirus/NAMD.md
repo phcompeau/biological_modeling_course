@@ -1,7 +1,7 @@
 ---
 permalink: /coronavirus/NAMD
 title: "Interaction Energy with ACE2"
-sidebar: 
+sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
@@ -21,7 +21,7 @@ To compute potential energies, we need what is known as a **force field**. A for
 
 For more information of how to calculate the energies and the functions for potential energy, click <a href="https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html" target="_blank">here</a>.
 
-NAMD needs to utilize the information in the force field to calculate the potential energy of a protein. To do this, it needs a **protein structure file (PSF)**. A PSF, which is molecule-specific, contains all the information required to apply a force field to a molecular system [^PSF]. Fortunately, there are programs that can generate a PSF given the force field and protein structure (PDB file). 
+NAMD needs to utilize the information in the force field to calculate the potential energy of a protein. To do this, it needs a **protein structure file (PSF)**. A PSF, which is molecule-specific, contains all the information required to apply a force field to a molecular system [^PSF]. Fortunately, there are programs that can generate a PSF given the force field and protein structure (PDB file).
 
 <hr>
 
@@ -42,9 +42,9 @@ These are the ACE2 interaction energies of SARS-CoV-2 RBD and SARS RBD. The PDB 
 
 From the results, we see that the overall attractive interaction energy between the RBD and ACE2 is greater in magnitude for SARS-CoV-2, supporting the previous studies that found SARS-CoV-2 Spike having higher affinity with ACE2. For SARS-CoV-2, Hotspot31 (red) has the greatest contribution, followed by Hotspot353 (blue), and finally the loop in the RBM (yellow) providing the least. For SARS, Hotspot353 provides the greatest contribution, followed by the loop, and, surprisingly, Hotspot31 very slightly hindering the interaction. Nevertheless, we see that all three sites in SARS-CoV-2 support binding with ACE2 much more than in SARS. The difference in results support that the residue differences and conformational changes in the three sites do indeed increase the binding affinity between SARS-CoV-2 S protein and ACE2.
 
-In the next lesson, we will learn about another protein analysis method that uses molecular dynamics.
+In this module's conclusion, we will learn about another protein analysis method that uses molecular dynamics.
 
-[Next lesson](NMA){: .btn .btn--primary .btn--large}
+[Next lesson](conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 [^TCBG]: https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html
@@ -52,4 +52,3 @@ In the next lesson, we will learn about another protein analysis method that use
 [^charmm]: https://www.charmmtutorial.org/index.php/The_Energy_Function
 
 [^PSF]: https://www.ks.uiuc.edu/Training/Tutorials/namd/namd-tutorial-unix-html/node23.html
-

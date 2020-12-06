@@ -1,7 +1,7 @@
 ---
 permalink: /coronavirus/tutorial_GNM
 title: "GNM"
-sidebar: 
+sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
@@ -84,5 +84,5 @@ In[#]: showSqFlucts(gnm[0], hinges=True);
 
 Now, let's head back to the main text on how to read our visualizations and analyze our results.
 
-[Return to main text](NMA){: .btn .btn--primary .btn--x-large}
+[Return to main text](conclusion){: .btn .btn--primary .btn--x-large}
 {: style="font-size: 100%; text-align: center;"}

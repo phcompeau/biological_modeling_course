@@ -1,7 +1,7 @@
 ---
 permalink: /coronavirus/tutorial_ANM
 title: "ANM Calculations & VMD Plugin: NMWiz"
-sidebar: 
+sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
@@ -65,6 +65,5 @@ Now, you should be able to clearly see the animation of the ANM fluctuations of 
 
 Now let's go back to the main text to interpret the results.
 
-[Return to main text](NMA){: .btn .btn--primary .btn--large}
+[Return to main text](conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
-
