@@ -9,17 +9,17 @@ toc_sticky: true
 
 In part 1 of this module, we used a variety of existing software resources to predict the structure of the SARS-CoV-2 spike protein from its amino acid sequence. We then discussed how to compare our predicted structures against the experimentally confirmed structure of the protein.
 
-Now begins part 2 of the module, in which we assume that we have this validated structure of the spike protein and ask a very simple question: how does it compare against the SARS-CoV spike protein from the 2003 outbreak? Can we find any clues lurking in the structures of the spike protein that would indicate why the two viruses behave differently in humans? In particular, why did SARS-CoV fizzle out while SARS-CoV-2 was infectious enough to cause a pandemic?
+Now begins part 2 of the module, in which we assume that we have the validated structure of the spike protein and ask a simple question: how does it compare against the SARS-CoV spike protein from the 2003 outbreak? Can we find any clues lurking in the structures of the spike protein that would indicate why the two viruses behave differently in humans? And why did SARS-CoV fizzle out while SARS-CoV-2 was infectious enough to cause a pandemic?
 
 ## Focusing on a variable region of interest in the spike protein
 
-We already know from our work in part 1 of this module that when we compare the SARS-CoV and SARS-CoV-2 genomes, the Spike protein is much more variable than other regions. We even see variable and conserved regions within the spike protein, as the following figure (reproduced from the section on [homology modeling](homology)) indicates.
+We already know from our work in part 1 of this module that when we compare the SARS-CoV and SARS-CoV-2 genomes, the spike protein is much more variable than other regions. We even see variable and conserved regions within the spike protein, as the following figure (reproduced from the section on [homology modeling](homology)) indicates.
 
 ![image-center](../assets/images/spike_protein_similarity.png){: .align-center}
 Variable and conserved regions in the SARS-CoV and SARS-CoV-2 spike proteins. The S1 domain tends to be more variable, while the S2 domain is more conserved (and even has a small region of 100% similarity). Source: Jaimes et al. 2020[^Jaimes].
 {: style="font-size: medium;"}
 
-The most variable region between the two viruses in the spike protein is the **receptor binding motif (RBM)**, part of the receptor binding domain (RBD) whose structure we predicted using GalaxyWEB in the [homology modeling] tutorial(tutorial_homology). The RBM is the component of the RBD that mediates contact with ACE2, as the following simplified video illustrates.
+The most variable region between the two viruses in the spike protein is the **receptor binding motif (RBM)**, part of the receptor binding domain (RBD) whose structure we predicted using GalaxyWEB in the [homology modeling tutorial] (tutorial_homology). The RBM is the component of the RBD that mediates contact with ACE2, as the following simplified video illustrates.
 
 <center>
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/e2Qi-hAXdJo" frameborder="0" allowfullscreen></iframe>
