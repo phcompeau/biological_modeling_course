@@ -16,12 +16,15 @@ We will first use VMD to focus on the region of interest and highlight the amino
 
 ## Three Sites of Conformational Differences
 
+Our region of interest in the RBM is one of three sites with significant conformational differences between the SARS-CoV-2 and SARS-CoV spike proteins that were identified by Shang et al.[^Shang]. In this section, we will discuss each of these three locations and see how they affect binding affinity between the spike protein and ACE2.
+
+These locations will be challenging to visualize with a 2-D image, but if you followed the preceding tutorial, we encourage you to view the 3-D representation of the protein using VMD. Instructions on how to rotate a molecule and zoom in and out within VMD were given in our [tutorial on finding local protein differences](tutorial_multiseq).
+
+<!--
+
 SARS-CoV-2 chimeric RBD complexed with ACE2 (PDB entry <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>).
 
-
-In the tutorial, we created the visualization of 6vw1 and highlighted specific amino acid residues in region we identified previously. But does this region actually affect ACE2 binding?
-
-This region is actually one of three sites with significant conformational differences between the SARS-CoV-2 RBD and SARS RBD identified by Shang et. al. Each of the three sites are believed to contribute to SARS-CoV-2 S protein’s increased affinity with ACE2 [^Shang].
+-->
 
 ### Loop in ACE2-binding ridge
 
