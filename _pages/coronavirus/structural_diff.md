@@ -7,14 +7,18 @@ toc: true
 toc_sticky: true
 ---
 ## Visualizing the Region of Structural Differences
-In the last lesson, we used Multiseq and Qres to identify a region (SARS-CoV-2 residues 476 to 485) of structural difference between SARS-CoV-2 RBD and SARS RBD that appear to be in or next to the ACE2 binding sites. Now, we want to analyze this region and see what specifically is different between the two RBDs and if these differences actually effect the binding affinity with ACE2. Now that we have a target region, we can use VMD to zoom in and highlight specific amino acid residues to see what these differences look like.
+In the previous lesson, we identified a region between residues 476 and 485 of the SARS-CoV-2 spike protein that correspond to a structural difference between the SARS-CoV-2 and SARS-CoV RBMs. In this lesson, we will zoom in on this region of the RBM and determine whether the differences we have found affect binding affinity with the human ACE2 enzyme.
 
-For this tutorial, we will show you how to use VMD to focus on a particular region within the SARS-CoV-2 chimeric RBD complexed with ACE2 (PDB entry <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>).
+We will first use VMD to focus on the region of interest and highlight the amino acids that differ in SARS-CoV-2. If you are interested in doing so, please follow the following tutorial, which we will consult throughout the rest of this lesson.
 
 [Visit tutorial](tutorial_visualization){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Three Sites of Conformational Differences
+
+SARS-CoV-2 chimeric RBD complexed with ACE2 (PDB entry <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>).
+
+
 In the tutorial, we created the visualization of 6vw1 and highlighted specific amino acid residues in region we identified previously. But does this region actually affect ACE2 binding? Below is a table from study by Shang et. al. that compares the critical ACE2-binding residues between different strains of coronavirus.
 
 ![image-center](../assets/images/ShangTable.png){: .align-center}
@@ -26,9 +30,10 @@ Remember that our region is between SARS-CoV-2 residues 476 to 485. We can see t
 
 ### Loop in ACE2-binding ridge
 
-A marked difference was found on one of the loops in the ACE2-binding ridge. This is the region that we visualized in the tutorial. SARS contains a three residue motif, proline-proline-alanine, at residues 468 to 471. In contrast, SARS-CoV-2 contains a four residue motif, glycine-valine-glutamate-glycine, at the corresponding residues 482 to 485. The two bulky residues and two flexible glycines causes a conformational change in SARS-CoV-2 RBM. Below is a visual comparison of this region between SARS-CoV-2 and SARS. 
+A marked difference was found on one of the loops in the ACE2-binding ridge. This is the region that we visualized in the tutorial. SARS contains a three residue motif, proline-proline-alanine, at residues 468 to 471. In contrast, SARS-CoV-2 contains a four residue motif, glycine-valine-glutamate-glycine, at the corresponding residues 482 to 485. The two bulky residues and two flexible glycines causes a conformational change in SARS-CoV-2 RBM. Below is a visual comparison of this region between SARS-CoV-2 and SARS.
 
-STOP: See if you can spot the major difference between the figures below before reading what actually happens. *Hint: Look at the yellow residue!*? {: .notice--primary}
+**STOP:** See if you can spot the major difference between the figures below before reading what actually happens. *Hint: Look at the yellow residue!*?
+{: .notice--primary}
 
 ![image-center](../assets/images/Ridge.png){: .align-center}
 These are the 3D visualization of the loop in the ACE2-binding ridge that is conformationally different between SARS-CoV-2 (top figures) and SARS (bottom). The RBD is shown in purple while ACE2 is shown in green. The differences in structure cause certain amino acid residues (highlighted in various colors) to behave differently between the two interactions. In SARS-CoV-2, the differences allow RBD residue Ala475 (red) to form a hydrogen bond with ACE2 residue Ser19 (cyan). The ACE2 residues Met82, Leu79, and Tyr83 (silver) create a hydrophobic pocket. For SARS-CoV-2, the RBD residue Phe486 (yellow) inserts itself into the pocket, favorably interacting with ACE2. These interactions do not happen with SARS, and its corresponding RBD residue Leu472 (yellow), is not inserted into the pocket.
@@ -42,9 +47,10 @@ The most noticeable difference is between SARS-CoV-2 Phe486 and SARS Leu472. In 
 
 ### Hotspot 31
 
-Hotspot 31 is the second site of marked conformational differences between SARS-CoV-2 and SARS. 
+Hotspot 31 is the second site of marked conformational differences between SARS-CoV-2 and SARS.
 
-STOP: Again, see if you can spot the differences, it should be more obvious this time around. {: .notice--primary}
+**STOP:** Again, see if you can spot the differences, it should be more obvious this time around.
+{: .notice--primary}
 
 ![image-center](../assets/images/Hotspot31.png){: .align-center}
 These are the 3D visualizations of hotspot 31 between SARS-CoV-2 (top) and SARS (bottom). The RBD is shown in purple and ACE2 is shown in green. In SARS, the RBD residue Tyr442 (yellow) stabilizes the salt bridge bond between ACE2 residues Lys31 and Glu35 (red). In SARS-CoV-2, the corresponding RBD residue Leu455 (yellow) is unable to support the ACE2 bond. This causes the salt bridge to break and allow the ACE residues Lys31 and Glu35 to interact and form new hydrogen bonds with RBD residue Gln493 (blue).
@@ -72,6 +78,6 @@ We have identified three sites between SARS and SARS-CoV-2 when it comes to inte
 
 [^Hamming]: Hamming, I., Timens, W., Bulthuis, M., Lely, A., Navis, G., Goor, H. 2004. Tissue distribution of ACE2 portein, the functional receptor for SARS coronavirus. A first step in understanding SARS pathogenesis. J Pathol 203(2), 631-637. https://doi.org/10.1002/path.1570
 
-[^Samavati]: Samavati, L., Uhal, B. 2020. ACE2, Much more than just a receptor for sars-cov-2. Front. Cell. Infect. Microbiol 10. https://doi.org/10.3389/fcimb.2020.00317 
+[^Samavati]: Samavati, L., Uhal, B. 2020. ACE2, Much more than just a receptor for sars-cov-2. Front. Cell. Infect. Microbiol 10. https://doi.org/10.3389/fcimb.2020.00317
 
 [^Shang]: Shang, J., Ye, G., Shi, K., Wan, Y., Luo, C., Aijara, H., Geng, Q., Auerbach, A., Li, F. 2020. Structural basis of receptor recognition by SARS-CoV-2. Nature 581, 221–224. https://doi.org/10.1038/s41586-020-2179-y
