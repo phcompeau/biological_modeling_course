@@ -1,17 +1,17 @@
 ---
 permalink: /coronavirus/NAMD
-title: "Interaction Energy with ACE2"
+title: "Quantifying the Interaction Energy Between the SARS-CoV-2 Spike Protein and ACE2"
 sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
 ---
 
-In the previous lesson, we identified and visualized three regions of conformational differences between the RBD of SARS-CoV and SARS-CoV-2 Spike protein as each binds to the ACE2 enzyme. We now turn our attention to quantifying how much each of these regions affect binding affinity.
+## Introduction to Potential Energy in Molecules
+
+In the previous lesson, we visualized three regions of conformational differences between the RBD of SARS-CoV and SARS-CoV-2 Spike protein as each binds to the ACE2 enzyme. We now turn our attention to quantifying how much each of these regions affect binding affinity.
 
 To do so, we will employ <a href="https://www.ks.uiuc.edu/Research/namd/" target="_blank">NAMD</a>, a molecular dynamics program that was designed for high-performance large biomolecular system simulations and is most commonly used with VMD. <a href="https://www.ks.uiuc.edu/Research/vmd/plugins/namdenergy/" target="_blank">NAMD Energy</a> is a plugin within VMD that utilizes NAMD to intermolecular and intramolecular energies of molecules in units of kcal/mol. This plugin will allow us to calculate the interaction energy between ACE2 and Spike RBD. In addition, NAMD Energy allows users to select specific regions, which will help us evaluate how much each of the three regions contributes.
-
-## Introduction to Potential Energy in Molecules
 
 To compute potential energies, we need what is known as a **force field**. A force field contains a functional form on how to compute these energies on each particle in the molecule or system and a set of parameters that describe how energy is determined by the positional relationship between atoms [^charmm]. There are many different force fields depending on the specific type of system, e.g. DNA, RNA, lipids. These sets of force fields are offered by many molecular mechanics groups. For example, *<a href=" https://www.charmm.org/" target="_blank">Chemistry at Harvard Macromolecular Mechanics (CHARMM)</a>* offers a set of force fields for molecular dynamics.
 
