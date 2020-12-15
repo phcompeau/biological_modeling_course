@@ -1,13 +1,13 @@
 ---
 permalink: /coronavirus/structural_diff
-title: "Structural and ACE2 Interaction Differences"
+title: "Analyzing Structural Differences in bonding of SARS-CoV and SARS-CoV-2 with the ACE2 Enzyme"
 sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
 ---
 
-## Visualizing the Region of Structural Differences
+## Visualizing a region of structural differences
 
 In the previous lesson, we identified a region between residues 476 and 485 of the SARS-CoV-2 spike protein that correspond to a structural difference between the SARS-CoV-2 and SARS-CoV RBMs. In this lesson, we will zoom in on this region of the RBM and determine whether the differences we have found affect binding affinity with the human ACE2 enzyme.
 
@@ -16,7 +16,7 @@ We will first use VMD to focus on the region of interest and highlight the amino
 [Visit tutorial](tutorial_visualization){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-## Three Sites of Conformational Differences
+## Analyzing three sites of conformational differences
 
 Our region of interest in the RBM is one of three sites with significant conformational differences between the SARS-CoV-2 and SARS-CoV spike proteins that were identified by Shang et al.[^Shang]. We will now discuss each of these three locations and see how they affect binding affinity between the spike protein and ACE2.
 
@@ -26,7 +26,7 @@ SARS-CoV-2 chimeric RBD complexed with ACE2 (PDB entry <a href="https://www.rcsb
 
 -->
 
-### Loop in ACE2-binding ridge
+### Site 1: loop in ACE2-binding ridge
 
 The first location is found within the RBM region of interest from the previous lesson and is found on a loop in the ACE2-binding ridge.
 
@@ -43,15 +43,11 @@ The most noticeable difference between SARS-CoV-2 and SARS-CoV relates to a "hyd
 
 In what follows, we use a three-letter identifier for an amino acid followed by a number to indicate the identity of that amino acid followed by its position within the protein sequence. For example, the phenylalanine at position 486 of the SARS-CoV-2 spike protein would be called Phe486.
 
-Although the interaction with the hydrophobic pocket is the most critical difference between SARS-CoV-2 and SARS-CoV, there are two other key differences that we would highlight.
+Although the interaction with the hydrophobic pocket is the most critical difference between SARS-CoV-2 and SARS-CoV, there are two other key differences that we would highlight. First, in SARS-CoV-2, a main-chain hydrogen bond forms between Asn487 and Ala475 (shown in red in the above figure), which creates a more compact ridge conformation, pushing the loop containing Ala475 closer to ACE2. This repositioning allows for the N-terminal residue Ser19 of ACE2 (shown in cyan in the above figure) to form a hydrogen bond with the main chain of Ala475. Second, Gln24 in ACE2 forms a new contact with the RBM.
 
-* In SARS-CoV-2, a main-chain hydrogen bond forms between Asn487 and Ala475 (shown in red in the above figure), which creates a more compact ridge conformation, pushing the loop containing Ala475 closer to ACE2. This repositioning allows for the N-terminal residue Ser19 of ACE2 (shown in cyan in the above figure) to form a hydrogen bond with the main chain of Ala475.
+### Site 2: hotspot 31
 
-* Gln24 of the N-terminal helix of ACE2 forms a new contact with the RBM.
-
-### Hotspot 31
-
-**Hotspot 31** is the second site of marked conformational differences between SARS-CoV-2 and SARS-CoV. It earns its name because it involves a "salt bridge", or a combination of hydrogen and ionic bonding between two amino acids, that takes place between Lys31 and Glu35. It is shown in red in the figure below.
+**Hotspot 31** is the second site of notable conformational differences between SARS-CoV-2 and SARS-CoV, a location that was previously studied in SARS-CoV in Li 2008 and Wu et al. 2012. This location earns its name because it involves a "salt bridge", or a combination of hydrogen and ionic bonding between two amino acids, that takes place between Lys31 and Glu35. It is shown in red in the figure below.
 
 **STOP:** Again, see if you can spot the differences between SARS-CoV-2 and SARS-CoV.
 {: .notice--primary}
@@ -62,12 +58,12 @@ Visualizations of hotspot 31 in SARS-CoV-2 (top) and SARS-CoV (bottom). The RBD 
 
 The figure above shows how the salt bridge is radically different in the two viruses. In SARS-CoV, the two residues appear to directly point towards each other because in the SARS-CoV RBM, Tyr442 supports the salt bridge between Lys31 and Glu35 on ACE2. In contrast to Tyr442 in SARS-CoV, the corresponding amino acid in SARS-CoV-2 is the less bulky Leu455 (shown in yellow), which provides less support to Lys31. This causes the salt bridge to break, so that Lys31 and Glu35 of ACE2 point in parallel toward the RBD residue Gln493. This change allows Lys31 and Glu35 to form hydrogen bonds with Gln493 in SARS-CoV-2 (shown in blue).
 
-### Hotspot 353
+### Site 3: hotspot 353
 
-Finally, hotspot 353 is the third site of marked conformational differences between SARS-CoV-2 and SARS-CoV. Here, the difference between the residues is amazingly subtle, so much so that it takes a keen eye to even find them.
+Finally, we consider **hotspot 353**, which involves another salt bridge connecting Lys353 and Asp38 of ACE2. Here, the difference between the residues is so subtle that it takes a keen eye to notice them.
 
 ![image-center](../assets/images/Hotspot353.png){: .align-center}
-These are the 3D visualizations of hotspot 353 between SARS-CoV-2 (top) and SARS-CoV (bottom). The RBD is shown in purple and ACE2 is shown in green. In SARS-CoV, the RBD residue Thr487 (yellow) stabilizes the salt bridge between ACE2 residues Lys 353 and Asp38 (red). In SARS-CoV-2, the corresponding RBD residue Asn501 (yellow) provides less support, causing ACE2 residue Lys353 (red residue on the left) to be in a slightly different conformation and form a new hydrogen bond with the RBD.
+Visualizations of hotspot 353 in SARS-CoV-2 (top) and SARS-CoV (bottom). The RBD is shown in purple, and ACE2 is shown in green. In SARS-CoV, the RBD residue Thr487 (yellow) stabilizes the salt bridge between ACE2 residues Lys 353 and Asp38 (red). In SARS-CoV-2, the corresponding RBD residue Asn501 (yellow) provides less support, causing ACE2 residue Lys353 (red residue on the left) to be in a slightly different conformation and form a new hydrogen bond with the RBD.
 {: style="font-size: medium;"}
 
 In SARS-CoV, the methyl group of Thr487 supports the salt bridge between Lys353 and Asp38 of ACE2, and the side-chain hydroxyl group of Thr487 forms a hydrogen bond with the RBM main chain. The corresponding SARS-CoV-2 residue Asn501 also forms a hydrogen bond between its side chain and RBM main chain. However, similar to what happened in hotspot 31, Asn501 provides less support to the salt bridge, causing Lys353 of ACE2 to be in a different conformation. Lys353 is then able to form an extra hydrogen bond with the main chain of SARS-CoV-2 RBM while maintaining the salt btidge with Asp38 of ACE2.
