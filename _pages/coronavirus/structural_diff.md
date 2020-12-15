@@ -51,16 +51,16 @@ Although the interaction with the hydrophobic pocket is the most critical differ
 
 ### Hotspot 31
 
-Hotspot 31 is the second site of marked conformational differences between SARS-CoV-2 and SARS-CoV.
+**Hotspot 31** is the second site of marked conformational differences between SARS-CoV-2 and SARS-CoV. It earns its name because it involves a "salt bridge", or a combination of hydrogen and ionic bonding between two amino acids, that takes place between Lys31 and Glu35. It is shown in red in the figure below.
 
 **STOP:** Again, see if you can spot the differences between SARS-CoV-2 and SARS-CoV.
 {: .notice--primary}
 
 ![image-center](../assets/images/Hotspot31.png){: .align-center}
-These are the 3D visualizations of hotspot 31 between SARS-CoV-2 (top) and SARS-CoV (bottom). The RBD is shown in purple and ACE2 is shown in green. In SARS-CoV, the RBD residue Tyr442 (yellow) stabilizes the salt bridge bond between ACE2 residues Lys31 and Glu35 (red). In SARS-CoV-2, the corresponding RBD residue Leu455 (yellow) is unable to support the ACE2 bond. This causes the salt bridge to break and allow the ACE residues Lys31 and Glu35 to interact and form new hydrogen bonds with RBD residue Gln493 (blue).
+Visualizations of hotspot 31 in SARS-CoV-2 (top) and SARS-CoV (bottom). The RBD is shown in purple, and ACE2 is shown in green. In SARS-CoV, hotspot 31 corresponds to a salt bridge, which is broken in SARS-CoV-2 to form a new hydrogen bond.
 {: style="font-size: medium;"}
 
-This figure shows how the interaction between Lys31 and Glu35 (Red) of ACE2 changes drastically between SARS-CoV-2 and SARS-CoV. In SARS-CoV, the two residues appear to directly point towards each other. This is because in SARS-CoV RBM, Tyr442 supports the salt bridge between Lys31 and Glu35 of ACE2. In contrast to Tyr442 in SARS-CoV, the corresponding residue in SARS-CoV-2 is the less bulky Leu455, which provides less support to Lys31 of ACE2. This causes the salt bridge to break and results in Lys31 and Glu35 of ACE2 to point almost in parallel towards RBD residue Gln493. This change allows Lys31 and Glu35 to form hydrogen bonds with Gln493 in SARS-CoV-2.
+The figure above shows how the salt bridge is radically different in the two viruses. In SARS-CoV, the two residues appear to directly point towards each other because in the SARS-CoV RBM, Tyr442 supports the salt bridge between Lys31 and Glu35 on ACE2. In contrast to Tyr442 in SARS-CoV, the corresponding amino acid in SARS-CoV-2 is the less bulky Leu455 (shown in yellow), which provides less support to Lys31. This causes the salt bridge to break, so that Lys31 and Glu35 of ACE2 point in parallel toward the RBD residue Gln493. This change allows Lys31 and Glu35 to form hydrogen bonds with Gln493 in SARS-CoV-2 (shown in blue).
 
 ### Hotspot 353
 
