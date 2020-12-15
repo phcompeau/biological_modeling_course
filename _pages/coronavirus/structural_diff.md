@@ -19,14 +19,9 @@ We will first use VMD to focus on the region of interest and highlight the amino
 SARS-CoV-2 chimeric RBD complexed with ACE2 (PDB entry <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>).
 
 
-In the tutorial, we created the visualization of 6vw1 and highlighted specific amino acid residues in region we identified previously. But does this region actually affect ACE2 binding? Below is a table from study by Shang et. al. that compares the critical ACE2-binding residues between different strains of coronavirus.
+In the tutorial, we created the visualization of 6vw1 and highlighted specific amino acid residues in region we identified previously. But does this region actually affect ACE2 binding?
 
-![image-center](../assets/images/ShangTable.png){: .align-center}
-Table showing critical ACE2-binding residues between different strains of coronavirus. Source: https://doi.org/10.1038/s41586-020-2179-y [^Shang]
-{: style="font-size: medium;"}
-
-
-Remember that our region is between SARS-CoV-2 residues 476 to 485. We can see that one group of the critical ACE2-binding residues of SARS-CoV-2 actually lies within our region. This indicates that our identified region is actually important to binding with ACE2 and that the structural differences in this region may contribute to SARS-CoV-2's increased affinity with ACE2. This region is actually one of three sites with significant conformational differences between the SARS-CoV-2 RBD and SARS RBD identified by Shang et. al. Each of the three sites are believed to contribute to SARS-CoV-2 S protein’s increased affinity with ACE2 [^Shang].
+This region is actually one of three sites with significant conformational differences between the SARS-CoV-2 RBD and SARS RBD identified by Shang et. al. Each of the three sites are believed to contribute to SARS-CoV-2 S protein’s increased affinity with ACE2 [^Shang].
 
 ### Loop in ACE2-binding ridge
 
