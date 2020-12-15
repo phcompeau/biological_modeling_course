@@ -9,6 +9,10 @@ sidebar:
 
 * Note to self: need to make a point about negative discovery here -- we don't find any big differences but that doesn't mean that it's analysis not worth running.
 
+* Another note to self: point out that things like how the spike protein interacts with ACE2 are a great example of how we need to study dynamic changes -- very difficult to convince someone that binding is better with a static structure.
+
+* Another example of declaring protein structure a "solved" problem just being tip of iceberg.
+
 ## NMA Introduction
 
 Proteins are not static, but rather dynamic structures. These fluctuations in their structures are typically key components their functions. **Molecular dynamics (MD)** is all about simulating molecules to analyze the movement of the molecules, atoms, and their interactions. However, simulating large structures, such as proteins with hundreds of amino acids, can prove to be extremely computationally heavy. Fortunately, there is an alternative method of studying large-scale movements of these structures called **Normal mode analysis (NMA)**. NMA of proteins is based on the theory that the lowest frequency vibrational normal modes are the most functionally relavent, describing the largest movement within the protein [^Skjaerven].

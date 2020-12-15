@@ -20,8 +20,6 @@ We will first use VMD to focus on the region of interest and highlight the amino
 
 Our region of interest in the RBM is one of three sites with significant conformational differences between the SARS-CoV-2 and SARS-CoV spike proteins that were identified by Shang et al.[^Shang]. We will now discuss each of these three locations and see how they affect binding affinity between the spike protein and ACE2.
 
-The differences will be challenging to visualize with a 2-D image, but if you followed the preceding tutorial, we encourage you to view the 3-D representation of the protein using VMD. Instructions on how to rotate a molecule and zoom in and out within VMD were given in our [tutorial on finding local protein differences](tutorial_multiseq).
-
 <!--
 
 SARS-CoV-2 chimeric RBD complexed with ACE2 (PDB entry <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>).
@@ -30,26 +28,32 @@ SARS-CoV-2 chimeric RBD complexed with ACE2 (PDB entry <a href="https://www.rcsb
 
 ### Loop in ACE2-binding ridge
 
-A marked difference was found on one of the loops in the ACE2-binding ridge. This is the region that we visualized in the tutorial. SARS-CoV contains a three residue motif, proline-proline-alanine, at residues 468 to 471. In contrast, SARS-CoV-2 contains a four residue motif, glycine-valine-glutamate-glycine, at the corresponding residues 482 to 485. The two bulky residues and two flexible glycines causes a conformational change in SARS-CoV-2 RBM. Below is a visual comparison of this region between SARS-CoV-2 and SARS-CoV.
+The first location is found within the RBM region of interest from the previous lesson and is found on a loop in the ACE2-binding ridge.
 
-**STOP:** See if you can spot the major difference between the figures below before reading what actually happens. *Hint: Look at the yellow residue!*?
+The structural differences are challenging to visualize with a 2-D image, but if you followed the preceding tutorial, then we encourage you to view the 3-D representation of the protein using VMD. Instructions on how to rotate a molecule and zoom in and out within VMD were given in our [tutorial on finding local protein differences](tutorial_multiseq).
+
+**STOP:** See if you can identify the major structural difference between the proteins in the figure below. Hint: look at the yellow residue.
 {: .notice--primary}
 
 ![image-center](../assets/images/Ridge.png){: .align-center}
-These are the 3D visualization of the loop in the ACE2-binding ridge that is conformationally different between SARS-CoV-2 (top figures) and SARS-CoV(bottom). The RBD is shown in purple while ACE2 is shown in green. The differences in structure cause certain amino acid residues (highlighted in various colors) to behave differently between the two interactions. In SARS-CoV-2, the differences allow RBD residue Ala475 (red) to form a hydrogen bond with ACE2 residue Ser19 (cyan). The ACE2 residues Met82, Leu79, and Tyr83 (silver) create a hydrophobic pocket. For SARS-CoV-2, the RBD residue Phe486 (yellow) inserts itself into the pocket, favorably interacting with ACE2. These interactions do not happen with SARS-CoV, and its corresponding RBD residue Leu472 (yellow), is not inserted into the pocket.
+A visualization of the loop in the ACE2-binding ridge that is conformationally different between SARS-CoV-2 (top) and SARS-CoV (bottom). The coronavirus RBD is shown in purple, and ACE2 is shown in green. The differences in structure cause certain amino acid residues (highlighted in various colors) to behave differently between the two interactions, which are discussed in the main text.
 {: style="font-size: medium;"}
 
-The most noticeable difference is between SARS-CoV-2 Phe486 and SARS-CoV Leu472. In SARS-CoV-2, Phe486 (yellow) is points towards the hydrophobic pocket (silver). Due to phenylalanine's hydrophobic properties, this is a favorable interaction that may improve SARS-CoV-2 affinity with ACE2. In contrast, Leu472 (Yellow) in SARS-CoV does not appear to approach the hydrophobic pocket. Here is a list of what the structural changes in SARS-CoV-2 result in:
+The most noticeable difference between SARS-CoV-2 and SARS-CoV relates to a "hydrophobic pocket", or three hydrophobic ACE2 residues at positions 82, 79, and 83 (methionine, leucine, and tyrosine). This pocket, which is colored silver in the above figure, is hidden away from the outside of the protein to keep these amino acids separate from water. In SARS-CoV-2, the RBD phenylalanine residue at position 486 (yellow) inserts itself into the pocket, favorably interacting with ACE2. These interactions do not happen with SARS-CoV, and its corresponding RBD residue, a leucine at position 472 (yellow), is not inserted into the pocket.
 
-* A main-chain hydrogen bond between Asn487 and Ala475 that creates a more compact ridge conformation, pushing the loop containing Ala475 to be closer to ACE2. This allows for the N-terminal residue Ser19 of ACE2 to form a hydrogen bond with the main chain of Ala475.
+In what follows, we use a three-letter identifier for an amino acid followed by a number to indicate the identity of that amino acid followed by its position within the protein sequence. For example, the phenylalanine at position 486 of the SARS-CoV-2 spike protein would be called Phe486.
+
+Although the interaction with the hydrophobic pocket is the most critical difference between SARS-CoV-2 and SARS-CoV, there are two other key differences that we would highlight.
+
+* In SARS-CoV-2, a main-chain hydrogen bond forms between Asn487 and Ala475 (shown in red in the above figure), which creates a more compact ridge conformation, pushing the loop containing Ala475 closer to ACE2. This repositioning allows for the N-terminal residue Ser19 of ACE2 (shown in cyan in the above figure) to form a hydrogen bond with the main chain of Ala475.
+
 * Gln24 of the N-terminal helix of ACE2 forms a new contact with the RBM.
-* Compared to the corresponding Leu472 of SARS-CoV, Phe486 of SARS-CoV-2 points in a different direction and is inserted into a hydrophobic pocket of Met82, Leu79, and Tyr83 in ACE2.
 
 ### Hotspot 31
 
 Hotspot 31 is the second site of marked conformational differences between SARS-CoV-2 and SARS-CoV.
 
-**STOP:** Again, see if you can spot the differences, it should be more obvious this time around.
+**STOP:** Again, see if you can spot the differences between SARS-CoV-2 and SARS-CoV.
 {: .notice--primary}
 
 ![image-center](../assets/images/Hotspot31.png){: .align-center}
@@ -68,12 +72,14 @@ These are the 3D visualizations of hotspot 353 between SARS-CoV-2 (top) and SARS
 
 In SARS-CoV, the methyl group of Thr487 supports the salt bridge between Lys353 and Asp38 of ACE2, and the side-chain hydroxyl group of Thr487 forms a hydrogen bond with the RBM main chain. The corresponding SARS-CoV-2 residue Asn501 also forms a hydrogen bond between its side chain and RBM main chain. However, similar to what happened in hotspot 31, Asn501 provides less support to the salt bridge, causing Lys353 of ACE2 to be in a different conformation. Lys353 is then able to form an extra hydrogen bond with the main chain of SARS-CoV-2 RBM while maintaining the salt btidge with Asp38 of ACE2.
 
-<hr>
-
 We have identified three sites between SARS-CoV and SARS-CoV-2 when it comes to interacting with ACE2. Although we can see the differences visually, we still do not know how these differences actually contribute to SARS-CoV-2's increased affinity with ACE2. In the next section, we will try to quantitatively explain how these differences affect binding affinity with ACE2.
 
 [Next lesson](NAMD){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
+
+## Extra
+
+* Something about we know from the previous lesson how a tiny change in bonding parameters can produce a big difference. These are subtle but may be the difference in the ability of the virus to "stick" to ACE2 and spread vs. fizzling.
 
 [^Hamming]: Hamming, I., Timens, W., Bulthuis, M., Lely, A., Navis, G., Goor, H. 2004. Tissue distribution of ACE2 portein, the functional receptor for SARS coronavirus. A first step in understanding SARS pathogenesis. J Pathol 203(2), 631-637. https://doi.org/10.1002/path.1570
 
