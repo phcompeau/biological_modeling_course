@@ -11,6 +11,8 @@ toc_sticky: true
 
 In the previous lesson, we identified a region between residues 476 and 485 of the SARS-CoV-2 spike protein that correspond to a structural difference between the SARS-CoV-2 and SARS-CoV RBMs. In this lesson, we will zoom in on this region of the RBM and determine whether the differences we have found affect binding affinity with the human ACE2 enzyme.
 
+We know from our work throughout this course that a tiny change on a lower level can produce a big difference in the high-level behavior of a system. SARS-CoV-2 binding is no different; even subtle changes in the ability of SARS-CoV-2 to stick to the ACE2 enzyme may have had an enormous influence on the virus becoming a pandemic.
+
 We will first use VMD to focus on the region of interest and highlight the amino acids that differ in SARS-CoV-2. If you are interested in doing so, please follow the following tutorial, which we will consult throughout the rest of this lesson.
 
 [Visit tutorial](tutorial_visualization){: .btn .btn--primary .btn--large}
@@ -60,22 +62,19 @@ The figure above shows how the salt bridge is radically different in the two vir
 
 ### Site 3: hotspot 353
 
-Finally, we consider **hotspot 353**, which involves another salt bridge connecting Lys353 and Asp38 of ACE2. Here, the difference between the residues is so subtle that it takes a keen eye to notice them.
+Finally, we consider **hotspot 353**, which involves another salt bridge connecting Lys353 and Asp38 of ACE2. In this region, the difference between the residues is so subtle that it takes a keen eye to notice them.
 
 ![image-center](../assets/images/Hotspot353.png){: .align-center}
 Visualizations of hotspot 353 in SARS-CoV-2 (top) and SARS-CoV (bottom). The RBD is shown in purple, and ACE2 is shown in green. In SARS-CoV, the RBD residue Thr487 (yellow) stabilizes the salt bridge between ACE2 residues Lys 353 and Asp38 (red). In SARS-CoV-2, the corresponding RBD residue Asn501 (yellow) provides less support, causing ACE2 residue Lys353 (red residue on the left) to be in a slightly different conformation and form a new hydrogen bond with the RBD.
 {: style="font-size: medium;"}
 
-In SARS-CoV, the methyl group of Thr487 supports the salt bridge between Lys353 and Asp38 of ACE2, and the side-chain hydroxyl group of Thr487 forms a hydrogen bond with the RBM main chain. The corresponding SARS-CoV-2 residue Asn501 also forms a hydrogen bond between its side chain and RBM main chain. However, similar to what happened in hotspot 31, Asn501 provides less support to the salt bridge, causing Lys353 of ACE2 to be in a different conformation. Lys353 is then able to form an extra hydrogen bond with the main chain of SARS-CoV-2 RBM while maintaining the salt btidge with Asp38 of ACE2.
+In SARS-CoV, the methyl group of Thr487 supports the salt bridge on ACE2, and the side-chain hydroxyl group of Thr487 forms a hydrogen bond with the RBM backbone. The corresponding SARS-CoV-2 amino acid Asn501 also forms a hydrogen bond with the RBM main chain. However, similar to what happened in hotspot 31, Asn501 provides less support to the salt bridge, causing Lys353 on ACE2 to be in a different conformation. This allows Lys353 to form an extra hydrogen bond with the main chain of the SARS-CoV-2 RBM while maintaining the salt bridge with Asp38 on ACE2.
 
-We have identified three sites between SARS-CoV and SARS-CoV-2 when it comes to interacting with ACE2. Although we can see the differences visually, we still do not know how these differences actually contribute to SARS-CoV-2's increased affinity with ACE2. In the next section, we will try to quantitatively explain how these differences affect binding affinity with ACE2.
+Although we can visualize the three differences presented in this lesson, we can describe only subjectively how they contribute to an increased affinity with SARS-CoV-2. In keeping with the rest of this course, it would be better if we could *quantify* this improved bonding of SARS-CoV-2 to ACE2. This will be our focus in the next lesson.
 
 [Next lesson](NAMD){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-## Extra
-
-* Something about we know from the previous lesson how a tiny change in bonding parameters can produce a big difference. These are subtle but may be the difference in the ability of the virus to "stick" to ACE2 and spread vs. fizzling.
 
 [^Hamming]: Hamming, I., Timens, W., Bulthuis, M., Lely, A., Navis, G., Goor, H. 2004. Tissue distribution of ACE2 portein, the functional receptor for SARS coronavirus. A first step in understanding SARS pathogenesis. J Pathol 203(2), 631-637. https://doi.org/10.1002/path.1570
 
