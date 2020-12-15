@@ -16,9 +16,9 @@ We will first use VMD to focus on the region of interest and highlight the amino
 
 ## Three Sites of Conformational Differences
 
-Our region of interest in the RBM is one of three sites with significant conformational differences between the SARS-CoV-2 and SARS-CoV spike proteins that were identified by Shang et al.[^Shang]. In this section, we will discuss each of these three locations and see how they affect binding affinity between the spike protein and ACE2.
+Our region of interest in the RBM is one of three sites with significant conformational differences between the SARS-CoV-2 and SARS-CoV spike proteins that were identified by Shang et al.[^Shang]. We will now discuss each of these three locations and see how they affect binding affinity between the spike protein and ACE2.
 
-These locations will be challenging to visualize with a 2-D image, but if you followed the preceding tutorial, we encourage you to view the 3-D representation of the protein using VMD. Instructions on how to rotate a molecule and zoom in and out within VMD were given in our [tutorial on finding local protein differences](tutorial_multiseq).
+The differences will be challenging to visualize with a 2-D image, but if you followed the preceding tutorial, we encourage you to view the 3-D representation of the protein using VMD. Instructions on how to rotate a molecule and zoom in and out within VMD were given in our [tutorial on finding local protein differences](tutorial_multiseq).
 
 <!--
 
@@ -28,7 +28,7 @@ SARS-CoV-2 chimeric RBD complexed with ACE2 (PDB entry <a href="https://www.rcsb
 
 ### Loop in ACE2-binding ridge
 
-A marked difference was found on one of the loops in the ACE2-binding ridge. This is the region that we visualized in the tutorial. SARS contains a three residue motif, proline-proline-alanine, at residues 468 to 471. In contrast, SARS-CoV-2 contains a four residue motif, glycine-valine-glutamate-glycine, at the corresponding residues 482 to 485. The two bulky residues and two flexible glycines causes a conformational change in SARS-CoV-2 RBM. Below is a visual comparison of this region between SARS-CoV-2 and SARS.
+A marked difference was found on one of the loops in the ACE2-binding ridge. This is the region that we visualized in the tutorial. SARS-CoV contains a three residue motif, proline-proline-alanine, at residues 468 to 471. In contrast, SARS-CoV-2 contains a four residue motif, glycine-valine-glutamate-glycine, at the corresponding residues 482 to 485. The two bulky residues and two flexible glycines causes a conformational change in SARS-CoV-2 RBM. Below is a visual comparison of this region between SARS-CoV-2 and SARS.
 
 **STOP:** See if you can spot the major difference between the figures below before reading what actually happens. *Hint: Look at the yellow residue!*?
 {: .notice--primary}
