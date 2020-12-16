@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/conclusion
-title: "Conclusion: From Static Analysis to Molecular Dynamics"
+title: "Conclusion: From Static Protein Analysis to Molecular Dynamics"
 sidebar:
  nav: "coronavirus"
 toc: true
@@ -27,7 +27,13 @@ However, simulating large structures, such as proteins with hundreds of amino ac
 
 * Positions given by alpha carbon coordinates -- which we can pull from PDB. A spring connects two of these alpha carbons if they are within some cutoff distance (traditionally 7 angstroms).
 
-* Need figure from Bahar paper
+* Need to cover Kirchoff matrix and point to now it is a linear algebra problem.
+
+* Motions are in fact heavily coordinated, meaning that the movements of particles are not in random directions but can be summarized in a small number of terms, or "modes". This is a linear algebra problem that we won't get into. Point back to previous point that it's not too
+
+* Need figure from Bahar paper?
+
+* Need to cover Kirchoff matrix and point to
 
 * Gaussian -- there is a mean about which the fluctuations can be found
 
@@ -53,14 +59,6 @@ Another major strength of ProDy is its capabilities for protein dynamics analysi
 
 ## GNM Calculation of the Spike Protein
 In the tutorial, we generated four visualizations of how the SARS-CoV-2 S protein fluctuates. Using ProDy, we performed GNM Calculations on the SARS S protein using the PDB entry(<a href="http://www.rcsb.org/structure/5xlr" target="_blank">5xlr</a>). In addition, we also performed the calculations on a single chain of the S protein for a more thorough comparison. Here, we will explain how to interpret the results and compare them to analyze the differences and similarities between the two proteins.
-
-### Contact Map
-
-A protein contact map is a 2D matrix that represents the distance between all amino acid residues in the protein. In other words, it is essentially a reduced, 2D representation of a protein's tertiary structure. Contact map is another popular method of protein structure comparison. Proteins with very similar structures will have very similar contact map patterns, and deviations within the structure can be easily inferred by seeing unique patterns in only one of the proteins. Between all pairs of amino acids, the pair is assigned the value of 1 if the two residues are closer together than a predetermined threshold distance, and 0 otherwise. The threshold for the maps below is 20 Å, meaning that amino acid pairs within 20 Å of each other are assigned the value of 1. From these maps, we see very little differences between SARS-CoV-2 and SARS S proteins, meaning that they are structurally similar.
-
-![image-center](../assets/images/Contact.png){: .align-center}
-This figure shows the contact maps of the SARS-CoV-2 S protein (top-left), SARS S protein (top-right), single-chain of the SARS-CoV-2 S protein (bottom-left), and single-chain of the SARS S protein (bottom-right). The map shows every amino acid residue pair in the structure. If the distance between the residue pair is 20.0 Å or less, then a value of 1.0 is assigned and shown in the color black. We see that SARS-CoV-2 and SARS S proteins have similar maps, indicating similar structures.
-{: style="font-size: medium;"}
 
 ### Cross-Correlation
 

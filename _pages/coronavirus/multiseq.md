@@ -113,4 +113,12 @@ Finding this highlighted region in the RBM where the structures of the SARS-CoV 
 
 ## Extra
 
+* Add the following to our discussion later when needing a visualization of pairwise distances when motivating Qres. Make sure to indicate that we will produce a contact map with ProDy and do so in a later lesson within this module.
+
+A protein contact map is a 2D matrix that represents the distance between all amino acid residues in the protein. In other words, it is essentially a reduced, 2D representation of a protein's tertiary structure. Contact map is another popular method of protein structure comparison. Proteins with very similar structures will have very similar contact map patterns, and deviations within the structure can be easily inferred by seeing unique patterns in only one of the proteins. Between all pairs of amino acids, the pair is assigned the value of 1 if the two residues are closer together than a predetermined threshold distance, and 0 otherwise. The threshold for the maps below is 20 Å, meaning that amino acid pairs within 20 Å of each other are assigned the value of 1. From these maps, we see very little differences between SARS-CoV-2 and SARS S proteins, meaning that they are structurally similar.
+
+![image-center](../assets/images/Contact.png){: .align-center}
+This figure shows the contact maps of the SARS-CoV-2 S protein (top-left), SARS S protein (top-right), single-chain of the SARS-CoV-2 S protein (bottom-left), and single-chain of the SARS S protein (bottom-right). The map shows every amino acid residue pair in the structure. If the distance between the residue pair is 20.0 Å or less, then a value of 1.0 is assigned and shown in the color black. We see that SARS-CoV-2 and SARS S proteins have similar maps, indicating similar structures.
+{: style="font-size: medium;"}
+
 * Good exercise later: compute Q scores for the protein structure comparison that we performed at the end of part 1.
