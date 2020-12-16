@@ -36,6 +36,10 @@ By running molecular dynamics simulations, we obtain another way to compare two 
 
 * START HERE
 
+* In this section, we explain the results of the NMA that ProDy performed 
+
+* Also: contact map! Add this to tutorial
+
 In the tutorial, we generated four visualizations of how the SARS-CoV-2 S protein fluctuates. Using ProDy, we performed GNM Calculations on the SARS S protein using the PDB entry(<a href="http://www.rcsb.org/structure/5xlr" target="_blank">5xlr</a>). In addition, we also performed the calculations on a single chain of the S protein for a more thorough comparison. Here, we will explain how to interpret the results and compare them to analyze the differences and similarities between the two proteins.
 
 ### Cross-Correlation
