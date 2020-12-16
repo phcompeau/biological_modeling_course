@@ -98,7 +98,7 @@ Using NMWiz and VMD, we also created animations of the protein fluctuation calcu
 
 *It is important to note that fluctuation calculated by ANM provides information on possible movement and flexibility, but does not depict actual protein movements.*
 
-### SARS-CoV-2 Spike Chimeric RBD (6vw1):
+### SARS-CoV-2 Spike Chimeric RBD (6vw1)
 
 |SARS-CoV-2 (Chimeric) RBD|Purple|
 |:------------------------|:-----|
@@ -117,7 +117,7 @@ Using NMWiz and VMD, we also created animations of the protein fluctuation calcu
 <iframe width="640" height="360" src="../assets/6vw1_B&F.mp4" frameborder="0" allowfullscreen></iframe>
 </center>
 
-### SARS Spike RBD (2ajf):
+### SARS Spike RBD (2ajf)
 
 |SARS RBD|Purple|
 |:-------|:-----|
@@ -137,7 +137,7 @@ Using NMWiz and VMD, we also created animations of the protein fluctuation calcu
 Using both the GNM and ANM approaches for normal mode analysis of SARS-CoV-2 S protein, we saw that it is structurally very similar to the SARS S protein. As we have stated in the <a href="structural_diff">Structural and ACE2 Interaction Differences</a> and <a href="NAMD">Interaction Energy with ACE2</a> lessons, the structural differences can be very subtle yet still contribute greatly with ACE2 binding affinity.
 
 
-## Overview
+## Summing Up
 
 * In this module, we discussed the importance of the 3D (tertiary) structure of the protein and the many experimental methods of determining protein structure. Unfortunately, these methods requires time to collect physical samples, to run the complicated and expensive experiment, and to computationally store it into the protein data base. We then went into the complex problem of protein structure prediction, and the two main approaches of obtaining the 3D structure from the amino acid sequence of the protein, *ab initio* and homology modeling. Perhaps due to the severity of the outbreak and global contributions, studies after studies on SARS-CoV-2 were released along with experimentally determined 3D structures of the SARS-CoV-2 S protein.
 
