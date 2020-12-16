@@ -35,32 +35,45 @@ A multiple alignment of the RBM (colored amino acids) across the human SARS-CoV 
 
 We know from our work in structure prediction that just because the sequence of a protein has been greatly mutated does not mean that the structure of that protein has changed much. Therefore, in this lesson, we will start a comparative analysis of the SARS-CoV and SARS-CoV-2 spike proteins at the structural level. All of the analysis will be performed using the software resources ProDy and VMD, which we briefly introduced earlier in the module. Our goal is to understand whether these mutations in the RBM really have contributed to higher infectiousness.
 
-## Identifying local dissimilarities between protein structures
+## A first attempt at identifying local dissimilarities between protein structures
 
-Not only did researchers experimentally verify the structure of the spike protein of the two viruses, they determined the structure of the RBD complexed with ACE2 in both SARS-CoV (PDB entry: <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>) and SARS-CoV-2 (PDB entry: <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>). This allows researchers to see exactly how the two molecules bind rather than hypothesizing how ACE2 fits into the RBD.
+Not only did researchers experimentally verify the structure of the spike protein of the two viruses, they also determined the structure of the RBD complexed with ACE2 in both SARS-CoV (PDB entry: <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>) and SARS-CoV-2 (PDB entry: <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>).
 
-To be more precise, the experimentally verified SARS-CoV-2 structure is actually a *chimeric* protein formed of the SARS-CoV RBD in which the RBM has the sequence from SARS-CoV-2. A chimeric RBD was used for complex technical reasons to ensure that the crystallization process during X-ray crystallography could be borrowed from that used for SARS-CoV.
+To be more precise, the experimentally verified SARS-CoV-2 structure is a *chimeric* protein formed of the SARS-CoV RBD in which the RBM has the sequence from SARS-CoV-2. A chimeric RBD was used for complex technical reasons to ensure that the crystallization process during X-ray crystallography could be borrowed from that used for SARS-CoV.
 
-Because we have these known structures of the bound complexes, we can produce 3-D visualizations of the two different complexes and see if we can find structural differences involving the RBM. We will use VMD to produce this visualization, rotating the structures around to examine potential differences. However, we should be wary of only trusting our eyes to guide us; can we use a computational approach to tell us where to look for structural differences between the two RBMs?
+Because we now have known structures of the bound complexes, we can produce 3-D visualizations of the two different complexes and see if we can find structural differences involving the RBM. We will use VMD to produce this visualization, rotating the structures around to examine potential differences. However, we should be wary of only trusting our eyes to guide us; can we use a computational approach to tell us where to look for structural differences between the two RBMs?
 
 In the previous lesson on assessing the accuracy of a predicted structure, we introduced a metric called root mean square deviation (RMSD) for quantifying the difference between two protein structures. RMSD offered an excellent method for a *global* comparison (i.e., a comparison across all structures), but we are interested in the *local* regions where the SARS-CoV and SARS-CoV-2 complexes differ. To this end, we will need an approach that examines individual amino acids in similar protein structures to find where they differ.
 
 **STOP:** How could we compare individual amino acid differences of two (similar) protein structures?
 {: .notice--primary}
 
-**Q per residue**
-
-Recall the following definition of RMSD for two structures *s* and *t*, where each structure is represented by the positions of its *n* alpha carbons (<em>s</em><sub>1</sub>, ..., <em>s</em><sub><em>n</em></sub>) and (<em>t</em><sub>1</sub>, ..., <em>t</em><sub><em>n</em></sub>).
+Recall the following definition of RMSD for two protein structures *s* and *t*, where each structure is represented by the positions of its *n* alpha carbons (<em>s</em><sub>1</sub>, ..., <em>s</em><sub><em>n</em></sub>) and (<em>t</em><sub>1</sub>, ..., <em>t</em><sub><em>n</em></sub>).
 
 $$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{n} \cdot (d(s_1, t_1)^2 + d(s_2, t_2)^2 + \cdots + d(s_n, t_n)^2)} $$
 
 If two protein structures are similar, but they differ in a few locations, then the corresponding alpha carbon distances *d*(<em>s</em><sub><em>i</em></sub>, <em>t</em><sub><em>i</em></sub>) will likely be higher at these locations. As a result, one way of analyzing local differences would be to consider the distances *d*(<em>s</em><sub><em>i</em></sub>, <em>t</em><sub><em>i</em></sub>) and look for regions where these distances are higher.
 
-Yet a more sophisticated alternative to comparing <em>s</em><sub><em>i</em></sub> only against <em>t</em><sub><em>i</em></sub> is to compare the position of an alpha carbon against *every* other alpha carbon in the protein.  That is, rather than just considering *d*(<em>s</em><sub><em>i</em></sub>, <em>t</em><sub><em>i</em></sub>), we will consider *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) for all other alpha carbons *j*. We then will compare *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) against *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) for every *j*. The idea is that if the two protein structures are different near the *i*-th alpha carbon, then we will see significant differences between *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) and *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) for some (or many) values of *j*.
+Yet we will introduce a more sophisticated approach for
+comparing the local structure of <em>s</em><sub><em>i</em></sub> against <em>t</em><sub><em>i</em></sub>. To do so, we shift gears to first discuss an alternative to RMSD for computing global structure.
 
-* START HERE -- fix equation to only consider two proteins
+## Contact maps and Qres
+
+One of the weaknesses of
 
 * Idea: introduce a separate notion of how proteins differ by considering distance from each point to every other non-adjacent point in the protein and then use this to have a sense of the shape of the protein. Then point out that this gives us a local sense as well.
+
+* Make sure to indicate that we will produce a contact map with ProDy and do so in a later lesson within this module.
+
+A protein contact map is a 2D matrix that represents the distance between all amino acid residues in the protein. In other words, it is essentially a reduced, 2D representation of a protein's tertiary structure. Contact map is another popular method of protein structure comparison. Proteins with very similar structures will have very similar contact map patterns, and deviations within the structure can be easily inferred by seeing unique patterns in only one of the proteins. Between all pairs of amino acids, the pair is assigned the value of 1 if the two residues are closer together than a predetermined threshold distance, and 0 otherwise. The threshold for the maps below is 20 Å, meaning that amino acid pairs within 20 Å of each other are assigned the value of 1. From these maps, we see very little differences between SARS-CoV-2 and SARS S proteins, meaning that they are structurally similar.
+
+![image-center](../assets/images/Contact.png){: .align-center}
+This figure shows the contact maps of the SARS-CoV-2 S protein (top-left), SARS S protein (top-right), single-chain of the SARS-CoV-2 S protein (bottom-left), and single-chain of the SARS S protein (bottom-right). The map shows every amino acid residue pair in the structure. If the distance between the residue pair is 20.0 Å or less, then a value of 1.0 is assigned and shown in the color black. We see that SARS-CoV-2 and SARS S proteins have similar maps, indicating similar structures.
+{: style="font-size: medium;"}
+
+is to compare the position of an alpha carbon against *every* other alpha carbon in the protein.  That is, rather than just considering *d*(<em>s</em><sub><em>i</em></sub>, <em>t</em><sub><em>i</em></sub>), we will consider *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) for all other alpha carbons *j*. We then will compare *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) against *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) for every *j*. The idea is that if the two protein structures are different near the *i*-th alpha carbon, then we will see significant differences between *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) and *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) for some (or many) values of *j*.
+
+
 
 A good starting point would be to use the VMD plugin*<a href="https://www.ks.uiuc.edu/Research/vmd/plugins/multiseq/" target="_blank">Multiseq</a>*, a bioinformatics analysis environment that provides tools such as sequence and structural alignment. *Multiseq* is able to calculate structural conservation within aligned molecules by computing **Q per residue (Qres)**. After aligning, for example, protein A and protein B, Qres describes the similarity of a particular residue's structural environment in protein A compared to the aligned residue's structural environment in protein B. This is done by comparing the alpha carbon distances between the residue and all other aligned residues, excluding nearest neighbors, of the aligned proteins. The formal definition of Qres is as follows[^Qres]:
 
@@ -112,13 +125,5 @@ Finding this highlighted region in the RBM where the structures of the SARS-CoV 
 [^Jaimes]: Jaimes, J. A., André, N. M., Chappie, J. S., Millet, J. K., & Whittaker, G. R. 2020. Phylogenetic Analysis and Structural Modeling of SARS-CoV-2 Spike Protein Reveals an Evolutionary Distinct and Proteolytically Sensitive Activation Loop. Journal of molecular biology, 432(10), 3309–3325. https://doi.org/10.1016/j.jmb.2020.04.009
 
 ## Extra
-
-* Add the following to our discussion later when needing a visualization of pairwise distances when motivating Qres. Make sure to indicate that we will produce a contact map with ProDy and do so in a later lesson within this module.
-
-A protein contact map is a 2D matrix that represents the distance between all amino acid residues in the protein. In other words, it is essentially a reduced, 2D representation of a protein's tertiary structure. Contact map is another popular method of protein structure comparison. Proteins with very similar structures will have very similar contact map patterns, and deviations within the structure can be easily inferred by seeing unique patterns in only one of the proteins. Between all pairs of amino acids, the pair is assigned the value of 1 if the two residues are closer together than a predetermined threshold distance, and 0 otherwise. The threshold for the maps below is 20 Å, meaning that amino acid pairs within 20 Å of each other are assigned the value of 1. From these maps, we see very little differences between SARS-CoV-2 and SARS S proteins, meaning that they are structurally similar.
-
-![image-center](../assets/images/Contact.png){: .align-center}
-This figure shows the contact maps of the SARS-CoV-2 S protein (top-left), SARS S protein (top-right), single-chain of the SARS-CoV-2 S protein (bottom-left), and single-chain of the SARS S protein (bottom-right). The map shows every amino acid residue pair in the structure. If the distance between the residue pair is 20.0 Å or less, then a value of 1.0 is assigned and shown in the color black. We see that SARS-CoV-2 and SARS S proteins have similar maps, indicating similar structures.
-{: style="font-size: medium;"}
 
 * Good exercise later: compute Q scores for the protein structure comparison that we performed at the end of part 1.

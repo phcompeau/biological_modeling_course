@@ -136,7 +136,7 @@ coronavirus:
         url: /coronavirus/ab_initio
       - title: "Homology Modeling for Protein Structure Prediction<br><br>"
         url: /coronavirus/homology
-      - title: "Assessing Model Accuracy<br><br>"
+      - title: "Comparing Protein Structures to Assess Model Accuracy<br><br>"
         url: /coronavirus/accuracy
   - title: "Part 2: Comparing SARS-CoV-2 and SARS"
     children:
