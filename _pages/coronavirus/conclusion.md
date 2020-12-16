@@ -5,17 +5,11 @@ sidebar:
  nav: "coronavirus"
 ---
 
-## Extra
-
-* Note to self: need to make a point about negative discovery here -- we don't find any big differences but that doesn't mean that it's analysis not worth running.
-
-* Another note to self: point out that things like how the spike protein interacts with ACE2 are a great example of how we need to study dynamic changes -- very difficult to convince someone that binding is better with a static structure.
-
-* Another example of declaring protein structure a "solved" problem just being tip of iceberg.
-
 ## NMA Introduction
 
-Proteins are not static, but rather dynamic structures. These fluctuations in their structures are typically key components their functions. **Molecular dynamics (MD)** is all about simulating molecules to analyze the movement of the molecules, atoms, and their interactions. However, simulating large structures, such as proteins with hundreds of amino acids, can prove to be extremely computationally heavy. Fortunately, there is an alternative method of studying large-scale movements of these structures called **Normal mode analysis (NMA)**. NMA of proteins is based on the theory that the lowest frequency vibrational normal modes are the most functionally relevant, describing the largest movement within the protein [^Skjaerven].
+In this lesson, we transition from the static study of proteins to the field of **molecular dynamics (MD)**, in which we analyze the movement of proteins' molecules, atoms, along with their interactions as they move.
+
+However, simulating large structures, such as proteins with hundreds of amino acids, can prove to be extremely computationally heavy. Fortunately, there is an alternative method of studying large-scale movements of these structures called **Normal mode analysis (NMA)**. NMA of proteins is based on the theory that the lowest frequency vibrational normal modes are the most functionally relevant, describing the largest movement within the protein [^Skjaerven].
 
 One of the approaches for modeling a molecule is to represent atoms as nodes that are interconnected with springs, otherwise known as an **elastic network model (ENM)**. The motivation of using ENM is that bonds actually share many characteristics with springs. We stated that proteins are not static, but this is true because the bonds that everything together are not static either. Bonds are constantly vibrating, stretching and compressing much like that of a oscillating spring-mass system show below.
 
@@ -182,6 +176,12 @@ This concludes the final lesson of the third module. If you would like to learn 
 
 [Exercises](exercises){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
+
+## Extra
+
+* Note to self: need to make a point about negative discovery here -- we don't find any big differences but that doesn't mean that it's analysis not worth running.
+
+* Another example of declaring protein structure a "solved" problem just being tip of iceberg.
 
 [^Dwek]: Dwek, R.A. Glycobiology: Toward Understanding the Function of Sugars. Chem. Rev. 96(2),  683-720 (1996). https://doi.org/10.1021/cr940283b
 

@@ -36,7 +36,7 @@ Furthermore, all of the three regions of interest correspond to a lower energy i
 
 We now have concrete evidence that SARS-CoV-2 is more effective at binding to human cells than SARS. This having said, we should be careful; it would require additional experimental work to demonstrate that the improved binding of SARS-CoV-2 translates into greater infectiousness.
 
-Part of the reason for our cautiousness is that proteins are not fixed objects but rather dynamic structures whose shape is subject to small changes. In the module's conclusion, we will learn about another method of protein analysis that will help us study the dynamics of a protein's movements and apply this to our spike proteins of interest.
+Part of the reason for our cautiousness is that proteins are not fixed objects but rather dynamic structures whose shape is subject to small changes. After all, life is about change. In the module's conclusion, we will therefore learn how to analyze the dynamics of a protein's movements as it changes within its environment.
 
 [Next lesson](conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
