@@ -69,22 +69,22 @@ Two toy protein structures in which the bond angle between the third and fourth 
 
 A more robust approach for measuring differences in two protein structures would therefore consider *all* pairwise distances *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) between alpha carbons in the same protein structure and compare these distances against the corresponding distances *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) in the other structure.
 
-To this end, we will introduce a concept called a **protein contact map** which is a
+To help us visualize all these pairwise distances, we will introduce the **contact map** of a given protein structure, which is a binary 2-D matrix indicating whether two alpha carbons are nearby. To be more precise, we establish a threshold distance, and then for a given structure *s*, we set *M*(*i*, *j*) = 1 if the distance *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) is less than the threshold, and *M*(*i*, *j*) = 0 if *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) is greater than or equal to the threshold.
 
-
-
-A protein contact map is a 2D matrix that represents the distance between all amino acid residues in the protein. In other words, it is essentially a reduced, 2D representation of a protein's tertiary structure. Contact map is another popular method of protein structure comparison. Proteins with very similar structures will have very similar contact map patterns, and deviations within the structure can be easily inferred by seeing unique patterns in only one of the proteins. Between all pairs of amino acids, the pair is assigned the value of 1 if the two residues are closer together than a predetermined threshold distance, and 0 otherwise. The threshold for the maps below is 20 Å, meaning that amino acid pairs within 20 Å of each other are assigned the value of 1. From these maps, we see very little differences between SARS-CoV-2 and SARS S proteins, meaning that they are structurally similar.
+We can then color contact map values black if they are equal to 1 (close amino acids) and white if they are equal to 0 (distant amino acids). This gives us a simple visualization of which amino acids are nearby in the protein, even those that are distant along the protein backbone. The following figure shows the contact maps for the SARS-CoV-2 and SARS-CoV spike proteins; the similarity of these contact maps further illustrates the similarity of the two proteins' structures. If you're interested in producing these maps, we will do so in a later section with ProDy.
 
 ![image-center](../assets/images/Contact.png){: .align-center}
-This figure shows the contact maps of the SARS-CoV-2 S protein (top-left), SARS S protein (top-right), single-chain of the SARS-CoV-2 S protein (bottom-left), and single-chain of the SARS S protein (bottom-right). The map shows every amino acid residue pair in the structure. If the distance between the residue pair is 20.0 Å or less, then a value of 1.0 is assigned and shown in the color black. We see that SARS-CoV-2 and SARS S proteins have similar maps, indicating similar structures.
+The contact maps of the SARS-CoV-2 spike protein (top-left), SARS-CoV spike protein (top-right), single chain of the SARS-CoV-2 spike protein (bottom-left), and single chain of the SARS-CoV spike protein (bottom-right). If the distance between the *i*-th and *j*-th amino acids in a protein structure is 20.0 Å or less, then the (*i*, *j*)-th cell of the figure is colored black. We see that SARS-CoV-2 and SARS S proteins have very similar contact maps, indicating similar structures.
 {: style="font-size: medium;"}
 
+**STOP:** How do you think the contact map will change as we increase or lower the threshold distance?
+{: .notice--primary}
+
+* Main diagonal
+
+* Looking at a single row (or column) of the contact map.
+
 * Make sure to indicate that we will produce a contact map with ProDy and do so in a later lesson within this module.
-
-
-is to compare the position of an alpha carbon against *every* other alpha carbon in the protein.  That is, rather than just considering *d*(<em>s</em><sub><em>i</em></sub>, <em>t</em><sub><em>i</em></sub>), we will consider *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) for all other alpha carbons *j*. We then will compare *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) against *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) for every *j*. The idea is that if the two protein structures are different near the *i*-th alpha carbon, then we will see significant differences between *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) and *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) for some (or many) values of *j*.
-
-
 
 A good starting point would be to use the VMD plugin*<a href="https://www.ks.uiuc.edu/Research/vmd/plugins/multiseq/" target="_blank">Multiseq</a>*, a bioinformatics analysis environment that provides tools such as sequence and structural alignment. *Multiseq* is able to calculate structural conservation within aligned molecules by computing **Q per residue (Qres)**. After aligning, for example, protein A and protein B, Qres describes the similarity of a particular residue's structural environment in protein A compared to the aligned residue's structural environment in protein B. This is done by comparing the alpha carbon distances between the residue and all other aligned residues, excluding nearest neighbors, of the aligned proteins. The formal definition of Qres is as follows[^Qres]:
 
