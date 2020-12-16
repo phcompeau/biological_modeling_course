@@ -71,7 +71,9 @@ A more robust approach for measuring differences in two protein structures would
 
 To help us visualize all these pairwise distances, we will introduce the **contact map** of a given protein structure, which is a binary 2-D matrix indicating whether two alpha carbons are nearby. To be more precise, we establish a threshold distance, and then for a given structure *s*, we set *M*(*i*, *j*) = 1 if the distance *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) is less than the threshold, and *M*(*i*, *j*) = 0 if *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) is greater than or equal to the threshold.
 
-We can then color contact map values black if they are equal to 1 (close amino acids) and white if they are equal to 0 (distant amino acids). This gives us a simple visualization of which amino acids are nearby in the protein, even those that are distant along the protein backbone. The following figure shows the contact maps for the SARS-CoV-2 and SARS-CoV spike proteins; the similarity of these contact maps further illustrates the similarity of the two proteins' structures. If you're interested in producing these maps, we will do so in a later section with ProDy.
+We can then color contact map values black if they are equal to 1 (close amino acids) and white if they are equal to 0 (distant amino acids). This gives us a simple visualization of which amino acids are nearby in the protein, even those that are distant along the protein backbone.
+
+The following figure shows the contact maps for the SARS-CoV-2 and SARS-CoV spike proteins (both full proteins and single chains). Note two things in these figures. First, many black values cluster around the main diagonal of the matrix, since amino acids that are near each other in the protein sequence will remain near each other in the 3-D structure. Second, the contact maps for the two proteins are very similar, driving home further the similarity of the two proteins' structures. (Interested in producing these maps? We will use ProDy to do so in a later section.)
 
 ![image-center](../assets/images/Contact.png){: .align-center}
 The contact maps of the SARS-CoV-2 spike protein (top-left), SARS-CoV spike protein (top-right), single chain of the SARS-CoV-2 spike protein (bottom-left), and single chain of the SARS-CoV spike protein (bottom-right). If the distance between the *i*-th and *j*-th amino acids in a protein structure is 20.0 Å or less, then the (*i*, *j*)-th cell of the figure is colored black. We see that SARS-CoV-2 and SARS S proteins have very similar contact maps, indicating similar structures.
@@ -79,8 +81,6 @@ The contact maps of the SARS-CoV-2 spike protein (top-left), SARS-CoV spike prot
 
 **STOP:** How do you think the contact map will change as we increase or lower the threshold distance?
 {: .notice--primary}
-
-* Main diagonal
 
 * Looking at a single row (or column) of the contact map.
 
@@ -97,7 +97,7 @@ where:
 * Variance $$\sigma_{ij}^2 = \left\lvert{i-j}\right\rvert ^{0.15}$$, which corresponds to the sequence separation between residues $$i$$ and $$j$$
 * Normalization $$N = \frac{1}{(N_{seq}-1)(N_{res}-k}$$, where $$N_{seq}$$ is the number of proteins, $$N_{res}$$ is the number of residues in protein $$n$$, and $$k=2$$ when residue $$i$$ is the N- or C-terminus and $$k=3$$ otherwise.
 
-The formal definition may be quite complicated, but thankfully the result is much easier to interpret. The calculation for Qres will result in a value between 0 and 1, with lower scores representing low similarity and higher scores representing high similarity.
+The calculation for Qres will result in a value between 0 and 1, with lower scores representing low similarity and higher scores representing high similarity.
 
 Multiseq aligns the structures by using the Structural Alignment of Multiple Proteins (STAMP) tool. The algorithm minimizes the distance between alpha carbons of the aligned residues for each protein or molecule by applying rigid-body rotations and translations. If the structures do not have common structures, then STAMP will fail. For more details on the STAMP algorithm, click <a href="http://www.compbio.dundee.ac.uk/manuals/stamp.4.4/stamp.pdf" target="_blank">here</a>.
 
