@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-## Modeling protein bonds as tiny springs
+## Modeling protein bonds using tiny springs
 
 In this lesson, we transition from the static study of proteins to the field of **molecular dynamics (MD)**, in which we simulate the movement of proteins' molecules, atoms, along with their interactions as they move.
 
