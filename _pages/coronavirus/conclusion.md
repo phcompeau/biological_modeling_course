@@ -7,47 +7,35 @@ toc: true
 toc_sticky: true
 ---
 
-## NMA Introduction
+## Modeling protein bonds as tiny springs
 
 In this lesson, we transition from the static study of proteins to the field of **molecular dynamics (MD)**, in which we simulate the movement of proteins' molecules, atoms, along with their interactions as they move.
 
 You may think that simulating the *movements* of proteins with hundreds of amino acids will be a hopeless task. After all, protein structure prediction is difficult enough! Yet what makes structure prediction so challenging is that the "search space" of potential shapes is so enormous. Once we have established the static structure of a protein, its dynamic behavior will not allow it to deviate greatly from this static structure, and so the space of potential structures is automatically narrowed down to those that are similar to the static structure.
 
-A protein's molecular bonds are constantly vibrating, stretching and compressing, much like that of a oscillating spring-mass system show below.
-
-One of the approaches for modeling a molecule is to represent atoms as nodes that are interconnected with springs, otherwise known as an **elastic network model (ENM)**. The motivation of using ENM is that bonds actually share many characteristics with springs. We stated that proteins are not static, but this is true because the bonds that everything together are not static either.
-
-The bonded atoms are held together by sharing electrons, but is held at specific bond length due to the attraction and repulsion forces of the negatively charged electrons and positively charged nucleus. Just like a spring, when you bring the atoms closer together then the normal (equilibrium), they will resist with greater and greater repulsion force. A popular method for performing NMA is the **Gaussian network model (GNM)**, the ENM for isotropic fluctuations. Isotropic describes physical properties don't change with direction, meaning that GNM analyzes only the size of the fluctuation in the protein.
+A protein's molecular bonds are constantly vibrating, stretching and compressing, much like that of an oscillating mass-spring system like that shown in the figure below. Bonded atoms are held together by sharing electrons, but is held at specific bond length due to the attraction and repulsion forces of the negatively charged electrons and positively charged nucleus. When you bring the atoms closer together than the equilibrium, they will "bounce back" with a greater repulsive force.
 
 ![image-center](../assets/images/mass-spring.gif){: .align-center}
-Image courtesy: flippingphysics.com.
+A mass-spring system in which a mass is attached to the end of a spring. The more we move the mass from its equilibrium, the more it will be repelled past its equilibrium. Courtesy: [flippingphysics.com](flippingphysics.com).
 {: style="font-size: medium;"}
 
-However, simulating large structures, such as proteins with hundreds of amino acids, can prove to be extremely computationally heavy. Fortunately, there is an alternative method of studying large-scale movements of these structures called **Normal mode analysis (NMA)**.
+With this model of a protein bond in mind, we will imagine nearby alpha carbons of a protein structure to be connected by springs; this type of model is called an **elastic network model (ENM)**. Because distant atoms will not influence each other, we will only connect two alpha carbons if they are within some threshold distance of each other (the default threshold used by ProDy is 7 angstroms).
 
-* Positions given by alpha carbon coordinates -- which we can pull from PDB. A spring connects two of these alpha carbons if they are within some cutoff distance (traditionally 7 angstroms).
+ProDy implements a **Gaussian network model (GNM)**, an ENM for molecular dynamics. This model is called "Gaussian" because protein bond movements from equilibrium follow a normal (Gaussian) distributions. Furthermore, this model is **isotropic**, meaning that it only considers the magnitude of force exerted on the springs between nearby molecules and ignores any global effect on the orientations of these forces.
 
-* Need to cover Kirchoff matrix and point to now it is a linear algebra problem.
+* START HERE -- some comments below
 
-* Motions are in fact heavily coordinated, meaning that the movements of particles are not in random directions but can be summarized in a small number of terms, or "modes". This is a linear algebra problem that we won't get into. Point back to previous point that it's not too
-
-* Need figure from Bahar paper?
-
-* Need to cover Kirchoff matrix and point to
-
-* Gaussian -- there is a mean about which the fluctuations can be found
-
-* isotropic -- not variable based on measure of direction. In this case not biased in one direction or another -- all directions are treated equally.
-
-* Avoiding technical details and our discussion here will be high-level -- link to https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf for those interested.
+* Motions are in fact heavily coordinated, meaning that the movements of particles are not in random directions but can be summarized in a small number of terms, or "modes". This is a linear algebra problem that we won't get into. Point back to previous point that it's not as complicated as it may seem since movements are constrained (by evolution).
 
 * Simulations are run in which the springs connecting molecules are allowed to move the molecules, with the resulting shape of the protein being studied. Tightly packed molecules will tend to push back more, for example. As the protein molecule moves, we analyze how the protein molecules move w/r/t each other.
+
+Fortunately, there is an alternative method of studying large-scale movements of these structures called **Normal mode analysis (NMA)**.
+
+* Avoiding technical details and our discussion here will be high-level -- link to https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf for those interested.
 
 * GNM typically outperforms ANM but ANM has the benefit of being anisotropic, meaning that it takes the directions of protein dynamics into account. That is, it's not just interested in the magnitude of forces acting on molecules but their directions too.
 
 <!-- NMA of proteins is based on the theory that the lowest frequency vibrational normal modes are the most functionally relevant, describing the largest movement within the protein [^Skjaerven].-->
-
-
 
 Besides root-mean-square deviation (RMSD), we can compare protein structures by comparing how the protein fluctuates. Two proteins fluctuate differently is typically a clear indication that the internal structure is different, and we could imagine a situation in which two proteins have seemingly similar structure according to static analysis but fluctuate very differently. Therefore, we can perform NMA calculations as another approach to comparing SARS-CoV-2 and SARS S protein.
 
@@ -57,7 +45,7 @@ Another major strength of ProDy is its capabilities for protein dynamics analysi
 {: style="font-size: 100%; text-align: center;"}
 
 
-## GNM Calculation of the Spike Protein
+
 In the tutorial, we generated four visualizations of how the SARS-CoV-2 S protein fluctuates. Using ProDy, we performed GNM Calculations on the SARS S protein using the PDB entry(<a href="http://www.rcsb.org/structure/5xlr" target="_blank">5xlr</a>). In addition, we also performed the calculations on a single chain of the S protein for a more thorough comparison. Here, we will explain how to interpret the results and compare them to analyze the differences and similarities between the two proteins.
 
 ### Cross-Correlation
