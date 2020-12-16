@@ -27,18 +27,14 @@ Although it may seem that atomic movements are frantic and random, the movements
 
 <!-- NMA of proteins is based on the theory that the lowest frequency vibrational normal modes are the most functionally relevant, describing the largest movement within the protein [^Skjaerven].-->
 
-By running molecular dynamics simulations, we obtain another way to compare two proteins. If two proteins have different patterns of fluctuation under perturbation, then we have a clear indication that their structure is different. With this in mind, we will use ProDy in the following tutorial to perform NMA calculations as a final method of comparing the SARS-CoV-2 and SARS-CoV spike proteins. In what follows, we will then discuss the resulting analyses.
+By running molecular dynamics simulations, we obtain another way to compare two proteins. If two proteins have different patterns of fluctuation under perturbation, then we have a clear indication that their structure is different. With this in mind, we will use ProDy in the following tutorial to perform NMA calculations as a final method of comparing the SARS-CoV-2 and SARS-CoV spike proteins. We also will use ProDy to compute a contact map, if you are interested in doing this after our discussion of contact maps in a [previous lesson](multiseq#contact-maps-and-qres). We then will interpret the results of this tutorial in the next section.
 
 [Visit tutorial](tutorial_GNM){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Molecular dynamics analyses of SARS-CoV and SARS-CoV-2 spike proteins
 
-* START HERE
-
-* In this section, we explain the results of the NMA that ProDy performed 
-
-* Also: contact map! Add this to tutorial
+* In this section, we explain the results of the NMA that ProDy performed
 
 In the tutorial, we generated four visualizations of how the SARS-CoV-2 S protein fluctuates. Using ProDy, we performed GNM Calculations on the SARS S protein using the PDB entry(<a href="http://www.rcsb.org/structure/5xlr" target="_blank">5xlr</a>). In addition, we also performed the calculations on a single chain of the S protein for a more thorough comparison. Here, we will explain how to interpret the results and compare them to analyze the differences and similarities between the two proteins.
 
