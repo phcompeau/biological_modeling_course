@@ -79,7 +79,9 @@ From all of these results, we can see that the SARS-CoV-2 and SARS-CoV spike pro
 
 The anisotropic counterpart to GNM, where direction does matter, is called **anisotropic network model (ANM)**. In ANM, the direction of the fluctuations are also considered. Although ANM includes directionality, ANM typically performs worse than GNM when compared with experimental data [^Yang]. Nonetheless, ANM calculations are useful because of the added directionality. In fact, we can use it to create animations depicting the range of motions and fluctuations of the protein.
 
-In this tutorial, we will use <a href="http://prody.csb.pitt.edu/nmwiz/" target="_blank">NMWiz</a, a GUI for ProDy and is available as a plugin for VMD, to perform ANM calculations and create the animation of the SARS-CoV-2 (chimeric) RBD using the PDB entry <a href="http://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>.
+In this tutorial, we will use <a href="http://prody.csb.pitt.edu/nmwiz/" target="_blank">NMWiz</a>, short for "normal mode wizard", a GUI for ProDy that is available as a plugin for VMD, to perform ANM calculations and create the animation of the SARS-CoV-2 (chimeric) RBD using the PDB entry <a href="http://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>.
+
+* Focus on animating the structures
 
 [Visit tutorial](tutorial_ANM){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
