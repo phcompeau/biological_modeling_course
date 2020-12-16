@@ -21,30 +21,20 @@ A mass-spring system in which a mass is attached to the end of a spring. The mor
 
 With this model of a protein bond in mind, we will imagine nearby alpha carbons of a protein structure to be connected by springs; this type of model is called an **elastic network model (ENM)**. Because distant atoms will not influence each other, we will only connect two alpha carbons if they are within some threshold distance of each other (the default threshold used by ProDy is 7 angstroms).
 
-ProDy implements a **Gaussian network model (GNM)**, an ENM for molecular dynamics. This model is called "Gaussian" because protein bond movements from equilibrium follow a normal (Gaussian) distributions. Furthermore, this model is **isotropic**, meaning that it only considers the magnitude of force exerted on the springs between nearby molecules and ignores any global effect on the orientations of these forces.
+Another major strength of ProDy is its capabilities for protein dynamics analysis. Specifically, it implements a **Gaussian network model (GNM)**, an ENM for molecular dynamics. This model is called "Gaussian" because protein bond movements follow normal (Gaussian) distributions around their equilibria. Furthermore, this model is **isotropic**, meaning that it only considers the magnitude of force exerted on the springs between nearby molecules and ignores any global effect on the orientations of these forces.
 
-* START HERE -- some comments below
-
-* Motions are in fact heavily coordinated, meaning that the movements of particles are not in random directions but can be summarized in a small number of terms, or "modes". This is a linear algebra problem that we won't get into. Point back to previous point that it's not as complicated as it may seem since movements are constrained (by evolution).
-
-* Simulations are run in which the springs connecting molecules are allowed to move the molecules, with the resulting shape of the protein being studied. Tightly packed molecules will tend to push back more, for example. As the protein molecule moves, we analyze how the protein molecules move w/r/t each other.
-
-Fortunately, there is an alternative method of studying large-scale movements of these structures called **Normal mode analysis (NMA)**.
-
-* Avoiding technical details and our discussion here will be high-level -- link to https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf for those interested.
-
-* GNM typically outperforms ANM but ANM has the benefit of being anisotropic, meaning that it takes the directions of protein dynamics into account. That is, it's not just interested in the magnitude of forces acting on molecules but their directions too.
+Although it may seem that atomic movements are frantic and random, the movements of protein atoms are in fact often heavily coordinated, owing to the evolution of the proteins to perform replicable tasks. As a result, the movements of these particles are often correlated and can be summarized using a small number of descriptors, or "modes", which stabilize the system. The paradigm resulting from this insight is called **normal mode analysis (NMA)** and powers the elastic model that ProDy implements. The idea of representing a complex system with a small number of variables is one that we will return to in a later module, but the details rely on some advanced linear algebra and are too technical for our treatment here. For those interested, a full treatment of the mathematics of GNMs can be found in the chapter at [https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf](https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf).
 
 <!-- NMA of proteins is based on the theory that the lowest frequency vibrational normal modes are the most functionally relevant, describing the largest movement within the protein [^Skjaerven].-->
 
-Besides root-mean-square deviation (RMSD), we can compare protein structures by comparing how the protein fluctuates. Two proteins fluctuate differently is typically a clear indication that the internal structure is different, and we could imagine a situation in which two proteins have seemingly similar structure according to static analysis but fluctuate very differently. Therefore, we can perform NMA calculations as another approach to comparing SARS-CoV-2 and SARS S protein.
-
-Another major strength of ProDy is its capabilities for protein dynamics analysis. This includes performing NMA and visualizing the results that provide information on how the protein fluctuates. In this tutorial, we will use ProDy to perform GNM calculations on one chain of the SARS-CoV-2 S protein from the PDB entry <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a> and visualize the results into various graphs and plots.
+By running molecular dynamics simulations, we obtain another way to compare two proteins. If two proteins have different patterns of fluctuation under perturbation, then we have a clear indication that their structure is different. With this in mind, we will use ProDy in the following tutorial to perform NMA calculations as a final method of comparing the SARS-CoV-2 and SARS-CoV spike proteins. In what follows, we will then discuss the resulting analyses.
 
 [Visit tutorial](tutorial_GNM){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
+## Molecular dynamics analyses of SARS-CoV and SARS-CoV-2 spike proteins
 
+* START HERE
 
 In the tutorial, we generated four visualizations of how the SARS-CoV-2 S protein fluctuates. Using ProDy, we performed GNM Calculations on the SARS S protein using the PDB entry(<a href="http://www.rcsb.org/structure/5xlr" target="_blank">5xlr</a>). In addition, we also performed the calculations on a single chain of the S protein for a more thorough comparison. Here, we will explain how to interpret the results and compare them to analyze the differences and similarities between the two proteins.
 
@@ -80,6 +70,8 @@ From all four results, we see that SARS-CoV-2 and SARS S proteins are structural
 
 
 ## ANM Analysis of the RBD
+
+* GNM typically outperforms ANM but ANM has the benefit of being anisotropic, meaning that it takes the directions of protein dynamics into account. That is, it's not just interested in the magnitude of forces acting on molecules but their directions too.
 
 The anisotropic counterpart to GNM, where direction does matter, is called **anisotropic network model (ANM)**. In ANM, the direction of the fluctuations are also considered. Although ANM includes directionality, ANM typically performs worse than GNM when compared with experimental data [^Yang]. Nonetheless, ANM calculations are useful because of the added directionality. In fact, we can use it to create animations depicting the range of motions and fluctuations of the protein.
 
