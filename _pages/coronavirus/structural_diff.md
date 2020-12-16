@@ -49,7 +49,7 @@ Although the interaction with the hydrophobic pocket is the most critical differ
 
 ### Site 2: hotspot 31
 
-**Hotspot 31** is the second site of notable conformational differences between SARS-CoV-2 and SARS-CoV, a location that was previously studied in SARS-CoV in Li 2008 and Wu et al. 2012. This location earns its name because it involves a "salt bridge", or a combination of hydrogen and ionic bonding between two amino acids, that takes place between Lys31 and Glu35. It is shown in red in the figure below.
+**Hotspot 31** is not a failed Los Angeles nightclub but rather the second site of notable conformational differences between SARS-CoV-2 and SARS-CoV, a location that was previously studied in SARS-CoV in Li 2008 and Wu et al. 2012. This location earns its name because it involves a "salt bridge", or a combination of hydrogen and ionic bonding between two amino acids, that takes place between Lys31 and Glu35. It is shown in red in the figure below.
 
 **STOP:** Again, see if you can spot the differences between SARS-CoV-2 and SARS-CoV.
 {: .notice--primary}
