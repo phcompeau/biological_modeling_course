@@ -148,8 +148,6 @@ coronavirus:
         url: /coronavirus/NAMD
       - title: "Conclusion: From Static Protein Analysis to Molecular Dynamics<br><br>"
         url: /coronavirus/conclusion
-      - title: "Exercises<br><br>"
-        url: /coronavirus/exercises
   - title: Software Tutorials (featuring ProDy)
     children:
       - title: "Ab initio Structure Prediction<br><br>"
@@ -170,6 +168,10 @@ coronavirus:
         url: /coronavirus/tutorial_ANM
       - title: "Visualizing Glycans<br><br>"
         url: /coronavirus/tutorial_glycans
+  - title: "Exercises"
+    children:
+      - title: "Protein structure and molecular dynamics exercises"
+        url: /coronavirus/exercises
 
 wbcells:
   - title: Tutorial
