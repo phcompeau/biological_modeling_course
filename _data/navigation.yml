@@ -166,8 +166,6 @@ coronavirus:
         url: /coronavirus/tutorial_GNM
       - title: "ANM Calculation<br><br>"
         url: /coronavirus/tutorial_ANM
-      - title: "Visualizing Glycans<br><br>"
-        url: /coronavirus/tutorial_glycans
   - title: "Exercises"
     children:
       - title: "Protein structure and molecular dynamics exercises"

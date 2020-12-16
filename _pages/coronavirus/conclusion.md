@@ -27,7 +27,7 @@ Although it may seem that atomic movements are frantic and random, the movements
 
 <!-- NMA of proteins is based on the theory that the lowest frequency vibrational normal modes are the most functionally relevant, describing the largest movement within the protein [^Skjaerven].-->
 
-By running molecular dynamics simulations, we obtain another way to compare two proteins. If two proteins have different patterns of fluctuation under perturbation, then we have a clear indication that their structure is different. With this in mind, we will use ProDy in the following tutorial to perform NMA calculations as a final method of comparing the SARS-CoV-2 and SARS-CoV spike proteins. We also will use ProDy to compute a contact map, if you are interested in doing this after our discussion of contact maps in a [previous lesson](multiseq#contact-maps-and-qres). We then will interpret the results of this tutorial in the next section.
+By running molecular dynamics simulations, we obtain another way to compare two proteins. If two proteins have different patterns of fluctuation under perturbation, then we have a clear indication that their structure is different. With this in mind, we will use ProDy in the following tutorial to perform NMA calculations as a final method of comparing the SARS-CoV-2 and SARS-CoV spike proteins. We also will use ProDy to compute a contact map, if you are interested in doing this after our discussion of contact maps in a [previous lesson](multiseq#contact-maps-and-qres). When we return from the tutorial, we will explain each of the analyses that we perform in the tutorial.
 
 [Visit tutorial](tutorial_GNM){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
