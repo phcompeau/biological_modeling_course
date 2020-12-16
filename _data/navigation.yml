@@ -146,7 +146,7 @@ coronavirus:
         url: /coronavirus/structural_diff
       - title: "Quantifying the Interaction Energy Between the SARS-CoV-2 Spike Protein and ACE2<br><br>"
         url: /coronavirus/NAMD
-      - title: "Conclusion: Applying Molecular Dynamics to Compare Spike Proteins<br><br>"
+      - title: "Conclusion: From Static Analysis to Molecular Dynamics<br><br>"
         url: /coronavirus/conclusion
       - title: "Exercises<br><br>"
         url: /coronavirus/exercises

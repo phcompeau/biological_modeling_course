@@ -1,8 +1,10 @@
 ---
 permalink: /coronavirus/conclusion
-title: "Conclusion: Applying Molecular Dynamics to Compare Spike Proteins"
+title: "Conclusion: From Static Analysis to Molecular Dynamics"
 sidebar:
  nav: "coronavirus"
+toc: true
+toc_sticky: true
 ---
 
 ## NMA Introduction
@@ -21,7 +23,11 @@ However, simulating large structures, such as proteins with hundreds of amino ac
 
 * isotropic -- not variable based on measure of direction. In this case not biased in one direction or another -- all directions are treated equally.
 
-* Avoiding technical details -- link to https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf for those interested.
+* Avoiding technical details and our discussion here will be high-level -- link to https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf for those interested.
+
+* Contact map is a simplification of our idea from Qres of considering pairwise distances between every pair of alpha carbons. In fact, it is a static analysis and we should move it to the lesson on Qres -- students can draw it now if they like.
+
+* Simulations are run in which the springs connecting molecules are allowed to move the molecules, with the resulting shape of the protein being studied. Tightly packed molecules will tend to push back more, for example. As the protein molecule moves, we analyze how the protein molecules move w/r/t each other.
 
 * GNM typically outperforms ANM but ANM has the benefit of being anisotropic, meaning that it takes the directions of protein dynamics into account. That is, it's not just interested in the magnitude of forces acting on molecules but their directions too.
 
@@ -37,7 +43,7 @@ The bonded atoms are held together by sharing electrons, but is held at specific
 
 Besides root-mean-square deviation (RMSD), we can compare protein structures by comparing how the protein fluctuates. Two proteins fluctuate differently is typically a clear indication that the internal structure is different, and we could imagine a situation in which two proteins have seemingly similar structure according to static analysis but fluctuate very differently. Therefore, we can perform NMA calculations as another approach to comparing SARS-CoV-2 and SARS S protein.
 
-One of the main strengths of ProDy is its capabilities for protein dynamics analysis. This includes performing NMA and visualizing the results that provide information on how the protein fluctuates. In this tutorial, we will use ProDy to perform GNM calculations on one chain of the SARS-CoV-2 S protein from the PDB entry <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a> and visualize the results into various graphs and plots.
+Another major strength of ProDy is its capabilities for protein dynamics analysis. This includes performing NMA and visualizing the results that provide information on how the protein fluctuates. In this tutorial, we will use ProDy to perform GNM calculations on one chain of the SARS-CoV-2 S protein from the PDB entry <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a> and visualize the results into various graphs and plots.
 
 [Visit tutorial](tutorial_GNM){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
@@ -68,6 +74,8 @@ This figure shows the cross-correlation heat maps of the SARS-CoV-2 S protein (t
 {: .no_toc}
 
 NMA is based on the idea that the lowest frequency modes describe the largest movement in the structure. Below is the plot of the lowest frequency (slowest) mode calculated by ProDy. Here, the fluctuations are in arbitrary or relative units, but can interpreted as greater amplitudes represent regions of greater fluctuations. The sign of the value represents relative direction of the fluctuation, meaning that the plots can be flipped when comparing between different proteins. In the SARS-CoV-2 Chain A figure, we can see that the protein region between residues 200 and 500 is the most mobile. This region overlaps with where the RBD is located on the chain, between residues 331 to 524. This is important because it indicates the RBD being a mobile part of the S protein. Based on our results, we see that both S proteins have the same regions of great fluctuations, supporting that they have similar structures.
+
+* Note to self: this matches our intuition that the RBD would need to be flexible in order to "catch" a moving ACE2 enzyme. The rest of the protein could be anchored to the surface of the virus, while this one is able to rotate.
 
 ![image-center](../assets/images/SlowMode.png){: .align-center}
 This figure shows the slow mode plots of the SARS-CoV-2 S protein (top-left), SARS S protein (top-right), single-chain of the SARS-CoV-2 S protein (bottom-left), and single-chain of the SARS S protein (bottom-right). The x-axis represent the amino acid residues and the y-axis represents the fluctuations in relative units.  From the single-chain plots for both SARS-CoV-2 and SARS, we see that the residues between 200 – 500 fluctuate the most. The plots between SARS-CoV-2 and SARS are very similar, indicating similar protein fluctuations.
@@ -152,15 +160,12 @@ Using both the GNM and ANM approaches for normal mode analysis of SARS-CoV-2 S p
 
 
 ## Overview
-* Organisms come in all shapes and sizes, but at the end of the day, we are just a highly organized group of cells. In some cases, an organism can even be just a single cell. Cells are defined as the basic functional unit of life. But behind the scenes, it is proteins that are responsible for virtually all the functions and mechanisms of the cell. In a sense, we are living in a world governed by proteins.
-
-* When the COVID-19 outbreak emerged, scientists across the world scrambled to study the virus in order to contain the disease and produce a vaccine. This first step is to sequence its genome to identify what type of virus is causing the disease, but if we want to find the cure, we need to understand the pathogenic mechanisms that allow the virus to infect human cells. Comparing the genomes, we discovered that the virus is related to the SARS virus, but somehow much more infectious. From previous research on SARS and experimental results on SARS-CoV-2, we learned that the virus utilizes the spike (S) protein on its surface to bind to the human cells as its method of infection. As such, much of the SARS-CoV-2 research went into studying the S protein as a potential vaccine target and to find out why SARS-CoV-2 is more infectious that SARS.
 
 * In this module, we discussed the importance of the 3D (tertiary) structure of the protein and the many experimental methods of determining protein structure. Unfortunately, these methods requires time to collect physical samples, to run the complicated and expensive experiment, and to computationally store it into the protein data base. We then went into the complex problem of protein structure prediction, and the two main approaches of obtaining the 3D structure from the amino acid sequence of the protein, *ab initio* and homology modeling. Perhaps due to the severity of the outbreak and global contributions, studies after studies on SARS-CoV-2 were released along with experimentally determined 3D structures of the SARS-CoV-2 S protein.
 
 * With the 3D structures available, we used several protein analysis tools to compare the SARS-CoV-2 S protein with the SARS S protein and visualize the results. We learned about three subtle structural differences within the receptor binding domain (RBD) of the S proteins that appear to increase the binding affinity of the SARS-CoV-2 S protein and ACE2, which may be one of the reasons why SARS-CoV-2 is more infectious.
 
-* Unfortunately, biology is extremely complex. There is so much more to the story than just the protein structure and binding affinity of the S protein. We need to consider things like what happens after the S protein binds to ACE2, how does the virus enter the cell, how does it replicate itself, how does it combat our immune systems. As our last lesson, we will explore how SARS-CoV-2 hides from our immune system.
+* Unfortunately, biology is extremely complex. There is so much more to the story than just the protein structure and binding affinity of the S protein. We need to consider things like what happens after the S protein binds to ACE2, how does the virus enter the cell, how does it replicate itself, how does it combat our immune systems. As a conclusion, we will explore how SARS-CoV-2 hides from our immune system.
 
 ## Glycans
 
