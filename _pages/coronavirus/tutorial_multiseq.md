@@ -7,6 +7,8 @@ sidebar:
 
 In this tutorial, we will show how to get started with VMD and then calculate Qres of the alignment of SARS-CoV-2 RBD and SARS RBD using the VMD plugin Multiseq and PDB entries of the RBDs: <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> and <a href="https://www.rcsb.org/structure/2ajf" target="_blank">2ajf</a>, respectively. Afterwards, by locating regions of low Qres, we can identify regions of structural differences between the two.
 
+Multiseq aligns the structures by using the Structural Alignment of Multiple Proteins (STAMP) tool. The algorithm minimizes the distance between alpha carbons of the aligned residues for each protein or molecule by applying rigid-body rotations and translations. If the structures do not have common structures, then STAMP will fail. For more details on the STAMP algorithm, click <a href="http://www.compbio.dundee.ac.uk/manuals/stamp.4.4/stamp.pdf" target="_blank">here</a>.
+
 For this tutorial, please download VMD. The download can be found <a href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD" target="_blank">here</a>. The program may prompt you to download additional protein database information during this tutorial. If this occurs, please download the protein database information.
 
 We will need to download the PDB files for 6vw1 and 2ajf. First follow this link to the PDB page for the SARS-CoV-2 RBD <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>. Click on *Download Files* and select *PDB Format*.

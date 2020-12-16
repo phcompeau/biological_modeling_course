@@ -82,26 +82,32 @@ The contact maps of the SARS-CoV-2 spike protein (top-left), SARS-CoV spike prot
 **STOP:** How do you think the contact map will change as we increase or lower the threshold distance?
 {: .notice--primary}
 
-* Looking at a single row (or column) of the contact map.
+Now that we have established the notion of using all pairwise distances in a protein structure, we turn back to the goal of determining local differences between two proteins. Consider, for instance, the *i*-th row (or column) of a protein's contact map; this represents all alpha carbons that are near the *i*-th alpha carbon. We get a sense of how two proteins differ at the *i*-th position if we look at all of their distances to other positions. That is, if we compare all of the *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) values to all of the *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) values.
 
-* Make sure to indicate that we will produce a contact map with ProDy and do so in a later lesson within this module.
+To be more precise, we will apply a metric called **Q per residue (Qres)**.  This is done by comparing the alpha carbon distances between a given alpha carbon and all other alpha carbons, excluding the two adjacent amino acids, of the two proteins. The formal definition of Qres for two structures *s* and *t* is as follows[^Qres]:
 
-A good starting point would be to use the VMD plugin*<a href="https://www.ks.uiuc.edu/Research/vmd/plugins/multiseq/" target="_blank">Multiseq</a>*, a bioinformatics analysis environment that provides tools such as sequence and structural alignment. *Multiseq* is able to calculate structural conservation within aligned molecules by computing **Q per residue (Qres)**. After aligning, for example, protein A and protein B, Qres describes the similarity of a particular residue's structural environment in protein A compared to the aligned residue's structural environment in protein B. This is done by comparing the alpha carbon distances between the residue and all other aligned residues, excluding nearest neighbors, of the aligned proteins. The formal definition of Qres is as follows[^Qres]:
+$$Q_{res}^{(i)} = \dfrac{1}{N-k} \sum^{residues}_{j\neq i-1,i,i+1} \textrm{exp}[-\dfrac{[d(s_i,s_j)-d(s_i,s_j)]^2}{2\sigma^2_{i,j}}]$$
+
+In this equation, the following parameters are included in addition to the distance values *d* that we already know.
+
+* *N* is the number of residues in each protein (this assumes that they have the same length; generalizations for proteins of non-equal length exist);
+* *k* is equal to 2 when *i* is at either end of the protein, and *k* is equal to 3 otherwise;
+* The variance term $$\sigma_{ij}^2$$ is equal to \left\lvert{i-j}\right\rvert ^{0.15}$$, which corresponds to the sequence separation between the *i*-th and *j*-th alpha carbons.
+
+<!--
 
 $$Q_{res}^{(i,n)} = N \sum^{proteins}_{m\neq n} \sum^{residues}_{j\neq i-1,i,i+1} exp[-\frac{(r_{ij}^{(n)}-r^{(m)}_{i'j'})^2}{2\sigma^2_{ij}}]$$
 
 where:
-* $$Q_{res}^{(i,n)}$$ is the structural similarity of the $$i^{th}$$ residue in the $$n^{th}$$ protein
 * $$r_{ij}^{(n)}$$ is the distance between the alpha carbons of residues $$i$$ and $$j$$ in protein $$n$$
 * $$r_{i'j'}^{(m)}$$ is the distance between alpha carbons of the residues in protein $$m$$ that correspond to residues $$i$$ and $$j$$ in protein $$n$$
 * Variance $$\sigma_{ij}^2 = \left\lvert{i-j}\right\rvert ^{0.15}$$, which corresponds to the sequence separation between residues $$i$$ and $$j$$
 * Normalization $$N = \frac{1}{(N_{seq}-1)(N_{res}-k}$$, where $$N_{seq}$$ is the number of proteins, $$N_{res}$$ is the number of residues in protein $$n$$, and $$k=2$$ when residue $$i$$ is the N- or C-terminus and $$k=3$$ otherwise.
+-->
 
-The calculation for Qres will result in a value between 0 and 1, with lower scores representing low similarity and higher scores representing high similarity.
+Possible values of Qres range between 0 and 1, with lower scores representing low similarity between corresponding positions, and higher scores representing high similarity.
 
-Multiseq aligns the structures by using the Structural Alignment of Multiple Proteins (STAMP) tool. The algorithm minimizes the distance between alpha carbons of the aligned residues for each protein or molecule by applying rigid-body rotations and translations. If the structures do not have common structures, then STAMP will fail. For more details on the STAMP algorithm, click <a href="http://www.compbio.dundee.ac.uk/manuals/stamp.4.4/stamp.pdf" target="_blank">here</a>.
-
-In this tutorial, we will use Multiseq to align the SARS-CoV-2 (chimeric) RBD and SARS RBD using the PDB entries <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> and <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>, respectively. Then, we will locate areas of structural differences be computing Qres.
+Now that we have the Qres metric for the similarity of corresponding amino acids in two protein structures, we turn to a tutorial and use the VMD plugin *<a href="https://www.ks.uiuc.edu/Research/vmd/plugins/multiseq/" target="_blank">Multiseq</a>*, a bioinformatics analysis environment that provides tools such as sequence and structural alignment. We will use Multiseq to align the SARS-CoV-2 (chimeric) RBD and SARS RBD using the PDB entries <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> and <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>, respectively. Then, we will locate areas of structural differences by computing Qres over the entire protein.
 
 [Visit tutorial](tutorial_multiseq){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
