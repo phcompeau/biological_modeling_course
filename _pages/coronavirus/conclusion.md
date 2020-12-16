@@ -9,11 +9,21 @@ toc_sticky: true
 
 ## NMA Introduction
 
-In this lesson, we transition from the static study of proteins to the field of **molecular dynamics (MD)**, in which we analyze the movement of proteins' molecules, atoms, along with their interactions as they move.
+In this lesson, we transition from the static study of proteins to the field of **molecular dynamics (MD)**, in which we simulate the movement of proteins' molecules, atoms, along with their interactions as they move.
+
+You may think that simulating the *movements* of proteins with hundreds of amino acids will be a hopeless task. After all, protein structure prediction is difficult enough! Yet what makes structure prediction so challenging is that the "search space" of potential shapes is so enormous. Once we have established the static structure of a protein, its dynamic behavior will not allow it to deviate greatly from this static structure, and so the space of potential structures is automatically narrowed down to those that are similar to the static structure.
+
+A protein's molecular bonds are constantly vibrating, stretching and compressing, much like that of a oscillating spring-mass system show below.
+
+One of the approaches for modeling a molecule is to represent atoms as nodes that are interconnected with springs, otherwise known as an **elastic network model (ENM)**. The motivation of using ENM is that bonds actually share many characteristics with springs. We stated that proteins are not static, but this is true because the bonds that everything together are not static either.
+
+The bonded atoms are held together by sharing electrons, but is held at specific bond length due to the attraction and repulsion forces of the negatively charged electrons and positively charged nucleus. Just like a spring, when you bring the atoms closer together then the normal (equilibrium), they will resist with greater and greater repulsion force. A popular method for performing NMA is the **Gaussian network model (GNM)**, the ENM for isotropic fluctuations. Isotropic describes physical properties don't change with direction, meaning that GNM analyzes only the size of the fluctuation in the protein.
+
+![image-center](../assets/images/mass-spring.gif){: .align-center}
+Image courtesy: flippingphysics.com.
+{: style="font-size: medium;"}
 
 However, simulating large structures, such as proteins with hundreds of amino acids, can prove to be extremely computationally heavy. Fortunately, there is an alternative method of studying large-scale movements of these structures called **Normal mode analysis (NMA)**.
-
-* Needs to be better: explanation that is founded on principle that search space is huge but once we have found a static structure, assumption is that it won't change a great deal. That is, we are limiting our study to "nearby" shapes as the protein changes because it has a stable form and won't change much from this. This is a critical point. "You may think this problem is impossible; after all, protein structure prediction is hard enough"
 
 * Positions given by alpha carbon coordinates -- which we can pull from PDB. A spring connects two of these alpha carbons if they are within some cutoff distance (traditionally 7 angstroms).
 
@@ -25,21 +35,13 @@ However, simulating large structures, such as proteins with hundreds of amino ac
 
 * Avoiding technical details and our discussion here will be high-level -- link to https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf for those interested.
 
-* Contact map is a simplification of our idea from Qres of considering pairwise distances between every pair of alpha carbons. In fact, it is a static analysis and we should move it to the lesson on Qres -- students can draw it now if they like.
-
 * Simulations are run in which the springs connecting molecules are allowed to move the molecules, with the resulting shape of the protein being studied. Tightly packed molecules will tend to push back more, for example. As the protein molecule moves, we analyze how the protein molecules move w/r/t each other.
 
 * GNM typically outperforms ANM but ANM has the benefit of being anisotropic, meaning that it takes the directions of protein dynamics into account. That is, it's not just interested in the magnitude of forces acting on molecules but their directions too.
 
 <!-- NMA of proteins is based on the theory that the lowest frequency vibrational normal modes are the most functionally relevant, describing the largest movement within the protein [^Skjaerven].-->
 
-One of the approaches for modeling a molecule is to represent atoms as nodes that are interconnected with springs, otherwise known as an **elastic network model (ENM)**. The motivation of using ENM is that bonds actually share many characteristics with springs. We stated that proteins are not static, but this is true because the bonds that everything together are not static either. Bonds are constantly vibrating, stretching and compressing much like that of a oscillating spring-mass system show below.
 
-![image-center](../assets/images/mass-spring.gif){: .align-center}
-Image courtesy: flippingphysics.com.
-{: style="font-size: medium;"}
-
-The bonded atoms are held together by sharing electrons, but is held at specific bond length due to the attraction and repulsion forces of the negatively charged electrons and positively charged nucleus. Just like a spring, when you bring the atoms closer together then the normal (equilibrium), they will resist with greater and greater repulsion force. A popular method for performing NMA is the **Gaussian network model (GNM)**, the ENM for isotropic fluctuations. Isotropic describes physical properties don't change with direction, meaning that GNM analyzes only the size of the fluctuation in the protein.
 
 Besides root-mean-square deviation (RMSD), we can compare protein structures by comparing how the protein fluctuates. Two proteins fluctuate differently is typically a clear indication that the internal structure is different, and we could imagine a situation in which two proteins have seemingly similar structure according to static analysis but fluctuate very differently. Therefore, we can perform NMA calculations as another approach to comparing SARS-CoV-2 and SARS S protein.
 
@@ -53,7 +55,6 @@ Another major strength of ProDy is its capabilities for protein dynamics analysi
 In the tutorial, we generated four visualizations of how the SARS-CoV-2 S protein fluctuates. Using ProDy, we performed GNM Calculations on the SARS S protein using the PDB entry(<a href="http://www.rcsb.org/structure/5xlr" target="_blank">5xlr</a>). In addition, we also performed the calculations on a single chain of the S protein for a more thorough comparison. Here, we will explain how to interpret the results and compare them to analyze the differences and similarities between the two proteins.
 
 ### Contact Map
-{: .no_toc}
 
 A protein contact map is a 2D matrix that represents the distance between all amino acid residues in the protein. In other words, it is essentially a reduced, 2D representation of a protein's tertiary structure. Contact map is another popular method of protein structure comparison. Proteins with very similar structures will have very similar contact map patterns, and deviations within the structure can be easily inferred by seeing unique patterns in only one of the proteins. Between all pairs of amino acids, the pair is assigned the value of 1 if the two residues are closer together than a predetermined threshold distance, and 0 otherwise. The threshold for the maps below is 20 Å, meaning that amino acid pairs within 20 Å of each other are assigned the value of 1. From these maps, we see very little differences between SARS-CoV-2 and SARS S proteins, meaning that they are structurally similar.
 
@@ -62,7 +63,6 @@ This figure shows the contact maps of the SARS-CoV-2 S protein (top-left), SARS 
 {: style="font-size: medium;"}
 
 ### Cross-Correlation
-{: .no_toc}
 
 Protein residue cross-correlation shows the correlation between the fluctuations/displacement of residues. This graphical representation shows how the residues will move relative to each other. The pair is assigned the value of 1 if the fluctuations are completely correlated (move in the same direction), the value of -1 if the fluctuations are completely anticorrelated (move in opposite directions), and a value of 0 if uncorrelated (movements do not affect each other). It is typical to see a diagonal of strong cross-correlation because movements in the residue will almost always affect its direct neighbors. Positive correlations coming off the diagonal represents correlations between contiguous residues and are characteristics of secondary structures because residues in secondary structures tend to move together. Common patterns for secondary structures are triangular structures for helices and plume structures for strands. Off-diagonal correlation and anticorrellations may potential represent interesting interactions between non-contiguous residues and domains. From our results, we see that the SARS-CoV-2 and SARS S protein fluctuate similarly, supporting that they are similar structures.
 
@@ -71,7 +71,6 @@ This figure shows the cross-correlation heat maps of the SARS-CoV-2 S protein (t
 {: style="font-size: medium;"}
 
 ### Slow Mode Shape
-{: .no_toc}
 
 NMA is based on the idea that the lowest frequency modes describe the largest movement in the structure. Below is the plot of the lowest frequency (slowest) mode calculated by ProDy. Here, the fluctuations are in arbitrary or relative units, but can interpreted as greater amplitudes represent regions of greater fluctuations. The sign of the value represents relative direction of the fluctuation, meaning that the plots can be flipped when comparing between different proteins. In the SARS-CoV-2 Chain A figure, we can see that the protein region between residues 200 and 500 is the most mobile. This region overlaps with where the RBD is located on the chain, between residues 331 to 524. This is important because it indicates the RBD being a mobile part of the S protein. Based on our results, we see that both S proteins have the same regions of great fluctuations, supporting that they have similar structures.
 
@@ -82,7 +81,6 @@ This figure shows the slow mode plots of the SARS-CoV-2 S protein (top-left), SA
 {: style="font-size: medium;"}
 
 ### Square Fluctuation
-{: .no_toc}
 
 The slow mode square-fluctuation is calculated by multiplying the square of the slow mode with the variance along the mode. In this case, all the values will be positive, but the interpretation remains the same as the slow mode plot, where greater amplitudes represent regions of greater fluctuations and motions.
 
@@ -119,7 +117,6 @@ Using NMWiz and VMD, we also created animations of the protein fluctuation calcu
 *It is important to note that fluctuation calculated by ANM provides information on possible movement and flexibility, but does not depict actual protein movements.*
 
 ### SARS-CoV-2 Spike Chimeric RBD (6vw1):
-{: .no_toc}
 
 |SARS-CoV-2 (Chimeric) RBD|Purple|
 |:------------------------|:-----|
@@ -139,7 +136,6 @@ Using NMWiz and VMD, we also created animations of the protein fluctuation calcu
 </center>
 
 ### SARS Spike RBD (2ajf):
-{: .no_toc}
 
 |SARS RBD|Purple|
 |:-------|:-----|
