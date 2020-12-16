@@ -9,6 +9,10 @@ toc_sticky: true
 
 * Good exercise later: compute Q scores for the protein structure comparison that we performed at the end of part 1.
 
+* Why are contact maps and cross correlation maps "symmetric" about the main diagonal?
+
+* Something on identifying a dynamics difference from a contact map or better cross-correlation in similar proteins.
+
 * If you have not already done so, try modeling the SARS-CoV-2 S protein or RBD using SWISS-MODEL, Robetta, or GalaxyWEB using the steps in<a href="tutorial_homology" target="blank">Homology Structure Prediction Tutorial</a>. Then, use ProDy to calculate the RMSD between your models and the PDB entries <a href="http://www.rcsb.org/structure/6VXX" target="blank">6vxx</a> for the S protein and <a href="http://www.rcsb.org/structure/6LZG" target="blank">6lzg</a> for the RBD. Did your models perform better than our models?
 
 * Visualize your best performing model(s) and the corresponding PDB entryl in VMD. If the models are sufficiently similar, try performing a structural alignment using Multiseq and see where in the the structure your predicted models did well.
