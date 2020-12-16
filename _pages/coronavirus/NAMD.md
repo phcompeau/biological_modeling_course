@@ -20,7 +20,7 @@ In the following tutorial, we will compute the energy of our bound spike protein
 [Visit tutorial](tutorial_NAMD){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-## Differences in interaction energy with ACE2 between SARS and SARS-CoV-2 
+## Differences in interaction energy with ACE2 between SARS and SARS-CoV-2
 
 Recall from the previous lesson that we found three regions of interest that differ between SARS-CoV and SARS-CoV-2 in terms of their spike proteins' binding with ACE2: a loop site in the ACE2 binding ridge, hotspot 31, and hotspot 353.
 
@@ -32,9 +32,11 @@ These are the ACE2 interaction energies of SARS-CoV-2 RBD and SARS RBD. The PDB 
 
 We can see in the table that the overall attractive interaction energy between the RBD and ACE2 is lower for SARS-CoV-2 than for SARS-CoV, which supports previous studies that have found the SARS-CoV-2 spike protein to have higher affinity with ACE2.
 
-For SARS-CoV-2, Hotspot31 (red) has the greatest contribution, followed by Hotspot353 (blue), and finally the loop in the RBM (yellow) providing the least. For SARS, Hotspot353 provides the greatest contribution, followed by the loop, and, surprisingly, Hotspot31 very slightly hindering the interaction. Nevertheless, we see that all three sites in SARS-CoV-2 support binding with ACE2 much more than in SARS. The difference in results support that the residue differences and conformational changes in the three sites do indeed increase the binding affinity between SARS-CoV-2 S protein and ACE2.
+Furthermore, all of the three regions of interest correspond to a lower energy in SARS-CoV-2 than in SARS-CoV. Of these, hotspot 31 (red) has the greatest negative contribution, followed by hotspot 353 (blue), and then the loop site (yellow). We now have evidence that the conformational changes in the three sites do indeed increase the binding affinity between the spike protein and ACE2.
 
-In this module's conclusion, we will learn about another protein analysis method that uses molecular dynamics.
+We now have concrete evidence that SARS-CoV-2 is more effective at binding to human cells than SARS. This having said, we should be careful; it would require additional experimental work to demonstrate that the improved binding of SARS-CoV-2 translates into greater infectiousness.
+
+Part of the reason for our cautiousness is that proteins are not fixed objects but rather dynamic structures whose shape is subject to small changes. In the module's conclusion, we will learn about another method of protein analysis that will help us study the dynamics of a protein's movements and apply this to our spike proteins of interest.
 
 [Next lesson](conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
@@ -48,6 +50,8 @@ NAMD needs to utilize the information in the force field to calculate the potent
 In the following tutorial, we will show how to calculate the interaction energy between the SARS-CoV-2 (Chimeric) RBD and ACE using the PDB entry <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> and the NAMD Energy plugin within VMD. To do this, we will be using a force field from CHARMM that is included in VMD package as well as the AutoPSF plugin to generate the necessary PSF file. Finally, we will see how much the loop site contributes to the interaction energy between SARS-CoV-2 RBD and ACE2.
 
 * In protein structure, need force field = energy function
+
+* Should be clear that total = electrostatic + van der Waals
 
 * From Chris: For more information of how to calculate the energies and the functions for potential energy, click <a href="https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html" target="_blank">here</a>.
 
