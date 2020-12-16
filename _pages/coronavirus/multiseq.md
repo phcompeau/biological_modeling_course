@@ -59,21 +59,28 @@ comparing the local structure of <em>s</em><sub><em>i</em></sub> against <em>t</
 
 ## Contact maps and Qres
 
-One of the weaknesses of
+One of the weaknesses of RMSD that we pointed out in part 1 of this module is that a change to a single bond angle at the *i*-th position may cause *d*(<em>s</em><sub><em>j</em></sub>, <em>t</em><sub><em>j</em></sub>) to be nonzero when *j* > *i*, even though the structure of the protein structure downstream of the bond angle change has not changed.
 
-* Idea: introduce a separate notion of how proteins differ by considering distance from each point to every other non-adjacent point in the protein and then use this to have a sense of the shape of the protein. Then point out that this gives us a local sense as well.
+For example, recall our example from when we discussed the [Kabsch algorithm](accuracy#applying-the-kabsch-algorithm-to-protein-structure-comparison) in part 1, reproduced in the figure below, of two protein structures that are identical except for a single bond angle. All of the alpha carbon distances *d*(<em>s</em><sub><em>i</em></sub>, <em>t</em><sub><em>i</em></sub>) for *i* at least 4 will be thrown off by this changed angle. But note that the distance from the *i*-th alpha carbon to the *j*-th alpha carbon when *i* and *j* are both at least 4 will not change, and so we by tracking these pairwise distances we would be able to notice that the substructures are preserved.
 
 ![image-center](../assets/images/single_bond_angle.png){: .align-center}
-Fill caption
+Two toy protein structures in which the bond angle between the third and fourth alpha carbon has been changed. This change does not affect the distance between the *i*-th and *j*-th alpha carbons when *i* and *j* are both at least equal to 4.
 {: style="font-size: medium;"}
 
-* Make sure to indicate that we will produce a contact map with ProDy and do so in a later lesson within this module.
+A more robust approach for measuring differences in two protein structures would therefore consider *all* pairwise distances *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) between alpha carbons in the same protein structure and compare these distances against the corresponding distances *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) in the other structure.
+
+To this end, we will introduce a concept called a **protein contact map** which is a
+
+
 
 A protein contact map is a 2D matrix that represents the distance between all amino acid residues in the protein. In other words, it is essentially a reduced, 2D representation of a protein's tertiary structure. Contact map is another popular method of protein structure comparison. Proteins with very similar structures will have very similar contact map patterns, and deviations within the structure can be easily inferred by seeing unique patterns in only one of the proteins. Between all pairs of amino acids, the pair is assigned the value of 1 if the two residues are closer together than a predetermined threshold distance, and 0 otherwise. The threshold for the maps below is 20 Å, meaning that amino acid pairs within 20 Å of each other are assigned the value of 1. From these maps, we see very little differences between SARS-CoV-2 and SARS S proteins, meaning that they are structurally similar.
 
 ![image-center](../assets/images/Contact.png){: .align-center}
 This figure shows the contact maps of the SARS-CoV-2 S protein (top-left), SARS S protein (top-right), single-chain of the SARS-CoV-2 S protein (bottom-left), and single-chain of the SARS S protein (bottom-right). The map shows every amino acid residue pair in the structure. If the distance between the residue pair is 20.0 Å or less, then a value of 1.0 is assigned and shown in the color black. We see that SARS-CoV-2 and SARS S proteins have similar maps, indicating similar structures.
 {: style="font-size: medium;"}
+
+* Make sure to indicate that we will produce a contact map with ProDy and do so in a later lesson within this module.
+
 
 is to compare the position of an alpha carbon against *every* other alpha carbon in the protein.  That is, rather than just considering *d*(<em>s</em><sub><em>i</em></sub>, <em>t</em><sub><em>i</em></sub>), we will consider *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) for all other alpha carbons *j*. We then will compare *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) against *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) for every *j*. The idea is that if the two protein structures are different near the *i*-th alpha carbon, then we will see significant differences between *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) and *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) for some (or many) values of *j*.
 
