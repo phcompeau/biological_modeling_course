@@ -140,7 +140,3 @@ Finding this highlighted region in the RBM where the structures of the SARS-CoV 
 [^Qres]: https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.367.6652&rep=rep1&type=pdf
 
 [^Jaimes]: Jaimes, J. A., André, N. M., Chappie, J. S., Millet, J. K., & Whittaker, G. R. 2020. Phylogenetic Analysis and Structural Modeling of SARS-CoV-2 Spike Protein Reveals an Evolutionary Distinct and Proteolytically Sensitive Activation Loop. Journal of molecular biology, 432(10), 3309–3325. https://doi.org/10.1016/j.jmb.2020.04.009
-
-## Extra
-
-* Good exercise later: compute Q scores for the protein structure comparison that we performed at the end of part 1.
