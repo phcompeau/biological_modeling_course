@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/conclusion
-title: "Conclusion"
+title: "Conclusion: Applying Molecular Dynamics to Compare Spike Proteins"
 sidebar:
  nav: "coronavirus"
 ---
@@ -11,6 +11,20 @@ In this lesson, we transition from the static study of proteins to the field of 
 
 However, simulating large structures, such as proteins with hundreds of amino acids, can prove to be extremely computationally heavy. Fortunately, there is an alternative method of studying large-scale movements of these structures called **Normal mode analysis (NMA)**.
 
+* Needs to be better: explanation that is founded on principle that search space is huge but once we have found a static structure, assumption is that it won't change a great deal. That is, we are limiting our study to "nearby" shapes as the protein changes because it has a stable form and won't change much from this. This is a critical point. "You may think this problem is impossible; after all, protein structure prediction is hard enough"
+
+* Positions given by alpha carbon coordinates -- which we can pull from PDB. A spring connects two of these alpha carbons if they are within some cutoff distance (traditionally 7 angstroms).
+
+* Need figure from Bahar paper
+
+* Gaussian -- there is a mean about which the fluctuations can be found
+
+* isotropic -- not variable based on measure of direction. In this case not biased in one direction or another -- all directions are treated equally.
+
+* Avoiding technical details -- link to https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf for those interested.
+
+* GNM typically outperforms ANM but ANM has the benefit of being anisotropic, meaning that it takes the directions of protein dynamics into account. That is, it's not just interested in the magnitude of forces acting on molecules but their directions too.
+
 <!-- NMA of proteins is based on the theory that the lowest frequency vibrational normal modes are the most functionally relevant, describing the largest movement within the protein [^Skjaerven].-->
 
 One of the approaches for modeling a molecule is to represent atoms as nodes that are interconnected with springs, otherwise known as an **elastic network model (ENM)**. The motivation of using ENM is that bonds actually share many characteristics with springs. We stated that proteins are not static, but this is true because the bonds that everything together are not static either. Bonds are constantly vibrating, stretching and compressing much like that of a oscillating spring-mass system show below.
@@ -19,11 +33,9 @@ One of the approaches for modeling a molecule is to represent atoms as nodes tha
 Image courtesy: flippingphysics.com.
 {: style="font-size: medium;"}
 
-<iframe src='https://gfycat.com/ifr/GaseousPoliticalAlaskajingle' frameborder='0' scrolling='no' width='360' height='640'></iframe><p> <a href="https://gfycat.com/gaseouspoliticalalaskajingle">via Gfycat</a></p>
-
 The bonded atoms are held together by sharing electrons, but is held at specific bond length due to the attraction and repulsion forces of the negatively charged electrons and positively charged nucleus. Just like a spring, when you bring the atoms closer together then the normal (equilibrium), they will resist with greater and greater repulsion force. A popular method for performing NMA is the **Gaussian network model (GNM)**, the ENM for isotropic fluctuations. Isotropic describes physical properties don't change with direction, meaning that GNM analyzes only the size of the fluctuation in the protein.
 
-Besides root-mean-square deviation (RMSD), we can compare protein structures by comparing how the protein fluctuates. Two proteins fluctuate differently is typically a clear indication that the internal structure is different. Therefore, we can perform NMA calculations as another approach to comparing SARS-CoV-2 and SARS S protein.
+Besides root-mean-square deviation (RMSD), we can compare protein structures by comparing how the protein fluctuates. Two proteins fluctuate differently is typically a clear indication that the internal structure is different, and we could imagine a situation in which two proteins have seemingly similar structure according to static analysis but fluctuate very differently. Therefore, we can perform NMA calculations as another approach to comparing SARS-CoV-2 and SARS S protein.
 
 One of the main strengths of ProDy is its capabilities for protein dynamics analysis. This includes performing NMA and visualizing the results that provide information on how the protein fluctuates. In this tutorial, we will use ProDy to perform GNM calculations on one chain of the SARS-CoV-2 S protein from the PDB entry <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx</a> and visualize the results into various graphs and plots.
 
