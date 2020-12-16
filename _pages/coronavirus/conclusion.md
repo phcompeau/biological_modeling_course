@@ -9,9 +9,15 @@ sidebar:
 
 In this lesson, we transition from the static study of proteins to the field of **molecular dynamics (MD)**, in which we analyze the movement of proteins' molecules, atoms, along with their interactions as they move.
 
-However, simulating large structures, such as proteins with hundreds of amino acids, can prove to be extremely computationally heavy. Fortunately, there is an alternative method of studying large-scale movements of these structures called **Normal mode analysis (NMA)**. NMA of proteins is based on the theory that the lowest frequency vibrational normal modes are the most functionally relevant, describing the largest movement within the protein [^Skjaerven].
+However, simulating large structures, such as proteins with hundreds of amino acids, can prove to be extremely computationally heavy. Fortunately, there is an alternative method of studying large-scale movements of these structures called **Normal mode analysis (NMA)**.
+
+<!-- NMA of proteins is based on the theory that the lowest frequency vibrational normal modes are the most functionally relevant, describing the largest movement within the protein [^Skjaerven].-->
 
 One of the approaches for modeling a molecule is to represent atoms as nodes that are interconnected with springs, otherwise known as an **elastic network model (ENM)**. The motivation of using ENM is that bonds actually share many characteristics with springs. We stated that proteins are not static, but this is true because the bonds that everything together are not static either. Bonds are constantly vibrating, stretching and compressing much like that of a oscillating spring-mass system show below.
+
+![image-center](../assets/images/mass-spring.gif){: .align-center}
+Image courtesy: flippingphysics.com.
+{: style="font-size: medium;"}
 
 <iframe src='https://gfycat.com/ifr/GaseousPoliticalAlaskajingle' frameborder='0' scrolling='no' width='360' height='640'></iframe><p> <a href="https://gfycat.com/gaseouspoliticalalaskajingle">via Gfycat</a></p>
 
