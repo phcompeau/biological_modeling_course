@@ -63,6 +63,10 @@ One of the weaknesses of
 
 * Idea: introduce a separate notion of how proteins differ by considering distance from each point to every other non-adjacent point in the protein and then use this to have a sense of the shape of the protein. Then point out that this gives us a local sense as well.
 
+![image-center](../assets/images/single_bond_angle.png){: .align-center}
+Fill caption
+{: style="font-size: medium;"}
+
 * Make sure to indicate that we will produce a contact map with ProDy and do so in a later lesson within this module.
 
 A protein contact map is a 2D matrix that represents the distance between all amino acid residues in the protein. In other words, it is essentially a reduced, 2D representation of a protein's tertiary structure. Contact map is another popular method of protein structure comparison. Proteins with very similar structures will have very similar contact map patterns, and deviations within the structure can be easily inferred by seeing unique patterns in only one of the proteins. Between all pairs of amino acids, the pair is assigned the value of 1 if the two residues are closer together than a predetermined threshold distance, and 0 otherwise. The threshold for the maps below is 20 Å, meaning that amino acid pairs within 20 Å of each other are assigned the value of 1. From these maps, we see very little differences between SARS-CoV-2 and SARS S proteins, meaning that they are structurally similar.
