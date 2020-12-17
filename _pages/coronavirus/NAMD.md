@@ -41,30 +41,6 @@ Part of the reason for our cautiousness is that proteins are not fixed objects b
 [Next lesson](conclusion){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-## Extra
-
-* Move following to first linked tutorial
-
-NAMD needs to utilize the information in the force field to calculate the potential energy of a protein. To do this, it needs a **protein structure file (PSF)**. A PSF, which is molecule-specific, contains all the information required to apply a force field to a molecular system [^PSF]. Fortunately, there are programs that can generate a PSF given the force field and protein structure (PDB file).
-
-In the following tutorial, we will show how to calculate the interaction energy between the SARS-CoV-2 (Chimeric) RBD and ACE using the PDB entry <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> and the NAMD Energy plugin within VMD. To do this, we will be using a force field from CHARMM that is included in VMD package as well as the AutoPSF plugin to generate the necessary PSF file. Finally, we will see how much the loop site contributes to the interaction energy between SARS-CoV-2 RBD and ACE2.
-
-* In protein structure, need force field = energy function
-
-* Should be clear that total = electrostatic + van der Waals
-
-* From Chris: For more information of how to calculate the energies and the functions for potential energy, click <a href="https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html" target="_blank">here</a>.
-
-* Move the below to protein structure section
-
-When we are talking about the energy of a system or molecule, we are referring to its potential energy.  More specifically, **potential energy** is defined as the energy stored within an object due to its position, state, and arrangement. In molecular mechanics, the potential energy is made up of the sum of bonded energy (energy related to covalent bonds) and nonbonded energy (energy from interactions not from covalent bonds) for all atoms in the molecule.
-
-Bonded energy can be broken down into three terms: bond, angle, and dihedral. We will explain here what each term represents as additional information, but this is beyond the scope of this module as it gets extremely complicated. The bond term describes the potential between a pair of covalently bonded atoms and is represented by harmonic potential, or in simpler terms, bond stretching. The angle term describes the potential between a triplet of atoms covalently bonded like a ‘V’ shape and is represented by angle vibration. Finally, the dihedral term describes the potential between a consecutively bonded quadruplet of atoms and are represented by the angular spring between the plane formed by the first three atoms and the plane formed by the last three atoms [^TCBG].
-
-Nonbond energy can be broken down into two terms: electrostatic interactions (Coulomb potential) and van der Waals interactions (Lennard-Jones potential). **Electrostatic interaction** refers to the attraction and repulsion force from the electric charge of the atoms. To calculate the total electrostatic interaction, we need to consider this interaction between every atom pair within the molecule. Just like proteins, atoms are dynamic systems. The electrons are constantly circling around the nucleus and at any given time, they could be localized on one side. This will cause the atom to have a temporary negative charge on one side and positive charge on the other side. In addition, nearby atoms can also influence the electron cloud. These temporary charges are referred to as **induced dipoles**. **Van der Waals** interaction refers to the attraction and repulsion force between atoms from these induced dipoles.
-
 [^TCBG]: https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html
 
 [^charmm]: https://www.charmmtutorial.org/index.php/The_Energy_Function
-
-[^PSF]: https://www.ks.uiuc.edu/Training/Tutorials/namd/namd-tutorial-unix-html/node23.html
