@@ -11,7 +11,7 @@ toc_sticky: true
 
 > One of the world's most important warning systems for a deadly new outbreak is a doctor's or nurse's recognition that some new disease is emerging and then sounding the alarm. It takes intelligence and courage to step up and say something like that, even in the best of circumstances.
 >
-> -- <cite>Tom Inglesby, Director of the Center for Health Security at Johns Hopkins Bloomberg School of Public Health</cite>
+> <cite><em>Tom Inglesby, Director of the Center for Health Security at Johns Hopkins Bloomberg School of Public Health</em></cite>
 
 ## The world's fastest outbreak
 
@@ -35,7 +35,7 @@ In 2017, researchers published the result of five years of sampling horseshoe ba
 
 ## A new threat
 
-Reference, https://www.axios.com/timeline-the-early-days-of-chinas-coronavirus-outbreak-and-cover-up-ee65211a-afb6-4641-97b8-353718a5faab.html
+https://www.axios.com/timeline-the-early-days-of-chinas-coronavirus-outbreak-and-cover-up-ee65211a-afb6-4641-97b8-353718a5faab.html
 
 
 Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) is responsible for the 2019-2020 COVID-19 pandemic that is believed to have started in Wuhan, China. Although not confirmed, it is believed that the first case dates to 17 November 2019 [^7]. On 31 December 2019, the WHO received reports regarding numerous cases of pneumonia of an undetermined cause from the Wuhan Municipal Health Commission. The next day, the WHO activates the three-level Incident Management Support Team to assess the new disease. The disease spread extremely quickly throughout the city where cases doubled every 7.4 days [^8]. By the end of January, 7818 cases were confirmed across 19 countries, resulting in the WHO declaring the sixth Public Health Emergency of International Concern (PHEIC) [^9][^10].
