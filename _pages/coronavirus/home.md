@@ -3,8 +3,6 @@ permalink: /coronavirus/home
 title: "Introduction: A Tale of Two Doctors"
 sidebar:
  nav: "coronavirus"
-toc: true
-toc_sticky: true
 ---
 
 ### by Chris Lee and Phillip Compeau
@@ -33,22 +31,21 @@ In 2017, researchers published the result of five years of sampling horseshoe ba
 
 > We have also revealed that various SARSr-CoVs ... are still circulating among bats in this region. Thus, the risk of spillover into people and emergence of a disease similar to SARS is possible. This is particularly important given that the nearest village to the bat cave we surveyed is only 1.1 km away, which indicates a potential risk of exposure to bats for the local residents. Thus, we propose that monitoring of SARSr-CoV evolution at this and other sites should continue, as well as examination of human behavioral risk for infection and serological surveys of people, to determine if spillover is already occurring at these sites and to design intervention strategies to avoid future disease emergence.
 
-## A new threat
+## A new threat emerges
 
-https://www.axios.com/timeline-the-early-days-of-chinas-coronavirus-outbreak-and-cover-up-ee65211a-afb6-4641-97b8-353718a5faab.html
+On December 30, 2019, a Chinese ophthalmologist named Li Wenliang sent a WeChat message to fellow doctors at Wuhan Central Hospital, warning them that he had seen several patients with symptoms resembling SARS. He urged his colleagues to wear protective clothing and masks to shield them from this new potential threat.
 
+The next day, a screenshot of his post was leaked online, and local police summoned Dr. Li and forced him to sign a statement that he had "severely disturbed public order". He then returned to work, treating patients in the same Wuhan hospital.
 
-Severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) is responsible for the 2019-2020 COVID-19 pandemic that is believed to have started in Wuhan, China. Although not confirmed, it is believed that the first case dates to 17 November 2019 [^7]. On 31 December 2019, the WHO received reports regarding numerous cases of pneumonia of an undetermined cause from the Wuhan Municipal Health Commission. The next day, the WHO activates the three-level Incident Management Support Team to assess the new disease. The disease spread extremely quickly throughout the city where cases doubled every 7.4 days [^8]. By the end of January, 7818 cases were confirmed across 19 countries, resulting in the WHO declaring the sixth Public Health Emergency of International Concern (PHEIC) [^9][^10].
+Meanwhile, the World Health Organization received reports regarding multiple pneumonia cases from the Wuhan Municipal Health Commission and activated a support team to assess the new disease. The WHO declared on January 14 that local authorities had seen "no clear evidence of human-to-human transmission of the novel coronavirus". By this point, it was now too late.
+
+Throughout January, the virus silently raged through China, spreading to both South Korea and the United States as Lunar New Year celebrations took place within the country. By the end of the month, the disease was in 19 countries, as shown below.
 
 <img src="../_pages/coronavirus/files/WHOReport10.png">
 
-The next day, Russia, Italy, and United Kingdom reported their first cases of COVID-19 and joined the list affected countries. From then on, the number of COVID-19 cases exploded, spreading to around 213 countries and territories across the globe as of 17 August 2020.
+Within the next two months, the disease would explode across the planet, becoming a pandemic and earning a name in the process: **Coronavirus disease 2019 (COVID-19)**.
 
-<img src="../_pages/coronavirus/files/covid19log.png">
-
-<img src="../_pages/coronavirus/files/CovidTable.png">
-
-* Need to define COVID-19.
+As for Dr. Li? Despite warning against the risk of this new virus, he contracted the disease from one of his own eye patients on January 8. He continued working in the hospital, and entered the hospital on January 31. Within a week, he was dead, one of the first of millions of COVID-19 casualties.
 
 ### Why were the two outbreaks so different?
 
