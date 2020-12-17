@@ -69,23 +69,6 @@ The above information is critical for understanding protein structure but is jus
 [Next lesson](accuracy){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-## Extra
-
-* Need to have already specified that spike is a homotrimer before we appeal to the tutorial.
-
-* We need to make sure that the specification of the .pdb file type comes back somewhere before we give the results. It may be a perfect place to do so in this lesson.
-
-* Missing definition of domain -- need to do this concisely earlier. Perhaps explain that spike has S1 and S2.
-
-* We may need a discussion of what NTD and RBD do at some point.
-
-* Perhaps something about how **threading** works. Fact is that even if a protein doesn't have a homologous protein in a database, most proteins will still have a protein of very similar structure.
-
-* Unfortunately, there are occasions where no identified proteins have notable sequence similarities. The alternative is to use threading, or fold recognition. In this case, rather than comparing the target sequence to sequences in the database, this method compares the target sequence to structures themselves. The biological basis of this method is that in nature, protein structures tend to be highly conservative and unique structural folds are therefore limited.
-
-* A simple explanation of the general threading algorithm is that structure predictions are created by placing or “threading” each amino acid in the target sequence to template structures from a non-redundant template database, and then assessing how well it fits with some scoring function[^score]. Then, the best-fit templates are used to build the predicted model. The scoring function varies per algorithm, but it typically takes secondary structure compatibilities, gap penalties during alignment, and other terms that depend on amino acids that are bought into contact by the alignment.
-
-* Each software has its own algorithms and method of assembly, such as how to decide which templates to use, how to use the templates, and how to fill in blurry areas (no good matches with templates). Nevertheless, the three softwares essentially build the models by assembling varying fragments from templates. If you would like to learn more about the intricacies of each software, you can follow these linkes: [Robetta](https://www.rosettacommons.org/docs/latest/application_documentation/structure_prediction/RosettaCM), [Galaxy]( https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3462707/), [SWISS-MODEL](https://swissmodel.expasy.org/docs/help).
 
 [^score]: Movaghar, A. F., Launay, G., Schbath, S., Gibrat, J. F., & Rodolphe, F. 2012. Statistical significance of threading scores. Journal of computational biology : a journal of computational molecular cell biology, 19(1), 13–29. https://doi.org/10.1089/cmb.2011.0236
 
