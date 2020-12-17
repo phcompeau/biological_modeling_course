@@ -3,6 +3,8 @@ permalink: /coronavirus/home
 title: "Introduction: A Tale of Two Doctors"
 sidebar:
  nav: "coronavirus"
+toc: true
+toc_sticky: true
 ---
 
 ### by Chris Lee and Phillip Compeau
@@ -31,7 +33,7 @@ In 2017, researchers published the result of five years of sampling horseshoe ba
 
 > We have also revealed that various SARSr-CoVs ... are still circulating among bats in this region. Thus, the risk of spillover into people and emergence of a disease similar to SARS is possible. This is particularly important given that the nearest village to the bat cave we surveyed is only 1.1 km away, which indicates a potential risk of exposure to bats for the local residents. Thus, we propose that monitoring of SARSr-CoV evolution at this and other sites should continue, as well as examination of human behavioral risk for infection and serological surveys of people, to determine if spillover is already occurring at these sites and to design intervention strategies to avoid future disease emergence.
 
-## A new threat arises: the COVID-19 pandemic
+## A new threat
 
 Reference, https://www.axios.com/timeline-the-early-days-of-chinas-coronavirus-outbreak-and-cover-up-ee65211a-afb6-4641-97b8-353718a5faab.html
 
