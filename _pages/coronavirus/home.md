@@ -41,7 +41,7 @@ Meanwhile, the World Health Organization received reports regarding multiple pne
 
 Throughout January, the virus silently raged through China, spreading to both South Korea and the United States as Lunar New Year celebrations took place within the country. By the end of the month, the disease was in 19 countries, as shown below.
 
-<img src="../_pages/coronavirus/files/WHOReport10.png">
+![image-center](../assets/images/WHOReport10.png){: .align-center}
 
 Within the next two months, the disease would explode across the planet, becoming a pandemic and earning a name in the process: **Coronavirus disease 2019 (COVID-19)**.
 
@@ -49,7 +49,7 @@ As for Dr. Li? Despite warning against the risk of this new virus, he contracted
 
 ### Why were the two outbreaks so different?
 
-The similarity between SARS and SARS-CoV-2 extends well beyond their names. They are both coronaviruses, which means that they are covered in a layer of **Spike proteins** that cause them to look like the sun's corona during an eclipse. In fact, if we look at them under a microscope, they look virtually identical. Both viruses use the same means to infect human cells, by bonding to the ACE2 enzyme on the cellular membrane.[^16][^17] And they cause the same symptoms in humans. So why did SARS fizzle, but SARS-CoV-2, a less harmful[^11][^12] and less deadly disease, transform into an uncontrollable pandemic?
+The similarity between SARS and COVID extends well beyond their symptoms. They are both coronaviruses, which means that they are covered in a layer of **Spike proteins** that cause them to look like the sun's corona during an eclipse. In fact, if we look at them under a microscope, they look virtually identical. Both viruses use the same means to infect human cells, by bonding to the ACE2 enzyme on the cellular membrane.[^16][^17] And they cause the same symptoms in humans. So why did SARS fizzle, but SARS-CoV-2, a less harmful[^11][^12] and less deadly disease, transform into an uncontrollable pandemic?
 
 * Insert coronavirus image.
 
