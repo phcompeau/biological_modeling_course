@@ -13,7 +13,8 @@ main:
         url: /motifs/home
       - title: "<b>Module 2:</b> Unpacking E. coli's genius exploration algorithm"
         url: /chemotaxis/home
-      - title: "<b>Module 3:</b> coming soon!"
+      - title: "<b>Module 3:</b> Analyzing the coronavirus spike protein"
+        url: /coronavirus/home
       - title: "<b>Module 4:</b> coming soon!"
 
 
