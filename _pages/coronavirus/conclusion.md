@@ -73,57 +73,32 @@ Plots of the slow mode square fluctuation of the SARS-CoV-2 spike protein (top-l
 
 ### Comparing Results
 
-From all of these results, we can see that the SARS-CoV-2 and SARS-CoV spike proteins are not only very similar in terms of structure, but they are similar in terms of dynamics as well. This result is perhaps not a surprise since they both target the ACE2 enzyme, and it drives home the fact that proteins can seem almost identical and yet one can have very subtle changes that turns an outbreak into a pandemic.
+From these results, we can see that the SARS-CoV-2 and SARS-CoV spike proteins are not only very similar in terms of structure, but they are similar in terms of dynamics as well. This result is perhaps not a surprise since they both target the ACE2 enzyme, and it drives home the fact that proteins can seem almost identical and yet one can have very subtle changes that turns an outbreak into a pandemic.
 
-## ANM Analysis of the RBD
+## ANM analysis of the coronavirus binding domain
 
-The anisotropic counterpart to GNM, where direction does matter, is called **anisotropic network model (ANM)**. In ANM, the direction of the fluctuations are also considered. Although ANM includes directionality, ANM typically performs worse than GNM when compared with experimental data [^Yang]. Nonetheless, ANM calculations are useful because of the added directionality. In fact, we can use it to create animations depicting the range of motions and fluctuations of the protein.
+The anisotropic counterpart to GNM, in which the direction of fluctuations is also considered, is called **anisotropic network model (ANM)**. Although ANM includes directionality, it typically performs worse than GNM when compared with experimental data[^Yang]. However, we can this model offers the benefit that it can be used to create animations depicting the range of motions and fluctuations of the protein.
 
-In this tutorial, we will use <a href="http://prody.csb.pitt.edu/nmwiz/" target="_blank">NMWiz</a>, short for "normal mode wizard", a GUI for ProDy that is available as a plugin for VMD, to perform ANM calculations and create the animation of the SARS-CoV-2 (chimeric) RBD using the PDB entry <a href="http://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>.
-
-* Focus on animating the structures
+In the tutorial linked below, we will apply ANM to produce versions of the plots that we produced above. We will also encounter <a href="http://prody.csb.pitt.edu/nmwiz/" target="_blank">NMWiz</a>, which is short for "normal mode wizard", a GUI for ProDy that is available as a plugin for VMD. We will use NMWiz to perform ANM calculations and create an animation of the SARS-CoV-2 (chimeric) RBD (PDB entry: <a href="http://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>) and the SARS-CoV RBD (PDB entry: <a href="http://www.rcsb.org/structure/2ajf" target="_blank">2ajf</a>).
 
 [Visit tutorial](tutorial_ANM){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-From the tutorial, we were able to generate the cross-correlation map and square fluctuation of the SARS-CoV-2 RBD. The interpretation of these results are identical to the GNM analysis above. Following the same steps, we performed ANM analysis on the SARS RBD using the PDB entry SARS RBD (<a href="http://www.rcsb.org/structure/2ajf" target="_blank">2ajf</a> for comparison.
+In the tutorial, we were able to generate a cross-correlation map and square fluctuation plot for the SARS-CoV-2 RBD, which resemble the results that we obtained previously for GNM (see figure below). Unsurprisingly, we do not see significant differences between the plots for the two viruses.
 
 ![image-center](../assets/images/ANMResults.png){: .align-center}
-This figure shows the cross-correlation map (top) and the square fluctuation plot (bottom) of SARS-CoV-2 and SARS RBD using ANM. The y-axis of the square fluctuation plot represents how much the residues fluctuate in relative units. Like the results from the GNM analysis, the map and plot are very similar between the two RBDs, indicating that they are structurally similar.
+The cross-correlation map (top) and the square fluctuation plot (bottom) for the SARS-CoV-2 (left) and SARS (right) RBDs using ANM. Like the results from the GNM analysis, the map and plot are very similar between the two RBDs, indicating that their dynamics are similar.
 {: style="font-size: medium;"}
 
-Perhaps unsurprisingly, the maps and plots show very small differences between SARS-CoV-2 and SARS RBD, just like in the GNM calculations for the S proteins. This indicates that the two RBDs are structurally similar.
+The fluctuations calculated by ANM provide information on possible movement and flexibility but do not depict actual protein movements. To predict these movements, we used NMWiz and VMD to create animations of the protein fluctuations over time as calculated via ANM analysis. The following two animations show of the complex of each virus's RBD (purple) bound with ACE2 (green). Important residues from the three sites of conformational differences from the previous lessons are also highlighted.
 
-Using NMWiz and VMD, we also created animations of the protein fluctuation calculated through ANM analysis. The following animations are of the SARS-CoV-2 RBD/SARS RBD (purple) and ACE2 (green). Important residues from the three sites of conformational differences from the previous lessens are also colored.
-
-*It is important to note that fluctuation calculated by ANM provides information on possible movement and flexibility, but does not depict actual protein movements.*
-
-### SARS-CoV-2 Spike Chimeric RBD (6vw1)
-
-|SARS-CoV-2 (Chimeric) RBD|Purple|
-|:------------------------|:-----|
-|Resid 476 to 486 (Loop)|Yellow|
-|Resid 455 (Hotspot 31|Blue|
-|Resid 493 (Hotspot 31|Orange|
-|Resid 501 (Hotspot 353)|Red|
-|--------------------------|-----|
-|ACE2|Green|
-|Resid 79, 82, 83 (Loop)|Silver|
-|Resid 31, 35 (Hotspot 31)|Orange|
-|Resid 38, 353 (Hotspot 353)|Red|
-
-
-<center>
-<iframe width="640" height="360" src="../assets/6vw1_B&F.mp4" frameborder="0" allowfullscreen></iframe>
-</center>
-
-### SARS Spike RBD (2ajf)
+### SARS-CoV spike protein RBD (PDB: 2ajf)
 
 |SARS RBD|Purple|
 |:-------|:-----|
 |Resid 463 to 472 (Loop)|Yellow|
-|Resid 442 (Hotspot 31|Orange|
-|Resid 487 (Hotspot 353|Red|
+|Resid 442 (Hotspot 31)|Orange|
+|Resid 487 (Hotspot 353)|Red|
 |--------|-----|
 |ACE2|Green|
 |Resid 79, 82, 83 (Loop)|Silver|
@@ -134,8 +109,25 @@ Using NMWiz and VMD, we also created animations of the protein fluctuation calcu
 <iframe width="640" height="360" src="../assets/2ajf_B&F.mp4" frameborder="0" allowfullscreen></iframe>
 </center>
 
-Using both the GNM and ANM approaches for normal mode analysis of SARS-CoV-2 S protein, we saw that it is structurally very similar to the SARS S protein. As we have stated in the <a href="structural_diff">Structural and ACE2 Interaction Differences</a> and <a href="NAMD">Interaction Energy with ACE2</a> lessons, the structural differences can be very subtle yet still contribute greatly with ACE2 binding affinity.
+### SARS-CoV-2 spike protein chimeric RBD (PDB: 6vw1)
 
+|SARS-CoV-2 (Chimeric) RBD|Purple|
+|:------------------------|:-----|
+|Resid 476 to 486 (Loop)|Yellow|
+|Resid 455 (Hotspot 31)|Blue|
+|Resid 493 (Hotspot 31)|Orange|
+|Resid 501 (Hotspot 353)|Red|
+|--------------------------|-----|
+|ACE2|Green|
+|Resid 79, 82, 83 (Loop)|Silver|
+|Resid 31, 35 (Hotspot 31)|Orange|
+|Resid 38, 353 (Hotspot 353)|Red|
+
+<center>
+<iframe width="640" height="360" src="../assets/6vw1_B&F.mp4" frameborder="0" allowfullscreen></iframe>
+</center>
+
+Recall from our work in the [previous lesson](NAMD#differences-in-interaction-energy-with-ace2-between-sars-and-sars-cov-2) that the greatest contribution of negative energy to the RBD/ACE2 complex in SARS-CoV-2 was the region called "hotspot 31". This region is highlighted in blue and orange in the above figures. If you look very closely (you may need to zoom in), as the protein swings in to bind with ACE2, the blue and orange regions appear to line up just a bit more naturally in the SARS-CoV-2 animation than in the SARS-CoV animation. That is, the improved binding that we hypothesized for a static structure appears to be confirmed by dynamics simulations. This provides one more piece of evidence that SARS-CoV-2 is more effective at binding to the ACE2 enzyme.
 
 ## Summing Up
 
@@ -143,7 +135,7 @@ Using both the GNM and ANM approaches for normal mode analysis of SARS-CoV-2 S p
 
 * With the 3D structures available, we used several protein analysis tools to compare the SARS-CoV-2 S protein with the SARS S protein and visualize the results. We learned about three subtle structural differences within the receptor binding domain (RBD) of the S proteins that appear to increase the binding affinity of the SARS-CoV-2 S protein and ACE2, which may be one of the reasons why SARS-CoV-2 is more infectious.
 
-* Unfortunately, biology is extremely complex. There is so much more to the story than just the protein structure and binding affinity of the S protein. We need to consider things like what happens after the S protein binds to ACE2, how does the virus enter the cell, how does it replicate itself, how does it combat our immune systems. As a conclusion, we will explore how SARS-CoV-2 hides from our immune system.
+* Unfortunately, biology is extremely complex. There is so much more to the story than just the protein structure and binding affinity of the S protein. We need to consider things like what happens after the S protein binds to ACE2, how does the virus enter the cell, how does it replicate itself, how does it combat our immune systems. As a conclusion, we will explore how SARS-CoV-2 hides from our immune system. Just tip of iceberg.
 
 
 This concludes the final lesson of the third module. If you would like to learn more about COVID-19 and SARS-CoV-2, check out this free online course: *<a href="https://sites.google.com/view/sarswars/home" target="_blank">SARS Wars: A New Hope</a>* by <a href="https://www.cs.cmu.edu/~cjl/" target="_blank">Christopher James Langmead</a>.
@@ -152,11 +144,6 @@ This concludes the final lesson of the third module. If you would like to learn 
 [Exercises](exercises){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-## Extra
-
-* Note to self: need to make a point about negative discovery here -- we don't find any big differences but that doesn't mean that it's analysis not worth running.
-
-* Another example of declaring protein structure a "solved" problem just being tip of iceberg.
 
 [^Dwek]: Dwek, R.A. Glycobiology: Toward Understanding the Function of Sugars. Chem. Rev. 96(2),  683-720 (1996). https://doi.org/10.1021/cr940283b
 
