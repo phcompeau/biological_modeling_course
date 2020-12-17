@@ -1,12 +1,13 @@
 ---
 permalink: /coronavirus/exercises
-title: "Exercises"
+title: "Exercises: Coming Soon!"
 sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
 ---
 
+<!--
 * Good exercise later: compute Q scores for the protein structure comparison that we performed at the end of part 1.
 
 * Why are contact maps and cross correlation maps "symmetric" about the main diagonal?
@@ -22,3 +23,4 @@ toc_sticky: true
 * In our GNM tutorial, we created the contact map using the threshold of 20Å. Try making the contact map of one of the chains of SARS-CoV-2 S protein [6vxx](http://www.rcsb.org/structure/6VXX) with different thresholds. Do the maps look different?
 
 * In this module, we only used homology modeling for large molecules such as the SARS-CoV-2 S protein and the RBD. It would be interesting to directly compare the accuracy of homology modeling and *ab initio* modeling. Try using one of the three homology modeling softwares to predict the structure of the human hemoglobin subunit ([sequence](../_pages/coronavirus/files/Human_Hemoglobin_subunit_alpha_Seq.txt)). After you get your predicted models, try calculating the RMSD using the PDB entry [1si4](https://www.rcsb.org/structure/1sI4). How do they compare to the RMSD from our *ab inito* (QUARK) models?
+-->
