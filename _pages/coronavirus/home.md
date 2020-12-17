@@ -55,25 +55,17 @@ The similarity between SARS and COVID extends well beyond their symptoms. The un
 Coronavirus cells as seen under a microscope. The fuzzy blobs on the cell surface are spike proteins, which the virus uses to gain entry to host cells.
 {: style="font-size: medium;"}
 
-Both viruses use the same means to infect human cells, by bonding to the ACE2 enzyme on the cellular membrane.[^16][^17] And they cause the same symptoms in humans. So why did SARS fizzle, but SARS-CoV-2, a less harmful[^11][^12] and less deadly disease, transform into an uncontrollable pandemic?
-
-We do not wish to diminish the importance of political and social measures to quell the spread of a disease. Yet the ability of SARS-CoV-2 to spread across far more countries and remain a public health threat even in the face of lockdowns can only be explained by its virulence.
+Both coronaviruses not only cause similar symptoms, they use the same mechanism to infect human cells, when the spike protein on the virus surface bonds to the ACE2 enzyme on a human cell's membrane.[^16][^17] So why did SARS fizzle, but SARS-CoV-2, a less harmful[^11][^12] and less deadly disease, transform into an uncontrollable pandemic? The ability of SARS-CoV-2 to spread across far more countries and remain a public health threat even in the face of lockdowns can only be explained by increased virulence.
 
 Part of the reason for the spread of SARS-CoV-2 is that it can be spread by individuals that are asymptomatic,[^13] a method of transmission that was never found in SARS.[^14] But we also wonder if we can find a *biological* basis for the difference between the two viruses.
 
-the spike protein for both SARS-CoV-2 and SARS bonds to the human angiotensin-converting enzyme 2 (ACE2). Part of why COVID-19 is not just a respiratory disease is that ACE2 is present in most human organs and can be found on the surface of cells from various human tissues, including lung alveolar epithelial cells, small intestine eterocytes, arteries, and kidneys.
-
-There are two main objectives for this module. First, we will put ourselves in the shoes of early SARS-CoV-2 researchers studying the spike protein of the new virus in January 2020 right as the new virus's genome was sequenced. Can we determine the structure of the viral Spike protein using only its genome?  Second, and more importantly, once we know the structure of this Spike protein in SARS-Cov-2, we will compare it against the same protein in SARS. If we can find a molecular explanation of why this virus can more easily attack our cells, then perhaps we can use this information to start defending against it.
+We have two main objectives for this module, placing ourselves in the shoes of early SARS-CoV-2 researchers studying the new virus in January 2020, right after the virus's genome was sequenced. Can we use this genome to determine the structure of the viral spike protein? Second, once we know the structure of this protein in SARS-CoV-2, how does it differ from the same protein in SARS-CoV? If we can find a molecular explanation of why this virus can more easily attack our cells, then perhaps we can use this information to start fighting it.
 
 [Continue to part 1: structure prediction](structure_intro){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 [Jump to part 2: Spike protein comparisons](structural_diff){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
-
-## Extra
-
-* Text below should be integrated
 
 ## Citations
 
