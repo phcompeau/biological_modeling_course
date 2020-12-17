@@ -126,11 +126,11 @@ chemotaxis:
 coronavirus:
   - title: About This Module
     children:
-      - title: "Introduction<br><br>"
+      - title: "Introduction: A Tale of Two Doctors<br><br>"
         url: /coronavirus/home
   - title: "Part 1: Protein Structure Prediction"
     children:
-      - title: "Introduction to Protein Structure Prediction<br><br>"
+      - title: "An Introduction to Protein Structure Prediction<br><br>"
         url: /coronavirus/structure_intro
       - title: "Ab initio Protein Structure Prediction<br><br>"
         url: /coronavirus/ab_initio
