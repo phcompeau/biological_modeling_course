@@ -64,7 +64,7 @@ We have two main objectives for this module, placing ourselves in the shoes of e
 [Continue to part 1: structure prediction](structure_intro){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-[Jump to part 2: Spike protein comparisons](structural_diff){: .btn .btn--primary .btn--large}
+[Jump to part 2: spike protein comparisons](structural_diff){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Citations

@@ -194,5 +194,5 @@ For example, the [GISAID](https://www.gisaid.org) organization published their f
 
 Thus ends part 1 of this module. But there is still much for us to discuss. We hope that you will join us for part 2, in which we will delve into the differences between the spike proteins of SARS-CoV-1 and SARS-CoV-2 using the validated protein structures published to PDB early in the pandemic. Can we use modeling and computation to determine why SARS-CoV-2 has been so much more infectious? We hope that you will join us to find out.
 
-[Next lesson](multiseq){: .btn .btn--primary .btn--large}
+[Continue to part 2: spike protein comparison](multiseq){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

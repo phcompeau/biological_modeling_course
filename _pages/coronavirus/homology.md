@@ -69,7 +69,6 @@ The above information is critical for understanding protein structure but is jus
 [Next lesson](accuracy){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-
 [^score]: Movaghar, A. F., Launay, G., Schbath, S., Gibrat, J. F., & Rodolphe, F. 2012. Statistical significance of threading scores. Journal of computational biology : a journal of computational molecular cell biology, 19(1), 13–29. https://doi.org/10.1089/cmb.2011.0236
 
 [^tasser]: Roy, A., Kucukural, A., Zhang, Y. 2010. I-TASSER: a unified platform for automated protein structure and function prediction. Nat Protoc, 5(4), 725-738. https://doi.org/10.1038/nprot.2010.5.
