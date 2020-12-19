@@ -42,6 +42,8 @@ Meanwhile, the World Health Organization received reports regarding multiple pne
 Throughout January, the virus silently raged through China, spreading to both South Korea and the United States as Lunar New Year celebrations took place within the country. By the end of the month, the disease was in 19 countries, as shown below.
 
 ![image-center](../assets/images/WHOReport10.png){: .align-center}
+The number of reported confirmed cases of 2019-nCoV (COVID-19) as of January 30th, 2020. Figure courtesy World Health Organization [^10].
+{: style="font-size: medium;"}
 
 Within the next two months, the disease would explode across the planet, becoming a pandemic and earning a name in the process: **Coronavirus disease 2019 (COVID-19)**.
 
@@ -52,7 +54,7 @@ As for Dr. Li? Despite warning against the risk of this new virus, he contracted
 The similarity between SARS and COVID extends well beyond their symptoms. The underlying viruses, whose names are respectively **SARS coronavirus (SARS-CoV)** and **SARS coronavirus 2 (SARS-CoV-2)** are both **coronaviruses**, which means that they are covered in a layer of **spike proteins** that cause them to look like the sun's corona during an eclipse (see figure below). In fact, if we look at them under a microscope, they look virtually identical.
 
 ![image-center](../assets/images/coronavirus.png){: .align-center}
-Coronavirus cells as seen under a microscope. The fuzzy blobs on the cell surface are spike proteins, which the virus uses to gain entry to host cells.
+Coronavirus cells as seen under a microscope. The fuzzy blobs on the cell surface are spike proteins, which the virus uses to gain entry to host cells. Figure courtesy F. Murphy and S. Whitfield, CDC[^coronaimage].
 {: style="font-size: medium;"}
 
 Both coronaviruses not only cause similar symptoms, they use the same mechanism to infect human cells, when the spike protein on the virus surface bonds to the ACE2 enzyme on a human cell's membrane.[^16][^17] So why did SARS fizzle, but SARS-CoV-2, a less harmful[^11][^12] and less deadly disease, transform into an uncontrollable pandemic? The ability of SARS-CoV-2 to spread across far more countries and remain a public health threat even in the face of lockdowns can only be explained by increased virulence.
@@ -108,3 +110,5 @@ We have two main objectives for this module, placing ourselves in the shoes of e
 [^18]: Shang, J., Ye, G., Shi, K. et al. Structural basis of receptor recognition by SARS-CoV-2. Nature 581, 221–224 (2020). https://doi.org/10.1038/s41586-020-2179-y
 
 [^19]: Jaimes, J. A., André, N. M., Chappie, J. S., Millet, J. K., & Whittaker, G. R. 2020. Phylogenetic Analysis and Structural Modeling of SARS-CoV-2 Spike Protein Reveals an Evolutionary Distinct and Proteolytically Sensitive Activation Loop. Journal of molecular biology, 432(10), 3309–3325. https://doi.org/10.1016/j.jmb.2020.04.009
+
+[^coronaimage]: Murphy, F., Whitfield, S. 1975. ID#: 10270. Public Health Image Library, CDC. https://phil.cdc.gov/Details.aspx?pid=10270
