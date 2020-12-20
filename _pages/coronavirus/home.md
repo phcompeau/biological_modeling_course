@@ -9,7 +9,7 @@ sidebar:
 
 > One of the world's most important warning systems for a deadly new outbreak is a doctor's or nurse's recognition that some new disease is emerging and then sounding the alarm. It takes intelligence and courage to step up and say something like that, even in the best of circumstances.
 >
-> <cite><em>Tom Inglesby, Director of the Center for Health Security at Johns Hopkins Bloomberg School of Public Health</em></cite>
+> <cite><em>Tom Inglesby [^Inglesby], Director of the Center for Health Security at Johns Hopkins Bloomberg School of Public Health</em></cite>
 
 ## The world's fastest outbreak
 
@@ -71,7 +71,9 @@ We have two main objectives for this module, placing ourselves in the shoes of e
 
 ## Citations
 
-[^cdc-factsheet]: CDC SARS Response Timeline. (2013, April 26). Retrieved August 17, 2020, from https://www.cdc.gov/about/history/sars/timeline.htm
+[^Inglesby]: Green, A. (2020, February 18). Li Wenliang. The Lancet, 395(10225), P682. https://doi.org/10.1016/S0140-6736(20)30382-2
+
+[^cdc-factsheet]: CDC SARS Response Timeline. 2013, April 26. Retrieved August 17, 2020, from https://www.cdc.gov/about/history/sars/timeline.htm
 
 [^bats]: Li, W., Shi, Z., Yu, M., Ren, W., Smith, C., Epstein, J., Wang, H., Crameri, G., Hu, Z., Zhang, H., Zhang, J., McEachern, J., Field, H., Daszak, P., Eaton, B. T., Zhang, S., Wang, L. (2005). Bats Are Natural Reservoirs of SARS-Like Coronaviruses. Science, 310(5748), 676-679. doi:10.1126/science.1118391
 
