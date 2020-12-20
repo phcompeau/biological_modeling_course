@@ -25,7 +25,7 @@ In[#]: calphas = spike.select('calpha and chain A')
 
 Now, we will instantiate a GNM instance and build the corresponding Kirchhoff matrix. You can pass parameters for the cutoff (threshold distance between atoms) and gamma (spring constant). The defaults are 10.0 Å and 1.0, respectively. Here, we will set the cutoff to be 20.0 Å.
 ~~~ python
-In[#]: gnm = GNM('SARS-CoV-2 Spike (6vxx) Cutoff = 20.0 A')                 #This is the title that will appear on top of the plots
+In[#]: gnm = GNM('SARS-CoV-2 Spike (6vxx) Chain A Cutoff = 20.0 A')                 #This is the title that will appear on top of the plots
 In[#]: gnm.buildKirchhoff(calphas, cutoff=20.0)
 ~~~~
 
