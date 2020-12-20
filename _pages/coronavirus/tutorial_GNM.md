@@ -71,7 +71,7 @@ In[#]: showMode(gnm[0], hinges=True)
 In[#]: grid();
 ~~~~~
 
-![image-center](../assets/images/SARS-CoV-2_SlowMode_20A.png){: .align-center}
+![image-center](../assets/images/SARS-CoV-2_ChainA_SlowMode_20A.png){: .align-center}
 {: style="font-size: medium;"}
 
 Square Fluctuations
