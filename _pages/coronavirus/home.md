@@ -3,9 +3,11 @@ permalink: /coronavirus/home
 title: "Introduction: A Tale of Two Doctors"
 sidebar:
  nav: "coronavirus"
+toc: true
+toc_sticky: true
 ---
 
-### by Chris Lee and Phillip Compeau
+<span style="font-size:larger;">by Chris Lee and Phillip Compeau</span>
 
 > One of the world's most important warning systems for a deadly new outbreak is a doctor's or nurse's recognition that some new disease is emerging and then sounding the alarm. It takes intelligence and courage to step up and say something like that, even in the best of circumstances.
 >
