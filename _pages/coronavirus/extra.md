@@ -7,6 +7,16 @@ toc: true
 toc_sticky: true
 ---
 
+## Protein shape determines binding affinity (from structure intro but possibly just delete this)
+
+Now that we understand the importance of shape in determining how proteins interact with molecules in their environment, we will spend some time discussing how these interactions are modeled.
+
+The simplest model of protein interactions is Emil Fischer’s **lock and key** model, which dates back to 1894 [^Fischer]. This model considers a protein that is an **enzyme**, which serves as a catalyst for a reaction involving another molecule called a **substrate**, and we think of the substrate as a key fitting into the enzyme lock. If the substrate does not fit into the active site of an enzyme, then the reaction will not occur.
+
+However, proteins are flexible, a fact that we will return to when we discuss the binding of the coronavirus spike protein to a human enzyme in a later lesson. Because of this flexibility, Daniel Koshland introduced a modified model called the **induced fit** model in 1958.[^Koshland] In this model, the enzyme and substrate may not fit perfectly, nor are they rigid like a lock and key. Rather, the two molecules may fit inexactly, changing shape as they bind to mold together more tightly. That having been said, if an enzyme and substrate's shape do not match well with each other, then they will not bind. For an overview of the induced fit model, please check out this excellent video from Khan Academy.
+
+<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/8lUB2sAQkzw" frameborder="0" allowfullscreen></iframe>
+
 ## Extra (structure intro): Four levels of protein structure
 
 These amino acids are linked together to form a protein as a amino acid chain, or polypeptide chain, that will typically undergo folding to obtain a 3D structure. In the first figure below, the general shape of the amino acid is shown: a central alpha-Carbon, a carboxyl group, an amino group, and finally one of 20 side-groups that differentiate the amino acids. Each amino acid is linked to the next by a peptide bond, and it is this connection and alpha-Carbon that make up the protein backbone, as shown in the second figure. The side groups of each amino acid are responsible for amino acid's chemical properties. These chemical properties allow the amino acids to interact with each other and fold into the 3D structure.

@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-## From DNA to RNA to protein
+## Determining protein structure is fundamental to understanding protein function
 
 Proteins are one of the most important groups of macromolecules in living organisms, contributing to essentially all functions within them. Recall that in our [introduction to transcription](../motifs/transcription) in a previous module, we introduced the "central dogma" of molecular biology, in which DNA is transcribed into RNA, which is then translated into protein. This process is represented in the figure reproduced below.
 
@@ -27,22 +27,12 @@ For a more visual example of how protein shape affects protein function, conside
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/TfYf_rPWUdY" frameborder="0" allowfullscreen></iframe>
 
-## Protein shape determines binding affinity
-
-Now that we understand the importance of shape in determining how proteins interact with molecules in their environment, we will spend some time discussing how these interactions are modeled.
-
-The simplest model of protein interactions is Emil Fischer’s **lock and key** model, which dates back to 1894 [^Fischer]. This model considers a protein that is an **enzyme**, which serves as a catalyst for a reaction involving another molecule called a **substrate**, and we think of the substrate as a key fitting into the enzyme lock. If the substrate does not fit into the active site of an enzyme, then the reaction will not occur.
-
-However, proteins are flexible, a fact that we will return to when we discuss the binding of the coronavirus spike protein to a human enzyme in a later lesson. Because of this flexibility, Daniel Koshland introduced a modified model called the **induced fit** model in 1958.[^Koshland] In this model, the enzyme and substrate may not fit perfectly, nor are they rigid like a lock and key. Rather, the two molecules may fit inexactly, changing shape as they bind to mold together more tightly. That having been said, if an enzyme and substrate's shape do not match well with each other, then they will not bind. For an overview of the induced fit model, please check out this excellent video from Khan Academy.
-
-<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/8lUB2sAQkzw" frameborder="0" allowfullscreen></iframe>
-
 As we have seen throughout this course, molecular interactions are ruled by probability. Any two molecules may *interact*, but their rate of *dissociation* will be much higher if they do not fit together well. Furthermore, two interacting molecules need to not only collide with each other but also have the correct orientation in order to fit together.
 
-So we can think about identifying the structure of a collection of proteins as cataloging the enormously varied shapes that different proteins can have. For example, the figure below shows each "protein of the month" in 2019 named by the **Protein Data Bank** (**PDB**). But the fact remains that proteins are submicroscopic; so how is it that researchers are able to determine these shapes?
+Because structure prediction is such a fundamental problem, researchers wish to catalog the enormously varied shapes that different proteins can have. For example, the figure below shows each "protein of the month" in 2019 named by the **Protein Data Bank** (**PDB**). But the fact remains that proteins are submicroscopic; so how is it that researchers are able to determine these shapes?
 
-![image-center](../assets/images/different_protein_shapes.jpg){: .align-center}
-Each "protein" of the month in 2019 named by the PDB. Note how different the shapes are of all these proteins, which accomplish a wide variety of cellular tasks.
+![image-center](../assets/images/different_protein_shapes_2020.jpg){: .align-center}
+Each "molecule of the month" in 2020 named by the PDB. Note how different the shapes are of all these proteins, which accomplish a wide variety of cellular tasks. Note that the SARS-CoV-2 spike protein was the molecule of the month in June 2020. Source: [https://pdb101.rcsb.org/motm/motm-by-date](https://pdb101.rcsb.org/motm/motm-by-date).
 {: style="font-size: medium;"}
 
 ## Laboratory methods for determining protein structure
@@ -65,7 +55,7 @@ Protein structures that have been determined experimentally are typically stored
 
 Before we set aside structure prediction, let’s consider the human proteome (i.e., collection of all proteins). A human proteome study published in 2016 estimated that humans have between 620,000 and 6.13 million protein isoforms (i.e., proteins with different shapes). A database of 160,000 proteins would be insufficient for covering humans, let alone the entire collection of proteins across all organisms on the planet.
 
-Another issue with laboratory methods of structure determination is that they require our ability to sample the actual physical proteins. For example, to produce bacterial proteins, we need to culture bacteria, and yet microbiologists have estimated that less than 2% of bacteria can be cultured in the lab [^Wade].
+Another issue with laboratory methods of structure determination is that they require our ability to sample the actual physical proteins. For example, to produce bacterial proteins, we need to culture bacteria, and yet microbiologists have estimated that less than 2% of bacteria can be cultured in the lab.[^Wade]
 
 What, then, can we do? Fortunately, although identifying protein structure is difficult, researchers have spent decades cataloging the genomes (i.e., the sum total of DNA in an organism's nucleus) of thousands of species. Because of the central dogma of molecular biology, we know that much of this DNA winds up being translated into protein. As a result, biologists know the *sequence* of amino acids making up many proteins.
 
