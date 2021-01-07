@@ -51,7 +51,7 @@ Within the next two months, the disease exploded across the planet, becoming a p
 
 As for Dr. Li? Despite warning against the risk of this new virus, he contracted the disease from one of his patients on January 8. He continued working in the hospital, and entered the hospital on January 31. Within a week, he was dead, one of the first of millions of COVID-19 casualties.
 
-### Why were the two outbreaks so different?
+## Why were the two outbreaks so different?
 
 The similarity between SARS and COVID extends well beyond their symptoms. The viruses causing these diseases, whose respective names are **SARS coronavirus (SARS-CoV)** and **SARS coronavirus 2 (SARS-CoV-2)** are both **coronaviruses**, which means that their outer membranes are covered in a layer of **spike proteins** that cause them to look like the sun's corona during an eclipse (see figure below). In fact, if we look at the two viruses under a microscope, they look virtually identical.
 
