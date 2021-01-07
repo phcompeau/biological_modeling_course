@@ -73,8 +73,6 @@ We split our work on these questions into two parts. If you are already familiar
 [Jump to part 2: spike protein comparisons](structural_diff){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-## Citations
-
 [^Inglesby]: Green, A. (2020, February 18). Li Wenliang. The Lancet, 395(10225), P682. https://doi.org/10.1016/S0140-6736(20)30382-2
 
 [^cdc-factsheet]: CDC SARS Response Timeline. 2013, April 26. Retrieved August 17, 2020, from https://www.cdc.gov/about/history/sars/timeline.htm
