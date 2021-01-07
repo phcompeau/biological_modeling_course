@@ -5,7 +5,7 @@ sidebar:
  nav: "chemotaxis"
 ---
 
-### by Shuanger Li and Phillip Compeau
+<span style="font-size:larger;">by Shuanger Li and Phillip Compeau</span>
 
 The book *What If?*[^Munroe], by Randall Munroe, compiles a collection of crazy scientific hypotheticals, paired with thorough discussions of what might happen if these hypotheticals came to pass. The following is one of these hypotheticals, called "Lost Immortals".
 
