@@ -9,7 +9,10 @@ toc_sticky: true
 
 ## How do *E. coli* respond to repellents?
 
-1. Just as *E. coli* has receptors that bond to attractant ligands, it has other receptors that can bond to **repellent** ligands. Based on what we have learned in this module about how *E. coli* and other bacteria act in the presence of an attractant, what do you think that the chemotaxis response is in the presence of a repellent? How do you think that the bacterium adjusts to relative changes in repellent?
+Just as *E. coli* has receptors that bond to attractant ligands, it has other receptors that can bond to **repellent** ligands.
+
+Based on what we have learned in this module about how *E. coli* and other bacteria act in the presence of an attractant, what do you think that the chemotaxis response is in the presence of a repellent? How do you think that the bacterium adjusts to relative changes in repellent?
+{: .notice--info}
 
 2. In the [phosphorylation tutorial](tutorial_phos), we defined the rate constant for free CheA autophosphorylation `k_T_phos`, and specified that when the receptor complex is bound to an attractant molecule, the autophosphorylation rate constant becomes `0.2 · k_T_phos`. When the receptor complex is bound to a **repellent** molecule, we will change the autophosphorylation rate constant to `5 · k_T_phos`. Adapt the BioNetGen model accordingly, and then run your simulation with `L0 = 5000` and `L0 = 1e5` repellent ligand molecules added at the beginning of the simulation, and run the simulation for 3 seconds. How does the concentration of phosphorylated CheY change? What do you conclude?
 

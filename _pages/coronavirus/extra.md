@@ -9,9 +9,6 @@ toc_sticky: true
 
 ## Protein shape determines binding affinity (from structure intro but possibly just delete this)
 
-**Yo:** This is a test
-{: .notice--info}
-
 Now that we understand the importance of shape in determining how proteins interact with molecules in their environment, we will spend some time discussing how these interactions are modeled.
 
 The simplest model of protein interactions is Emil Fischer’s **lock and key** model, which dates back to 1894 [^Fischer]. This model considers a protein that is an **enzyme**, which serves as a catalyst for a reaction involving another molecule called a **substrate**, and we think of the substrate as a key fitting into the enzyme lock. If the substrate does not fit into the active site of an enzyme, then the reaction will not occur.
