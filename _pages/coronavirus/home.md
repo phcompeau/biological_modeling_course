@@ -29,9 +29,9 @@ SARS was deadly, killing close to 10% of those who became sick.[^cdc-factsheet] 
 
 Scientists initially thought that humans had contracted SARS from palm civets, which are native to Guangdong. But research would later show that the disease likely originated in bats, a notorious disease carrier.[^bats]
 
-In 2017, researchers published the result of five years of sampling horseshoe bats from a cave in Yunnan province. They found that the bats harbored coronaviruses with remarkable genetic similarity to SARS, and they hypothesized that the virus may have come from horseshoe bats. Yet their work is now infamous because they identified additional viruses in the bats that were related to SARS but just as capable of entering human cells. The following lines from their article are now chilling.[^bat-cave]
+In 2017, researchers published the result of five years of sampling horseshoe bats from a cave in Yunnan province. They found that the bats harbored coronaviruses with remarkable genetic similarity to SARS, and they hypothesized that the virus may have come from horseshoe bats. Yet their work has become infamous because they identified additional viruses in the bats that were related to SARS but just as capable of entering human cells. Their words are now chilling:[^bat-cave]
 
-> We have also revealed that various SARSr-CoVs ... are still circulating among bats in this region. Thus, the risk of spillover into people and emergence of a disease similar to SARS is possible. This is particularly important given that the nearest village to the bat cave we surveyed is only 1.1 km away, which indicates a potential risk of exposure to bats for the local residents. Thus, we propose that monitoring of SARSr-CoV evolution at this and other sites should continue, as well as examination of human behavioral risk for infection and serological surveys of people, to determine if spillover is already occurring at these sites and to design intervention strategies to avoid future disease emergence.
+> We have also revealed that various [viruses] ... are still circulating among bats in this region. Thus, the risk of spillover into people and emergence of a disease similar to SARS is possible. This is particularly important given that the nearest village to the bat cave we surveyed is only 1.1 km away, which indicates a potential risk of exposure to bats for the local residents. Thus, we propose that monitoring of SARSr-CoV evolution at this and other sites should continue, as well as examination of human behavioral risk for infection and serological surveys of people, to determine if spillover is already occurring at these sites and to design intervention strategies to avoid future disease emergence.
 
 ## A new threat emerges
 
@@ -39,7 +39,7 @@ On December 30, 2019, a Chinese ophthalmologist named Li Wenliang sent a WeChat 
 
 The next day, a screenshot of his post was leaked online, and local police summoned Dr. Li and forced him to sign a statement that he had "severely disturbed public order". He then returned to work, treating patients in the same Wuhan hospital.
 
-Meanwhile, the World Health Organization received reports regarding multiple pneumonia cases from the Wuhan Municipal Health Commission and activated a support team to assess the new disease. The WHO declared on January 14 that local authorities had seen "no clear evidence of human-to-human transmission of the novel coronavirus". By this point, it was now too late.
+Meanwhile, the World Health Organization (WHO) received reports regarding multiple pneumonia cases from the Wuhan Municipal Health Commission and activated a support team to assess the new disease. The WHO declared on January 14 that local authorities had seen "no clear evidence of human-to-human transmission of the novel coronavirus". By this point, it was now too late.
 
 Throughout January, the virus silently raged through China, spreading to both South Korea and the United States as Lunar New Year celebrations took place within the country. By the end of the month, the disease was in 19 countries, as shown below.
 
@@ -47,23 +47,25 @@ Throughout January, the virus silently raged through China, spreading to both So
 The number of reported confirmed cases of 2019-nCoV (COVID-19) as of January 30th, 2020. Figure courtesy World Health Organization [^10].
 {: style="font-size: medium;"}
 
-Within the next two months, the disease would explode across the planet, becoming a pandemic and earning a name in the process: **Coronavirus disease 2019 (COVID-19)**.
+Within the next two months, the disease exploded across the planet, becoming a pandemic and earning a name in the process: **Coronavirus disease 2019 (COVID-19)**.
 
-As for Dr. Li? Despite warning against the risk of this new virus, he contracted the disease from one of his own eye patients on January 8. He continued working in the hospital, and entered the hospital on January 31. Within a week, he was dead, one of the first of millions of COVID-19 casualties.
+As for Dr. Li? Despite warning against the risk of this new virus, he contracted the disease from one of his patients on January 8. He continued working in the hospital, and entered the hospital on January 31. Within a week, he was dead, one of the first of millions of COVID-19 casualties.
 
 ### Why were the two outbreaks so different?
 
-The similarity between SARS and COVID extends well beyond their symptoms. The underlying viruses, whose names are respectively **SARS coronavirus (SARS-CoV)** and **SARS coronavirus 2 (SARS-CoV-2)** are both **coronaviruses**, which means that they are covered in a layer of **spike proteins** that cause them to look like the sun's corona during an eclipse (see figure below). In fact, if we look at them under a microscope, they look virtually identical.
+The similarity between SARS and COVID extends well beyond their symptoms. The viruses causing these diseases, whose respective names are **SARS coronavirus (SARS-CoV)** and **SARS coronavirus 2 (SARS-CoV-2)** are both **coronaviruses**, which means that their outer membranes are covered in a layer of **spike proteins** that cause them to look like the sun's corona during an eclipse (see figure below). In fact, if we look at the two viruses under a microscope, they look virtually identical.
 
 ![image-center](../assets/images/coronavirus.png){: .align-center}
-Coronavirus cells as seen under a microscope. The fuzzy blobs on the cell surface are spike proteins, which the virus uses to gain entry to host cells. Figure courtesy F. Murphy and S. Whitfield, CDC[^coronaimage].
+Coronviruses as seen under a microscope. The fuzzy blobs on the cell surface are spike proteins, which the virus uses to gain entry to host cells. Figure courtesy F. Murphy and S. Whitfield, CDC[^coronaimage].
 {: style="font-size: medium;"}
 
-Both coronaviruses not only cause similar symptoms, they use the same mechanism to infect human cells, when the spike protein on the virus surface bonds to the ACE2 enzyme on a human cell's membrane.[^16][^17] So why did SARS fizzle, but SARS-CoV-2, a less harmful[^11][^12] and less deadly disease, transform into an uncontrollable pandemic? The ability of SARS-CoV-2 to spread across far more countries and remain a public health threat even in the face of lockdowns can only be explained by increased virulence.
+Both viruses not only look similar, they also use the same mechanism to infect human cells, when the spike protein on the virus surface bonds to the ACE2 enzyme on a human cell's membrane.[^16][^17] So why did SARS fizzle, but SARS-CoV-2, a disease that is on average less harmful[^11][^12] and less deadly to individuals, transform into an uncontrollable pandemic? The most likely explanation for the ability of SARS-CoV-2 to spread across far more countries and remain a public health threat even in the face of lockdowns is that it spreads more easily (i.e., it is more **infectious**.)
 
-Part of the reason for the spread of SARS-CoV-2 is that it can be spread by individuals that are asymptomatic,[^13] a method of transmission that was never found in SARS.[^14] But we also wonder if we can find a *biological* basis for the difference between the two viruses.
+Part of the reason for the spread of SARS-CoV-2 is that it can be spread by individuals that are asymptomatic,[^13] a method of transmission that was never found in SARS.[^14] But we also wonder if we can find a *biological* basis for the increased infectiousness of SARS-CoV-2.
 
-We have two main objectives for this module, placing ourselves in the shoes of early SARS-CoV-2 researchers studying the new virus in January 2020, right after the virus's genome was sequenced. Can we use this genome to determine the structure of the viral spike protein? Second, once we know the structure of this protein in SARS-CoV-2, how does it differ from the same protein in SARS-CoV? If we can find a molecular explanation of why this virus can more easily attack our cells, then perhaps we can use this information to start fighting it.
+In this module, we will place ourselves in the shoes of early SARS-CoV-2 researchers studying the new virus in January 2020 (right after the virus's genome had been sequenced), and we ask ourselves two questions. First, can we use the virus's genome to determine the structure of the viral spike protein? Second, once we know the structure of the SARS-CoV-2 spike protein, how does it differ from the same protein in SARS-CoV? These two questions are central to understanding (and therefore fighting) this deadly virus.
+
+We split our work on these questions into two parts. If you are already familiar with structure prediction, then you may want to skip ahead to the second part of the module, in which we discuss differences between the two viruses.
 
 [Continue to part 1: structure prediction](structure_intro){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
