@@ -29,7 +29,7 @@ For a more visual example of how protein shape affects protein function, conside
 
 As we have seen throughout this course, molecular interactions are ruled by probability. Any two molecules may *interact*, but their rate of *dissociation* will be much higher if they do not fit together well. Furthermore, two interacting molecules need to not only collide with each other but also have the correct orientation in order to fit together.
 
-Because structure prediction is such a fundamental problem, researchers wish to catalog the enormously varied shapes that different proteins can have. For example, the figure below shows each "protein of the month" in 2019 named by the **Protein Data Bank** (**PDB**). But the fact remains that proteins are submicroscopic; so how is it that researchers are able to determine these shapes?
+Because structure prediction is such a fundamental problem, researchers wish to catalog the enormously varied shapes that different proteins can have. For example, the figure below shows each "protein of the month" in 2019 named by the **Protein Data Bank** (**PDB**). But the fact remains that proteins are submicroscopic; so how did researchers determine these shapes?
 
 ![image-center](../assets/images/different_protein_shapes_2020.jpg){: .align-center}
 Each "molecule of the month" in 2020 named by the PDB. Note how different the shapes are of all these proteins, which accomplish a wide variety of cellular tasks. Note that the SARS-CoV-2 spike protein was the molecule of the month in June 2020. Source: [https://pdb101.rcsb.org/motm/motm-by-date](https://pdb101.rcsb.org/motm/motm-by-date).
@@ -37,27 +37,29 @@ Each "molecule of the month" in 2020 named by the PDB. Note how different the sh
 
 ## Laboratory methods for determining protein structure
 
-There are a few existing methods for accurately determining protein structure. In this section, we will pause to discuss two of them.
+In this section, we will introduce two popular laboratory methods for accurately determining protein structure. These approaches are very sophisticated, and we appeal to high-quality videos explaining them if you are interested.
 
-First, **X-ray crystallography** (sometimes called **macromolecular crystallography**) works by first crystallizing many copies of a protein and then shining an intense x-ray beam at the crystal. When light hits each protein, it is diffracted, creating patterns from which the position of each atom in the protein can be inferred.  If you are interested in learning more about X-ray crystallography, check out the following excellent two-part video series from The Royal Institution.
+In **X-ray crystallography** (sometimes called **macromolecular crystallography**), researchers first crystallize many copies of a protein and then shining an intense x-ray beam at the crystal. Light hitting the protein is diffracted, creating patterns from which the position of every atom in the protein can be inferred.  If you are interested in learning more about X-ray crystallography, check out the following excellent two-part video series from The Royal Institution.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/gLsC4wlrR2A" frameborder="0" allowfullscreen></iframe>
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/WJKvDUo3KRk" frameborder="0" allowfullscreen></iframe>
 
-Second, we could use **cryo-electron microscopy** (**cryo-EM**). In this approach, which is rapidly gaining in popularity, researchers preserve thousands of copies of the protein in non-crystalline ice and then examine them with an electron microscope. Check out the following YouTube video from the University of California San Francisco for a lengthier introduction to cryo-EM.
+X-ray crystallography is over a century old, and has been the *de facto* approach for protein structure determination for decades. Yet a newer method is now rapidly replacing X-ray crystallography.
+
+In **cryo-electron microscopy** (**cryo-EM**), researchers preserve thousands of copies of the protein in non-crystalline ice and then examine these copies with an electron microscope. Check out the following YouTube video from the University of California San Francisco for a detailed discussion of cryo-EM.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/Qq8DO-4BnIY" frameborder="0" allowfullscreen></iframe>
 
-Unfortunately, both of these approaches are expensive. X-ray crystallography costs upward of $2,000 per protein; furthermore, Crystallizing a protein is a challenging task, and each copy of the protein must line up in the same way, which does not work for very flexible proteins. As for cryo-EM, an electron microscope is a very complicated machine that may cost anywhere between $100,000 and $27 million (the actual cost of a microscope housed at Lawrence Berkeley National Lab).
+Unfortunately, laboratory approaches for structure determination are expensive. X-ray crystallography costs upward of $2,000 per protein; furthermore, crystallizing a protein is a challenging task, and each copy of the protein must line up in the same way, which does not work for very flexible proteins. As for cryo-EM, an electron microscope is a very complicated machine that costs hundreds of thousands or millions of dollars (one microscope housed at Lawrence Berkeley National Lab cost $27 million).
 
-Protein structures that have been determined experimentally are typically stored in the PDB, which we mentioned above. As of early 2020, there are over 160,000 entries in this database, which only contained a few thousand proteins at the turn of the century. Can we consider structure determination a solved problem, then?
+Protein structures that have been determined experimentally are typically stored in the PDB, which we mentioned above. As of early 2020, this database contained over 160,000 proteins, most of which have been added since 2000.
 
-Before we set aside structure prediction, let’s consider the human proteome (i.e., collection of all proteins). A human proteome study published in 2016 estimated that humans have between 620,000 and 6.13 million protein isoforms (i.e., proteins with different shapes). A database of 160,000 proteins would be insufficient for covering humans, let alone the entire collection of proteins across all organisms on the planet.
+Before we set aside structure prediction, consider that a 2016 study estimated that humans have between 620,000 and 6.13 million protein isoforms (i.e., differently-shaped protein variants). If we hope to catalog the proteins of all living things, then our work is just beginning.
 
-Another issue with laboratory methods of structure determination is that they require our ability to sample the actual physical proteins. For example, to produce bacterial proteins, we need to culture bacteria, and yet microbiologists have estimated that less than 2% of bacteria can be cultured in the lab.[^Wade]
+Another issue with laboratory methods of structure determination is that they require the ability to isolate the actual physical proteins. For example, to study bacterial proteins, we need to culture bacteria, and yet microbiologists have estimated that less than 2% of bacteria can currently be cultured in the lab.[^Wade]
 
-What, then, can we do? Fortunately, although identifying protein structure is difficult, researchers have spent decades cataloging the genomes (i.e., the sum total of DNA in an organism's nucleus) of thousands of species. Because of the central dogma of molecular biology, we know that much of this DNA winds up being translated into protein. As a result, biologists know the *sequence* of amino acids making up many proteins.
+What, then, can we do? Fortunately, although identifying protein structure is difficult, researchers have spent decades cataloging the genomes of thousands of species. Because of the central dogma of molecular biology, we know that much of this DNA winds up being translated into protein. As a result, biologists know the *sequence* of amino acids making up many proteins.
 
 The first whole genome sequence of SARS-CoV-2, isolate *Wuhan-Hu-1*, was released on 10 January 2020 by Wu, F. et. al., and is available in GenBank along with an annotation of the genome[^Genome][^Annotation], shown in the figure below. Upon sequence comparison, SARS-CoV-2 was found to be related to several coronaviruses isolated from bats and distantly related to SARS-CoV-1, the viral strain that caused the 2003 SARS outbreak. In fact, SARS-CoV-2 has a sequence identity of around 96% with bat coronavirus RaTG13, leading us to the hypothesis that the virus originated from bats, which is further supported by the fact that bats are a natural reservoir of SARS-related coronaviruses.
 

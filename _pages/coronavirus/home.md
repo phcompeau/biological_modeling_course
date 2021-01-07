@@ -63,9 +63,11 @@ Both viruses not only look similar, they also use the same mechanism to infect h
 
 Part of the reason for the spread of SARS-CoV-2 is that it can be spread by individuals that are asymptomatic,[^13] a method of transmission that was never found in SARS.[^14] But we also wonder if we can find a *biological* basis for the increased infectiousness of SARS-CoV-2.
 
-In this module, we will place ourselves in the shoes of early SARS-CoV-2 researchers studying the new virus in January 2020 (right after the virus's genome had been sequenced), and we ask ourselves two questions. First, can we use the virus's genome to determine the structure of the viral spike protein? Second, once we know the structure of the SARS-CoV-2 spike protein, how does it differ from the same protein in SARS-CoV? These two questions are central to understanding (and therefore fighting) this deadly virus.
+In this module, we will place ourselves in the shoes of early SARS-CoV-2 researchers studying the new virus in January 2020. At this time, the virus's **genome** (the 30,000 nucleotide sequence making up its DNA) had been determined, but its spike protein remained unstudied.
 
-We split our work on these questions into two parts. If you are already familiar with structure prediction, then you may want to skip ahead to the second part of the module, in which we discuss differences between the two viruses.
+We ask ourselves two questions. First, can we use the virus's genome to determine the structure of the viral spike protein? Second, once we know the structure of the SARS-CoV-2 spike protein, how does it differ from the same protein in SARS-CoV? These two questions are central to understanding (and therefore fighting) this deadly virus.
+
+We will split our work on these two questions. If you are already familiar with structure prediction, then you may want to skip ahead to the second part of the module, in which we discuss differences between the two viruses.
 
 [Continue to part 1: structure prediction](structure_intro){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
