@@ -63,11 +63,15 @@ Both viruses not only look similar, they also use the same mechanism to infect h
 
 Part of the reason for the spread of SARS-CoV-2 is that it can be spread by individuals that are asymptomatic,[^13] a method of transmission that was never found in SARS.[^14] But we also wonder if we can find a *biological* basis for the increased infectiousness of SARS-CoV-2.
 
-In this module, we will place ourselves in the shoes of early SARS-CoV-2 researchers studying the new virus in January 2020. At this time, the virus's **genome** (the 30,000 nucleotide sequence making up its DNA) had been determined, but its spike protein remained unstudied.
+In this module, we will place ourselves in the shoes of early SARS-CoV-2 researchers studying the new virus in January 2020. The virus's **genome** (the 30,000 nucleotide sequence making up its DNA) was published on January 10[^Genome][^Annotation], and an annotation of this genome showing the position of the virus's genes is shown in the figure below. Upon sequence comparison, SARS-CoV-2 was found to be related to several coronaviruses isolated from bats and distantly related to SARS-CoV, the viral strain that caused the 2003 SARS outbreak. In fact, SARS-CoV-2 has a sequence identity of around 96% with bat coronavirus RaTG13, providing further evidence that the virus originated in bats.
 
-We ask ourselves two questions. First, can we use the virus's genome to determine the structure of the viral spike protein? Second, once we know the structure of the SARS-CoV-2 spike protein, how does it differ from the same protein in SARS-CoV? These two questions are central to understanding (and therefore fighting) this deadly virus.
+![image-center](../assets/images/SARSCoV2Annotation.png){: .align-center}
+An annotated genome of SARS-CoV-2. The Spike protein, found at the bottom of this image, is labeled "S" and begins at position 21,563. Accessed from GenBank: [https://go.usa.gov/xfzMM](https://go.usa.gov/xfzMM).
+{: style="font-size: medium;"}
 
-We will split our work on these two questions. If you are already familiar with structure prediction, then you may want to skip ahead to the second part of the module, in which we discuss differences between the two viruses.
+We now ask ourselves two questions. First, can we use the virus's genome to determine the structure of its spike protein? Second, once we know the structure of the SARS-CoV-2 spike protein, how does its structure and function differ from the same protein in SARS-CoV? These two questions are central to understanding (and therefore fighting) this deadly virus.
+
+We will split our work on these two questions. If you are already familiar with protein structure prediction, then you may want to skip ahead to the second part of the module, in which we discuss differences between the two viruses.
 
 [Continue to part 1: structure prediction](structure_intro){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
@@ -82,6 +86,10 @@ We will split our work on these two questions. If you are already familiar with 
 [^bats]: Li, W., Shi, Z., Yu, M., Ren, W., Smith, C., Epstein, J., Wang, H., Crameri, G., Hu, Z., Zhang, H., Zhang, J., McEachern, J., Field, H., Daszak, P., Eaton, B. T., Zhang, S., Wang, L. (2005). Bats Are Natural Reservoirs of SARS-Like Coronaviruses. Science, 310(5748), 676-679. doi:10.1126/science.1118391
 
 [^bat-cave]: Hu, B., Zeng, L., Yang, X., Ge, X., Zhang, W., Li, B., Xie, J., Shen, X., Zhang, Y., Wang, N., Luo, D., Zheng, X., Wang, M., Daszak, P., Wang, L., Cui, J., Shi, Z. 2017. Discovery of a rich gene pool of bat SARS-related coronaviruses provides new insights into the origin of SARS coronavirus. PLOS Pathogens, 13(11). doi:10.1371/journal.ppat.1006698
+
+[^Genome]: Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome. https://www.ncbi.nlm.nih.gov/nuccore/MN908947
+
+[^Annotation]: Annotated Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome. https://go.usa.gov/xfzMM
 
 [^2]: Heymann, D.L. 2004. The international response to the outbreak of SARS in 2003. Phil. Trans. R. Soc. Lond. B. 359, 1127-1129. DOI 10.1098/rstb.2004.1484
 
