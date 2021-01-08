@@ -79,7 +79,7 @@ An animation of Rubik's twist forming into a ball and then back into a linear ch
 
 To explain why the protein is so flexible, we should say a bit more about the molecular structure of a polypeptide.
 
-An amino acid is formed of four parts. In the center, a carbon atom (called the **alpha carbon**) is connected to four different molecules: a hydrogen atom (H), a **carboxyl group** (–COOH), an **amino group** (-NH<sub>2</sub>), and a **side chain**. The side chain is a molecule that differs between different amino acids and ranges in mass from a single hydrogen atom (glycine) all the way up to -C<sub>8</sub>H<sub>7</sub>N (tryptophan). The simplified structure of an amino acid is shown in the figure below.
+An amino acid is formed of four parts. In the center, a carbon atom (called the **alpha carbon**) is connected to four different molecules: a hydrogen atom (H), a **carboxyl group** (–COOH), an **amino group** (-NH<sub>2</sub>), and a **side chain** (denoted "R" and often called an R group). The side chain is a molecule that differs between different amino acids and ranges in mass from a single hydrogen atom (glycine) all the way up to -C<sub>8</sub>H<sub>7</sub>N (tryptophan). The simplified structure of an amino acid is shown in the figure below.
 
 ![image-center](../assets/images/AminoAcid.png){: .align-center}
 {: style="font-size: medium;"}

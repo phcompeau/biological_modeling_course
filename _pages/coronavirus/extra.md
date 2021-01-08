@@ -47,7 +47,7 @@ Proteins are can often be divided into protein domains. Domains are distinct fun
 
 * Models published before crystallography can be found here: [SSGCID Models](https://www.ssgcid.org/cttdb/molecularmodel_list/?target__icontains=BewuA)
 
-* Need to define side chain: The side chain, commonly referred to as the R group or side group, is the part of an amino acid that distinguishes the twenty amino acids that are have identical structures everywhere else. Directly connected to the central, alpha-Carbon, the side chain is fully responsible for the chemical properties of each amino acid.
+* Table based on side chains
 
 ![image-center](../assets/images/AminoAcidChart.png){: .align-center}
 A chart of the twenty amino acid grouped by chemical properties. The side chain of each amino acid is highlighted in blue. Source: OpenStax, Biology. OpenStax CNX. Sep 15, 2020 http://cnx.org/contents/185cbf87-c72e-48f5-b51e-f14f21b5eabd@14.1
