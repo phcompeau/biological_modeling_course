@@ -63,7 +63,7 @@ What, then, can we do? Fortunately, although identifying protein structure is di
 
 ## What makes protein structure prediction so difficult?
 
-Unfortunately, predicting protein structure from amino acid sequence is a very challenging problem. One reason why is that the number of potential protein shapes is enormous, and small perturbations in the primary structure of a protein can drastically change the protein's shape and even render it useless. This fact might give us hope, that if we look at experimentally verified structures of proteins with known amino acid sequences, then we could reverse engineer the sequence from the structure and start determining how the magic folding algorithm works. But the inverse problem of inferring sequence from structure is very difficult as well because different amino acids can have similar chemical properties, and so some mutations will hardly change the shape of the protein at all. Furthermore, two very different amino acid sequences can fold into proteins with similar shapes and identical function.
+Unfortunately, predicting protein structure from amino acid sequence is a very challenging problem. On the one hand, small perturbations in the primary structure of a protein can drastically change the protein's shape and even render it useless. On the other, different amino acids can have similar chemical properties, and so some mutations will hardly change the shape of the protein at all. As a result, two very different amino acid sequences can fold into proteins with similar shapes and comparable function.
 
 For example, the following figure compares both the sequences and structures of hemoglobin subunit alpha from humans (*Homo sapiens*; PDB: [1si4](https://www.rcsb.org/structure/1SI4) shortfin mako sharks (*Isurus oxyrinchus* ; PDB: [3mkb](https://www.rcsb.org/structure/3mkb) and emus (*Dromaius novaehollandia*; PDB: [3wtg](https://www.rcsb.org/structure/3wtg). Hemoglobin is the oxygen-transport protein in the blood, consisting of two alpha "subunit" proteins and two beta subunit proteins that combine into a protein complex; because hemoglobin is well-studied, we will use it as an example throughout this module. The subunit alpha proteins across the three species are markedly different in terms of primary structure, and yet their 3-D structures are essentially identical.
 
@@ -71,29 +71,47 @@ For example, the following figure compares both the sequences and structures of 
 (Top) An amino acid sequence comparison of the first 40 (out of 140) amino acids of hemoglobin subunit alpha for three species: human, mako shark, and emu. A column is colored blue if all three species have the same amino acid, white if two species have the same amino acid, and red if all amino acids are different. Sequence identity calculates the number of positions in two amino acid sequences that share the same character. (Bottom) Side by side comparisons of the 3-D structures of the three proteins. The final figure on the right superimposes the first three structures to highlight their similarities.
 {: style="font-size: medium;"}
 
-Another reason why protein structure prediction is so difficult is due to the huge number of conformations that a single polypeptide can take. The polypeptide is very flexible, with the ability to rotate in multiple ways at each amino acid, which means that the polypeptide could fold into a staggering number of different shapes. A good analogy for this flexibility producing many different shapes is the "Rubik's Twist" puzzle, shown below, which consists of a linear chain of flexible blocks that can form a huge number of shapes.
+Another reason why protein structure prediction is so difficult is because a polypeptide is very flexible, with the ability to rotate in multiple ways at each amino acid, which means that the polypeptide is able to fold into a staggering number of different shapes. A good analogy for polypeptide flexibility is the "Rubik's Twist" puzzle, shown below, which consists of a linear chain of flexible blocks that can form a huge number of different shapes.
 
 ![image-center](../assets/images/rubiks_twist.gif){: .align-center}
-An illustration of Rubik's twist forming into a ball. Source: [https://grabcad.com/library/rubik-s-snake-1](https://grabcad.com/library/rubik-s-snake-1).
+An animation of Rubik's twist forming into a ball and then back into a linear chain. Source: [https://grabcad.com/library/rubik-s-snake-1](https://grabcad.com/library/rubik-s-snake-1).
 {: style="font-size: medium;"}
 
-A polypeptide is flexible because the bonds holding amino acids together, called **peptide bonds**, are able to rotate, and this rotation produces **peptide torsion angles** that change the shape of the protein. As shown in the following figure, we are interested in two angles, called the **phi angle (φ)** and **psi angle (ψ)**, which connect the amino acid's "alpha carbon" to its amino group and carboxyl group, respectively. (There is a third omega angle (ω) describing the bond angle of the peptide bond between two amino acids, but is almost always locked at 180°.)
+To explain why the protein is so flexible, we should say a bit more about the molecular structure of a polypeptide.
+
+An amino acid is formed of four parts. In the center, a carbon atom (called the **alpha carbon**) is connected to four different molecules: a hydrogen atom (H), a **carboxyl group** (–COOH), an **amino group** (-NH<sub>2</sub>), and a **side chain**. The side chain is a molecule that differs between different amino acids and ranges in mass from a single hydrogen atom (glycine) all the way up to -C<sub>8</sub>H<sub>7</sub>N (tryptophan). The simplified structure of an amino acid is shown in the figure below.
+
+![image-center](../assets/images/AminoAcid.png){: .align-center}
+{: style="font-size: medium;"}
+
+To form a polypeptide chain, consecutive amino acids are linked together during a condensation reaction in which the amino group of one amino acid is joined to the carboxyl group of another, while a water molecule (H<sub>2</sub>O) is expelled. This reaction is illustrated by the figure below.
+
+![image-center](../assets/images/dipeptide_reaction.png){: .align-center}
+A condensation reaction joins two amino acids into a "dipeptide" by joining the amino group of one amino acid to the carboxyl group of the other. Source: [https://bit.ly/3q0Ph8V](https://bit.ly/3q0Ph8V).
+{: style="font-size: medium;"}
+
+The resulting bond that is produced between the carbon atom of one amino acid's carboxyl group and the nitrogen atom of the next amino acid's amino group, called a **peptide bond**, is very strong. The peptide has very little rotation around this bond, which is almost always locked at 180°. As peptide bonds are formed between adjacent amino acids, the polypeptide chain takes shape, as shown in the figure below.
+
+![image-center](../assets/images/Backbone.png){: .align-center}
+A protein backbone formed of three amino acids.
+{: style="font-size: medium;"}
+
+However, the bonds *within* an amino acid, joining the alpha carbon to its carboxyl group and amino group, are not as rigid. Like the Rubik's twist, the polypeptide is free to rotate around these two bonds. This rotation produces two angles of interest, called the **phi angle (φ)** and **psi angle (ψ)** (see figure below), which are formed at the alpha carbon's connections to its amino group and carboxyl group, respectively.
 
 ![image-center](../assets/images/torsion_angles.png){: .align-center}
-A polypeptide chain of multiple amino acids with the three torsion angles φ, ψ, and ω indicated. Image courtesy: Adam Rędzikowski.
+A polypeptide chain of multiple amino acids with the torsion angles φ and ψ indicated. The angle ω indicates the angle of the peptide bond, which is typically 180°. Image courtesy: Adam Rędzikowski.
 {: style="font-size: medium;"}
 
-Below is an excellent video from Jacob Elmer illustrating how changing φ and ψ at a single amino acid can reorient the conformation of a protein.
+Below is an excellent video from Jacob Elmer illustrating how changing φ and ψ at a single amino acid can drastically reorient a protein's shape.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/1usemtIYe_s" frameborder="0" allowfullscreen></iframe>
 
-A polypeptide with *n* amino acids will have *n* - 1 peptide bonds, meaning that its shape will be influenced by 99 phi angles and 99 psi angles. Say that each bond has three stable conformations. Then this means that there are 3<sup><em>n</em></sup> total possible protein conformations. As a result, if *n* is just 200 (a reasonably short polypeptide), the number of possible protein strucures we need to consider is more than the number of atoms in the universe! The ability for the protein to reliably find a single conformation using the magic algorithm despite such an enormous number of potential shapes is called **Levinthal's paradox** and is in a sense another example of the principle of "combinatorial explosion" that we saw in the module on bacterial chemotaxis [^Levinthal].
+A polypeptide with *n* amino acids will have *n* - 1 peptide bonds, meaning that its shape is influenced by *n* - 1 phi angles and 99 *n* - 1 psi angles. If each bond has *k* stable conformations, then there are *k*<sup><em>2n-2</em></sup> total possible conformations of the polypeptide. For example, if *k* is 3 and *n* is just 100 (a short polypeptide), then the number of potential protein structures is more than the number of atoms in the universe! The ability for the protein to reliably find a single conformation using the magic algorithm despite such an enormous number of potential shapes is called **Levinthal's paradox**.[^Levinthal]
 
-Although protein structure prediction is a difficult problem, this is not to say that it is impossible.  In the next lesson, we will examine how existing software attempts to replicate nature's magic algorithm for folding a polypeptide chain into a 3-D protein structure. We will then place ourselves in the shoes of early SARS-CoV-2 researchers working before the structure of the virus's spike protein had been experimentally validated to see if we can predict this structure and give biologists a head start on fighting the pandemic.
+Although protein structure prediction is difficult, it is not impossible; the algorithm nature uses is not, after all, magic.  In the next lesson, we will examine how existing software attempts to replicate nature's magic algorithm for folding a polypeptide chain into a 3-D protein structure. We will then place ourselves in the shoes of early SARS-CoV-2 researchers working before the structure of the virus's spike protein had been experimentally validated to see if we can predict this structure and give biologists a head start on fighting the pandemic.
 
 [Next lesson](ab_initio){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
-
 
 [^Wade]: Wade W. 2002. Unculturable bacteria--the uncharacterized organisms that cause oral infections. Journal of the Royal Society of Medicine, 95(2), 81–83. https://doi.org/10.1258/jrsm.95.2.81
 
