@@ -19,18 +19,6 @@ However, proteins are flexible, a fact that we will return to when we discuss th
 
 ## Extra (structure intro): Four levels of protein structure
 
-These amino acids are linked together to form a protein as a amino acid chain, or polypeptide chain, that will typically undergo folding to obtain a 3D structure. In the first figure below, the general shape of the amino acid is shown: a central alpha-Carbon, a carboxyl group, an amino group, and finally one of 20 side-groups that differentiate the amino acids. Each amino acid is linked to the next by a peptide bond, and it is this connection and alpha-Carbon that make up the protein backbone, as shown in the second figure. The side groups of each amino acid are responsible for amino acid's chemical properties. These chemical properties allow the amino acids to interact with each other and fold into the 3D structure.
-
-We stated that the overall 3D structure (tertiary structure) of the protein is dictated by the interactions of the side chains. Even when we unfold, or denature, a protein, it will eventually fold back into essentially the same shape because of these interactions.
-
-![image-center](../assets/images/AminoAcid.png){: .align-center}
-{: style="font-size: medium;"}
-
-![image-center](../assets/images/Backbone.png){: .align-center}
-{: style="font-size: medium;"}
-
-
-
 Protein structure are separated into four different levels of description. The most basic description, the **primary structure**, refers the specific amino acid sequence of the polypeptide chain. Below is an example of the human hemoglobin subunit alpha and its primary structure.
 
 ![image-center](../assets/images/PrimaryStructureExample.png){: .align-center}
