@@ -21,17 +21,7 @@ However, proteins are flexible, a fact that we will return to when we discuss th
 
 * Models published before crystallography can be found here: [SSGCID Models](https://www.ssgcid.org/cttdb/molecularmodel_list/?target__icontains=BewuA)
 
-* Table based on side chains
 
-![image-center](../assets/images/AminoAcidChart.png){: .align-center}
-A chart of the twenty amino acid grouped by chemical properties. The side chain of each amino acid is highlighted in blue. Source: OpenStax, Biology. OpenStax CNX. Sep 15, 2020 http://cnx.org/contents/185cbf87-c72e-48f5-b51e-f14f21b5eabd@14.1
-{: style="font-size: medium;"}
-
-* For a simple analogy of an energy landscape, imagine a ball on the top of a hill:
-
-![image-center](../assets/images/EnergyCartoon.png){: .align-center}
-A ball on top of a hill represents a high energy system. The ball is unstable and will spontaneously roll down the hill before coming to a stop at the bottom of a valley, representing a low energy system. The ball is now stable and will not move on its own.
-{: style="font-size: medium;"}
 
 ## Extra 2 ab initio -- stuff on energy
 
@@ -41,13 +31,9 @@ A ball on top of a hill represents a high energy system. The ball is unstable an
 
 * From Chris: For more information of how to calculate the energies and the functions for potential energy, click <a href="https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html" target="_blank">here</a>.
 
-## Extra
+## Extra -- threading
 
 * We need to make sure that the specification of the .pdb file type comes back somewhere before we give the results. It may be a perfect place to do so in this lesson.
-
-* Missing definition of domain -- need to do this concisely earlier. Perhaps explain that spike has S1 and S2.
-
-* We may need a discussion of what NTD and RBD do at some point.
 
 * Perhaps something about how **threading** works. Fact is that even if a protein doesn't have a homologous protein in a database, most proteins will still have a protein of very similar structure.
 
