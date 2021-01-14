@@ -19,25 +19,27 @@ As we dive into structure prediction, we should be more precise about two things
 
 "Protein structure" is a broad term that encapsulates four different levels of description. A protein's **primary structure** refers to the amino acid sequence of the polypeptide chain. The figure below shows the primary structure of human hemoglobin subunit alpha.
 
-![image-center](../assets/images/PrimaryStructureExample.png){: .align-center}
+![image-center](../assets/images/hemoglobin_primary_structure.png){: .align-center}
 The primary structure of human hemoglobin subunit alpha. Each letter corresponds to one of the twenty amino acids. Source: [https://www.rcsb.org/structure/1SI4](https://www.rcsb.org/structure/1SI4).
 {: style="font-size: medium;"}
 
 A protein's **secondary structure** describes its highly regular, repeating substructures that serve as intermediate structures forming before the overall protein structure comes together. The two most common such substructures, shown in the figure below, are **alpha-helices** (left) and **beta-sheets** (right). Alpha-helices occur when nearby amino acids wrap around to form a tube-like structure; beta-sheets occur when nearby amino acids line up side-by-side to form a sheet-like structure.
 
-![image-center](../assets/images/SecondaryStructure.png){: .align-center}
+![image-center](../assets/images/hemoglobin_secondary_structure.png){: .align-center}
 General shape of secondary structure alpha-helices (left) and beta-sheets (right). Source: Cornell, B. (n.d.). [https://ib.bioninja.com.au/higher-level/topic-7-nucleic-acids/73-translation/protein-structure.html](https://ib.bioninja.com.au/higher-level/topic-7-nucleic-acids/73-translation/protein-structure.html)
 {: style="font-size: medium;"}
 
 A protein's **tertiary structure** describes its final 3D shape after the polypeptide chain has folded and is stable. Throughout this module, when discussing the "shape" or "structure" of a protein, we are almost exclusively referring to its tertiary structure. The figure below shows the tertiary structure of human hemoglobin subunit alpha. Note that for the sake of simplicity, the figure does not show the positions of every atom in the protein but rather represents the protein shape as a composition of secondary structures.
 
-![image-center](../assets/images/TertiaryStructureExample.png){: .align-center}
+![image-center](../assets/images/hemoglobin_tertiary_structure.png){: .align-center}
 The tertiary structure of human hemoglobin subunit alpha. Within the structure are multiple alpha-helix secondary structures. Source: [https://www.rcsb.org/structure/1SI4](https://www.rcsb.org/structure/1SI4).
 {: style="font-size: medium;"}
 
 Finally, some proteins have a **quaternary structure**, which describes the protein’s interaction with other copies of itself to form a single functional unit, or a **multimer**. Many proteins do not have a quaternary structure and function as an independent monomer. The figure below shows the quaternary structure of hemoglobin, which is a multimer consisting of two alpha subunits and two beta subunits.
 
-INSERT HEMOGLOBIN QUATERNARY STRUCTURE
+![image-center](../assets/images/hemoglobin_quaternary_structure.png){: .align-center}
+The quaternary structure of human hemoglobin, which consists of two alpha subunits (shown in red) and two beta subunits (shown in blue). Source: [https://commons.wikimedia.org/wiki/File:1GZX_Haemoglobin.png](https://commons.wikimedia.org/wiki/File:1GZX_Haemoglobin.png).
+{: style="font-size: medium;"}
 
 As for SARS-CoV and SARS-CoV-2, the spike protein is a **homotrimer**, meaning that it is formed of three essentially identical units. Each of these components is a **dimer**, consisting of two subunits called **S1** and **S2**. We will rely on this information throughout the module.
 
