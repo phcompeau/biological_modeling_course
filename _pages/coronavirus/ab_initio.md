@@ -9,35 +9,39 @@ toc_sticky: true
 
 ## Distributing the work of protein structure prediction around the world
 
-The determination of the SARS-CoV-2 spike protein was remarkable because in many senses it was a community effort, dividing the computational heavy lifting over thousands of volunteers' computers around the world. Two leading software projects, [Rosetta@home](https://boinc.bakerlab.org) and [Folding@home](https://foldingathome.org), encourage volunteers to download this software and contribute to a gigantic *distributed* effort to predict protein shape. That is, even with a modest laptop, a user can donate some of their computer's idle resources to working on the problem of protein structure prediction. But how does this software work?
+The determination of the SARS-CoV-2 spike protein's structure was remarkable because in many senses it was a community effort, dividing the computational heavy lifting over thousands of volunteers' computers around the world. Two leading structure prediction projects, [Rosetta@home](https://boinc.bakerlab.org) and [Folding@home](https://foldingathome.org), encourage volunteers to download their software and contribute to a gigantic *distributed* effort to predict protein shape. Even with a modest laptop, a user can donate some of their computer's idle resources to contribute to the problem of protein structure prediction. But how does this software work?
 
-Predicting a protein's structure using only its amino acid sequence is called <b><em>ab initio</em> structure prediction</b> (*ab initio* is from the Latin for "from the beginning"). In this lesson, we will explain a little about how *ab initio* algorithms work.
+Predicting a protein's structure using only its amino acid sequence is called <b><em>ab initio</em> structure prediction</b> (*ab initio* is from the Latin for "from the beginning"). In this lesson, we will explain a little about how *ab initio* structure prediction algorithms work.
 
-As we dive into structure prediction, we should be more precise about two things. First, we will specify what we mean by the "structure" of a protein. Second, although we know that a polypeptide folds into a final three-dimensional shape, we have not said anything about *why* a protein folds in the way it does. We will need a better understanding of how the physicochemical properties of amino acids affect a protein's final structure.
+As we dive into structure prediction, we should be more precise about two things. First, we will specify what we mean by the "structure" of a protein. Second, although we know that a polypeptide always folds into the same final three-dimensional shape, we have not said anything about *why* a protein folds in a certain way. We will need a better understanding of how the physicochemical properties of amino acids affect a protein's final structure.
 
 ## The four levels of protein structure
 
-"Protein structure" is a broad term that encapsulates four different levels of description. The most basic description, the **primary structure**, refers the specific amino acid sequence of the polypeptide chain. Below is an example of the human hemoglobin subunit alpha and its primary structure.
+"Protein structure" is a broad term that encapsulates four different levels of description. A protein's **primary structure** refers to the amino acid sequence of the polypeptide chain. The figure below shows the primary structure of human hemoglobin subunit alpha.
 
 ![image-center](../assets/images/PrimaryStructureExample.png){: .align-center}
-The primary structure, or specific amino acid sequence, of human hemoglobin subunit alpha. Each letter corresponds to one of the twenty amino acids. Protein structure from: https://www.rcsb.org/structure/1SI4.
+The primary structure of human hemoglobin subunit alpha. Each letter corresponds to one of the twenty amino acids. Source: [https://www.rcsb.org/structure/1SI4](https://www.rcsb.org/structure/1SI4).
 {: style="font-size: medium;"}
 
-The **secondary structure** describes the highly regular substructures in the protein. Essentially, they are the 3D structures of local amino acids groups within the protein and spontaneously form during the folding process. In a sense, they are the intermediate structures that form before the overall protein structure. The two main substructures, shown in the figure below, are alpha-helices (left) and beta-sheets (right). Alpha-helices are formed when local amino acids fold into a tube-like structure. Beta-sheets are when the local amino acids interact by lining up side-by-side, forming a sheet-like structure. The formation of these secondary structures help with the overall process of folding.
+A protein's **secondary structure** describes its highly regular, repeating substructures that serve as intermediate structures forming before the overall protein structure comes together. The two most common such substructures, shown in the figure below, are **alpha-helices** (left) and **beta-sheets** (right). Alpha-helices occur when nearby amino acids wrap around to form a tube-like structure; beta-sheets occur when nearby amino acids line up side-by-side to form a sheet-like structure.
 
 ![image-center](../assets/images/SecondaryStructure.png){: .align-center}
 General shape of secondary structure alpha-helices (left) and beta-sheets (right). Source: Cornell, B. (n.d.). [https://ib.bioninja.com.au/higher-level/topic-7-nucleic-acids/73-translation/protein-structure.html](https://ib.bioninja.com.au/higher-level/topic-7-nucleic-acids/73-translation/protein-structure.html)
 {: style="font-size: medium;"}
 
-The **tertiary structure** describes the overall 3D shape of the protein that results from the fully-folded polypeptide chain. This is what we think of as the "shape" of the protein. In a sense, it is the combination of all the secondary structures and linkages that creates the tertiary structure. Below is the tertiary structure of human hemoglobin subunit alpha.
+A protein's **tertiary structure** describes its final 3D shape after the polypeptide chain has folded and is stable. Throughout this module, when discussing the "shape" or "structure" of a protein, we are almost exclusively referring to its tertiary structure. The figure below shows the tertiary structure of human hemoglobin subunit alpha. Note that for the sake of simplicity, the figure does not show the positions of every atom in the protein but rather represents the protein shape as a composition of secondary structures.
 
 ![image-center](../assets/images/TertiaryStructureExample.png){: .align-center}
-Tertiary structure of human hemoglobin subunit alpha. Within the structure are multiple alpha-helices secondary structures. Protein structure from: [https://www.rcsb.org/structure/1SI4](https://www.rcsb.org/structure/1SI4).
+The tertiary structure of human hemoglobin subunit alpha. Within the structure are multiple alpha-helix secondary structures. Source: [https://www.rcsb.org/structure/1SI4](https://www.rcsb.org/structure/1SI4).
 {: style="font-size: medium;"}
 
-Finally, some proteins have a **quaternary structure**, which describes the protein’s interaction with other copies of itself to form a single functional unit, or a multimer. Many proteins do not have a quaternary structure and functions as an independent monomer.
+Finally, some proteins have a **quaternary structure**, which describes the protein’s interaction with other copies of itself to form a single functional unit, or a **multimer**. Many proteins do not have a quaternary structure and function as an independent monomer. The figure below shows the quaternary structure of hemoglobin, which is a multimer consisting of two alpha subunits and two beta subunits.
 
-Proteins are can often be divided into protein domains. Domains are distinct functional/structural units within the protein and are typically responsible for a specific interaction or function. For example, The Sars-CoV-2 S protein has a Receptor Binding Domain (RBD) that is responsible for interacting with ACE2. The rest of the protein does not come into contact with ACE2.
+INSERT HEMOGLOBIN QUATERNARY STRUCTURE
+
+As for SARS-CoV and SARS-CoV-2, the spike protein is a **homotrimer**, meaning that it is formed of three essentially identical units. Each of these components is a **dimer**, consisting of two subunits called **S1** and **S2**. We will rely on this information throughout the module.
+
+Proteins can often be further subdivided into **protein domains**, which are distinct functional/structural units within the protein that are typically responsible for a specific interaction or function. For example, the SARS-CoV-2 spike protein has a **receptor binding domain (RBD)** located on the S1 subunit that is responsible for interacting with the human ACE2 enzyme; the rest of the protein does not come into contact with ACE2.
 
 ## Proteins look for the lowest energy conformation
 

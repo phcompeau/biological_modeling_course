@@ -19,8 +19,6 @@ However, proteins are flexible, a fact that we will return to when we discuss th
 
 ## Extra ab initio
 
-* Somewhere need trimer of dimers for spike protein
-
 * Models published before crystallography can be found here: [SSGCID Models](https://www.ssgcid.org/cttdb/molecularmodel_list/?target__icontains=BewuA)
 
 * Table based on side chains
@@ -44,8 +42,6 @@ A ball on top of a hill represents a high energy system. The ball is unstable an
 * From Chris: For more information of how to calculate the energies and the functions for potential energy, click <a href="https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html" target="_blank">here</a>.
 
 ## Extra
-
-* Need to have already specified that spike is a homotrimer before we appeal to the tutorial.
 
 * We need to make sure that the specification of the .pdb file type comes back somewhere before we give the results. It may be a perfect place to do so in this lesson.
 
