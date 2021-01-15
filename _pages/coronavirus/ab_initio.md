@@ -98,24 +98,24 @@ Fortunately, we can modify our local search algorithm in a variety of ways. Firs
 
 ## Applying an *ab initio* algorithm to a protein sequence
 
-In the tutorial linked below, we will use the web interface of a software resource called [Quark](https://zhanglab.ccmb.med.umich.edu/QUARK/) to run an *ab initio* structure prediction algorithm. Quark is even more sophisticated than the algorithm discussed in the previous section. For example, its algorithm applies a combination of *multiple* scoring functions to look for the lowest energy conformation.
+In the tutorial linked below, we will use the web interface of a software resource called [QUARK](https://zhanglab.ccmb.med.umich.edu/QUARK/) to run an *ab initio* structure prediction algorithm. QUARK is even more sophisticated than the algorithm discussed in the previous section. For example, its algorithm applies a combination of *multiple* scoring functions to look for the lowest energy conformation.
 
-Despite the sophistication of software like Quark, *ab initio* algorithms are still an active area of research, and we still lack an approach that is both fast and reliable. The larger the protein we use, the longer our query will take, and the more inaccurate the resulting structure may be. Accordingly, many *ab initio* algorithms restrict the length of a protein sequence. This is the case for Quark, which limits us to 200 amino acids. Since the SARS-CoV-2 spike protein contains 1281 amino acids, we will instead demonstrate how to use this software on the shorter human hemoglobin subunit alpha.
+Despite the sophistication of software like QUARK, *ab initio* algorithms are still an active area of research, and we still lack an approach that is both fast and reliable. The larger the protein we use, the longer our query will take, and the more inaccurate the resulting structure may be. Accordingly, many *ab initio* algorithms restrict the length of a protein sequence. This is the case for QUARK, which limits us to 200 amino acids. Since the SARS-CoV-2 spike protein contains 1281 amino acids, we will instead demonstrate how to use this software on the shorter human hemoglobin subunit alpha.
 
 [Visit tutorial](tutorial_ab_initio){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Toward a faster approach for protein structure prediction
 
-The figure below shows the top five structures produced by Quark for human hemoglobin subunit alpha, along with the protein's experimentally verified structure. Although *ab initio* prediction is not perfect, it is still able to accurately reconstruct a model of this protein from its amino acid sequence.
+The figure below shows the top five structures produced by QUARK for human hemoglobin subunit alpha, along with the protein's experimentally verified structure. It takes a keen eye to see any differences between these structures. We conclude that although *ab initio* prediction is slow, it is still able to accurately reconstruct a model of this protein from its amino acid sequence.
 
 ![image-center](../assets/images/ab_initio_results.png){: .align-center}
-Protein structures of the PDB entry (isi4) for human hemoglobin subunit alpha along with five *ab initio* models of this protein. We can see how close all five models are to the experimentally verified structure, as shown in the superimposition of all six structures at right.
+A protein structure of human hemoglobin subunit alpha along with five *ab initio* models of this protein produced by QUARK. We can see how close all five models are to the experimentally verified structure, as shown in the superimposition of all six structures at right.
 {: style="font-size: medium;"}
 
-Yet at the same time, we wonder how we can speed up our structure prediction algorithms so that they will scale to a larger protein like the SARS-CoV-2 spike protein. To this end, we recall the point earlier in this lesson about Quark using a database of known short structures to compare our reconstruction against. In the next lesson, we will learn about another type of protein structure prediction that allows researchers to model large proteins by comparing a protein of unknown structure against a protein with similar sequence having known structure.
+Yet we also wonder whether we can speed up our structure prediction algorithms so that they will scale to a larger protein like the SARS-CoV-2 spike protein. In the next lesson, we will learn about another type of protein structure prediction that allows researchers to model large proteins by comparing a protein of unknown structure against a database of known structures.
 
-**STOP:** What protein should we use to compare the SARS-CoV-2 spike protein against?
+**STOP:** What existing protein structure(s) would you first want to consult when studying the SARS-CoV-2 spike protein?
 {: .notice--primary}
 
 [Next lesson](homology){: .btn .btn--primary .btn--large}

@@ -20,7 +20,7 @@ Then, [download the primary sequence](../_pages/coronavirus/files/Human_Hemoglob
 
 Even though this is a short protein, it will take at least a few hours to run your submission, depending on server load. When your job has finished, you will receive an email notification and be able to download the results. In the meantime, you may like to join us back in the main text.
 
-**Note:** QUARK will not return a single best answer but rather the top five best-scoring structures that it finds. Continuing the exploration analogy from the text, think of these results as the five lowest points in the search space that Quark is able to find.
+**Note:** QUARK will not return a single best answer but rather the top five best-scoring structures that it finds. Continuing the exploration analogy from the text, think of these results as the five lowest points in the search space that QUARK is able to find.
 {: .notice--warning}
 
 In the main text, we will show a figure of our models and compare them to the known structure of human hemoglobin subunit alpha from the PDB entry <a href="https://www.rcsb.org/structure/1sI4" target="_blank">1si4</a>. You can also <a href="../_pages/coronavirus/files/QUARK_Hemoglobin.tar.bz2" download>download</a> our completed models if you like.
