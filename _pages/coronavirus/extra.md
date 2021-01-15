@@ -21,8 +21,6 @@ However, proteins are flexible, a fact that we will return to when we discuss th
 
 * Models published before crystallography can be found here: [SSGCID Models](https://www.ssgcid.org/cttdb/molecularmodel_list/?target__icontains=BewuA)
 
-* Should also be clear before we get here that total = electrostatic + van der Waals. Is it the case that we only look at nonbonded energy?
-
 * From Chris: For more information of how to calculate the energies and the functions for potential energy, click <a href="https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html" target="_blank">here</a>.
 
 ## Extra -- threading
