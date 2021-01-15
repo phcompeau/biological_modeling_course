@@ -100,7 +100,7 @@ Fortunately, we can modify our local search algorithm in a variety of ways. Firs
 
 In the tutorial linked below, we will use the web interface of a software resource called [QUARK](https://zhanglab.ccmb.med.umich.edu/QUARK/) to run an *ab initio* structure prediction algorithm. QUARK is even more sophisticated than the algorithm discussed in the previous section. For example, its algorithm applies a combination of *multiple* scoring functions to look for the lowest energy conformation.
 
-Despite the sophistication of software like QUARK, *ab initio* algorithms are still an active area of research, and we still lack an approach that is both fast and reliable. The larger the protein we use, the longer our query will take, and the more inaccurate the resulting structure may be. Accordingly, many *ab initio* algorithms restrict the length of a protein sequence. This is the case for QUARK, which limits us to 200 amino acids. Since the SARS-CoV-2 spike protein contains 1281 amino acids, we will instead demonstrate how to use this software on the shorter human hemoglobin subunit alpha.
+Despite the sophistication of software like QUARK, the search space of all conformations is so large (recall Levinthal's paradox from the previous lesson) that accurately predicting large protein structures remains very difficult. Accordingly, many *ab initio* x restrict the length of a protein sequence. This is the case for QUARK, which limits us to 200 amino acids. Since the SARS-CoV-2 spike protein contains 1281 amino acids, we will instead demonstrate how to use this software on the shorter human hemoglobin subunit alpha.
 
 [Visit tutorial](tutorial_ab_initio){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
