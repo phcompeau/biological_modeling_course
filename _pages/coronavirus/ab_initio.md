@@ -17,7 +17,7 @@ As we dive into structure prediction, we should be more precise about two things
 
 ## The four levels of protein structure
 
-"Protein structure" is a broad term that encapsulates four different levels of description. A protein's **primary structure** refers to the amino acid sequence of the polypeptide chain. The figure below shows the primary structure of human hemoglobin subunit alpha.
+"Protein structure" is a broad term that encapsulates four different levels of description. A protein's **primary structure** refers to the amino acid sequence of the polypeptide chain. The figure below shows the primary structure of human hemoglobin subunit alpha, which can be downloaded [here](https://phcompeau.github.io/biological_modeling_course/_pages/coronavirus/files/Human_Hemoglobin_subunit_alpha_Seq.txt).
 
 ![image-center](../assets/images/hemoglobin_primary_structure.png){: .align-center}
 The primary structure of human hemoglobin subunit alpha. Each letter corresponds to one of the twenty amino acids. Source: [https://www.rcsb.org/structure/1SI4](https://www.rcsb.org/structure/1SI4).

@@ -151,7 +151,7 @@ coronavirus:
         url: /coronavirus/conclusion
   - title: Software Tutorials (featuring ProDy)
     children:
-      - title: "Ab initio Structure Prediction<br><br>"
+      - title: "Using ab initio Modeling to Predict the Structure of Hemoglobin Subunit Alpha<br><br>"
         url: /coronavirus/tutorial_ab_initio
       - title: "Homology Structure Prediction<br><br>"
         url: /coronavirus/tutorial_homology
