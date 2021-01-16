@@ -17,20 +17,26 @@ In this lesson, we will compare our predicted results from the previous lesson t
 
 ## Comparing two shapes with the Kabsch algorithm
 
-Ultimately, the problem of comparing protein structures is intrinsically similar to the comparison of two shapes, a problem that we will discuss first. Consider the two shapes in the figure below. Are these shapes the same? Even if you can answer this question, it is because we have very highly evolved eyes that help us quickly cluster and classify the objects that we see in the world. Training a computer to see objects as well as we can is more difficult than you think!
+Ultimately, the problem of comparing protein structures is intrinsically similar to the comparison of two shapes, a problem that we will discuss first.
+
+**STOP:** Consider the two shapes in the figure below. How similar are they?
+{: .notice--primary}
 
 ![image-center](../assets/images/two_shapes.png){: .align-center}
+Two shapes.
 {: style="font-size: medium;"}
 
-Our goal is to produce a distance function *d*(*S*, *T*) that takes two shapes *S* and *T* as input and that quantifies how different these shapes are. If the two shapes are the same, then the distance between them should be equal to zero; the more different the shapes become, the larger *d* should become.
+Even if you think you have a good handle on comparing the above two shapes, it is because humans have very highly evolved eyes and brains that help us quickly cluster and classify the objects that we see in the world. Training a computer to see objects as well as we can is more difficult than you think!
 
-You may have noticed that the two shapes in the figure at the end of the previous section are the same. To demonstrate that this is true, we would need to first move the red shape to superimpose it over the blue shape, then flip the red shape, and finally rotate it so that its boundary coincides with the blue shape.
+Our goal is to develop a "distance function *d*(*S*, *T*) that takes two shapes *S* and *T* as input and that quantifies how different these shapes are. If the two shapes are the same, then the distance between them should be equal to zero; the more different the shapes, the larger *d* should become.
+
+You may have noticed that the two shapes in the preceding figure are similar; in fact, they are the same. To demonstrate that this is true, we can first move the red shape to superimpose it over the blue shape, then flip the red shape, and finally rotate it so that its boundary coincides with the blue shape, as shown below.
 
 ![image-center](../assets/images/shape_transformations.gif){: .align-center}
 We can transform the red shape into the blue shape by translating it, flipping it, and then rotating it.
 {: style="font-size: medium;"}
 
-More generally, *S* is the same shape as *T*, meaning that *d*(*S*, *T*) is equal to zero, if *S* can be translated, flipped, and/or rotated to produce *T*. The question is what to do if *S* and *T* are not the same to produce our desired distance function *d*(*S*, *T*).
+More generally, given two shapes *S* and *T*, we set *d*(*S*, *T*) equal to zero if *S* can be translated, flipped, and/or rotated to produce *T*. The question is what to do if *S* and *T* are not the same to produce our desired distance function *d*(*S*, *T*).
 
 Our idea is to translate, flip, and rotate *S* so that the resulting transformed shape resembles *T* as much as possible. We then define *d*(*S*, *T*) by how much this transformed shape differs from *T*.
 
