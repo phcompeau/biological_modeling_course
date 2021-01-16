@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-In this software tutorial, we will apply three popular software resources (SWISS-MODEL, Robetta, and GalaxyWEB) for homology modeling of the SARS-CoV-2 S protein. Recall that the S protein is a homotrimer, meaning that it consists of three identical protein structures, or chains. Therefore, we will predict the sequence of a single chain in what follows.
+In this software tutorial, we will apply three popular software resources (SWISS-MODEL, Robetta, and GalaxyWEB) that use homology modeling to predict the structure of the SARS-CoV-2 spike protein. Recall from the main text that this protein is a homotrimer, meaning that it consists of three identical protein structures called **chains**. Therefore, in what follows, we will predict the sequence of a single chain.
 
 All three of these resources implement homology modeling,  in which we look for similar sequences with known structures and use these structures as a guide for building a lowest-energy conformation of our target protein. The details of how the three software resources *differ* are beyond the scope of our work here. If you are interested in understanding how they each implement homology modeling, then we suggest that you consult the documentation of the appropriate resource.
 
