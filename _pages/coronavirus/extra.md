@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/extra
-title: "VMD Plugin: NAMD Energy"
+title: "Extra"
 sidebar:
  nav: "coronavirus"
 toc: true

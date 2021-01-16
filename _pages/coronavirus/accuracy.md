@@ -36,13 +36,13 @@ You may have noticed that the two shapes in the preceding figure are similar; in
 We can transform the red shape into the blue shape by translating it, flipping it, and then rotating it.
 {: style="font-size: medium;"}
 
-More generally, given two shapes *S* and *T*, we set *d*(*S*, *T*) equal to zero if *S* can be translated, flipped, and/or rotated to produce *T*. The question is what to do if *S* and *T* are not the same to produce our desired distance function *d*(*S*, *T*).
+More generally, if *S* can be translated, flipped, and/or rotated to produce *T*, then *S* and *T* are the same shape, and so *d*(*S*, *T*) is equal to zero. The question is what *d*(*S*, *T*) should be if *S* and *T* are not the same shape.
 
-Our idea is to translate, flip, and rotate *S* so that the resulting transformed shape resembles *T* as much as possible. We then define *d*(*S*, *T*) by how much this transformed shape differs from *T*.
+Our idea for defining *d*(*S*, *T*) is first to translate, flip, and rotate *S* so that the resulting transformed shape resembles *T* "as much as possible". We will then determine how different the resulting shapes are to determine *d*(*S*, *T*).
 
-To this end, we first translate *S* to have the same **center of mass** as *T*. This is not a particularly difficult problem because the center of mass of *S* is found at the point (*x*<sub><em>S</em></sub>, *y*<sub><em>S</em></sub>) such that *x*<sub><em>S</em></sub> is the average of *x*-coordinates on the boundary of *S* and *y*<sub><em>S</em></sub> is the average of *y*-coordinates on the boundary.
+To this end, we first translate *S* to have the same **centroid** (or **center of mass**) as *T*. This is not a particularly difficult problem because the centroid of *S* is found at the point (*x*<sub><em>S</em></sub>, *y*<sub><em>S</em></sub>) such that *x*<sub><em>S</em></sub> is the average of *x*-coordinates on the boundary of *S* and *y*<sub><em>S</em></sub> is the average of *y*-coordinates on the boundary.
 
-We can estimate the center of mass of *S* by sampling *n* points from the boundary of the shape and taking the point whose coordinates are the average of the *x* and *y* coordinates of points on the boundary. We then superimpose *S* and *T* by translating *S* so that its center of mass coincides with that of *T*.
+We can estimate the centroid of *S* by sampling *n* points from the boundary of the shape and taking the point whose coordinates are the average of the *x* and *y* coordinates of points on the boundary. We then superimpose *S* and *T* by translating *S* so that its centroid coincides with that of *T*.
 
 Next, we want to find the rotation of *S*, possibly along with a flip as well, that makes the shape resemble *T* as much as possible. Imagine first that we have found this rotation; we can then define *d*(*S*, *T*) in the following way. We sample *n* equally spaced points along the boundary of each shape, meaning that *S* and *T* are converted into **vectors** *s* = (*s*<sub>1</sub>, ..., *s*<sub><em>n</em></sub>) and *t* = (*t*<sub>1</sub>, ..., *t*<sub><em>n</em></sub>), where *s*<sub><em>i</em></sub> is the *i*-th point on the boundary of *S*. We then compute the **root mean square deviation (RMSD)** between the two shapes, which is the square root of the average squared distance between corresponding points in the vectors.
 
