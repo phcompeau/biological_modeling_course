@@ -42,7 +42,7 @@ In the following tutorial, we will use model the SARS-CoV-2 spike protein using 
 
 ## Applying homology modeling to SARS-CoV-2
 
-The results of the three predicted models for the SARS-CoV-2 spike protein are found below. If you did not follow the tutorial, feel free to download these, because we will discuss them in the next lesson. In particular, how similar are these predictions to each other, and how similar are they to the SARS-CoV spike protein?
+If you did not follow the above tutorial, then the results of the three software resources for predicting the structure of the SARS-CoV-2 spike protein are available for download below. How similar are these predictions to each other, and how similar are they to the SARS-CoV spike protein?
 
 |Structure Prediction Server|Results|
 |:--------------------------|:------|
@@ -50,21 +50,21 @@ The results of the three predicted models for the SARS-CoV-2 spike protein are f
 |Robetta (Single-Chain S protein)|[Robetta Results](../_pages/coronavirus/files/Robetta_Model.zip)|
 |GalaxyWEB|[GalaxyWEB Results](../_pages/coronavirus/files/GalaxyWEB_Models.zip)|
 
-To rigorously compare two protein structures, we need to have a way of representing a given protein's structure. To do so, we store the 3-D spatial coordinates of every atom in the protein. (Note that because we know the sequence of amino acids making up the protein, we will also know the identity of every atom in the protein.) The above three models are stored in `.pdb` format, which stores these coordinates in a form that is illustrated in the figure below.
-
-To specify the `.pdb` format further, first recall that the coronavirus spike protein is a trimer. Accordingly, the file will separate the atoms into three **chains** making up this trimer. Each atom is labeled according to several different pieces of information, including:
+To compare two protein structures, we need a way to represent a protein's tertiary structure. To do so, we store the 3-D spatial coordinates of every atom in the protein. The above three models are stored in `.pdb` format, which is illustrated in the figure below. Each atom in the protein is labeled according to several different pieces of information, including:
 
 1. the element from which the atom derives;
 2. the amino acid in which the atom is contained;
-3. the name of the chain in which this amino acid is found;
+3. the the chain on which this amino acid is found;
 4. the position of the amino acid within this chain; and
-5. the 3-D coordinates (*x*, *y*, *z*) of the atom in angstroms (10<sup>-10</sup> meters).
+5. the 3D coordinates (*x*, *y*, *z*) of the atom in angstroms (10<sup>-10</sup> meters).
 
 ![image-center](../assets/images/simplifiedPDB.png){: .align-center}
-A simplified diagram showing how the `.pdb` format encodes the 3-D coordinates of every atom while labeling the identity of this atom and the chain on which it is found. Source: [https://proteopedia.org/wiki/index.php/Atomic_coordinate_file](https://proteopedia.org/wiki/index.php/Atomic_coordinate_file).
+A simplified diagram showing how the `.pdb` format encodes the 3D coordinates of every atom while labeling the identity of this atom and the chain on which it is found. Source: [https://proteopedia.org/wiki/index.php/Atomic_coordinate_file](https://proteopedia.org/wiki/index.php/Atomic_coordinate_file).
 {: style="font-size: medium;"}
 
-The above information is critical for understanding protein structure but is just part of the information needed to fully represent a protein structure. For example, there are connections between amino acids called **disulfide bonds** that are also described within a `.pdb` file. For more information, check out the [official PDB documentation](http://www.wwpdb.org/documentation/file-format).
+The above information is just part of the information needed to fully represent a protein structure. For example, a `.pdb` file will also contain information about the disulfide bonds between amino acids. For more information, check out the [official PDB documentation](http://www.wwpdb.org/documentation/file-format).
+
+Now that we know a bit more about `.pdb` files, we are ready to ask ourselves how to compare two proteins' structures as we transition to the next lesson.
 
 [Next lesson](accuracy){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
