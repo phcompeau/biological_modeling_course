@@ -40,9 +40,9 @@ In the following tutorial, we will use model the SARS-CoV-2 spike protein using 
 [Visit tutorial](tutorial_homology){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
-## Applying homology modeling to SARS-CoV-2
+## Applying homology modeling to the SARS-CoV-2 spike protein
 
-If you did not follow the above tutorial, then the results of the three software resources for predicting the structure of the SARS-CoV-2 spike protein are available for download below. How similar are these predictions to each other, and how similar are they to the SARS-CoV spike protein?
+If you did not follow the above tutorial, then the results of the three software resources for predicting the structure of the SARS-CoV-2 spike protein are available for download below.
 
 |Structure Prediction Server|Results|
 |:--------------------------|:------|
@@ -50,7 +50,7 @@ If you did not follow the above tutorial, then the results of the three software
 |Robetta (Single-Chain S protein)|[Robetta Results](../_pages/coronavirus/files/Robetta_Model.zip)|
 |GalaxyWEB|[GalaxyWEB Results](../_pages/coronavirus/files/GalaxyWEB_Models.zip)|
 
-To compare two protein structures, we need a way to represent a protein's tertiary structure. To do so, we store the 3-D spatial coordinates of every atom in the protein. The above three models are stored in `.pdb` format, which is illustrated in the figure below. Each atom in the protein is labeled according to several different pieces of information, including:
+To compare these protein structures, we need a way to represent a protein's tertiary structure. To do so, we store the 3-D spatial coordinates of every atom in the protein. The above three models are stored in `.pdb` format, which is illustrated in the figure below. Each atom in the protein is labeled according to several different pieces of information, including:
 
 1. the element from which the atom derives;
 2. the amino acid in which the atom is contained;
@@ -64,7 +64,7 @@ A simplified diagram showing how the `.pdb` format encodes the 3D coordinates of
 
 The above information is just part of the information needed to fully represent a protein structure. For example, a `.pdb` file will also contain information about the disulfide bonds between amino acids. For more information, check out the [official PDB documentation](http://www.wwpdb.org/documentation/file-format).
 
-Now that we know a bit more about `.pdb` files, we are ready to ask ourselves how to compare two proteins' structures as we transition to the next lesson.
+Now that we know a bit more about `.pdb` files, we ask ourselves how to compare two proteins' structures as we transition to the next lesson. How similar are the software predictions of the SARS-CoV-2 spike protein to each other, and how similar are they to the experimentally verified structure of the SARS-CoV spike protein?
 
 [Next lesson](accuracy){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
