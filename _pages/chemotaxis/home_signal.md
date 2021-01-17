@@ -11,7 +11,7 @@ toc_sticky: true
 
 Chemotaxis is one example of many ways in which an organism must be able to perceive a change in its environment and react accordingly. This response is governed by a process called **signal transduction**, in which a cell identifies a stimulus outside the cell and then transmits this stimulus into the cell in order to effect a response.
 
-Although we did not focus on the details at that time, we have already seen an example of signal transduction when we discussed the activation of transcription factors in the [previous module](motifs/transcription). When a certain type of molecule's extracellular concentration increases, **receptor proteins** on the outside of the cell have greater bonding with these molecules and are therefore able to detect changes in molecular concentration. This "signal" is then "transduced" via a series of internal chemical processes that changes a transcription factor into an active state.
+Although we did not focus on the details at that time, we have already seen an example of signal transduction when we discussed the activation of transcription factors in the [previous module](motifs/transcription). When a certain type of molecule's extracellular concentration increases, **receptor proteins** on the outside of the cell have more frequent bonding with these molecules and are therefore able to detect changes in molecular concentration. This "signal" is then "transduced" via a series of internal chemical processes that changes a transcription factor into an active state.
 
 In the case of chemotaxis, *E. coli* has receptor proteins that detect attractants such as glucose by binding to and forming a complex with these attractant **ligands**. The cell also contains receptors to detect repellents, but in this module, we will focus primarily on attractants.
 
@@ -182,6 +182,7 @@ When we solve for [*LT*] in the quadratic equation, we obtain [*LT*] = 4793. Now
 
 [Next lesson](home_signalpart2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
+
 
 <!--
 ## Extra extra

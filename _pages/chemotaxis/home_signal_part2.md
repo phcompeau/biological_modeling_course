@@ -84,7 +84,7 @@ Since the reaction is bidirectional, we will use `k_lr_bind` and `k_lr_dis` to d
 As a result, this reaction is shown below. We name our rule specifying the ligand-receptor reaction `LR`.
 
 ~~~ ruby
-	LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
+LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
 ~~~
 
 The following tutorial shows how to implement this rule in BioNetGen and use the Gillespie algorithm to determine the equilibrium of a reversible ligand-receptor binding reaction.
