@@ -9,7 +9,7 @@ toc_sticky: true
 
 ## *E. coli* explores its world via a random walk
 
-An *E. coli* cell has between five and twelve flagella distributed on its surface.[^Sim2017] Each flagellum can rotate both clockwise and counter-clockwise. When all of the flagella are rotating counter-clockwise, they form a bundle and propel the cell forward at a speed of about 20 µm per second. This speed may seem small, but it is about ten times the length of the cell per second, analogous to a car traveling at 160 kph. When any flagellum rotates clockwise, the flagella become uncoordinated, and the bacterium stops and rotates in place.[^Baker2005]
+An *E. coli* cell has between five and twelve flagella distributed on its surface.[^Sim2017] Each flagellum can rotate both clockwise and counter-clockwise. When all of the flagella are rotating counter-clockwise, they form a bundle and propel the cell forward at a speed of about 20 µm per second. This speed may seem small, but it is about ten times the length of the cell per second, analogous to a car traveling at 160 kph (100 mph). When any flagellum rotates clockwise, the flagella become uncoordinated, and the bacterium stops and rotates in place.[^Baker2005]
 
 When we multi-cellular beings examine the bacterium's movement, we see it alternate between periods of "running" in a straight line and then "tumbling" in place (see figure below). Over time, the bacterium takes what appears to be a *random walk* through its environment. Note that this **run and tumble** view of *E. coli* movement is similar to the exploration approach used by the Lost Immortals in the introduction.
 

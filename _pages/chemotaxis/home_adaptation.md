@@ -13,9 +13,10 @@ toc_sticky: true
 
 In the previous lesson, we explored the signal transduction pathway by which *E. coli* can change its tumbling frequency in response to a change in the concentration of an attractant. But the reality of cellular environments is that the concentration of a substance in these environments can vary across several orders of magnitude. The cell therefore needs to detect not *absolute* concentrations of a substance but rather *relative* changes so that it can move in the direction of an attractant (or away from a repellent).
 
-For example, consider two bacterial cells, both of which are in well-mixed environments with fixed glucose concentrations. The first cell's environment has a glucose concentration of *x*, and the second cell's environment has a glucose concentration of 0.1*x*. Should the tumbling frequency of the second cell be lower?  What if we drop a sugar cube into both environments?  Shouldn't both cells be able to respond in the same way in response to this attractant?
+**STOP:** Consider two bacterial cells, both of which are in well-mixed environments with fixed glucose concentrations. The first cell's environment has a glucose concentration of *x*, and the second cell's environment has a glucose concentration of 0.1*x*. Should the default tumbling frequency of the two cells be the same?  What if we drop a sugar cube into both environments?  Should the two cells respond in the same way or in different ways in response to the attractant?
+{: .notice--primary}
 
-The ability of *E. coli* to react to relative changes in its environment is not  present in our current model of chemotaxis. According to our current model, if a cell is in an environment with high background concentration of an attractant, then the cell will detect a signal and lower its tumbling frequency. If the concentration continues to increase, then it may not be able to lower this frequency any further.
+The ability of *E. coli* to react to *relative* changes in its environment is not  present in our current model of chemotaxis. According to our current model, if a cell is in an environment with high background concentration of an attractant, then the cell will detect a signal and lower its tumbling frequency. If the concentration continues to increase, then it may not be able to lower this frequency any further.
 
 *E. coli* detects relative changes in its concentration via **adaptation** to the signal concentration. If the concentration of attractant remains constant for a period of time, then regardless of the absolute value of the concentration, the cell returns to the same background tumbling frequency. In other words, *E. coli* demonstrates *robustness* to the background concentration of attractant in maintaining its  default tumbling behavior.
 
@@ -45,7 +46,7 @@ Methylation of MCPs is achieved by an additional protein called **CheR**. When b
  - MCP-CH<sub>3</sub> + CheB-P -> MCP + CheB-P
 -->
 
-Just as the phosphorylation of CheY can be undone, MCP methylation can be undone as well to prevent methylation from being permanent. In particular, an enzyme called **CheB**, which like CheY is phosphorylated by CheA, demethylates MCPs (as well as autodephosphorylates). The rate of an MCP's demethylation is dependent on the extent to which the MCP is methylated. In other words, the rate of MCP methylation is higher when the MCP is in a low methylation state, and the rate of demethylation is faster when the MCP is in a high methylation state.[^Spiro1997]
+Just as the phosphorylation of CheY can be reversed, MCP methylation can be undone as well to prevent methylation from being permanent. In particular, an enzyme called **CheB**, which like CheY is phosphorylated by CheA, demethylates MCPs (as well as autodephosphorylates). The rate of an MCP's demethylation is dependent on the extent to which the MCP is methylated. In other words, the rate of MCP methylation is higher when the MCP is in a low methylation state, and the rate of demethylation is faster when the MCP is in a high methylation state.[^Spiro1997]
 
 The figure below adds CheR and CheB to provide a complete picture of the core pathways influencing chemotaxis. To model these pathways, we will need to add quite a few molecules and reactions to our current model.
 

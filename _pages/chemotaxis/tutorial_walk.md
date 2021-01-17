@@ -31,17 +31,17 @@ Please make sure the following dependencies are installed:
 Our model will be based on observations from BNG simulation and *E. coli* biology.
 
 Ingredients and simplifying assumptions of the model:
- - Run. The background average duration of each run (`time_exp`) is a variable of interst. When the cell senses concentration change, the cell changes the expected run duration (`exp_run_time`). The duration of each run follows an exponential distribution with mean = `exp_run_time`.
+ - Run. The background average duration of each run (`time_exp`) is a variable of interest. When the cell senses concentration change, the cell changes the expected run duration (`exp_run_time`). The duration of each run follows an exponential distribution with mean = `exp_run_time`.
  - Tumble. The duration of cell tumble follows an exponential distribution with mean 0.1s[^Saragosti2012]. When it tumbles, we assume it only changes the orientation for the next run but doesn't move in space. The degree of reorientation follows uniform distribution from 0° to 360°.
  - Response. As we've seen in the BNG model, the cell can respond to the gradient change within 0.5 seconds. In this model, we allow cells to re-measure the concentration after it runs for 0.5 seconds.
- - Gradient. We model an exponential gradient centered at [1500, 1500] with a concentration of 10<sup>8</sup>. All cells start at [0, 0], which has a concentration of 10<sup>8</sup>. The receptors saturate at a concentration of 10<sup>8</sup>.
+ - Gradient. We model an exponential gradient centered at [1500, 1500] with a concentration of 10<sup>10</sup>. All cells start at [0, 0], which has a concentration of 10<sup>2</sup>. The receptors saturate at a concentration of 10<sup>10</sup>.
  - Performance. The closer to the center of the gradient the better.
 
-What's different between this more advanced model and the [earliear model](tutorial_purerandom) using a standard random walk strategy is we decide the run duration before tumbling based on current vs. past concentrations. 
+What's different between this more advanced model and the [earlier model](tutorial_purerandom) using a standard random walk strategy is we decide the run duration before tumbling based on current vs. past concentrations.
 
 We will start from our previous model and only modify on including this ability.
 
-## Updatinng run time before tumbling based on concentrations
+## Updating run time before tumbling based on concentrations
 
 In our standard random walk model, we sampled each run duration from an exponential distribution with mean `run_time_expected`. This time, we will include the concentrations into our sampling.
 
@@ -52,19 +52,19 @@ The updated run durations adjusted with concentration changes follow an exponent
 # Input: current concentration (float), past concentration (float), position (array [x, y]), expected run time (float)
 # Return: duration of current run (float)
 def run_duration(curr_conc, past_conc, position, run_time_expected):
-        
+
     curr_conc = min(curr_conc, saturation_conc) #Can't detect higher concentration if receptors saturates
     past_conc = min(past_conc, saturation_conc)
     change = (curr_conc - past_conc) / past_conc #proportion change in concentration, float
     run_time_expected_adj_conc = run_time_expected * (1 + 10 * change) #adjust based on concentration change, float
-    
+
     if run_time_expected_adj_conc < 0.000001:
         run_time_expected_adj_conc = 0.000001 #positive wait times
     elif run_time_expected_adj_conc > 4 * run_time_expected:
         run_time_expected_adj_conc = 4 * run_time_expected     #the decrease to tumbling frequency is only to a certain extent
     #Sample the duration of current run from exponential distribution, mean=run_time_expected_adj_conc
     curr_run_time = np.random.exponential(run_time_expected_adj_conc)
-    
+
     return curr_run_time
 ~~~
 
@@ -91,7 +91,7 @@ We need to modify our code in the following way:
 # Input: number of cells to simulate (int), how many seconds (int), the expected run time before tumble (float)
 # Return: the simulated trajectories paths: array of shape (num_cells, duration+1, 2)
 def simulate_chemotaxis(num_cells, duration, run_time_expected):
-    
+
     #Takes the shape (num_cells, duration+1, 2)
     #any point [x,y] on the simulated trajectories can be accessed via paths[cell, time]
     paths = np.zeros((num_cells, duration + 1, 2))
@@ -109,7 +109,7 @@ def simulate_chemotaxis(num_cells, duration, run_time_expected):
             curr_run_time = run_duration(curr_conc, past_conc, curr_position, run_time_expected) #get run duration, float
 
             # if run time (r) is within the step (s), run for r second and then tumble
-            if curr_run_time < response_time: 
+            if curr_run_time < response_time:
                 #displacement on either direction is calculated as the projection * speed * time
                 #update current position by summing old position and displacement
                 curr_position = curr_position + np.array([projection_h, projection_v]) * speed * curr_run_time
@@ -129,7 +129,7 @@ def simulate_chemotaxis(num_cells, duration, run_time_expected):
                 #fill values from last time point to current time point
                 paths[rep, curr_sec] = curr_position.copy()
                 past_conc = curr_conc
-    
+
     return paths
 ~~~
 
@@ -137,9 +137,9 @@ def simulate_chemotaxis(num_cells, duration, run_time_expected):
 
 Please download the simulation and visualization here: <a href="../downloads/downloadable/chemotaxis_compare.ipynb" download="chemotaxis_compare.ipynb">chemotaxis_compre.ipynb</a>.
 
-To compare the performance of the two strategies, we visualize the trajectories of simulation with 3 cells and quantitative compare the performance using simulation with 500 cells for each strategy.
+To compare the performance of the two strategies, we visualize the trajectories of simulation with 3 cells and compare the performance using simulation with 500 cells for each strategy.
 
-**Qualitative comparison**. Run the code for Part2: Visualizing trajectories. The background color indicates concentration: white -> red = low -> high; black dot are starting points; red dots are the points they reached at the end of the simulation; colorful small dots represents trajectories (one color one cell): dark -> bright color = older -> newer time points; blue cross indicates the goal.
+**Qualitative comparison**. Run the code for Part2: Visualizing trajectories. The background color indicates concentration: white -> red = low -> high; black dot are starting points; red dots are the points they reached at the end of the simulation; colored points represents trajectories (one color one cell): dark -> bright color = older -> newer time points; blue cross indicates the goal.
 
 We will simulate 3 cells for 800 seconds for each of the strategies.
 
@@ -203,11 +203,11 @@ fig.tight_layout()
 plt.show()
 ~~~
 
-Which strategy allows the cell travel towards the higher concentration?
+Which strategy allows the cell to travel towards the higher concentration?
 
-Can we make a conclusion on which default tumbling frequencies are good yet? If not, why?
+Are we ready to conclude which default tumbling frequencies are the best?
 
-**Quantitative comparsion**. Because of the high variations due to randomness, trajectories for 3 cells is not convincing enough. To verify your hypothesis on which strategy is better, let's simulate 500 cells for 1500 seconds for each strategy. Run the two code for Part3: Comparing performances. Each colored line indicates a strategy, plotting average distances for the 500 cells; the shaded area is standard deviation; grey dashed line is where concentration reaches 1e8.
+**Quantitative comparsion**. Because of the high variations due to randomness, trajectories for 3 cells is not convincing enough. To verify your hypothesis on which strategy is better, let's simulate 500 cells for 1500 seconds for each strategy. Run the two code for Part3: Comparing performances. Each colored line indicates a strategy, plotting average distances for the 500 cells; the shaded area is standard deviation; the grey dashed line is where concentration reaches 1e8.
 
 Like we did above, we run simulations for each strategies.
 

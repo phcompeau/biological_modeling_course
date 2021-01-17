@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-In this tutorial, we will simulate a random walk and take a look at how well this allows a bacterium to reach a goal. We might not anticipate that the random walk will do a very good job of this -- which is correct -- but it will give us a baseline simple strategy to compare a more advanced random walk strategy against.
+In this tutorial, we will simulate a random walk and take a look at how well this allows a bacterium to reach a goal. We might not anticipate that the random walk will do a very good job of this -- which is correct -- but it will give us a baseline simple strategy to compare against a more advanced random walk strategy.
 
 Specifically, we will build a Jupyter notebook to do so. You can create a blank file called `chemotaxis_std_random.ipynb` and type along, but the notebook will be quite lengthy, so feel free to download the final notebook here if you like: <a href="../downloads/downloadable/chemotaxis_std_random.ipynb" download="chemotaxis_std_random.ipynb">chemotaxis_std_random.ipynb</a>. A detailed explanation of the model and each function can be found in this completed file as well as the tutorial below.
 
@@ -81,7 +81,7 @@ def euclidean_distance(a, b):
 def calc_concentration(pos):
     dist = euclidean_distance(pos, ligand_center)
     exponent = (1 - dist / origin_to_center) * (center_exponent - start_exponent) + start_exponent
-    
+
     return 10 ** exponent
 ~~~
 
@@ -97,13 +97,13 @@ The following `tumble_move` function takes the current direction of movement, re
 def tumble_move():
     #Sample the new direction unformly from 0 to 2pi, record as a float
     new_dir = np.random.uniform(low = 0.0, high = 2 * math.pi)
-        
+
     projection_h = math.cos(new_dir) #displacement projected on Horizontal direction for next run, float
     projection_v = math.sin(new_dir) #displacement projected on Vertical direction for next run, float
-    
+
     #Length of the tumbling sampled from exponential distribution with mean=0.1, float
     tumble_time = np.random.exponential(tumble_time_mu)
-    
+
     return projection_h, projection_v, tumble_time
 ~~~
 
@@ -122,7 +122,7 @@ These steps are achieved by the `simulate_std_random` function below, which take
 # Input: number of cells to simulate (int), how many seconds (int), the expected run time before tumble (float)
 # Return: the simulated trajectories path: array of shape (num_cells, duration+1, 2)
 def simulate_std_random(num_cells, duration, run_time_expected):
-    
+
     #Takes the shape (num_cells, duration+1, 2)
     #any point [x,y] on the simulated trajectories can be accessed via path[cell, time]
     path = np.zeros((num_cells, duration + 1, 2))
@@ -135,16 +135,16 @@ def simulate_std_random(num_cells, duration, run_time_expected):
         past_sec = 0
 
         while t < duration:
-            
+
             #run
             curr_run_time = np.random.exponential(run_time_expected) #get run duration, float
             #displacement on either direction is calculated as the projection * speed * time
             #update current position by summing old position and displacement
             curr_position = curr_position + np.array([projection_h, projection_v]) * speed * curr_run_time
-            
+
             #tumble
             curr_direction, projection_h, projection_v, tumble_time = tumble_move()
-            
+
             #increment time
             t += (curr_run_time + tumble_time)
 
@@ -154,7 +154,7 @@ def simulate_std_random(num_cells, duration, run_time_expected):
                 #fill values from last time point to current time point
                 path[rep, sec] = curr_position.copy()
                 past_sec= curr_sec
-    
+
     return path
 ~~~
 

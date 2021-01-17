@@ -19,7 +19,7 @@ In the case of chemotaxis, a sequence of phosphorylation events inside *E. coli*
 
 ## Chemotaxis pathway
 
-A high-level view of the transduction pathway for chemotaxis is shown in the figure below. The cell membrane contains receptors called **methyl-acceptring chemotaxis proteins (MCPs)**.  The MCPs, which bridge the cellular membrane, bond to ligand stimuli in the cell exterior, and then also bond to other proteins on the inside of the cell. The pathway includes a number of additional proteins, which all start with the prefix *Che* (short for "chemotaxis"). In what follows, we explain the reactions detailed in this figure.
+A high-level view of the transduction pathway for chemotaxis is shown in the figure below. The cell membrane contains receptors called **methyl-accepting chemotaxis proteins (MCPs)**.  The MCPs, which bridge the cellular membrane, bond to ligand stimuli in the cell exterior, and then also bond to other proteins on the inside of the cell. The pathway includes a number of additional proteins, which all start with the prefix *Che* (short for "chemotaxis"). In what follows, we explain the reactions detailed in this figure.
 
 ![image-center](../assets/images/chemotaxisphosnew.png){: .align-center}
 A summary of the chemotaxis transduction pathway. A ligand binding signal is propagated through CheA and CheY phosphorylation, which leads to a response of clockwise flagellar rotation. The blue curved arrow denotes phosphorylation, the grey curved arrow denotes dephosphorylation, and the blue dashed arrow denotes a chemical interaction. Figure is a simplification of <a href="http://chemotaxis.biology.utah.edu/Parkinson_Lab/projects/ecolichemotaxis/ecolichemotaxis.html">Parkinson Lab</a>'s illustrations.

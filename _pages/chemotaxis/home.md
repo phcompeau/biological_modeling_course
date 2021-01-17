@@ -7,7 +7,7 @@ sidebar:
 
 <span style="font-size:larger;">by Shuanger Li and Phillip Compeau</span>
 
-The book *What If?*[^Munroe], by Randall Munroe, compiles a collection of crazy scientific hypotheticals, paired with thorough discussions of what might happen if these hypotheticals came to pass. The following is one of these hypotheticals, called "Lost Immortals".
+The book *What If?*[^Munroe], by Randall Munroe, compiles a collection of crazy scientific hypotheticals, paired with thorough discussions of what might happen if these situations occurred. Here is an example, called "Lost Immortals".
 
 > If two immortal people were placed on opposite sides of an uninhabited Earth-like planet, how long would it take them to find each other? 100,000 years? 1,000,000 years?
 
