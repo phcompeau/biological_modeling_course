@@ -14,33 +14,42 @@ Just as *E. coli* has receptors that bond to attractant ligands, it has other re
 **Exercise:** Based on what we have learned in this module about how *E. coli* and other bacteria act in the presence of an attractant, what do you think that the chemotaxis response is in the presence of a repellent? How do you think that the bacterium adjusts to relative changes in repellent?
 {: .notice--info}
 
-2. In the [phosphorylation tutorial](tutorial_phos), we defined the rate constant for free CheA autophosphorylation `k_T_phos`, and specified that when the receptor complex is bound to an attractant molecule, the autophosphorylation rate constant becomes `0.2 · k_T_phos`. When the receptor complex is bound to a **repellent** molecule, we will change the autophosphorylation rate constant to `5 · k_T_phos`. Adapt the BioNetGen model accordingly, and then run your simulation with `L0 = 5000` and `L0 = 1e5` repellent ligand molecules added at the beginning of the simulation, and run the simulation for 3 seconds. How does the concentration of phosphorylated CheY change? What do you conclude?
+1. In the [phosphorylation tutorial](tutorial_phos), we defined the rate constant for free CheA autophosphorylation `k_T_phos`, and specified that when the receptor complex is bound to an attractant molecule, the autophosphorylation rate constant becomes `0.2 · k_T_phos`. When the receptor complex is bound to a **repellent** molecule, we will change the autophosphorylation rate constant to `5 · k_T_phos`. Adapt the BioNetGen model accordingly, and then run your simulation with `L0 = 5000` and `L0 = 1e5` repellent ligand molecules added at the beginning of the simulation, and run the simulation for 3 seconds. How does the concentration of phosphorylated CheY change? What do you conclude?
 
 ## What if there are multiple attractant sources?
 
 The simulations in this chapter became quite complex, but there is one way in which the reality is even more complicated. Not only can *E. coli* sense both repellents and attractants, but it is able to detect *more than one* attractant gradient at the same time.  This has a clear evolutionary purpose in an environment of multiple sparsely populated food sources. In this section, we will explore whether the chemotaxis mechanism allows cells to navigate through more realistic nutrient distributions.
 
-1. So far our model has only included one type of attractant ligand and one type of receptor complex. In reality, *E. coli* has different receptors specific for different types of attractants. Modify your model from the [adaptation tutorial](tutorial_senseadap) to reflect two types of receptor, each specific to its own ligand (call them *A* and *B*). Assume that we have 3500 receptor molecules of each type.
+**Exercise:** So far our model has only included one type of attractant ligand and one type of receptor complex. What do you think would be the strategy to navigate in a realistic environment where multiple types of attractants are present? How do you think that a bacterium responses to two attractants present at the same time?
+{: .notice--info}
 
-**Hint:** you will not need to have additional molecules in addition to `L` and `T`. Instead, specify additional states for the two molecules that we already have; for example `L(t,Lig~A)` only binds with `T(l,Lig~A)`. Don't forget to update `seed species` as well!
+1. In reality, *E. coli* has different receptors specific for different types of attractants. Modify your model from the [adaptation tutorial](tutorial_senseadap) to reflect two types of receptor, each specific to its own ligand (call them *A* and *B*). Assume that we have 3500 receptor molecules of each type.
+
+ **Hint:** you will not need to have additional molecules in addition to `L` and `T`. Instead, specify additional states for the two molecules that we already have; for example `L(t,Lig~A)` only binds with `T(l,Lig~A)`. Don't forget to update `seed species` as well!
 
 2. What will happen if after the cell adapts to attractant *A*, molecules of *B* are  suddenly added to the system? Model this scenario by assuming that after the cell adapts to `1e6` molecules of *A*, suddenly `1e6` molecules of *B* are added. Observe the concentration of phosphorylated CheY. Is the cell able to respond to *B* after adapting to the concentration of ligand *A*? Why is the change in CheY phosphorylation different from the scenario in which we release the two different ligands concurrently?
 
-**Hint:** the hint for the previous exercise also applies here.
+ **Hint:** the hint for the previous exercise also applies here.
 
 3. In the [chemotactic walk tutorial](tutorial_walk), we have a concentration gradient growing exponentially toward the goal (1500, 1500), so that *L(x,y)* = 100 · 10<sup>8 · (1-*d*/*D*)</sup>. In this exercise, we will modify this tutorial to simulate having multiple different goals, presumably from two different ligand types. To do so, include another goal at location (-1500, 1500), and a similar exponential concentration gradient growing from the center to the goal. The new concentration of ligands, [*L*] will be *L(x,y)* = 100 · 10<sup>8 · (1-*d*<sub>1</sub>/*D*<sub>1</sub>)</sup> + 100 · 10<sup>8 · (1-*d*<sub>2</sub>/*D*<sub>2</sub>)</sup>, where *d*<sub>1</sub> is the distance from *(x,y)* to goal1 (1500, 1500), *d*<sub>2</sub> is the distance from *(x,y)* to goal2 (-1500, 1500), and *D*<sub>1</sub> and *D*<sub>2</sub> are the distances from the origin to the two respective goals. Run your simulation with a background tumbling frequency of once every second, and visualize the trajectories of several cells. Are the cells able to find one of the goals? How long does it take them?
 
 ## Is the actual tumbling reorientation used by E. coli smarter than our model?
 
-Earlier in this module, we said that when *E. coli* tumbles, the degree of reorientation is actually not uniformly random from 0° to 360°. With background ligand concentration, the degree of reorientation approximately follows a normal distribution with mean of 68° and standard deviation of 36°. Recent research suggests that when the cell is moving up the gradient, the degree of reorientation is smaller [^Saragosti2011]. Although currently we don't have definitive measurements for the smaller angle of reorientation when moving up the gradient, let's specify it is 0.1 π smaller. Please modify your model from [chemotactic walk tutorial](tutorial_walk) to change the random uniform sampling to this "smarter" sampling.
+Earlier in this module, we said that when *E. coli* tumbles, the degree of reorientation is actually not uniformly random from 0° to 360°. With background ligand concentration, the degree of reorientation approximately follows a normal distribution with mean of 68° (or equivalently, 1.19π) and standard deviation of 36° (equivalently, 0.63π). Recent research suggests that when the cell is moving up the gradient, the degree of reorientation is smaller [^Saragosti2011]. Although currently we don't have definitive measurements for the smaller angle of reorientation when moving up the gradient, let's specify it is 0.1 π smaller. 
 
-Please quantitatively compare the performance for the chemotactic walk strategy, and this smarter strategy by calculating the mean and standard deviation of each cell's distance to the goal for 500 cells with `time_exp = [0.2, 0.5, 1.0, 2.0, 5.0]`. How much faster can the cells find the goal? Why faster?
+**Exercise:** What do you predict this reorientation strategy would change the chemotaxis responses? Do you think it brings some evolutionary advantages?
+{: .notice--info}
+
+1. Please modify your model from [chemotactic walk tutorial](tutorial_walk) to change the random uniform sampling to this "smarter" sampling. Please quantitatively compare the performance for the chemotactic walk strategy, and this smarter strategy by calculating the mean and standard deviation of each cell's distance to the goal for 500 cells with `time_exp = [0.2, 0.5, 1.0, 2.0, 5.0]`. How much faster can the cells find the goal? Why faster?
 
 ## Can't get enough BioNetGen?
 
 As we have seen in this module, BioNetGen is very good at simulating systems that involve a large number of species and particles but can be summarized with a small set of rules. Polymerization reactions offer another good example of such a system.
 
-**Polymerization** is the process by which **monomer** molecules combine into chains called **polymers**. Biological polymers are everywhere, from DNA (formed of monomer nucleotides) to proteins (formed of monomer amino acids) to lipids (formed of monomer fatty acids). For another example, polyvinyl chloride (PVC) is formed from many vinyl monomers.
+**Exercise:** Imagine you were to implement a BioNetGen simulation for a hypothetical reaction system. What do you need to know about the system before implementing? What do you need to define in your program?
+{: .notice--info}
+
+1. **Polymerization** is the process by which **monomer** molecules combine into chains called **polymers**. Biological polymers are everywhere, from DNA (formed of monomer nucleotides) to proteins (formed of monomer amino acids) to lipids (formed of monomer fatty acids). For another example, polyvinyl chloride (PVC) is formed from many vinyl monomers.
 
 We would like to simulate the polymerization of copies of a monomer *A* to form polymer *AAAAAA*..., where the length of the polymer is allowed to vary. To do so, we will write our reaction as *A*<sub><em>m</em></sub> + *A*<sub><em>n</em></sub> -> *A*<sub><em>m</em>+<em>n</em></sub>, where here *A*<sub>m</sub> denotes a polymer consisting of *m* copies of *A*. Using classical reaction rules, this would require an infinite number of reactions; will BioNetGen come to our rescue?
 
