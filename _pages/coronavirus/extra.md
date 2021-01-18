@@ -23,10 +23,6 @@ However, proteins are flexible, a fact that we will return to when we discuss th
 
 * From Chris: For more information of how to calculate the energies and the functions for potential energy, click <a href="https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html" target="_blank">here</a>.
 
-## Extra -- RMSD
-
-* Need to include gaps
-
 ## Extra -- threading
 
 * We need to make sure that the specification of the .pdb file type comes back somewhere before we give the results. It may be a perfect place to do so in this lesson.

@@ -139,6 +139,8 @@ coronavirus:
         url: /coronavirus/homology
       - title: "Comparing Protein Structures to Assess Model Accuracy<br><br>"
         url: /coronavirus/accuracy
+      - title: "Part 1 Conclusion: Protein Structure Prediction is Solved (Kinda)<br><br>"
+        url: /coronavirus/conclusion_part_1
   - title: "Part 2: Comparing SARS-CoV-2 and SARS"
     children:
       - title: "Searching for Local Differences in the SARS-CoV and SARS-CoV-2 Spike Proteins<br><br>"
@@ -147,7 +149,7 @@ coronavirus:
         url: /coronavirus/structural_diff
       - title: "Quantifying the Interaction Energy Between the SARS-CoV-2 Spike Protein and ACE2<br><br>"
         url: /coronavirus/NAMD
-      - title: "Conclusion: From Static Protein Analysis to Molecular Dynamics<br><br>"
+      - title: "Part 2 Conclusion: From Static Protein Analysis to Molecular Dynamics<br><br>"
         url: /coronavirus/conclusion
   - title: Software Tutorials (featuring ProDy)
     children:
@@ -155,7 +157,7 @@ coronavirus:
         url: /coronavirus/tutorial_ab_initio
       - title: "Using Homology Modeling to Predict the Structure of the SARS-CoV-2 Spike Protein<br><br>"
         url: /coronavirus/tutorial_homology
-      - title: "RMSD<br><br>"
+      - title: "Using RMSD to Compare Two Protein Structures<br><br>"
         url: /coronavirus/tutorial_rmsd
       - title: "VMD and Multiseq<br><br>"
         url: /coronavirus/tutorial_multiseq
