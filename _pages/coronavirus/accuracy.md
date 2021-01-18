@@ -41,17 +41,19 @@ Our idea for defining *d*(*S*, *T*) is first to translate, flip, and rotate *S* 
 
 To this end, we first translate *S* to have the same **centroid** (or **center of mass**) as *T*. The centroid of *S* is found at the point (*x*<sub><em>S</em></sub>, *y*<sub><em>S</em></sub>) such that *x*<sub><em>S</em></sub> is the average of *x*-coordinates on the boundary of *S* and *y*<sub><em>S</em></sub> is the average of *y*-coordinates on the boundary.
 
-For example, suppose *S* is the semicircular arc shown in the figure below, with endpoints (-1, 0) and (1, 0). The *x*-coordinate *x*<sub><em>S</em></sub> of this shape's centroid is clearly zero. But *y*<sub><em>S</em></sub> is a little trickier to compute and requires us to apply a little calculus, taking the average of the *y*-values along the entire circle:
+For example, suppose *S* is the semicircular arc shown in the figure below, with endpoints (-1, 0) and (1, 0).
+
+![image-center](../assets/images/semicircular_arc.png){: .align-center}
+A semicircular arc with radius 1 corresponding to a circle whose center is at the origin.
+{: style="font-size: medium;"}
+
+The *x*-coordinate *x*<sub><em>S</em></sub> of this shape's centroid is clearly zero. But *y*<sub><em>S</em></sub> is a little trickier to compute and requires us to apply a little calculus, taking the average of the *y*-values along the entire circle:
 
 $$\begin{align*}
 y_S & = \dfrac{\int_{0}^{\pi}{\sin{\theta}}}{\pi} \\
 & = \dfrac{-\cos{\pi} + \cos{0}}{\pi} \\
 & = \dfrac{2}{\pi}
 \end{align*}$$
-
-![image-center](../assets/images/semicircular_arc.png){: .align-center}
-A semicircular arc with radius 1 corresponding to a circle whose center is at the origin.
-{: style="font-size: medium;"}
 
 **STOP:** Say that we connect (-1, 0) and (0, 1) to form a closed semicircle. What will be the centroid of the resulting shape?
 {: .notice--primary}
