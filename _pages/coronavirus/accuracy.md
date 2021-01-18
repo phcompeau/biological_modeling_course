@@ -60,16 +60,21 @@ y_S & = \dfrac{\int_{0}^{\pi}{\sin{\theta}}}{\pi} \\
 
 The centroid of some shapes, like the semicircular arc in the preceding example, can be determined mathematically. But for irregular shapes, we can estimate the centroid of *S* by sampling *n* points from the boundary of the shape and taking the point whose coordinates are the average of the *x* and *y* coordinates of points on the boundary.
 
-Returning to our desire to compute *d*(*S*, *T*) for two arbitrary shapes, once we find the centroids of *S* and *T*, we translate *S* so that the two shapes have the same centroid. We then wish to find the rotation of *S*, possibly along with a flip as well, that makes the shape resemble *T* as much as possible. Imagine first that we have found this rotation; we can then define *d*(*S*, *T*) in the following way. We sample *n* equally spaced points along the boundary of each shape, meaning that *S* and *T* are converted into **vectors** *s* = (*s*<sub>1</sub>, ..., *s*<sub><em>n</em></sub>) and *t* = (*t*<sub>1</sub>, ..., *t*<sub><em>n</em></sub>), where *s*<sub><em>i</em></sub> is the *i*-th point on the boundary of *S*. We then compute the **root mean square deviation (RMSD)** between the two shapes, which is the square root of the average squared distance between corresponding points in the vectors.
+Returning to our desire to compute *d*(*S*, *T*) for two arbitrary shapes, once we find the centroids of *S* and *T*, we translate *S* so that the two shapes have the same centroid. We then wish to find the rotation of *S*, possibly along with a flip as well, that makes the shape resemble *T* as much as possible.
+
+Imagine first that we have found the desired rotation; we can then define *d*(*S*, *T*) in the following way. We sample *n* points along the boundary of each shape, converting *S* and *T* into **vectors** *s* = (*s*<sub>1</sub>, ..., *s*<sub><em>n</em></sub>) and *t* = (*t*<sub>1</sub>, ..., *t*<sub><em>n</em></sub>), where *s*<sub><em>i</em></sub> is the *i*-th point on the boundary of *S*. We then compute the **root mean square deviation (RMSD)** between the two shapes, which is the square root of the average squared distance between corresponding points in the vectors.
 
 $$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{n} \cdot (d(s_1, t_1)^2 + d(s_2, t_2)^2 + \cdots + d(s_n, t_n)^2)} $$
 
-In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the distance between the points *s*<sub><em>i</em></sub> and *t*<sub><em>i</em></sub> in 2-D or 3-D space as the case may be. (Note: RMSD is a very commonly used approach across many fields when measuring the differences between two vectors.)
+In this formula, *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) is the distance between the points *s*<sub><em>i</em></sub> and *t*<sub><em>i</em></sub> in 2-D or 3-D space as the case may be.
 
-For a toy example of computing RMSD, consider the figure below, which shows two shapes with four points sampled from each.
+**Note:** RMSD is a very commonly used approach across data science when measuring the differences between two vectors.
+{: .notice--warning}
+
+For an example RMSD calculation, consider the figure below, which shows two shapes with four points sampled from each.
 
 ![image-center](../assets/images/rmsd_simple_shapes.png){: .align-center}
-Two shapes with four points sampled from each to produce an RMSD estimate equal to 3/2.
+Two shapes with four points sampled from each.
 {: style="font-size: medium;"}
 
 The distances between corresponding points in this figure are equal to $$\sqrt{2}$$, 1, 4, and $$\sqrt{2}$$. As a result, we compute the RMSD as
@@ -84,30 +89,28 @@ $$\begin{align*}
 **STOP:** Do you see any issues with using RMSD to compare two shapes?
 {: .notice--primary}
 
-Even if we assume that the shapes have already been overlapped and rotated appropriately, we still need to make sure that we sample enough points to give a good approximation of how different the shapes are.  For an extreme example, consider a circle inscribed within a square, as shown in the figure below. If we happened to sample only the four points at 0, 90, 180, and 270 degrees, we would sample the same points in each shape, and conclude that the RMSD between these two shapes is zero.  This of course is easily resolvable just by making sure to choose *n* large enough to ensure no approximation errors. (If you are familiar with calculus, compare this idea to sampling many points on a curve when approximating an integral.)
+Even if we assume that the shapes have already been overlapped and rotated appropriately, we still need to make sure that we sample enough points to give a good approximation of how different the shapes are.  For an extreme example, consider a circle inscribed within a square, as shown in the figure below. If we happened to sample only the four points indicated, we would sample the same points in each shape, and conclude that the RMSD between these two shapes is zero.  This issue is easily resolved by making sure to sample enough points to avoid approximation errors.
 
 ![image-center](../assets/images/circle_square_undersampling.png){: .align-center}
 A circle inscribed within a square. Sampling of the four points where the shapes intersect will give a flawed estimate of zero for RMSD.
 {: style="font-size: medium;"}
 
-However, all this has left open the fact that we assumed that we had rotated *S* to be as "similar" to *T* as possible. In practice, we will need to find the rotation of *S* that *minimizes* the RMSD between our vectorizations of *S* and *T*, and this resulting minimum will be what we consider *d*(*S*, *T*). It turns out that there is an approach to find this rotation called the **Kabsch algorithm**, which requires some advanced linear algebra and is beyond the scope of our work but can be read about <a href="https://en.wikipedia.org/wiki/Kabsch_algorithm" target="_blank">here</a>.
+However, all this has left open the fact that we assumed that we had rotated *S* to be as "similar" to *T* as possible. In practice, after superimposing *S* and *T* to have the same centroid, we will need to find the rotation of *S* that *minimizes* the RMSD between our vectorizations of *S* and *T*, and this resulting minimum will be what we define as *d*(*S*, *T*). It turns out that there is an approach to find this best rotation called the **Kabsch algorithm**, which requires some advanced linear algebra and is beyond the scope of our work but is described <a href="https://en.wikipedia.org/wiki/Kabsch_algorithm" target="_blank">here</a>.
 
 ## Applying the Kabsch algorithm to protein structure comparison
 
-The Kabsch algorithm offers a compelling way to determine the similarity of two protein structures. We can convert a protein containing *n* amino acids into a vector of length *n* by selecting a single representative point from each amino acid. To do so, scientists typically choose the "alpha carbon", the amino acid's centrally located carbon atom that lies on the peptide's backbone; note that the position of this atom will already be present in the `.pdb` file for a given structure.
+The Kabsch algorithm offers a compelling way to determine the similarity of two protein structures. We can convert a protein containing *n* amino acids into a vector of length *n* by selecting a single representative point from each amino acid. To do so, scientists typically choose the alpha carbon, the amino acid's centrally located carbon atom that lies on the peptide's backbone; note that the position of this atom will already be present in the `.pdb` file for a given structure.
 
 **STOP:** Can you think of example where a small difference between protein structures can cause a large inflation in RMSD score?
 {: .notice--primary}
 
-Applying the Kabsch algorithm to find the translation and rotation of a given protein structure that minimizes RMSD compared to another structure is a reasonable idea that may work well in practice. Yet there is no perfect metric for shape comparison, and the Kabsch algorithm is no different.
-
-To take one example of how the Kabsch algorithm may be flawed, consider the figure below showing two toy protein structures. The orange structure (*S*) is identical to the blue structure (*T*) except for the change in a single bond angle between the third and fourth amino acids. And yet this tiny change in the protein's structure means that the computation of *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>)<sup>2</sup> for every *i* greater than 3 winds up being significant, increasing the RMSD significantly.
+Unfortunately, no perfect metric for shape comparison exists. To see why the Kabsch algorithm can be flawed, consider the figure below showing two toy protein structures. The orange structure (*S*) is identical to the blue structure (*T*) except for the change in a single bond angle between the third and fourth amino acids. And yet this tiny change in the protein's structure causes a significant increase in *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>) for every *i* greater than 3, which inflates the RMSD.
 
 ![image-center](../assets/images/RMSD_weakness_mutation.png){: .align-center}
 (Top) Two hypothetical protein structures that differ in only a single bond angle between the third and fourth amino acids, shown in red. Each circle represents an alpha carbon. (Bottom left) Overlaying the first three amino acids shows how much the change in the bond angle throws off the computation of RMSD by increasing the distances between corresponding alpha carbons. (Bottom right) The Kabsch algorithm would align the centers of gravity of the two structures in order to minimize RMSD between corresponding alpha carbons. This makes it difficult for the untrained observer to notice that the two proteins only really differ in a single bond angle.
 {: style="font-size: medium;"}
 
-Another way in which the Kabsch algorithm could be fooled is in the case of a substructure that is appended to the side of a structure and that throws off the ordering of the amino acids. For example, consider the following toy example of a structure into which we incorporate a loop.
+Another way in which the Kabsch algorithm can be fooled is in the case of a substructure that is appended to the side of a structure and that throws off the ordering of the amino acids. For example, consider the following toy example of a structure into which we incorporate a loop.
 
 ![image-center](../assets/images/RMSD_weakness_loop.png){: .align-center}
 A simplification of two protein structures, one of which includes a loop of three amino acids. After the loop, each amino acid in the orange structure will be compared against an amino acid that occurs farther long in the blue structure, thus increasing *d*(*s*<sub><em>i</em></sub>, *t*<sub><em>i</em></sub>)<sup>2</sup> for each such amino acid.
