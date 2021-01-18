@@ -8,6 +8,8 @@ toc_sticky: true
 ---
 
 <!--
+* Good exercise: find centroid of a given shape.
+
 * Good exercise later: compute Q scores for the protein structure comparison that we performed at the end of part 1.
 
 * Why are contact maps and cross correlation maps "symmetric" about the main diagonal?

@@ -23,7 +23,6 @@ Ultimately, the problem of comparing protein structures is intrinsically similar
 {: .notice--primary}
 
 ![image-center](../assets/images/two_shapes.png){: .align-center}
-Two shapes.
 {: style="font-size: medium;"}
 
 Even if you think you have a good handle on comparing the above two shapes, it is because humans have very highly evolved eyes and brains that help us quickly cluster and classify the objects that we see in the world. Training a computer to see objects as well as we can is more difficult than you think!
@@ -40,11 +39,26 @@ More generally, if *S* can be translated, flipped, and/or rotated to produce *T*
 
 Our idea for defining *d*(*S*, *T*) is first to translate, flip, and rotate *S* so that the resulting transformed shape resembles *T* "as much as possible". We will then determine how different the resulting shapes are to determine *d*(*S*, *T*).
 
-To this end, we first translate *S* to have the same **centroid** (or **center of mass**) as *T*. This is not a particularly difficult problem because the centroid of *S* is found at the point (*x*<sub><em>S</em></sub>, *y*<sub><em>S</em></sub>) such that *x*<sub><em>S</em></sub> is the average of *x*-coordinates on the boundary of *S* and *y*<sub><em>S</em></sub> is the average of *y*-coordinates on the boundary.
+To this end, we first translate *S* to have the same **centroid** (or **center of mass**) as *T*. The centroid of *S* is found at the point (*x*<sub><em>S</em></sub>, *y*<sub><em>S</em></sub>) such that *x*<sub><em>S</em></sub> is the average of *x*-coordinates on the boundary of *S* and *y*<sub><em>S</em></sub> is the average of *y*-coordinates on the boundary.
 
-We can estimate the centroid of *S* by sampling *n* points from the boundary of the shape and taking the point whose coordinates are the average of the *x* and *y* coordinates of points on the boundary. We then superimpose *S* and *T* by translating *S* so that its centroid coincides with that of *T*.
+For example, suppose *S* is the semicircular arc shown in the figure below, with endpoints (-1, 0) and (1, 0). The *x*-coordinate *x*<sub><em>S</em></sub> of this shape's centroid is clearly zero. But *y*<sub><em>S</em></sub> is a little trickier to compute and requires us to apply a little calculus, taking the average of the *y*-values along the entire circle:
 
-Next, we want to find the rotation of *S*, possibly along with a flip as well, that makes the shape resemble *T* as much as possible. Imagine first that we have found this rotation; we can then define *d*(*S*, *T*) in the following way. We sample *n* equally spaced points along the boundary of each shape, meaning that *S* and *T* are converted into **vectors** *s* = (*s*<sub>1</sub>, ..., *s*<sub><em>n</em></sub>) and *t* = (*t*<sub>1</sub>, ..., *t*<sub><em>n</em></sub>), where *s*<sub><em>i</em></sub> is the *i*-th point on the boundary of *S*. We then compute the **root mean square deviation (RMSD)** between the two shapes, which is the square root of the average squared distance between corresponding points in the vectors.
+$$\begin{align*}
+y_S & = \dfrac{\int_{0}^{\pi}{\sin{\theta}}}{\pi} \\
+& = \dfrac{-\cos{\pi} + \cos{0}}{\pi} \\
+& = \dfrac{2}{\pi}
+\end{align*}$$
+
+![image-center](../assets/images/semicircular_arc.png){: .align-center}
+A semicircular arc with radius 1 corresponding to a circle whose center is at the origin.
+{: style="font-size: medium;"}
+
+**STOP:** Say that we connect (-1, 0) and (0, 1) to form a closed semicircle. What will be the centroid of the resulting shape?
+{: .notice--primary}
+
+The centroid of some shapes, like the semicircular arc in the preceding example, can be determined mathematically. But for irregular shapes, we can estimate the centroid of *S* by sampling *n* points from the boundary of the shape and taking the point whose coordinates are the average of the *x* and *y* coordinates of points on the boundary.
+
+Returning to our desire to compute *d*(*S*, *T*) for two arbitrary shapes, once we find the centroids of *S* and *T*, we translate *S* so that the two shapes have the same centroid. We then wish to find the rotation of *S*, possibly along with a flip as well, that makes the shape resemble *T* as much as possible. Imagine first that we have found this rotation; we can then define *d*(*S*, *T*) in the following way. We sample *n* equally spaced points along the boundary of each shape, meaning that *S* and *T* are converted into **vectors** *s* = (*s*<sub>1</sub>, ..., *s*<sub><em>n</em></sub>) and *t* = (*t*<sub>1</sub>, ..., *t*<sub><em>n</em></sub>), where *s*<sub><em>i</em></sub> is the *i*-th point on the boundary of *S*. We then compute the **root mean square deviation (RMSD)** between the two shapes, which is the square root of the average squared distance between corresponding points in the vectors.
 
 $$\text{RMSD}(s, t) = \sqrt{\dfrac{1}{n} \cdot (d(s_1, t_1)^2 + d(s_2, t_2)^2 + \cdots + d(s_n, t_n)^2)} $$
 
