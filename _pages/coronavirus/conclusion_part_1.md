@@ -11,7 +11,7 @@ toc_sticky: true
 
 Researchers have worked for several decades to decipher nature's magic algorithm for protein folding. The Soviets even founded an entire [research insitute](https://www.protres.ru) dedicated to protein research in 1967. Most of the scientists who were there for its founding are dead now, and yet the institute carries on. Although structure prediction is an old problem, biologists have never given up hope that continued improvements to their algorithms and ever-increasing computational resources would allow them one day to proclaim, "Maybe this is good enough!".
 
-That day has now come.
+That day has come.
 
 Every two years since 1994, a global effort called **Critical Assessment of protein Structure Prediction (CASP)** has allowed researchers from around the world to test their protein structure prediction algorithms against each other. The contest organizers compile a (secret) collection of experimentally verified protein structures and then run all submitted algorithms against these proteins.
 
