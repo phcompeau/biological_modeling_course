@@ -2,7 +2,7 @@
 permalink: /coronavirus/conclusion_part_1
 title: "Part 1 Conclusion: Protein Structure Prediction is Solved! (Kinda)"
 sidebar:
- nav: "conclusion_part_1"
+ nav: "coronavirus"
 toc: true
 toc_sticky: true
 ---
