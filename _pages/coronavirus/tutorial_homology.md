@@ -12,7 +12,7 @@ In this software tutorial, we will apply three popular software resources (SWISS
 The details of how the three software resources presented in this lesson *differ* are beyond the scope of our work in this course. If you are interested in understanding how they each implement homology modeling, then we suggest that you consult the documentation of the appropriate resource.
 
 ## SWISS-MODEL
-To run SWISS-MODEL, first download the sequence of the spike protein chain: <a href="/multiscale_biological_modeling/_pages/coronavirus/files/CoV2SpikeProteinSeq.txt" download>SARS-CoV-2 spike protein chain</a>.
+To run SWISS-MODEL, first download the sequence of the spike protein chain: <a href="../_pages/coronavirus/files/CoV2SpikeProteinSeq.txt" download>SARS-CoV-2 spike protein chain</a>.
 
 Next, go to the main <a href="https://swissmodel.expasy.org/" target="_blank">SWISS-MODEL website</a> and click on `Start Modelling`.
 
@@ -35,7 +35,7 @@ Structures of the SARS-CoV-2 spike protein (PDB: 6vxx) and the three models of t
 ## Robetta
 Robetta is a publicly available software resource that uses the same software as the distributed Rosetta@home project that we mentioned earlier in this module. As with SWISS-MODEL, we will provide Robetta a single chain of the SARS-CoV-2 spike protein.
 
-First, if you have not already done so, download the sequence of the chain: <a href="/multiscale_biological_modeling/_pages/coronavirus/files/CoV2SpikeProteinSeq.txt" download>SARS-CoV-2 spike chain sequence</a>.
+First, if you have not already done so, download the sequence of the chain: <a href="../_pages/coronavirus/files/CoV2SpikeProteinSeq.txt" download>SARS-CoV-2 spike chain sequence</a>.
 
 Next, visit <a href="https://robetta.bakerlab.org/" target="_blank">Robetta</a> and register for an account.
 
@@ -60,7 +60,7 @@ GalaxyWEB is a server with many available services for protein study, including 
 
 Because GalaxyWEB has a sequence limit of 1000 amino acids, we cannot use the entire spike protein chain. Instead, we will model the receptor binding domain (RBD) of the spike protein, which we introduced in the main text as a variable domain within the spike protein's S1 subunit.
 
-First, <a href="/multiscale_biological_modeling/_pages/coronavirus/files/CoV2SpikeRBDSeq.txt" download>download</a> the sequence of the RBD.
+First, <a href="../_pages/coronavirus/files/CoV2SpikeRBDSeq.txt" download>download</a> the sequence of the RBD.
 
 Then, visit the <a href="http://galaxy.seoklab.org/" target="_blank">GalaxyWEB</a> homepage. At the top, click on `Services > TBM`.
 
