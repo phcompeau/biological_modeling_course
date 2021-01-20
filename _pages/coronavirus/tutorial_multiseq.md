@@ -20,21 +20,23 @@ We will need to download the `.pdb` files for 6vw1 and 2ajf. Visit the <a href="
 
 ## Test
 
-Next, launch VMD, which will open three windows. `VMD.exe` is the console window, which we will not use in this tutorial. We will  `VMD Main` will be where we will be load molecules and change the visualizations. Finally, `OpenGL Display` will display the visualizations. Here, we want to load 6vw1 into VMD. In `VMD Main`, go to `File>New Molecule`. Click on `Browse`, select the molecule (6vw1.pdb) and click `Load`.
+Next, launch VMD, which will open three windows. We will not use `VMD.exe`, the console window, in this tutorial. We will load molecules and change visualizations in `VMD Main`. Finally, we will use `OpenGL Display` to display our visualizations.
+
+We will first load the SARS-CoV-2 RBD (6vw1) into VMD. In `VMD Main`, go to `File > New Molecule`. Click on `Browse`, select your downloaded file (`6vw1.pdb`) and click `Load`.
 
 ![image-center](../assets/images/Ridge1.png){: .align-center}
 {: style="font-size: medium;"}
 ![image-center](../assets/images/Ridge2.png){: .align-center}
 {: style="font-size: medium;"}
 
-The molecule should now be listed in `VMD Main` as well as the visualization in the `OpenGL Display`.
+The molecule should now be listed in `VMD Main`, with its visualization in `OpenGL Display`.
 
 ![image-center](../assets/images/Ridge3.png){: .align-center}
 {: style="font-size: medium;"}
 
-In the `OpenGL Display` window, you can click and drag the molecule to change the orientation. Pressing ‘r’ on the keyboard allows you to rotate the molecule, pressing ‘t’ on the keyboard allows you to translate the molecule, and finally pressing ‘s’ allows you to enlarge or shrink the molecule (or use scroll wheel). Note that left click and right click are different.
+In the `OpenGL Display` window, you can click and drag the molecule to change its orientation. Pressing ‘r’ on your keyboard allows you to rotate the molecule, pressing ‘t’ allows you to translate the molecule, and pressing ‘s’ allows you to enlarge or shrink the molecule (or you can use your mouse's scroll wheel). Note that left click and right click have different actions.
 
-Now, we need to load the SARS RBD. Repeat the steps but with <a href="https://www.rcsb.org/structure/2ajf" target="_blank">2ajf</a>. After both molecules are loaded into VMD, start up `Multiseq` by going to `Extensions>Analysis>Multiseq`.
+We now will need to load the SARS-CoV RBD (2ajf). Repeat the above steps for `2ajf.pdb`. After both molecules are loaded into VMD, start up `Multiseq` by going to `Extensions > Analysis > Multiseq`.
 
 ![image-center](../assets/images/Qres1.png){: .align-center}
 {: style="font-size: medium;"}
