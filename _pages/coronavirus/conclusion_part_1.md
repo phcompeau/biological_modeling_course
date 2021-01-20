@@ -1,23 +1,56 @@
 ---
 permalink: /coronavirus/conclusion_part_1
-title: "Part 1 Conclusion: Protein Structure Prediction is Solved (Kinda)"
+title: "Part 1 Conclusion: Protein Structure Prediction is Solved! (Kinda)"
 sidebar:
  nav: "conclusion_part_1"
 toc: true
 toc_sticky: true
 ---
 
-## Part 1 conclusion: SARS-CoV-2 protein structure prediction and open science
+## SARS-CoV-2 protein structure prediction and open science
 
-The models we assessed here may not be 100% accurate, but they all do a good job of approximating protein structure when this structure is not yet known experimentally. We have yet to decipher nature's magic algorithm for protein folding, and yet we can retain hope that continued improvements to our algorithms and ever-increasing computational resources will allow us to one day say, "good enough!".
+Researchers have worked for several decades to decipher nature's magic algorithm for protein folding. The Soviets even founded an entire [research insitute](https://www.protres.ru) dedicated to protein research in 1967. Most of the scientists who were there for its founding are dead now, and yet the institute carries on. Although structure prediction is an old problem, biologists have never given up hope that continued improvements to their algorithms and ever-increasing computational resources would allow them one day to proclaim, "Maybe this is good enough!".
 
-We also hope that this discussion has provided perspective on how a problem in biological modeling can be easy to state and very difficult to solve. This is in sharp contrast to our work in previous modules, where we saw biological models that more or less quickly solved the problems presented to them. After all, the Soviets founded an entire [research insitute](https://www.protres.ru) dedicated to protein research in 1967. Most of the scientists who were there for its grand opening are dead now, and yet the institute carries on.
+That day has now come.
 
-Finally, we would point out that although scientific research five decades ago was, like the Soviet protein institute, siloed away from the public, the COVID-19 pandemic offers an excellent example of how citizens around the world can follow and even get involved in real research.
+Every two years since 1994, a global effort called **Critical Assessment of protein Structure Prediction (CASP)** has allowed researchers from around the world to test their protein structure prediction algorithms against each other. The contest organizers compile a (secret) collection of experimentally verified protein structures and then run all submitted algorithms against these proteins.
 
-For example, the [GISAID](https://www.gisaid.org) organization published their first publicly available SARS-CoV-2 genome on December 24, 2019. Within six months, this database had grown to contain over 50,000 entries. At any point in early 2020, anyone could have grabbed their favorite SARS-CoV-2 genome, excised the sequence of the spike protein, and used one of a variety of different software resources to predict its structure. Alternatively, a more communally minded person could have enlisted their home machine as part of a global race to provide vaccine developers with accurate estimations of the protein's structure. Despite 2020 being a time of international crisis, the progress we have made in opening scientific research to the public is cause for optimism.
+The 14th iteration of this contest, held in 2020, was won in a landslide. The second version of <a href="https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology" target="_blank">AlphaFold</a>, one of the projects of DeepMind (an Alphabet subsidiary), vastly outperformed the world's foremost structure prediction approaches, including those that we discussed in this module. The AlphaFold algorithm is an extremely involved method based on deep learning, and as of this writing, it has not been detailed in a peer reviewed journal. If you're interested in learning more about this method, consult the AlphaFold website or this excellent blog post by Mohammed al Quraishi: <a href="https://bit.ly/39Mnym3" target="_blank">https://bit.ly/39Mnym3</a>.
 
-Thus ends part 1 of this module. But there is still much for us to discuss. We hope that you will join us for part 2, in which we will delve into the differences between the spike proteins of SARS-CoV-1 and SARS-CoV-2 using the validated protein structures published to PDB early in the pandemic. Can we use modeling and computation to determine why SARS-CoV-2 has been so much more infectious? We hope that you will join us to find out.
+We will show a few plots to illustrate the decisiveness of AlphaFold's CASP victory. The first graph, which is shown in the figure below, compares the scores of AlphaFold against the second-place algorithm (a product of David Baker's laboratory, which developed the Robetta and Rosetta@Home software that we used in this module).
+
+Instead of using RMSD, CASP scores a predicted structure against a known structure using the **global distance test (GDT)**. Given a threshold *t*, we first take the largest  subset of alpha carbon positions such that the sum of the distances between the corresponding alpha carbons in the two structures is at most *t*. The GDT score that CASP uses then averages the percentages obtained when *t* is equal to each of 1, 2, 4, and 8 angstroms. A GDT score of 90% is considered good, and a score of 95% is considered excellent (i.e., comparable to minor errors resulting from experimentation).
+
+![image-center](../assets/images/AlphaFold2_BAKER.png){: .align-center}
+A plot of GDT scores for the 1st place (AlphaFold2) and 2nd place (Baker lab) submissions over all proteins in the CASP14 contest. Source: [https://bit.ly/39Mnym3](https://bit.ly/39Mnym3).
+{: style="font-size: medium;"}
+
+We can appreciate the margin of victory over the second-place competitor if we compare this second-place competitor against the third-place competitor (submitted by the Yang Zhang lab). The results are shown in the figure below.
+
+![image-center](../assets/images/BAKER_Zhang.png){: .align-center}
+A plot of GDT scores for the 2nd place (Baker lab) and 3rd place (Zhang lab) submissions over all proteins in the CASP14 contest. Source: [https://bit.ly/39Mnym3](https://bit.ly/39Mnym3).
+{: style="font-size: medium;"}
+
+For each protein target in the contest, we can determine each algorithm's **z-score**. This score is defined as the number of standard deviations that the algorithm's GDT score falls from the mean GDT score for all competitors. For example, a z-score of 1.4 would be 1.4 standard deviations above the mean, and a z-score of -0.9 would be 0.9 standard deviations below the mean.
+
+By summing all of an algorithm's positive z-scores, we obtain a reasonable metric for the relative quality of an algorithm compared to its competitors. If an algorithm's sum of z-scores is large, then the algorithm racked up lots of positive z-scores, and we can conclude that it performed well. The figure below shows the sum of z-scores for all CASP14 participants and reiterates the margin of AlphaFold's victory.
+
+![image-center](../assets/images/CASP14_overall_results.png){: .align-center}
+Sum of z-scores for every   Source: [https://predictioncenter.org/casp14/zscores_final.cgi](https://predictioncenter.org/casp14/zscores_final.cgi).
+{: style="font-size: medium;"}
+
+AlphaFold's CASP14 victory led some scientists -- and media outlets -- to declare that protein structure prediction had finally been solved. Yet others remained skeptical.
+
+AlphaFold obtained an impressive median RMSD of 1.6 for its predicted proteins, but to be completely trustworthy for a sensitive application like designing drug targets, a predicted protein structure would need to have an RMSD nearly an order of magnitude lower.
+
+Furthermore, about a third of AlphaFold's CASP14 predictions have an RMSD over 2.0, an often used threshold for whether a predicted structure is reliable. And there is no way of knowing in advance whether AlphaFold will perform well on a given protein, unless we validate the protein's structure, which causes a catch-22. For example, AlphaFold has published their predictions of the structures of other SARS-CoV-2 proteins, not just the spike protein. Probably most of these predictions are accurate, but we cannot know for sure unless we run an experiment to verify their structures.
+
+Finally, because AlphaFold applies a deep learning approach, the algorithm is "trained" using a database of known protein structures, which makes it more likely to succeed if a protein is similar to a known structure. But it is the proteins with structures dissimilar to any known structure that possess some of the most scientific interest.
+
+Pronouncing protein structure prediction to be solved may be dubious, but it is fair to acknowledge that we will likely never again see such a clear improvement to the state of the art. AlphaFold is quite possibly the last great innovation in a research problem that has occupied biologists for fifty years.
+
+Thus ends part 1 of this module, but there is still much for us to discuss. We hope that you will join us for part 2, in which we will delve further into measuring the differences between the spike proteins of SARS-CoV-1 and SARS-CoV-2 using the validated protein structures published to PDB early in the pandemic. Can we use modeling and computation to determine why SARS-CoV-2 has been so much more infectious? We hope that you will join us to find out.
+
 
 [Continue to part 2: spike protein comparison](multiseq){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

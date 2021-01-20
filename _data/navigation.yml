@@ -139,7 +139,7 @@ coronavirus:
         url: /coronavirus/homology
       - title: "Comparing Protein Structures to Assess Model Accuracy<br><br>"
         url: /coronavirus/accuracy
-      - title: "Part 1 Conclusion: Protein Structure Prediction is Solved (Kinda)<br><br>"
+      - title: "Part 1 Conclusion: Protein Structure Prediction is Solved! (Kinda)<br><br>"
         url: /coronavirus/conclusion_part_1
   - title: "Part 2: Comparing SARS-CoV-2 and SARS"
     children:

@@ -7,6 +7,12 @@ toc: true
 toc_sticky: true
 ---
 
+## Part 1
+
+* Earlier, point out that no videos exist on protein folding on YouTube because this happens in 1/100 to 1/1000th of a second at a molecular level, so it has not been observed.
+
+* Earlier, fix issue that RMSD of a short protein is smaller. Better: a single aa can disrupt it, so less likely to have minuscule RMSD with a long protein.
+
 ## Protein shape determines binding affinity (from structure intro but possibly just delete this)
 
 Now that we understand the importance of shape in determining how proteins interact with molecules in their environment, we will spend some time discussing how these interactions are modeled.
