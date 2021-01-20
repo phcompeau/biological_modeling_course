@@ -55,7 +55,7 @@ Unfortunately, laboratory approaches for structure determination are expensive. 
 
 Protein structures that have been determined experimentally are typically stored in the PDB, which we mentioned above. As of early 2020, this database contained over 160,000 proteins, most of which have been added since 2000.
 
-Before we set aside structure prediction, consider that a 2016 study estimated that humans have between 620,000 and 6.13 million protein isoforms (i.e., differently-shaped protein variants). If we hope to catalog the proteins of all living things, then our work is just beginning.
+Before we set aside structure prediction, consider that a 2016 study estimated that humans have between 620,000 and 6.13 million protein isoforms (i.e., differently-shaped protein variants) [^Ponomarenko]. If we hope to catalog the proteins of all living things, then our work is just beginning.
 
 Another issue with laboratory methods of structure determination is that they require the ability to isolate the actual physical proteins. For example, to study bacterial proteins, we need to culture bacteria, and yet microbiologists have estimated that less than 2% of bacteria can currently be cultured in the lab.[^Wade]
 
@@ -128,3 +128,5 @@ Although protein structure prediction is difficult, it is not impossible; the pr
 [^Munnink]: Oude Munnink, B.B., Nieuwenhuijse, D.F., Stein, M. et al. 2020. Rapid SARS-CoV-2 whole-genome sequencing and analysis for informed public health decision-making in the Netherlands. Nat Med 26, 1405–1410. https://doi.org/10.1038/s41591-020-0997-y
 
 [^Islam]: Islam, M.R., Hoque, M.N., Rahman, M.S. et al. 2020. Genome-wide analysis of SARS-CoV-2 virus strains circulating worldwide implicates heterogeneity. Sci Rep 10, 14004. https://doi.org/10.1038/s41598-020-70812-6
+
+[^Ponomarenko]:	Ponomarenko, E. A., Poverennaya, E. V., Ilgisonis, E. V., Pyatnitskiy, M. A., Kopylov, A. T., Zgoda, V. G., Lisitsa, A. V., & Archakov, A. I. 2016. The Size of the Human Proteome: The Width and Depth. International journal of analytical chemistry, 2016, 7436849. https://doi.org/10.1155/2016/7436849
