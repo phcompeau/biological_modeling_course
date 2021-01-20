@@ -73,7 +73,7 @@ The following figure shows the contact maps for the SARS-CoV-2 and SARS-CoV spik
 
 Note two things in the contact maps below. First, many black values cluster around the main diagonal of the matrix, since amino acids that are near each other in the protein sequence will remain near each other in the 3-D structure. Second, the contact maps for the two proteins are very similar, driving home further the similarity of the two proteins' structures.
 
-**Note:** If you are interested in producing these maps? We will use ProDy to do so in a later section.
+**Note:** Interested in learning how to make contact maps? We will use ProDy to do so in a later section.
 {: .notice--warning}
 
 ![image-center](../assets/images/Contact.png){: .align-center}
@@ -85,30 +85,24 @@ The contact maps of the SARS-CoV-2 spike protein (top left), SARS-CoV spike prot
 
 Consider the *i*-th row (or column) of a protein's contact map, which represents all alpha carbons that are near the *i*-th alpha carbon. We can see how two proteins differ at the *i*-th position if we look at all of this row's values. That is, if we compare all of the *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) values to all of the *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) values.
 
-We now will use pairwise distances between alpha carbons to determine local differences between two proteins, using a metric called **Q per residue (Qres)**.  The formal definition of Qres for two structures *s* and *t* is as follows[^Qres]:
+We now will use pairwise distances between alpha carbons to determine how different two proteins are at the *i*-th alpha carbon, using a metric called **Q per residue (Qres)**.  The formal definition of Qres for two structures *s* and *t* is as follows[^Qres]:
 
 $$Q_{res}^{(i)} = \dfrac{1}{N-k} \sum^{residues}_{j\neq i-1,i,i+1} \textrm{exp}[-\dfrac{[d(s_i,s_j)-d(t_i,t_j)]^2}{2\sigma^2_{i,j}}]$$
 
-In this equation, the following parameters are included in addition to the distance values *d* that we already know.
+This equation includes the following parameters.
 
 * *N* is the number of residues in each protein (this assumes that they have the same length; generalizations for proteins of non-equal length exist);
-* *k* is equal to 2 when *i* is at either end of the protein, and *k* is equal to 3 otherwise;
+* *k* is equal to 2 when *i* is at either the start or the end of the protein, and *k* is equal to 3 otherwise;
 * The variance term $$\sigma_{ij}^2$$ is equal to $$\left\lvert{i-j}\right\rvert ^{0.15}$$, which corresponds to the sequence separation between the *i*-th and *j*-th alpha carbons.
 
-<!--
+**Note:** The above definition assumes that the two proteins have the same length or have been pre-processed by removing amino acids that only occur in one protein. Generalizations of Qres for proteins of non-equal length do exist.
+{: .notice--warning}
 
-$$Q_{res}^{(i,n)} = N \sum^{proteins}_{m\neq n} \sum^{residues}_{j\neq i-1,i,i+1} exp[-\frac{(r_{ij}^{(n)}-r^{(m)}_{i'j'})^2}{2\sigma^2_{ij}}]$$
+If two proteins are very similar at the *i*-th alpha carbon, then *d*(<em>s</em><sub><em>i</em></sub>, <em>s</em><sub><em>j</em></sub>) - *d*(<em>t</em><sub><em>i</em></sub>, <em>t</em><sub><em>j</em></sub>) will be close to zero, and so the term inside the summation in the Qres equation will be close to 1. This summation has *N* - *k* terms, and so Qres will be close to 1. As two proteins become more different at the *i*-th alpha carbon, then the term inside the summation will head toward zero, and so will the Qres value as well.
 
-where:
-* $$r_{ij}^{(n)}$$ is the distance between the alpha carbons of residues $$i$$ and $$j$$ in protein $$n$$
-* $$r_{i'j'}^{(m)}$$ is the distance between alpha carbons of the residues in protein $$m$$ that correspond to residues $$i$$ and $$j$$ in protein $$n$$
-* Variance $$\sigma_{ij}^2 = \left\lvert{i-j}\right\rvert ^{0.15}$$, which corresponds to the sequence separation between residues $$i$$ and $$j$$
-* Normalization $$N = \frac{1}{(N_{seq}-1)(N_{res}-k}$$, where $$N_{seq}$$ is the number of proteins, $$N_{res}$$ is the number of residues in protein $$n$$, and $$k=2$$ when residue $$i$$ is the N- or C-terminus and $$k=3$$ otherwise.
--->
+Therefore, Qres is a similarity metric ranging between 0 and 1, with low scores representing low similarity between two proteins at the *i*-th position, and higher scores representing high similarity at this position.
 
-Possible values of Qres range between 0 and 1, with lower scores representing low similarity between corresponding positions, and higher scores representing high similarity.
-
-Now that we have the Qres metric for the similarity of corresponding amino acids in two protein structures, we turn to a tutorial and use the VMD plugin *<a href="https://www.ks.uiuc.edu/Research/vmd/plugins/multiseq/" target="_blank">Multiseq</a>*, a bioinformatics analysis environment that provides tools such as sequence and structural alignment. We will use Multiseq to align the SARS-CoV-2 (chimeric) RBD and SARS RBD using the PDB entries <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> and <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>, respectively. Then, we will locate areas of structural differences by computing Qres over the entire protein.
+We now turn to a tutorial that will compute Qres for the SARS-CoV and SARS-CoV-2 spike proteins. This tutorial will use the VMD plugin *<a href="https://www.ks.uiuc.edu/Research/vmd/plugins/multiseq/" target="_blank">Multiseq</a>*, a bioinformatics analysis environment. We will use Multiseq to align the SARS-CoV-2 (chimeric) RBD and SARS RBD using the PDB entries <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> and <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>, respectively. After determining Qres, we will visualize the individual locations where the two RBD regions differ.
 
 [Visit tutorial](tutorial_multiseq){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

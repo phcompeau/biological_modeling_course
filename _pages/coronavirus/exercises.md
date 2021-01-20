@@ -10,7 +10,15 @@ toc_sticky: true
 <!--
 * Good exercise: find centroid of a given shape.
 
+* exercise: compute RMSD.
+
 * Good exercise later: compute Q scores for the protein structure comparison that we performed at the end of part 1.
+
+* Good exercise: compute Qres for very simple proteins
+
+* Exercise based on following excellent observation: In the case of RMSD, I believe that they assign the RMSD of an alignment between a residue and gap to be 0, effectively ignoring it. I believe this is how it is ensured that the two sets have the same number of points (alpha carbons) and also one of the shortcomings of using RMSD. I think for prody, you can set a gap penalty during chain matching,
+
+"Thus, gap-filled alignments focusing on low RMSDs, while accurate and useful for superposition of structures, are sub-optimal for machine learning as the features of many potentially relevant residues are discarded due to a lack of data in those positions. In most cases, positions with over a certain percentage of aligned residues are considered, with gaps replaced by zeros or by the average of the feature values in that position [22]."
 
 * Why are contact maps and cross correlation maps "symmetric" about the main diagonal?
 
