@@ -11,7 +11,7 @@ The book *What If?*[^Munroe], by Randall Munroe, compiles a collection of crazy 
 
 > If two immortal people were placed on opposite sides of an uninhabited Earth-like planet, how long would it take them to find each other? 100,000 years? 1,000,000 years?
 
-One could imagine many ideas for how the immortals could find each other. For example, they could avoid the interiors of continents by moving to the coastlines. If they are allowed to discuss how to find each other in advance, then they could just agree to meet at the planet's North Pole --- assuming that the planet lacks polar bears.
+One could imagine many ideas for how the immortals might find each other. For example, they could avoid the interiors of continents by moving to the coastlines. If they are allowed to discuss how to find each other in advance, then they could just agree to meet at the planet's North Pole --- assuming that the planet lacks polar bears.
 
 But Munroe provides a solution to Lost Immortals that is both sophisticated and elegant. His proposed approach is quoted below.
 
