@@ -17,11 +17,7 @@ As we dive into structure prediction, we should be more precise about two things
 
 ## The four levels of protein structure
 
-"Protein structure" is a broad term that encapsulates four different levels of description. A protein's **primary structure** refers to the amino acid sequence of the polypeptide chain. The figure below shows the primary structure of human hemoglobin subunit alpha, which can be downloaded [here](https://phcompeau.github.io/biological_modeling_course/_pages/coronavirus/files/Human_Hemoglobin_subunit_alpha_Seq.txt).
-
-![image-center](../assets/images/hemoglobin_primary_structure.png){: .align-center}
-The primary structure of human hemoglobin subunit alpha. Each letter corresponds to one of the twenty amino acids. Source: [https://www.rcsb.org/structure/1SI4](https://www.rcsb.org/structure/1SI4).
-{: style="font-size: medium;"}
+"Protein structure" is a broad term that encapsulates four different levels of description. A protein's **primary structure** refers to the amino acid sequence of the polypeptide chain. The primary structure of human hemoglobin subunit alpha can be downloaded <a href="/files/Human_Hemoglobin_subunit_alpha_Seq.txt" download>here</a>, and the primary structure of the SARS-CoV-2 spike protein can be downloaded <a href="/files/SARS-CoV-2_spike_seq.txt" download>here</a>.
 
 A protein's **secondary structure** describes its highly regular, repeating substructures that serve as intermediate structures forming before the overall protein structure comes together. The two most common such substructures, shown in the figure below, are **alpha helices** (left) and **beta sheets** (right). Alpha helices occur when nearby amino acids wrap around to form a tube-like structure; beta sheets occur when nearby amino acids line up side-by-side to form a sheet-like structure.
 
