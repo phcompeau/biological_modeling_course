@@ -1,34 +1,35 @@
 ---
 permalink: /coronavirus/tutorial_NAMD
-title: "VMD Plugin: NAMD Energy"
+title: "Software Tutorial: Computing the Energy Contributed by a Local Region of a Bound Complex"
 sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
 ---
 
-In this tutorial, will use NAMD Energy to calculate the interaction energy between SARS-CoV-2 RBD and ACE2 as well as compute how much interaction energy the loop site contributes. Be sure to have installed VMD and know how to load molecules into the program. If you need a refresher, go to the <a href="tutorial_multiseq" target="_blank">VMD and Multiseq Tutorial</a>. In addition to VMD, make sure to download <a href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD" target="_blank">NAMD</a>. One of the steps may require you to provide the path to *NAMD*.
+In this tutorial, we will show how to use NAMD Energy to calculate the interaction energy for a bound complex, as well as to determine how much a given region of this complex contributes to the overall potential energy. We will use the chimeric SARS-CoV-2 RBD-ACE2 complex (PDB entry: <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>) and compute the interaction energy contributed by the loop site that we identified as a region of structural difference in a [previous lesson](structural_diff).
 
-We will need a **force field**, i.e., an energy function with a collection of parameters that determine the energy of a given structure based on the positional relationships between atoms [^charmm]. There are many different force fields depending on the specific type of system being studied (e.g. DNA, RNA, lipids, proteins). There are many different approaches for generating a force field; for example, *<a href=" https://www.charmm.org/" target="_blank">Chemistry at Harvard Macromolecular Mechanics (CHARMM)</a>* offers a popular collection of force fields for molecular dynamics.
+To determine the energy contributed by a region of a complex, we will need a "force field", an energy function with a collection of parameters that determine the energy of a given structure based on the positional relationships between atoms. There are many different force fields depending on the specific type of system being studied (e.g. DNA, RNA, lipids, proteins). There are many different approaches for generating a force field; for example, <a href=" https://www.charmm.org/" target="_blank">Chemistry at Harvard Macromolecular Mechanics (CHARMM)</a>[^charmm] offers a popular collection of force fields.
 
-NAMD needs to utilize the information in the force field to calculate the potential energy of a protein. To do this, it needs a **protein structure file (PSF)**. A PSF, which is molecule-specific, contains all the information required to apply a force field to a molecular system [^PSF]. Fortunately, there are programs that can generate a PSF given the force field and protein structure (PDB file).
+To get started, make sure to have installed VMD and know how to load molecules into the program; if you need a refresher, visit the <a href="tutorial_multiseq" target="_blank">VMD and Multiseq Tutorial</a>. Then, download <a href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=NAMD" target="_blank">NAMD</a>; you may be asked to provide the path to your NAMD installation.
 
-First, load <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> into VMD. Afterwards, we will need to create a protein structure file (<a href="https://www.ks.uiuc.edu/Training/Tutorials/namd/namd-tutorial-unix-html/node23.html" target="_blank">PSF</a>) of 6vw1 in order to simulate the molecule. We will be using the VMD plugin Atomatic PSF Builder to create the file. From `VMD Main`, go to `Extensions > Modeling>Automatic PSF Builder`.
+## Creating a protein structure file
+
+NAMD needs to utilize the information in the force field to calculate the potential energy of a protein. To do this, it needs a **protein structure file (PSF)**. A PSF, which is molecule-specific, contains all the information required to apply a force field to a molecular system.[^PSF] Fortunately, there are programs that can generate a PSF given a force field and a `.pdb` file containing a protein structure. See <a href="https://www.ks.uiuc.edu/Training/Tutorials/namd/namd-tutorial-unix-html/node23.html" target="_blank">this NAMD tutorial</a> for more information.
+
+First, load <a href="https://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a> into VMD. We then need to create a protein structure file of 6vw1 to simulate the molecule. We will be using the VMD plugin Atomatic PSF Builder to create the file. From `VMD Main`, click `Extensions > Modeling > Automatic PSF Builder`.
 
 ![image-center](../assets/images/NAMD1.png){: .align-center}
 {: style="font-size: medium;"}
 
-In the `AutoPSF` window, make sure that the selected molecule is `6vw1.pdb` and the output to be `6vw1_autopsf`. Next click `Load input files`. In step 2, click `Protein` and then `Guess and split chains using current selections`. Afterwards, click `Create chains` and then `Apply patches and finish PSF/PDB`.
+In the `AutoPSF` window, make sure that the selected molecule is `6vw1.pdb` and that the output is `6vw1_autopsf`. Click `Load input files`. In step 2, click `Protein` and then `Guess and split chains using current selections`. Then click `Create chains` and then `Apply patches and finish PSF/PDB`.
 
 ![image-center](../assets/images/NAMD2.png){: .align-center}
 {: style="font-size: medium;"}
 
-During this process, it is possible to see an error message stating "MOLECULE DESTROYED". If you see this message, click "Reset Autopsf" and repeat the steps again. The selected molecule will change, so make sure that the molecule is `6vw1.pdb` when you start over. Failed molecules remain in VMD, so deleting the failed molecule from `VMD Main` is recommended before each attempt.
+During this process, you may see an error message stating `MOLECULE DESTROYED`. If you see this message, click `Reset Autopsf` and repeat the above steps. The selected molecule will change, so make sure that the selected molecule is `6vw1.pdb` when you start over. Failed molecules remain in VMD, so deleting the failed molecule from `VMD Main` is recommended before each new attempt.
 
-![image-center](../assets/images/NAMD3.png){: .align-center}
-{: style="font-size: medium;"}
-
-If the PSF file is successfully created, you will see a message stating "Structure complete." `VMD Main` also have an additional line.
+If the PSF file is successfully created, then you will see a message stating `Structure complete.` The `VMD Main` window also will have an additional line.
 
 ![image-center](../assets/images/NAMD4.png){: .align-center}
 {: style="font-size: medium;"}
@@ -64,3 +65,5 @@ Now, let's go back to the main text to interpret our results.
 {: style="font-size: 100%; text-align: center;"}
 
 [^PSF]: https://www.ks.uiuc.edu/Training/Tutorials/namd/namd-tutorial-unix-html/node23.html
+
+[^charmm]: https://www.charmmtutorial.org/index.php/The_Energy_Function

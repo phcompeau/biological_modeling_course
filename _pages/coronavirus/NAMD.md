@@ -42,5 +42,3 @@ Part of the reason for our cautiousness is that proteins are not fixed objects b
 {: style="font-size: 100%; text-align: center;"}
 
 [^TCBG]: https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html
-
-[^charmm]: https://www.charmmtutorial.org/index.php/The_Energy_Function
