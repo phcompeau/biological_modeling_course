@@ -17,11 +17,7 @@ As we dive into structure prediction, we should be more precise about two things
 
 ## The four levels of protein structure
 
-"Protein structure" is a broad term that encapsulates four different levels of description. A protein's **primary structure** refers to the amino acid sequence of the polypeptide chain. The figure below shows the primary structure of human hemoglobin subunit alpha, which can be downloaded [here](https://phcompeau.github.io/biological_modeling_course/_pages/coronavirus/files/Human_Hemoglobin_subunit_alpha_Seq.txt).
-
-![image-center](../assets/images/hemoglobin_primary_structure.png){: .align-center}
-The primary structure of human hemoglobin subunit alpha. Each letter corresponds to one of the twenty amino acids. Source: [https://www.rcsb.org/structure/1SI4](https://www.rcsb.org/structure/1SI4).
-{: style="font-size: medium;"}
+"Protein structure" is a broad term that encapsulates four different levels of description. A protein's **primary structure** refers to the amino acid sequence of the polypeptide chain. The primary structure of human hemoglobin subunit alpha can be downloaded <a href="../_pages/coronavirus/files/Human_Hemoglobin_subunit_alpha_Seq.txt" download = "Human_Hemoglobin_subunit_alpha_Seq.txt">here</a>, and the primary structure of the SARS-CoV-2 spike protein can be downloaded <a href="../_pages/coronavirus/files/SARS-CoV-2_spike_seq.txt" download="SARS-CoV-2_spike_seq.txt">here</a>.
 
 A protein's **secondary structure** describes its highly regular, repeating substructures that serve as intermediate structures forming before the overall protein structure comes together. The two most common such substructures, shown in the figure below, are **alpha helices** (left) and **beta sheets** (right). Alpha helices occur when nearby amino acids wrap around to form a tube-like structure; beta sheets occur when nearby amino acids line up side-by-side to form a sheet-like structure.
 
@@ -62,6 +58,10 @@ To be more precise, the **potential energy** (sometimes called **free energy**) 
 Bonded energy derives from the protein's covalent bonds, as well as the angles of bonds between adjacent amino acids, and the torsion angles that we saw in the previous lesson, as the protein bends and twists.
 
 Non-bonded energy comprises **electrostatic interactions** (Coulomb potential) and van **der Waals interactions** (Lennard-Jones potential). Electrostatic interactions refer to the attraction and repulsion force from the electric charge between pairs of atoms. For example, nonpolar amino acids are repelled by water, which is **polar**, meaning that its constituent atoms have electric charges. Because a water molecule's oxygen atom has a negative charge and its hydrogen atoms have a positive charge, the molecule is not attracted to a nonpolar molecule, since opposite charges in the two molecules will not attract. As for van der Waals interactions, atoms are dynamic systems. The electrons are constantly buzzing around the nucleus, and at any given moment, they could be unevenly distributed on one side of the nucleus. Because electrons are negatively charged, the atom will have a temporary negative charge on the side with the excess electrons (and a temporary positive charge on the opposite side). These temporary charges are called  **induced dipoles**, and van der Waals interactions refer to the attraction and repulsion between atoms because of these induced dipoles.
+
+![image-center](../assets/images/van_der_waals.png){: .align-center}
+An illustration of how induced dipoles and therefore van der Waals forces arise from random fluctuations in the positions of electrons. Source: <a href="http://universe-review.ca/F12-molecule12.htm" target="_blank">http://universe-review.ca/F12-molecule12.htm</a>.
+{: style="font-size: medium;"}
 
 As the protein folds, it seeks a conformation of *lowest* total potential energy based on all these forces. For a simple analogy, imagine a ball on a slope, as shown in the following figure. Even if the ball bounces around, it will tend to move down the slope. In this analogy, the lower points on the slope correspond to lower energy conformations of a polypeptide.
 

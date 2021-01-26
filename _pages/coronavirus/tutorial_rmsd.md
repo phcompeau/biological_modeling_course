@@ -15,7 +15,9 @@ Below is a folder containing all the models that we produced so far along with t
 
 ## Getting started
 
-This tutorial will be our first encounter with **ProDy**, our featured software resource in this module. ProDy is an open-source Python package that allows users to perform protein structural dynamics analysis. Its flexibility allows users to select specific parts or atoms of the structure for conducting normal mode analysis and structure comparison.
+This tutorial will be our first encounter with **ProDy**, our featured software resource in this module. ProDy is an open-source Python package that allows users to perform protein structural dynamics analysis. Its flexibility allows users to select specific parts or atoms of the structure for conducting normal mode analysis and structure comparison. If you're not interested in following along, you can download a Jupyter notebook along with all files needed to run this tutorial below.
+
+<a href="../tutorials/RMSD_Tutorial_Code.zip" download>Download completed tutorial</a>
 
 To get started, make sure that you have the following software resources installed.
 
