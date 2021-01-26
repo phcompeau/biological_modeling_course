@@ -361,7 +361,7 @@ Now save your file and run the model. Because the model is at equilibrium, we wi
 
 Things get interesting when we change the initial concentration of ligand to see how the simulated bacterium will adapt. Run your simulation with `L0` = `1e6`. What happens to CheY activity? What happens to the concentration of receptors at different methylation states?
 
-Try a variety of different initial concentrations of ligand (`L0` = `1e4`, `1e5`, `1e6`, `1e7`, `1e8`), paying attention the concentration of phosphorylated CheY. How does the concentration change depending on initial ligand concentration?
+Try a variety of different initial concentrations of ligand (`L0` = `1e4`, `1e5`, `1e6`, `1e7`, `1e8`), paying attention to the concentration of phosphorylated CheY. How does the concentration change depending on initial ligand concentration?
 
 Then try to further raise the ligand concentration to `1e9` and `1e10`. How does this affect the outcome of the simulation? Why?
 

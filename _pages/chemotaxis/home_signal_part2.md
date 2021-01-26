@@ -42,7 +42,7 @@ In other words, the probability $$\mathrm{Pr}(T > t)$$ decays exponentially over
 
 The engine of the Gillespie algorithm runs on a single question: given a well-mixed environment of particles and a reaction involving those particles taking place at some average rate, how long should we expect to wait before this reaction occurs somewhere in the environment?
 
-This is the same question as we asked in the previous section; we have simply replaced customers entering a store with chemical reactions. Therefore, an exponential distribution can be used to model the "wait time" between individual reactions. The more reactions we have, and the faster these reactions occur, the larger the value of λ, meaning that we typically do not have to wait very long for the next reaction.
+This is the same question we asked in the previous section; we have simply replaced customers entering a store with chemical reactions. Therefore, an exponential distribution can be used to model the "wait time" between individual reactions. The more reactions we have, and the faster these reactions occur, the larger the value of λ, meaning that we typically do not have to wait very long for the next reaction.
 
 Numerical methods exist that allow us to generate a random number simulating the wait time of an exponential distribution. By repeatedly sampling from the exponential distribution, we obtain a collection of varying wait times between consecutive occurrences of the reaction.
 
@@ -67,7 +67,7 @@ A visualization of a single reaction event used by the Gillespie algorithm for l
 
 ## Specifying ligand-receptor binding with a single BioNetGen rule
 
-Throughout this module, we will employ [BioNetGen](http://bionetgen.org/) to build particle-free simulations of chemotaxis applying the Gillespie algorithm.
+Throughout this module, we will employ <a href="http://bionetgen.org/" target="_blank">BioNetGen</a> to build particle-free simulations of chemotaxis applying the Gillespie algorithm.
 
 We will have two molecules corresponding to the ligand and receptor `L` and `T` that we call `L(t)` and `T(l)`, respectively. The `(t)` specifies that molecule `L` contains a binding site with `T`, and the `(l)` specifies a component binding to `L`. We will use these components later when specifying reactions. We do not have to use `t` and `l` for this purpose, but it will make our model easier to understand.
 
@@ -84,7 +84,7 @@ Since the reaction is bidirectional, we will use `k_lr_bind` and `k_lr_dis` to d
 As a result, this reaction is shown below. We name our rule specifying the ligand-receptor reaction `LR`.
 
 ~~~ ruby
-	LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
+LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
 ~~~
 
 The following tutorial shows how to implement this rule in BioNetGen and use the Gillespie algorithm to determine the equilibrium of a reversible ligand-receptor binding reaction.

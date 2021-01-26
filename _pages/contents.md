@@ -28,9 +28,9 @@ Featured software: CellBlender, MCell
 
 Featured software: CellBlender, NFSim, RuleBender
 
-## Module 3: Analyzing the structure of the coronavirus spike protein ##
+## Module 3: Analyzing the coronavirus spike protein ##
 
-Coming soon!
+[Link to module](/coronavirus/home)
 
 Featured software: ProDy
 

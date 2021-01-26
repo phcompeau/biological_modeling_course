@@ -13,7 +13,7 @@ In this tutorial, we will run a comparison of the chemotactic random walk over a
 
 First, we will use <a href="../downloads/downloadable/chemotaxis_walk.ipynb" download="chemotaxis_walk.ipynb">chemotaxis_walk.ipynb</a> from our [modified random walk tutorial](tutorial_walk) to compare the trajectories of a few cells for different tumbling frequencies.
 
-Specifically, we will run our simulation for three cells over 800 seconds for a range of different tumbling frequencies between once every 0.1s and once every 10s (specifically, we use frequencies of 0.1, 0.2, 0.5, 1.0, 2.0, 5.0, and 10.0). This will give us a rough idea of what the trajectories look like.
+Specifically, we will run our simulation for three cells over a time period of 800 seconds. We simulate each cell multiple times using a variety of different tumbling frequencies. (We use average tumbling frequencies of 0.1, 0.2, 0.5, 1.0, 2.0, 5.0, and 10.0 seconds.) This will give us a rough idea of what the trajectories look like.
 
 ~~~ python
 duration = 800   #seconds, duration of the simulation
@@ -21,7 +21,7 @@ num_cells = 3
 origin_to_center = euclidean_distance(start, ligand_center) #Update the global constant
 run_time_expected_all = [0.5, 1.0, 5.0]
 paths = np.zeros((len(run_time_expected_all), num_cells, duration + 1, 2))
-                
+
 for i in range(len(run_time_expected_all)):
     run_time_expected = run_time_expected_all[i]
     paths[i] = simulate_chemotaxis(num_cells, duration, run_time_expected)
@@ -64,7 +64,7 @@ for freq_i in range(len(run_time_expected_all)):
     ax.set_ylim(-500, 3000)
     ax.set_xlabel("poisiton in μm")
     ax.set_ylabel("poisiton in μm")
-    
+
 plt.show()
 ~~~
 
@@ -86,7 +86,7 @@ origin_to_center = euclidean_distance(start, ligand_center) #Update the global c
 all_distance = np.zeros((len(time_exp), num_cells, duration)) #Initialize to store results
 
 paths = np.zeros((len(run_time_expected_all), num_cells, duration + 1, 2))
-                
+
 for i in range(len(run_time_expected_all)):
     run_time_expected = run_time_expected_all[i]
     paths[i] = simulate_chemotaxis(num_cells, duration, run_time_expected)

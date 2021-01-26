@@ -56,7 +56,7 @@ end reaction rules
 
 ## Initializing molecules and parameters
 
-To initialize our simulation, we need to indicate the number of molecules in *each state* present at the beginning of the simulation. Since we are adding ligands at the beginning of the simulation, the initial amount of molecules at each same state should be equal to the equilibrium concentrations when no ligand is present.  To this end, we set the amount of phosphorylated receptor equal to one-fourth the concentration of unphosphorylated receptor, and the concentration of phosphorylated CheY to be equal to the concentration of phosphorylated CheY. (Note: this was validated through trial and error.)
+To initialize our simulation, we need to indicate the number of molecules in *each state* present at the beginning of the simulation. Since we are adding ligands at the beginning of the simulation, the initial amount of molecules at each same state should be equal to the equilibrium concentrations when no ligand is present.  To this end, we set the amount of phosphorylated receptor equal to one-fourth the concentration of unphosphorylated receptor, and the concentration of phosphorylated CheY to be equal to the concentration of unphosphorylated CheY. (Note: this was validated through trial and error.)
 
 ~~~ ruby
 begin seed species
@@ -167,7 +167,7 @@ When we add ligand molecules into the system, as we did in the tutorial for [lig
 
 Now run your simulation by changing `L0` to be equal to 5000 and then run it again with `L0` to be equal to 1e5. Do the results confirm your hypothesis? What happens as we keep changing `L0`? What happens as `L0` gets really large (e.g., 1e9)? What do you think is going on?
 
-In the main text, we will explore the results of the above simulation. We will then interpret how differences in the amounts of initial ligand can propagate to changes in the concentration of phosphorylated CheY (and therefore the bacterium's tumbling frequency).
+In the main text, we will explore the results of the above simulation. We will then interpret how differences in the amounts of initial ligand can influence changes in the concentration of phosphorylated CheY (and therefore the bacterium's tumbling frequency).
 
 [^Bertoli2013]: Bertoli C, Skotheim JM, de Bruin RAM. 2013. Control of cell cycle transcription during G1 and S phase. Nature Reviews Molecular Cell Biology 14:518-528. [Available online](https://www.nature.com/articles/nrm3629).
 

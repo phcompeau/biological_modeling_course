@@ -5,7 +5,7 @@ sidebar:
  nav: "prologue"
 ---
 
-### by Noah Lee, Mert Inan, and Phillip Compeau
+<span style="font-size:larger;">by Noah Lee, Mert Inan, and Phillip Compeau</span>
 
 Quantum physics tells us that everything that happens in the universe ultimately depends on the interaction of tiny particles.  Yet it is difficult for beings like ourselves to acknowledge this fundamental truth of the universe when our experience of existence is guided by "macro" phenomena.
 

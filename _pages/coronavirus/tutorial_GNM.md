@@ -1,7 +1,7 @@
 ---
 permalink: /coronavirus/tutorial_GNM
 title: "GNM"
-sidebar: 
+sidebar:
  nav: "coronavirus"
 toc: true
 toc_sticky: true
@@ -13,23 +13,26 @@ In this tutorial, we will be on performing GNM calculations on one of the chains
 
 First, follow the steps in <a href="prody">Setting up ProDy</a> to start up IPython and import the neccessary functions.
 
-Next, we will parse in *6vxx* and set it as the variable *spike*.
+Next, we will parse in `6vxx` and set it as the variable `spike`.
+
 ~~~ python
 In[#]: spike = parsePDB('6vxx.pdb')
 ~~~~~
 
-For this GNM calculation, we will focus only on the alpha-carbons of Chain A. We will create variable *calphas* with the selection.
+For this GNM calculation, we will focus only on the alpha-carbons of Chain A. We will create variable `calphas` with the selection.
+
 ~~~ python
 In[#]: calphas = spike.select('calpha and chain A')
 ~~~~~
 
 Now, we will instantiate a GNM instance and build the corresponding Kirchhoff matrix. You can pass parameters for the cutoff (threshold distance between atoms) and gamma (spring constant). The defaults are 10.0 Å and 1.0, respectively. Here, we will set the cutoff to be 20.0 Å.
+
 ~~~ python
-In[#]: gnm = GNM('SARS-CoV-2 Spike (6vxx) Cutoff = 20.0 A')                 #This is the title that will appear on top of the plots
+In[#]: gnm = GNM('SARS-CoV-2 Spike (6vxx) Chain A Cutoff = 20.0 A')                 #This is the title that will appear on top of the plots
 In[#]: gnm.buildKirchhoff(calphas, cutoff=20.0)
 ~~~~
 
-For the creation of normal modes, the default is 20 non-zero modes. This value can be changed and zero modes can be kept if desired. e.g. *gnm.calcModes(50, zeros=True)*. We will use the default. In addition, we will create hinge sites for later use in the slow mode shape plot. These sites represent places in the protein where the fluctuations change in relative direction.
+For the creation of normal modes, the default is 20 non-zero modes. This value can be changed and zero modes can be kept if desired. e.g. `gnm.calcModes(50, zeros=True)`. We will use the default. In addition, we will create hinge sites for later use in the slow mode shape plot. These sites represent places in the protein where the fluctuations change in relative direction.
 ~~~ python
 In[#]: gnm.calcModes()
 In[#]: hinges = gnm.getHinges()
@@ -71,7 +74,7 @@ In[#]: showMode(gnm[0], hinges=True)
 In[#]: grid();
 ~~~~~
 
-![image-center](../assets/images/SARS-CoV-2_SlowMode_20A.png){: .align-center}
+![image-center](../assets/images/SARS-CoV-2_ChainA_SlowMode_20A.png){: .align-center}
 {: style="font-size: medium;"}
 
 Square Fluctuations
@@ -84,5 +87,5 @@ In[#]: showSqFlucts(gnm[0], hinges=True);
 
 Now, let's head back to the main text on how to read our visualizations and analyze our results.
 
-[Return to main text](NMA){: .btn .btn--primary .btn--x-large}
+[Return to main text](conclusion){: .btn .btn--primary .btn--x-large}
 {: style="font-size: 100%; text-align: center;"}

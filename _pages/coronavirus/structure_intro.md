@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-## From DNA to RNA to protein
+## Determining protein structure is fundamental to understanding protein function
 
 Proteins are one of the most important groups of macromolecules in living organisms, contributing to essentially all functions within them. Recall that in our [introduction to transcription](../motifs/transcription) in a previous module, we introduced the "central dogma" of molecular biology, in which DNA is transcribed into RNA, which is then translated into protein. This process is represented in the figure reproduced below.
 
@@ -17,145 +17,103 @@ The central dogma of molecular biology states that molecular information flows f
 
 In this earlier module, we focused on how master regulators called transcription factors could affect the rates at which a given gene could be transcribed into RNA and translated into protein. In this module, we investigate what happens after translation.
 
-Before continuing, we should be a bit more precise about what we mean by "protein". The ribosome converts triplets of RNA nucleotides into a chain of amino acids called a **polypeptide**. This chain of amino acids will then "fold" into a three-dimensional shape; this folding happens without any outside influence as the polypeptide settles into the most stable three-dimensional structure. Regardless of the organism or cell type, and even if a polypeptide chain is unfolded, it will almost always fold back into essentially the same 3-D structure in a manner of microseconds. This means that nature is employing a "magic algorithm" that produces the structure of a protein from its sequence of amino acids. The problem is that deciphering the magic algorithm for protein folding has mystified biologists for decades.
+Before continuing, we should be a bit more precise about what we mean by "protein". The ribosome converts triplets of RNA nucleotides into a chain of amino acids called a **polypeptide**. The polypeptide will then "fold" into a three-dimensional shape; this folding happens without any outside influence as the polypeptide settles into the most stable three-dimensional structure. Even if a polypeptide chain is unfolded, it will almost always fold back into essentially the same 3-D structure in a manner of microseconds. This means that nature is applying a "magic algorithm" that produces the structure of a protein from its sequence of amino acids. But how does this algorithm work?
 
-This brings us to our first biological problem of interest: what is the shape of a given protein? This **structure prediction problem**, which our work in the first part of this module will focus on, is simple to state but deceptively difficult. In fact, it has been an active area of biological research for several decades.
+This brings us to our first biological problem of interest: can we predict the shape of a protein from its amino acid sequence? This **structure prediction problem**, which we will focus on in the first part of this module, is simple to state but deceptively difficult. In fact, it has been an active area of biological research for several decades.
 
-You may be wondering why we care about the shape of a given protein. Knowing a protein's shape is essential to determining the function of that protein as well as how it interacts with other proteins or ligands. And understanding protein interactions underlies a huge amount of biological research. To take one example, a human disease may be caused by a diseased protein, in which case we are looking for a drug (i.e., some other substance) that binds to the protein and causes some change of interest in that protein. For another example of why shape is vital, consider the following video of a ribosome (which is a complex of RNA and proteins) translating a messenger RNA into protein. For translation to succeed, the ribosome needs to have a very precise shape including a "slot" that the messenger RNA strand can fit into and be read.
+You may be wondering why we care about protein structure. Knowing a protein's shape is essential to starting to determine its function and how it interacts with other proteins or molecules in its environment. (There are still a few thousand human proteins whose function is unknown.) And understanding protein interactions underlies a huge amount of biological research. For example, a disease may be caused by a faulty protein, in which case researchers want to find a drug (i.e., some other chemical substance) that binds to the protein and causes some change of interest in that protein, such as inhibiting its behavior.
+
+For a more visual example of how protein shape affects protein function, consider the following video of a ribosome (which is a complex of RNA and proteins) translating a messenger RNA into protein. For translation to succeed, the ribosome needs to have a very precise shape including a "slot" that the messenger RNA strand can fit into and be read.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/TfYf_rPWUdY" frameborder="0" allowfullscreen></iframe>
 
-In the next section, we will discuss how interactions involving proteins are typically modeled.
+As we have seen throughout this course, molecular interactions are ruled by probability. Any two molecules may *interact*, but their rate of *dissociation* will be much higher if they do not fit together well. Furthermore, two interacting molecules need to not only collide with each other but also have the correct orientation in order to fit together.
 
-## Protein shape determines binding affinity
+Because structure prediction is such a fundamental problem, researchers wish to catalog the enormously varied shapes that different proteins can have. For example, the figure below shows each "protein of the month" in 2019 named by the **Protein Data Bank** (**PDB**). But the fact remains that proteins are submicroscopic; so how did researchers determine these shapes?
 
-The simplest model of protein interactions is Emil Fischer’s **lock and key** model, which dates all the way back to 1894 [^Fischer]. This model considers a protein that is an **enzyme**, which serves as a catalyst for a reaction involving another molecule called a **substrate**, and we think of the substrate as a key fitting into the enzyme lock. If the substrate does not fit into the active site of an enzyme, then the reaction will not occur.
-
-However, proteins are rather flexible molecules, a fact that we will return to when we discuss the binding of the coronavirus spike protein to a human enzyme in a later lesson. As a result of this flexibility, Daniel Koshland introduced a modified model called the **induced fit** model in 1958 [^Koshland]. In this model, the enzyme and substrate may not fit perfectly, nor are they rigid like a lock and key. Rather, the two molecules may fit inexactly, changing shape as they bind to mold together more tightly. That having been said, if an enzyme and substrate's shape do not match well with each other, then they will not bind. For an overview of the induced fit model, please check out this excellent video from Khan Academy.
-
-<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/8lUB2sAQkzw" frameborder="0" allowfullscreen></iframe>
-
-As we have seen throughout this course, molecular interactions are ruled by probability. Any two molecules may *interact*, but their rate of *dissociation* will be much higher if they do not fit together well. Furthermore, even if two molecules do fit together, they need to not only collide with each other but also have the correct orientation with respect to each other.
-
-So we can think about identifying the structure of a collection of proteins as cataloging the enormously varied shapes that different proteins can have. For example, the figure below shows each "protein of the month" in 2019 named by the **Protein Data Bank** (**PDB**). But the fact remains that proteins are submicroscopic; so how is it that researchers are able to determine these shapes?
-
-![image-center](../assets/images/different_protein_shapes.jpg){: .align-center}
-Each "protein" of the month in 2019 named by the PDB. Note how different the shapes are of all these proteins, which accomplish a wide variety of cellular tasks.
+![image-center](../assets/images/different_protein_shapes_2020.jpg){: .align-center}
+Each "molecule of the month" in 2020 named by the PDB. Note how different the shapes are of all these proteins, which accomplish a wide variety of cellular tasks. Note that the SARS-CoV-2 spike protein was the molecule of the month in June 2020. Source: [https://pdb101.rcsb.org/motm/motm-by-date](https://pdb101.rcsb.org/motm/motm-by-date).
 {: style="font-size: medium;"}
 
 ## Laboratory methods for determining protein structure
 
-There are a few existing methods for accurately determining protein structure. In this section, we will pause to discuss two of them.
+In this section, we will introduce two popular laboratory methods for accurately determining protein structure. These approaches are very sophisticated, and we appeal to high-quality videos explaining them if you are interested.
 
-First, **X-ray crystallography** (sometimes called **macromolecular crystallography**) works by first crystallizing many copies of a protein and then shining an intense x-ray beam at the crystal. When light hits each protein, it is diffracted, creating patterns from which the position of each atom in the protein can be inferred.  If you are interested in learning more about X-ray crystallography, check out the following excellent two-part video series from The Royal Institution.
+In **X-ray crystallography** (sometimes called **macromolecular crystallography**), researchers first crystallize many copies of a protein and then shining an intense x-ray beam at the crystal. Light hitting the protein is diffracted, creating patterns from which the position of every atom in the protein can be inferred.  If you are interested in learning more about X-ray crystallography, check out the following excellent two-part video series from The Royal Institution.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/gLsC4wlrR2A" frameborder="0" allowfullscreen></iframe>
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/WJKvDUo3KRk" frameborder="0" allowfullscreen></iframe>
 
-Second, we could use **cryo-electron microscopy** (**cryo-EM**). In this approach, we preserve thousands of copies of our protein in non-crystalline ice and then examine them with an electron microscope. Check out the following YouTube video from the University of California San Francisco for a lengthier introduction to cryo-EM.
+X-ray crystallography is over a century old, and has been the *de facto* approach for protein structure determination for decades. Yet a newer method is now rapidly replacing X-ray crystallography.
+
+In **cryo-electron microscopy** (**cryo-EM**), researchers preserve thousands of copies of the protein in non-crystalline ice and then examine these copies with an electron microscope. Check out the following YouTube video from the University of California San Francisco for a detailed discussion of cryo-EM.
 
 <iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/Qq8DO-4BnIY" frameborder="0" allowfullscreen></iframe>
 
-Unfortunately, both of these approaches are expensive. X-ray crystallography costs upward of $2,000 per protein; furthermore, Crystallizing a protein is a challenging task, and each copy of the protein must line up in the same way, which does not work for very flexible proteins. As for cryo-EM, an electron microscope is a very complicated machine that may cost anywhere between $100,000 and $27 million (the actual cost of a microscope housed at Lawrence Berkeley National Lab).
+Unfortunately, laboratory approaches for structure determination are expensive. X-ray crystallography costs upward of $2,000 per protein; furthermore, crystallizing a protein is a challenging task, and each copy of the protein must line up in the same way, which does not work for very flexible proteins. As for cryo-EM, an electron microscope is a very complicated machine that costs hundreds of thousands or millions of dollars (one microscope housed at Lawrence Berkeley National Lab cost $27 million).
 
-Protein structures that have been determined experimentally are typically stored in the PDB, which we mentioned above. As of early 2020, there are over 160,000 entries in this database, which only contained a few thousand proteins at the turn of the century. Can we consider structure determination a solved problem, then?
+Protein structures that have been determined experimentally are typically stored in the PDB, which we mentioned above. As of early 2020, this database contained over 160,000 proteins, most of which have been added since 2000.
 
-Before we set aside structure prediction, let’s consider the human proteome (i.e., collection of all proteins). A human proteome study published in 2016 estimated that humans have between 620,000 and 6.13 million protein isoforms (i.e., proteins with different shapes). A database of 160,000 proteins would be insufficient for covering humans, let alone the entire collection of proteins across all organisms on the planet.
+Before we set aside structure prediction, consider that a 2016 study estimated that humans have between 620,000 and 6.13 million protein isoforms (i.e., differently-shaped protein variants) [^Ponomarenko]. If we hope to catalog the proteins of all living things, then our work is just beginning.
 
-Another issue with laboratory methods of structure determination is that they require our ability to sample the actual physical proteins. For example, to produce bacterial proteins, we need to culture bacteria, and yet microbiologists have estimated that less than 2% of bacteria can be cultured in the lab [^Wade].
+Another issue with laboratory methods of structure determination is that they require the ability to isolate the actual physical proteins. For example, to study bacterial proteins, we need to culture bacteria, and yet microbiologists have estimated that less than 2% of bacteria can currently be cultured in the lab.[^Wade]
 
-What, then, can we do? Fortunately, although identifying protein structure is difficult, researchers have spent decades cataloging the genomes (i.e., the sum total of DNA in an organism's nucleus) of thousands of species. Because of the central dogma of molecular biology, we know that much of this DNA winds up being translated into protein. As a result, biologists know the *sequence* of amino acids making up many proteins.
-
-The first whole genome sequence of SARS-CoV-2, isolate *Wuhan-Hu-1*, was released on 10 January 2020 by Wu, F. et. al., and is available in GenBank along with an annotation of the genome[^Genome][^Annotation], shown in the figure below. Upon sequence comparison, SARS-CoV-2 was found to be related to several coronaviruses isolated from bats and distantly related to SARS-CoV-1, the viral strain that caused the 2003 SARS outbreak. In fact, SARS-CoV-2 has a sequence identity of around 96% with bat coronavirus RaTG13, leading us to the hypothesis that the virus originated from bats, which is further supported by the fact that bats are a natural reservoir of SARS-related coronaviruses.
-
-![image-center](../assets/images/SARSCoV2Annotation.png){: .align-center}
-An annotated genome of SARS-CoV-2. Accessed from GenBank: [https://go.usa.gov/xfzMM](https://go.usa.gov/xfzMM).
-{: style="font-size: medium;"}
-
-Annotating these viral genes is important, but we ultimately need to know the shape of the protein that these genes encode in order to decipher how the virus interacts with the host cell. This is extremely valuable in designing treatments or vaccines that target specific viral proteins.
-
-Recall from the start of this lesson that even if a protein is unfolded into a polypetide, then it always folds back into essentially the same three-dimensional shape. This leads us to an idea: given the sequence of amino acids corresponding to the SARS-CoV-2 spike protein, can we predict the final 3-D structure of this protein? In other words, can we reverse engineer the magic algorithm that nature uses for protein folding?
-
-Unfortunately, as we will see in the next section, predicting protein structure from an amino acid sequence is a very challenging problem.
+What, then, can we do? Fortunately, although identifying protein structure is difficult, researchers have spent decades cataloging the genomes of thousands of species. Because of the central dogma of molecular biology, we know that much of this DNA winds up being translated into protein. As a result, biologists know the *sequence* of amino acids making up many proteins whose structures are unknown. In our case, although the SARS-CoV-2 genome had been sequenced in January 2020, the structure of its spike protein was unknown. Can we therefore use the sequence of amino acids corresponding to the SARS-CoV-2 spike protein to predict the protein's 3-D shape? In other words, can we reverse engineer the magic algorithm that nature uses for protein folding?
 
 ## What makes protein structure prediction so difficult?
 
-One reason why inferring protein structure from sequence is so difficult is that the number of potential protein shapes is enormous, and small perturbations in the primary structure of a protein can drastically change the protein's shape and even render it useless. This fact might give us hope, that if we look at experimentally verified structures of proteins with known amino acid sequences, then we could reverse engineer the sequence from the structure and start determining how the magic folding algorithm works. But the inverse problem of inferring sequence from structure is very difficult as well because different amino acids can have similar chemical properties, and so some mutations will hardly change the shape of the protein at all. Furthermore, two very different amino acid sequences can fold into proteins with similar shapes and identical function.
+Unfortunately, predicting protein structure from amino acid sequence is a very challenging problem. On the one hand, small perturbations in the primary structure of a protein can drastically change the protein's shape and even render it useless. On the other, different amino acids can have similar chemical properties, and so some mutations will hardly change the shape of the protein at all. As a result, two very different amino acid sequences can fold into proteins with similar shapes and comparable function.
 
-For example, the following figure compares both the sequences and structures of hemoglobin subunit alpha from humans (*Homo sapiens*; PDB: [1si4](https://www.rcsb.org/structure/1SI4) shortfin mako sharks (*Isurus oxyrinchus* ; PDB: [3mkb](https://www.rcsb.org/structure/3mkb) and emus (*Dromaius novaehollandia*; PDB: [3wtg](https://www.rcsb.org/structure/3wtg). Hemoglobin is the oxygen-transport protein in the blood, consisting of two alpha "subunit" proteins and two beta subunit proteins that combine into a protein complex; because hemoglobin is well-studied, we will use it as an example throughout this module. The subunit alpha proteins across the three species are markedly different in terms of primary structure, and yet their 3-D structures are essentially identical.
+For example, the following figure compares both the sequences and structures of hemoglobin subunit alpha from humans (*Homo sapiens*; PDB: [1si4](https://www.rcsb.org/structure/1SI4) shortfin mako sharks (*Isurus oxyrinchus* ; PDB: [3mkb](https://www.rcsb.org/structure/3mkb) and emus (*Dromaius novaehollandia*; PDB: [3wtg](https://www.rcsb.org/structure/3wtg). Hemoglobin is the oxygen-transport protein in the blood, consisting of two alpha "subunit" proteins and two beta subunit proteins that combine into a protein complex; because hemoglobin is well-studied and much shorter than the SARS-CoV-2 spike protein, we will use it as an example throughout this module. The subunit alpha proteins across the three species are markedly different in terms of primary structure, and yet their 3-D structures are essentially identical.
 
 ![image-center](../assets/images/SequenceStructureExample.png){: .align-center}
 (Top) An amino acid sequence comparison of the first 40 (out of 140) amino acids of hemoglobin subunit alpha for three species: human, mako shark, and emu. A column is colored blue if all three species have the same amino acid, white if two species have the same amino acid, and red if all amino acids are different. Sequence identity calculates the number of positions in two amino acid sequences that share the same character. (Bottom) Side by side comparisons of the 3-D structures of the three proteins. The final figure on the right superimposes the first three structures to highlight their similarities.
 {: style="font-size: medium;"}
 
-Another reason why protein structure prediction is so difficult is due to the huge number of conformations that a single polypeptide can take. The polypeptide is very flexible, with the ability to rotate in multiple ways at each amino acid, which means that the polypeptide could fold into a staggering number of different shapes. A good analogy for this flexibility producing many different shapes is the "Rubik's Twist" puzzle, shown below, which consists of a linear chain of flexible blocks that can form a huge number of shapes.
+Another reason why protein structure prediction is so difficult is because a polypeptide is very flexible, with the ability to rotate in multiple ways at each amino acid, which means that the polypeptide is able to fold into a staggering number of different shapes. A good analogy for polypeptide flexibility is the "Rubik's Twist" puzzle, shown below, which consists of a linear chain of flexible blocks that can form a huge number of different shapes.
 
 ![image-center](../assets/images/rubiks_twist.gif){: .align-center}
-An illustration of Rubik's twist forming into a ball. Source: [https://grabcad.com/library/rubik-s-snake-1](https://grabcad.com/library/rubik-s-snake-1).
+An animation of Rubik's twist forming into a ball and then back into a linear chain. Source: [https://grabcad.com/library/rubik-s-snake-1](https://grabcad.com/library/rubik-s-snake-1).
 {: style="font-size: medium;"}
 
-A polypeptide is flexible because the bonds holding amino acids together, called **peptide bonds**, are able to rotate, and this rotation produces **peptide torsion angles** that change the shape of the protein. As shown in the following figure, we are interested in two angles, called the **phi angle (φ)** and **psi angle (ψ)**, which connect the amino acid's "alpha carbon" to its amino group and carboxyl group, respectively. (There is a third omega angle (ω) describing the bond angle of the peptide bond between two amino acids, but is almost always locked at 180°.)
+To explain why the protein is so flexible, we should say a bit more about the molecular structure of a polypeptide.
 
-![image-center](../assets/images/torsion_angles.png){: .align-center}
-A polypeptide chain of multiple amino acids with the three torsion angles φ, ψ, and ω indicated. Image courtesy: Adam Rędzikowski.
-{: style="font-size: medium;"}
-
-Below is an excellent video from Jacob Elmer illustrating how changing φ and ψ at a single amino acid can reorient the conformation of a protein.
-
-<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/1usemtIYe_s" frameborder="0" allowfullscreen></iframe>
-
-A polypeptide with *n* amino acids will have *n* - 1 peptide bonds, meaning that its shape will be influenced by 99 phi angles and 99 psi angles. Say that each bond has three stable conformations. Then this means that there are 3<sup><em>n</em></sup> total possible protein conformations. As a result, if *n* is just 200 (a reasonably short polypeptide), the number of possible protein strucures we need to consider is more than the number of atoms in the universe! The ability for the protein to reliably find a single conformation using the magic algorithm despite such an enormous number of potential shapes is called **Levinthal's paradox** and is in a sense another example of the principle of "combinatorial explosion" that we saw in the module on bacterial chemotaxis [^Levinthal].
-
-Although protein structure prediction is a difficult problem, this is not to say that it is impossible.  In the next lesson, we will examine how existing software attempts to replicate nature's magic algorithm for folding a polypeptide chain into a 3-D protein structure. We will then place ourselves in the shoes of early SARS-CoV-2 researchers working before the structure of the virus's spike protein had been experimentally validated to see if we can predict this structure and give biologists a head start on fighting the pandemic.
-
-[Next lesson](ab_initio){: .btn .btn--primary .btn--large}
-{: style="font-size: 100%; text-align: center;"}
-
-
-
-## Extra: Four levels of protein structure
-
-These amino acids are linked together to form a protein as a amino acid chain, or polypeptide chain, that will typically undergo folding to obtain a 3D structure. In the first figure below, the general shape of the amino acid is shown: a central alpha-Carbon, a carboxyl group, an amino group, and finally one of 20 side-groups that differentiate the amino acids. Each amino acid is linked to the next by a peptide bond, and it is this connection and alpha-Carbon that make up the protein backbone, as shown in the second figure. The side groups of each amino acid are responsible for amino acid's chemical properties. These chemical properties allow the amino acids to interact with each other and fold into the 3D structure.
-
-We stated that the overall 3D structure (tertiary structure) of the protein is dictated by the interactions of the side chains. Even when we unfold, or denature, a protein, it will eventually fold back into essentially the same shape because of these interactions.
+An amino acid is formed of four parts. In the center, a carbon atom (called the **alpha carbon**) is connected to four different molecules: a hydrogen atom (H), a **carboxyl group** (–COOH), an **amino group** (-NH<sub>2</sub>), and a **side chain** (denoted "R" and often called an R group). The side chain is a molecule that differs between different amino acids and ranges in mass from a single hydrogen atom (glycine) all the way up to -C<sub>8</sub>H<sub>7</sub>N (tryptophan). The simplified structure of an amino acid is shown in the figure below.
 
 ![image-center](../assets/images/AminoAcid.png){: .align-center}
 {: style="font-size: medium;"}
 
+To form a polypeptide chain, consecutive amino acids are linked together during a condensation reaction in which the amino group of one amino acid is joined to the carboxyl group of another, while a water molecule (H<sub>2</sub>O) is expelled. This reaction is illustrated by the figure below.
+
+![image-center](../assets/images/dipeptide_reaction.png){: .align-center}
+A condensation reaction joins two amino acids into a "dipeptide" by joining the amino group of one amino acid to the carboxyl group of the other. Source: [https://bit.ly/3q0Ph8V](https://bit.ly/3q0Ph8V).
+{: style="font-size: medium;"}
+
+The resulting bond that is produced between the carbon atom of one amino acid's carboxyl group and the nitrogen atom of the next amino acid's amino group, called a **peptide bond**, is very strong. The peptide has very little rotation around this bond, which is almost always locked at 180°. As peptide bonds are formed between adjacent amino acids, the polypeptide chain takes shape, as shown in the figure below.
+
 ![image-center](../assets/images/Backbone.png){: .align-center}
+A protein backbone formed of three amino acids.
 {: style="font-size: medium;"}
 
+However, the bonds *within* an amino acid, joining the alpha carbon to its carboxyl group and amino group, are not as rigid. Like the Rubik's twist, the polypeptide is free to rotate around these two bonds. This rotation produces two angles of interest, called the **phi angle (φ)** and **psi angle (ψ)** (see figure below), which are formed at the alpha carbon's connections to its amino group and carboxyl group, respectively.
 
-
-Protein structure are separated into four different levels of description. The most basic description, the **primary structure**, refers the specific amino acid sequence of the polypeptide chain. Below is an example of the human hemoglobin subunit alpha and its primary structure.
-
-![image-center](../assets/images/PrimaryStructureExample.png){: .align-center}
-The primary structure, or specific amino acid sequence, of human hemoglobin subunit alpha. Each letter corresponds to one of the twenty amino acids. Protein structure from: https://www.rcsb.org/structure/1SI4.
+![image-center](../assets/images/torsion_angles.png){: .align-center}
+A polypeptide chain of multiple amino acids with the torsion angles φ and ψ indicated. The angle ω indicates the angle of the peptide bond, which is typically 180°. Image courtesy: Adam Rędzikowski.
 {: style="font-size: medium;"}
 
-The **secondary structure** describes the highly regular substructures in the protein. Essentially, they are the 3D structures of local amino acids groups within the protein and spontaneously form during the folding process. In a sense, they are the intermediate structures that form before the overall protein structure. The two main substructures, shown in the figure below, are alpha-helices (left) and beta-sheets (right). Alpha-helices are formed when local amino acids fold into a tube-like structure. Beta-sheets are when the local amino acids interact by lining up side-by-side, forming a sheet-like structure. The formation of these secondary structures help with the overall process of folding.
+Below is an excellent video from Jacob Elmer illustrating how changing φ and ψ at a single amino acid can drastically reorient a protein's shape.
 
-![image-center](../assets/images/SecondaryStructure.png){: .align-center}
-General shape of secondary structure alpha-helices (left) and beta-sheets (right). Source: Cornell, B. (n.d.). [https://ib.bioninja.com.au/higher-level/topic-7-nucleic-acids/73-translation/protein-structure.html](https://ib.bioninja.com.au/higher-level/topic-7-nucleic-acids/73-translation/protein-structure.html)
-{: style="font-size: medium;"}
+<iframe width="640" height="360" src="https://www.youtube-nocookie.com/embed/1usemtIYe_s" frameborder="0" allowfullscreen></iframe>
 
-The **tertiary structure** describes the overall 3D shape of the protein that results from the fully-folded polypeptide chain. This is what we think of as the "shape" of the protein. In a sense, it is the combination of all the secondary structures and linkages that creates the tertiary structure. Below is the tertiary structure of human hemoglobin subunit alpha.
+A polypeptide with *n* amino acids will have *n* - 1 peptide bonds, meaning that its shape is influenced by *n* - 1 phi angles and 99 *n* - 1 psi angles. If each bond has *k* stable conformations, then there are *k*<sup>2<em>n</em>-2</sup> total possible conformations of the polypeptide. For example, if *k* is 3 and *n* is just 100 (a short polypeptide), then the number of potential protein structures is more than the number of atoms in the universe! The ability for the protein to reliably find a single conformation using the magic algorithm despite such an enormous number of potential shapes is called **Levinthal's paradox**.[^Levinthal]
 
-![image-center](../assets/images/TertiaryStructureExample.png){: .align-center}
-Tertiary structure of human hemoglobin subunit alpha. Within the structure are multiple alpha-helices secondary structures. Protein structure from: [https://www.rcsb.org/structure/1SI4](https://www.rcsb.org/structure/1SI4).
-{: style="font-size: medium;"}
+Although protein structure prediction is difficult, it is not impossible; the protein folding approach that nature uses is not, after all, magic.  In the next lesson, we will examine how existing software attempts to replicate nature's magic algorithm for folding a polypeptide chain into a 3-D protein structure. We will then place ourselves in the shoes of early SARS-CoV-2 researchers working before the structure of the virus's spike protein had been experimentally validated to see if we can predict its structure and give biologists a head start on fighting the pandemic.
 
-Finally, some proteins have a **quaternary structure**, which describes the protein’s interaction with other copies of itself to form a single functional unit, or a multimer. Many proteins do not have a quaternary structure and functions as an independent monomer.
-
-Proteins are can often be divided into protein domains. Domains are distinct functional/structural units within the protein and are typically responsible for a specific interaction or function. For example, The Sars-CoV-2 S protein has a Receptor Binding Domain (RBD) that is responsible for interacting with ACE2. The rest of the protein does not come into contact with ACE2.
-
+[Next lesson](ab_initio){: .btn .btn--primary .btn--large}
+{: style="font-size: 100%; text-align: center;"}
 
 [^Wade]: Wade W. 2002. Unculturable bacteria--the uncharacterized organisms that cause oral infections. Journal of the Royal Society of Medicine, 95(2), 81–83. https://doi.org/10.1258/jrsm.95.2.81
-
-[^Genome]: Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome. https://www.ncbi.nlm.nih.gov/nuccore/MN908947
-
-[^Annotation]: Annotated Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome. https://go.usa.gov/xfzMM
 
 [^Fischer]: Fischer, E. 1894. Einfluss der Configuration auf die Wirkung der Enzyme. Ber. Dtsch. Chem. Ges., 27: 2985-2993. https://doi.org/10.1002/cber.18940270364
 
@@ -170,3 +128,5 @@ Proteins are can often be divided into protein domains. Domains are distinct fun
 [^Munnink]: Oude Munnink, B.B., Nieuwenhuijse, D.F., Stein, M. et al. 2020. Rapid SARS-CoV-2 whole-genome sequencing and analysis for informed public health decision-making in the Netherlands. Nat Med 26, 1405–1410. https://doi.org/10.1038/s41591-020-0997-y
 
 [^Islam]: Islam, M.R., Hoque, M.N., Rahman, M.S. et al. 2020. Genome-wide analysis of SARS-CoV-2 virus strains circulating worldwide implicates heterogeneity. Sci Rep 10, 14004. https://doi.org/10.1038/s41598-020-70812-6
+
+[^Ponomarenko]:	Ponomarenko, E. A., Poverennaya, E. V., Ilgisonis, E. V., Pyatnitskiy, M. A., Kopylov, A. T., Zgoda, V. G., Lisitsa, A. V., & Archakov, A. I. 2016. The Size of the Human Proteome: The Width and Depth. International journal of analytical chemistry, 2016, 7436849. https://doi.org/10.1155/2016/7436849

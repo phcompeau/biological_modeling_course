@@ -9,7 +9,7 @@ toc_sticky: true
 
 In this tutorial, we will use CellBlender to adapt our simulation from the [tutorial](tutorial_nar) on negative autoregulation into a mathematically controlled simulation.
 
-First, open the file `NAR_comparison.blend` from the negative autoregulation tutorial and save a copy of the file as `NAR_comparison_equal.blend`.
+First, open the file `NAR_comparison.blend` from the negative autoregulation tutorial and save a copy of the file as `NAR_comparison_equal.blend`. You may also download the completed tutorial files <a href="../tutorials/NAR_compare_equal.blend" download="NAR_compare_equal.blend">here</a>.
 
 Now go to `CellBlender > Reactions` to scale up the simple regulation reaction in the negative autoregulation simulation as follows: for the reaction `X2’ -> X2’ + Y2’`,  change the forward rate from `4e2` to `4e3`.
 
