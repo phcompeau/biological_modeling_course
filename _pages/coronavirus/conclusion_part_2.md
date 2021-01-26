@@ -2,7 +2,7 @@
 permalink: /coronavirus/conclusion_part_2
 title: "Conclusion: From Static Protein Analysis to Molecular Dynamics"
 sidebar:
- nav: "coronavirus_part_2"
+ nav: "coronavirus"
 toc: true
 toc_sticky: true
 ---
