@@ -169,10 +169,6 @@ coronavirus:
         url: /coronavirus/tutorial_GNM
       - title: "ANM Simulations Add Directionality to GNM<br><br>"
         url: /coronavirus/tutorial_ANM
-  - title: "Exercises"
-    children:
-      - title: "Protein structure and molecular dynamics exercises"
-        url: /coronavirus/exercises
 
 wbcells:
   - title: Tutorial
