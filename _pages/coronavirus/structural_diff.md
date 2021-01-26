@@ -9,11 +9,11 @@ toc_sticky: true
 
 ## Visualizing a region of structural differences
 
-In the previous lesson, we identified a region between residues 476 and 485 of the SARS-CoV-2 spike protein that correspond to a structural difference between the SARS-CoV-2 and SARS-CoV RBMs. In this lesson, we will zoom in on this region of the RBM and determine whether the differences we have found affect binding affinity with the human ACE2 enzyme.
+In the previous lesson, we identified a region between residues 476 and 485 of the SARS-CoV-2 spike protein that corresponds to a structural difference between the SARS-CoV-2 and SARS-CoV RBMs. Our goal in this lesson is to determine whether the differences we have found affect binding affinity with the human ACE2 enzyme.
 
-We know from our work throughout this course that a tiny change on a lower level can produce a big difference in the high-level behavior of a system. SARS-CoV-2 binding is no different; even subtle changes in the ability of SARS-CoV-2 to stick to the ACE2 enzyme may have had an enormous influence on the virus becoming a pandemic.
+We know from our work in this course that a tiny change can produce a big difference in the high-level behavior of a finely tuned system. It may therefore be the case that subtle changes in the ability of SARS-CoV-2 to stick to the ACE2 enzyme can change the virus's infectiousness enough to greatly influence its spread through the human population.
 
-We will first use VMD to focus on the region of interest and highlight the amino acids that differ in SARS-CoV-2. If you are interested in doing so, please follow the following tutorial, which we will consult throughout the rest of this lesson.
+We will first use VMD to highlight the amino acids in the region of interest of the SARS-CoV-2 spike protein's structure. If you are interested in doing so, please follow the tutorial below, which we will consult throughout the rest of this lesson.
 
 [Visit tutorial](tutorial_visualization){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
