@@ -161,7 +161,7 @@ coronavirus:
         url: /coronavirus/tutorial_rmsd
       - title: "Finding and Visualizing Local Differences in Two Protein Structures<br><br>"
         url: /coronavirus/tutorial_multiseq
-      - title: "Visualizing Regions and Residues<br><br>"
+      - title: "Visualizing Specific Regions of Interest within a Protein Structure<br><br>"
         url: /coronavirus/tutorial_visualization
       - title: "NAMD Energy<br><br>"
         url: /coronavirus/tutorial_NAMD
