@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/tutorial_ANM
-title: "ANM Calculations & VMD Plugin: NMWiz"
+title: "Software Tutorial: ANM Simulations Add Directionality to GNM"
 sidebar:
  nav: "coronavirus"
 toc: true

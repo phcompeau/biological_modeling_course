@@ -165,9 +165,9 @@ coronavirus:
         url: /coronavirus/tutorial_visualization
       - title: "Computing the Energy Contributed by a Local Region of a Bound Complex<br><br>"
         url: /coronavirus/tutorial_NAMD
-      - title: "GNM Calculation<br><br>"
+      - title: "Molecular Dynamics Analysis with GNM<br><br>"
         url: /coronavirus/tutorial_GNM
-      - title: "ANM Calculation<br><br>"
+      - title: "ANM Simulations Add Directionality to GNM<br><br>"
         url: /coronavirus/tutorial_ANM
   - title: "Exercises"
     children:

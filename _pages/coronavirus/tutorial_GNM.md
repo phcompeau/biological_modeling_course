@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/tutorial_GNM
-title: "GNM"
+title: "Software Tutorial: Molecular Dynamics Analysis with GNM"
 sidebar:
  nav: "coronavirus"
 toc: true
