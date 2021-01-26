@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/tutorial_visualization
-title: "Visualizing Specific Regions of Interest within a Protein Structure"
+title: "Software Tutorial: Visualizing Specific Regions of Interest within a Protein Structure"
 sidebar:
  nav: "coronavirus"
 toc: true
@@ -53,12 +53,12 @@ For example, say that we are interested in residue 486 in the RBD (which is phen
 ![image-center](../assets/images/Ridge8-1.png){: .align-center}
 {: style="font-size: medium;"}
 
-In the `OpenGL Display` window, you will now see a new yellow projection coming out of the RBD, as shown in the image below. This is residue 486! You may need to rotate the protein a bit to see it.
+In the `OpenGL Display` window, you will now see a new yellow projection coming out of the RBD, as shown in the image below. This is residue 486! You may need to rotate the protein a bit to see it. (Instructions on how to rotate a molecule and zoom in and out within VMD were given in our [tutorial on finding local protein differences](tutorial_multiseq).)
 
 ![image-center](../assets/images/Ridge8-2.png){: .align-center}
 {: style="font-size: medium;"}
 
-Let's now color a few more residues from our region of interest: Phe486, Ala475, and Asn487 of the RBD, and Met82, Leu79, Tyr83, Ser19, and Gln24 of ACE2. As we return to the main text, we will explain why these residues are implicated in binding affinity.  
+Let's now color a few more residues from our region of interest: residues 475 and 487 of the RBD, and residues 19, 24, 79, 82, and 83 of ACE2. As we return to the main text, we will explain why these residues are implicated in binding affinity.  
 
 Coloring these residues is analogous to the previous steps of just adding new representations and changing `Selected Atoms`, `Coloring Method`, and `Drawing Method`. Make the following representations; note the colors that we use.
 
