@@ -24,7 +24,7 @@ In the following tutorial, we will compute the energy of the bound spike protein
 
 Using the methods described in the tutorial, we calculated the interaction energies for each of the three regions of interest as well as for the total energy of the complexes for both SARS-CoV and SARS-CoV-2. The results of this analysis are shown in the table below.
 
-![image-center](../assets/images/NAMDEnergy.png){: .align-center}
+![image-center](../assets/images/NAMDEnergy2.png){: .align-center}
 ACE2 interaction energies of the chimeric SARS-CoV-2 RBD and SARS RBD. The PDB files contain two biological assemblies, or instances, of the corresponding structure. The first instance includes chain A (ACE2) and chain E (RBD), and the second instance includes chain B (ACE2) and chain F (RBD). The overall interactive energies between the RBD and ACE2 are shown in the first two rows (green). Then, the individual interaction energies are shown from the loop site (yellow), hotspot 31 (red), and hotspot 353 (grey). Total energy is computed as the sum of electrostatic interactions and van der Waals (vdW) forces.
 {: style="font-size: medium;"}
 
