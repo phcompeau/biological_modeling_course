@@ -72,7 +72,7 @@ Then, compute the energy contributed by hotspot 31 and hotspot 353 in SARS-CoV-2
 {: .notice--primary}
 
 
-[Return to main text](NAMD){: .btn .btn--primary .btn--large}
+[Return to main text](NAMD#differences-in-interaction-energy-with-ace2-between-sars-and-sars-cov-2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 [^PSF]: https://www.ks.uiuc.edu/Training/Tutorials/namd/namd-tutorial-unix-html/node23.html

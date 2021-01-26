@@ -83,11 +83,13 @@ Plots of the slow mode square fluctuation of the SARS-CoV-2 spike protein (top-l
 
 From these results, we can see that the SARS-CoV-2 and SARS-CoV spike proteins are not only very similar in terms of structure, but they are similar in terms of dynamics as well. This result is perhaps not a surprise since they both target the ACE2 enzyme, and it drives home the fact that proteins can seem almost identical and yet one can have very subtle changes that turns an outbreak into a pandemic.
 
-## ANM analysis of the coronavirus binding domain
+## ANM models account for the direction of protein fluctuations
 
 The anisotropic counterpart to GNM, in which the direction of fluctuations is also considered, is called **anisotropic network model (ANM)**. Although ANM includes directionality, it typically performs worse than GNM when compared with experimental data[^Yang]. However, we can this model offers the benefit that it can be used to create animations depicting the range of motions and fluctuations of the protein.
 
 In the tutorial linked below, we will apply ANM to produce versions of the plots that we produced above. We will also encounter <a href="http://prody.csb.pitt.edu/nmwiz/" target="_blank">NMWiz</a>, which is short for "normal mode wizard", a GUI for ProDy that is available as a plugin for VMD. We will use NMWiz to perform ANM calculations and create an animation of the SARS-CoV-2 (chimeric) RBD (PDB entry: <a href="http://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>) and the SARS-CoV RBD (PDB entry: <a href="http://www.rcsb.org/structure/2ajf" target="_blank">2ajf</a>).
+
+## ANM analysis of the coronavirus binding domain
 
 [Visit tutorial](tutorial_ANM){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

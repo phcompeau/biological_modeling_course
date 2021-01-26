@@ -87,5 +87,5 @@ In[#]: showSqFlucts(gnm[0], hinges=True);
 
 Now, let's head back to the main text on how to read our visualizations and analyze our results.
 
-[Return to main text](conclusion_part_2){: .btn .btn--primary .btn--x-large}
+[Return to main text](conclusion_part_2#molecular-dynamics-analyses-of-sars-cov-and-sars-cov-2-spike-proteins-using-gnm){: .btn .btn--primary .btn--x-large}
 {: style="font-size: 100%; text-align: center;"}

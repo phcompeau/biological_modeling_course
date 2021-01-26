@@ -72,5 +72,5 @@ Your final visualization should look like the following figure.
 
 Congratulations! You have now created a detailed visualization of the RBD-ACE2 complex that focuses on our site of interest. As we return to the main text, we will discuss how the highlighted amino acids help increase the binding affinity of the SARS-CoV-2 spike protein to ACE2.
 
-[Return to main text](structural_diff){: .btn .btn--primary .btn--large}
+[Return to main text](structural_diff#analyzing-three-sites-of-conformational-differences){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

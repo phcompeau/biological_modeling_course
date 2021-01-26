@@ -159,7 +159,7 @@ coronavirus:
         url: /coronavirus/tutorial_homology
       - title: "Using RMSD to Compare Two Protein Structures<br><br>"
         url: /coronavirus/tutorial_rmsd
-      - title: "Finding and Visualizing Local Differences in Two Protein Structures<br><br>"
+      - title: "Finding Local Differences in Two Protein Structures<br><br>"
         url: /coronavirus/tutorial_multiseq
       - title: "Visualizing Specific Regions of Interest within a Protein Structure<br><br>"
         url: /coronavirus/tutorial_visualization

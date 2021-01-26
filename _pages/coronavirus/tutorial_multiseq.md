@@ -1,6 +1,6 @@
 ---
 permalink: /coronavirus/tutorial_multiseq
-title: "Software Tutorial: Finding and Visualizing Local Differences in Two Protein Structures"
+title: "Software Tutorial: Finding Local Differences in Two Protein Structures"
 sidebar:
  nav: "coronavirus"
 toc: true
