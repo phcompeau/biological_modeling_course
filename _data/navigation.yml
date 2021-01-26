@@ -150,7 +150,7 @@ coronavirus:
       - title: "Quantifying the Interaction Energy Between the SARS-CoV-2 Spike Protein and ACE2<br><br>"
         url: /coronavirus/NAMD
       - title: "Part 2 Conclusion: From Static Protein Analysis to Molecular Dynamics<br><br>"
-        url: /coronavirus/conclusion
+        url: /coronavirus/conclusion_part_2
   - title: Software Tutorials (featuring ProDy)
     children:
       - title: "Using ab initio Modeling to Predict the Structure of Hemoglobin Subunit Alpha<br><br>"

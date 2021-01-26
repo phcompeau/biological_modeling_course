@@ -66,5 +66,5 @@ Now, you should be able to clearly see the animation of the ANM fluctuations of 
 
 Now let's go back to the main text to interpret the results.
 
-[Return to main text](conclusion){: .btn .btn--primary .btn--large}
+[Return to main text](conclusion_part_2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

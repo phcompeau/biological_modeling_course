@@ -1,5 +1,5 @@
 ---
-permalink: /coronavirus/conclusion
+permalink: /coronavirus/conclusion_part_2
 title: "Conclusion: From Static Protein Analysis to Molecular Dynamics"
 sidebar:
  nav: "coronavirus"

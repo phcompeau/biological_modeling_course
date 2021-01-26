@@ -36,7 +36,7 @@ Nevertheless, we should be careful with making strong inferences of the infectio
 
 Another the reason for our cautiousness is that proteins are not fixed objects but rather *dynamic* structures whose shape is subject to small changes over time. In the conclusion to part 2 of this module, we will learn how to analyze the dynamics of a protein's movements within its environment.
 
-[Next lesson](conclusion){: .btn .btn--primary .btn--large}
+[Next lesson](conclusion_part_2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 [^TCBG]: https://www.ks.uiuc.edu/Research/namd/2.9/ug/node22.html
