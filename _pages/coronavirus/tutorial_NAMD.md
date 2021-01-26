@@ -37,29 +37,40 @@ If the PSF file is successfully created, then you will see a message stating `St
 ![image-center](../assets/images/NAMD5.png){: .align-center}
 {: style="font-size: medium;"}
 
-Now that we have the PSF file, we can proceed to NAMD Energy. In `VMD Main`, go to `Extensions > Analysis>NAMD Energy`.
+## Using NAMD Energy to compute the energy of the SARS-CoV-2 RBD loop region
+
+Now that we have the PSF file, we can proceed to NAMD Energy. In `VMD Main`, click `Extensions > Analysis > NAMD Energy`. The `NAMDEnergy` window will pop up. First, change the molecule to be the PSF file that we created.
 
 ![image-center](../assets/images/NAMD6.png){: .align-center}
 {: style="font-size: medium;"}
 
-The `NAMDEnergy` window will show up. First, change the molecule to be the PSF file. We want to calculate the interaction energy between the RBD and ACE2. Recall that the corresponding chain pairs are chain A (ACE2)/chain E (RBD) and chain B (ACE2)/chain F (RBD). Here we will use the chain B/F pair. Put "protein and chain B" and "protein and chain F" for `Selection 1` and `Selection 2`, respectively. Next, we want to calculate the main protein-protein interaction energies, electrostatic and van der Waals. Under `Output File`, enter in the desired name for the results. Next, we need to give NAMDEnergy the parameter file `par_all36_prot.prm`. This should be located at `VMD > plugins > noarch > tcl > readcharmmpar1.3 > par_all36_prot.prm`. Finally, click `Run NAMDEnergy`.
+We now want to calculate the interaction energy between the RBD and ACE2. Recall that the corresponding chain pairs are chain A (ACE2)/chain E (RBD) and chain B (ACE2)/chain F (RBD). As we did in the previous tutorial, we will use the chain B/F pair. Put `protein and chain B` and `protein and chain F` for `Selection 1` and `Selection 2`, respectively.
+
+Next, we want to calculate the main protein-protein interaction energies, divided over electrostatic and van der Waals forces. Under `Output File`, enter your desired name for the results (e.g., `SARS-2_RBD-ACE2_energies`). Next, we need to give NAMDEnergy the parameter file `par_all36_prot.prm`. This file should be found at `VMD > plugins > noarch > tcl > readcharmmpar1.3 > par_all36_prot.prm`. Finally, click `Run NAMDEnergy`.
 
 ![image-center](../assets/images/NAMD7.png){: .align-center}
 {: style="font-size: medium;"}
 
-The output file will be created in your current working directory, and can be opened with a simple text-editor. The values of the results may vary slightly upon repetitive calculations.
+The output file will be created in your current working directory and can be opened with a simple text-editor. The values of your results may vary slightly upon repetitive calculations.
 
 ![image-center](../assets/images/NAMD8.png){: .align-center}
 {: style="font-size: medium;"}
 
-Now, let's calculate the interaction energy between only the SARS-CoV-2 RBD loop site (residues 482 to 486) and ACE2. In the `NAMDEnergy` window, put "protein and chain B" for `Selection 1` and "protein and chain F and (resid 482 to 486)" for `Selection 2`. Keep everything else the same. You should get results similar to this.
+**Note:** You may be wondering why the interaction energy comes out to be a negative number. In physics, a negative value indicates an attractive force between two molecules, and a positive value indicates a repulsive force.
+{: .notice--warning}
+
+We will now focus on the interaction energy between the SARS-CoV-2 RBD loop site (residues 482 to 486) and ACE2. In the `NAMDEnergy` window, enter `protein and chain B` for `Selection 1` and `protein and chain F and (resid 482 to 486)` for `Selection 2`. Keep all other settings the same. You should see output results similar to the following.
 
 ![image-center](../assets/images/NAMD9.png){: .align-center}
 {: style="font-size: medium;"}
 
-You may be curious about why the interaction energy comes out to be a negative number. Just like in physics, the negative value describes the direction of the force. A negative value indicate an attractive force between the two molecules while a positive value indicate a repulsion force. Our results describe the interaction between SARS-CoV-2 RBD and ACE2 as a favorable interaction. The more negative the value, the greater the binding affinity between the two proteins.
+The above results seem to indicate that the interaction between SARS-CoV-2 RBD and ACE2 is a favorable interaction, and that the loop region contributes to this bonding. Yet our goal was to compare the total energy of the bound RBD-ACE2 complex in SARS-CoV-2 against that of SARS-CoV, as well as to compare the energy contributed by the three regions of structural difference that we identified in the main text. We will leave these comparisons to you as an exercise, and we will discuss the results in the main text.
 
-Now, let's go back to the main text to interpret our results.
+**STOP:** First, compute the total energy of the SARS-CoV RBD complex with ACE2 (PDB entry: <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>). How does it compare against the energy of the SARS-CoV-2 complex?
+
+Then, compute the energy contributed by hotspot 31 and hotspot 353 in SARS-CoV-2, as well as that of the regions corresponding to these regions and the loop region in SARS-CoV. How do the energy contributions of corresponding regions compare? Is this surprising, and what can we conclude?
+{: .notice--primary}
+
 
 [Return to main text](NAMD){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
