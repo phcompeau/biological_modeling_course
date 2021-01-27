@@ -240,7 +240,7 @@ end seed species
 end model
 
 generate_network({overwrite=>1})
-simulate({method=>"ssa", t_end=>800, n_steps=>800})
+simulate({method=>"ssa", t_end=>700, n_steps=>400})
 ~~~
 
 3. Define `ligand_center1 = [1500, 1500]` and `ligand_center2 = [-1500, 1500]`. Since we are considering two gradients, we can add up the ligand concentration. We can replace our `cal_concentraion(pos)` function with
