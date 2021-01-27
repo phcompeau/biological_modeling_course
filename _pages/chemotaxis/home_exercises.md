@@ -24,13 +24,9 @@ The simulations in this chapter became quite complex, but there is one way in wh
 {: .notice--info}
 
 1. In reality, *E. coli* has different receptors specific for different types of attractants. Modify your model from the [adaptation tutorial](tutorial_senseadap) to reflect two types of receptor, each specific to its own ligand (call them *A* and *B*). Assume that we have 3500 receptor molecules of each type.
-
  **Hint:** you will not need to have additional molecules in addition to `L` and `T`. Instead, specify additional states for the two molecules that we already have; for example `L(t,Lig~A)` only binds with `T(l,Lig~A)`. Don't forget to update `seed species` as well!
-
 2. What will happen if after the cell adapts to attractant *A*, molecules of *B* are  suddenly added to the system? Model this scenario by assuming that after the cell adapts to `1e6` molecules of *A*, suddenly `1e6` molecules of *B* are added. Observe the concentration of phosphorylated CheY. Is the cell able to respond to *B* after adapting to the concentration of ligand *A*? Why is the change in CheY phosphorylation different from the scenario in which we release the two different ligands concurrently?
-
  **Hint:** the hint for the previous exercise also applies here.
-
 3. In the [chemotactic walk tutorial](tutorial_walk), we have a concentration gradient growing exponentially toward the goal (1500, 1500), so that *L(x,y)* = 100 · 10<sup>8 · (1-*d*/*D*)</sup>. In this exercise, we will modify this tutorial to simulate having multiple different goals, presumably from two different ligand types. To do so, include another goal at location (-1500, 1500), and a similar exponential concentration gradient growing from the center to the goal. The new concentration of ligands, [*L*] will be *L(x,y)* = 100 · 10<sup>8 · (1-*d*<sub>1</sub>/*D*<sub>1</sub>)</sup> + 100 · 10<sup>8 · (1-*d*<sub>2</sub>/*D*<sub>2</sub>)</sup>, where *d*<sub>1</sub> is the distance from *(x,y)* to goal1 (1500, 1500), *d*<sub>2</sub> is the distance from *(x,y)* to goal2 (-1500, 1500), and *D*<sub>1</sub> and *D*<sub>2</sub> are the distances from the origin to the two respective goals. Run your simulation with a background tumbling frequency of once every second, and visualize the trajectories of several cells. Are the cells able to find one of the goals? How long does it take them?
 
 ## Is the actual tumbling reorientation used by E. coli smarter than our model?
