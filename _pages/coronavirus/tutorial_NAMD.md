@@ -71,6 +71,22 @@ The above results seem to indicate that the interaction between SARS-CoV-2 RBD a
 Then, compute the energy contributed by hotspot 31 and hotspot 353 in SARS-CoV-2, as well as that of the regions corresponding to these regions and the loop region in SARS-CoV. How do the energy contributions of corresponding regions compare? Is this surprising, and what can we conclude?
 {: .notice--primary}
 
+|Model|Region|Selection 1|Selection 2|
+|:----|:-----|:----------|:----------|
+|SARS-CoV-2 (6vw1)| Total | protein and chain B | protein and chain F|
+|SARS-CoV (2ajf)| Total | protein and chain B | protein and chain F|
+|SARS-CoV-2 (6vw1)| Loop | protein and chain B | protein and chain F and (resid 482 to 486)|
+|SARS-CoV (2ajf)| Loop | protein and chain B | protein and chain F and (resid 468 to 472)|
+|SARS-CoV-2 (6vw1)| Hotspot31 | protein and chain B | protein and chain F and resid 455|
+|SARS-CoV-2 (6vw1)| Hotspot31 | protein and chain B and (resid31 or resid 35) | protein and chain F|
+|SARS-CoV (2ajf)| Hotspot31 | protein and chain B | protein and chain F and resid 442|
+|SARS-CoV (2ajf)| Hotspot31 | protein and chain B and (resid 31 or resid 35)| protein and chain F|
+|SARS-CoV-2 (6vw1)| Hotspot353 | protein and chain B | protein and chain F and resid 501|
+|SARS-CoV-2 (6vw1)| Hotspot353 | protein and chain B and (resid 38 or resid 353)| protein and chain F|
+|SARS-CoV (2ajf)| Hotspot353 | protein and chain B | protein and chain F and resid 487|
+|SARS-CoV (2ajf)| Hotspot353 | protein and chain B and (resid 38 or resid 353)| protein and chain F|
+
+
 
 [Return to main text](NAMD#differences-in-interaction-energy-with-ace2-between-sars-and-sars-cov-2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
