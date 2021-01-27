@@ -19,6 +19,20 @@ toc_sticky: true
 
 "Thus, gap-filled alignments focusing on low RMSDs, while accurate and useful for superposition of structures, are sub-optimal for machine learning as the features of many potentially relevant residues are discarded due to a lack of data in those positions. In most cases, positions with over a certain percentage of aligned residues are considered, with gaps replaced by zeros or by the average of the feature values in that position [22]."
 
+* (RMSD with gap. Also included a jupyter notebook of this exercise with the necessary files to the email.) In this exercise, we will see what can happen to RMSD calculations when there is a gap in sequence alignment between two proteins. Let’s use our homology modeling result *robetta4* (single chain of SARS-CoV-2 Spike) and the associated SARS-CoV-2 Spike model *6vxx* from the PDB. 
+
+First, calculate the RMSD between the two models by following the RMSD tutorial and using the chain A to chain A matching (matches[0][0] & matches[0][1]). You should get a RMSD of about 2.5853.
+
+If you followed the tutorial, robetta4 should be under the variable struct1. We will create a new variable, *struct3*, by taking the sequence of *robetta4* and deleting a large selection. We can create the variable by using:
+
+struct3 = struct1.select(‘resid 1 to 400 or resid 601 to 20000’)
+
+We use a large value ‘20000’ to ensure that the rest of the protein is captured. Variable struct3 will represent the robetta4 model that has a gap/deletion at residue 400 to 600 (a 200 residue gap). Now we will repeat the RMSD calculation using struct3 instead of struct1. You should get a RMSD of about 2.1927. Is this what you expected? 
+
+(There are less residues to compare and deviations to consider, which may have attributed to the decreased RMSD score.)
+
+
+
 * Why are contact maps and cross correlation maps "symmetric" about the main diagonal?
 
 * Something on identifying a dynamics difference from a contact map or better cross-correlation in similar proteins.
