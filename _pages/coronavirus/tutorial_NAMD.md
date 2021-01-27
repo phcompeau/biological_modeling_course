@@ -86,7 +86,7 @@ Then, compute the energy contributed by hotspot 31 and hotspot 353 in SARS-CoV-2
 |SARS-CoV (2ajf)| Hotspot353 | protein and chain B | protein and chain F and resid 487|
 |SARS-CoV (2ajf)| Hotspot353 | protein and chain B and (resid 38 or resid 353)| protein and chain F|
 
-
+*Note:* Chain B refers to ACE2 and Chain F refers to RBD
 
 [Return to main text](NAMD#differences-in-interaction-energy-with-ace2-between-sars-and-sars-cov-2){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
