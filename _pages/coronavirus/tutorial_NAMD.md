@@ -66,9 +66,7 @@ We will now focus on the interaction energy between the SARS-CoV-2 RBD loop site
 
 The above results seem to indicate that the interaction between SARS-CoV-2 RBD and ACE2 is a favorable interaction, and that the loop region contributes to this bonding. Yet our goal was to compare the total energy of the bound RBD-ACE2 complex in SARS-CoV-2 against that of SARS-CoV, as well as to compare the energy contributed by the three regions of structural difference that we identified in the main text. We will leave these comparisons to you as an exercise, and we will discuss the results in the main text.
 
-**STOP:** First, compute the total energy of the SARS-CoV RBD complex with ACE2 (PDB entry: <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>). How does it compare against the energy of the SARS-CoV-2 complex?
-
-Then, compute the energy contributed by hotspot 31 and hotspot 353 in SARS-CoV-2, as well as that of the regions corresponding to these regions and the loop region in SARS-CoV. How do the energy contributions of corresponding regions compare? Is this surprising, and what can we conclude?
+**STOP:** First, compute the total energy of the SARS-CoV RBD complex with ACE2 (PDB entry: <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>). How does it compare against the energy of the SARS-CoV-2 complex? Then, compute the energy contributed by hotspot 31 and hotspot 353 in SARS-CoV-2, as well as that of the regions corresponding to these regions and the loop region in SARS-CoV. (Consult the table below as needed.) How do the energy contributions of corresponding regions compare? Is this surprising, and what can we conclude?
 {: .notice--primary}
 
 |Model|Region|Selection 1|Selection 2|
