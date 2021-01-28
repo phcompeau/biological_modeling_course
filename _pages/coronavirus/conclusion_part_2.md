@@ -79,10 +79,10 @@ The anisotropic counterpart to GNM, in which the direction of fluctuations is al
 
 In the tutorial linked below, we will apply ANM to produce versions of the plots that we produced above. We will also encounter <a href="http://prody.csb.pitt.edu/nmwiz/" target="_blank">NMWiz</a>, which is short for "normal mode wizard", a GUI for ProDy that is available as a plugin for VMD. We will use NMWiz to perform ANM calculations and create an animation of the SARS-CoV-2 (chimeric) RBD (PDB entry: <a href="http://www.rcsb.org/structure/6vw1" target="_blank">6vw1</a>) and the SARS-CoV RBD (PDB entry: <a href="http://www.rcsb.org/structure/2ajf" target="_blank">2ajf</a>).
 
-## ANM analysis of the coronavirus binding domain
-
 [Visit tutorial](tutorial_ANM){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
+
+## ANM analysis of the coronavirus binding domain
 
 In the tutorial, we were able to generate a cross-correlation map and square fluctuation plot for the SARS-CoV-2 RBD, which resemble the results that we obtained previously for GNM (see figure below). Unsurprisingly, we do not see significant differences between the plots for the two viruses.
 
@@ -158,7 +158,7 @@ One of the main characteristics of life is the ability to reproduce. Of course, 
 
 With the widespread rate of infection of COVID-19, it is inevitable for mutations to occur and create variants of the virus. In fact, there are already multiple strains that are circulating globally. The more well-known variants as of January 2021, are variant B.1.1.7 in the United Kingdom, variant 1.351 in South Africa, and variant P.1 in Brazil. From observations, it appears that these new variants are more infectious and can spread more easily [^cdc]. However, there are still much in the unknown.
 
-There are important questions that need to be answered: 
+There are important questions that need to be answered:
 * How far have the variants spread?
 * How do they differ from current variants?
 * How do their infectivity and severity differ?
