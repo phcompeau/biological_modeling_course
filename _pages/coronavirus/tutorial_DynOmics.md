@@ -1,5 +1,5 @@
 ---
-permalink: /coronavirus/tutorial_ENM_web
+permalink: /coronavirus/tutorial_DynOmics
 title: "Web Tutorial: Molecular Dynamics Analysis using DynOmics 1.0"
 sidebar:
  nav: "coronavirus"
