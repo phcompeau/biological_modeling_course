@@ -81,7 +81,7 @@ The simulation outputs:
 
 ## What if there are multiple attractant sources?
 
-1. In `molecule types` and `observables`, update `L(t)` and `T(l,r,Meth~A~B~C,Phos~U~P)` to `L(t,Lig~A~B)` and `T(l,r,Lig~A~B,Meth~A~B~C,Phos~U~P)`, where `A` and `B` represent the two ligand types. Update the reaction rule 
+1.In `molecule types` and `observables`, update `L(t)` and `T(l,r,Meth~A~B~C,Phos~U~P)` to `L(t,Lig~A~B)` and `T(l,r,Lig~A~B,Meth~A~B~C,Phos~U~P)`, where `A` and `B` represent the two ligand types. Update the reaction rule 
 
 ~~~ ruby
 LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
@@ -97,7 +97,7 @@ Also update the `seed species` by equally split the initial receptor concentrati
 
 You can download a completed BioNetGen file here: <a href="../_pages/chemotaxis/solutions_folder/exercise_twoligand.bngl" download="exercise_twoligand.bngl">exercise_twoligand.bngl</a>.
 
-2. To wait for adaptation to ligand `A`, we could replace the forward reaction rate with this rule: rate constant = 0 unless after adapting to `A`. We could run the simulation without `B` first and observe the equilibrium methylation states, and use this for deciding whether the cell is adapted to `A`. (Why not equilibrium concentrations of free `A`?) One possible implementation is the following: replace 
+2.To wait for adaptation to ligand `A`, we could replace the forward reaction rate with this rule: rate constant = 0 unless after adapting to `A`. We could run the simulation without `B` first and observe the equilibrium methylation states, and use this for deciding whether the cell is adapted to `A`. (Why not equilibrium concentrations of free `A`?) One possible implementation is the following: replace 
 
 ~~~ ruby
 L1R: L(t,Lig~A) + T(l,Lig~A) <-> L(t!1,Lig~A).T(l!1,Lig~A) k_lr_bind, k_lr_dis
@@ -251,7 +251,7 @@ simulate({method=>"ssa", t_end=>700, n_steps=>400})
 The simulation outputs:
 ![image-center](../_pages/chemotaxis/solutions_folder/exercise_twoligand_figure.png){: .align-center}
 
-3. Define `ligand_center1 = [1500, 1500]` and `ligand_center2 = [-1500, 1500]`. Since we are considering two gradients, we can add up the ligand concentration. We can replace our `cal_concentraion(pos)` function with
+3.Define `ligand_center1 = [1500, 1500]` and `ligand_center2 = [-1500, 1500]`. Since we are considering two gradients, we can add up the ligand concentration. We can replace our `cal_concentraion(pos)` function with
 
 ~~~ python
 def calc_concentration(pos):
@@ -263,6 +263,7 @@ def calc_concentration(pos):
     
     return 10 ** exponent1 + 10 ** exponent2
 ~~~
+
 
 ## Is the actual tumbling reorientation used by E. coli smarter than our model?
 
@@ -313,7 +314,7 @@ curr_direction, projection_h, projection_v, tumble_time = tumble_move(curr_direc
 
 ## Can't get enough BioNetGen?
 
-The complete code (you can download a completed BioNetGen file here: <a href="../_pages/chemotaxis/solutions_folder/exercise_polymerization.bngl" download="exercise_polymerization.bngl">exercise_polymerization.bngl</a>):
+The complete code (you can download a completed BioNetGen file here: <a href="../_pages/chemotaxis/solutions_folder/exercise_polymorization.bngl" download="exercise_polymerization.bngl">exercise_polymerization.bngl</a>):
 ~~~ ruby
 begin model
 
