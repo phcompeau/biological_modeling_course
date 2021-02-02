@@ -18,7 +18,7 @@ to
 BoundTP: L(t!1).T(l!1,Phos~U) -> L(t!1).T(l!1,Phos~P) k_T_phos*5
 ~~~
 
-The complete code (you can download a completed BioNetGen file here: <a href="_pages/chemotaxis/solutions_folder/exercise_repel.bngl" download="exercise_repel.bngl">exercise_repel.bngl</a>):
+The complete code (you can download a completed BioNetGen file here: <a href="../_pages/chemotaxis/solutions_folder/exercise_repel.bngl" download="exercise_repel.bngl">exercise_repel.bngl</a>):
 ~~~ ruby
 begin model
 
@@ -95,7 +95,7 @@ L2R: L(t,Lig~B) + T(l,Lig~B) <-> L(t!1,Lig~B).T(l!1,Lig~B) k_lr_bind, k_lr_dis
 
 Also update the `seed species` by equally split the initial receptor concentrations by 2.
 
-You can download a completed BioNetGen file here: <a href="_pages/chemotaxis/solutions_folder/exercise_twoligand.bngl" download="exercise_twoligand.bngl">exercise_twoligand.bngl</a>.
+You can download a completed BioNetGen file here: <a href="../_pages/chemotaxis/solutions_folder/exercise_twoligand.bngl" download="exercise_twoligand.bngl">exercise_twoligand.bngl</a>.
 
 2. To wait for adaptation to ligand `A`, we could replace the forward reaction rate with this rule: rate constant = 0 unless after adapting to `A`. We could run the simulation without `B` first and observe the equilibrium methylation states, and use this for deciding whether the cell is adapted to `A`. (Why not equilibrium concentrations of free `A`?) One possible implementation is the following: replace 
 
@@ -313,7 +313,7 @@ curr_direction, projection_h, projection_v, tumble_time = tumble_move(curr_direc
 
 ## Can't get enough BioNetGen?
 
-The complete code (you can download a completed BioNetGen file here: <a href="_pages/chemotaxis/solutions_folder/exercise_polymerization.bngl" download="exercise_polymerization.bngl">exercise_polymerization.bngl</a>):
+The complete code (you can download a completed BioNetGen file here: <a href="../_pages/chemotaxis/solutions_folder/exercise_polymerization.bngl" download="exercise_polymerization.bngl">exercise_polymerization.bngl</a>):
 ~~~ ruby
 begin model
 
