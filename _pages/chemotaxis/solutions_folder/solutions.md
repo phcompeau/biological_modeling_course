@@ -75,6 +75,8 @@ generate_network({overwrite=>1})
 simulate({method=>"ssa", t_end=>3, n_steps=>100})
 ~~~
 
+![image-center](../_pages/chemotaxis/solutions_folder/exercise_repel.png){: .align-center}
+<figcaption>Response to repellents.</figcaption>
 
 ## What if there are multiple attractant sources?
 
