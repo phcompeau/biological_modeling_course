@@ -1,5 +1,5 @@
 ---
-permalink: /coronavirus/conclusion2_draft
+permalink: /coronavirus/conclusion_part_2_draft
 title: "Conclusion: From Static Protein Analysis to Molecular Dynamics"
 sidebar:
  nav: "coronavirus"
@@ -23,6 +23,12 @@ Study by Kundu et al. showing that 7.3 Å being the optimal cutoff across a set
 Conversion of human hemoglobin (left) to an elastic network model with cutoff distance of 7.3 Å (right).
 {: style="font-size: medium;"}
 
+Each node in the model is subject to **Gaussian fluctuations** that cause it to deviate in position from its equilibrium. As a direct consequence, the distance between nodes will also undergo Gaussian fluctuations. For a given node *i* and node *j*, the equilibrium position is represented by the equilibrium position vector $$ R_i^0 $$ and $$ R_j^0 $$. The fluctuation for node *i* and node *j* is represented by instantaneous fluction vectors $$ \delta R_i $$ and $$ \delta R_j $$. The distance between node *i* and node *j* at equilibrium is represented by the equilibrium distance vector $$ R_{ij}^0 $$, and the distance between nodes *i* and *j* in fluctuation is represented by the instantaneous distance vector $$ R_{ij} $$. Finally, we can calculate the fluctionation in the distance, $$ \delta R_{ij} = R_{ij} - R_{ij}^0 = \delta R_j - \delta R_i $$.
+
+![image-center](../assets/images/gaussian_fluctuations.png){: .align-center}
+Schematic showing gaussian fluctuations between two nodes. Equilibrium positions of node *i* and node *j* are represented by distance vectors $$ R_i^0 $$ and $$ R_j^0 $$. The equilibrium distance between the nodes is labelled $$ R_{ij}^0. The instantaneous fluction vectors, are labelled $$ \delta R_i $$ and $$ \delta R_j $$ and the instantaneous distance vector is labeled $$ \delta R_{ij} $$. Image courtesy of Ahmet Bakan.
+{: style="font-size: medium;"}
+
 The next step is to construct a **Kirchhoff matrix**, represented by the symbol ** $$ \Gamma $$ **, such that:
 
 $\Gamma_{ij} = \begin{cases} & $-1$ \indent \text{if $i \neq j$ and $R_{ij} \leq r_c$}\\ &  0 \indent \text{ if $i \neq j$ and $R_{ij} > r_c$} \end{cases}$
@@ -30,8 +36,18 @@ $\Gamma_{ij} = \begin{cases} & $-1$ \indent \text{if $i \neq j$ and $R_{ij} \leq
 $$ \Gamma_{ii} = -\sum_j \Gamma_{ij} $$
 
 <!--
+In case latex doesn't work, use these embeds
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\Gamma_{ij}&space;=&space;\begin{cases}&space;&&space;$-1$&space;\indent&space;\text{if&space;$i&space;\neq&space;j$&space;and&space;$R_{ij}&space;\leq&space;r_c$}\\&space;&&space;0&space;\indent&space;\text{&space;if&space;$i&space;\neq&space;j$&space;and&space;$R_{ij}&space;>&space;r_c$}&space;\end{cases}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\Gamma_{ij}&space;=&space;\begin{cases}&space;&&space;$-1$&space;\indent&space;\text{if&space;$i&space;\neq&space;j$&space;and&space;$R_{ij}&space;\leq&space;r_c$}\\&space;&&space;0&space;\indent&space;\text{&space;if&space;$i&space;\neq&space;j$&space;and&space;$R_{ij}&space;>&space;r_c$}&space;\end{cases}" title="\Gamma_{ij} = \begin{cases} & $-1$ \indent \text{if $i \neq j$ and $R_{ij} \leq r_c$}\\ & 0 \indent \text{ if $i \neq j$ and $R_{ij} > r_c$} \end{cases}" /></a>
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\Gamma_{ii}&space;=&space;-\sum_j&space;\Gamma_{ij}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\Gamma_{ii}&space;=&space;-\sum_j&space;\Gamma_{ij}" title="\Gamma_{ii} = -\sum_j \Gamma_{ij}" /></a>
 -->
+
+where $$r_c$$ is the threshold distance. Simply put, if residue i and residue j are connected, then the value of position i,j in the matrix will be -1. If they are not connected, the the value will be 0. The values of the diagonals, i.e. position i,i, correspond to the total number of connections of residue i. 
+
+![image-center](../assets/images/kirchhoff_example.png){: .align-center}
+Toy structure and the corresponding Kirchhoff matrix.
+{: style="font-size: medium;"}
+
+With a constructed Kirchhoff matrix, we can calculate the **cross-correlation** between residues and create a **cross-correlation map*.
+
