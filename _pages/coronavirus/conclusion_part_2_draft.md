@@ -23,15 +23,15 @@ Study by Kundu et al. showing that 7.3 Å being the optimal cutoff across a set
 Conversion of human hemoglobin (left) to an elastic network model with cutoff distance of 7.3 Å (right).
 {: style="font-size: medium;"}
 
-Each node in the model is subject to **Gaussian fluctuations** that cause it to deviate in position from its equilibrium. As a direct consequence, the distance between nodes will also undergo Gaussian fluctuations. For a given node *i* and node *j*, the equilibrium position is represented by the equilibrium position vector $$ R_i^0 $$ and $$ R_j^0 $$. The fluctuation for node *i* and node *j* is represented by instantaneous fluction vectors $$ \delta R_i $$ and $$ \delta R_j $$. The distance between node *i* and node *j* at equilibrium is represented by the equilibrium distance vector $$ R_{ij}^0 $$, and the distance between nodes *i* and *j* in fluctuation is represented by the instantaneous distance vector $$ R_{ij} $$. Finally, we can calculate the fluctionation in the distance, $$ \delta R_{ij} = R_{ij} - R_{ij}^0 = \delta R_j - \delta R_i $$.
+Each node in the model is subject to **Gaussian fluctuations** that cause it to deviate in position from its equilibrium. As a direct consequence, the distance between nodes will also undergo Gaussian fluctuations. For a given node *i* and node *j*, the equilibrium position is represented by the equilibrium position vector $$ R_i^0 $$ and $$ R_j^0 $$. The fluctuation for node *i* and node *j* is represented by instantaneous fluction vectors $$ \Delta R_i $$ and $$ \Delta R_j $$. The distance between node *i* and node *j* at equilibrium is represented by the equilibrium distance vector $$ R_{ij}^0 $$, and the distance between nodes *i* and *j* in fluctuation is represented by the instantaneous distance vector $$ R_{ij} $$. Finally, we can calculate the fluctionation in the distance, $$ \Delta R_{ij} = R_{ij} - R_{ij}^0 = \Delta R_j - \Delta R_i $$.
 
 ![image-center](../assets/images/gaussian_fluctuations.png){: .align-center}
-Schematic showing gaussian fluctuations between two nodes. Equilibrium positions of node *i* and node *j* are represented by distance vectors $$ R_i^0 $$ and $$ R_j^0 $$. The equilibrium distance between the nodes is labelled $$ R_{ij}^0. The instantaneous fluction vectors, are labelled $$ \delta R_i $$ and $$ \delta R_j $$ and the instantaneous distance vector is labeled $$ \delta R_{ij} $$. Image courtesy of Ahmet Bakan.
+Schematic showing gaussian fluctuations between two nodes. Equilibrium positions of node *i* and node *j* are represented by distance vectors $$ R_i^0 $$ and $$ R_j^0 $$. The equilibrium distance between the nodes is labelled $$ R_{ij}^0 $$. The instantaneous fluction vectors, are labelled $$ \Delta R_i $$ and $$ \Delta R_j $$ and the instantaneous distance vector is labeled $$ \Delta R_{ij} $$. Image courtesy of Ahmet Bakan.
 {: style="font-size: medium;"}
 
 The next step is to construct a **Kirchhoff matrix**, represented by the symbol ** $$ \Gamma $$ **, such that:
 
-$\Gamma_{ij} = \begin{cases} & $-1$ \indent \text{if $i \neq j$ and $R_{ij} \leq r_c$}\\ &  0 \indent \text{ if $i \neq j$ and $R_{ij} > r_c$} \end{cases}$
+$$ \Gamma_{ij} = \begin{cases} & $-1$ \indent \text{if $i \neq j$ and $R_{ij} \leq r_c$}\\ &  0 \indent \text{ if $i \neq j$ and $R_{ij} > r_c$} \end{cases} $$
 
 $$ \Gamma_{ii} = -\sum_j \Gamma_{ij} $$
 
@@ -49,5 +49,11 @@ where $$r_c$$ is the threshold distance. Simply put, if residue i and residue j 
 Toy structure and the corresponding Kirchhoff matrix.
 {: style="font-size: medium;"}
 
-With a constructed Kirchhoff matrix, we can calculate the **cross-correlation** between residues and create a **cross-correlation map*.
+One of the most common analysis using GNM is on the coordinated movement between residues as the protein fluctuates. More specifically, we want to see how each residue will move relative to other residues, or the **cross-correlation** between the residues. The cross-correlation between some residue *i* and residue *j* can be mathmatically calculated as follows:
+
+$$ \langle \Delta R_i \cdot \Delta R_j \rangle = \frac{3 k_B T}{\gamma} \left[ \Gamma^{-1} \right]_{ij} $$
+
+
+
+
 
