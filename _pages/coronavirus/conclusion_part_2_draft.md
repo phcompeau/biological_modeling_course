@@ -29,19 +29,11 @@ Each node in the model is subject to **Gaussian fluctuations** that cause it to 
 Schematic showing gaussian fluctuations between two nodes. Equilibrium positions of node *i* and node *j* are represented by distance vectors $$ R_i^0 $$ and $$ R_j^0 $$. The equilibrium distance between the nodes is labelled $$ R_{ij}^0 $$. The instantaneous fluction vectors, are labelled $$ \Delta R_i $$ and $$ \Delta R_j $$ and the instantaneous distance vector is labeled $$ \Delta R_{ij} $$. Image courtesy of Ahmet Bakan.
 {: style="font-size: medium;"}
 
-The next step is to construct a **Kirchhoff matrix**, represented by the symbol ** $$ \Gamma $$ **, such that:
+The next step is to construct a **Kirchhoff matrix**, or connectivity matrix, represented by the symbol $$ \Gamma $$ . The Kirchhoff matrix is the matrix representation of which pairs of residues are connected such that we can use it in later calculations. The matrix is constructed as follows:
 
-$$ \Gamma_{ij} = \begin{cases} & $-1$ \indent \text{if $i \neq j$ and $R_{ij} \leq r_c$}\\ &  0 \indent \text{ if $i \neq j$ and $R_{ij} > r_c$} \end{cases} $$
+$$ \Gamma_{ij} = \begin{cases} & -1 \text{ if $i \neq j$ and $R_{ij} \leq r_c$}\\ &  0 \text{ if $i \neq j$ and $R_{ij} > r_c$} \end{cases} $$
 
 $$ \Gamma_{ii} = -\sum_j \Gamma_{ij} $$
-
-<!--
-In case latex doesn't work, use these embeds
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\Gamma_{ij}&space;=&space;\begin{cases}&space;&&space;$-1$&space;\indent&space;\text{if&space;$i&space;\neq&space;j$&space;and&space;$R_{ij}&space;\leq&space;r_c$}\\&space;&&space;0&space;\indent&space;\text{&space;if&space;$i&space;\neq&space;j$&space;and&space;$R_{ij}&space;>&space;r_c$}&space;\end{cases}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\Gamma_{ij}&space;=&space;\begin{cases}&space;&&space;$-1$&space;\indent&space;\text{if&space;$i&space;\neq&space;j$&space;and&space;$R_{ij}&space;\leq&space;r_c$}\\&space;&&space;0&space;\indent&space;\text{&space;if&space;$i&space;\neq&space;j$&space;and&space;$R_{ij}&space;>&space;r_c$}&space;\end{cases}" title="\Gamma_{ij} = \begin{cases} & $-1$ \indent \text{if $i \neq j$ and $R_{ij} \leq r_c$}\\ & 0 \indent \text{ if $i \neq j$ and $R_{ij} > r_c$} \end{cases}" /></a>
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\Gamma_{ii}&space;=&space;-\sum_j&space;\Gamma_{ij}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\Gamma_{ii}&space;=&space;-\sum_j&space;\Gamma_{ij}" title="\Gamma_{ii} = -\sum_j \Gamma_{ij}" /></a>
--->
 
 where $$r_c$$ is the threshold distance. Simply put, if residue i and residue j are connected, then the value of position i,j in the matrix will be -1. If they are not connected, the the value will be 0. The values of the diagonals, i.e. position i,i, correspond to the total number of connections of residue i. 
 
@@ -49,11 +41,45 @@ where $$r_c$$ is the threshold distance. Simply put, if residue i and residue j 
 Toy structure and the corresponding Kirchhoff matrix.
 {: style="font-size: medium;"}
 
-One of the most common analysis using GNM is on the coordinated movement between residues as the protein fluctuates. More specifically, we want to see how each residue will move relative to other residues, or the **cross-correlation** between the residues. The cross-correlation between some residue *i* and residue *j* can be mathmatically calculated as follows:
+One of the most common analysis using GNM is on the coordinated movement between residues as the protein fluctuates. More specifically, we want to see how each residue will move relative to other residues, or the **cross-correlation** between the residues. The cross-correlation between some residue *i* and residue *j* can be mathmatically calculated using the Kirchhoff matrix from before:
 
 $$ \langle \Delta R_i \cdot \Delta R_j \rangle = \frac{3 k_B T}{\gamma} \left[ \Gamma^{-1} \right]_{ij} $$
 
+where $$ k_B $$ is the Boltzmann constant and $$ \gamma $$ is the spring constant (stiffness of the spring). Similarly, we can also calculate the expectation values of the fluctuation for residues, or the **mean-square fluctuations**, using the Kirchhoff matrix:
 
+$$  \langle \Delta R_i^2  \rangle = \frac{3 k_B T}{\gamma} \left[ \Gamma^{-1} \right]_{ii} $$
 
+From these equations, we can see that the Kirchhoff matrix fully defines both the cross-correlations between residue motions as well as the mean-square fluctions of the residues.
 
+$$ \left[ \Gamma^{-1} \right]_{ij} \sim \langle \Delta R_i \cdot \Delta R_j \rangle $$
+
+$$ \left[ \Gamma^{-1} \right]_{ii} \sim \langle \Delta R_i^2  \rangle $$
+
+However, because the determinant of the Kirchhoff matrix is 0 in GNM, we cannot directly invert it to get $$ \Gamma^{-1} $$. Instead, we use eigen decomposition on the matrix.
+
+$$ \Gamma = U \Lambda U^T $$
+
+where $$ U $$ is the orthogonal matrix with the $$ k^{th} $$ column, represented by $$ u_k $$, corresponding to the $$ k^{th} $$ eigenvector of $$ \Gamma $$, and $$ \Lambda $$ is the diagonal matrix of eigenvalues, represented by $$ \lambda_k $$. Based on the characteristics of the Kirchhoff matrix (positive semi-definite), the first eigenvalue, $$ \lambda_1 $$, is 0. The remaining $$ N-1 $$ eigenvalues, as well as the eigenvectors in $$ U $$, actually directly describe the modes of motion that discussed earlier in this lesson. The elements of eigenvector $$ u_k $$ describe the distribution of residue displacements, normalized over all the residues, along the $$ k^{th} mode axis. In other words, the motion of the $$ i^{th} $$ residue along the $$ k^{th} $$ mode is described by the $$ i^{th} $$ element in eigenvector $$ u_k $$. The corresponding eigenvalue $$ \lambda_k $$ describes the frequency of the $$ k^{th} $$ mode, where the smallest $$ \lambda $$ value corresponds to the lowest frequency modes, or slowest modes, that make the largest contribution to the overall protein motion.
+
+After eigen decomposition, we can now rewrite the cross-correlation equation as a sum of the N-1 GNM modes:
+
+$$ \langle \Delta R_i \cdot \Delta R_j \rangle = \frac{3 k_B T}{\gamma} \sum_{k=1}^{N-1} \left[ \lambda_k^{-1} u_k u_k^T \right]_{ij} $$
+
+and similarly for mean-square fluctuation:
+
+$$ \langle \Delta R_i^2  \rangle = \frac{3 k_B T}{\gamma} \sum_{k=1}^{N-1} \left[ \lambda_k^{-1} u_k u_k^T \right]_{ii} $$
+
+Now that we can compute the cross-correlation between residues, we can normalize the values and construct a normalized cross-correlation matrix, $$ C^{(n)} $$, such that:
+
+$$ C^{(n)}_{ij} = \frac{\langle \Delta R_i \cdot \Delta R_j \rangle}{\left[ \langle \Delta R_i \cdot \Delta R_i \rangle \langle \Delta R_j \cdot \Delta R_j \rangle \right]^{\frac{1}{2}} $$
+
+where $$ C^{(n)}_{ij} $$ corresponds to the orientational cross-correlation between residue *i* and residue *j*. Because we normalized the values, the range of $$ C^{(n)}_{ij} $$ is $$ [-1,1] $$, where 1 means the residues are fully correlated in motion, and -1 means the residues are fully anti-correlated in motion. Finally, we can visualize the matrix as a **cross-correlation heat map** like the figure below.
+
+![image-center](../assets/images/hemoglobin_cc.png){: .align-center}
+Normalized cross-correlation heat map of human hemoglobin of the first 20 slowest normal modes. Red regions indicate correlated residue pairs which move in the same direction; blue regions indicate anti-correlated residue pairs which move in opposite directions. 
+{: style="font-size: medium;"}
+
+TO DO: 
+* B-factors & mean-square flucts plot
+* Individual mode shapes
 
