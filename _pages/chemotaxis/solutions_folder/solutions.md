@@ -409,11 +409,11 @@ The probability that the first reaction occur after 0.02 second is
 $$\mathrm{Pr}(T > 0.02) = e^{-\lambda t} = 0.1353\,.$$
 
 **Exercise 3:**
-At the beginning of the simulation, only one type of reaction could occur: *L* + *T* → *LT*. The rate of reaction is *k*<sub>bind</sub>[*L*][*T*] = 100molecule•s<sup>-1</sup>. Therefore we have λ = 100molecule•s<sup>-1</sup>, and the expected wait time is thus 1/λ = 0.01s•molecule<sup>-1</sup>.
+At the beginning of the simulation, only one type of reaction could occur: *L* + *T* → *LT*. The rate of reaction is *k*<sub>bind</sub>[*L*][*T*] = 100molecule·s<sup>-1</sup>. Therefore we have λ = 100molecule·s<sup>-1</sup>, and the expected wait time is thus 1/λ = 0.01s·molecule<sup>-1</sup>.
 
 Although the expected wait time before the first reaction is considerably shorter than 0.1s, it is still possible for the first reaction to happen after 0.1s.
 
-After the first reaction, our system has 9 *L*, 9 *T*, and 1 *LT* molecules. There are two possible types of reactions to occur: the forward reaction *L* + *T* → *LT* and the reverse reaction *LT* → *L* + *T*. The rate of forward reaction is *k*<sub>bind</sub>[*L*][*T*] = 81molecule•s<sup>-1</sup>, while the rate of reverse reaction is *k*<sub>dissociate</sub>[*LT*] = 2molecule•s<sup>-1</sup>. The total reaction rate is 83molecule•s<sup>-1</sup> and hence the expected wait time before the next reaction is 0.012s. The probability of forward reaction is 81molecule•s<sup>-1</sup>/83molecule•s<sup>-1</sup> = 0.976, and the probability of reverse reaction is 0.0241.
+After the first reaction, our system has 9 *L*, 9 *T*, and 1 *LT* molecules. There are two possible types of reactions to occur: the forward reaction *L* + *T* → *LT* and the reverse reaction *LT* → *L* + *T*. The rate of forward reaction is *k*<sub>bind</sub>[*L*][*T*] = 81molecule·s<sup>-1</sup>, while the rate of reverse reaction is *k*<sub>dissociate</sub>[*LT*] = 2molecule·s<sup>-1</sup>. The total reaction rate is 83molecule·s<sup>-1</sup> and hence the expected wait time before the next reaction is 0.012s. The probability of forward reaction is 81molecule·s<sup>-1</sup>/83molecule·s<sup>-1</sup> = 0.976, and the probability of reverse reaction is 0.0241.
 
 
 
