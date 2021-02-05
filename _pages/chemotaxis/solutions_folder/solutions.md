@@ -9,6 +9,12 @@ toc_sticky: true
 
 ## How do *E. coli* respond to repellents?
 
+**Exercise 1**
+
+In contrast to that CheY phosphorylations decrease and tumbling becomes less frequent when the cell senses higher attractant concentrations, when the cell senses more repellents there should be more frequent tumbling. The decreased tumbling frequency should be a result of increased CheY phosphorylations. The cell should always be able to adapt to the current concentrations, therefore we also expect the CheY phosphoryaltions be restored when adpating.
+
+**Exercise 2**
+
 Update reaction rule for ligand-receptor binding from
 ~~~ ruby
 BoundTP: L(t!1).T(l!1,Phos~U) -> L(t!1).T(l!1,Phos~P) k_T_phos*0.2
@@ -81,7 +87,9 @@ The simulation outputs:
 
 ## What if there are multiple attractant sources?
 
-1.In `molecule types` and `observables`, update `L(t)` and `T(l,r,Meth~A~B~C,Phos~U~P)` to `L(t,Lig~A~B)` and `T(l,r,Lig~A~B,Meth~A~B~C,Phos~U~P)`, where `A` and `B` represent the two ligand types. Update the reaction rule 
+**Exercise 1:**
+
+In `molecule types` and `observables`, update `L(t)` and `T(l,r,Meth~A~B~C,Phos~U~P)` to `L(t,Lig~A~B)` and `T(l,r,Lig~A~B,Meth~A~B~C,Phos~U~P)`, where `A` and `B` represent the two ligand types. Update the reaction rule 
 
 ~~~ ruby
 LR: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
@@ -97,7 +105,9 @@ Also update the `seed species` by equally split the initial receptor concentrati
 
 You can download a completed BioNetGen file here: <a href="../_pages/chemotaxis/solutions_folder/exercise_twoligand.bngl" download="exercise_twoligand.bngl">exercise_twoligand.bngl</a>.
 
-2.To wait for adaptation to ligand `A`, we could replace the forward reaction rate with this rule: rate constant = 0 unless after adapting to `A`. We could run the simulation without `B` first and observe the equilibrium methylation states, and use this for deciding whether the cell is adapted to `A`. (Why not equilibrium concentrations of free `A`?) One possible implementation is the following: replace 
+**Exercise 2:**
+
+To wait for adaptation to ligand `A`, we could replace the forward reaction rate with this rule: rate constant = 0 unless after adapting to `A`. We could run the simulation without `B` first and observe the equilibrium methylation states, and use this for deciding whether the cell is adapted to `A`. (Why not equilibrium concentrations of free `A`?) One possible implementation is the following: replace 
 
 ~~~ ruby
 L1R: L(t,Lig~A) + T(l,Lig~A) <-> L(t!1,Lig~A).T(l!1,Lig~A) k_lr_bind, k_lr_dis
@@ -251,7 +261,9 @@ simulate({method=>"ssa", t_end=>700, n_steps=>400})
 The simulation outputs:
 ![image-center](../_pages/chemotaxis/solutions_folder/exercise_twoligand_figure.png){: .align-center}
 
-3.Define `ligand_center1 = [1500, 1500]` and `ligand_center2 = [-1500, 1500]`. Since we are considering two gradients, we can add up the ligand concentration. We can replace our `cal_concentraion(pos)` function with
+**Exercise 3:**
+
+Define `ligand_center1 = [1500, 1500]` and `ligand_center2 = [-1500, 1500]`. Since we are considering two gradients, we can add up the ligand concentration. We can replace our `cal_concentraion(pos)` function with
 
 ~~~ python
 def calc_concentration(pos):
@@ -314,6 +326,10 @@ curr_direction, projection_h, projection_v, tumble_time = tumble_move(curr_direc
 
 ## Can't get enough BioNetGen?
 
+**Exercise 1:**
+You should know the molecules involved (`molecule types`), reactions and reaction rate constants (`reaction rules`), the initial conditions (`seed species`), the quantities you are interested in observing (`observables`), your simulation methods and time steps. Compartments and parameters should also be considered if applicable.
+
+**Exercise 2:**
 The complete code (you can download a completed BioNetGen file here: <a href="../_pages/chemotaxis/solutions_folder/exercise_polymorization.bngl" download="exercise_polymerization.bngl">exercise_polymerization.bngl</a>):
 ~~~ ruby
 begin model
@@ -350,4 +366,58 @@ simulate({method=>"nf", t_end=>50, n_steps=>1000})
 
 The simulation outputs (note the concentrations are in log-scale):
 ![image-center](../_pages/chemotaxis/solutions_folder/exercise_polymorization_figure_log.png){: .align-center}
+
+
+## How to calculate steady state concentration in a reversible bimolecular reaction?
+
+**Exercise 1:**
+When the reaction begins, concentrations change toward the equilibrium concentrations. The system remains at the equilibrium state once reaching it.
+
+**Exercise 2:**
+Use [*A*], [*B*], [*AB*] to denote the equilibrium concentrations. At equilibrium concentrations, we have
+
+*k*<sub>bind</sub> · [*A*] · [*B*] = *k*<sub>dissociate</sub> · [*AB*].
+
+Because of conservation of mass, if the instead starts from no *AB*, our initial conditions will be *a<sub>0</sub>* = *b<sub>0</sub>* = 100, and *ab<sub>0</sub>* = 0. (If we instead work from the "current" concentrations, *a<sub>0</sub>* = *b<sub>0</sub>* = 95, and *ab<sub>0</sub>* = 5, how would you set up the calculations?)
+
+Similar as in the main text, Our original steady state equation can be modified to
+
+*k*<sub>bind</sub> · (*a*<sub>0</sub> - [*AB*]) · (*b*<sub>0</sub> - [*AB*]) = *k*<sub>dissociate</sub> · [*AB*].
+
+Solving this equation yields [*AB*] = 90.488.
+
+**Exercise 3:**
+If we add additional 100 *A* molecules to the system, more *AB* will be formed. If you use the equation setup in the solution above, we can simply update *a*<sub>0</sub> = 200. [*AB*] = 99.019.
+
+If *k*<sub>dissociate</sub> = 9 instead of 3, less *AB* will be present at the equilibirum state. [*AB*] = 84.115.
+
+
+## How to simulate a reaction step with the Gillespie algorithm?
+
+**Exercise 1:** 
+Shorter because molecules collide to each other and react more frequently.
+
+**Exercise 2:**
+In this system, we have λ = 100. The probability that exactly 100 reaction happen in the next second is 
+
+$$\mathrm{Pr}(X = 100) = \dfrac{\lambda^n e^{-\lambda}}{n!} = 0.03986\,.$$
+
+The expected wait time is 1/λ = 0.01. 
+
+The probability that the first reaction occur after 0.02 second is
+
+$$\mathrm{Pr}(T > 0.02) = e^{-\lambda t} = 0.1353\,.$$
+
+**Exercise 3:**
+At the beginning of the simulation, only one type of reaction could occur: *L* + *T* → *LT*. The rate of reaction is *k*<sub>bind</sub>[*L*][*T*] = 100molecule•s<sup>-1</sup>. Therefore we have λ = 100molecule•s<sup>-1</sup>, and the expected wait time is thus 1/λ = 0.01s•molecule<sup>-1</sup>.
+
+Although the expected wait time before the first reaction is considerably shorter than 0.1s, it is still possible for the first reaction to happen after 0.1s.
+
+After the first reaction, our system has 9 *L*, 9 *T*, and 1 *LT* molecules. There are two possible types of reactions to occur: the forward reaction *L* + *T* → *LT* and the reverse reaction *LT* → *L* + *T*. The rate of forward reaction is *k*<sub>bind</sub>[*L*][*T*] = 81molecule•s<sup>-1</sup>, while the rate of reverse reaction is *k*<sub>dissociate</sub>[*LT*] = 2molecule•s<sup>-1</sup>. The total reaction rate is 83molecule•s<sup>-1</sup> and hence the expected wait time before the next reaction is 0.012s. The probability of forward reaction is 81molecule•s<sup>-1</sup>/83molecule•s<sup>-1</sup> = 0.976, and the probability of reverse reaction is 0.0241.
+
+
+
+
+
+
 
