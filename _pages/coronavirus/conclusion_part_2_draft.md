@@ -76,10 +76,56 @@ $$ C^{(n)}_{ij} = \frac{\langle \Delta R_i \cdot \Delta R_j \rangle}{\left[ \lan
 where $$ C^{(n)}_{ij} $$ corresponds to the orientational cross-correlation between residue *i* and residue *j*. Because we normalized the values, the range of $$ C^{(n)}_{ij} $$ is $$ [-1,1] $$, where 1 means the residues are fully correlated in motion, and -1 means the residues are fully anti-correlated in motion. Finally, we can visualize the matrix as a **cross-correlation heat map** like the figure below.
 
 ![image-center](../assets/images/hemoglobin_cc.png){: .align-center}
-Normalized cross-correlation heat map of human hemoglobin of the first 20 slowest normal modes. Red regions indicate correlated residue pairs which move in the same direction; blue regions indicate anti-correlated residue pairs which move in opposite directions. 
+Normalized cross-correlation heat map of human hemoglobin using the first 20 slowest normal modes. Red regions indicate correlated residue pairs which move in the same direction; blue regions indicate anti-correlated residue pairs which move in opposite directions. 
 {: style="font-size: medium;"}
 
-TO DO: 
-* B-factors & mean-square flucts plot
-* Individual mode shapes
+Just like cross-correlation, we can also visualize the mean-square fluctuations of the residues. This is typically done in two ways. The simplest is to directly plot the values, where the x-axis represent the residues and the y-axis represent the mean-square fluctuation $$ \langle \Delta R_i^2  \rangle $$. The other, more useful, method is to plot the B-factor. When performing crystallography, the displacement of atoms within the protein crystal decreases the intesity of the scattered X-ray, creating uncertainty in the positions of atoms. **B-factor**, also known as **temperature factor** or **Debye-Waller factor** is a measure of this uncertainty, which includes noise from positional variance of thermal protein motion, model errors, and lattice defects. B-factors are reported in addition to the atomic coordinates in the PDB entry. One of the main reason we use B-factors is that they scale with the mean-square fluctuation, such that for atom *i*:
 
+$$ B_i = \frac{8 \pi^2}{3} \langle \Delta R_i^2 \rangle $$
+
+We can calculate the **theoretical B-factors** using the equation and GNM analysis, and the correlation with the **experimental B-factors** that are included in the PDB entry as a simple way to evaluate the GNM analysis.
+
+![image-center](../assets/images/hemoglobin_b_factors.png){: .align-center}
+(Top): Human hemoglobin colored according to the GNM calculated theoretical B-factors (left) and the experimental B-factors (right). (Bottom): 2D plot comparing the theoretical and experimental B-factors of a single chain (chain A) of the protein. A correlation coefficient of 0.63 was calculated between the theoretical and experimental B-factors.
+{: style="font-size: medium;"}
+
+A benefit from decomposing the protein fluctuation into individual normal modes is that we are able to observe the characteristics of slow modes separately, i.e. which residues does it affect and to what degree, or **slow mode shape**. This is typically done by visualizing the modes as 2D plots where the x-axis is the residue sequence and the y-axis is the inverse eigenvalues of the Kirchhoff matrix. Peaks in the plot indicate which region of residues the mode describes, with higher peaks representing greater magnitude of motions. It is also common practice to observe the plot of the average of multiple modes to see the collective contribution of the modes.
+
+![image-center](../assets/images/hemoglobin_mode_shape.png){: .align-center}
+(Top): Visualization of human hemoglobin colored based on slow mode shape. Red represents regions of high mobility and correspond to peaks in the plot. The first image represents the slowest mode (left) and the second image represents the average of the first 10 slowest modes (right). (Bottom): 2D plot of the slowest mode separate by the four chains of hemoglobin.
+{: style="font-size: medium;"}
+
+There are two more commonly used plots used in mode analysis. The first is called the **frequency dispersion** of the modes, which is the plot of representing the frequency of each mode. The y-axis represents the reciprocal of the corresponding eigenvalue of the mode, where a higher value indicates a slow mode with low frequency, which are expected to be highly related to biological functions. 
+
+![image-center](../assets/images/hemoglobin_frequency.png){: .align-center}
+The frequency dispersion of modes in human hemoglobin. Higher values indicates low frequency, slower modes that are likely to be highly relative to biological functions.
+{: style="font-size: medium;"}
+
+The **degree of collectivity** is the measure of the extent of structural elements, in this case residues, that move together for each mode. The degree of collectivity of the $$ k^th $$ mode is calculated by the following equation:
+
+$$ Collectivity_k = \frac{1}{N} e^{- \sum^N_i \Delta R_i^2 ln \Delta R_i^2 $$
+
+where N is the total number of residues. A high degree of collectivity indicates that the mode is highly cooperative and engages in a large portion of the structure. Low degree of collectivity indicates that the mode only affects a small region. Modes of high degree of collectivity are generally believed to be functionally relevant nodes and are usually found at the low frequency end of the mode spectrum.
+
+![image-center](../assets/images/hemoglobin_collectivity.png){: .align-center}
+The degree of collectivitiy of modes in human hemoglobin. Higher values indicate modes that describe a large portion of the protein while low values indicate modes that describe small local regions.
+{: style="font-size: medium;"}
+
+### Molecular dynamics analysis using GNM
+
+<!--
+Following paragraph taken from conclusion_part_2
+-->
+
+The anisotropic counterpart to GNM, in which the direction of fluctuations is also considered, is called **anisotropic network model (ANM)**. The main difference in ANM analysis is that a Hessian matrix, $$ H $$, is used in place of the Kirchhoff matrix. Each element $$ H_{ij} in the matrix is a 3x3 matrix that contain anisotropic information about the orientation of node *i* and node *j*. The calculations proceeds similarly to GNM, where eigen decomposition is used to calculate cross correlation and mean square fluctuations. Although ANM includes directionality, it typically performs worse than GNM when compared with experimental data [^Yang]. However, this model offers the benefit of creating animations depicting the range of motions and fluctuations of the protein because of the inclusion of orientation. We will not go in depth regarding the intricacies of ANM calculations in this module, but we will use ANM for the purpose of creating animations to visualize protein fluctuations.
+
+![image-center](../assets/images/hemoglobin_anm_2.gif){: .align-center}
+Collective motions of the slowest mode in human hemoglobin from ANM calculations using DynOmics.
+{: style="font-size: medium;"}
+
+
+
+
+
+
+[^Yang]: Yang, L., Song, G., Jernigan, R. 2009. Protein elastic network models and the ranges of cooperativity. PNAS 106(30), 12347-12352. https://doi.org/10.1073/pnas.0902159106
