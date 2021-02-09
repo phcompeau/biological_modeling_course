@@ -11,7 +11,7 @@ toc_sticky: true
 The following parts come directly after "Modeling protein bonds using tiny springs", before the tutorial.
 -->
 
-## Molecular dynamics analysis using GNM
+## Introduction to GNM
 
 Performing GNM analysis on a protein gives us a fairly accurate understanding of how the protein is structured, particularly on the flexibility of the proteinand how each residue moves relative to the rest. In this section, we will revisit the human hemoglobin (<a href="https://www.rcsb.org/structure/1a3n" target="_blank">1A3N.pdb</a>) to peform GNM analysis. Recall that in GNM, the target molecule is represented using ENM. Therefore, the first step in GNM analysis is to convert hemoglobin into a system of nodes and springs. As mentioned above, this can be easily done by stripping the protein to only alpha carbons and connecting alpha carbons that are within a threshold distance. Generally, the threshold distance for GNM is set between 7 to 8 Å.
 
@@ -29,7 +29,7 @@ Each node in the model is subject to **Gaussian fluctuations** that cause it to 
 Schematic showing gaussian fluctuations between two nodes. Equilibrium positions of node *i* and node *j* are represented by distance vectors $$ R_i^0 $$ and $$ R_j^0 $$. The equilibrium distance between the nodes is labelled $$ R_{ij}^0 $$. The instantaneous fluction vectors, are labelled $$ \Delta R_i $$ and $$ \Delta R_j $$ and the instantaneous distance vector is labeled $$ \Delta R_{ij} $$. Image courtesy of Ahmet Bakan.
 {: style="font-size: medium;"}
 
-The next step is to construct a **Kirchhoff matrix**, or connectivity matrix, represented by the symbol $$ \Gamma $$ . The Kirchhoff matrix is the matrix representation of which pairs of residues are connected such that we can use it in later calculations. The matrix is constructed as follows:
+The next step is to construct a **Kirchhoff matrix**, also known as the **Laplacian matrix** or **connectivity matrix**, represented by the symbol $$ \Gamma $$. Commonly used in graph theory, the Kirchhoff matrix is essentially a square matrix representation of a graph. By transforming the protein into a set of connected nodes, we are converting the protein into a graph. Therefore, the Kirchhoff matrix can be used to represent the protein, allowing us to go from a biochemistry problem to a linear algebra problem. In this case, the Kirchhoff matrix is the matrix representation of which pairs of residues are connected. There are also some useful properties of the Kirchhoff matrix that we will take advantage of later on. The matrix is constructed as follows:
 
 $$ \Gamma_{ij} = \begin{cases} & -1 \text{ if $i \neq j$ and $R_{ij} \leq r_c$}\\ &  0 \text{ if $i \neq j$ and $R_{ij} > r_c$} \end{cases} $$
 
@@ -41,21 +41,21 @@ where $$r_c$$ is the threshold distance. Simply put, if residue i and residue j 
 Toy structure and the corresponding Kirchhoff matrix.
 {: style="font-size: medium;"}
 
-One of the most common analysis using GNM is on the coordinated movement between residues as the protein fluctuates. More specifically, we want to see how each residue will move relative to other residues, or the **cross-correlation** between the residues. The cross-correlation between some residue *i* and residue *j* can be mathmatically calculated using the Kirchhoff matrix from before:
+One of the most common analysis using GNM is on the coordinated movement between residues as the protein fluctuates. More specifically, we want to see how each residue will move relative to other residues, or the **cross-correlation** between the residues. Recall that we are representing the fluctuations as vectors (see Gaussian Fluctuations). Therefore, for some residue *i* and residue *j*, we are trying to compute how much of the fluctation vector $$ \Delta R_i $$ points in the the same direction as the fluctuation vector $$ \Delta R_j $$. To do this, we need to compute the **inner product** of the vectors, denoted by the angle brackets: $$ \langle \rangle $$, which is a generalization of the dot product. In other words, computing the inner product between the fluctuation vectors is synonomous to computing the cross-correlation between the residues. As such, the cross-correlation between residue *i* and residue *j* is often represented as $$ \langle \Delta R_i \cdot \Delta R_j \rangle $$. It turns out that the inner product is correlated to the inverse of the Kirchhoff matrix, allowing us to simply invert the Kirchhoff matrix. The cross-correlation between some residue *i* and residue *j* can be mathmatically calculated as follows:
 
 $$ \langle \Delta R_i \cdot \Delta R_j \rangle = \frac{3 k_B T}{\gamma} \left[ \Gamma^{-1} \right]_{ij} $$
 
-where $$ k_B $$ is the Boltzmann constant and $$ \gamma $$ is the spring constant (stiffness of the spring). Similarly, we can also calculate the expectation values of the fluctuation for residues, or the **mean-square fluctuations**, using the Kirchhoff matrix:
+where $$ k_B $$ is the Boltzmann constant, $$ \gamma $$ is the spring constant (stiffness of the spring), and $$ \left[ \Gamma^{-1} \right]_{ij} $$ is element *ij* in the inverted Kirchhoff matrix. Similarly, we can also calculate the expectation values of the fluctuation for each residue, or the **mean-square fluctuations**, which is the inner product of the fluctuation vector with itself:
 
 $$  \langle \Delta R_i^2  \rangle = \frac{3 k_B T}{\gamma} \left[ \Gamma^{-1} \right]_{ii} $$
 
-From these equations, we can see that the Kirchhoff matrix fully defines both the cross-correlations between residue motions as well as the mean-square fluctions of the residues.
+From these equations, we can see that the inverse Kirchhoff matrix fully defines both the cross-correlations between residue motions as well as the mean-square fluctions of the residues.
 
 $$ \left[ \Gamma^{-1} \right]_{ij} \sim \langle \Delta R_i \cdot \Delta R_j \rangle $$
 
 $$ \left[ \Gamma^{-1} \right]_{ii} \sim \langle \Delta R_i^2  \rangle $$
 
-However, because the determinant of the Kirchhoff matrix is 0 in GNM, we cannot directly invert it to get $$ \Gamma^{-1} $$. Instead, we use eigen decomposition on the matrix.
+However, we run into problems here because cannot simply invert the Kirchhoff matrix. In linear algebra, a matrix is invertible if and only if its determinant is zero. Unfortunately for us, one of the special properties of the Kirchhoff matrix in GNM is that the determinant is zero, and we cannot directly invert the matrix to get $$ \Gamma^{-1} $$. Thankfully, there is a method to compute the values of the inverted matrix by performing eigen decomposition on the matrix.
 
 $$ \Gamma = U \Lambda U^T $$
 
@@ -76,17 +76,19 @@ $$ C^{(n)}_{ij} = \frac{\langle \Delta R_i \cdot \Delta R_j \rangle}{\left[ \lan
 where $$ C^{(n)}_{ij} $$ corresponds to the orientational cross-correlation between residue *i* and residue *j*. Because we normalized the values, the range of $$ C^{(n)}_{ij} $$ is $$ [-1,1] $$, where 1 means the residues are fully correlated in motion, and -1 means the residues are fully anti-correlated in motion. Finally, we can visualize the matrix as a **cross-correlation heat map** like the figure below.
 
 ![image-center](../assets/images/hemoglobin_cc.png){: .align-center}
-Normalized cross-correlation heat map of human hemoglobin using the first 20 slowest normal modes. Red regions indicate correlated residue pairs which move in the same direction; blue regions indicate anti-correlated residue pairs which move in opposite directions. 
+Normalized cross-correlation heat map of human hemoglobin (1A3N) using the first 20 slowest normal modes. Red regions indicate correlated residue pairs which move in the same direction; blue regions indicate anti-correlated residue pairs which move in opposite directions. 
 {: style="font-size: medium;"}
+
+Cross-correlation analysis provides useful insight on the structure of the protein. In the cross-correlation map of human hemoglobin, we see four squares of positive correlation along the diagonal. This represents the four subunits of hemoglobin, $$ \alpha_1 $$, $$ \beta_1 $$, $$ \alpha_2 $$, and $$ \beta_2 $$ in this order, and the intrasubunit correlated motion. Looking at the squares next to the diagonal squares provide evidence of intersubunit correlation between $$ \alpha_1 $$ and $$ \beta_1 $$, and  $$ \alpha_2 $$ and $$ \beta_2 $$. In general, we can observe complex patterns of correlated and anti-correlated movement throughout the protein (both inter- and intrasubunit), which can act like some sort of fingerprint. In short, we can compare the cross-correlation maps between two similar proteins and find differences in the correlation patterns. This then would provide clues in where the proteins are different structurally and possibly functionally.
 
 Just like cross-correlation, we can also visualize the mean-square fluctuations of the residues. This is typically done in two ways. The simplest is to directly plot the values, where the x-axis represent the residues and the y-axis represent the mean-square fluctuation $$ \langle \Delta R_i^2  \rangle $$. The other, more useful, method is to plot the B-factor. When performing crystallography, the displacement of atoms within the protein crystal decreases the intesity of the scattered X-ray, creating uncertainty in the positions of atoms. **B-factor**, also known as **temperature factor** or **Debye-Waller factor** is a measure of this uncertainty, which includes noise from positional variance of thermal protein motion, model errors, and lattice defects. B-factors are reported in addition to the atomic coordinates in the PDB entry. One of the main reason we use B-factors is that they scale with the mean-square fluctuation, such that for atom *i*:
 
 $$ B_i = \frac{8 \pi^2}{3} \langle \Delta R_i^2 \rangle $$
 
-We can calculate the **theoretical B-factors** using the equation and GNM analysis, and the correlation with the **experimental B-factors** that are included in the PDB entry as a simple way to evaluate the GNM analysis.
+We can calculate the **theoretical B-factors** using the equation and GNM analysis, and the correlation with the **experimental B-factors** that are included in the PDB entry as a simple way to evaluate the GNM analysis. A study in 2009 by Lei Yang et al. compared the experimental and theoretical B-factors of 190 sufficiently different (<50% similarity) protein stuctures from X-ray and found the correlation to be about 0.58 on average [^Yang2]. Below is a plot of the B-factor, synonomous to the mean-square fluctutation, of $$ \alpha_1 $$. Residues with high values are those that fluctuate with greater motion or residues with greater positional uncertainty, and are colored red in the figures. In this case, we see that the residues colored in red are generally at the ends of secondary structures in the outer edges of the protein and loops (segments in between secondary structures). This is expected because protein loops typically cantain highly fluctuating residues.
 
 ![image-center](../assets/images/hemoglobin_b_factors.png){: .align-center}
-(Top): Human hemoglobin colored according to the GNM calculated theoretical B-factors (left) and the experimental B-factors (right). (Bottom): 2D plot comparing the theoretical and experimental B-factors of a single chain (chain A) of the protein. A correlation coefficient of 0.63 was calculated between the theoretical and experimental B-factors.
+(Top): Human hemoglobin colored according to the GNM calculated theoretical B-factors (left) and the experimental B-factors (right). (Bottom): 2D plot comparing the theoretical and experimental B-factors of subunit $$ \alpha_1 $$ (chain A of the protein). $$ \alpha_1 $$ is located at the top left quarter of the protein figure. A correlation coefficient of 0.63 was calculated between the theoretical and experimental B-factors.
 {: style="font-size: medium;"}
 
 A benefit from decomposing the protein fluctuation into individual normal modes is that we are able to observe the characteristics of slow modes separately, i.e. which residues does it affect and to what degree, or **slow mode shape**. This is typically done by visualizing the modes as 2D plots where the x-axis is the residue sequence and the y-axis is the inverse eigenvalues of the Kirchhoff matrix. Peaks in the plot indicate which region of residues the mode describes, with higher peaks representing greater magnitude of motions. It is also common practice to observe the plot of the average of multiple modes to see the collective contribution of the modes.
@@ -123,9 +125,10 @@ The anisotropic counterpart to GNM, in which the direction of fluctuations is al
 Collective motions of the slowest mode in human hemoglobin from ANM calculations using DynOmics.
 {: style="font-size: medium;"}
 
-
-
+For those interested, a full treatment of the mathematics of GNMs can be found in the chapter at <a href="https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf" target="_blank">https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf</a>.
 
 
 
 [^Yang]: Yang, L., Song, G., Jernigan, R. 2009. Protein elastic network models and the ranges of cooperativity. PNAS 106(30), 12347-12352. https://doi.org/10.1073/pnas.0902159106
+
+[^Yang2]: Yang, L., Song, G., & Jernigan, R. L. 2009. Comparisons of experimental and computed protein anisotropic temperature factors. Proteins, 76(1), 164–175. https://doi.org/10.1002/prot.22328
