@@ -141,9 +141,16 @@ The anisotropic counterpart to GNM, in which the direction of fluctuations is al
 Collective motions of the slowest mode in human hemoglobin from ANM calculations using DynOmics.
 {: style="font-size: medium;"}
 
-For those interested, a full treatment of the mathematics of GNMs can be found in the chapter at <a href="https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf" target="_blank">https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf</a>.
+This concludes the module's introduction to GNM analysis. For those interested, a full treatment of the mathematics of GNMs can be found in the chapter at <a href="https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf" target="_blank">https://www.csb.pitt.edu/Faculty/bahar/publications/b14.pdf</a>. 
 
-* Link to DynOmics Tutorial
+## Performing GNM calculations on proteins in the PDB
+
+In the tutorial linked below, we will demonstrate how to easily perform GNM analysis on proteins in the Protein Data Bank. by using a web portal called [DynOmics](http://dynomics.pitt.edu/). DynOmics is made up of multiple components that allow us to perform GNM calculations and visualize the results into plots and figures like the ones seen in the previous section. These components include [iGNM 2.0](http://gnmdb.csb.pitt.edu/), a database of pre-computed GNM dynamics for all PDB structures, [ANM 2.0](http://anm.csb.pitt.edu/), a server for visualizing animations created using ANM, and [ENM 1.0](http://enm.pitt.edu/), a server with a unifying user-friendly interface for performing all GNM/ANM calculations and evaluations. In the tutorial, we will perform GNM calculations on the SARS-CoV and SARS-CoV-2 Spike protein
+
+[Visit tutorial](tutorial_DynOmics){: .btn .btn--primary .btn--large}
+{: style="font-size: 100%; text-align: center;"}
+
+## Using GNM analysis to compare SARS-CoV and SARS-CoV-2 Spike
 
 * SARS-CoV-2 Analysis? Showing that the two proteins are very similar. Correlation of B-factor is bad... Protein too large to get accurate results? Possibly scrap the SARS-CoV analysis. More of a bonus?
 
