@@ -23,6 +23,7 @@ The eight types of feed-forward loops.[^ffl]
 {: .notice--info}
 
 More complex motifs may require more computational power to discover. 
+
 ![image-center](../assets/images/s_cerevisiae_tf_network.jpg){: .align-center}
 Example of different motifs within the *S. Cerevisiae* network.[^scNetwork]
 {: style="text-align: center; font-size: medium;"}
@@ -43,6 +44,7 @@ Using the *NAR_comparison_equal.blend* file from the negative [autoregulation tu
 |Y2’ + Y2’|Y2’|4e2|
 
 If we plot this graph, we can see the steady states of Y1 and Y2 are different once again. 
+
 **Exercise 1:** Can you repair the system to find the appropriate reaction rate for X2 -> X2 + Y2 to make the steady states equal once more? Are you able to adjust the reaction Y2 + Y2 -> Y2 as well? Do the reaction rates scale at the same rate?
 {: .notice--info}
 
