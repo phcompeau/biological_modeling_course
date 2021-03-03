@@ -34,12 +34,7 @@ If you are interested in using VMD, open the software and go to `Extensions > An
 ![image-center](../assets/images/DynOmics5.png){: .align-center}
 {: style="font-size: medium;"}
 
-Next, head over to `Mean-Square Fluctuations of Residues`. On this page, you will see two visualizations of the protein, labelled "Theoretical B-Factors" and "Experimental B-Factors" as well as the B-factor plot. When performing crystallography, the displacement of atoms within the protein crystal decreases the intesity of the scattered X-ray, creating uncertainty in the positions of atoms. **B-factor**, also known as **temperature factor** or **Debye-Waller factor** 
-describes the the degree to which the electron density is scattered when applied to the X-ray scattering term for each atom. More importantly, B-factor is directly related to the mean square displacement of the atom from its equilibrium position:
-
-$$ B_i = 8\pi^2U_i^2 $$
-
-where $$ B_i $$ is the B-factor for atom *i* and $$U_i^2 $$ is the mean square displacement of atom *i*. Therefore, we can interpret B-factor as a measure of mobility. Theoretical B-factors are calculated during the GNM analysis while the experimental B-factors are included in the PDB. Here, we can see that the experimental B-factors indicate a region of increased mobility, corresponding to the RBD of each chain.
+Next, head over to `Mean-Square Fluctuations of Residues`. On this page, you will see two visualizations of the protein, labelled "Theoretical B-Factors" and "Experimental B-Factors" as well as the B-factor plot. Recall that theoretical B-factors are calculated during the GNM analysis while the experimental B-factors are included in the PDB. On the bottom, we can see the plot of the B-factors across the entire protein split into chains.
 
 ![image-center](../assets/images/DynOmics6.png){: .align-center}
 {: style="font-size: medium;"}
@@ -67,7 +62,9 @@ Finally, in `Properties of GNM Mode Spectrum`, we can see two different plots on
 ![image-center](../assets/images/DynOmics11.png){: .align-center}
 {: style="font-size: medium;"}
 
-That is all for the structural dynamics results of DynOmics and also where we will stop for this tutorial. If you are interested in the other results, DynOmics has provided its own tutorial <a href="http://enm.pitt.edu/Tutorial.php" target="_blank">here</a>. 
+That is all for how to get the structural dynamics results of DynOmics. If you are interested in the other results, DynOmics has provided its own tutorial <a href="http://enm.pitt.edu/Tutorial.php" target="_blank">here</a>. 
+
+We will now head back to the main text in order to analyze our GNM/ANM results of SARS-CoV-2 S protein and compare it with SARS-CoV S protein to see if we can distinguish any significant differences.
 
 If you would rather perform GNM/ANM analysis using command line, ProDy, and VMD, please go to the following tutorials
 
@@ -77,5 +74,5 @@ If you would rather perform GNM/ANM analysis using command line, ProDy, and VMD,
 {: style="font-size: 100%; text-align: center;"}
 
 
-[Return to main text](conclusion_part_2){: .btn .btn--primary .btn--large}
+[Return to main text](conclusion_part_2_draft){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
