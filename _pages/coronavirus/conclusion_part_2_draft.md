@@ -166,7 +166,7 @@ In the tutorial linked below, we will demonstrate how to easily perform GNM anal
 
 ## GNM analysis of SARS-CoV-2 Spike Protein
 
-In the tutorial, we performed and visualized the GNM results of SARS-CoV-2 Spike protein. Here, we will analyze the slow mode shapes and cross-correlation heat map, and then compare it with the GNM results of SARS-CoV Spike protein (PDB: [5xlr](https://www.rcsb.org/structure/5XLR).
+In the tutorial, we performed and visualized the GNM results of SARS-CoV-2 Spike protein. Here, we will analyze the slow mode shapes and cross-correlation heat map, and then compare it with the GNM results of SARS-CoV Spike protein (PDB: <a href="https://www.rcsb.org/structure/5XLR" target="_blank">5xlr</a>).
 
 ### Slow Mode Shape of SARS-CoV-2 Spike
 
