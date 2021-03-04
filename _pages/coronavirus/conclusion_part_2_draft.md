@@ -164,6 +164,30 @@ In the tutorial linked below, we will demonstrate how to easily perform GNM anal
 [Visit tutorial](tutorial_DynOmics){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
+## GNM analysis of SARS-CoV-2 Spike Protein
+
+In the tutorial, we performed and visualized the GNM results of SARS-CoV-2 Spike protein. Here, we will analyze the slow mode shapes and cross-correlation heat map, and then compare it with the GNM results of SARS-CoV Spike protein (PDB: [5xlr](https://www.rcsb.org/structure/5XLR).
+
+### Slow Mode Shape of SARS-CoV-2 Spike
+
+First, we will look at the average slow mode shape of the first ten slow modes. Recall in our hemoglobin example that peaks in the mode shape indicate regions of high flexibility/fluctuation. Below is the slow mode shape and visualization of the two Spike proteins, using the colors red for high flexibility and blue for low flexibility.
+
+![image-center](../assets/images/spike_slowmode_comparison.png){: .align-center}
+Average mode shape of the slowest ten modes of SARS-CoV-2 Spike (left) and SARS-CoV Spike (right). The first peak corresponds to the N-Terminal Domain (NTD) and the second peak corresponds to the Receptor Binding Domain (RBD).
+{: style="font-size: medium;"}
+
+The results show that the NTD and RBD of SARS-CoV-2 Spike protein are highly flexible, which agrees with the biological functions of these regions. As we have learned, the RBD is responsible for the interaction with ACE2 on human cells. During this interaction, the RBD of one of the three chains "opens" up, exposing itself to more easily bind with ACE2. Therefore, the flexibility in this region makes sense. The other peak corresponds the NTD of the Spike protein. Similar to the RBD, the NTD of the Spike proteins also mediates viral infection, but by interacting with DC-SIGN L-SIGN receptors rather than ACE2 [^Soh]. DC-SIGN (dendritic cell-specific intracellular adjesion molecules ICAM-r grabbing non-integrin) and L-SIGN (liver/lymph node-specific ICAM-3 grabbing non-integrin) are closely related C-type lectin that are present on macrophages and dendritic cells. This allows SARS-CoV-2 to infect different tissues such as the lungs, where ACE2 expression levels are low. The ability to infect lung cells attributes to pneumonia, the main symptom of severe COVID-19 cases. Just like the RBD, high flexibility in this domain allows the Spike protein to more easily come into contact and interact with these receptors. Comparing with the slow-mode shape of SARS-CoV Spike protein, we see that the RBD peak is slightly lower in SARS-CoV-2 Spike, but the overall slow mode shape is very similar. This supports the similarity between the two proteins in both function and structure.
+
+### Cross-Correlation of SARS-CoV-2 Spike
+
+Next, we will look at the cross-correlation heat map of SARS-CoV-2 Spike and SARS-CoV Spike.
+
+![image-center](../assets/images/spike_crosscorr_comparison.png){: .align-center}
+Cross-correlation heat map of SARS-CoV-2 Spike (left) and SARS-CoV Spike (right). Along the central diagonal, three identical substructures (boxed in orange) representing the three identical chains of the Spike protein can be seen. There are three regions of high correlation within each chain, representing the NTD, RBD, and the S1 domain. Throughout the heat map, the correlation patterns are shared between the two proteins (boxed in blue).
+{: style="font-size: medium;"}
+
+Following the central diagonal, we see three identical substructures within each protein. Remember that the Spike proteins are trimers of identical chains (boxed in orange). Within each chain, we see three distinct regions of highly positive correlation: the NTD, RBD, and S1 domain. The protein structure of the Spike protein can be separated into two main parts, the S1 and S2 domain. The S1 domain includes the NTD and RBD, and is largely responsible for receptor interactions. The S1 protein includes the 'stalk' of the spike protein, which is largely responsible for the membrane fusion during infection. Between the two proteins, we see essentially the same three identical substructures along the central diagonal. In addition, we see that the correlation patterns in the off-diagonal regions (boxed in blue) are shared between the two proteins. Taken together, the results of the cross-correlation indicate that the SARS-CoV-2 and SARS-CoV Spike are highly similar in structure and likely have the same or similar function. 
+
 ## Summing Up
 
 <!--
@@ -234,3 +258,5 @@ We hope you will join us to find out!
 [^Garrett]: Garrett, R. H., Grisham, C. M., 2010. *Biochemistry*, 4th ed. Brooks/Cole, Cengage Learning. 
 
 [^Davis]: Davis, M., Tobi, D. 2014. Multiple Gaussian network modes alignments reveals dynamically variable regions: The hemoglobin case. Proteins: Structure, Function, and Bioinformatics, 82(9), 2097-2105. https://doi-org.cmu.idm.oclc.org/10.1002/prot.24565
+
+[^Soh]: Soh, W. T., Liu, Y., Nakayama, E. E., Ono, C., Torii, S., Nakagami, H., Matsuura, Y., Shioda, T., Arase, H. The N-terminal domain of spike glycoprotein mediates SARS-CoV-2 infection by associating with L-SIGN and DC-SIGN.
