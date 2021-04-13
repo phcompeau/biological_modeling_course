@@ -5,24 +5,35 @@ sidebar:
  nav: "motifs"
 ---
 
+## Identifying Feed-Forward Loops and More Complex Motifs
 
 **Exercise 1:** Modify the Jupyter notebook provided in the [tutorial on loops](tutorial_loops) to count the number of feed-forward loops in the transcription factor network for *E. coli.*
+{: .notice--info}
 
-**Exercise 2:** There are eight types of feed-forward loops based on the eight different ways in which we can label the edges in the network with a "+" or a "-" based on upregulation or downregulation. Modify the Jupyter notebook to count the number of loops of each type present in the *E. coli* transcription factor network.
+There are eight types of feed-forward loops based on the eight different ways in which we can label the edges in the network with a "+" or a "-" based on upregulation or downregulation. 
 
 ![image-center](../assets/images/ffl_types.png){: .align-center}
 The eight types of feed-forward loops.[^ffl]
 {: style="text-align: center; font-size: medium;"}
 
-**Exercise 3:** How many feed-forward loops would you expect to see in a random network having the same number of nodes as the *E. coli* transcription factor network? How does this compare to your answers to the previous two questions?
+**Exercise 2:** Modify the Jupyter notebook to count the number of loops of each type present in the *E. coli* transcription factor network.
+{: .notice--info}
 
-**Exercise 4:** More complex motifs may require more computational power to discover. Can you modify our Jupyter Notebook for motif finding to identify circular loops of transcription factor regulation, such as the multi-component loop below?
+**Exercise 3:** How many feed-forward loops would you expect to see in a random network having the same number of nodes as the *E. coli* transcription factor network? How does this compare to your answers to the previous two questions?
+{: .notice--info}
+
+More complex motifs may require more computational power to discover. 
 
 ![image-center](../assets/images/s_cerevisiae_tf_network.jpg){: .align-center}
 Example of different motifs within the *S. Cerevisiae* network.[^scNetwork]
 {: style="text-align: center; font-size: medium;"}
 
-**Exercise 5:** Using the *NAR_comparison_equal.blend* file from the negative [autoregulation tutorial](tutorial_nar_mathematically_controlled), increase the reaction rate of X1 -> X1 + Y1 to 4e4, so that the table should now look like the following:
+**Exercise 4:** Can you modify our Jupyter Notebook for motif finding to identify circular loops of transcription factor regulation, such as the multi-component loop above?
+{: .notice--info}
+
+## Negative Autoregulation
+
+Using the *NAR_comparison_equal.blend* file from the negative [autoregulation tutorial](tutorial_nar_mathematically_controlled), increase the reaction rate of X1 -> X1 + Y1 to 4e4, so that the table should now look like the following:
 
 | Reactants |Products|Forward Rate|
 |:--------|:-------:|--------:|
@@ -32,11 +43,17 @@ Example of different motifs within the *S. Cerevisiae* network.[^scNetwork]
 | Y2’  | NULL | 4e2 |
 |Y2’ + Y2’|Y2’|4e2|
 
-If we plot this graph, we can see the steady states of Y1 and Y2 are different once again. Can you repair the system to find the appropriate reaction rate for X2 -> X2 + Y2 to make the steady states equal once more? Are you able to adjust the reaction Y2 + Y2 -> Y2 as well? Do the reaction rates scale at the same rate?
+If we plot this graph, we can see the steady states of Y1 and Y2 are different once again. 
 
-**Exercise 6:** One way for the cell to apply stronger "brakes" to the simple regulation rate would be to simply increase the degradation rate, rather than implement negative autoregulation. Why do you think that the cell doesn't do this?
+**Exercise 1:** Can you repair the system to find the appropriate reaction rate for X2 -> X2 + Y2 to make the steady states equal once more? Are you able to adjust the reaction Y2 + Y2 -> Y2 as well? Do the reaction rates scale at the same rate?
+{: .notice--info}
 
-**Exercise 7:** Use the NFSim tutorial implementing the repressilator as a basis to replicate the other network motif tutorials presented in this module.
+**Exercise 2:** One way for the cell to apply stronger "brakes" to the simple regulation rate would be to simply increase the degradation rate, rather than implement negative autoregulation. Why do you think that the cell doesn't do this?
+{: .notice--info}
+
+## Implementing More Network Motifs
+**Exercise 1:** Use the NFSim tutorial implementing the repressilator as a basis to replicate the other network motif tutorials presented in this module.
+{: .notice--info}
 
 [Next module: coming soon!](/){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

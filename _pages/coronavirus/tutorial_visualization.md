@@ -75,13 +75,15 @@ Congratulations! You have now created a detailed visualization of the RBD-ACE2 c
 **STOP:** Create another visualization of the same site using the SARS-CoV RBD complex with ACE2 (PDB entry: <a href="https://www.rcsb.org/structure/2AJF" target="_blank">2ajf</a>). How does it compare with your first visualization of SARS-CoV-2 complex? Use the following graphical representations:
 
 SARS-CoV RBD with ACE2 (2ajf)
-|Protein|Style|Color|Selection|
-|:------|:----|:----|:--------|
-|SARS-CoV RBD|Tube|ColorID 11|chain F|
-|SARS-CoV RBD|Licorice|ColorID 4| chain F and resid 472|
-|ACE2|Licorice|ColorID 6| chain B and (resid 82 or resid 79 or resid 83)|
-|ACE2|Licorice| ColorID 10| chain B and resid 19|
-|ACE2|Licorice| ColorID 3| chain B and resid 24|
+
+| Protein | Style | Color | Selection |
+| :-------| :-----| :-----| :---------|
+| SARS-CoV RBD| Tube| ColorID 11| chain F|
+| SARS-CoV RBD| Licorice| ColorID 4| chain F and resid 472|
+|ACE2| Licorice| ColorID 6| chain B and (resid 82 or resid 79 or resid 83)|
+|ACE2| Licorice| ColorID 10| chain B and resid 19|
+|ACE2| Licorice| ColorID 3| chain B and resid 24|
+
 
 
 
