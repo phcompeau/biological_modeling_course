@@ -1,5 +1,5 @@
 ---
-permalink: /chemotaxis/home_biochem
+permalink: /chemotaxis/home_biochemistry
 title: "A Biochemically Accurate Model of Chemotaxis"
 sidebar:
  nav: "chemotaxis"
