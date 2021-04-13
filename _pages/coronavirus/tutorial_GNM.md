@@ -9,7 +9,7 @@ toc_sticky: true
 
 ### Gaussian Network Model Calculations
 
-In this tutorial, we will be on performing GNM calculations on one of the chains in the SARS-CoV-2 S protein and then visualizing the results in different maps and plots. Please be sure to have <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx.pdb</a> downloaded in the current working directory. (You can also download it directly while parsing as explained in the <a href="rmsd2">RMSD Tutorial</a>).
+In this tutorial, we will be on performing GNM calculations on one of the chains in the SARS-CoV-2 S protein and then visualizing the results in different maps and plots. Please be sure to have <a href="http://www.rcsb.org/structure/6VXX" target="_blank">6vxx.pdb</a> downloaded in the current working directory. (You can also download it directly while parsing as explained in the [RMSD Tutorial](tutorial_rmsd).)
 
 First, follow the steps in <a href="prody">Setting up ProDy</a> to start up IPython and import the neccessary functions.
 

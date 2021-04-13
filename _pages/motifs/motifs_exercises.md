@@ -55,7 +55,7 @@ If we plot this graph, we can see the steady states of Y1 and Y2 are different o
 **Exercise 1:** Use the NFSim tutorial implementing the repressilator as a basis to replicate the other network motif tutorials presented in this module.
 {: .notice--info}
 
-[Next module](/chemotaxis/home){: .btn .btn--primary .btn--large}
+[Next module](../chemotaxis/home){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 <!--

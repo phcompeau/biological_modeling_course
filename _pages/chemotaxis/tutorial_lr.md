@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-This collection of tutorials will gradually build up from scratch a chemotaxis simulation using [BioNetGen](http://http://bionetgen.org).
+This collection of tutorials will gradually build up from scratch a chemotaxis simulation using [BioNetGen](http://bionetgen.org).
 
 In this tutorial, we will:
  - set up BioNetGen;

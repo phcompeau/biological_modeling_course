@@ -17,7 +17,7 @@ In the previous lesson, we saw that the repressilator will oscillate even in a n
 
 ## A coarse-grained model for the repressilator
 
-We have noted that a benefit of using a reaction-diffusion particle model to study network motifs is the inclusion of built-in noise to ensure a measure of robustness. However, as we saw in the [prologue](prologue) with our work on Turing patterns, a downside of a particle-based model is that tracking the movements of many particles leads to a slow simulation that does not scale well given more particles or reactions.
+We have noted that a benefit of using a reaction-diffusion particle model to study network motifs is the inclusion of built-in noise to ensure a measure of robustness. However, as we saw in the [prologue](../prologue/) with our work on Turing patterns, a downside of a particle-based model is that tracking the movements of many particles leads to a slow simulation that does not scale well given more particles or reactions.
 
 Although our model is ultimately interested in molecular interactions, the conclusions we have made throughout this chapter are only based on the *concentrations* of these particles. Therefore, we might imagine developing a coarser-grained version of our model that allows us to make faster conclusions about particle concentrations without keeping track of the diffusion of individual particles.
 
