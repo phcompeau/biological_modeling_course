@@ -74,7 +74,7 @@ A major benefit of using a rule-based modeling language provided by BioNetGen is
 LigandReceptor: L(t) + T(l) <-> L(t!1).T(l!1) k_lr_bind, k_lr_dis
 ~~~
 
-Why is one rule enough? Recall from our discussion of the [Gillespie algorithm](/home_signalpart2#an-overview-of-the-gillespie-algorithm) that the wait time before the next reaction to be sampled depends only on the rate of all relevant reactions in the system. In this particular case, the rate of ligand-MCP binding depends on the total concentration of free ligands and unbound MCPs, but it does not depend on the state that an MCP is in.
+Why is one rule enough? Recall from our discussion of the [Gillespie algorithm](home_signalpart2#an-overview-of-the-gillespie-algorithm) that the wait time before the next reaction to be sampled depends only on the rate of all relevant reactions in the system. In this particular case, the rate of ligand-MCP binding depends on the total concentration of free ligands and unbound MCPs, but it does not depend on the state that an MCP is in.
 
 In the following tutorial, we will expand our BioNetGen model from the previous tutorial into one that can incorporate CheR binding as well as MCP methylation while avoiding combinatorial explosion. We will then examine whether this model allows us to learn anything about how a bacterium can adapt to changes in the relative concentration of attractant.
 
