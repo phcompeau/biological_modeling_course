@@ -17,7 +17,7 @@ In this lesson, we will simulate a "race" to the steady state concentration of *
 
 ## Simulating transcriptional regulation with a reaction-diffusion model
 
-In the [prologue](/prologue), we simulated chemical reactions to run a randomized particle-based model. In this lesson, we will apply the same model, in which the particles correspond to transcription factors *X* and *Y*.
+In the [prologue](/prologue/), we simulated chemical reactions to run a randomized particle-based model. In this lesson, we will apply the same model, in which the particles correspond to transcription factors *X* and *Y*.
 
 We will begin with a model of the first cell, in which *X* upregulates *Y* but we do not have negative autoregulation of *Y*. We start without any *Y* particles and a constant number of *X* particles. To simulate *X* upregulating the expression of *Y*, we add the reaction *X* → *X* + *Y*. This reaction ensures that in a given interval of time there is a constant underlying probability that a given *X* particle will spontaneously form a new *Y* particle.
 

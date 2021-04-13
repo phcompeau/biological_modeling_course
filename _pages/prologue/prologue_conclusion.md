@@ -39,7 +39,7 @@ An adult Mbu Pufferfish exhibiting another familiar pattern![^pufferfish]
 Thank you for making it this far! We hope that you are enjoying the course. You can join the next module of the course by clicking on the "next module" button below. In the meantime, we ask that you complete the <a href="https://forms.gle/egmmBxGtBciDPYNS8" target="_blank">course survey</a> if you have not done so already.
 
 
-[Next module](/motifs){: .btn .btn--primary .btn--large}
+[Next module](/motifs/home){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 [^robert]: "Reaction-Diffusion by the Gray-Scott Model: Pearson's Parametrization" © 1996-2020 Robert P. Munafo https://mrob.com/pub/comp/xmorphia/index.html

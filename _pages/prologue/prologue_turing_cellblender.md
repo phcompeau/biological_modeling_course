@@ -6,7 +6,7 @@ sidebar:
  nav: "prologue"
 ---
 
-Load the `CellBlender_Tutorial_Template.blend` file that you generated in the [Random Walk Tutorial](tutorial-random-walk). You may also download the complete file <a href=".../tutorials/CellBlender_Tutorial_Template.blend" download="CellBlender_Tutorial_Template.blend">here</a>. Save this file as a new file named `turing_pattern.blend`. The completed tutorial is also available <a href=".../tutorials/turing_pattern.blend" download="turing_pattern.blend">here</a>.
+Load the `CellBlender_Tutorial_Template.blend` file that you generated in the [Random Walk Tutorial](tutorial-random-walk). You may also download the complete file <a href="../tutorials/CellBlender_Tutorial_Template.blend" download="CellBlender_Tutorial_Template.blend">here</a>. Save this file as a new file named `turing_pattern.blend`. The completed tutorial is also available <a href="../tutorials/turing_pattern.blend" download="turing_pattern.blend">here</a>.
 
 We will first visit `CellBlender > Molecules` and create the *B* molecules, as shown in the screenshot below.
 

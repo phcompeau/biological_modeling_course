@@ -30,7 +30,7 @@ Featured software: CellBlender, NFSim, RuleBender
 
 ## Module 3: Analyzing the coronavirus spike protein ##
 
-[Link to module](/coronavirus/home)
+[Link to module](../coronavirus/home)
 
 Featured software: ProDy
 

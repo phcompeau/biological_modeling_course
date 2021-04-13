@@ -1,5 +1,5 @@
 ---
-permalink: /chemotaxis/home_senseadap
+permalink: /chemotaxis/home_adaptation
 title: "Methylation Helps Bacteria Adapt to Differing Concentrations"
 toc: true
 toc_sticky: true
@@ -78,7 +78,7 @@ Why is one rule enough? Recall from our discussion of the [Gillespie algorithm](
 
 In the following tutorial, we will expand our BioNetGen model from the previous tutorial into one that can incorporate CheR binding as well as MCP methylation while avoiding combinatorial explosion. We will then examine whether this model allows us to learn anything about how a bacterium can adapt to changes in the relative concentration of attractant.
 
-[Visit tutorial](tutorial_adap){: .btn .btn--primary .btn--large}
+[Visit tutorial](tutorial_adaptation){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 ## Bacterial tumbling is resilient to large sudden changes in ligand concentration
@@ -118,7 +118,7 @@ However, our work is not done. We have simulated how a bacterium can adapt to a 
 
 Some resources/reads if you are interested in the chemotaxis biology:
  - Amazing introduction to chemotaxis: Parkinson Lab [website](http://chemotaxis.biology.utah.edu/Parkinson_Lab/projects/ecolichemotaxis/ecolichemotaxis.html).
- - A good overview: by Webre et al. published in 2003. [Available online](https://www.cell.com/current-biology/pdf/S0960-9822(02)01424-0.pdf)
+ - A good overview: by Webre et al. published in 2003. [Available online](https://doi.org/10.1016/S0960-9822(02)01424-0)
  - Details on chemotaxis pathway and MCPs: review article by Baker et al. published in 2005 [Available online](https://pubmed.ncbi.nlm.nih.gov/16369945/).
  - Details on MCPs: more recent review by Parkinson et al. published in 2015. [Available online](https://www.sciencedirect.com/science/article/abs/pii/S0966842X15000578).
  - Modeling robustness and integral feedback: lecture note by Berg in 2008. [Available online](https://www.weizmann.ac.il/mcb/UriAlon/sites/mcb.UriAlon/files/uploads/lecture_notes_-_robustness_in_bacterial_chemotaxis_.pdf).
@@ -166,7 +166,7 @@ Some resources/reads if you are interested in the chemotaxis biology:
 
 [^Amin2010]: Amin DN, Hazelbauer GL. 2010. Chemoreceptors in signaling complexes: shifted conformation and asymmetric coupling. [Available online](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3010867/)
 
-[^Terwilliger1986]: Terwilliger TC, Wang JY, Koshland DE. 1986. Kinetics of Receptor Modification - the multiply methlated aspartate receptors involved in bacterial chemotaxis. The Journal of Biolobical Chemistry. [Available online](https://www.jbc.org/content/261/23/10814.full.pdf)
+[^Terwilliger1986]: Terwilliger TC, Wang JY, Koshland DE. 1986. Kinetics of Receptor Modification - the multiply methlated aspartate receptors involved in bacterial chemotaxis. The Journal of Biolobical Chemistry. [Available online](https://www.jbc.org/content/261/23/10814)
 
 [^Chylek2015]: Chylek LA, Harris LA, Tung CS, Faeder JR, Lopez CF, Hlavacek WS. 2015. Rule-based modeling: a computational approach for studying biomolecular site dynamics in cell signaling systems. Wiley Interdiscip Rev Syst Biol Med 6(1):13-36. [Available online](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3947470/)
 

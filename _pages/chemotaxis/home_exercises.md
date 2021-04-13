@@ -21,7 +21,7 @@ Just as *E. coli* has receptors that bond to attractant ligands, it has other re
 
 The simulations in this chapter became quite complex, but there is one way in which the reality is even more complicated. Not only can *E. coli* sense both repellents and attractants, but it is able to detect *more than one* attractant gradient at the same time.  This has a clear evolutionary purpose in an environment of multiple sparsely populated food sources. In this section, we will explore whether the chemotaxis mechanism allows cells to navigate through more realistic nutrient distributions.
 
-**Exercise 1:**  In reality, *E. coli* has different receptors specific for different types of attractants. Modify your model from the [adaptation tutorial](tutorial_senseadap) to reflect two types of receptor, each specific to its own ligand (call them *A* and *B*). Assume that we have 3500 receptor molecules of each type.\\
+**Exercise 1:**  In reality, *E. coli* has different receptors specific for different types of attractants. Modify your model from the [adaptation tutorial](tutorial_adaptation) to reflect two types of receptor, each specific to its own ligand (call them *A* and *B*). Assume that we have 3500 receptor molecules of each type.\\
  **Hint:** you will not need to have additional molecules in addition to `L` and `T`. Instead, specify additional states for the two molecules that we already have; for example `L(t,Lig~A)` only binds with `T(l,Lig~A)`. Don't forget to update `seed species` as well!
 {: .notice--info}
 

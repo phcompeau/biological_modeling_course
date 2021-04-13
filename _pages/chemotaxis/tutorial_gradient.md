@@ -7,7 +7,7 @@ toc: true
 toc_sticky: true
 ---
 
-In the [previous tutorial](tutorial_adap), we modeled how bacteria react and adapt to a one-time addition of attractants. In real life, bacteria don't suddenly drop into an environment with more attractants; instead, they explore a variable environment. In this tutorial, we will adapt our model to simulate a bacterium as it travels up an exponentially increasing concentration gradient.
+In the [previous tutorial](tutorial_adaptation), we modeled how bacteria react and adapt to a one-time addition of attractants. In real life, bacteria don't suddenly drop into an environment with more attractants; instead, they explore a variable environment. In this tutorial, we will adapt our model to simulate a bacterium as it travels up an exponentially increasing concentration gradient.
 
 We will also explore defining and using **functions**, a feature of BioNetGen that will allow us to specify reaction rules in which the reaction rates are dependent on the current state of the system.
 

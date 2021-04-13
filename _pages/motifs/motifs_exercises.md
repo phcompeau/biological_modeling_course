@@ -10,7 +10,7 @@ sidebar:
 **Exercise 1:** Modify the Jupyter notebook provided in the [tutorial on loops](tutorial_loops) to count the number of feed-forward loops in the transcription factor network for *E. coli.*
 {: .notice--info}
 
-There are eight types of feed-forward loops based on the eight different ways in which we can label the edges in the network with a "+" or a "-" based on upregulation or downregulation. 
+There are eight types of feed-forward loops based on the eight different ways in which we can label the edges in the network with a "+" or a "-" based on upregulation or downregulation.
 
 ![image-center](../assets/images/ffl_types.png){: .align-center}
 The eight types of feed-forward loops.[^ffl]
@@ -22,7 +22,7 @@ The eight types of feed-forward loops.[^ffl]
 **Exercise 3:** How many feed-forward loops would you expect to see in a random network having the same number of nodes as the *E. coli* transcription factor network? How does this compare to your answers to the previous two questions?
 {: .notice--info}
 
-More complex motifs may require more computational power to discover. 
+More complex motifs may require more computational power to discover.
 
 ![image-center](../assets/images/s_cerevisiae_tf_network.jpg){: .align-center}
 Example of different motifs within the *S. Cerevisiae* network.[^scNetwork]
@@ -43,7 +43,7 @@ Using the *NAR_comparison_equal.blend* file from the negative [autoregulation tu
 | Y2’  | NULL | 4e2 |
 |Y2’ + Y2’|Y2’|4e2|
 
-If we plot this graph, we can see the steady states of Y1 and Y2 are different once again. 
+If we plot this graph, we can see the steady states of Y1 and Y2 are different once again.
 
 **Exercise 1:** Can you repair the system to find the appropriate reaction rate for X2 -> X2 + Y2 to make the steady states equal once more? Are you able to adjust the reaction Y2 + Y2 -> Y2 as well? Do the reaction rates scale at the same rate?
 {: .notice--info}
@@ -55,7 +55,7 @@ If we plot this graph, we can see the steady states of Y1 and Y2 are different o
 **Exercise 1:** Use the NFSim tutorial implementing the repressilator as a basis to replicate the other network motif tutorials presented in this module.
 {: .notice--info}
 
-[Next module: coming soon!](/){: .btn .btn--primary .btn--large}
+[Next module](/chemotaxis/home){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
 
 <!--

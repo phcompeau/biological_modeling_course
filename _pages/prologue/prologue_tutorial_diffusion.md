@@ -21,11 +21,11 @@ In this tutorial, we will use Python to build a Jupyter notebook. We suggest onl
 
 You can read more about various installation options [here](https://realpython.com/installing-python/) or [here](https://docs.conda.io/en/latest/).
 
-Once you have Jupyter Notebook installed, create a new notebook file called `diffusion_automaton.ipynb`. 
+Once you have Jupyter Notebook installed, create a new notebook file called `diffusion_automaton.ipynb`.
 
 **Note**: You will need to save this file on the same level as another folder named `/dif_images`. ImageIO will not always create this folder automatically, so you may need to create it manually.
 
-You may also download the completed tutorial <a href=".../tutorials/Diffusion%20Only%20Model.ipynb" download="diffusion_only_model.ipynb">here</a>.
+You may also download the completed tutorial <a href="../tutorials/Diffusion%20Only%20Model.ipynb" download="diffusion_only_model.ipynb">here</a>.
 
 We are now ready to simulate our automaton representing the diffusion of two particle species: a prey (*A*) and a predator (*B*). Enter the following into our notebook.
 

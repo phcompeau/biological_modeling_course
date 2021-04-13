@@ -38,7 +38,7 @@ The second simulation will include both of these reactions, but we will also hav
 
 Furthermore, in order to obtain a mathematically controlled comparison, we will need to make the reaction *X* → *X* + *Z* have a higher rate in the second simulation that models the FFL. If we do not raise the rate of this reaction, then the repression of *Z* by *Y* will cause the steady state concentration of *Z* to be lower in the second simulation.
 
-If you are feeling adventurous, then you may like to adapt the [NAR tutorial](motifs_tutorial_nar) to run the above two simulations and tweak the rate of the *X* → *X* + *Z* reaction to see if you can obtain the same steady state concentration of *Z* in the two simulations. We also provide the following tutorial guiding you through setting up these simulations, which we will interpret in the next section.
+If you are feeling adventurous, then you may like to adapt the [NAR tutorial](tutorial_nar) to run the above two simulations and tweak the rate of the *X* → *X* + *Z* reaction to see if you can obtain the same steady state concentration of *Z* in the two simulations. We also provide the following tutorial guiding you through setting up these simulations, which we will interpret in the next section.
 
 [Visit tutorial](tutorial_feed){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}

@@ -1,5 +1,5 @@
 ---
-permalink: /chemotaxis/tutorial_adap
+permalink: /chemotaxis/tutorial_adaptation
 title: "Software Tutorial: Modeling adaptation"
 sidebar:
  nav: "chemotaxis"
@@ -382,5 +382,5 @@ Back in the main text, we will examine how a sudden change in the concentration 
 [^Krembel2015]: Krembel A., Colin R., Sourijik V. 2015. Importance of multiple methylation sites in *Escherichia coli* chemotaxis. [Available online](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0145582)
 
 
-[Return to main text](home_senseadap#bacterial-tumbling-is-resilient-to-large-sudden-changes-in-ligand-concentration){: .btn .btn--primary .btn--large}
+[Return to main text](home_adaptation#bacterial-tumbling-is-resilient-to-large-sudden-changes-in-ligand-concentration){: .btn .btn--primary .btn--large}
 {: style="font-size: 100%; text-align: center;"}
