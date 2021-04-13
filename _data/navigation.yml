@@ -94,9 +94,9 @@ chemotaxis:
       - title: "Stochastic simulation of chemical reactions<br><br>"
         url: /chemotaxis/home_signalpart2
       - title: "A biochemically accurate model of chemotaxis<br><br>"
-        url: /chemotaxis/home_biochem
+        url: /chemotaxis/home_biochemistry
       - title: "Methylation helps bacteria adapt to differing concentrations<br><br>"
-        url: /chemotaxis/home_senseadap
+        url: /chemotaxis/home_adaptation
       - title: "Modeling a bacterium's response to an attractant gradient<br><br>"
         url: /chemotaxis/home_gradient
       - title: "Conclusion: the beauty of E. coli's randomized exploration algorithm<br><br>"
@@ -108,7 +108,7 @@ chemotaxis:
       - title: "Adding phosphorylation to our BioNetGen model<br><br>"
         url: /chemotaxis/tutorial_phos
       - title: "Modeling adaptation<br><br>"
-        url: /chemotaxis/tutorial_adap
+        url: /chemotaxis/tutorial_adaptation
       - title: "Traveling up an attractant gradient<br><br>"
         url: /chemotaxis/tutorial_gradient
       - title: "Traveling down an attractant gradient<br><br>"
