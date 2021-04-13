@@ -9,7 +9,7 @@ toc_sticky: true
 
 In the [previous tutorial](tutorial_gradient), we simulated the behavior of a bacterium moving up the concentration gradient. In this tutorial, we will simulate the opposite - when the bacterium is not in luck and moves down a concentration gradient.
 
-To get started, create a copy of your `adaptation.bngl` file from the [adaptation tutorial](tutorial_adap) and save it as `removal.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="../downloads/downloadable/removal.bngl" download="removal.bngl">removal.bngl</a>.
+To get started, create a copy of your `adaptation.bngl` file from the [adaptation tutorial](tutorial_adaptation) and save it as `removal.bngl`. If you would rather not follow along below, you can download a completed BioNetGen file here: <a href="../downloads/downloadable/removal.bngl" download="removal.bngl">removal.bngl</a>.
 
 We also will build a Jupyter notebook in this tutorial for plotting the concentrations of different particles over time. To do so, you should save a copy of your `plotter_up.ipynb` file called `plotter_down.ipynb`; if you would rather not follow along, we provide a completed notebook here: <a href="../downloads/downloadable/plotter_down.ipynb" download="plotter_down.ipynb">plotter_down.ipynb</a>
 
