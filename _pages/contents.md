@@ -12,9 +12,7 @@ After building a model in a software tutorial, we return to the main text and an
 
 The following contents is a work in progress and will be expanded in the coming weeks. For now, you can find links to the start of each published module below.
 
-## Prologue: An introduction to biological modeling via random walks and Turing patterns ##
-
-[Link to module](../prologue/)
+## [Prologue: An introduction to biological modeling via random walks and Turing patterns](../prologue/) ##
 
 ### Main text
 
@@ -41,9 +39,7 @@ The following contents is a work in progress and will be expanded in the coming 
 * Implementing the Gray-Scott model for coarse-grained reaction-diffusion with Jupyter notebook
 
 
-## Module 1: Finding motifs in transcription factor networks ##
-
-[Link to module](../motifs/home)
+## [Module 1: Finding motifs in transcription factor networks](../motifs/home) ##
 
 ### Main text
 
@@ -77,9 +73,7 @@ The following contents is a work in progress and will be expanded in the coming 
 
 * Perturbing the repressilator
 
-## Module 2: Unpacking E. coli's genius exploration algorithm ##
-
-[Link to module](../chemotaxis/home)
+## [Module 2: Unpacking E. coli's genius exploration algorithm](../chemotaxis/home) ##
 
 ### Main text
 
@@ -118,8 +112,6 @@ The following contents is a work in progress and will be expanded in the coming 
 * Comparing different chemotaxis default tumbling frequencies
 
 ## [Module 3: Analyzing the coronavirus spike protein](../coronavirus/home) ##
-
-[Link to module](../coronavirus/home)
 
 ### Part 1: Protein structure prediction
 
