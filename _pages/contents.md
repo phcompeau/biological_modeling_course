@@ -117,7 +117,7 @@ The following contents is a work in progress and will be expanded in the coming 
 
 * Comparing different chemotaxis default tumbling frequencies
 
-## Module 3: Analyzing the coronavirus spike protein ##
+## [Module 3: Analyzing the coronavirus spike protein](../coronavirus/home ##
 
 [Link to module](../coronavirus/home)
 
