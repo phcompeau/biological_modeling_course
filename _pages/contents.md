@@ -16,6 +16,31 @@ The following contents is a work in progress and will be expanded in the coming 
 
 [Link to module](../prologue/)
 
+### Main text
+
+* Introduction: Life is random
+
+* Alan Turing and the zebra's stripes
+
+* An introduction to random walks
+
+* A reaction-diffusion model generating Turing patterns
+
+* The Gray-Scott model: a cellular automaton generating Turing patterns
+
+* Conclusion: Turing patterns are fine-tuned
+
+### Software tutorials (featuring MCell and CellBlender)
+
+* Simulating particle diffusion with CellBlender
+
+* Generating Turing patterns with a reaction-diffusion simulation in CellBlender
+
+* Building a diffusion cellular automaton with Jupyter notebook
+
+* Implementing the Gray-Scott model for coarse-grained reaction-diffusion with Jupyter notebook
+
+
 ## Module 1: Finding motifs in transcription factor networks ##
 
 [Link to module](../motifs/home)
